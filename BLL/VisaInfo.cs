@@ -33,9 +33,9 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(TravletAgence.Model.VisaInfo model)
+        public bool UpdateByPassportNo(TravletAgence.Model.VisaInfo model)
 		{
-			return dal.Update(model);
+			return dal.UpdateByPassportNo(model);
 		}
 
 		/// <summary>

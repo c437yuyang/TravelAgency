@@ -21,5 +21,13 @@ namespace TravletAgence.BLL
             DataTable dt = ds.Tables[0];
             return DataTableToList(dt);
         }
+
+        public int DeleteListByPassNo(List<string> passNums)
+        {
+            return dal.DeleteListByPassNo(passNums);
+        }
+
+
+
     }
 }

@@ -83,7 +83,9 @@
     <Content Include="VisaInfo\List.aspx" />
     <Content Include="VisaInfo\Modify.aspx" />
     <Content Include="VisaInfo\Show.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Accounts\Add.aspx.cs">

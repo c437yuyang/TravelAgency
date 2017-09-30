@@ -40,8 +40,6 @@ namespace TravletAgence.UI.Controllers
         public ActionResult Add(Model.VisaInfo visaInfo)
         {
             visaInfo.EntryTime = DateTime.Now;
-
-
             if (bll.Add(visaInfo))
             {
                 return Content("ok");
@@ -52,91 +50,22 @@ namespace TravletAgence.UI.Controllers
             }
         }
         #endregion
+        
 
-        //
-        // GET: /VisaInfo/Details/5
-
-        public ActionResult Details(int id)
+        #region 删除
+        public ActionResult Delete(string ids)
         {
-            return View();
-        }
-
-        //
-        // GET: /VisaInfo/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /VisaInfo/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            if (string.IsNullOrEmpty(ids))
             {
-                // TODO: Add insert logic here
+                return Content("请选中要删除数据！");
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            //正常处理
+            string[] strIds = ids.Split(',');
+            //UserInfoService.DeleteList(idList);
+            bll.DeleteListByPassNo(strIds.ToList());
+            return Content("ok");
         }
-
-        //
-        // GET: /VisaInfo/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /VisaInfo/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /VisaInfo/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /VisaInfo/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        #endregion
     }
 }

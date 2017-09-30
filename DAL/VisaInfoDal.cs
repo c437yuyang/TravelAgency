@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Data.SqlClient;
@@ -31,6 +32,25 @@ namespace TravletAgence.DAL
         {
             string sql = "select count(1) from VisaInfo";
             return (int)DbHelperSQL.GetSingle(sql);
+        }
+
+
+        public int DeleteListByPassNo(List<string> passNums)
+        {
+            int ret = 0; //执行成功的数目
+            for (int i = 0; i < passNums.Count; i++)
+            {
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("delete from VisaInfo ");
+                strSql.Append(" where PassportNo=@passportNo ");
+                SqlParameter[] parameters = {
+					new SqlParameter("@passportNo", SqlDbType.VarChar,50)};
+                parameters[0].Value = passNums[i];
+
+                int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+                ret = rows > 0 ? ret + 1 : ret;
+            }
+            return ret;
         }
 
     }

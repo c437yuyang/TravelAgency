@@ -113,7 +113,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(TravletAgence.Model.VisaInfo model)
+		public bool UpdateByPassportNo(TravletAgence.Model.VisaInfo model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update VisaInfo set ");
@@ -145,7 +145,7 @@ namespace TravletAgence.DAL
 			strSql.Append("RealOutTime=@RealOutTime,");
 			strSql.Append("Country=@Country,");
 			strSql.Append("Call=@Call");
-			strSql.Append(" where VisaInfo_id=@VisaInfo_id ");
+            strSql.Append(" where PassportNo=@PassportNo ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Visa_id", SqlDbType.VarChar,50),
 					new SqlParameter("@GroupNo", SqlDbType.VarChar,50),
