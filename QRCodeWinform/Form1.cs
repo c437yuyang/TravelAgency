@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Forms;
 using Gma.QrCodeNet.Encoding.Windows.Render;
+using TravletAgence.Common.QRCode;
 
 namespace QRCodeWinform
 {
@@ -94,7 +95,13 @@ namespace QRCodeWinform
             //map.Save(filename, ImageFormat.Png);
         }
 
-        
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            MyQRCode qrcode = new MyQRCode();
+            qrcode.EncodeToCtrl(this.qrCodeGraphicControl1.Text + 1, this.qrCodeGraphicControl1);
+        }
+
+
 
     }
 }
