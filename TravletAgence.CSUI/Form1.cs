@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 using TravletAgence.Model;
 
@@ -163,13 +156,13 @@ namespace TravletAgence.CSUI
             {
                 // t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)； 
                 _t.Enabled = true;
-                this.btnAutoRead.Text = "Stop";
+                this.btnAutoRead.Text = "停止自动读取";
                 _autoRead = true;
             }
             else
             {
                 _t.Enabled = false;
-                this.btnAutoRead.Text = "AutoRead";
+                this.btnAutoRead.Text = "开始自动读取";
                 _autoRead = false;
             }
         }

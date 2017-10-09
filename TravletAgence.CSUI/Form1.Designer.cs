@@ -30,6 +30,15 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LicenseTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.lb_page = new DevComponents.DotNetBar.LabelX();
@@ -63,15 +72,6 @@
             this.txtBirthday = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtEnglishName = new System.Windows.Forms.TextBox();
-            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LicenseTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.panelEx3.SuspendLayout();
@@ -120,6 +120,69 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1044, 532);
             this.dataGridView1.TabIndex = 10;
+            // 
+            // _Name
+            // 
+            this._Name.DataPropertyName = "Name";
+            this._Name.HeaderText = "本国姓名";
+            this._Name.Name = "_Name";
+            this._Name.ReadOnly = true;
+            // 
+            // EnglishName
+            // 
+            this.EnglishName.DataPropertyName = "EnglishName";
+            this.EnglishName.HeaderText = "英语姓名";
+            this.EnglishName.Name = "EnglishName";
+            this.EnglishName.ReadOnly = true;
+            // 
+            // Sex
+            // 
+            this.Sex.DataPropertyName = "Sex";
+            this.Sex.HeaderText = "性别";
+            this.Sex.Name = "Sex";
+            this.Sex.ReadOnly = true;
+            // 
+            // BirthDay
+            // 
+            this.BirthDay.DataPropertyName = "Birthday";
+            this.BirthDay.HeaderText = "生日";
+            this.BirthDay.Name = "BirthDay";
+            this.BirthDay.ReadOnly = true;
+            // 
+            // PassportNo
+            // 
+            this.PassportNo.DataPropertyName = "PassportNo";
+            this.PassportNo.HeaderText = "护照号";
+            this.PassportNo.Name = "PassportNo";
+            this.PassportNo.ReadOnly = true;
+            // 
+            // LicenseTime
+            // 
+            this.LicenseTime.DataPropertyName = "LicenseTime";
+            this.LicenseTime.HeaderText = "发证日期";
+            this.LicenseTime.Name = "LicenseTime";
+            this.LicenseTime.ReadOnly = true;
+            // 
+            // ExpiryDate
+            // 
+            this.ExpiryDate.DataPropertyName = "ExpiryDate";
+            this.ExpiryDate.HeaderText = "有效期";
+            this.ExpiryDate.Name = "ExpiryDate";
+            this.ExpiryDate.ReadOnly = true;
+            // 
+            // Birthplace
+            // 
+            this.Birthplace.DataPropertyName = "Birthplace";
+            this.Birthplace.HeaderText = "出生地";
+            this.Birthplace.Name = "Birthplace";
+            this.Birthplace.ReadOnly = true;
+            // 
+            // IssuePlace
+            // 
+            this.IssuePlace.DataPropertyName = "IssuePlace";
+            this.IssuePlace.HeaderText = "签发地";
+            this.IssuePlace.Name = "IssuePlace";
+            this.IssuePlace.ReadOnly = true;
             // 
             // panelEx1
             // 
@@ -284,7 +347,7 @@
             this.btnAddToDatabase.Size = new System.Drawing.Size(88, 23);
             this.btnAddToDatabase.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddToDatabase.TabIndex = 18;
-            this.btnAddToDatabase.Text = "AddToDatabase";
+            this.btnAddToDatabase.Text = "添加到数据库";
             this.btnAddToDatabase.Click += new System.EventHandler(this.buttonAddToDatabase_Click);
             // 
             // btnReadData
@@ -293,10 +356,10 @@
             this.btnReadData.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnReadData.Location = new System.Drawing.Point(12, 441);
             this.btnReadData.Name = "btnReadData";
-            this.btnReadData.Size = new System.Drawing.Size(75, 23);
+            this.btnReadData.Size = new System.Drawing.Size(88, 23);
             this.btnReadData.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnReadData.TabIndex = 17;
-            this.btnReadData.Text = "ReadData";
+            this.btnReadData.Text = "读取签证信息";
             this.btnReadData.Click += new System.EventHandler(this.btnReadData_Click);
             // 
             // btnAutoRead
@@ -305,10 +368,10 @@
             this.btnAutoRead.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAutoRead.Location = new System.Drawing.Point(118, 441);
             this.btnAutoRead.Name = "btnAutoRead";
-            this.btnAutoRead.Size = new System.Drawing.Size(75, 23);
+            this.btnAutoRead.Size = new System.Drawing.Size(81, 23);
             this.btnAutoRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAutoRead.TabIndex = 16;
-            this.btnAutoRead.Text = "AutoRead";
+            this.btnAutoRead.Text = "开始自动读取";
             this.btnAutoRead.Click += new System.EventHandler(this.btnAutoRead_Click);
             // 
             // btnLoadKernel
@@ -317,10 +380,10 @@
             this.btnLoadKernel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnLoadKernel.Location = new System.Drawing.Point(12, 399);
             this.btnLoadKernel.Name = "btnLoadKernel";
-            this.btnLoadKernel.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadKernel.Size = new System.Drawing.Size(88, 23);
             this.btnLoadKernel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLoadKernel.TabIndex = 15;
-            this.btnLoadKernel.Text = "LoadKernel";
+            this.btnLoadKernel.Text = "加载识别内核";
             this.btnLoadKernel.Click += new System.EventHandler(this.btnLoadKernel_Click);
             // 
             // btnFreeKernel
@@ -329,10 +392,10 @@
             this.btnFreeKernel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnFreeKernel.Location = new System.Drawing.Point(118, 399);
             this.btnFreeKernel.Name = "btnFreeKernel";
-            this.btnFreeKernel.Size = new System.Drawing.Size(75, 23);
+            this.btnFreeKernel.Size = new System.Drawing.Size(81, 23);
             this.btnFreeKernel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnFreeKernel.TabIndex = 14;
-            this.btnFreeKernel.Text = "FreeKernel";
+            this.btnFreeKernel.Text = "释放识别内核";
             this.btnFreeKernel.Click += new System.EventHandler(this.btnFreeKernel_Click);
             // 
             // labelX10
@@ -530,69 +593,6 @@
             this.txtEnglishName.Name = "txtEnglishName";
             this.txtEnglishName.Size = new System.Drawing.Size(100, 21);
             this.txtEnglishName.TabIndex = 9;
-            // 
-            // _Name
-            // 
-            this._Name.DataPropertyName = "Name";
-            this._Name.HeaderText = "本国姓名";
-            this._Name.Name = "_Name";
-            this._Name.ReadOnly = true;
-            // 
-            // EnglishName
-            // 
-            this.EnglishName.DataPropertyName = "EnglishName";
-            this.EnglishName.HeaderText = "英语姓名";
-            this.EnglishName.Name = "EnglishName";
-            this.EnglishName.ReadOnly = true;
-            // 
-            // Sex
-            // 
-            this.Sex.DataPropertyName = "Sex";
-            this.Sex.HeaderText = "性别";
-            this.Sex.Name = "Sex";
-            this.Sex.ReadOnly = true;
-            // 
-            // BirthDay
-            // 
-            this.BirthDay.DataPropertyName = "Birthday";
-            this.BirthDay.HeaderText = "生日";
-            this.BirthDay.Name = "BirthDay";
-            this.BirthDay.ReadOnly = true;
-            // 
-            // PassportNo
-            // 
-            this.PassportNo.DataPropertyName = "PassportNo";
-            this.PassportNo.HeaderText = "护照号";
-            this.PassportNo.Name = "PassportNo";
-            this.PassportNo.ReadOnly = true;
-            // 
-            // LicenseTime
-            // 
-            this.LicenseTime.DataPropertyName = "LicenseTime";
-            this.LicenseTime.HeaderText = "发证日期";
-            this.LicenseTime.Name = "LicenseTime";
-            this.LicenseTime.ReadOnly = true;
-            // 
-            // ExpiryDate
-            // 
-            this.ExpiryDate.DataPropertyName = "ExpiryDate";
-            this.ExpiryDate.HeaderText = "有效期";
-            this.ExpiryDate.Name = "ExpiryDate";
-            this.ExpiryDate.ReadOnly = true;
-            // 
-            // Birthplace
-            // 
-            this.Birthplace.DataPropertyName = "Birthplace";
-            this.Birthplace.HeaderText = "出生地";
-            this.Birthplace.Name = "Birthplace";
-            this.Birthplace.ReadOnly = true;
-            // 
-            // IssuePlace
-            // 
-            this.IssuePlace.DataPropertyName = "IssuePlace";
-            this.IssuePlace.HeaderText = "签发地";
-            this.IssuePlace.Name = "IssuePlace";
-            this.IssuePlace.ReadOnly = true;
             // 
             // Form1
             // 
