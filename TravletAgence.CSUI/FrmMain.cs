@@ -4,16 +4,17 @@ using TravletAgence.Model;
 
 namespace TravletAgence.CSUI
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
         private readonly TravletAgence.BLL.VisaInfo bll = new TravletAgence.BLL.VisaInfo();
         private int _curPage = 1;
         private int _pageCount = 0;
         private readonly int _pageSize = 30;
+        private int _recordCount = 0;
         private readonly IDCard _idCard = new IDCard();
         private bool _autoRead = false;
         private System.Windows.Forms.Timer _t = new System.Windows.Forms.Timer();
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
             _t.Tick += new System.EventHandler(this.AutoClassAndRecognize);
@@ -22,10 +23,11 @@ namespace TravletAgence.CSUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            int count = bll.GetRecordCount(string.Empty);
-            _pageCount = (int)Math.Ceiling((double)count / (double)_pageSize);
+            _recordCount = bll.GetRecordCount(string.Empty);
+            _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
             txtPicPath.Text = System.Windows.Forms.Application.StartupPath;
-
+            cbPageSize.Items.Add(_pageSize.ToString());
+            cbPageSize.SelectedIndex = 0;
             //加载数据
             loadDataToDataGridView(_curPage);
             UpdateState();
@@ -38,18 +40,20 @@ namespace TravletAgence.CSUI
 
         private void UpdateState()
         {
-            int count = bll.GetRecordCount(string.Empty);
-            _pageCount = (int)Math.Ceiling((double)count / (double)_pageSize);
+            _recordCount = bll.GetRecordCount(string.Empty);
+            _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
             if (_curPage == 1)
-                btn_pageUp.Enabled = false;
+                btnPagePre.Enabled = false;
             else
-                btn_pageUp.Enabled = true;
+                btnPagePre.Enabled = true;
             if (_curPage == _pageCount)
-                btn_pageDown.Enabled = false;
+                btnPageNext.Enabled = false;
             else
-                btn_pageDown.Enabled = true;
-            lb_page.Text = "当前为第:" + Convert.ToInt32(_curPage)
-                            + "页,共" + Convert.ToInt32(_pageCount) + "页,每页共" + _pageSize + "条.";
+                btnPageNext.Enabled = true;
+            //lbRecordCount.Text = "当前为第:" + Convert.ToInt32(_curPage)
+            //                + "页,共" + Convert.ToInt32(_pageCount) + "页,每页共" + _pageSize + "条.";
+            lbRecordCount.Text = "共有记录:" + _recordCount + "条";
+            lbCurPage.Text = "当前为第" + _curPage + "页";
         }
 
         private void btnLoadKernel_Click(object sender, EventArgs e)
@@ -106,17 +110,6 @@ namespace TravletAgence.CSUI
             ConfirmAddToDataBase(model);
         }
 
-        private void btn_pageUp_Click(object sender, EventArgs e)
-        {
-            loadDataToDataGridView(--_curPage);
-            UpdateState();
-        }
-
-        private void btn_pageDown_Click(object sender, EventArgs e)
-        {
-            loadDataToDataGridView(++_curPage);
-            UpdateState();
-        }
 
         private void btnFreeKernel_Click(object sender, EventArgs e)
         {
@@ -177,6 +170,33 @@ namespace TravletAgence.CSUI
                 return;
             }
             loadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
+        private void btnPageNext_Click(object sender, EventArgs e)
+        {
+            loadDataToDataGridView(++_curPage);
+            UpdateState();
+        }
+
+        private void btnPagePre_Click(object sender, EventArgs e)
+        {
+            loadDataToDataGridView(--_curPage);
+            UpdateState();
+        }
+
+        private void btnPageFirst_Click(object sender, EventArgs e)
+        {
+            _curPage = 1;
+            loadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
+        private void btnPageLast_Click(object sender, EventArgs e)
+        {
+            _curPage = _pageCount;
+            loadDataToDataGridView(_curPage);
+
             UpdateState();
         }
     }

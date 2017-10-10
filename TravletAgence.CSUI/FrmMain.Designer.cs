@@ -1,6 +1,6 @@
 ﻿namespace TravletAgence.CSUI
 {
-    partial class Form1
+    partial class FrmMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,14 +39,14 @@
             this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
-            this.lb_page = new DevComponents.DotNetBar.LabelX();
-            this.btn_pageDown = new DevComponents.DotNetBar.ButtonX();
-            this.btn_pageUp = new DevComponents.DotNetBar.ButtonX();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.panelMain = new DevComponents.DotNetBar.PanelEx();
+            this.bar1 = new DevComponents.DotNetBar.Bar();
+            this.btnPageFirst = new DevComponents.DotNetBar.ButtonItem();
+            this.btnPagePre = new DevComponents.DotNetBar.ButtonItem();
+            this.btnPageNext = new DevComponents.DotNetBar.ButtonItem();
+            this.btnPageLast = new DevComponents.DotNetBar.ButtonItem();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.btnAddToDatabase = new DevComponents.DotNetBar.ButtonX();
             this.btnReadData = new DevComponents.DotNetBar.ButtonX();
             this.btnAutoRead = new DevComponents.DotNetBar.ButtonX();
@@ -72,17 +72,16 @@
             this.txtBirthday = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtEnglishName = new System.Windows.Forms.TextBox();
+            this.cbCurPage = new DevComponents.DotNetBar.ComboBoxItem();
+            this.btnGoto = new DevComponents.DotNetBar.ButtonItem();
+            this.lbRecordCount = new DevComponents.DotNetBar.LabelItem();
+            this.lbl = new DevComponents.DotNetBar.LabelItem();
+            this.cbPageSize = new DevComponents.DotNetBar.ComboBoxItem();
+            this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
+            this.lbCurPage = new DevComponents.DotNetBar.LabelItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panelEx1.SuspendLayout();
-            this.panelEx3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panelEx2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,23 +101,22 @@
             this.ExpiryDate,
             this.Birthplace,
             this.IssuePlace});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(224, 28);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1038, 532);
+            this.dataGridView1.Size = new System.Drawing.Size(1047, 549);
             this.dataGridView1.TabIndex = 10;
             // 
             // _Name
@@ -184,121 +182,86 @@
             this.IssuePlace.Name = "IssuePlace";
             this.IssuePlace.ReadOnly = true;
             // 
-            // panelEx1
+            // panelMain
             // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.dataGridView1);
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1038, 532);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 11;
+            this.panelMain.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelMain.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelMain.Controls.Add(this.dataGridView1);
+            this.panelMain.Controls.Add(this.bar1);
+            this.panelMain.Controls.Add(this.panelEx2);
+            this.panelMain.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(0, 0);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(1271, 577);
+            this.panelMain.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelMain.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelMain.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelMain.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelMain.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelMain.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelMain.Style.GradientAngle = 90;
+            this.panelMain.TabIndex = 23;
             // 
-            // panelEx3
+            // bar1
             // 
-            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.lb_page);
-            this.panelEx3.Controls.Add(this.btn_pageDown);
-            this.panelEx3.Controls.Add(this.btn_pageUp);
-            this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx3.Location = new System.Drawing.Point(0, 0);
-            this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1271, 41);
-            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx3.Style.GradientAngle = 90;
-            this.panelEx3.TabIndex = 19;
+            this.bar1.AntiAlias = true;
+            this.bar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bar1.DockSide = DevComponents.DotNetBar.eDockSide.Document;
+            this.bar1.DockTabStripHeight = 30;
+            this.bar1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.bar1.IsMaximized = false;
+            this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnPageFirst,
+            this.btnPagePre,
+            this.btnPageNext,
+            this.btnPageLast,
+            this.cbCurPage,
+            this.btnGoto,
+            this.lbRecordCount,
+            this.lbl,
+            this.cbPageSize,
+            this.labelItem2,
+            this.lbCurPage});
+            this.bar1.ItemSpacing = 10;
+            this.bar1.Location = new System.Drawing.Point(224, 0);
+            this.bar1.Name = "bar1";
+            this.bar1.Size = new System.Drawing.Size(1047, 28);
+            this.bar1.Stretch = true;
+            this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bar1.TabIndex = 23;
+            this.bar1.TabStop = false;
+            this.bar1.Text = "bar1";
             // 
-            // lb_page
+            // btnPageFirst
             // 
+            this.btnPageFirst.Name = "btnPageFirst";
+            this.btnPageFirst.Text = "首页";
+            this.btnPageFirst.Click += new System.EventHandler(this.btnPageFirst_Click);
             // 
+            // btnPagePre
             // 
+            this.btnPagePre.Name = "btnPagePre";
+            this.btnPagePre.Text = "上一页";
+            this.btnPagePre.Click += new System.EventHandler(this.btnPagePre_Click);
             // 
-            this.lb_page.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lb_page.Location = new System.Drawing.Point(149, 12);
-            this.lb_page.Name = "lb_page";
-            this.lb_page.Size = new System.Drawing.Size(236, 20);
-            this.lb_page.TabIndex = 12;
-            this.lb_page.Text = "labelX2";
+            // btnPageNext
             // 
-            // btn_pageDown
+            this.btnPageNext.Name = "btnPageNext";
+            this.btnPageNext.Text = "下一页";
+            this.btnPageNext.Click += new System.EventHandler(this.btnPageNext_Click);
             // 
-            this.btn_pageDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btn_pageDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btn_pageDown.Location = new System.Drawing.Point(399, 9);
-            this.btn_pageDown.Name = "btn_pageDown";
-            this.btn_pageDown.Size = new System.Drawing.Size(75, 23);
-            this.btn_pageDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btn_pageDown.TabIndex = 11;
-            this.btn_pageDown.Text = "下一页";
-            this.btn_pageDown.Click += new System.EventHandler(this.btn_pageDown_Click);
+            // btnPageLast
             // 
-            // btn_pageUp
-            // 
-            this.btn_pageUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btn_pageUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btn_pageUp.Location = new System.Drawing.Point(68, 9);
-            this.btn_pageUp.Name = "btn_pageUp";
-            this.btn_pageUp.Size = new System.Drawing.Size(75, 23);
-            this.btn_pageUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btn_pageUp.TabIndex = 10;
-            this.btn_pageUp.Text = "上一页";
-            this.btn_pageUp.Click += new System.EventHandler(this.btn_pageUp_Click);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.panelEx3);
-            this.splitContainer1.Size = new System.Drawing.Size(1271, 577);
-            this.splitContainer1.SplitterDistance = 532;
-            this.splitContainer1.TabIndex = 27;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.panelEx2);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.panelEx1);
-            this.splitContainer2.Size = new System.Drawing.Size(1271, 532);
-            this.splitContainer2.SplitterDistance = 229;
-            this.splitContainer2.TabIndex = 15;
+            this.btnPageLast.Name = "btnPageLast";
+            this.btnPageLast.Text = "尾页";
+            this.btnPageLast.Click += new System.EventHandler(this.btnPageLast_Click);
             // 
             // panelEx2
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.labelX11);
             this.panelEx2.Controls.Add(this.btnAddToDatabase);
             this.panelEx2.Controls.Add(this.btnReadData);
             this.panelEx2.Controls.Add(this.btnAutoRead);
@@ -325,10 +288,10 @@
             this.panelEx2.Controls.Add(this.txtSex);
             this.panelEx2.Controls.Add(this.txtEnglishName);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(229, 532);
+            this.panelEx2.Size = new System.Drawing.Size(224, 577);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -337,6 +300,19 @@
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 19;
+            // 
+            // labelX11
+            // 
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Font = new System.Drawing.Font("华文新魏", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX11.Location = new System.Drawing.Point(12, 16);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(150, 23);
+            this.labelX11.TabIndex = 19;
+            this.labelX11.Text = "护照信息录入:";
             // 
             // btnAddToDatabase
             // 
@@ -595,26 +571,54 @@
             this.txtEnglishName.Size = new System.Drawing.Size(100, 21);
             this.txtEnglishName.TabIndex = 9;
             // 
-            // Form1
+            // cbCurPage
+            // 
+            this.cbCurPage.DropDownHeight = 106;
+            this.cbCurPage.ItemHeight = 17;
+            this.cbCurPage.Name = "cbCurPage";
+            // 
+            // btnGoto
+            // 
+            this.btnGoto.Name = "btnGoto";
+            this.btnGoto.Text = "Go";
+            // 
+            // lbRecordCount
+            // 
+            this.lbRecordCount.Name = "lbRecordCount";
+            this.lbRecordCount.Text = "共有记录";
+            // 
+            // lbl
+            // 
+            this.lbl.Name = "lbl";
+            this.lbl.Text = "每页显示";
+            // 
+            // cbPageSize
+            // 
+            this.cbPageSize.DropDownHeight = 106;
+            this.cbPageSize.ItemHeight = 17;
+            this.cbPageSize.Name = "cbPageSize";
+            // 
+            // labelItem2
+            // 
+            this.labelItem2.Name = "labelItem2";
+            this.labelItem2.Text = "条";
+            // 
+            // lbCurPage
+            // 
+            this.lbCurPage.Name = "lbCurPage";
+            // 
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 577);
-            this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
+            this.Controls.Add(this.panelMain);
+            this.Name = "FrmMain";
             this.Text = "东瀛假日:签证自动扫描识别系统V1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panelEx1.ResumeLayout(false);
-            this.panelEx3.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.panelMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.panelEx2.ResumeLayout(false);
             this.panelEx2.PerformLayout();
             this.ResumeLayout(false);
@@ -624,14 +628,37 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridView1;
-        private DevComponents.DotNetBar.PanelEx panelEx1;
-        private DevComponents.DotNetBar.PanelEx panelEx3;
-        private DevComponents.DotNetBar.LabelX lb_page;
-        private DevComponents.DotNetBar.ButtonX btn_pageDown;
-        private DevComponents.DotNetBar.ButtonX btn_pageUp;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EnglishName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PassportNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LicenseTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExpiryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Birthplace;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IssuePlace;
+        private DevComponents.DotNetBar.PanelEx panelMain;
+        private DevComponents.DotNetBar.Bar bar1;
+        private DevComponents.DotNetBar.ButtonItem btnPageFirst;
+        private DevComponents.DotNetBar.ButtonItem btnPagePre;
+        private DevComponents.DotNetBar.ButtonItem btnPageNext;
+        private DevComponents.DotNetBar.ButtonItem btnPageLast;
         private DevComponents.DotNetBar.PanelEx panelEx2;
+        private DevComponents.DotNetBar.LabelX labelX11;
+        private DevComponents.DotNetBar.ButtonX btnAddToDatabase;
+        private DevComponents.DotNetBar.ButtonX btnReadData;
+        private DevComponents.DotNetBar.ButtonX btnAutoRead;
+        private DevComponents.DotNetBar.ButtonX btnLoadKernel;
+        private DevComponents.DotNetBar.ButtonX btnFreeKernel;
+        private DevComponents.DotNetBar.LabelX labelX10;
+        private DevComponents.DotNetBar.LabelX labelX9;
+        private DevComponents.DotNetBar.LabelX labelX8;
+        private DevComponents.DotNetBar.LabelX labelX7;
+        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.LabelX labelX5;
+        private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.TextBoxX txtPicPath;
         private DevComponents.DotNetBar.LabelX labelX1;
         private System.Windows.Forms.TextBox txtName;
@@ -643,29 +670,14 @@
         private System.Windows.Forms.TextBox txtBirthday;
         private System.Windows.Forms.TextBox txtSex;
         private System.Windows.Forms.TextBox txtEnglishName;
-        private DevComponents.DotNetBar.LabelX labelX10;
-        private DevComponents.DotNetBar.LabelX labelX9;
-        private DevComponents.DotNetBar.LabelX labelX8;
-        private DevComponents.DotNetBar.LabelX labelX7;
-        private DevComponents.DotNetBar.LabelX labelX6;
-        private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.ButtonX btnLoadKernel;
-        private DevComponents.DotNetBar.ButtonX btnFreeKernel;
-        private DevComponents.DotNetBar.ButtonX btnReadData;
-        private DevComponents.DotNetBar.ButtonX btnAutoRead;
-        private DevComponents.DotNetBar.ButtonX btnAddToDatabase;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EnglishName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PassportNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LicenseTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExpiryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Birthplace;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IssuePlace;
+        private DevComponents.DotNetBar.ComboBoxItem cbCurPage;
+        private DevComponents.DotNetBar.ButtonItem btnGoto;
+        private DevComponents.DotNetBar.LabelItem lbRecordCount;
+        private DevComponents.DotNetBar.LabelItem lbl;
+        private DevComponents.DotNetBar.ComboBoxItem cbPageSize;
+        private DevComponents.DotNetBar.LabelItem labelItem2;
+        private DevComponents.DotNetBar.LabelItem lbCurPage;
+
     }
 }
 
