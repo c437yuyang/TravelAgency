@@ -27,11 +27,13 @@ namespace TravletAgence.CSUI
         public FrmQRCode(string qrinfo)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent; //不能写在form_load里面，是已经加载完成了
             _qrinfo = qrinfo;
         }
 
         private void FrmQRCode_Load(object sender, EventArgs e)
         {
+           
             SetQRCodeToPicBox();
         }
 
