@@ -73,6 +73,7 @@
             this.btnPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnPrint.TabIndex = 5;
             this.btnPrint.Text = "打印二维码";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnSavePic
             // 
@@ -84,6 +85,7 @@
             this.btnSavePic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSavePic.TabIndex = 4;
             this.btnSavePic.Text = "保存到图像";
+            this.btnSavePic.Click += new System.EventHandler(this.btnSavePic_Click);
             // 
             // btnUpdateQRCode
             // 

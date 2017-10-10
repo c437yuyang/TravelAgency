@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -52,6 +53,61 @@ namespace TravletAgence.CSUI
         {
             _qrinfo = txtQRCodeInfo.Text;
             SetQRCodeToPicBox();
+        }
+
+        private void btnSavePic_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif|PNG Image|*.png";
+            saveFileDialog1.Title = "Save";
+            saveFileDialog1.FileName = _qrinfo.Split(new char[]{'\r','\n'})[0] + "_QRCode.jpg";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+                // Saves the Image via a FileStream created by the OpenFile method.
+                System.IO.FileStream fs =
+                   (System.IO.FileStream)saveFileDialog1.OpenFile();
+                // Saves the Image in the appropriate ImageFormat based upon the
+                // File type selected in the dialog box.
+                // NOTE that the FilterIndex property is one-based.
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        this.picQRCode.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Jpeg);
+                        break;
+
+                    case 2:
+                        this.picQRCode.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Bmp);
+                        break;
+
+                    case 3:
+                        this.picQRCode.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Gif);
+                        break;
+                    case 4:
+                        this.picQRCode.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Png);
+                        break;
+                }
+
+                fs.Close();
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog1 = new PrintDialog();
+            PrintDocument printDocument1 = new PrintDocument();
+            printDialog1.Document = printDocument1;
+            DialogResult r = printDialog1.ShowDialog();
+            if (r == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }      
         }
     }
 }

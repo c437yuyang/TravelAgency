@@ -231,7 +231,7 @@ namespace TravletAgence.CSUI
                     //如果没选中当前活动行则选中这一行
                     if (dataGridView1.Rows[e.RowIndex].Selected == false)
                     {
-                        //dataGridView1.ClearSelection();
+                        dataGridView1.ClearSelection();
                         dataGridView1.Rows[e.RowIndex].Selected = true;
                     }
                     //只选中一行时设置活动单元格
