@@ -81,7 +81,12 @@
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtEnglishName = new System.Windows.Forms.TextBox();
             this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.showQRCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemQRCodeShow = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemModify = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemQRCodeBatchGenerate = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemQRCodeBatchPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
@@ -615,16 +620,51 @@
             // cmsDgvRb
             // 
             this.cmsDgvRb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showQRCode});
+            this.cmsItemDelete,
+            this.cmsItemModify,
+            this.cmsItemQRCodeShow,
+            this.cmsItemQRCodeBatchGenerate,
+            this.cmsItemQRCodeBatchPrint,
+            this.cmsItemQRCodePrint});
             this.cmsDgvRb.Name = "cmsDgvRb";
-            this.cmsDgvRb.Size = new System.Drawing.Size(153, 48);
+            this.cmsDgvRb.Size = new System.Drawing.Size(161, 158);
             // 
-            // showQRCode
+            // cmsItemQRCodeShow
             // 
-            this.showQRCode.Name = "showQRCode";
-            this.showQRCode.Size = new System.Drawing.Size(152, 22);
-            this.showQRCode.Text = "显示二维码";
-            this.showQRCode.Click += new System.EventHandler(this.showQRCode_Click);
+            this.cmsItemQRCodeShow.Name = "cmsItemQRCodeShow";
+            this.cmsItemQRCodeShow.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemQRCodeShow.Text = "显示二维码";
+            this.cmsItemQRCodeShow.Click += new System.EventHandler(this.showQRCode_Click);
+            // 
+            // cmsItemDelete
+            // 
+            this.cmsItemDelete.Name = "cmsItemDelete";
+            this.cmsItemDelete.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemDelete.Text = "删除";
+            // 
+            // cmsItemModify
+            // 
+            this.cmsItemModify.Name = "cmsItemModify";
+            this.cmsItemModify.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemModify.Text = "修改";
+            // 
+            // cmsItemQRCodeBatchGenerate
+            // 
+            this.cmsItemQRCodeBatchGenerate.Name = "cmsItemQRCodeBatchGenerate";
+            this.cmsItemQRCodeBatchGenerate.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemQRCodeBatchGenerate.Text = "批量生成二维码";
+            // 
+            // cmsItemQRCodeBatchPrint
+            // 
+            this.cmsItemQRCodeBatchPrint.Name = "cmsItemQRCodeBatchPrint";
+            this.cmsItemQRCodeBatchPrint.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemQRCodeBatchPrint.Text = "批量打印二维码";
+            // 
+            // cmsItemQRCodePrint
+            // 
+            this.cmsItemQRCodePrint.Name = "cmsItemQRCodePrint";
+            this.cmsItemQRCodePrint.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemQRCodePrint.Text = "打印二维码";
             // 
             // FrmMain
             // 
@@ -698,7 +738,12 @@
         private DevComponents.DotNetBar.LabelItem labelItem2;
         private DevComponents.DotNetBar.LabelItem lbCurPage;
         private System.Windows.Forms.ContextMenuStrip cmsDgvRb;
-        private System.Windows.Forms.ToolStripMenuItem showQRCode;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeShow;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemDelete;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemModify;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeBatchGenerate;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeBatchPrint;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodePrint;
 
     }
 }

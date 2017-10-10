@@ -102,6 +102,7 @@ namespace TravletAgence.CSUI
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            //TODO:打印了后，改变数据库里的签证状态，所以这里最好还是用model
             PrintDialog printDialog1 = new PrintDialog();
             PrintDocument printDocument1 = new PrintDocument();
             printDialog1.Document = printDocument1;
