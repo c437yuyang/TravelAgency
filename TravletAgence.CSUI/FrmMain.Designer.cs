@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +46,13 @@
             this.btnPagePre = new DevComponents.DotNetBar.ButtonItem();
             this.btnPageNext = new DevComponents.DotNetBar.ButtonItem();
             this.btnPageLast = new DevComponents.DotNetBar.ButtonItem();
+            this.cbCurPage = new DevComponents.DotNetBar.ComboBoxItem();
+            this.btnGoto = new DevComponents.DotNetBar.ButtonItem();
+            this.lbRecordCount = new DevComponents.DotNetBar.LabelItem();
+            this.lbl = new DevComponents.DotNetBar.LabelItem();
+            this.cbPageSize = new DevComponents.DotNetBar.ComboBoxItem();
+            this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
+            this.lbCurPage = new DevComponents.DotNetBar.LabelItem();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.btnAddToDatabase = new DevComponents.DotNetBar.ButtonX();
@@ -72,17 +80,13 @@
             this.txtBirthday = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtEnglishName = new System.Windows.Forms.TextBox();
-            this.cbCurPage = new DevComponents.DotNetBar.ComboBoxItem();
-            this.btnGoto = new DevComponents.DotNetBar.ButtonItem();
-            this.lbRecordCount = new DevComponents.DotNetBar.LabelItem();
-            this.lbl = new DevComponents.DotNetBar.LabelItem();
-            this.cbPageSize = new DevComponents.DotNetBar.ComboBoxItem();
-            this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
-            this.lbCurPage = new DevComponents.DotNetBar.LabelItem();
+            this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showQRCode = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panelEx2.SuspendLayout();
+            this.cmsDgvRb.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -118,6 +122,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1047, 549);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             // 
             // _Name
             // 
@@ -256,6 +261,42 @@
             this.btnPageLast.Name = "btnPageLast";
             this.btnPageLast.Text = "尾页";
             this.btnPageLast.Click += new System.EventHandler(this.btnPageLast_Click);
+            // 
+            // cbCurPage
+            // 
+            this.cbCurPage.DropDownHeight = 106;
+            this.cbCurPage.ItemHeight = 17;
+            this.cbCurPage.Name = "cbCurPage";
+            // 
+            // btnGoto
+            // 
+            this.btnGoto.Name = "btnGoto";
+            this.btnGoto.Text = "Go";
+            // 
+            // lbRecordCount
+            // 
+            this.lbRecordCount.Name = "lbRecordCount";
+            this.lbRecordCount.Text = "共有记录";
+            // 
+            // lbl
+            // 
+            this.lbl.Name = "lbl";
+            this.lbl.Text = "每页显示";
+            // 
+            // cbPageSize
+            // 
+            this.cbPageSize.DropDownHeight = 106;
+            this.cbPageSize.ItemHeight = 17;
+            this.cbPageSize.Name = "cbPageSize";
+            // 
+            // labelItem2
+            // 
+            this.labelItem2.Name = "labelItem2";
+            this.labelItem2.Text = "条";
+            // 
+            // lbCurPage
+            // 
+            this.lbCurPage.Name = "lbCurPage";
             // 
             // panelEx2
             // 
@@ -571,41 +612,19 @@
             this.txtEnglishName.Size = new System.Drawing.Size(100, 21);
             this.txtEnglishName.TabIndex = 9;
             // 
-            // cbCurPage
+            // cmsDgvRb
             // 
-            this.cbCurPage.DropDownHeight = 106;
-            this.cbCurPage.ItemHeight = 17;
-            this.cbCurPage.Name = "cbCurPage";
+            this.cmsDgvRb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showQRCode});
+            this.cmsDgvRb.Name = "cmsDgvRb";
+            this.cmsDgvRb.Size = new System.Drawing.Size(153, 48);
             // 
-            // btnGoto
+            // showQRCode
             // 
-            this.btnGoto.Name = "btnGoto";
-            this.btnGoto.Text = "Go";
-            // 
-            // lbRecordCount
-            // 
-            this.lbRecordCount.Name = "lbRecordCount";
-            this.lbRecordCount.Text = "共有记录";
-            // 
-            // lbl
-            // 
-            this.lbl.Name = "lbl";
-            this.lbl.Text = "每页显示";
-            // 
-            // cbPageSize
-            // 
-            this.cbPageSize.DropDownHeight = 106;
-            this.cbPageSize.ItemHeight = 17;
-            this.cbPageSize.Name = "cbPageSize";
-            // 
-            // labelItem2
-            // 
-            this.labelItem2.Name = "labelItem2";
-            this.labelItem2.Text = "条";
-            // 
-            // lbCurPage
-            // 
-            this.lbCurPage.Name = "lbCurPage";
+            this.showQRCode.Name = "showQRCode";
+            this.showQRCode.Size = new System.Drawing.Size(152, 22);
+            this.showQRCode.Text = "显示二维码";
+            this.showQRCode.Click += new System.EventHandler(this.showQRCode_Click);
             // 
             // FrmMain
             // 
@@ -621,6 +640,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.panelEx2.ResumeLayout(false);
             this.panelEx2.PerformLayout();
+            this.cmsDgvRb.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -677,6 +697,8 @@
         private DevComponents.DotNetBar.ComboBoxItem cbPageSize;
         private DevComponents.DotNetBar.LabelItem labelItem2;
         private DevComponents.DotNetBar.LabelItem lbCurPage;
+        private System.Windows.Forms.ContextMenuStrip cmsDgvRb;
+        private System.Windows.Forms.ToolStripMenuItem showQRCode;
 
     }
 }

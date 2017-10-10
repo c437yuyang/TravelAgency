@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Forms;
 using Gma.QrCodeNet.Encoding.Windows.Render;
@@ -35,7 +36,7 @@ namespace TravletAgence.Common.QRCode
             QrCode qrCode = _qrEncoder.Encode(str);
             //保存成png文件
             GraphicsRenderer render = new GraphicsRenderer(new FixedModuleSize(Convert.ToInt32(saveSize), QuietZoneModules.Two), Brushes.Black, Brushes.White);
-            using (FileStream stream = new FileStream(picpath, FileMode.Create))
+            using (FileStream stream = new FileStream(picpath, FileMode.OpenOrCreate| FileMode.Truncate))
             {
                 render.WriteToStream(qrCode.Matrix, ImageFormat.Png, stream);
             }
@@ -45,6 +46,8 @@ namespace TravletAgence.Common.QRCode
         {
             qcgtrl.Text = str;
         }
+
+        
 
     }
 }

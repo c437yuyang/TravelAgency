@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using TravletAgence.Common.QRCode;
 using TravletAgence.Model;
 
 namespace TravletAgence.CSUI
@@ -14,6 +16,7 @@ namespace TravletAgence.CSUI
         private readonly IDCard _idCard = new IDCard();
         private bool _autoRead = false;
         private System.Windows.Forms.Timer _t = new System.Windows.Forms.Timer();
+
         public FrmMain()
         {
             InitializeComponent();
@@ -198,6 +201,49 @@ namespace TravletAgence.CSUI
             loadDataToDataGridView(_curPage);
 
             UpdateState();
+        }
+
+        
+
+        private void showQRCode_Click(object sender, EventArgs e)
+        {
+
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("请选择一行数据进行查看");
+                return;
+            }
+
+            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
+            string name = dataGridView1.SelectedRows[0].Cells["_Name"].Value.ToString();
+
+            FrmQRCode dlg = new FrmQRCode(passportNo + "\r\n" + name);
+            dlg.ShowDialog();
+        }
+
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    //若行已是选中状态就不再进行设置
+                    //如果没选中当前活动行则选中这一行
+                    if (dataGridView1.Rows[e.RowIndex].Selected == false)
+                    {
+                        //dataGridView1.ClearSelection();
+                        dataGridView1.Rows[e.RowIndex].Selected = true;
+                    }
+                    //只选中一行时设置活动单元格
+                    if (dataGridView1.SelectedRows.Count == 1)
+                    {
+                        dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    }
+                    //弹出操作菜单
+                    //cmsDgvRb.Show(dataGridView1, e.Location);
+                    cmsDgvRb.Show(MousePosition.X, MousePosition.Y);
+                }
+            }
         }
     }
 }
