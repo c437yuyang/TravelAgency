@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,14 +102,14 @@
             this.ExpiryDate,
             this.Birthplace,
             this.IssuePlace});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -118,7 +118,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1044, 532);
+            this.dataGridView1.Size = new System.Drawing.Size(1038, 532);
             this.dataGridView1.TabIndex = 10;
             // 
             // _Name
@@ -193,7 +193,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1044, 532);
+            this.panelEx1.Size = new System.Drawing.Size(1038, 532);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -286,13 +286,13 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.panelEx1);
+            this.splitContainer2.Panel1.Controls.Add(this.panelEx2);
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.panelEx2);
+            this.splitContainer2.Panel2.Controls.Add(this.panelEx1);
             this.splitContainer2.Size = new System.Drawing.Size(1271, 532);
-            this.splitContainer2.SplitterDistance = 1044;
+            this.splitContainer2.SplitterDistance = 229;
             this.splitContainer2.TabIndex = 15;
             // 
             // panelEx2
@@ -328,7 +328,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(223, 532);
+            this.panelEx2.Size = new System.Drawing.Size(229, 532);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -342,7 +342,7 @@
             // 
             this.btnAddToDatabase.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddToDatabase.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddToDatabase.Location = new System.Drawing.Point(12, 481);
+            this.btnAddToDatabase.Location = new System.Drawing.Point(12, 501);
             this.btnAddToDatabase.Name = "btnAddToDatabase";
             this.btnAddToDatabase.Size = new System.Drawing.Size(88, 23);
             this.btnAddToDatabase.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -354,7 +354,7 @@
             // 
             this.btnReadData.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnReadData.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReadData.Location = new System.Drawing.Point(12, 441);
+            this.btnReadData.Location = new System.Drawing.Point(12, 472);
             this.btnReadData.Name = "btnReadData";
             this.btnReadData.Size = new System.Drawing.Size(88, 23);
             this.btnReadData.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -366,7 +366,7 @@
             // 
             this.btnAutoRead.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAutoRead.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAutoRead.Location = new System.Drawing.Point(118, 441);
+            this.btnAutoRead.Location = new System.Drawing.Point(118, 472);
             this.btnAutoRead.Name = "btnAutoRead";
             this.btnAutoRead.Size = new System.Drawing.Size(81, 23);
             this.btnAutoRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -378,7 +378,7 @@
             // 
             this.btnLoadKernel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnLoadKernel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnLoadKernel.Location = new System.Drawing.Point(12, 399);
+            this.btnLoadKernel.Location = new System.Drawing.Point(12, 441);
             this.btnLoadKernel.Name = "btnLoadKernel";
             this.btnLoadKernel.Size = new System.Drawing.Size(88, 23);
             this.btnLoadKernel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -390,7 +390,7 @@
             // 
             this.btnFreeKernel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnFreeKernel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnFreeKernel.Location = new System.Drawing.Point(118, 399);
+            this.btnFreeKernel.Location = new System.Drawing.Point(118, 441);
             this.btnFreeKernel.Name = "btnFreeKernel";
             this.btnFreeKernel.Size = new System.Drawing.Size(81, 23);
             this.btnFreeKernel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -514,9 +514,10 @@
             this.txtPicPath.Border.Class = "TextBoxBorder";
             this.txtPicPath.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtPicPath.Location = new System.Drawing.Point(12, 363);
+            this.txtPicPath.Multiline = true;
             this.txtPicPath.Name = "txtPicPath";
             this.txtPicPath.PreventEnterBeep = true;
-            this.txtPicPath.Size = new System.Drawing.Size(173, 21);
+            this.txtPicPath.Size = new System.Drawing.Size(173, 72);
             this.txtPicPath.TabIndex = 12;
             // 
             // labelX1
