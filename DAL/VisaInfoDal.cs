@@ -53,5 +53,28 @@ namespace TravletAgence.DAL
             return ret;
         }
 
+
+        public TravletAgence.Model.VisaInfo GetModelByPassportNo(string passportNo)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call from VisaInfo ");
+            strSql.Append(" where PassportNo=@PassportNo ");
+            SqlParameter[] parameters = {
+					new SqlParameter("@PassportNo", SqlDbType.VarChar,50)			};
+            parameters[0].Value = passportNo;
+
+            TravletAgence.Model.VisaInfo model = new TravletAgence.Model.VisaInfo();
+            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }

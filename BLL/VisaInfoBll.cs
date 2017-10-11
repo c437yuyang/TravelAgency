@@ -27,6 +27,11 @@ namespace TravletAgence.BLL
             return dal.DeleteListByPassNo(passNums);
         }
 
+        public Model.VisaInfo GetModelByPassportNo(string passportNo)
+        {
+            return dal.GetModelByPassportNo(passportNo);
+        }
+
 
 
     }

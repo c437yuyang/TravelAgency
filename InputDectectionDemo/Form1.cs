@@ -5,13 +5,26 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TravletAgence.BLL;
 
 namespace InputDectectionDemo
 {
+
+    class PersonInfo
+    {
+        public string passportNo { get; set; }
+        public string name { get; set; }
+    }
+
     public partial class Form1 : Form
     {
+
+        private string _preTxt = String.Empty;
+        TravletAgence.BLL.VisaInfo bll = new VisaInfo();
+
         public Form1()
         {
             InitializeComponent();
@@ -19,6 +32,46 @@ namespace InputDectectionDemo
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+
+
+        private void printArray(string[] lines)
+        {
+            Console.WriteLine("=====start");
+            foreach (var line in lines)
+            {
+                Console.WriteLine(line);
+            }
+            Console.WriteLine("=====stop");
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            string str = textBox1.Text.TrimEnd();
+
+            if (_preTxt == str)
+            {
+                return;
+            }
+            _preTxt = str;
+            string[] lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+
+            //printArray(lines);
+            PersonInfo personInfo = new PersonInfo();
+            personInfo.passportNo = lines[lines.Length - 1].Split('|')[0];
+            personInfo.name = lines[lines.Length - 1].Split('|')[1];
+
+            int i = bll.GetRecordCount(string.Empty);
+
+            TravletAgence.Model.VisaInfo model = bll.GetModelByPassportNo(personInfo.passportNo);
+
+            //TODO:添加更新数据库签证状态逻辑
+
+            Console.WriteLine(model.EntryTime.ToString());
+
+
         }
     }
 }
