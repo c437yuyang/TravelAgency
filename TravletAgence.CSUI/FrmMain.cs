@@ -217,7 +217,7 @@ namespace TravletAgence.CSUI
             string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
             string name = dataGridView1.SelectedRows[0].Cells["_Name"].Value.ToString();
 
-            FrmQRCode dlg = new FrmQRCode(passportNo + "\r\n" + name);
+            FrmQRCode dlg = new FrmQRCode(passportNo + "|" + name);
             dlg.ShowDialog();
         }
 

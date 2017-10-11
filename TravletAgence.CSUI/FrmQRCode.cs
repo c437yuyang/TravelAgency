@@ -62,7 +62,7 @@ namespace TravletAgence.CSUI
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif|PNG Image|*.png";
             saveFileDialog1.Title = "Save";
-            saveFileDialog1.FileName = _qrinfo.Split(new char[]{'\r','\n'})[0] + "_QRCode.jpg";
+            saveFileDialog1.FileName = _qrinfo.Split('|')[0] + "_QRCode.jpg";
             saveFileDialog1.ShowDialog();
 
             // If the file name is not an empty string open it for saving.
