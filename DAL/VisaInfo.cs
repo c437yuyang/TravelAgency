@@ -37,9 +37,9 @@ namespace TravletAgence.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into VisaInfo(");
-			strSql.Append("VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call)");
+			strSql.Append("VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState)");
 			strSql.Append(" values (");
-			strSql.Append("@VisaInfo_id,@Visa_id,@GroupNo,@Name,@EnglishName,@Sex,@Birthday,@PassportNo,@LicenceTime,@ExpiryDate,@Birthplace,@IssuePlace,@Post,@Phone,@GuideNo,@Client,@Salesperson,@Types,@Sale_id,@DepartmentId,@Tips,@EntryTime,@EmbassyTime,@InTime,@OutTime,@RealOut,@RealOutTime,@Country,@Call)");
+			strSql.Append("@VisaInfo_id,@Visa_id,@GroupNo,@Name,@EnglishName,@Sex,@Birthday,@PassportNo,@LicenceTime,@ExpiryDate,@Birthplace,@IssuePlace,@Post,@Phone,@GuideNo,@Client,@Salesperson,@Types,@Sale_id,@DepartmentId,@Tips,@EntryTime,@EmbassyTime,@InTime,@OutTime,@RealOut,@RealOutTime,@Country,@Call,@outState)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@VisaInfo_id", SqlDbType.UniqueIdentifier,16),
 					new SqlParameter("@Visa_id", SqlDbType.VarChar,50),
@@ -69,7 +69,8 @@ namespace TravletAgence.DAL
 					new SqlParameter("@RealOut", SqlDbType.VarChar,50),
 					new SqlParameter("@RealOutTime", SqlDbType.DateTime),
 					new SqlParameter("@Country", SqlDbType.VarChar,50),
-					new SqlParameter("@Call", SqlDbType.VarChar,50)};
+					new SqlParameter("@Call", SqlDbType.VarChar,50),
+					new SqlParameter("@outState", SqlDbType.VarChar,10)};
 			parameters[0].Value = Guid.NewGuid();
 			parameters[1].Value = model.Visa_id;
 			parameters[2].Value = model.GroupNo;
@@ -99,6 +100,7 @@ namespace TravletAgence.DAL
 			parameters[26].Value = model.RealOutTime;
 			parameters[27].Value = model.Country;
 			parameters[28].Value = model.Call;
+			parameters[29].Value = model.outState;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -113,7 +115,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool UpdateByPassportNo(TravletAgence.Model.VisaInfo model)
+		public bool Update(TravletAgence.Model.VisaInfo model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update VisaInfo set ");
@@ -144,8 +146,9 @@ namespace TravletAgence.DAL
 			strSql.Append("RealOut=@RealOut,");
 			strSql.Append("RealOutTime=@RealOutTime,");
 			strSql.Append("Country=@Country,");
-			strSql.Append("Call=@Call");
-            strSql.Append(" where PassportNo=@PassportNo ");
+			strSql.Append("Call=@Call,");
+			strSql.Append("outState=@outState");
+			strSql.Append(" where VisaInfo_id=@VisaInfo_id ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Visa_id", SqlDbType.VarChar,50),
 					new SqlParameter("@GroupNo", SqlDbType.VarChar,50),
@@ -175,6 +178,7 @@ namespace TravletAgence.DAL
 					new SqlParameter("@RealOutTime", SqlDbType.DateTime),
 					new SqlParameter("@Country", SqlDbType.VarChar,50),
 					new SqlParameter("@Call", SqlDbType.VarChar,50),
+					new SqlParameter("@outState", SqlDbType.VarChar,10),
 					new SqlParameter("@VisaInfo_id", SqlDbType.UniqueIdentifier,16)};
 			parameters[0].Value = model.Visa_id;
 			parameters[1].Value = model.GroupNo;
@@ -204,7 +208,8 @@ namespace TravletAgence.DAL
 			parameters[25].Value = model.RealOutTime;
 			parameters[26].Value = model.Country;
 			parameters[27].Value = model.Call;
-			parameters[28].Value = model.VisaInfo_id;
+			parameters[28].Value = model.outState;
+			parameters[29].Value = model.VisaInfo_id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -267,7 +272,7 @@ namespace TravletAgence.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call from VisaInfo ");
+			strSql.Append("select  top 1 VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState from VisaInfo ");
 			strSql.Append(" where VisaInfo_id=@VisaInfo_id ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@VisaInfo_id", SqlDbType.UniqueIdentifier,16)			};
@@ -410,6 +415,10 @@ namespace TravletAgence.DAL
 				{
 					model.Call=row["Call"].ToString();
 				}
+				if(row["outState"]!=null)
+				{
+					model.outState=row["outState"].ToString();
+				}
 			}
 			return model;
 		}
@@ -420,7 +429,7 @@ namespace TravletAgence.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call ");
+			strSql.Append("select VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState ");
 			strSql.Append(" FROM VisaInfo ");
 			if(strWhere.Trim()!="")
 			{
@@ -440,7 +449,7 @@ namespace TravletAgence.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call ");
+			strSql.Append(" VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState ");
 			strSql.Append(" FROM VisaInfo ");
 			if(strWhere.Trim()!="")
 			{

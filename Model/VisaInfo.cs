@@ -39,6 +39,7 @@ namespace TravletAgence.Model
 		private DateTime? _realouttime;
 		private string _country;
 		private string _call;
+		private string _outstate="未记录";
 		/// <summary>
 		/// 
 		/// </summary>
@@ -270,6 +271,14 @@ namespace TravletAgence.Model
 		{
 			set{ _call=value;}
 			get{return _call;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string outState
+		{
+			set{ _outstate=value;}
+			get{return _outstate;}
 		}
 		#endregion Model
 

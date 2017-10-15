@@ -31,15 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LicenseTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.btnPageFirst = new DevComponents.DotNetBar.ButtonItem();
@@ -81,12 +72,22 @@
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtEnglishName = new System.Windows.Forms.TextBox();
             this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsItemQRCodeShow = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemModify = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemQRCodeShow = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeBatchGenerate = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeBatchPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
+            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LicenseTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
@@ -109,7 +110,8 @@
             this.LicenseTime,
             this.ExpiryDate,
             this.Birthplace,
-            this.IssuePlace});
+            this.IssuePlace,
+            this.outState});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -128,69 +130,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1047, 549);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
-            // 
-            // _Name
-            // 
-            this._Name.DataPropertyName = "Name";
-            this._Name.HeaderText = "本国姓名";
-            this._Name.Name = "_Name";
-            this._Name.ReadOnly = true;
-            // 
-            // EnglishName
-            // 
-            this.EnglishName.DataPropertyName = "EnglishName";
-            this.EnglishName.HeaderText = "英语姓名";
-            this.EnglishName.Name = "EnglishName";
-            this.EnglishName.ReadOnly = true;
-            // 
-            // Sex
-            // 
-            this.Sex.DataPropertyName = "Sex";
-            this.Sex.HeaderText = "性别";
-            this.Sex.Name = "Sex";
-            this.Sex.ReadOnly = true;
-            // 
-            // BirthDay
-            // 
-            this.BirthDay.DataPropertyName = "Birthday";
-            this.BirthDay.HeaderText = "生日";
-            this.BirthDay.Name = "BirthDay";
-            this.BirthDay.ReadOnly = true;
-            // 
-            // PassportNo
-            // 
-            this.PassportNo.DataPropertyName = "PassportNo";
-            this.PassportNo.HeaderText = "护照号";
-            this.PassportNo.Name = "PassportNo";
-            this.PassportNo.ReadOnly = true;
-            // 
-            // LicenseTime
-            // 
-            this.LicenseTime.DataPropertyName = "LicenseTime";
-            this.LicenseTime.HeaderText = "发证日期";
-            this.LicenseTime.Name = "LicenseTime";
-            this.LicenseTime.ReadOnly = true;
-            // 
-            // ExpiryDate
-            // 
-            this.ExpiryDate.DataPropertyName = "ExpiryDate";
-            this.ExpiryDate.HeaderText = "有效期";
-            this.ExpiryDate.Name = "ExpiryDate";
-            this.ExpiryDate.ReadOnly = true;
-            // 
-            // Birthplace
-            // 
-            this.Birthplace.DataPropertyName = "Birthplace";
-            this.Birthplace.HeaderText = "出生地";
-            this.Birthplace.Name = "Birthplace";
-            this.Birthplace.ReadOnly = true;
-            // 
-            // IssuePlace
-            // 
-            this.IssuePlace.DataPropertyName = "IssuePlace";
-            this.IssuePlace.HeaderText = "签发地";
-            this.IssuePlace.Name = "IssuePlace";
-            this.IssuePlace.ReadOnly = true;
             // 
             // panelMain
             // 
@@ -627,14 +566,7 @@
             this.cmsItemQRCodeBatchPrint,
             this.cmsItemQRCodePrint});
             this.cmsDgvRb.Name = "cmsDgvRb";
-            this.cmsDgvRb.Size = new System.Drawing.Size(161, 158);
-            // 
-            // cmsItemQRCodeShow
-            // 
-            this.cmsItemQRCodeShow.Name = "cmsItemQRCodeShow";
-            this.cmsItemQRCodeShow.Size = new System.Drawing.Size(160, 22);
-            this.cmsItemQRCodeShow.Text = "显示二维码";
-            this.cmsItemQRCodeShow.Click += new System.EventHandler(this.showQRCode_Click);
+            this.cmsDgvRb.Size = new System.Drawing.Size(161, 136);
             // 
             // cmsItemDelete
             // 
@@ -647,6 +579,13 @@
             this.cmsItemModify.Name = "cmsItemModify";
             this.cmsItemModify.Size = new System.Drawing.Size(160, 22);
             this.cmsItemModify.Text = "修改";
+            // 
+            // cmsItemQRCodeShow
+            // 
+            this.cmsItemQRCodeShow.Name = "cmsItemQRCodeShow";
+            this.cmsItemQRCodeShow.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemQRCodeShow.Text = "显示二维码";
+            this.cmsItemQRCodeShow.Click += new System.EventHandler(this.showQRCode_Click);
             // 
             // cmsItemQRCodeBatchGenerate
             // 
@@ -665,6 +604,76 @@
             this.cmsItemQRCodePrint.Name = "cmsItemQRCodePrint";
             this.cmsItemQRCodePrint.Size = new System.Drawing.Size(160, 22);
             this.cmsItemQRCodePrint.Text = "打印二维码";
+            // 
+            // _Name
+            // 
+            this._Name.DataPropertyName = "Name";
+            this._Name.HeaderText = "本国姓名";
+            this._Name.Name = "_Name";
+            this._Name.ReadOnly = true;
+            // 
+            // EnglishName
+            // 
+            this.EnglishName.DataPropertyName = "EnglishName";
+            this.EnglishName.HeaderText = "英语姓名";
+            this.EnglishName.Name = "EnglishName";
+            this.EnglishName.ReadOnly = true;
+            // 
+            // Sex
+            // 
+            this.Sex.DataPropertyName = "Sex";
+            this.Sex.HeaderText = "性别";
+            this.Sex.Name = "Sex";
+            this.Sex.ReadOnly = true;
+            // 
+            // BirthDay
+            // 
+            this.BirthDay.DataPropertyName = "Birthday";
+            this.BirthDay.HeaderText = "生日";
+            this.BirthDay.Name = "BirthDay";
+            this.BirthDay.ReadOnly = true;
+            // 
+            // PassportNo
+            // 
+            this.PassportNo.DataPropertyName = "PassportNo";
+            this.PassportNo.HeaderText = "护照号";
+            this.PassportNo.Name = "PassportNo";
+            this.PassportNo.ReadOnly = true;
+            // 
+            // LicenseTime
+            // 
+            this.LicenseTime.DataPropertyName = "LicenseTime";
+            this.LicenseTime.HeaderText = "发证日期";
+            this.LicenseTime.Name = "LicenseTime";
+            this.LicenseTime.ReadOnly = true;
+            // 
+            // ExpiryDate
+            // 
+            this.ExpiryDate.DataPropertyName = "ExpiryDate";
+            this.ExpiryDate.HeaderText = "有效期";
+            this.ExpiryDate.Name = "ExpiryDate";
+            this.ExpiryDate.ReadOnly = true;
+            // 
+            // Birthplace
+            // 
+            this.Birthplace.DataPropertyName = "Birthplace";
+            this.Birthplace.HeaderText = "出生地";
+            this.Birthplace.Name = "Birthplace";
+            this.Birthplace.ReadOnly = true;
+            // 
+            // IssuePlace
+            // 
+            this.IssuePlace.DataPropertyName = "IssuePlace";
+            this.IssuePlace.HeaderText = "签发地";
+            this.IssuePlace.Name = "IssuePlace";
+            this.IssuePlace.ReadOnly = true;
+            // 
+            // outState
+            // 
+            this.outState.DataPropertyName = "outState";
+            this.outState.HeaderText = "送签状态";
+            this.outState.Name = "outState";
+            this.outState.ReadOnly = true;
             // 
             // FrmMain
             // 
@@ -688,15 +697,6 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EnglishName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PassportNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LicenseTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExpiryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Birthplace;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IssuePlace;
         private DevComponents.DotNetBar.PanelEx panelMain;
         private DevComponents.DotNetBar.Bar bar1;
         private DevComponents.DotNetBar.ButtonItem btnPageFirst;
@@ -744,6 +744,16 @@
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeBatchGenerate;
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeBatchPrint;
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodePrint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EnglishName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PassportNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LicenseTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExpiryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Birthplace;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IssuePlace;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outState;
 
     }
 }
