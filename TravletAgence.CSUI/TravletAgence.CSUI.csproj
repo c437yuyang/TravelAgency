@@ -74,6 +74,12 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVisaTypeIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVisaTypeIn.Designer.cs">
+      <DependentUpon>FrmVisaTypeIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmQRCode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVisaTypeIn.resx">
+      <DependentUpon>FrmVisaTypeIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmQRCode.resx">
       <DependentUpon>FrmQRCode.cs</DependentUpon>

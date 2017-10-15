@@ -51,7 +51,7 @@ namespace TravletAgence.BLL
 		/// </summary>
 		public bool DeleteList(string VisaInfo_idlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(VisaInfo_idlist,0) );
+			return dal.DeleteList(VisaInfo_idlist);
 		}
 
 		/// <summary>
@@ -66,26 +66,26 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public TravletAgence.Model.VisaInfo GetModelByCache(Guid VisaInfo_id)
-		{
+        //public TravletAgence.Model.VisaInfo GetModelByCache(Guid VisaInfo_id)
+        //{
 			
-			string CacheKey = "VisaInfoModel-" + VisaInfo_id;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
-			if (objModel == null)
-			{
-				try
-				{
-					objModel = dal.GetModel(VisaInfo_id);
-					if (objModel != null)
-					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-					}
-				}
-				catch{}
-			}
-			return (TravletAgence.Model.VisaInfo)objModel;
-		}
+        //    string CacheKey = "VisaInfoModel-" + VisaInfo_id;
+        //    object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+        //    if (objModel == null)
+        //    {
+        //        try
+        //        {
+        //            objModel = dal.GetModel(VisaInfo_id);
+        //            if (objModel != null)
+        //            {
+        //                int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
+        //                Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+        //            }
+        //        }
+        //        catch{}
+        //    }
+        //    return (TravletAgence.Model.VisaInfo)objModel;
+        //}
 
 		/// <summary>
 		/// 获得数据列表

@@ -42,10 +42,10 @@ namespace TravletAgence.Common.QRCode
             }
         }
 
-        public void EncodeToCtrl(string str, QrCodeGraphicControl qcgtrl)
-        {
-            qcgtrl.Text = str;
-        }
+        //public void EncodeToCtrl(string str, QrCodeGraphicControl qcgtrl)
+        //{
+        //    qcgtrl.Text = str;
+        //}
 
         
 
