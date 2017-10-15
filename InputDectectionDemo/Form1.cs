@@ -13,14 +13,15 @@ using TravletAgence.BLL;
 namespace InputDectectionDemo
 {
 
-    class PersonInfo
-    {
-        public string passportNo { get; set; }
-        public string name { get; set; }
-    }
+
 
     public partial class Form1 : Form
     {
+        class PersonInfo
+        {
+            public string passportNo { get; set; }
+            public string name { get; set; }
+        }
 
         private string _preTxt = String.Empty;
         TravletAgence.BLL.VisaInfo bll = new VisaInfo();

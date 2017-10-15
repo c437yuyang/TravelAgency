@@ -154,7 +154,7 @@
             this.buttonItem1});
             this.ribbonBar2.Location = new System.Drawing.Point(3, 0);
             this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(206, 65);
+            this.ribbonBar2.Size = new System.Drawing.Size(193, 65);
             this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar2.TabIndex = 0;
             this.ribbonBar2.Text = "ribbonBar2";
@@ -192,6 +192,7 @@
             this.buttonItem1.Name = "buttonItem1";
             this.buttonItem1.SubItemsExpandWidth = 14;
             this.buttonItem1.Text = "送签管理";
+            this.buttonItem1.Click += new System.EventHandler(this.buttonItem1_Click);
             // 
             // ribbonPanel2
             // 
@@ -201,7 +202,7 @@
             this.ribbonPanel2.Location = new System.Drawing.Point(0, 26);
             this.ribbonPanel2.Name = "ribbonPanel2";
             this.ribbonPanel2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel2.Size = new System.Drawing.Size(773, 68);
+            this.ribbonPanel2.Size = new System.Drawing.Size(1284, 68);
             // 
             // 
             // 
@@ -498,7 +499,7 @@
             this.btnMCloseAll,
             this.btnMCloseOther});
             this.cms.Name = "cms";
-            this.cms.Size = new System.Drawing.Size(153, 70);
+            this.cms.Size = new System.Drawing.Size(125, 48);
             // 
             // btnMCloseAll
             // 

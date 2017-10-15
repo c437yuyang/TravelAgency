@@ -20,10 +20,16 @@ namespace TravletAgence.CSUI
 
         private void btnVisaTypeIn_Click(object sender, EventArgs e)
         {
-            //弹出商铺信息窗口
             FrmVisaTypeIn frm = new FrmVisaTypeIn();
             openWindow(frm, frm.Name);
         }
+
+        private void buttonItem1_Click(object sender, EventArgs e)
+        {
+            FrmVisaSubmit frm = new FrmVisaSubmit();
+            openWindow(frm, frm.Name);
+        }
+
 
         public void openWindow(Form frm, string Name)
         {
@@ -100,6 +106,7 @@ namespace TravletAgence.CSUI
 
             tabMain.Refresh();
         }
+
 
     }
 }

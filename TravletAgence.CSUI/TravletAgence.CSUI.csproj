@@ -51,7 +51,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Layout, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.Instrumentation, Version=12.5.0.2, Culture=neutral, PublicKeyToken=bc4a9d761ea44ef0" />
     <Reference Include="Gma.QrCodeNet.Encoding.Net45, Version=0.4.0.0, Culture=neutral, PublicKeyToken=e8a75d24b142be49, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Gma.QrCodeNet.Encoding.Net45\Gma.QrCodeNet.Encoding.Net45.dll</HintPath>
@@ -74,6 +76,12 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVisaSubmit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVisaSubmit.Designer.cs">
+      <DependentUpon>FrmVisaSubmit.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmVisaTypeIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +100,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVisaSubmit.resx">
+      <DependentUpon>FrmVisaSubmit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVisaTypeIn.resx">
       <DependentUpon>FrmVisaTypeIn.cs</DependentUpon>
