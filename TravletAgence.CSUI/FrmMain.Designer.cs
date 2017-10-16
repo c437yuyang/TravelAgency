@@ -504,14 +504,14 @@
             // btnMCloseAll
             // 
             this.btnMCloseAll.Name = "btnMCloseAll";
-            this.btnMCloseAll.Size = new System.Drawing.Size(152, 22);
+            this.btnMCloseAll.Size = new System.Drawing.Size(124, 22);
             this.btnMCloseAll.Text = "全部关闭";
             this.btnMCloseAll.Click += new System.EventHandler(this.btnMCloseAll_Click);
             // 
             // btnMCloseOther
             // 
             this.btnMCloseOther.Name = "btnMCloseOther";
-            this.btnMCloseOther.Size = new System.Drawing.Size(152, 22);
+            this.btnMCloseOther.Size = new System.Drawing.Size(124, 22);
             this.btnMCloseOther.Text = "关闭其它";
             this.btnMCloseOther.Click += new System.EventHandler(this.btnMCloseOther_Click);
             // 

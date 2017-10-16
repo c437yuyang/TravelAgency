@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TravletAgence.BLL;
+using TravletAgence.Common;
 
 namespace TravletAgence.CSUI
 {
@@ -18,7 +19,8 @@ namespace TravletAgence.CSUI
         private int _pageCount = 0;
         private readonly int _pageSize = 30;
         private int _recordCount = 0;
-        private string _preTxt = String.Empty;
+        private string _preTxt = string.Empty;
+        private string _outState = string.Empty;
 
         class PersonInfo
         {
@@ -56,12 +58,11 @@ namespace TravletAgence.CSUI
             TravletAgence.Model.VisaInfo model = bll.GetModelByPassportNo(personInfo.passportNo);
 
             //TODO:添加更新数据库签证状态逻辑
-            model.outState = "进签";
+            model.outState = _outState;
             if (!bll.Update(model))
             {
                 MessageBox.Show("更新签证状态失败!");
                 return;
-
             }
 
             loadDataToDataGridView(_curPage);
@@ -75,6 +76,8 @@ namespace TravletAgence.CSUI
             _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
             cbPageSize.Items.Add(_pageSize.ToString());
             cbPageSize.SelectedIndex = 0;
+
+            rbtnIn.Select();
             //加载数据
             loadDataToDataGridView(_curPage);
             UpdateState();
@@ -175,20 +178,35 @@ namespace TravletAgence.CSUI
 
         private void btnShowInQR_Click(object sender, EventArgs e)
         {
-            FrmQRCode frm = new FrmQRCode("State:进签");
+            FrmQRCode frm = new FrmQRCode("State:02进签");
             frm.ShowDialog();
         }
 
         private void btnShowAbnormalOutQR_Click(object sender, EventArgs e)
         {
-            FrmQRCode frm = new FrmQRCode("State:出签");
+            FrmQRCode frm = new FrmQRCode("State:03出签");
             frm.ShowDialog();
         }
 
         private void btnShowNormalOutQR_Click(object sender, EventArgs e)
         {
-            FrmQRCode frm = new FrmQRCode("State:未正常出签");
+            FrmQRCode frm = new FrmQRCode("State:04未正常出签");
             frm.ShowDialog();
+        }
+
+        private void rbtnIn_CheckedChanged(object sender, EventArgs e)
+        {
+            _outState = OutState.TYPE02In();
+        }
+
+        private void rBtnOut_CheckedChanged(object sender, EventArgs e)
+        {
+            _outState = OutState.TYPE03NormalOut();
+        }
+
+        private void rbtnAbOut_CheckedChanged(object sender, EventArgs e)
+        {
+            _outState = OutState.TYPE04AbnormalOut();
         }
 
 
