@@ -25,7 +25,7 @@ namespace TravletAgence.CSUI
         class PersonInfo
         {
             public string passportNo { get; set; }
-            public string name { get; set; }
+            public string englishName { get; set; }
         }
 
 
@@ -39,25 +39,27 @@ namespace TravletAgence.CSUI
 
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
-            string str = txtInput.Text.TrimEnd();
-
-            if (_preTxt == str)
+            if (_preTxt + "\r\n" != txtInput.Text)
             {
+                _preTxt = txtInput.Text;
                 return;
             }
-            _preTxt = str;
+            _preTxt = txtInput.Text;
+            //Console.WriteLine(txtInput.Text);
+            string str = txtInput.Text.TrimEnd(); //去掉最后的\r\n
+
             string[] lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
-            //printArray(lines);
+            ////printArray(lines);
             PersonInfo personInfo = new PersonInfo();
             personInfo.passportNo = lines[lines.Length - 1].Split('|')[0];
-            personInfo.name = lines[lines.Length - 1].Split('|')[1];
+            personInfo.englishName = lines[lines.Length - 1].Split('|')[1];
 
-            int i = bll.GetRecordCount(string.Empty);
+            //int i = bll.GetRecordCount(string.Empty);
 
             TravletAgence.Model.VisaInfo model = bll.GetModelByPassportNo(personInfo.passportNo);
 
-            //TODO:添加更新数据库签证状态逻辑
+            ////TODO:添加更新数据库签证状态逻辑
             model.outState = _outState;
             if (!bll.Update(model))
             {
@@ -67,7 +69,7 @@ namespace TravletAgence.CSUI
 
             loadDataToDataGridView(_curPage);
 
-            Console.WriteLine(model.EntryTime.ToString());
+            //Console.WriteLine(model.EntryTime.ToString());
         }
 
         private void FrmVisaSubmit_Load(object sender, EventArgs e)
@@ -145,7 +147,7 @@ namespace TravletAgence.CSUI
             }
 
             string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
-            string name = dataGridView1.SelectedRows[0].Cells["_Name"].Value.ToString();
+            string name = dataGridView1.SelectedRows[0].Cells["EnglishName"].Value.ToString();
 
             FrmQRCode dlg = new FrmQRCode(passportNo + "|" + name);
             dlg.ShowDialog();
