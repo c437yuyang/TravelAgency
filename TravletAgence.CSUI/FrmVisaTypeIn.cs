@@ -31,6 +31,7 @@ namespace TravletAgence.CSUI
             txtPicPath.Text = System.Windows.Forms.Application.StartupPath;
             cbPageSize.Items.Add(_pageSize.ToString());
             cbPageSize.SelectedIndex = 0;
+            dataGridView1.AutoGenerateColumns = false;
             //加载数据
             loadDataToDataGridView(_curPage);
             UpdateState();

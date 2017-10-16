@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using TravletAgence.BLL;
 using TravletAgence.Common;
 
@@ -28,14 +29,10 @@ namespace TravletAgence.CSUI
             public string englishName { get; set; }
         }
 
-
-
         public FrmVisaSubmit()
         {
             InitializeComponent();
         }
-
-
 
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
@@ -78,7 +75,7 @@ namespace TravletAgence.CSUI
             _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
             cbPageSize.Items.Add(_pageSize.ToString());
             cbPageSize.SelectedIndex = 0;
-
+            dataGridView1.AutoGenerateColumns = false;
             rbtnIn.Select();
             //加载数据
             loadDataToDataGridView(_curPage);
@@ -209,6 +206,34 @@ namespace TravletAgence.CSUI
         private void rbtnAbOut_CheckedChanged(object sender, EventArgs e)
         {
             _outState = OutState.TYPE04AbnormalOut();
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 9)
+            {
+                DataGridViewX dgv = (DataGridViewX)sender;
+                Color c = Color.Empty;
+                switch (e.Value.ToString())
+                {
+                    case "01未记录":
+                        c = Color.AliceBlue;
+                        break;
+                    case "02进签":
+                        c = Color.Yellow;
+                        break;
+                    case "03出签":
+                        c = Color.Green;
+                        break;
+                    case "04未正常出签":
+                        c = Color.Red;
+                        break;
+                    default:
+                        c = Color.Black;
+                        break;
+                }
+                dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
+            }
         }
 
 
