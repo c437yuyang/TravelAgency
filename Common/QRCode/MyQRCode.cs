@@ -28,7 +28,6 @@ namespace TravletAgence.Common.QRCode
         public MyQRCode(ErrorCorrectionLevel errorlevel = ErrorCorrectionLevel.M)
         {
             _qrEncoder = new QrEncoder(errorlevel);
-
         }
 
         public void EncodeToPng(string str, string picpath,QRCodeSaveSize saveSize)
@@ -36,7 +35,7 @@ namespace TravletAgence.Common.QRCode
             QrCode qrCode = _qrEncoder.Encode(str);
             //保存成png文件
             GraphicsRenderer render = new GraphicsRenderer(new FixedModuleSize(Convert.ToInt32(saveSize), QuietZoneModules.Two), Brushes.Black, Brushes.White);
-            using (FileStream stream = new FileStream(picpath, FileMode.OpenOrCreate| FileMode.Truncate))
+            using (FileStream stream = new FileStream(picpath, FileMode.OpenOrCreate)) //OpenOrCreate打开新文件默认就是truncate的了，如果再显式指定Truncate反而会报错当文件不存在的时候
             {
                 render.WriteToStream(qrCode.Matrix, ImageFormat.Png, stream);
             }

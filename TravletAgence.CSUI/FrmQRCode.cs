@@ -17,7 +17,7 @@ namespace TravletAgence.CSUI
     {
         private string _qrinfo;
         private MyQRCode _qrCode = new MyQRCode();
-        private string _tmpFileName = "tmp.png";
+        private string _tmpFileName = System.Windows.Forms.Application.StartupPath +"\\tmp.png";
 
         public FrmQRCode()
         {
