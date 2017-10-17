@@ -57,8 +57,9 @@ namespace TravletAgence.CSUI
             //Console.WriteLine(model.EntryTime.ToString());
         }
 
-        private void UpdateByLines(string txt, Inputmode inputMode)
+        private int UpdateByLines(string txt, Inputmode inputMode)
         {
+            int count = 0; //成功记录数
             string str = txtInput.Text.TrimEnd(); //去掉最后的\r\n
             string[] lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.None);
             bool updateSingle = !(lines.Length > 20); //多行模式下设置显示更新模式
@@ -68,20 +69,22 @@ namespace TravletAgence.CSUI
                 if (model == null)
                 {
                     MessageBox.Show("数据库查询失败，请检查信息是否正确?");
-                    return;
+                    return count;
                 }
                 //数据中根据状态进行更新
                 model.outState = _outState;
                 if (!bll.Update(model))
                 {
                     MessageBox.Show("更新签证状态失败!");
-                    return;
+                    return count;
                 }
+                ++count;
                 loadDataToDataGridView(_curPage);
             }
             else if (inputMode == Inputmode.Batch)
             {
                 string outState = string.Empty;
+                
                 for (int i = 0; i != lines.Length; ++i)
                 {
                     if (lines[i].Equals(OutStateString.TYPE02In))
@@ -95,20 +98,21 @@ namespace TravletAgence.CSUI
                         if (outState.Length == 0)
                         {
                             MessageBox.Show("输入有误，请重试！");
-                            return;
+                            return count;
                         }
                         VisaInfo model = GetModelByLine(lines[i]);
                         if (model == null)
                         {
                             MessageBox.Show("数据库查询失败，请检查信息是否正确?");
-                            return;
+                            return count;
                         }
                         model.outState = outState;
                         if (!bll.Update(model))
                         {
                             MessageBox.Show("更新签证状态失败!");
-                            return;
+                            return count;
                         }
+                        ++count;
                         if(updateSingle)
                             loadDataToDataGridView(_curPage);
                     }
@@ -116,6 +120,7 @@ namespace TravletAgence.CSUI
             }
             if(!updateSingle)
                 loadDataToDataGridView(_curPage);
+            return count;
         }
 
         private VisaInfo GetModelByLine(string line)
@@ -324,7 +329,11 @@ namespace TravletAgence.CSUI
                 MessageBox.Show("输入有误，请检查输入!");
                 return;
             }
-            UpdateByLines(txt,_inputMode);
+            int count = UpdateByLines(txt,_inputMode);
+            if (count > 0)
+            {
+                MessageBox.Show("成功更新" + count + "条记录.");
+            }
         }
 
         private void cmsItemRefreshState_Click(object sender, EventArgs e)
@@ -335,12 +344,16 @@ namespace TravletAgence.CSUI
         private void rbtnSingle_CheckedChanged(object sender, EventArgs e)
         {
             _inputMode = Inputmode.Single;
-
+            btnParseBatchInput.Enabled = false;
+            panelOutState.Enabled = true;
         }
 
         private void rbtnBatch_CheckedChanged(object sender, EventArgs e)
         {
             _inputMode = Inputmode.Batch;
+            btnParseBatchInput.Enabled = true;
+            panelOutState.Enabled = false;
+
         }
     }
 }
