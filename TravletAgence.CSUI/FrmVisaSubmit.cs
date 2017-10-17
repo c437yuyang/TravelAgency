@@ -235,6 +235,12 @@ namespace TravletAgence.CSUI
             }
         }
 
+        private void btnClearInput_Click(object sender, EventArgs e)
+        {
+            txtInput.Clear();
+            txtInput.Focus();
+        }
+
 
     }
 }
