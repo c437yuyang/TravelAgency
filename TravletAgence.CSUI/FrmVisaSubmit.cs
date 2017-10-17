@@ -13,6 +13,11 @@ using TravletAgence.Common;
 
 namespace TravletAgence.CSUI
 {
+    enum Inputmode
+    {
+        Single,
+        Batch
+    }
     public partial class FrmVisaSubmit : Form
     {
         private readonly TravletAgence.BLL.VisaInfo bll = new TravletAgence.BLL.VisaInfo();
@@ -22,6 +27,7 @@ namespace TravletAgence.CSUI
         private int _recordCount = 0;
         private string _preTxt = string.Empty;
         private string _outState = string.Empty;
+        private Inputmode _inputMode = Inputmode.Single;
 
         class PersonInfo
         {
@@ -45,27 +51,33 @@ namespace TravletAgence.CSUI
             //Console.WriteLine(txtInput.Text);
             string str = txtInput.Text.TrimEnd(); //去掉最后的\r\n
 
-            string[] lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-
-            ////printArray(lines);
-            PersonInfo personInfo = new PersonInfo();
-            personInfo.passportNo = lines[lines.Length - 1].Split('|')[0];
-            personInfo.englishName = lines[lines.Length - 1].Split('|')[1];
-
-            //int i = bll.GetRecordCount(string.Empty);
-
-            TravletAgence.Model.VisaInfo model = bll.GetModelByPassportNo(personInfo.passportNo);
-
-            ////TODO:添加更新数据库签证状态逻辑
-            model.outState = _outState;
-            if (!bll.Update(model))
+            try
             {
-                MessageBox.Show("更新签证状态失败!");
-                return;
+                string[] lines = str.Split(new string[] {"\r\n"}, StringSplitOptions.None);
+                PersonInfo personInfo = new PersonInfo();
+                personInfo.passportNo = lines[lines.Length - 1].Split('|')[0];
+                personInfo.englishName = lines[lines.Length - 1].Split('|')[1];
+
+                TravletAgence.Model.VisaInfo model = bll.GetModelByPassportNo(personInfo.passportNo);
+                if (model == null)
+                {
+                    MessageBox.Show("数据库查询失败，请检查信息是否正确?");
+                    return;
+                }
+                //数据中根据状态进行更新
+                model.outState = _outState;
+                if (!bll.Update(model))
+                {
+                    MessageBox.Show("更新签证状态失败!");
+                    return;
+                }
+
+                loadDataToDataGridView(_curPage);
             }
-
-            loadDataToDataGridView(_curPage);
-
+            catch (Exception)
+            {
+                MessageBox.Show("输入有误，请清空后重新输入!");
+            }
             //Console.WriteLine(model.EntryTime.ToString());
         }
 
