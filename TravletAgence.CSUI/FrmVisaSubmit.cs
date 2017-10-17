@@ -128,11 +128,8 @@ namespace TravletAgence.CSUI
         {
             _curPage = _pageCount;
             loadDataToDataGridView(_curPage);
-
             UpdateState();
         }
-
-
 
         private void showQRCode_Click(object sender, EventArgs e)
         {
@@ -165,11 +162,8 @@ namespace TravletAgence.CSUI
                     }
                     //只选中一行时设置活动单元格
                     if (dataGridView1.SelectedRows.Count == 1)
-                    {
                         dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                    }
                     //弹出操作菜单
-                    //cmsDgvRb.Show(dataGridView1, e.Location);
                     cmsDgvRb.Show(MousePosition.X, MousePosition.Y);
                 }
             }
@@ -208,6 +202,11 @@ namespace TravletAgence.CSUI
             _outState = OutState.TYPE04AbnormalOut();
         }
 
+        /// <summary>
+        /// 根据送签状态设置单元格颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 9)
