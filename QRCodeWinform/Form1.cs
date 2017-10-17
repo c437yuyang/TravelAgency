@@ -98,7 +98,7 @@ namespace QRCodeWinform
         private void buttonX1_Click(object sender, EventArgs e)
         {
             MyQRCode qrcode = new MyQRCode();
-            qrcode.EncodeToCtrl(this.qrCodeGraphicControl1.Text + 1, this.qrCodeGraphicControl1);
+            //qrcode.EncodeToCtrl(this.qrCodeGraphicControl1.Text + 1, this.qrCodeGraphicControl1);
         }
 
 
