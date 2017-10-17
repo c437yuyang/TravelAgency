@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar.Controls;
 using TravletAgence.BLL;
 using TravletAgence.Common;
+using VisaInfo = TravletAgence.Model.VisaInfo;
 
 namespace TravletAgence.CSUI
 {
@@ -26,14 +27,14 @@ namespace TravletAgence.CSUI
         private readonly int _pageSize = 30;
         private int _recordCount = 0;
         private string _preTxt = string.Empty;
-        private string _outState = string.Empty;
-        private Inputmode _inputMode = Inputmode.Single;
+        private string _outState = string.Empty; //Single模式下的状态设置
+        private Inputmode _inputMode = Inputmode.Batch;
 
-        class PersonInfo
-        {
-            public string passportNo { get; set; }
-            public string englishName { get; set; }
-        }
+        //class PersonInfo
+        //{
+        //    public string passportNo { get; set; }
+        //    public string englishName { get; set; }
+        //}
 
         public FrmVisaSubmit()
         {
@@ -42,23 +43,28 @@ namespace TravletAgence.CSUI
 
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
-            if (_preTxt + "\r\n" != txtInput.Text)
+            if (_inputMode == Inputmode.Single)
             {
+                if (_preTxt + "\r\n" != txtInput.Text)
+                {
+                    _preTxt = txtInput.Text;
+                    return;
+                }
                 _preTxt = txtInput.Text;
-                return;
+                UpdateByLines(txtInput.Text, _inputMode);
             }
-            _preTxt = txtInput.Text;
-            //Console.WriteLine(txtInput.Text);
+
+            //Console.WriteLine(model.EntryTime.ToString());
+        }
+
+        private void UpdateByLines(string txt, Inputmode inputMode)
+        {
             string str = txtInput.Text.TrimEnd(); //去掉最后的\r\n
-
-            try
+            string[] lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            bool updateSingle = !(lines.Length > 20); //多行模式下设置显示更新模式
+            if (inputMode == Inputmode.Single)
             {
-                string[] lines = str.Split(new string[] {"\r\n"}, StringSplitOptions.None);
-                PersonInfo personInfo = new PersonInfo();
-                personInfo.passportNo = lines[lines.Length - 1].Split('|')[0];
-                personInfo.englishName = lines[lines.Length - 1].Split('|')[1];
-
-                TravletAgence.Model.VisaInfo model = bll.GetModelByPassportNo(personInfo.passportNo);
+                VisaInfo model = GetModelByLine(lines[lines.Length - 1]);
                 if (model == null)
                 {
                     MessageBox.Show("数据库查询失败，请检查信息是否正确?");
@@ -71,15 +77,68 @@ namespace TravletAgence.CSUI
                     MessageBox.Show("更新签证状态失败!");
                     return;
                 }
-
                 loadDataToDataGridView(_curPage);
+            }
+            else if (inputMode == Inputmode.Batch)
+            {
+                string outState = string.Empty;
+                for (int i = 0; i != lines.Length; ++i)
+                {
+                    if (lines[i].Equals(OutStateString.TYPE02In))
+                        outState = OutState.TYPE02In;
+                    else if (lines[i].Equals(OutStateString.TYPE03NormalOut))
+                        outState = OutState.TYPE03NormalOut;
+                    else if (lines[i].Equals(OutStateString.TYPE04AbnormalOut))
+                        outState = OutState.TYPE04AbnormalOut;
+                    else
+                    {
+                        if (outState.Length == 0)
+                        {
+                            MessageBox.Show("输入有误，请重试！");
+                            return;
+                        }
+                        VisaInfo model = GetModelByLine(lines[i]);
+                        if (model == null)
+                        {
+                            MessageBox.Show("数据库查询失败，请检查信息是否正确?");
+                            return;
+                        }
+                        model.outState = outState;
+                        if (!bll.Update(model))
+                        {
+                            MessageBox.Show("更新签证状态失败!");
+                            return;
+                        }
+                        if(updateSingle)
+                            loadDataToDataGridView(_curPage);
+                    }
+                }
+            }
+            if(!updateSingle)
+                loadDataToDataGridView(_curPage);
+        }
+
+        private VisaInfo GetModelByLine(string line)
+        {
+            if (!line.Contains('|'))
+            {
+                MessageBox.Show("输入有误，请清空后重新输入!");
+                return null;
+            }
+
+            Model.VisaInfo model = new Model.VisaInfo();
+            try
+            {
+                model = bll.GetModelByPassportNo(line.Split('|')[0]);
+                return model;
             }
             catch (Exception)
             {
                 MessageBox.Show("输入有误，请清空后重新输入!");
+                return null;
             }
-            //Console.WriteLine(model.EntryTime.ToString());
         }
+
 
         private void FrmVisaSubmit_Load(object sender, EventArgs e)
         {
@@ -183,35 +242,35 @@ namespace TravletAgence.CSUI
 
         private void btnShowInQR_Click(object sender, EventArgs e)
         {
-            FrmQRCode frm = new FrmQRCode("State:02进签");
+            FrmQRCode frm = new FrmQRCode(OutStateString.TYPE02In);
             frm.ShowDialog();
         }
 
         private void btnShowAbnormalOutQR_Click(object sender, EventArgs e)
         {
-            FrmQRCode frm = new FrmQRCode("State:03出签");
+            FrmQRCode frm = new FrmQRCode(OutStateString.TYPE03NormalOut);
             frm.ShowDialog();
         }
 
         private void btnShowNormalOutQR_Click(object sender, EventArgs e)
         {
-            FrmQRCode frm = new FrmQRCode("State:04未正常出签");
+            FrmQRCode frm = new FrmQRCode(OutStateString.TYPE04AbnormalOut);
             frm.ShowDialog();
         }
 
         private void rbtnIn_CheckedChanged(object sender, EventArgs e)
         {
-            _outState = OutState.TYPE02In();
+            _outState = OutState.TYPE02In;
         }
 
         private void rBtnOut_CheckedChanged(object sender, EventArgs e)
         {
-            _outState = OutState.TYPE03NormalOut();
+            _outState = OutState.TYPE03NormalOut;
         }
 
         private void rbtnAbOut_CheckedChanged(object sender, EventArgs e)
         {
-            _outState = OutState.TYPE04AbnormalOut();
+            _outState = OutState.TYPE04AbnormalOut;
         }
 
         /// <summary>
@@ -251,6 +310,25 @@ namespace TravletAgence.CSUI
         {
             txtInput.Clear();
             txtInput.Focus();
+        }
+
+        private void btnParseBatchInput_Click(object sender, EventArgs e)
+        {
+            string txt = txtInput.Text;
+            if (txt == string.Empty ||
+                (!txt.Contains(OutStateString.TYPE02In)
+                 && !txt.Contains(OutStateString.TYPE03NormalOut)
+                 && !txt.Contains(OutStateString.TYPE04AbnormalOut)))
+            {
+                MessageBox.Show("输入有误，请检查输入!");
+                return;
+            }
+            UpdateByLines(txt,_inputMode);
+        }
+
+        private void cmsItemRefreshState_Click(object sender, EventArgs e)
+        {
+            loadDataToDataGridView(_curPage);
         }
 
 

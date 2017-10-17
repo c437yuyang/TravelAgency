@@ -246,5 +246,10 @@ namespace TravletAgence.CSUI
                 }
             }
         }
+
+        private void cmsItemRefreshState_Click(object sender, EventArgs e)
+        {
+            loadDataToDataGridView(_curPage);
+        }
     }
 }

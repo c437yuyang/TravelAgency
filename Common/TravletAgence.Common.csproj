@@ -124,6 +124,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\OWC10Chart.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -144,6 +145,7 @@
   <ItemGroup>
     <Compile Include="MD5Computer\MyMd5.cs" />
     <Compile Include="OutState.cs" />
+    <Compile Include="OutStateString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

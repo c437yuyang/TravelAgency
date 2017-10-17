@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,6 +88,7 @@
             this.cmsItemQRCodeBatchGenerate = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeBatchPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
@@ -112,14 +113,14 @@
             this.Birthplace,
             this.IssuePlace,
             this.outState});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridView1.Location = new System.Drawing.Point(224, 28);
@@ -634,9 +635,10 @@
             this.cmsItemQRCodeShow,
             this.cmsItemQRCodeBatchGenerate,
             this.cmsItemQRCodeBatchPrint,
-            this.cmsItemQRCodePrint});
+            this.cmsItemQRCodePrint,
+            this.cmsItemRefreshState});
             this.cmsDgvRb.Name = "cmsDgvRb";
-            this.cmsDgvRb.Size = new System.Drawing.Size(161, 136);
+            this.cmsDgvRb.Size = new System.Drawing.Size(161, 180);
             // 
             // cmsItemDelete
             // 
@@ -674,6 +676,13 @@
             this.cmsItemQRCodePrint.Name = "cmsItemQRCodePrint";
             this.cmsItemQRCodePrint.Size = new System.Drawing.Size(160, 22);
             this.cmsItemQRCodePrint.Text = "打印二维码";
+            // 
+            // cmsItemRefreshState
+            // 
+            this.cmsItemRefreshState.Name = "cmsItemRefreshState";
+            this.cmsItemRefreshState.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemRefreshState.Text = "刷新数据库状态";
+            this.cmsItemRefreshState.Click += new System.EventHandler(this.cmsItemRefreshState_Click);
             // 
             // FrmVisaTypeIn
             // 
@@ -754,6 +763,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Birthplace;
         private System.Windows.Forms.DataGridViewTextBoxColumn IssuePlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn outState;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemRefreshState;
 
     }
 }
