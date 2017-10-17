@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using DevComponents.DotNetBar.Controls;
+using TravletAgence.Common;
 using TravletAgence.Common.QRCode;
 using TravletAgence.Model;
 
@@ -70,7 +71,7 @@ namespace TravletAgence.CSUI
         {
             model.Types = "个签";
             model.EntryTime = DateTime.Now;
-
+            model.outState = OutState.TYPE01NoRecord;
             txtName.Text = model.Name;
             txtEnglishName.Text = model.EnglishName;
             txtSex.Text = model.Sex;
@@ -87,6 +88,7 @@ namespace TravletAgence.CSUI
             VisaInfo model = new VisaInfo();
             model.Types = "个签";
             model.EntryTime = DateTime.Now;
+            model.outState = OutState.TYPE01NoRecord;
             try
             {
                 model.Name = txtName.Text;
