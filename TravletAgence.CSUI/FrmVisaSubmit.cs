@@ -28,7 +28,7 @@ namespace TravletAgence.CSUI
         private int _recordCount = 0;
         private string _preTxt = string.Empty;
         private string _outState = string.Empty; //Single模式下的状态设置
-        private Inputmode _inputMode = Inputmode.Batch;
+        private Inputmode _inputMode = Inputmode.Single;
 
         //class PersonInfo
         //{
@@ -148,6 +148,7 @@ namespace TravletAgence.CSUI
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false;
             rbtnIn.Select();
+            rbtnSingle.Select();
             //加载数据
             loadDataToDataGridView(_curPage);
             UpdateState();
@@ -331,6 +332,15 @@ namespace TravletAgence.CSUI
             loadDataToDataGridView(_curPage);
         }
 
+        private void rbtnSingle_CheckedChanged(object sender, EventArgs e)
+        {
+            _inputMode = Inputmode.Single;
 
+        }
+
+        private void rbtnBatch_CheckedChanged(object sender, EventArgs e)
+        {
+            _inputMode = Inputmode.Batch;
+        }
     }
 }

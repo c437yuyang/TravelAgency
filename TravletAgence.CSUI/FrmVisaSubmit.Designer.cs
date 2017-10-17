@@ -66,6 +66,7 @@
             this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
             this.panel1 = new DevComponents.DotNetBar.PanelEx();
+            this.btnParseBatchInput = new DevComponents.DotNetBar.ButtonX();
             this.btnClearInput = new DevComponents.DotNetBar.ButtonX();
             this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -84,9 +85,12 @@
             this.cmsItemQRCodeBatchGenerate = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeBatchPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.btnParseBatchInput = new DevComponents.DotNetBar.ButtonX();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.panelBtns = new DevComponents.DotNetBar.PanelEx();
+            this.rbtnSingle = new System.Windows.Forms.RadioButton();
+            this.rbtnBatch = new System.Windows.Forms.RadioButton();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx4.SuspendLayout();
@@ -96,6 +100,7 @@
             this.panel1.SuspendLayout();
             this.panelEx5.SuspendLayout();
             this.cmsDgvRb.SuspendLayout();
+            this.panelBtns.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -437,14 +442,10 @@
             // 
             this.panel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panel1.Controls.Add(this.btnParseBatchInput);
-            this.panel1.Controls.Add(this.btnClearInput);
+            this.panel1.Controls.Add(this.panelBtns);
             this.panel1.Controls.Add(this.panelEx5);
             this.panel1.Controls.Add(this.labelX1);
             this.panel1.Controls.Add(this.txtInput);
-            this.panel1.Controls.Add(this.btnShowInQR);
-            this.panel1.Controls.Add(this.btnShowNormalOutQR);
-            this.panel1.Controls.Add(this.btnShowAbnormalOutQR);
             this.panel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -459,13 +460,25 @@
             this.panel1.Style.GradientAngle = 90;
             this.panel1.TabIndex = 25;
             // 
+            // btnParseBatchInput
+            // 
+            this.btnParseBatchInput.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnParseBatchInput.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnParseBatchInput.Location = new System.Drawing.Point(2, 59);
+            this.btnParseBatchInput.Name = "btnParseBatchInput";
+            this.btnParseBatchInput.Size = new System.Drawing.Size(118, 23);
+            this.btnParseBatchInput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnParseBatchInput.TabIndex = 17;
+            this.btnParseBatchInput.Text = "解析批量输入";
+            this.btnParseBatchInput.Click += new System.EventHandler(this.btnParseBatchInput_Click);
+            // 
             // btnClearInput
             // 
             this.btnClearInput.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnClearInput.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClearInput.Location = new System.Drawing.Point(139, 362);
+            this.btnClearInput.Location = new System.Drawing.Point(138, 33);
             this.btnClearInput.Name = "btnClearInput";
-            this.btnClearInput.Size = new System.Drawing.Size(117, 23);
+            this.btnClearInput.Size = new System.Drawing.Size(120, 23);
             this.btnClearInput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnClearInput.TabIndex = 13;
             this.btnClearInput.Text = "清空输入框";
@@ -560,6 +573,9 @@
             // 
             // txtInput
             // 
+            this.txtInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -578,7 +594,7 @@
             // 
             this.btnShowInQR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnShowInQR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowInQR.Location = new System.Drawing.Point(3, 333);
+            this.btnShowInQR.Location = new System.Drawing.Point(2, 4);
             this.btnShowInQR.Name = "btnShowInQR";
             this.btnShowInQR.Size = new System.Drawing.Size(119, 23);
             this.btnShowInQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -590,7 +606,7 @@
             // 
             this.btnShowNormalOutQR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnShowNormalOutQR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowNormalOutQR.Location = new System.Drawing.Point(140, 333);
+            this.btnShowNormalOutQR.Location = new System.Drawing.Point(139, 4);
             this.btnShowNormalOutQR.Name = "btnShowNormalOutQR";
             this.btnShowNormalOutQR.Size = new System.Drawing.Size(119, 23);
             this.btnShowNormalOutQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -602,7 +618,7 @@
             // 
             this.btnShowAbnormalOutQR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnShowAbnormalOutQR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowAbnormalOutQR.Location = new System.Drawing.Point(3, 362);
+            this.btnShowAbnormalOutQR.Location = new System.Drawing.Point(2, 33);
             this.btnShowAbnormalOutQR.Name = "btnShowAbnormalOutQR";
             this.btnShowAbnormalOutQR.Size = new System.Drawing.Size(119, 23);
             this.btnShowAbnormalOutQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -660,29 +676,82 @@
             this.cmsItemQRCodePrint.Size = new System.Drawing.Size(160, 22);
             this.cmsItemQRCodePrint.Text = "打印二维码";
             // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
-            // 
-            // btnParseBatchInput
-            // 
-            this.btnParseBatchInput.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnParseBatchInput.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnParseBatchInput.Location = new System.Drawing.Point(3, 388);
-            this.btnParseBatchInput.Name = "btnParseBatchInput";
-            this.btnParseBatchInput.Size = new System.Drawing.Size(118, 23);
-            this.btnParseBatchInput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnParseBatchInput.TabIndex = 17;
-            this.btnParseBatchInput.Text = "解析批量输入";
-            this.btnParseBatchInput.Click += new System.EventHandler(this.btnParseBatchInput_Click);
-            // 
             // cmsItemRefreshState
             // 
             this.cmsItemRefreshState.Name = "cmsItemRefreshState";
             this.cmsItemRefreshState.Size = new System.Drawing.Size(160, 22);
             this.cmsItemRefreshState.Text = "刷新数据库状态";
             this.cmsItemRefreshState.Click += new System.EventHandler(this.cmsItemRefreshState_Click);
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
+            // 
+            // panelBtns
+            // 
+            this.panelBtns.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelBtns.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelBtns.Controls.Add(this.labelX3);
+            this.panelBtns.Controls.Add(this.rbtnSingle);
+            this.panelBtns.Controls.Add(this.rbtnBatch);
+            this.panelBtns.Controls.Add(this.btnShowInQR);
+            this.panelBtns.Controls.Add(this.btnParseBatchInput);
+            this.panelBtns.Controls.Add(this.btnShowAbnormalOutQR);
+            this.panelBtns.Controls.Add(this.btnShowNormalOutQR);
+            this.panelBtns.Controls.Add(this.btnClearInput);
+            this.panelBtns.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelBtns.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBtns.Location = new System.Drawing.Point(0, 333);
+            this.panelBtns.Name = "panelBtns";
+            this.panelBtns.Size = new System.Drawing.Size(265, 118);
+            this.panelBtns.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelBtns.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelBtns.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelBtns.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelBtns.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelBtns.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelBtns.Style.GradientAngle = 90;
+            this.panelBtns.TabIndex = 21;
+            // 
+            // rbtnSingle
+            // 
+            this.rbtnSingle.AutoSize = true;
+            this.rbtnSingle.BackColor = System.Drawing.Color.Transparent;
+            this.rbtnSingle.ForeColor = System.Drawing.Color.OrangeRed;
+            this.rbtnSingle.Location = new System.Drawing.Point(83, 90);
+            this.rbtnSingle.Name = "rbtnSingle";
+            this.rbtnSingle.Size = new System.Drawing.Size(71, 16);
+            this.rbtnSingle.TabIndex = 19;
+            this.rbtnSingle.TabStop = true;
+            this.rbtnSingle.Text = "单行模式";
+            this.rbtnSingle.UseVisualStyleBackColor = false;
+            this.rbtnSingle.CheckedChanged += new System.EventHandler(this.rbtnSingle_CheckedChanged);
+            // 
+            // rbtnBatch
+            // 
+            this.rbtnBatch.AutoSize = true;
+            this.rbtnBatch.ForeColor = System.Drawing.Color.OrangeRed;
+            this.rbtnBatch.Location = new System.Drawing.Point(158, 90);
+            this.rbtnBatch.Name = "rbtnBatch";
+            this.rbtnBatch.Size = new System.Drawing.Size(71, 16);
+            this.rbtnBatch.TabIndex = 18;
+            this.rbtnBatch.TabStop = true;
+            this.rbtnBatch.Text = "批量模式";
+            this.rbtnBatch.UseVisualStyleBackColor = true;
+            this.rbtnBatch.CheckedChanged += new System.EventHandler(this.rbtnBatch_CheckedChanged);
+            // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(12, 88);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(70, 23);
+            this.labelX3.TabIndex = 20;
+            this.labelX3.Text = "录入模式:";
             // 
             // FrmVisaSubmit
             // 
@@ -703,6 +772,8 @@
             this.panelEx5.ResumeLayout(false);
             this.panelEx5.PerformLayout();
             this.cmsDgvRb.ResumeLayout(false);
+            this.panelBtns.ResumeLayout(false);
+            this.panelBtns.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -764,5 +835,9 @@
         private DevComponents.DotNetBar.ButtonX btnClearInput;
         private DevComponents.DotNetBar.ButtonX btnParseBatchInput;
         private System.Windows.Forms.ToolStripMenuItem cmsItemRefreshState;
+        private DevComponents.DotNetBar.PanelEx panelBtns;
+        private System.Windows.Forms.RadioButton rbtnSingle;
+        private System.Windows.Forms.RadioButton rbtnBatch;
+        private DevComponents.DotNetBar.LabelX labelX3;
     }
 }
