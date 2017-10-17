@@ -355,5 +355,13 @@ namespace TravletAgence.CSUI
             panelOutState.Enabled = false;
 
         }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+            }
+        }
     }
 }

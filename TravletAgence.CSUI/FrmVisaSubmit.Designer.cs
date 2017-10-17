@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
@@ -66,7 +66,14 @@
             this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
             this.panel1 = new DevComponents.DotNetBar.PanelEx();
+            this.panelBtns = new DevComponents.DotNetBar.PanelEx();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.rbtnSingle = new System.Windows.Forms.RadioButton();
+            this.rbtnBatch = new System.Windows.Forms.RadioButton();
+            this.btnShowInQR = new DevComponents.DotNetBar.ButtonX();
             this.btnParseBatchInput = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowAbnormalOutQR = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowNormalOutQR = new DevComponents.DotNetBar.ButtonX();
             this.btnClearInput = new DevComponents.DotNetBar.ButtonX();
             this.panelOutState = new DevComponents.DotNetBar.PanelEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -75,9 +82,6 @@
             this.rbtnAbOut = new System.Windows.Forms.RadioButton();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtInput = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnShowInQR = new DevComponents.DotNetBar.ButtonX();
-            this.btnShowNormalOutQR = new DevComponents.DotNetBar.ButtonX();
-            this.btnShowAbnormalOutQR = new DevComponents.DotNetBar.ButtonX();
             this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemModify = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,10 +91,6 @@
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.panelBtns = new DevComponents.DotNetBar.PanelEx();
-            this.rbtnSingle = new System.Windows.Forms.RadioButton();
-            this.rbtnBatch = new System.Windows.Forms.RadioButton();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx4.SuspendLayout();
@@ -98,9 +98,9 @@
             this.panelEx3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panelBtns.SuspendLayout();
             this.panelOutState.SuspendLayout();
             this.cmsDgvRb.SuspendLayout();
-            this.panelBtns.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -168,14 +168,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._Name,
@@ -188,34 +188,36 @@
             this.Birthplace,
             this.IssuePlace,
             this.outState});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1006, 502);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
+            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
             // _Name
             // 
@@ -460,6 +462,83 @@
             this.panel1.Style.GradientAngle = 90;
             this.panel1.TabIndex = 25;
             // 
+            // panelBtns
+            // 
+            this.panelBtns.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelBtns.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelBtns.Controls.Add(this.labelX3);
+            this.panelBtns.Controls.Add(this.rbtnSingle);
+            this.panelBtns.Controls.Add(this.rbtnBatch);
+            this.panelBtns.Controls.Add(this.btnShowInQR);
+            this.panelBtns.Controls.Add(this.btnParseBatchInput);
+            this.panelBtns.Controls.Add(this.btnShowAbnormalOutQR);
+            this.panelBtns.Controls.Add(this.btnShowNormalOutQR);
+            this.panelBtns.Controls.Add(this.btnClearInput);
+            this.panelBtns.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelBtns.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBtns.Location = new System.Drawing.Point(0, 333);
+            this.panelBtns.Name = "panelBtns";
+            this.panelBtns.Size = new System.Drawing.Size(265, 118);
+            this.panelBtns.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelBtns.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelBtns.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelBtns.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelBtns.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelBtns.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelBtns.Style.GradientAngle = 90;
+            this.panelBtns.TabIndex = 21;
+            // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(12, 88);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(70, 23);
+            this.labelX3.TabIndex = 20;
+            this.labelX3.Text = "录入模式:";
+            // 
+            // rbtnSingle
+            // 
+            this.rbtnSingle.AutoSize = true;
+            this.rbtnSingle.BackColor = System.Drawing.Color.Transparent;
+            this.rbtnSingle.ForeColor = System.Drawing.Color.OrangeRed;
+            this.rbtnSingle.Location = new System.Drawing.Point(83, 90);
+            this.rbtnSingle.Name = "rbtnSingle";
+            this.rbtnSingle.Size = new System.Drawing.Size(71, 16);
+            this.rbtnSingle.TabIndex = 19;
+            this.rbtnSingle.TabStop = true;
+            this.rbtnSingle.Text = "单行模式";
+            this.rbtnSingle.UseVisualStyleBackColor = false;
+            this.rbtnSingle.CheckedChanged += new System.EventHandler(this.rbtnSingle_CheckedChanged);
+            // 
+            // rbtnBatch
+            // 
+            this.rbtnBatch.AutoSize = true;
+            this.rbtnBatch.ForeColor = System.Drawing.Color.OrangeRed;
+            this.rbtnBatch.Location = new System.Drawing.Point(158, 90);
+            this.rbtnBatch.Name = "rbtnBatch";
+            this.rbtnBatch.Size = new System.Drawing.Size(71, 16);
+            this.rbtnBatch.TabIndex = 18;
+            this.rbtnBatch.TabStop = true;
+            this.rbtnBatch.Text = "批量模式";
+            this.rbtnBatch.UseVisualStyleBackColor = true;
+            this.rbtnBatch.CheckedChanged += new System.EventHandler(this.rbtnBatch_CheckedChanged);
+            // 
+            // btnShowInQR
+            // 
+            this.btnShowInQR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowInQR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowInQR.Location = new System.Drawing.Point(2, 4);
+            this.btnShowInQR.Name = "btnShowInQR";
+            this.btnShowInQR.Size = new System.Drawing.Size(119, 23);
+            this.btnShowInQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowInQR.TabIndex = 1;
+            this.btnShowInQR.Text = "显示进签状态码";
+            this.btnShowInQR.Click += new System.EventHandler(this.btnShowInQR_Click);
+            // 
             // btnParseBatchInput
             // 
             this.btnParseBatchInput.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -471,6 +550,30 @@
             this.btnParseBatchInput.TabIndex = 17;
             this.btnParseBatchInput.Text = "解析批量输入";
             this.btnParseBatchInput.Click += new System.EventHandler(this.btnParseBatchInput_Click);
+            // 
+            // btnShowAbnormalOutQR
+            // 
+            this.btnShowAbnormalOutQR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowAbnormalOutQR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowAbnormalOutQR.Location = new System.Drawing.Point(2, 33);
+            this.btnShowAbnormalOutQR.Name = "btnShowAbnormalOutQR";
+            this.btnShowAbnormalOutQR.Size = new System.Drawing.Size(119, 23);
+            this.btnShowAbnormalOutQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowAbnormalOutQR.TabIndex = 3;
+            this.btnShowAbnormalOutQR.Text = "显示异常出签状态码";
+            this.btnShowAbnormalOutQR.Click += new System.EventHandler(this.btnShowAbnormalOutQR_Click);
+            // 
+            // btnShowNormalOutQR
+            // 
+            this.btnShowNormalOutQR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowNormalOutQR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowNormalOutQR.Location = new System.Drawing.Point(139, 4);
+            this.btnShowNormalOutQR.Name = "btnShowNormalOutQR";
+            this.btnShowNormalOutQR.Size = new System.Drawing.Size(119, 23);
+            this.btnShowNormalOutQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowNormalOutQR.TabIndex = 2;
+            this.btnShowNormalOutQR.Text = "显示正常出签状态码";
+            this.btnShowNormalOutQR.Click += new System.EventHandler(this.btnShowNormalOutQR_Click);
             // 
             // btnClearInput
             // 
@@ -590,42 +693,6 @@
             this.txtInput.TabIndex = 0;
             this.txtInput.TextChanged += new System.EventHandler(this.txtInput_TextChanged);
             // 
-            // btnShowInQR
-            // 
-            this.btnShowInQR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShowInQR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowInQR.Location = new System.Drawing.Point(2, 4);
-            this.btnShowInQR.Name = "btnShowInQR";
-            this.btnShowInQR.Size = new System.Drawing.Size(119, 23);
-            this.btnShowInQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnShowInQR.TabIndex = 1;
-            this.btnShowInQR.Text = "显示进签状态码";
-            this.btnShowInQR.Click += new System.EventHandler(this.btnShowInQR_Click);
-            // 
-            // btnShowNormalOutQR
-            // 
-            this.btnShowNormalOutQR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShowNormalOutQR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowNormalOutQR.Location = new System.Drawing.Point(139, 4);
-            this.btnShowNormalOutQR.Name = "btnShowNormalOutQR";
-            this.btnShowNormalOutQR.Size = new System.Drawing.Size(119, 23);
-            this.btnShowNormalOutQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnShowNormalOutQR.TabIndex = 2;
-            this.btnShowNormalOutQR.Text = "显示正常出签状态码";
-            this.btnShowNormalOutQR.Click += new System.EventHandler(this.btnShowNormalOutQR_Click);
-            // 
-            // btnShowAbnormalOutQR
-            // 
-            this.btnShowAbnormalOutQR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShowAbnormalOutQR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowAbnormalOutQR.Location = new System.Drawing.Point(2, 33);
-            this.btnShowAbnormalOutQR.Name = "btnShowAbnormalOutQR";
-            this.btnShowAbnormalOutQR.Size = new System.Drawing.Size(119, 23);
-            this.btnShowAbnormalOutQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnShowAbnormalOutQR.TabIndex = 3;
-            this.btnShowAbnormalOutQR.Text = "显示异常出签状态码";
-            this.btnShowAbnormalOutQR.Click += new System.EventHandler(this.btnShowAbnormalOutQR_Click);
-            // 
             // cmsDgvRb
             // 
             this.cmsDgvRb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -688,71 +755,6 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
-            // panelBtns
-            // 
-            this.panelBtns.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelBtns.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelBtns.Controls.Add(this.labelX3);
-            this.panelBtns.Controls.Add(this.rbtnSingle);
-            this.panelBtns.Controls.Add(this.rbtnBatch);
-            this.panelBtns.Controls.Add(this.btnShowInQR);
-            this.panelBtns.Controls.Add(this.btnParseBatchInput);
-            this.panelBtns.Controls.Add(this.btnShowAbnormalOutQR);
-            this.panelBtns.Controls.Add(this.btnShowNormalOutQR);
-            this.panelBtns.Controls.Add(this.btnClearInput);
-            this.panelBtns.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelBtns.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBtns.Location = new System.Drawing.Point(0, 333);
-            this.panelBtns.Name = "panelBtns";
-            this.panelBtns.Size = new System.Drawing.Size(265, 118);
-            this.panelBtns.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelBtns.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelBtns.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelBtns.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelBtns.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelBtns.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelBtns.Style.GradientAngle = 90;
-            this.panelBtns.TabIndex = 21;
-            // 
-            // rbtnSingle
-            // 
-            this.rbtnSingle.AutoSize = true;
-            this.rbtnSingle.BackColor = System.Drawing.Color.Transparent;
-            this.rbtnSingle.ForeColor = System.Drawing.Color.OrangeRed;
-            this.rbtnSingle.Location = new System.Drawing.Point(83, 90);
-            this.rbtnSingle.Name = "rbtnSingle";
-            this.rbtnSingle.Size = new System.Drawing.Size(71, 16);
-            this.rbtnSingle.TabIndex = 19;
-            this.rbtnSingle.TabStop = true;
-            this.rbtnSingle.Text = "单行模式";
-            this.rbtnSingle.UseVisualStyleBackColor = false;
-            this.rbtnSingle.CheckedChanged += new System.EventHandler(this.rbtnSingle_CheckedChanged);
-            // 
-            // rbtnBatch
-            // 
-            this.rbtnBatch.AutoSize = true;
-            this.rbtnBatch.ForeColor = System.Drawing.Color.OrangeRed;
-            this.rbtnBatch.Location = new System.Drawing.Point(158, 90);
-            this.rbtnBatch.Name = "rbtnBatch";
-            this.rbtnBatch.Size = new System.Drawing.Size(71, 16);
-            this.rbtnBatch.TabIndex = 18;
-            this.rbtnBatch.TabStop = true;
-            this.rbtnBatch.Text = "批量模式";
-            this.rbtnBatch.UseVisualStyleBackColor = true;
-            this.rbtnBatch.CheckedChanged += new System.EventHandler(this.rbtnBatch_CheckedChanged);
-            // 
-            // labelX3
-            // 
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(12, 88);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(70, 23);
-            this.labelX3.TabIndex = 20;
-            this.labelX3.Text = "录入模式:";
-            // 
             // FrmVisaSubmit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -769,11 +771,11 @@
             this.panelEx3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panelBtns.ResumeLayout(false);
+            this.panelBtns.PerformLayout();
             this.panelOutState.ResumeLayout(false);
             this.panelOutState.PerformLayout();
             this.cmsDgvRb.ResumeLayout(false);
-            this.panelBtns.ResumeLayout(false);
-            this.panelBtns.PerformLayout();
             this.ResumeLayout(false);
 
         }

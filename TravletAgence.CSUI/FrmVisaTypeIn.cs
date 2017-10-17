@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using TravletAgence.Common.QRCode;
 using TravletAgence.Model;
 
@@ -250,6 +251,47 @@ namespace TravletAgence.CSUI
         private void cmsItemRefreshState_Click(object sender, EventArgs e)
         {
             loadDataToDataGridView(_curPage);
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                dataGridView1.Rows[i].HeaderCell.Value = (i).ToString();
+            }
+        }
+
+        /// <summary>
+        /// 根据送签状态设置单元格颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 9)
+            {
+                DataGridViewX dgv = (DataGridViewX)sender;
+                Color c = Color.Empty;
+                switch (e.Value.ToString())
+                {
+                    case "01未记录":
+                        c = Color.AliceBlue;
+                        break;
+                    case "02进签":
+                        c = Color.Yellow;
+                        break;
+                    case "03出签":
+                        c = Color.Green;
+                        break;
+                    case "04未正常出签":
+                        c = Color.Red;
+                        break;
+                    default:
+                        c = Color.Black;
+                        break;
+                }
+                dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
+            }
         }
     }
 }
