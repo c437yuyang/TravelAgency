@@ -15,7 +15,7 @@ namespace TravletAgence.Common
         {
             get
             {
-                return "==========" + "02进签" + "==========";
+                return "==========" + "02:In" + "==========";
             }
 
         }
@@ -24,7 +24,7 @@ namespace TravletAgence.Common
         {
             get
             {
-                return "==========" + "03出签" + "==========";
+                return "==========" + "03:NormalOut" + "==========";
             }
 
         }
@@ -33,7 +33,7 @@ namespace TravletAgence.Common
         {
             get
             {
-                return "==========" + "04未正常出签" + "==========";
+                return "==========" + "04:AbnormalOut" + "==========";
             }
 
         }

@@ -35,6 +35,7 @@ namespace TravletAgence.CSUI
             cbPageSize.Items.Add(_pageSize.ToString());
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //加载数据
             loadDataToDataGridView(_curPage);
             UpdateState();
@@ -280,7 +281,15 @@ namespace TravletAgence.CSUI
                     }
                     //只选中一行时设置活动单元格
                     if (dataGridView1.SelectedRows.Count == 1)
-                        dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    {
+                        if(e.ColumnIndex!=-1) //选中表头了
+                            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                        else
+                        {
+                            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];                            
+                        }
+                                                
+                    }
                     //弹出操作菜单
                     cmsDgvRb.Show(MousePosition.X, MousePosition.Y);
                 }
