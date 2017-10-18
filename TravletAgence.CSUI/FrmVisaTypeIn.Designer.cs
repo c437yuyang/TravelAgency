@@ -660,7 +660,7 @@
             this.cmsItemQRCodePrint,
             this.cmsItemRefreshState});
             this.cmsDgvRb.Name = "cmsDgvRb";
-            this.cmsDgvRb.Size = new System.Drawing.Size(161, 158);
+            this.cmsDgvRb.Size = new System.Drawing.Size(161, 180);
             // 
             // cmsItemDelete
             // 
@@ -686,6 +686,7 @@
             this.cmsItemQRCodeBatchGenerate.Name = "cmsItemQRCodeBatchGenerate";
             this.cmsItemQRCodeBatchGenerate.Size = new System.Drawing.Size(160, 22);
             this.cmsItemQRCodeBatchGenerate.Text = "批量生成二维码";
+            this.cmsItemQRCodeBatchGenerate.Click += new System.EventHandler(this.cmsItemQRCodeBatchGenerate_Click);
             // 
             // cmsItemQRCodeBatchPrint
             // 

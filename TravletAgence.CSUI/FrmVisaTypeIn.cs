@@ -18,6 +18,7 @@ namespace TravletAgence.CSUI
         private readonly IDCard _idCard = new IDCard();
         private bool _autoRead = false;
         private System.Windows.Forms.Timer _t = new System.Windows.Forms.Timer();
+        private MyQRCode _qrCode = new MyQRCode(); //只用于批量生成二维码
 
         public FrmVisaTypeIn()
         {
@@ -39,28 +40,7 @@ namespace TravletAgence.CSUI
             UpdateState();
         }
 
-        private void loadDataToDataGridView(int page)
-        {
-            dataGridView1.DataSource = bll.GetListByPage(page, _pageSize);
-        }
 
-        private void UpdateState()
-        {
-            _recordCount = bll.GetRecordCount(string.Empty);
-            _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
-            if (_curPage == 1)
-                btnPagePre.Enabled = false;
-            else
-                btnPagePre.Enabled = true;
-            if (_curPage == _pageCount)
-                btnPageNext.Enabled = false;
-            else
-                btnPageNext.Enabled = true;
-            //lbRecordCount.Text = "当前为第:" + Convert.ToInt32(_curPage)
-            //                + "页,共" + Convert.ToInt32(_pageCount) + "页,每页共" + _pageSize + "条.";
-            lbRecordCount.Text = "共有记录:" + _recordCount + "条";
-            lbCurPage.Text = "当前为第" + _curPage + "页";
-        }
 
         private void btnLoadKernel_Click(object sender, EventArgs e)
         {
@@ -180,6 +160,33 @@ namespace TravletAgence.CSUI
             UpdateState();
         }
 
+
+        #region dgv用到的相关方法
+        private void loadDataToDataGridView(int page)
+        {
+            dataGridView1.DataSource = bll.GetListByPage(page, _pageSize);
+        }
+
+        private void UpdateState()
+        {
+            _recordCount = bll.GetRecordCount(string.Empty);
+            _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
+            if (_curPage == 1)
+                btnPagePre.Enabled = false;
+            else
+                btnPagePre.Enabled = true;
+            if (_curPage == _pageCount)
+                btnPageNext.Enabled = false;
+            else
+                btnPageNext.Enabled = true;
+            //lbRecordCount.Text = "当前为第:" + Convert.ToInt32(_curPage)
+            //                + "页,共" + Convert.ToInt32(_pageCount) + "页,每页共" + _pageSize + "条.";
+            lbRecordCount.Text = "共有记录:" + _recordCount + "条";
+            lbCurPage.Text = "当前为第" + _curPage + "页";
+        }
+        #endregion
+
+        #region dgv的bar栏
         private void btnPageNext_Click(object sender, EventArgs e)
         {
             loadDataToDataGridView(++_curPage);
@@ -203,66 +210,10 @@ namespace TravletAgence.CSUI
         {
             _curPage = _pageCount;
             loadDataToDataGridView(_curPage);
-
             UpdateState();
         }
-
-        
-
-        private void showQRCode_Click(object sender, EventArgs e)
-        {
-
-            if (this.dataGridView1.SelectedRows.Count > 1)
-            {
-                MessageBox.Show("请选择一行数据进行查看");
-                return;
-            }
-
-            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
-            string name = dataGridView1.SelectedRows[0].Cells["EnglishName"].Value.ToString();
-
-            FrmQRCode dlg = new FrmQRCode(passportNo + "|" + name);
-            dlg.ShowDialog();
-        }
-
-        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                if (e.RowIndex >= 0)
-                {
-                    //若行已是选中状态就不再进行设置
-                    //如果没选中当前活动行则选中这一行
-                    if (dataGridView1.Rows[e.RowIndex].Selected == false)
-                    {
-                        dataGridView1.ClearSelection();
-                        dataGridView1.Rows[e.RowIndex].Selected = true;
-                    }
-                    //只选中一行时设置活动单元格
-                    if (dataGridView1.SelectedRows.Count == 1)
-                    {
-                        dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                    }
-                    //弹出操作菜单
-                    //cmsDgvRb.Show(dataGridView1, e.Location);
-                    cmsDgvRb.Show(MousePosition.X, MousePosition.Y);
-                }
-            }
-        }
-
-        private void cmsItemRefreshState_Click(object sender, EventArgs e)
-        {
-            loadDataToDataGridView(_curPage);
-        }
-
-        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                dataGridView1.Rows[i].HeaderCell.Value = (i).ToString();
-            }
-        }
-
+        #endregion
+        #region dgv消息相应
         /// <summary>
         /// 根据送签状态设置单元格颜色
         /// </summary>
@@ -295,5 +246,107 @@ namespace TravletAgence.CSUI
                 dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
             }
         }
+
+        /// <summary>
+        /// dgv设置行号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+            }
+        }
+
+        /// <summary>
+        /// dgv右键响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    //若行已是选中状态就不再进行设置
+                    //如果没选中当前活动行则选中这一行
+                    if (dataGridView1.Rows[e.RowIndex].Selected == false)
+                    {
+                        dataGridView1.ClearSelection();
+                        dataGridView1.Rows[e.RowIndex].Selected = true;
+                    }
+                    //只选中一行时设置活动单元格
+                    if (dataGridView1.SelectedRows.Count == 1)
+                        dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    //弹出操作菜单
+                    cmsDgvRb.Show(MousePosition.X, MousePosition.Y);
+                }
+            }
+        }
+
+        #endregion
+
+        #region dgv右键菜单相应
+        /// <summary>
+        /// 刷新dgv数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmsItemRefreshState_Click(object sender, EventArgs e)
+        {
+            loadDataToDataGridView(_curPage);
+        }
+
+        /// <summary>
+        /// 查看单个二维码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void showQRCode_Click(object sender, EventArgs e)
+        {
+
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("请选择一行数据进行查看");
+                return;
+            }
+
+            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
+            string name = dataGridView1.SelectedRows[0].Cells["EnglishName"].Value.ToString();
+
+            FrmQRCode dlg = new FrmQRCode(passportNo + "|" + name);
+            dlg.ShowDialog();
+        }
+
+        /// <summary>
+        /// 批量生成二维码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmsItemQRCodeBatchGenerate_Click(object sender, EventArgs e)
+        {
+
+            int count = this.dataGridView1.SelectedRows.Count;
+
+            //选择保存路径
+            string path;
+            FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
+            if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return;
+            path = fbd.SelectedPath;
+            for (int i = 0; i != count; ++i)
+            {
+                string passportNo = dataGridView1.SelectedRows[i].Cells["PassportNo"].Value.ToString();
+                string name = dataGridView1.SelectedRows[i].Cells["EnglishName"].Value.ToString();
+                _qrCode.EncodeToPng(passportNo + "|" + name, path + "\\" + passportNo + ".jpg", QRCodeSaveSize.Size165X165);
+            }
+
+            MessageBox.Show("成功保存" + count + "条记录二维码.");
+
+        }
+        #endregion
     }
 }
