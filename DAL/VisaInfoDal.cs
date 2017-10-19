@@ -58,7 +58,7 @@ namespace TravletAgence.DAL
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState from VisaInfo ");
+            strSql.Append("select  top 1 * from VisaInfo ");
             strSql.Append(" where PassportNo=@PassportNo ");
             SqlParameter[] parameters = {
 					new SqlParameter("@PassportNo", SqlDbType.VarChar,50)			};

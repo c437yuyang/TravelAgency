@@ -39,7 +39,15 @@ namespace TravletAgence.Model
 		private DateTime? _realouttime;
 		private string _country;
 		private string _call;
-		private string _outstate="未记录";
+		private string _outstate="01未记录";
+		private string _residence;
+		private string _occupation;
+		private string _departurerecord;
+		private string _marriaged;
+		private string _identification;
+		private string _financialcapacity;
+		private string _agencyopinion;
+		private string _hastypein="‘否’";
 		/// <summary>
 		/// 
 		/// </summary>
@@ -279,6 +287,70 @@ namespace TravletAgence.Model
 		{
 			set{ _outstate=value;}
 			get{return _outstate;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Residence
+		{
+			set{ _residence=value;}
+			get{return _residence;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Occupation
+		{
+			set{ _occupation=value;}
+			get{return _occupation;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string DepartureRecord
+		{
+			set{ _departurerecord=value;}
+			get{return _departurerecord;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Marriaged
+		{
+			set{ _marriaged=value;}
+			get{return _marriaged;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Identification
+		{
+			set{ _identification=value;}
+			get{return _identification;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string FinancialCapacity
+		{
+			set{ _financialcapacity=value;}
+			get{return _financialcapacity;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string AgencyOpinion
+		{
+			set{ _agencyopinion=value;}
+			get{return _agencyopinion;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string HasTypeIn
+		{
+			set{ _hastypein=value;}
+			get{return _hastypein;}
 		}
 		#endregion Model
 

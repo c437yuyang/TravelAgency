@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +56,12 @@
             this.cbPageSize = new DevComponents.DotNetBar.ComboBoxItem();
             this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
             this.lbCurPage = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem4 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem5 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.btnAddToDatabase = new DevComponents.DotNetBar.ButtonX();
@@ -91,12 +97,7 @@
             this.cmsItemQRCodeBatchPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem4 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem5 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
+            this.cmsItemTypeInInfo = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
@@ -109,14 +110,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._Name,
@@ -129,28 +130,28 @@
             this.Birthplace,
             this.IssuePlace,
             this.outState});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridView1.Location = new System.Drawing.Point(224, 28);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -346,6 +347,39 @@
             // lbCurPage
             // 
             this.lbCurPage.Name = "lbCurPage";
+            // 
+            // labelItem1
+            // 
+            this.labelItem1.Name = "labelItem1";
+            this.labelItem1.Text = "进签:";
+            // 
+            // labelItem3
+            // 
+            this.labelItem3.BackColor = System.Drawing.Color.Yellow;
+            this.labelItem3.Name = "labelItem3";
+            this.labelItem3.Text = "          ";
+            // 
+            // labelItem4
+            // 
+            this.labelItem4.Name = "labelItem4";
+            this.labelItem4.Text = "出签:";
+            // 
+            // labelItem5
+            // 
+            this.labelItem5.BackColor = System.Drawing.Color.Green;
+            this.labelItem5.Name = "labelItem5";
+            this.labelItem5.Text = "          ";
+            // 
+            // labelItem6
+            // 
+            this.labelItem6.Name = "labelItem6";
+            this.labelItem6.Text = "未正常出签:";
+            // 
+            // labelItem7
+            // 
+            this.labelItem7.BackColor = System.Drawing.Color.Red;
+            this.labelItem7.Name = "labelItem7";
+            this.labelItem7.Text = "          ";
             // 
             // panelEx2
             // 
@@ -666,13 +700,14 @@
             this.cmsDgvRb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmsItemDelete,
             this.cmsItemModify,
+            this.cmsItemTypeInInfo,
             this.cmsItemQRCodeShow,
             this.cmsItemQRCodeBatchGenerate,
             this.cmsItemQRCodeBatchPrint,
             this.cmsItemQRCodePrint,
             this.cmsItemRefreshState});
             this.cmsDgvRb.Name = "cmsDgvRb";
-            this.cmsDgvRb.Size = new System.Drawing.Size(161, 158);
+            this.cmsDgvRb.Size = new System.Drawing.Size(161, 202);
             // 
             // cmsItemDelete
             // 
@@ -719,38 +754,11 @@
             this.cmsItemRefreshState.Text = "刷新数据库状态";
             this.cmsItemRefreshState.Click += new System.EventHandler(this.cmsItemRefreshState_Click);
             // 
-            // labelItem1
+            // cmsItemTypeInInfo
             // 
-            this.labelItem1.Name = "labelItem1";
-            this.labelItem1.Text = "进签:";
-            // 
-            // labelItem3
-            // 
-            this.labelItem3.BackColor = System.Drawing.Color.Yellow;
-            this.labelItem3.Name = "labelItem3";
-            this.labelItem3.Text = "          ";
-            // 
-            // labelItem4
-            // 
-            this.labelItem4.Name = "labelItem4";
-            this.labelItem4.Text = "出签:";
-            // 
-            // labelItem5
-            // 
-            this.labelItem5.BackColor = System.Drawing.Color.Green;
-            this.labelItem5.Name = "labelItem5";
-            this.labelItem5.Text = "          ";
-            // 
-            // labelItem6
-            // 
-            this.labelItem6.Name = "labelItem6";
-            this.labelItem6.Text = "未正常出签:";
-            // 
-            // labelItem7
-            // 
-            this.labelItem7.BackColor = System.Drawing.Color.Red;
-            this.labelItem7.Name = "labelItem7";
-            this.labelItem7.Text = "          ";
+            this.cmsItemTypeInInfo.Name = "cmsItemTypeInInfo";
+            this.cmsItemTypeInInfo.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemTypeInInfo.Text = "录入资料";
             // 
             // FrmVisaTypeIn
             // 
@@ -838,6 +846,7 @@
         private DevComponents.DotNetBar.LabelItem labelItem5;
         private DevComponents.DotNetBar.LabelItem labelItem6;
         private DevComponents.DotNetBar.LabelItem labelItem7;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemTypeInInfo;
 
     }
 }

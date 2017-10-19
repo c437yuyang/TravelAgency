@@ -51,7 +51,7 @@ namespace TravletAgence.BLL
 		/// </summary>
 		public bool DeleteList(string VisaInfo_idlist )
 		{
-			return dal.DeleteList(VisaInfo_idlist);
+		    return dal.DeleteList(VisaInfo_idlist);
 		}
 
 		/// <summary>
