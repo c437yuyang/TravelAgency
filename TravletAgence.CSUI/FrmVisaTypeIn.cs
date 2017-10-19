@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -391,7 +392,6 @@ namespace TravletAgence.CSUI
         /// <param name="e"></param>
         private void cmsItemDelete_Click(object sender, EventArgs e)
         {
-            
             int count = this.dataGridView1.SelectedRows.Count;
             if(MessageBox.Show("确认删除" + count + "条记录?","确认",MessageBoxButtons.OKCancel)==DialogResult.Cancel)
                 return;
@@ -412,6 +412,25 @@ namespace TravletAgence.CSUI
             UpdateState();
         }
         #endregion
+
+        private void cmsItemSetGroup_Click(object sender, EventArgs e)
+        {
+            int count = this.dataGridView1.SelectedRows.Count;
+
+            List<Model.VisaInfo> list = new List<VisaInfo>();
+
+
+            for (int i = 0; i != count; ++i)
+            {
+                Model.VisaInfo model = bll.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
+                if(model != null)
+                    list.Add(model);
+            }
+
+            FrmSetGroup frmSetGroup = new FrmSetGroup(list);
+            frmSetGroup.ShowDialog();
+
+        }
 
 
 
