@@ -288,20 +288,16 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 批量删除数据
 		/// </summary>
-		public bool DeleteList(string VisaInfo_idlist )
+		public int DeleteList(string VisaInfo_idlist )
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from VisaInfo ");
 			strSql.Append(" where VisaInfo_id in ("+VisaInfo_idlist + ")  ");
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString());
-			if (rows > 0)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+
+				return rows;
+			
+
 		}
 
 

@@ -49,7 +49,7 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool DeleteList(string VisaInfo_idlist )
+		public int DeleteList(string VisaInfo_idlist )
 		{
 		    return dal.DeleteList(VisaInfo_idlist);
 		}

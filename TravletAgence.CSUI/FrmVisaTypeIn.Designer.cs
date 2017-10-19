@@ -43,6 +43,9 @@
             this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HasTypeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.btnPageFirst = new DevComponents.DotNetBar.ButtonItem();
@@ -92,12 +95,12 @@
             this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemModify = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemTypeInInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeShow = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeBatchGenerate = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeBatchPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsItemTypeInInfo = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
@@ -129,13 +132,16 @@
             this.ExpiryDate,
             this.Birthplace,
             this.IssuePlace,
-            this.outState});
+            this.outState,
+            this.HasTypeIn,
+            this.GroupNo,
+            this.VisaInfo_id});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -230,6 +236,28 @@
             this.outState.HeaderText = "送签状态";
             this.outState.Name = "outState";
             this.outState.ReadOnly = true;
+            // 
+            // HasTypeIn
+            // 
+            this.HasTypeIn.DataPropertyName = "HasTypeIn";
+            this.HasTypeIn.HeaderText = "资料录入";
+            this.HasTypeIn.Name = "HasTypeIn";
+            this.HasTypeIn.ReadOnly = true;
+            // 
+            // GroupNo
+            // 
+            this.GroupNo.DataPropertyName = "GroupNo";
+            this.GroupNo.HeaderText = "团号";
+            this.GroupNo.Name = "GroupNo";
+            this.GroupNo.ReadOnly = true;
+            // 
+            // VisaInfo_id
+            // 
+            this.VisaInfo_id.DataPropertyName = "VisaInfo_id";
+            this.VisaInfo_id.HeaderText = "VisaInfo_id";
+            this.VisaInfo_id.Name = "VisaInfo_id";
+            this.VisaInfo_id.ReadOnly = true;
+            this.VisaInfo_id.Visible = false;
             // 
             // panelMain
             // 
@@ -707,19 +735,27 @@
             this.cmsItemQRCodePrint,
             this.cmsItemRefreshState});
             this.cmsDgvRb.Name = "cmsDgvRb";
-            this.cmsDgvRb.Size = new System.Drawing.Size(161, 202);
+            this.cmsDgvRb.Size = new System.Drawing.Size(161, 180);
             // 
             // cmsItemDelete
             // 
             this.cmsItemDelete.Name = "cmsItemDelete";
             this.cmsItemDelete.Size = new System.Drawing.Size(160, 22);
             this.cmsItemDelete.Text = "删除";
+            this.cmsItemDelete.Click += new System.EventHandler(this.cmsItemDelete_Click);
             // 
             // cmsItemModify
             // 
             this.cmsItemModify.Name = "cmsItemModify";
             this.cmsItemModify.Size = new System.Drawing.Size(160, 22);
             this.cmsItemModify.Text = "修改";
+            // 
+            // cmsItemTypeInInfo
+            // 
+            this.cmsItemTypeInInfo.Name = "cmsItemTypeInInfo";
+            this.cmsItemTypeInInfo.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemTypeInInfo.Text = "录入资料";
+            this.cmsItemTypeInInfo.Click += new System.EventHandler(this.cmsItemTypeInInfo_Click);
             // 
             // cmsItemQRCodeShow
             // 
@@ -753,12 +789,6 @@
             this.cmsItemRefreshState.Size = new System.Drawing.Size(160, 22);
             this.cmsItemRefreshState.Text = "刷新数据库状态";
             this.cmsItemRefreshState.Click += new System.EventHandler(this.cmsItemRefreshState_Click);
-            // 
-            // cmsItemTypeInInfo
-            // 
-            this.cmsItemTypeInInfo.Name = "cmsItemTypeInInfo";
-            this.cmsItemTypeInInfo.Size = new System.Drawing.Size(160, 22);
-            this.cmsItemTypeInInfo.Text = "录入资料";
             // 
             // FrmVisaTypeIn
             // 
@@ -829,6 +859,14 @@
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeBatchGenerate;
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeBatchPrint;
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodePrint;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemRefreshState;
+        private DevComponents.DotNetBar.LabelItem labelItem1;
+        private DevComponents.DotNetBar.LabelItem labelItem3;
+        private DevComponents.DotNetBar.LabelItem labelItem4;
+        private DevComponents.DotNetBar.LabelItem labelItem5;
+        private DevComponents.DotNetBar.LabelItem labelItem6;
+        private DevComponents.DotNetBar.LabelItem labelItem7;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemTypeInInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnglishName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sex;
@@ -839,14 +877,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Birthplace;
         private System.Windows.Forms.DataGridViewTextBoxColumn IssuePlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn outState;
-        private System.Windows.Forms.ToolStripMenuItem cmsItemRefreshState;
-        private DevComponents.DotNetBar.LabelItem labelItem1;
-        private DevComponents.DotNetBar.LabelItem labelItem3;
-        private DevComponents.DotNetBar.LabelItem labelItem4;
-        private DevComponents.DotNetBar.LabelItem labelItem5;
-        private DevComponents.DotNetBar.LabelItem labelItem6;
-        private DevComponents.DotNetBar.LabelItem labelItem7;
-        private System.Windows.Forms.ToolStripMenuItem cmsItemTypeInInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HasTypeIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GroupNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VisaInfo_id;
 
     }
 }

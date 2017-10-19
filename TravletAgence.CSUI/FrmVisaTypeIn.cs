@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar.Controls;
 using TravletAgence.Common;
@@ -356,6 +357,64 @@ namespace TravletAgence.CSUI
             MessageBox.Show("成功保存" + count + "条记录二维码.");
 
         }
+
+        /// <summary>
+        /// 录入资料
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmsItemTypeInInfo_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("请选择一行数据进行编辑");
+                return;
+            }
+
+            string visainfoid = dataGridView1.SelectedRows[0].Cells["VisaInfo_id"].Value.ToString();
+            Model.VisaInfo model = bll.GetModel(new Guid(visainfoid));
+            if (model == null)
+            {
+                MessageBox.Show("数据查询出错，请重试!");
+                return;
+            }
+            FrmInfoTypeIn dlg = new FrmInfoTypeIn(model);
+            dlg.ShowDialog();
+            loadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmsItemDelete_Click(object sender, EventArgs e)
+        {
+            
+            int count = this.dataGridView1.SelectedRows.Count;
+            if(MessageBox.Show("确认删除" + count + "条记录?","确认",MessageBoxButtons.OKCancel)==DialogResult.Cancel)
+                return;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i != count; ++i)
+            {
+                sb.Append("'");
+                sb.Append(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value);
+                sb.Append("'");
+                if (i == count - 1)
+                    break;
+                sb.Append(",");
+            }
+
+            int n = bll.DeleteList(sb.ToString());
+            MessageBox.Show(n + "条记录删除成功," + (count - n) + "条记录删除失败.");
+            loadDataToDataGridView(_curPage);
+            UpdateState();
+        }
         #endregion
+
+
+
+
     }
 }
