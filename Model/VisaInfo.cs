@@ -47,7 +47,7 @@ namespace TravletAgence.Model
 		private string _identification;
 		private string _financialcapacity;
 		private string _agencyopinion;
-		private string _hastypein="‘否’";
+		private string _hastypein="否";
 		/// <summary>
 		/// 
 		/// </summary>
