@@ -106,7 +106,12 @@ namespace TravletAgence.CSUI
 
             tabMain.Refresh();
         }
-
-
+        
+        
+        private void tabMain_TabItemClose(object sender, TabStripActionEventArgs e)
+        {
+            TabItem tb = tabMain.SelectedTab;
+            tabMain.Tabs.Remove(tb);
+        }
     }
 }
