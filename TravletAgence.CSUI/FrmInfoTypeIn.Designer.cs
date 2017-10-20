@@ -131,7 +131,7 @@
             this.txtDepartureRecord.Name = "txtDepartureRecord";
             this.txtDepartureRecord.PreventEnterBeep = true;
             this.txtDepartureRecord.Size = new System.Drawing.Size(174, 21);
-            this.txtDepartureRecord.TabIndex = 25;
+            this.txtDepartureRecord.TabIndex = 8;
             // 
             // labelX16
             // 
@@ -153,7 +153,7 @@
             this.btnCreateReport.Name = "btnCreateReport";
             this.btnCreateReport.Size = new System.Drawing.Size(75, 23);
             this.btnCreateReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCreateReport.TabIndex = 23;
+            this.btnCreateReport.TabIndex = 19;
             this.btnCreateReport.Text = "生成报表";
             // 
             // btnCancel
@@ -164,7 +164,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 23;
+            this.btnCancel.TabIndex = 18;
             this.btnCancel.Text = "取消";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -176,7 +176,7 @@
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnConfirm.TabIndex = 23;
+            this.btnConfirm.TabIndex = 17;
             this.btnConfirm.Text = "确认修改";
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -191,7 +191,7 @@
             this.txtBirthPlace.Name = "txtBirthPlace";
             this.txtBirthPlace.PreventEnterBeep = true;
             this.txtBirthPlace.Size = new System.Drawing.Size(174, 21);
-            this.txtBirthPlace.TabIndex = 22;
+            this.txtBirthPlace.TabIndex = 15;
             // 
             // txtExpireDate
             // 
@@ -204,7 +204,7 @@
             this.txtExpireDate.Name = "txtExpireDate";
             this.txtExpireDate.PreventEnterBeep = true;
             this.txtExpireDate.Size = new System.Drawing.Size(174, 21);
-            this.txtExpireDate.TabIndex = 22;
+            this.txtExpireDate.TabIndex = 14;
             // 
             // txtLicenseTime
             // 
@@ -217,7 +217,7 @@
             this.txtLicenseTime.Name = "txtLicenseTime";
             this.txtLicenseTime.PreventEnterBeep = true;
             this.txtLicenseTime.Size = new System.Drawing.Size(174, 21);
-            this.txtLicenseTime.TabIndex = 22;
+            this.txtLicenseTime.TabIndex = 13;
             // 
             // txtPassportNo
             // 
@@ -230,7 +230,7 @@
             this.txtPassportNo.Name = "txtPassportNo";
             this.txtPassportNo.PreventEnterBeep = true;
             this.txtPassportNo.Size = new System.Drawing.Size(174, 21);
-            this.txtPassportNo.TabIndex = 22;
+            this.txtPassportNo.TabIndex = 12;
             // 
             // labelX12
             // 
@@ -291,7 +291,7 @@
             this.txtGroupNo.Name = "txtGroupNo";
             this.txtGroupNo.PreventEnterBeep = true;
             this.txtGroupNo.Size = new System.Drawing.Size(174, 21);
-            this.txtGroupNo.TabIndex = 1;
+            this.txtGroupNo.TabIndex = 16;
             // 
             // txtFinancialCapacity
             // 
@@ -305,7 +305,7 @@
             this.txtFinancialCapacity.Name = "txtFinancialCapacity";
             this.txtFinancialCapacity.PreventEnterBeep = true;
             this.txtFinancialCapacity.Size = new System.Drawing.Size(174, 51);
-            this.txtFinancialCapacity.TabIndex = 1;
+            this.txtFinancialCapacity.TabIndex = 11;
             // 
             // txtIdentification
             // 
@@ -319,7 +319,7 @@
             this.txtIdentification.Name = "txtIdentification";
             this.txtIdentification.PreventEnterBeep = true;
             this.txtIdentification.Size = new System.Drawing.Size(174, 51);
-            this.txtIdentification.TabIndex = 1;
+            this.txtIdentification.TabIndex = 10;
             // 
             // txtMarrige
             // 
@@ -332,7 +332,7 @@
             this.txtMarrige.Name = "txtMarrige";
             this.txtMarrige.PreventEnterBeep = true;
             this.txtMarrige.Size = new System.Drawing.Size(174, 21);
-            this.txtMarrige.TabIndex = 1;
+            this.txtMarrige.TabIndex = 9;
             // 
             // txtOccupation
             // 
@@ -345,7 +345,7 @@
             this.txtOccupation.Name = "txtOccupation";
             this.txtOccupation.PreventEnterBeep = true;
             this.txtOccupation.Size = new System.Drawing.Size(174, 21);
-            this.txtOccupation.TabIndex = 1;
+            this.txtOccupation.TabIndex = 7;
             // 
             // txtBirthday
             // 
@@ -358,7 +358,7 @@
             this.txtBirthday.Name = "txtBirthday";
             this.txtBirthday.PreventEnterBeep = true;
             this.txtBirthday.Size = new System.Drawing.Size(174, 21);
-            this.txtBirthday.TabIndex = 1;
+            this.txtBirthday.TabIndex = 6;
             // 
             // txtResidence
             // 
@@ -372,7 +372,7 @@
             this.txtResidence.Name = "txtResidence";
             this.txtResidence.PreventEnterBeep = true;
             this.txtResidence.Size = new System.Drawing.Size(174, 51);
-            this.txtResidence.TabIndex = 1;
+            this.txtResidence.TabIndex = 5;
             // 
             // txtIssuePlace
             // 
@@ -385,7 +385,7 @@
             this.txtIssuePlace.Name = "txtIssuePlace";
             this.txtIssuePlace.PreventEnterBeep = true;
             this.txtIssuePlace.Size = new System.Drawing.Size(174, 21);
-            this.txtIssuePlace.TabIndex = 1;
+            this.txtIssuePlace.TabIndex = 4;
             // 
             // txtSex
             // 
@@ -398,7 +398,7 @@
             this.txtSex.Name = "txtSex";
             this.txtSex.PreventEnterBeep = true;
             this.txtSex.Size = new System.Drawing.Size(174, 21);
-            this.txtSex.TabIndex = 1;
+            this.txtSex.TabIndex = 3;
             // 
             // txtEnglishName
             // 
@@ -411,7 +411,7 @@
             this.txtEnglishName.Name = "txtEnglishName";
             this.txtEnglishName.PreventEnterBeep = true;
             this.txtEnglishName.Size = new System.Drawing.Size(174, 21);
-            this.txtEnglishName.TabIndex = 1;
+            this.txtEnglishName.TabIndex = 2;
             // 
             // txtName
             // 
