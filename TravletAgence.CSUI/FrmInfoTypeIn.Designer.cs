@@ -29,41 +29,41 @@
         private void InitializeComponent()
         {
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtEnglishName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtSex = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtIssuePlace = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtResidence = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtBirthday = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtMarrige = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtIdentification = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtFinancialCapacity = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtGroupNo = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtDepartureRecord = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX16 = new DevComponents.DotNetBar.LabelX();
+            this.btnCreateReport = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
+            this.txtBirthPlace = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtExpireDate = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtLicenseTime = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtPassportNo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
-            this.txtPassportNo = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtLicenseTime = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtExpireDate = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtBirthPlace = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.btnCreateReport = new DevComponents.DotNetBar.ButtonX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.txtGroupNo = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtFinancialCapacity = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtIdentification = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtMarrige = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtOccupation = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtDepartureRecord = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX16 = new DevComponents.DotNetBar.LabelX();
+            this.txtBirthday = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtResidence = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtIssuePlace = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtSex = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtEnglishName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,258 +120,117 @@
             this.panelMain.Style.GradientAngle = 90;
             this.panelMain.TabIndex = 0;
             // 
-            // labelX1
+            // txtDepartureRecord
             // 
             // 
             // 
             // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(12, 12);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(96, 23);
-            this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "姓名(中文)：";
+            this.txtDepartureRecord.Border.Class = "TextBoxBorder";
+            this.txtDepartureRecord.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDepartureRecord.Location = new System.Drawing.Point(97, 245);
+            this.txtDepartureRecord.Name = "txtDepartureRecord";
+            this.txtDepartureRecord.PreventEnterBeep = true;
+            this.txtDepartureRecord.Size = new System.Drawing.Size(174, 21);
+            this.txtDepartureRecord.TabIndex = 25;
             // 
-            // labelX2
+            // labelX16
             // 
             // 
             // 
             // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(12, 41);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(96, 23);
-            this.labelX2.TabIndex = 0;
-            this.labelX2.Text = "姓名:(英文):";
+            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX16.Location = new System.Drawing.Point(12, 247);
+            this.labelX16.Name = "labelX16";
+            this.labelX16.Size = new System.Drawing.Size(96, 23);
+            this.labelX16.TabIndex = 24;
+            this.labelX16.Text = "出境记录:";
             // 
-            // labelX3
+            // btnCreateReport
             // 
+            this.btnCreateReport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCreateReport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCreateReport.Location = new System.Drawing.Point(460, 391);
+            this.btnCreateReport.Name = "btnCreateReport";
+            this.btnCreateReport.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCreateReport.TabIndex = 23;
+            this.btnCreateReport.Text = "生成报表";
             // 
+            // btnCancel
             // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Location = new System.Drawing.Point(379, 391);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 23;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(12, 70);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(96, 23);
-            this.labelX3.TabIndex = 0;
-            this.labelX3.Text = "性别:";
+            // btnConfirm
             // 
-            // labelX4
+            this.btnConfirm.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnConfirm.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnConfirm.Location = new System.Drawing.Point(298, 391);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnConfirm.TabIndex = 23;
+            this.btnConfirm.Text = "确认修改";
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // txtBirthPlace
             // 
             // 
             // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(12, 99);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(96, 23);
-            this.labelX4.TabIndex = 0;
-            this.labelX4.Text = "护照签发地:";
             // 
-            // labelX5
+            this.txtBirthPlace.Border.Class = "TextBoxBorder";
+            this.txtBirthPlace.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthPlace.Location = new System.Drawing.Point(379, 101);
+            this.txtBirthPlace.Name = "txtBirthPlace";
+            this.txtBirthPlace.PreventEnterBeep = true;
+            this.txtBirthPlace.Size = new System.Drawing.Size(174, 21);
+            this.txtBirthPlace.TabIndex = 22;
             // 
+            // txtExpireDate
             // 
             // 
             // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(12, 128);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(96, 23);
-            this.labelX5.TabIndex = 0;
-            this.labelX5.Text = "居住地点:";
             // 
-            // labelX6
+            this.txtExpireDate.Border.Class = "TextBoxBorder";
+            this.txtExpireDate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtExpireDate.Location = new System.Drawing.Point(379, 71);
+            this.txtExpireDate.Name = "txtExpireDate";
+            this.txtExpireDate.PreventEnterBeep = true;
+            this.txtExpireDate.Size = new System.Drawing.Size(174, 21);
+            this.txtExpireDate.TabIndex = 22;
             // 
+            // txtLicenseTime
             // 
             // 
             // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(12, 187);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(96, 23);
-            this.labelX6.TabIndex = 0;
-            this.labelX6.Text = "出生年月日:";
             // 
-            // labelX8
+            this.txtLicenseTime.Border.Class = "TextBoxBorder";
+            this.txtLicenseTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseTime.Location = new System.Drawing.Point(379, 41);
+            this.txtLicenseTime.Name = "txtLicenseTime";
+            this.txtLicenseTime.PreventEnterBeep = true;
+            this.txtLicenseTime.Size = new System.Drawing.Size(174, 21);
+            this.txtLicenseTime.TabIndex = 22;
             // 
+            // txtPassportNo
             // 
             // 
             // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(12, 273);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(96, 23);
-            this.labelX8.TabIndex = 0;
-            this.labelX8.Text = "婚姻:";
             // 
-            // labelX9
-            // 
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(12, 302);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(96, 23);
-            this.labelX9.TabIndex = 0;
-            this.labelX9.Text = "身份确认:";
-            // 
-            // labelX10
-            // 
-            // 
-            // 
-            // 
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(12, 361);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(96, 23);
-            this.labelX10.TabIndex = 0;
-            this.labelX10.Text = "经济能力确认:";
-            // 
-            // labelX11
-            // 
-            // 
-            // 
-            // 
-            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(298, 132);
-            this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(96, 23);
-            this.labelX11.TabIndex = 0;
-            this.labelX11.Text = "所在团号:";
-            // 
-            // txtName
-            // 
-            // 
-            // 
-            // 
-            this.txtName.Border.Class = "TextBoxBorder";
-            this.txtName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtName.Location = new System.Drawing.Point(97, 14);
-            this.txtName.Name = "txtName";
-            this.txtName.PreventEnterBeep = true;
-            this.txtName.Size = new System.Drawing.Size(174, 21);
-            this.txtName.TabIndex = 1;
-            // 
-            // txtEnglishName
-            // 
-            // 
-            // 
-            // 
-            this.txtEnglishName.Border.Class = "TextBoxBorder";
-            this.txtEnglishName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtEnglishName.Location = new System.Drawing.Point(97, 41);
-            this.txtEnglishName.Name = "txtEnglishName";
-            this.txtEnglishName.PreventEnterBeep = true;
-            this.txtEnglishName.Size = new System.Drawing.Size(174, 21);
-            this.txtEnglishName.TabIndex = 1;
-            // 
-            // txtSex
-            // 
-            // 
-            // 
-            // 
-            this.txtSex.Border.Class = "TextBoxBorder";
-            this.txtSex.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSex.Location = new System.Drawing.Point(97, 68);
-            this.txtSex.Name = "txtSex";
-            this.txtSex.PreventEnterBeep = true;
-            this.txtSex.Size = new System.Drawing.Size(174, 21);
-            this.txtSex.TabIndex = 1;
-            // 
-            // txtIssuePlace
-            // 
-            // 
-            // 
-            // 
-            this.txtIssuePlace.Border.Class = "TextBoxBorder";
-            this.txtIssuePlace.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtIssuePlace.Location = new System.Drawing.Point(97, 99);
-            this.txtIssuePlace.Name = "txtIssuePlace";
-            this.txtIssuePlace.PreventEnterBeep = true;
-            this.txtIssuePlace.Size = new System.Drawing.Size(174, 21);
-            this.txtIssuePlace.TabIndex = 1;
-            // 
-            // txtResidence
-            // 
-            // 
-            // 
-            // 
-            this.txtResidence.Border.Class = "TextBoxBorder";
-            this.txtResidence.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtResidence.Location = new System.Drawing.Point(97, 130);
-            this.txtResidence.Multiline = true;
-            this.txtResidence.Name = "txtResidence";
-            this.txtResidence.PreventEnterBeep = true;
-            this.txtResidence.Size = new System.Drawing.Size(174, 51);
-            this.txtResidence.TabIndex = 1;
-            // 
-            // txtBirthday
-            // 
-            // 
-            // 
-            // 
-            this.txtBirthday.Border.Class = "TextBoxBorder";
-            this.txtBirthday.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBirthday.Location = new System.Drawing.Point(97, 187);
-            this.txtBirthday.Name = "txtBirthday";
-            this.txtBirthday.PreventEnterBeep = true;
-            this.txtBirthday.Size = new System.Drawing.Size(174, 21);
-            this.txtBirthday.TabIndex = 1;
-            // 
-            // txtMarrige
-            // 
-            // 
-            // 
-            // 
-            this.txtMarrige.Border.Class = "TextBoxBorder";
-            this.txtMarrige.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtMarrige.Location = new System.Drawing.Point(97, 273);
-            this.txtMarrige.Name = "txtMarrige";
-            this.txtMarrige.PreventEnterBeep = true;
-            this.txtMarrige.Size = new System.Drawing.Size(174, 21);
-            this.txtMarrige.TabIndex = 1;
-            // 
-            // txtIdentification
-            // 
-            // 
-            // 
-            // 
-            this.txtIdentification.Border.Class = "TextBoxBorder";
-            this.txtIdentification.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtIdentification.Location = new System.Drawing.Point(97, 302);
-            this.txtIdentification.Multiline = true;
-            this.txtIdentification.Name = "txtIdentification";
-            this.txtIdentification.PreventEnterBeep = true;
-            this.txtIdentification.Size = new System.Drawing.Size(174, 51);
-            this.txtIdentification.TabIndex = 1;
-            // 
-            // txtFinancialCapacity
-            // 
-            // 
-            // 
-            // 
-            this.txtFinancialCapacity.Border.Class = "TextBoxBorder";
-            this.txtFinancialCapacity.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtFinancialCapacity.Location = new System.Drawing.Point(97, 361);
-            this.txtFinancialCapacity.Multiline = true;
-            this.txtFinancialCapacity.Name = "txtFinancialCapacity";
-            this.txtFinancialCapacity.PreventEnterBeep = true;
-            this.txtFinancialCapacity.Size = new System.Drawing.Size(174, 51);
-            this.txtFinancialCapacity.TabIndex = 1;
-            // 
-            // txtGroupNo
-            // 
-            // 
-            // 
-            // 
-            this.txtGroupNo.Border.Class = "TextBoxBorder";
-            this.txtGroupNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtGroupNo.Location = new System.Drawing.Point(379, 132);
-            this.txtGroupNo.Name = "txtGroupNo";
-            this.txtGroupNo.PreventEnterBeep = true;
-            this.txtGroupNo.Size = new System.Drawing.Size(174, 21);
-            this.txtGroupNo.TabIndex = 1;
+            this.txtPassportNo.Border.Class = "TextBoxBorder";
+            this.txtPassportNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPassportNo.Location = new System.Drawing.Point(379, 8);
+            this.txtPassportNo.Name = "txtPassportNo";
+            this.txtPassportNo.PreventEnterBeep = true;
+            this.txtPassportNo.Size = new System.Drawing.Size(174, 21);
+            this.txtPassportNo.TabIndex = 22;
             // 
             // labelX12
             // 
@@ -421,104 +280,59 @@
             this.labelX15.TabIndex = 21;
             this.labelX15.Text = "护照号码:";
             // 
-            // txtPassportNo
+            // txtGroupNo
             // 
             // 
             // 
             // 
-            this.txtPassportNo.Border.Class = "TextBoxBorder";
-            this.txtPassportNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPassportNo.Location = new System.Drawing.Point(379, 8);
-            this.txtPassportNo.Name = "txtPassportNo";
-            this.txtPassportNo.PreventEnterBeep = true;
-            this.txtPassportNo.Size = new System.Drawing.Size(174, 21);
-            this.txtPassportNo.TabIndex = 22;
+            this.txtGroupNo.Border.Class = "TextBoxBorder";
+            this.txtGroupNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtGroupNo.Location = new System.Drawing.Point(379, 132);
+            this.txtGroupNo.Name = "txtGroupNo";
+            this.txtGroupNo.PreventEnterBeep = true;
+            this.txtGroupNo.Size = new System.Drawing.Size(174, 21);
+            this.txtGroupNo.TabIndex = 1;
             // 
-            // txtLicenseTime
-            // 
-            // 
-            // 
-            // 
-            this.txtLicenseTime.Border.Class = "TextBoxBorder";
-            this.txtLicenseTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtLicenseTime.Location = new System.Drawing.Point(379, 41);
-            this.txtLicenseTime.Name = "txtLicenseTime";
-            this.txtLicenseTime.PreventEnterBeep = true;
-            this.txtLicenseTime.Size = new System.Drawing.Size(174, 21);
-            this.txtLicenseTime.TabIndex = 22;
-            // 
-            // txtExpireDate
+            // txtFinancialCapacity
             // 
             // 
             // 
             // 
-            this.txtExpireDate.Border.Class = "TextBoxBorder";
-            this.txtExpireDate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtExpireDate.Location = new System.Drawing.Point(379, 71);
-            this.txtExpireDate.Name = "txtExpireDate";
-            this.txtExpireDate.PreventEnterBeep = true;
-            this.txtExpireDate.Size = new System.Drawing.Size(174, 21);
-            this.txtExpireDate.TabIndex = 22;
+            this.txtFinancialCapacity.Border.Class = "TextBoxBorder";
+            this.txtFinancialCapacity.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtFinancialCapacity.Location = new System.Drawing.Point(97, 361);
+            this.txtFinancialCapacity.Multiline = true;
+            this.txtFinancialCapacity.Name = "txtFinancialCapacity";
+            this.txtFinancialCapacity.PreventEnterBeep = true;
+            this.txtFinancialCapacity.Size = new System.Drawing.Size(174, 51);
+            this.txtFinancialCapacity.TabIndex = 1;
             // 
-            // txtBirthPlace
-            // 
-            // 
-            // 
-            // 
-            this.txtBirthPlace.Border.Class = "TextBoxBorder";
-            this.txtBirthPlace.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBirthPlace.Location = new System.Drawing.Point(379, 101);
-            this.txtBirthPlace.Name = "txtBirthPlace";
-            this.txtBirthPlace.PreventEnterBeep = true;
-            this.txtBirthPlace.Size = new System.Drawing.Size(174, 21);
-            this.txtBirthPlace.TabIndex = 22;
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnConfirm.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnConfirm.Location = new System.Drawing.Point(298, 391);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
-            this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnConfirm.TabIndex = 23;
-            this.btnConfirm.Text = "确认修改";
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Location = new System.Drawing.Point(379, 391);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 23;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnCreateReport
-            // 
-            this.btnCreateReport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCreateReport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCreateReport.Location = new System.Drawing.Point(460, 391);
-            this.btnCreateReport.Name = "btnCreateReport";
-            this.btnCreateReport.Size = new System.Drawing.Size(75, 23);
-            this.btnCreateReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCreateReport.TabIndex = 23;
-            this.btnCreateReport.Text = "生成报表";
-            // 
-            // labelX7
+            // txtIdentification
             // 
             // 
             // 
             // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(12, 216);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(96, 23);
-            this.labelX7.TabIndex = 0;
-            this.labelX7.Text = "职业:";
+            this.txtIdentification.Border.Class = "TextBoxBorder";
+            this.txtIdentification.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtIdentification.Location = new System.Drawing.Point(97, 302);
+            this.txtIdentification.Multiline = true;
+            this.txtIdentification.Name = "txtIdentification";
+            this.txtIdentification.PreventEnterBeep = true;
+            this.txtIdentification.Size = new System.Drawing.Size(174, 51);
+            this.txtIdentification.TabIndex = 1;
+            // 
+            // txtMarrige
+            // 
+            // 
+            // 
+            // 
+            this.txtMarrige.Border.Class = "TextBoxBorder";
+            this.txtMarrige.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtMarrige.Location = new System.Drawing.Point(97, 273);
+            this.txtMarrige.Name = "txtMarrige";
+            this.txtMarrige.PreventEnterBeep = true;
+            this.txtMarrige.Size = new System.Drawing.Size(174, 21);
+            this.txtMarrige.TabIndex = 1;
             // 
             // txtOccupation
             // 
@@ -533,30 +347,216 @@
             this.txtOccupation.Size = new System.Drawing.Size(174, 21);
             this.txtOccupation.TabIndex = 1;
             // 
-            // txtDepartureRecord
+            // txtBirthday
             // 
             // 
             // 
             // 
-            this.txtDepartureRecord.Border.Class = "TextBoxBorder";
-            this.txtDepartureRecord.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDepartureRecord.Location = new System.Drawing.Point(97, 245);
-            this.txtDepartureRecord.Name = "txtDepartureRecord";
-            this.txtDepartureRecord.PreventEnterBeep = true;
-            this.txtDepartureRecord.Size = new System.Drawing.Size(174, 21);
-            this.txtDepartureRecord.TabIndex = 25;
+            this.txtBirthday.Border.Class = "TextBoxBorder";
+            this.txtBirthday.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthday.Location = new System.Drawing.Point(97, 187);
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.PreventEnterBeep = true;
+            this.txtBirthday.Size = new System.Drawing.Size(174, 21);
+            this.txtBirthday.TabIndex = 1;
             // 
-            // labelX16
-            // 
-            // 
+            // txtResidence
             // 
             // 
-            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX16.Location = new System.Drawing.Point(12, 247);
-            this.labelX16.Name = "labelX16";
-            this.labelX16.Size = new System.Drawing.Size(96, 23);
-            this.labelX16.TabIndex = 24;
-            this.labelX16.Text = "出境记录:";
+            // 
+            // 
+            this.txtResidence.Border.Class = "TextBoxBorder";
+            this.txtResidence.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtResidence.Location = new System.Drawing.Point(97, 130);
+            this.txtResidence.Multiline = true;
+            this.txtResidence.Name = "txtResidence";
+            this.txtResidence.PreventEnterBeep = true;
+            this.txtResidence.Size = new System.Drawing.Size(174, 51);
+            this.txtResidence.TabIndex = 1;
+            // 
+            // txtIssuePlace
+            // 
+            // 
+            // 
+            // 
+            this.txtIssuePlace.Border.Class = "TextBoxBorder";
+            this.txtIssuePlace.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtIssuePlace.Location = new System.Drawing.Point(97, 99);
+            this.txtIssuePlace.Name = "txtIssuePlace";
+            this.txtIssuePlace.PreventEnterBeep = true;
+            this.txtIssuePlace.Size = new System.Drawing.Size(174, 21);
+            this.txtIssuePlace.TabIndex = 1;
+            // 
+            // txtSex
+            // 
+            // 
+            // 
+            // 
+            this.txtSex.Border.Class = "TextBoxBorder";
+            this.txtSex.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSex.Location = new System.Drawing.Point(97, 68);
+            this.txtSex.Name = "txtSex";
+            this.txtSex.PreventEnterBeep = true;
+            this.txtSex.Size = new System.Drawing.Size(174, 21);
+            this.txtSex.TabIndex = 1;
+            // 
+            // txtEnglishName
+            // 
+            // 
+            // 
+            // 
+            this.txtEnglishName.Border.Class = "TextBoxBorder";
+            this.txtEnglishName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtEnglishName.Location = new System.Drawing.Point(97, 41);
+            this.txtEnglishName.Name = "txtEnglishName";
+            this.txtEnglishName.PreventEnterBeep = true;
+            this.txtEnglishName.Size = new System.Drawing.Size(174, 21);
+            this.txtEnglishName.TabIndex = 1;
+            // 
+            // txtName
+            // 
+            // 
+            // 
+            // 
+            this.txtName.Border.Class = "TextBoxBorder";
+            this.txtName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtName.Location = new System.Drawing.Point(97, 14);
+            this.txtName.Name = "txtName";
+            this.txtName.PreventEnterBeep = true;
+            this.txtName.Size = new System.Drawing.Size(174, 21);
+            this.txtName.TabIndex = 1;
+            // 
+            // labelX11
+            // 
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Location = new System.Drawing.Point(298, 132);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(96, 23);
+            this.labelX11.TabIndex = 0;
+            this.labelX11.Text = "所在团号:";
+            // 
+            // labelX10
+            // 
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Location = new System.Drawing.Point(12, 361);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(96, 23);
+            this.labelX10.TabIndex = 0;
+            this.labelX10.Text = "经济能力确认:";
+            // 
+            // labelX9
+            // 
+            // 
+            // 
+            // 
+            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX9.Location = new System.Drawing.Point(12, 302);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(96, 23);
+            this.labelX9.TabIndex = 0;
+            this.labelX9.Text = "身份确认:";
+            // 
+            // labelX8
+            // 
+            // 
+            // 
+            // 
+            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX8.Location = new System.Drawing.Point(12, 273);
+            this.labelX8.Name = "labelX8";
+            this.labelX8.Size = new System.Drawing.Size(96, 23);
+            this.labelX8.TabIndex = 0;
+            this.labelX8.Text = "婚姻:";
+            // 
+            // labelX7
+            // 
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Location = new System.Drawing.Point(12, 216);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(96, 23);
+            this.labelX7.TabIndex = 0;
+            this.labelX7.Text = "职业:";
+            // 
+            // labelX6
+            // 
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(12, 187);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(96, 23);
+            this.labelX6.TabIndex = 0;
+            this.labelX6.Text = "出生年月日:";
+            // 
+            // labelX5
+            // 
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Location = new System.Drawing.Point(12, 128);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(96, 23);
+            this.labelX5.TabIndex = 0;
+            this.labelX5.Text = "居住地点:";
+            // 
+            // labelX4
+            // 
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Location = new System.Drawing.Point(12, 99);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(96, 23);
+            this.labelX4.TabIndex = 0;
+            this.labelX4.Text = "护照签发地:";
+            // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(12, 70);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(96, 23);
+            this.labelX3.TabIndex = 0;
+            this.labelX3.Text = "性别:";
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(12, 41);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(96, 23);
+            this.labelX2.TabIndex = 0;
+            this.labelX2.Text = "姓名:(英文):";
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(12, 12);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(96, 23);
+            this.labelX1.TabIndex = 0;
+            this.labelX1.Text = "姓名(中文)：";
             // 
             // FrmInfoTypeIn
             // 

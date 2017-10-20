@@ -33,7 +33,6 @@ namespace TravletAgence.CSUI
 
         private void FrmQRCode_Load(object sender, EventArgs e)
         {
-           
             SetQRCodeToPicBox();
         }
 

@@ -162,10 +162,6 @@ namespace TravletAgence.CSUI
             UpdateState();
         }
 
-
-
-
-
         private void btnShowInQR_Click(object sender, EventArgs e)
         {
             FrmQRCode frm = new FrmQRCode(OutStateString.TYPE02In);
@@ -242,12 +238,17 @@ namespace TravletAgence.CSUI
         }
 
         #region dgv用到的相关方法
-        private void loadDataToDataGridView(int page)
+        public void loadDataToDataGridView(int page) //刷新后保持选中
         {
+            int curSelectedRow = -1;
+            if (dataGridView1.SelectedRows.Count > 0)
+                curSelectedRow = dataGridView1.SelectedRows[0].Index;
             dataGridView1.DataSource = bll.GetListByPage(page, _pageSize);
+            if (curSelectedRow != -1)
+                dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
         }
 
-        private void UpdateState()
+        public void UpdateState()
         {
             _recordCount = bll.GetRecordCount(string.Empty);
             _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
@@ -454,10 +455,10 @@ namespace TravletAgence.CSUI
                 MessageBox.Show("数据查询出错，请重试!");
                 return;
             }
-            FrmInfoTypeIn dlg = new FrmInfoTypeIn(model);
+
+            Action<int> updateDel = new Action<int>(loadDataToDataGridView);
+            FrmInfoTypeIn dlg = new FrmInfoTypeIn(model, updateDel, _curPage);
             dlg.ShowDialog();
-            loadDataToDataGridView(_curPage);
-            UpdateState();
         }
 
         /// <summary>
@@ -498,7 +499,7 @@ namespace TravletAgence.CSUI
         #endregion
 
 
-        
+
 
 
 

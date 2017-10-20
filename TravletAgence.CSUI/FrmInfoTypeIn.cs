@@ -17,16 +17,15 @@ namespace TravletAgence.CSUI
 
         private Model.VisaInfo _model;
         private readonly BLL.VisaInfo bll = new BLL.VisaInfo();
+        private Action<int> _updateDel;
+        private int _curPage;
 
-        public FrmInfoTypeIn()
-        {
-            InitializeComponent();
-        }
-
-        public FrmInfoTypeIn(Model.VisaInfo model)
+        public FrmInfoTypeIn(Model.VisaInfo model, Action<int> updateDel,int page)
         {
             InitializeComponent();
             this._model = model;
+            _updateDel = updateDel;
+            _curPage = page;
             ModelToCtrls(this._model);
         }
 
@@ -76,31 +75,32 @@ namespace TravletAgence.CSUI
                 _model.GroupNo = txtGroupNo.Text;
                 _model.DepartureRecord = txtDepartureRecord.Text; //这里应该做校验,以及给用户做成comboBox那种
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("请确保日期输入信息正确!");
                 return;
             }
 
         }
-
-
-
-
         private void FrmInfoTypeIn_Load(object sender, EventArgs e)
         {
-
+            this.StartPosition = FormStartPosition.CenterParent; //不能写在form_load里面，是已经加载完成了
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            DialogResult res = MessageBox.Show("是否同时更新为已录入状态?", "确认", MessageBoxButtons.YesNoCancel);
+            if (res == DialogResult.Cancel)
+                return;
             CtrlsToModel();
-            _model.HasTypeIn = "是";
+            if (res == DialogResult.Yes)
+                _model.HasTypeIn = "是";
             if (!bll.Update(_model))
             {
                 MessageBox.Show("更新失败，请重试!");
                 return;
             }
+            _updateDel(_curPage);
             Close();
         }
 
