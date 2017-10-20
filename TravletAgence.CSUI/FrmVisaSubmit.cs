@@ -489,6 +489,31 @@ namespace TravletAgence.CSUI
             UpdateState();
         }
 
+        /// <summary>
+        /// 设置团号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmsItemSetGroup_Click(object sender, EventArgs e)
+        {
+            int count = this.dataGridView1.SelectedRows.Count;
+
+            List<Model.VisaInfo> list = new List<VisaInfo>();
+
+
+            for (int i = 0; i != count; ++i)
+            {
+                Model.VisaInfo model = bll.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
+                if (model != null)
+                    list.Add(model);
+            }
+
+            FrmSetGroup frmSetGroup = new FrmSetGroup(list);
+            frmSetGroup.ShowDialog();
+
+        }
+
+
         private void cmsItemModify_Click(object sender, EventArgs e)
         {
 
@@ -497,6 +522,8 @@ namespace TravletAgence.CSUI
 
 
         #endregion
+
+
 
 
 

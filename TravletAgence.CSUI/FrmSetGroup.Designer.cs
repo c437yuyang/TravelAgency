@@ -29,23 +29,25 @@
         private void InitializeComponent()
         {
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.txtSalesPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnCreateReport = new DevComponents.DotNetBar.ButtonX();
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
-            this.btnAllIn = new DevComponents.DotNetBar.ButtonX();
-            this.btnIn = new DevComponents.DotNetBar.ButtonX();
-            this.btnOut = new DevComponents.DotNetBar.ButtonX();
-            this.btnAllOut = new DevComponents.DotNetBar.ButtonX();
-            this.lvOut = new DevComponents.DotNetBar.Controls.ListViewEx();
-            this._Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.EntryTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.IssuePlace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvIn = new DevComponents.DotNetBar.Controls.ListViewEx();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvOut = new DevComponents.DotNetBar.Controls.ListViewEx();
+            this._Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.EntryTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IssuePlace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnAllOut = new DevComponents.DotNetBar.ButtonX();
+            this.btnOut = new DevComponents.DotNetBar.ButtonX();
+            this.btnIn = new DevComponents.DotNetBar.ButtonX();
+            this.btnAllIn = new DevComponents.DotNetBar.ButtonX();
+            this.btnCreateReport = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
+            this.txtSalesPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.txtGroupNo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +64,8 @@
             this.panelMain.Controls.Add(this.btnCreateReport);
             this.panelMain.Controls.Add(this.btnCancel);
             this.panelMain.Controls.Add(this.btnConfirm);
+            this.panelMain.Controls.Add(this.txtGroupNo);
+            this.panelMain.Controls.Add(this.labelX2);
             this.panelMain.Controls.Add(this.txtSalesPerson);
             this.panelMain.Controls.Add(this.labelX1);
             this.panelMain.DisabledBackColor = System.Drawing.Color.Empty;
@@ -77,146 +81,6 @@
             this.panelMain.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelMain.Style.GradientAngle = 90;
             this.panelMain.TabIndex = 0;
-            // 
-            // labelX1
-            // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(12, 399);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "办理人:";
-            // 
-            // txtSalesPerson
-            // 
-            // 
-            // 
-            // 
-            this.txtSalesPerson.Border.Class = "TextBoxBorder";
-            this.txtSalesPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSalesPerson.Location = new System.Drawing.Point(93, 399);
-            this.txtSalesPerson.Name = "txtSalesPerson";
-            this.txtSalesPerson.PreventEnterBeep = true;
-            this.txtSalesPerson.Size = new System.Drawing.Size(100, 21);
-            this.txtSalesPerson.TabIndex = 1;
-            // 
-            // btnCreateReport
-            // 
-            this.btnCreateReport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCreateReport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCreateReport.Location = new System.Drawing.Point(446, 397);
-            this.btnCreateReport.Name = "btnCreateReport";
-            this.btnCreateReport.Size = new System.Drawing.Size(75, 23);
-            this.btnCreateReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCreateReport.TabIndex = 24;
-            this.btnCreateReport.Text = "生成报表";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Location = new System.Drawing.Point(365, 397);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 25;
-            this.btnCancel.Text = "取消";
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnConfirm.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnConfirm.Location = new System.Drawing.Point(284, 397);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
-            this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnConfirm.TabIndex = 26;
-            this.btnConfirm.Text = "确认修改";
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // btnAllIn
-            // 
-            this.btnAllIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAllIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAllIn.Location = new System.Drawing.Point(342, 93);
-            this.btnAllIn.Name = "btnAllIn";
-            this.btnAllIn.Size = new System.Drawing.Size(75, 23);
-            this.btnAllIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAllIn.TabIndex = 28;
-            this.btnAllIn.Text = ">>";
-            // 
-            // btnIn
-            // 
-            this.btnIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnIn.Location = new System.Drawing.Point(342, 145);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnIn.TabIndex = 28;
-            this.btnIn.Text = ">";
-            // 
-            // btnOut
-            // 
-            this.btnOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOut.Location = new System.Drawing.Point(342, 197);
-            this.btnOut.Name = "btnOut";
-            this.btnOut.Size = new System.Drawing.Size(75, 23);
-            this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOut.TabIndex = 28;
-            this.btnOut.Text = "<";
-            // 
-            // btnAllOut
-            // 
-            this.btnAllOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAllOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAllOut.Location = new System.Drawing.Point(342, 249);
-            this.btnAllOut.Name = "btnAllOut";
-            this.btnAllOut.Size = new System.Drawing.Size(75, 23);
-            this.btnAllOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAllOut.TabIndex = 28;
-            this.btnAllOut.Text = "<<";
-            // 
-            // lvOut
-            // 
-            // 
-            // 
-            // 
-            this.lvOut.Border.Class = "ListViewBorder";
-            this.lvOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lvOut.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this._Name,
-            this.EntryTime,
-            this.IssuePlace});
-            this.lvOut.DisabledBackColor = System.Drawing.Color.Empty;
-            this.lvOut.FullRowSelect = true;
-            this.lvOut.Location = new System.Drawing.Point(12, 70);
-            this.lvOut.Name = "lvOut";
-            this.lvOut.Size = new System.Drawing.Size(313, 238);
-            this.lvOut.TabIndex = 29;
-            this.lvOut.UseCompatibleStateImageBehavior = false;
-            this.lvOut.View = System.Windows.Forms.View.Details;
-            // 
-            // _Name
-            // 
-            this._Name.Text = "姓名";
-            this._Name.Width = 50;
-            // 
-            // EntryTime
-            // 
-            this.EntryTime.Text = "录入时间";
-            this.EntryTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EntryTime.Width = 86;
-            // 
-            // IssuePlace
-            // 
-            this.IssuePlace.Text = "签发地";
-            this.IssuePlace.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.IssuePlace.Width = 86;
             // 
             // lvIn
             // 
@@ -255,6 +119,175 @@
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader3.Width = 86;
             // 
+            // lvOut
+            // 
+            // 
+            // 
+            // 
+            this.lvOut.Border.Class = "ListViewBorder";
+            this.lvOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lvOut.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this._Name,
+            this.EntryTime,
+            this.IssuePlace});
+            this.lvOut.DisabledBackColor = System.Drawing.Color.Empty;
+            this.lvOut.FullRowSelect = true;
+            this.lvOut.Location = new System.Drawing.Point(12, 70);
+            this.lvOut.Name = "lvOut";
+            this.lvOut.Size = new System.Drawing.Size(313, 238);
+            this.lvOut.TabIndex = 29;
+            this.lvOut.UseCompatibleStateImageBehavior = false;
+            this.lvOut.View = System.Windows.Forms.View.Details;
+            // 
+            // _Name
+            // 
+            this._Name.Text = "姓名";
+            this._Name.Width = 50;
+            // 
+            // EntryTime
+            // 
+            this.EntryTime.Text = "录入时间";
+            this.EntryTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EntryTime.Width = 86;
+            // 
+            // IssuePlace
+            // 
+            this.IssuePlace.Text = "签发地";
+            this.IssuePlace.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.IssuePlace.Width = 86;
+            // 
+            // btnAllOut
+            // 
+            this.btnAllOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAllOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAllOut.Location = new System.Drawing.Point(342, 249);
+            this.btnAllOut.Name = "btnAllOut";
+            this.btnAllOut.Size = new System.Drawing.Size(75, 23);
+            this.btnAllOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAllOut.TabIndex = 28;
+            this.btnAllOut.Text = "<<";
+            this.btnAllOut.Click += new System.EventHandler(this.btnAllOut_Click);
+            // 
+            // btnOut
+            // 
+            this.btnOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnOut.Location = new System.Drawing.Point(342, 197);
+            this.btnOut.Name = "btnOut";
+            this.btnOut.Size = new System.Drawing.Size(75, 23);
+            this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOut.TabIndex = 28;
+            this.btnOut.Text = "<";
+            this.btnOut.Click += new System.EventHandler(this.btnOut_Click);
+            // 
+            // btnIn
+            // 
+            this.btnIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnIn.Location = new System.Drawing.Point(342, 145);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnIn.TabIndex = 28;
+            this.btnIn.Text = ">";
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // btnAllIn
+            // 
+            this.btnAllIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAllIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAllIn.Location = new System.Drawing.Point(342, 93);
+            this.btnAllIn.Name = "btnAllIn";
+            this.btnAllIn.Size = new System.Drawing.Size(75, 23);
+            this.btnAllIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAllIn.TabIndex = 28;
+            this.btnAllIn.Text = ">>";
+            this.btnAllIn.Click += new System.EventHandler(this.btnAllIn_Click);
+            // 
+            // btnCreateReport
+            // 
+            this.btnCreateReport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCreateReport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCreateReport.Location = new System.Drawing.Point(446, 397);
+            this.btnCreateReport.Name = "btnCreateReport";
+            this.btnCreateReport.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCreateReport.TabIndex = 24;
+            this.btnCreateReport.Text = "生成报表";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Location = new System.Drawing.Point(365, 397);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 25;
+            this.btnCancel.Text = "取消";
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnConfirm.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnConfirm.Location = new System.Drawing.Point(284, 397);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnConfirm.TabIndex = 26;
+            this.btnConfirm.Text = "确认修改";
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // txtSalesPerson
+            // 
+            // 
+            // 
+            // 
+            this.txtSalesPerson.Border.Class = "TextBoxBorder";
+            this.txtSalesPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSalesPerson.Location = new System.Drawing.Point(93, 399);
+            this.txtSalesPerson.Name = "txtSalesPerson";
+            this.txtSalesPerson.PreventEnterBeep = true;
+            this.txtSalesPerson.Size = new System.Drawing.Size(100, 21);
+            this.txtSalesPerson.TabIndex = 1;
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(12, 399);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.TabIndex = 0;
+            this.labelX1.Text = "办理人:";
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(12, 24);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(480, 23);
+            this.labelX2.TabIndex = 0;
+            this.labelX2.Text = "团号:";
+            // 
+            // txtGroupNo
+            // 
+            // 
+            // 
+            // 
+            this.txtGroupNo.Border.Class = "TextBoxBorder";
+            this.txtGroupNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtGroupNo.Location = new System.Drawing.Point(93, 24);
+            this.txtGroupNo.Name = "txtGroupNo";
+            this.txtGroupNo.PreventEnterBeep = true;
+            this.txtGroupNo.Size = new System.Drawing.Size(671, 21);
+            this.txtGroupNo.TabIndex = 1;
+            // 
             // FrmSetGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -289,5 +322,7 @@
         private System.Windows.Forms.ColumnHeader _Name;
         private System.Windows.Forms.ColumnHeader EntryTime;
         private System.Windows.Forms.ColumnHeader IssuePlace;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtGroupNo;
+        private DevComponents.DotNetBar.LabelX labelX2;
     }
 }

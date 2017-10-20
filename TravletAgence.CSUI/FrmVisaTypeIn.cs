@@ -416,8 +416,12 @@ namespace TravletAgence.CSUI
             loadDataToDataGridView(_curPage);
             UpdateState();
         }
-        #endregion
 
+        /// <summary>
+        /// 设置团号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmsItemSetGroup_Click(object sender, EventArgs e)
         {
             int count = this.dataGridView1.SelectedRows.Count;
@@ -436,6 +440,10 @@ namespace TravletAgence.CSUI
             frmSetGroup.ShowDialog();
 
         }
+
+        #endregion
+
+        
 
 
 
