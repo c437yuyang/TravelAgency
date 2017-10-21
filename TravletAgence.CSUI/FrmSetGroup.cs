@@ -31,6 +31,10 @@ namespace TravletAgence.CSUI
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
         {
+            dgvGroupInfo.AutoGenerateColumns = false;
+            dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
+            dgvGroupInfo.DataSource = _list;
+
             if (_list.Count == 0)
                 return;
             //加载列表
@@ -112,6 +116,21 @@ namespace TravletAgence.CSUI
             }
             this.txtGroupNo.Text = _visaName;
         }
+
+        private void dgvGroupInfo_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
+            {
+                dgvGroupInfo.Rows[i].HeaderCell.Value = (i + 1).ToString();
+            }
+        }
+
+
+
+
+
+
+
 
 
 
