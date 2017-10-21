@@ -32,6 +32,15 @@ namespace TravletAgence.BLL
             return dal.GetModelByPassportNo(passportNo);
         }
 
+        public int UpdateByList(List<Model.VisaInfo> list)
+        {
+            int res = 0;
+            for (int i = 0; i < list.Count; i++)
+            {
+                res += Update(list[i]) ? 1 : 0;
+            }
+            return res;
+        }
 
 
     }

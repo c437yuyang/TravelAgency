@@ -327,10 +327,10 @@
             this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonPanel4.Controls.Add(this.ribbonBar7);
             this.ribbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel4.Location = new System.Drawing.Point(0, 0);
+            this.ribbonPanel4.Location = new System.Drawing.Point(0, 26);
             this.ribbonPanel4.Name = "ribbonPanel4";
             this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel4.Size = new System.Drawing.Size(0, 0);
+            this.ribbonPanel4.Size = new System.Drawing.Size(1284, 68);
             // 
             // 
             // 
@@ -367,7 +367,7 @@
             this.btnReportMonth});
             this.ribbonBar7.Location = new System.Drawing.Point(3, 0);
             this.ribbonBar7.Name = "ribbonBar7";
-            this.ribbonBar7.Size = new System.Drawing.Size(273, 0);
+            this.ribbonBar7.Size = new System.Drawing.Size(273, 65);
             this.ribbonBar7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar7.TabIndex = 1;
             this.ribbonBar7.Text = "ribbonBar7";
@@ -524,7 +524,7 @@
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "FrmMain";
-            this.Text = "东瀛假日:签证自动扫描识别系统V1.2";
+            this.Text = "东瀛假日:签证自动扫描识别系统V1.4";
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
             this.ribbonPanel3.ResumeLayout(false);

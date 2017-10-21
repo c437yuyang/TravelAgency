@@ -18,6 +18,7 @@ namespace TravletAgence.CSUI
 
         private List<Model.VisaInfo> _list = new List<VisaInfo>();
         private List<Model.VisaInfo> _dgvList = new List<VisaInfo>();
+        private BLL.VisaInfo bll = new BLL.VisaInfo();
 
         private string _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
 
@@ -37,7 +38,7 @@ namespace TravletAgence.CSUI
             dgvGroupInfo.AutoGenerateColumns = false;
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
             dgvGroupInfo.Columns["Birthday"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;//某一些列关闭自适应
-            
+
             //初始化时间选择控件
             txtDepartureTime.Text = DateTime.Now.ToString();
 
@@ -60,10 +61,64 @@ namespace TravletAgence.CSUI
             lvOut.MultiSelect = true;
         }
 
-        private void btnConfirm_Click(object sender, EventArgs e)
+
+
+
+
+        #region 状态更新函数
+
+        private void updateGroupNo()
         {
-            MessageBox.Show("");
+            _visaName = "QZC" + txtDepartureTime.Value.ToString("yyMMdd");
+            for (int i = 0; i < lvIn.Items.Count; ++i)
+            {
+                _visaName += ((Model.VisaInfo)lvIn.Items[i].Tag).Name;
+                if (i == lvIn.Items.Count - 1)
+                    break;
+                _visaName += "、";
+            }
+            this.txtGroupNo.Text = _visaName;
+            this.lbCount.Text = "团队人数:" + lvIn.Items.Count + "人";
         }
+
+        private void updateDgvData()
+        {
+            _dgvList.Clear();
+            for (int i = 0; i < lvIn.Items.Count; ++i)
+            {
+                _dgvList.Add((Model.VisaInfo)lvIn.Items[i].Tag);
+            }
+            dgvGroupInfo.DataSource = null; //必须加，不然报错，不知道为什么
+            dgvGroupInfo.DataSource = _dgvList;
+            //dgvGroupInfo.Invalidate();
+            //dgvGroupInfo.Update();
+        }
+
+        private void dgvToModelList(List<Model.VisaInfo> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i].HasTypeIn = HasTypeIn.Yes;
+            }
+            int res = bll.UpdateByList(_dgvList);
+            MessageBox.Show(res + "条记录成功更新," + (list.Count - res) + "条记录更新失败.");
+        }
+
+        #endregion
+
+        #region dgv响应
+        private void dgvGroupInfo_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
+            {
+                dgvGroupInfo.Rows[i].HeaderCell.Value = (i + 1).ToString();
+            }
+        }
+
+        #endregion
+
+
+        #region 自己的按钮
 
         private void btnAllIn_Click(object sender, EventArgs e)
         {
@@ -115,55 +170,40 @@ namespace TravletAgence.CSUI
             updateDgvData();
         }
 
-        #region 状态更新函数
 
-        private void updateGroupNo()
-        {
-            _visaName = "QZC" +txtDepartureTime.Value.ToString("yyMMdd");
-            for (int i = 0; i < lvIn.Items.Count; ++i)
-            {
-                _visaName += ((Model.VisaInfo)lvIn.Items[i].Tag).Name;
-                if (i == lvIn.Items.Count - 1)
-                    break;
-                _visaName += "、";
-            }
-            this.txtGroupNo.Text = _visaName;
-            this.lbCount.Text = "团队人数:" + lvIn.Items.Count + "人";
-        }
-
-        private void updateDgvData()
-        {
-            _dgvList.Clear();
-            for (int i = 0; i < lvIn.Items.Count; ++i)
-            {       
-                _dgvList.Add((Model.VisaInfo)lvIn.Items[i].Tag);
-            }
-            dgvGroupInfo.DataSource = null; //必须加，不然报错，不知道为什么
-            dgvGroupInfo.DataSource = _dgvList;
-            //dgvGroupInfo.Invalidate();
-            //dgvGroupInfo.Update();
-        }
-
-        #endregion
-
-        #region dgv响应
-        private void dgvGroupInfo_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
-            {
-                dgvGroupInfo.Rows[i].HeaderCell.Value = (i + 1).ToString();
-            }
-        }
-
-        #endregion
-
-
-        #region 自己的按钮
+        /// <summary>
+        /// 生成报表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCreateReport_Click(object sender, EventArgs e)
         {
             GroupExcel.GenGroupInfoExcel(_dgvList, "一家人", txtGroupNo.Text);
         }
+
+        /// <summary>
+        /// 提交修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("是否提交修改?", "确认", MessageBoxButtons.YesNoCancel);
+            if (res == DialogResult.Cancel)
+                return;
+
+            //1.更新model,设置资料已录入
+            _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
+            //2.1更新VisaInfo数据库
+            dgvToModelList(_dgvList);
+            //2.2保存团号信息修改到数据库,Visa表
+
+            //
+        }
+
         #endregion
+
+
 
 
 

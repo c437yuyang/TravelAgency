@@ -94,7 +94,7 @@ namespace TravletAgence.CSUI
                 return;
             CtrlsToModel();
             if (res == DialogResult.Yes)
-                _model.HasTypeIn = "是";
+                _model.HasTypeIn = HasTypeIn.Yes;
             if (!bll.Update(_model))
             {
                 MessageBox.Show("更新失败，请重试!");

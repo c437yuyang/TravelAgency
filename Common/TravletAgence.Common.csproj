@@ -148,6 +148,7 @@
   <ItemGroup>
     <Compile Include="DateTimeFormator.cs" />
     <Compile Include="Excel\GroupExcel.cs" />
+    <Compile Include="HasTypeIn.cs" />
     <Compile Include="MD5Computer\MyMd5.cs" />
     <Compile Include="OutState.cs" />
     <Compile Include="OutStateString.cs" />
