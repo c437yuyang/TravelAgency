@@ -109,7 +109,9 @@ namespace TravletAgence.Common.Excel
                 saveFileDialog1.FileName = groupNo + ".xls"; //TODO:处理文件名太长
             }
                
-            saveFileDialog1.ShowDialog();
+            if(saveFileDialog1.ShowDialog()== DialogResult.Cancel)
+                return true;
+            
             if (saveFileDialog1.FileName != "")
             {
                 using (FileStream fs = (FileStream)saveFileDialog1.OpenFile())

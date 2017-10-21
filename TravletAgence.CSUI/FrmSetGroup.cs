@@ -202,7 +202,10 @@ namespace TravletAgence.CSUI
         /// <param name="e"></param>
         private void btnCreateReport_Click(object sender, EventArgs e)
         {
-            GroupExcel.GenGroupInfoExcel(_dgvList, dgvGroupInfo.Rows[0].Cells["Remark"].Value.ToString(), txtGroupNo.Text);
+            if( dgvGroupInfo.Rows[0].Cells["Remark"].Value!=null)
+                GroupExcel.GenGroupInfoExcel(_dgvList, dgvGroupInfo.Rows[0].Cells["Remark"].Value.ToString(), txtGroupNo.Text);
+            else
+                GroupExcel.GenGroupInfoExcel(_dgvList, string.Empty, txtGroupNo.Text);
         }
 
         /// <summary>
