@@ -19,6 +19,7 @@ namespace TravletAgence.CSUI
         private List<Model.VisaInfo> _list = new List<VisaInfo>();
         private List<Model.VisaInfo> _dgvList = new List<VisaInfo>();
         private BLL.VisaInfo bll = new BLL.VisaInfo();
+        private bool _bDgvInitilized = false;
 
         private string _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
 
@@ -107,11 +108,34 @@ namespace TravletAgence.CSUI
         #endregion
 
         #region dgv响应
+        /// <summary>
+        /// 显示行号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvGroupInfo_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
             {
                 dgvGroupInfo.Rows[i].HeaderCell.Value = (i + 1).ToString();
+            }
+        }
+
+        /// <summary>
+        /// 备注批量修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvGroupInfo_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex >=0 && dgvGroupInfo.Columns[e.ColumnIndex].Name == "Remark")
+            {
+                string remark = dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
+                {
+                    dgvGroupInfo.Rows[i].Cells[e.ColumnIndex].Value = remark;
+
+                }
             }
         }
 
@@ -178,7 +202,7 @@ namespace TravletAgence.CSUI
         /// <param name="e"></param>
         private void btnCreateReport_Click(object sender, EventArgs e)
         {
-            GroupExcel.GenGroupInfoExcel(_dgvList, "一家人", txtGroupNo.Text);
+            GroupExcel.GenGroupInfoExcel(_dgvList, dgvGroupInfo.Rows[0].Cells["Remark"].Value.ToString(), txtGroupNo.Text);
         }
 
         /// <summary>
@@ -202,6 +226,8 @@ namespace TravletAgence.CSUI
         }
 
         #endregion
+
+
 
 
 

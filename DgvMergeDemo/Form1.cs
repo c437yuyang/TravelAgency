@@ -181,7 +181,6 @@ namespace DgvMergeDemo
 
             dataGridView1.DataSource = bll.GetListByPage(1, 30);
 
-            dataGridView1.m
 
         }
     }
