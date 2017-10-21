@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
+using BorderStyle = NPOI.SS.UserModel.BorderStyle;
 using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 
 namespace TravletAgence.Common.Excel
@@ -79,11 +80,15 @@ namespace TravletAgence.Common.Excel
                 row.CreateCell(13).SetCellValue(list[i].AgencyOpinion);
             }
 
-            //4.1设置对齐风格
+            //4.1设置对齐风格和边框
             ICellStyle style = wkbook.CreateCellStyle();
             style.VerticalAlignment = VerticalAlignment.CENTER;
             style.Alignment = HorizontalAlignment.CENTER;
-            for (int i = 0; i < sheet.LastRowNum; i++)
+            style.BorderTop = BorderStyle.THIN;
+            style.BorderBottom = BorderStyle.THIN;
+            style.BorderLeft = BorderStyle.THIN;
+            style.BorderRight = BorderStyle.THIN;
+            for (int i = 0; i <= sheet.LastRowNum; i++)
             {
                 row = sheet.GetRow(i);
                 for (int c = 0; c < row.LastCellNum; ++c)
@@ -100,7 +105,10 @@ namespace TravletAgence.Common.Excel
             saveFileDialog1.Filter = "office 2003 excel|*.xls";
             saveFileDialog1.Title = "Save";
             if (groupNo.Length > 0)
-                saveFileDialog1.FileName = groupNo + ".jpg"; //TODO:处理文件名太长
+            {
+                saveFileDialog1.FileName = groupNo + ".xls"; //TODO:处理文件名太长
+            }
+               
             saveFileDialog1.ShowDialog();
             if (saveFileDialog1.FileName != "")
             {

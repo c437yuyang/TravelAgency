@@ -119,7 +119,7 @@ namespace TravletAgence.CSUI
 
         private void updateGroupNo()
         {
-            _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
+            _visaName = "QZC" +txtDepartureTime.Value.ToString("yyMMdd");
             for (int i = 0; i < lvIn.Items.Count; ++i)
             {
                 _visaName += ((Model.VisaInfo)lvIn.Items[i].Tag).Name;
