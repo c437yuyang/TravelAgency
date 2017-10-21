@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TravletAgence.Common;
+using TravletAgence.Common.Excel;
 using TravletAgence.Model;
 
 namespace TravletAgence.CSUI
@@ -144,6 +145,8 @@ namespace TravletAgence.CSUI
         }
 
         #endregion
+
+        #region dgv响应
         private void dgvGroupInfo_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
@@ -151,6 +154,18 @@ namespace TravletAgence.CSUI
                 dgvGroupInfo.Rows[i].HeaderCell.Value = (i + 1).ToString();
             }
         }
+
+        #endregion
+
+
+        #region 自己的按钮
+        private void btnCreateReport_Click(object sender, EventArgs e)
+        {
+            GroupExcel.GenGroupInfoExcel(_dgvList, "一家人", txtGroupNo.Text);
+        }
+        #endregion
+
+
 
 
 

@@ -116,6 +116,9 @@
     <Reference Include="Gma.QrCodeNet.Encoding.Net45">
       <HintPath>..\packages\Gma.QrCodeNet.Encoding.Net45\Gma.QrCodeNet.Encoding.Net45.dll</HintPath>
     </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\packages\NOPI\NPOI.dll</HintPath>
+    </Reference>
     <Reference Include="OpenSmtp, Version=1.11.0.34196, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\OpenSmtp.dll</HintPath>
@@ -144,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTimeFormator.cs" />
+    <Compile Include="Excel\GroupExcel.cs" />
     <Compile Include="MD5Computer\MyMd5.cs" />
     <Compile Include="OutState.cs" />
     <Compile Include="OutStateString.cs" />
@@ -180,6 +184,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\TravletAgence.Model.csproj">
+      <Project>{53995dbb-9836-4647-ad22-865884fdeb9e}</Project>
+      <Name>TravletAgence.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
