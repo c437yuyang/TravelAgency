@@ -16,6 +16,8 @@ namespace TravletAgence.CSUI
     {
 
         private List<Model.VisaInfo> _list = new List<VisaInfo>();
+        private List<Model.VisaInfo> _dgvList = new List<VisaInfo>();
+
         private string _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
 
         public FrmSetGroup()
@@ -33,7 +35,7 @@ namespace TravletAgence.CSUI
         {
             dgvGroupInfo.AutoGenerateColumns = false;
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
-            dgvGroupInfo.DataSource = _list;
+            //dgvGroupInfo.DataSource = _list;
 
             if (_list.Count == 0)
                 return;
@@ -52,7 +54,6 @@ namespace TravletAgence.CSUI
             //设置列表多选
             lvIn.MultiSelect = true;
             lvOut.MultiSelect = true;
-
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -69,6 +70,7 @@ namespace TravletAgence.CSUI
                 lvIn.Items.Add(lvItem);
             }
             updateGroupNo();
+            updateDgvData();
         }
 
         private void btnAllOut_Click(object sender, EventArgs e)
@@ -80,6 +82,8 @@ namespace TravletAgence.CSUI
                 lvOut.Items.Add(lvItem);
             }
             updateGroupNo();
+            updateDgvData();
+
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -88,9 +92,11 @@ namespace TravletAgence.CSUI
             {
                 ListViewItem lvItem = lvOut.SelectedItems[i];
                 lvOut.Items.Remove(lvOut.SelectedItems[i]);
-                lvIn.Items.Insert(0,lvItem);
+                lvIn.Items.Insert(0, lvItem);
             }
             updateGroupNo();
+            updateDgvData();
+
         }
 
         private void btnOut_Click(object sender, EventArgs e)
@@ -99,10 +105,13 @@ namespace TravletAgence.CSUI
             {
                 ListViewItem lvItem = lvIn.SelectedItems[i];
                 lvIn.Items.Remove(lvIn.SelectedItems[i]);
-                lvOut.Items.Insert(0,lvItem);
+                lvOut.Items.Insert(0, lvItem);
             }
             updateGroupNo();
+            updateDgvData();
         }
+
+        #region 状态更新函数
 
         private void updateGroupNo()
         {
@@ -117,6 +126,20 @@ namespace TravletAgence.CSUI
             this.txtGroupNo.Text = _visaName;
         }
 
+        private void updateDgvData()
+        {
+            _dgvList.Clear();
+            for (int i = 0; i < lvIn.Items.Count; ++i)
+            {       
+                _dgvList.Add((Model.VisaInfo)lvIn.Items[i].Tag);
+            }
+            dgvGroupInfo.DataSource = null; //必须加，不然报错，不知道为什么
+            dgvGroupInfo.DataSource = _dgvList;
+            //dgvGroupInfo.Invalidate();
+            //dgvGroupInfo.Update();
+        }
+
+        #endregion
         private void dgvGroupInfo_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
