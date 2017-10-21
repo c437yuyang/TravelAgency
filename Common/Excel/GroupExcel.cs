@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using NPOI.SS.Util;
 using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 
 namespace TravletAgence.Common.Excel
@@ -78,7 +79,7 @@ namespace TravletAgence.Common.Excel
                 row.CreateCell(13).SetCellValue(list[i].AgencyOpinion);
             }
 
-            //4.设置对齐风格
+            //4.1设置对齐风格
             ICellStyle style = wkbook.CreateCellStyle();
             style.VerticalAlignment = VerticalAlignment.CENTER;
             style.Alignment = HorizontalAlignment.CENTER;
@@ -90,6 +91,8 @@ namespace TravletAgence.Common.Excel
                     row.GetCell(c).CellStyle = style;
                 }
             }
+            //4.2合并单元格
+            sheet.AddMergedRegion(new CellRangeAddress(1,sheet.LastRowNum,12, 12));
 
             //5.执行写入磁盘
 
