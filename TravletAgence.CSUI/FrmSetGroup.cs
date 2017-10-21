@@ -35,7 +35,10 @@ namespace TravletAgence.CSUI
         {
             dgvGroupInfo.AutoGenerateColumns = false;
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
-            //dgvGroupInfo.DataSource = _list;
+            dgvGroupInfo.Columns["Birthday"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;//某一些列关闭自适应
+            
+            //初始化时间选择控件
+            txtDepartureTime.Text = DateTime.Now.ToString();
 
             if (_list.Count == 0)
                 return;
@@ -124,6 +127,7 @@ namespace TravletAgence.CSUI
                 _visaName += "、";
             }
             this.txtGroupNo.Text = _visaName;
+            this.lbCount.Text = "团队人数:" + lvIn.Items.Count + "人";
         }
 
         private void updateDgvData()

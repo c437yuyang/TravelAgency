@@ -33,6 +33,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LicenceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HasTypeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.btnPageFirst = new DevComponents.DotNetBar.ButtonItem();
@@ -75,8 +88,6 @@
             this.txtIssuePlace = new System.Windows.Forms.TextBox();
             this.txtBirthPlace = new System.Windows.Forms.TextBox();
             this.txtExpireDate = new System.Windows.Forms.TextBox();
-            this.txtLicenseTime = new System.Windows.Forms.TextBox();
-            this.txtBirthday = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtEnglishName = new System.Windows.Forms.TextBox();
             this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -89,24 +100,15 @@
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemSetGroup = new System.Windows.Forms.ToolStripMenuItem();
-            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LicenceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.outState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HasTypeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtBirthday = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.txtLicenseTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panelEx2.SuspendLayout();
             this.cmsDgvRb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -142,7 +144,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -167,6 +169,98 @@
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            // 
+            // _Name
+            // 
+            this._Name.DataPropertyName = "Name";
+            this._Name.HeaderText = "本国姓名";
+            this._Name.Name = "_Name";
+            this._Name.ReadOnly = true;
+            // 
+            // EnglishName
+            // 
+            this.EnglishName.DataPropertyName = "EnglishName";
+            this.EnglishName.HeaderText = "英语姓名";
+            this.EnglishName.Name = "EnglishName";
+            this.EnglishName.ReadOnly = true;
+            // 
+            // Sex
+            // 
+            this.Sex.DataPropertyName = "Sex";
+            this.Sex.HeaderText = "性别";
+            this.Sex.Name = "Sex";
+            this.Sex.ReadOnly = true;
+            // 
+            // BirthDay
+            // 
+            this.BirthDay.DataPropertyName = "Birthday";
+            this.BirthDay.HeaderText = "生日";
+            this.BirthDay.Name = "BirthDay";
+            this.BirthDay.ReadOnly = true;
+            // 
+            // PassportNo
+            // 
+            this.PassportNo.DataPropertyName = "PassportNo";
+            this.PassportNo.HeaderText = "护照号";
+            this.PassportNo.Name = "PassportNo";
+            this.PassportNo.ReadOnly = true;
+            // 
+            // LicenceTime
+            // 
+            this.LicenceTime.DataPropertyName = "LicenceTime";
+            this.LicenceTime.HeaderText = "发证日期";
+            this.LicenceTime.Name = "LicenceTime";
+            this.LicenceTime.ReadOnly = true;
+            // 
+            // ExpiryDate
+            // 
+            this.ExpiryDate.DataPropertyName = "ExpiryDate";
+            this.ExpiryDate.HeaderText = "有效期";
+            this.ExpiryDate.Name = "ExpiryDate";
+            this.ExpiryDate.ReadOnly = true;
+            // 
+            // Birthplace
+            // 
+            this.Birthplace.DataPropertyName = "Birthplace";
+            this.Birthplace.HeaderText = "出生地";
+            this.Birthplace.Name = "Birthplace";
+            this.Birthplace.ReadOnly = true;
+            // 
+            // IssuePlace
+            // 
+            this.IssuePlace.DataPropertyName = "IssuePlace";
+            this.IssuePlace.HeaderText = "签发地";
+            this.IssuePlace.Name = "IssuePlace";
+            this.IssuePlace.ReadOnly = true;
+            // 
+            // outState
+            // 
+            this.outState.DataPropertyName = "outState";
+            this.outState.HeaderText = "送签状态";
+            this.outState.Name = "outState";
+            this.outState.ReadOnly = true;
+            // 
+            // HasTypeIn
+            // 
+            this.HasTypeIn.DataPropertyName = "HasTypeIn";
+            this.HasTypeIn.HeaderText = "资料录入";
+            this.HasTypeIn.Name = "HasTypeIn";
+            this.HasTypeIn.ReadOnly = true;
+            // 
+            // GroupNo
+            // 
+            this.GroupNo.DataPropertyName = "GroupNo";
+            this.GroupNo.HeaderText = "团号";
+            this.GroupNo.Name = "GroupNo";
+            this.GroupNo.ReadOnly = true;
+            // 
+            // VisaInfo_id
+            // 
+            this.VisaInfo_id.DataPropertyName = "VisaInfo_id";
+            this.VisaInfo_id.HeaderText = "VisaInfo_id";
+            this.VisaInfo_id.Name = "VisaInfo_id";
+            this.VisaInfo_id.ReadOnly = true;
+            this.VisaInfo_id.Visible = false;
             // 
             // panelMain
             // 
@@ -322,6 +416,8 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.txtLicenseTime);
+            this.panelEx2.Controls.Add(this.txtBirthday);
             this.panelEx2.Controls.Add(this.labelX11);
             this.panelEx2.Controls.Add(this.btnAddToDatabase);
             this.panelEx2.Controls.Add(this.btnReadData);
@@ -344,8 +440,6 @@
             this.panelEx2.Controls.Add(this.txtIssuePlace);
             this.panelEx2.Controls.Add(this.txtBirthPlace);
             this.panelEx2.Controls.Add(this.txtExpireDate);
-            this.panelEx2.Controls.Add(this.txtLicenseTime);
-            this.panelEx2.Controls.Add(this.txtBirthday);
             this.panelEx2.Controls.Add(this.txtSex);
             this.panelEx2.Controls.Add(this.txtEnglishName);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
@@ -604,20 +698,6 @@
             this.txtExpireDate.Size = new System.Drawing.Size(100, 21);
             this.txtExpireDate.TabIndex = 9;
             // 
-            // txtLicenseTime
-            // 
-            this.txtLicenseTime.Location = new System.Drawing.Point(93, 214);
-            this.txtLicenseTime.Name = "txtLicenseTime";
-            this.txtLicenseTime.Size = new System.Drawing.Size(100, 21);
-            this.txtLicenseTime.TabIndex = 9;
-            // 
-            // txtBirthday
-            // 
-            this.txtBirthday.Location = new System.Drawing.Point(93, 154);
-            this.txtBirthday.Name = "txtBirthday";
-            this.txtBirthday.Size = new System.Drawing.Size(100, 21);
-            this.txtBirthday.TabIndex = 9;
-            // 
             // txtSex
             // 
             this.txtSex.Location = new System.Drawing.Point(93, 125);
@@ -707,97 +787,95 @@
             this.cmsItemSetGroup.Text = "设置团号";
             this.cmsItemSetGroup.Click += new System.EventHandler(this.cmsItemSetGroup_Click);
             // 
-            // _Name
+            // txtBirthday
             // 
-            this._Name.DataPropertyName = "Name";
-            this._Name.HeaderText = "本国姓名";
-            this._Name.Name = "_Name";
-            this._Name.ReadOnly = true;
             // 
-            // EnglishName
             // 
-            this.EnglishName.DataPropertyName = "EnglishName";
-            this.EnglishName.HeaderText = "英语姓名";
-            this.EnglishName.Name = "EnglishName";
-            this.EnglishName.ReadOnly = true;
             // 
-            // Sex
+            this.txtBirthday.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtBirthday.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthday.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.txtBirthday.ButtonDropDown.Visible = true;
+            this.txtBirthday.IsPopupCalendarOpen = false;
+            this.txtBirthday.Location = new System.Drawing.Point(93, 152);
             // 
-            this.Sex.DataPropertyName = "Sex";
-            this.Sex.HeaderText = "性别";
-            this.Sex.Name = "Sex";
-            this.Sex.ReadOnly = true;
             // 
-            // BirthDay
             // 
-            this.BirthDay.DataPropertyName = "Birthday";
-            this.BirthDay.HeaderText = "生日";
-            this.BirthDay.Name = "BirthDay";
-            this.BirthDay.ReadOnly = true;
             // 
-            // PassportNo
             // 
-            this.PassportNo.DataPropertyName = "PassportNo";
-            this.PassportNo.HeaderText = "护照号";
-            this.PassportNo.Name = "PassportNo";
-            this.PassportNo.ReadOnly = true;
             // 
-            // LicenceTime
+            this.txtBirthday.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthday.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.txtBirthday.MonthCalendar.ClearButtonVisible = true;
             // 
-            this.LicenceTime.DataPropertyName = "LicenceTime";
-            this.LicenceTime.HeaderText = "发证日期";
-            this.LicenceTime.Name = "LicenceTime";
-            this.LicenceTime.ReadOnly = true;
             // 
-            // ExpiryDate
             // 
-            this.ExpiryDate.DataPropertyName = "ExpiryDate";
-            this.ExpiryDate.HeaderText = "有效期";
-            this.ExpiryDate.Name = "ExpiryDate";
-            this.ExpiryDate.ReadOnly = true;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthday.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.txtBirthday.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
             // 
-            // Birthplace
             // 
-            this.Birthplace.DataPropertyName = "Birthplace";
-            this.Birthplace.HeaderText = "出生地";
-            this.Birthplace.Name = "Birthplace";
-            this.Birthplace.ReadOnly = true;
             // 
-            // IssuePlace
+            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthday.MonthCalendar.TodayButtonVisible = true;
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.Size = new System.Drawing.Size(100, 21);
+            this.txtBirthday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtBirthday.TabIndex = 20;
             // 
-            this.IssuePlace.DataPropertyName = "IssuePlace";
-            this.IssuePlace.HeaderText = "签发地";
-            this.IssuePlace.Name = "IssuePlace";
-            this.IssuePlace.ReadOnly = true;
+            // txtLicenseTime
             // 
-            // outState
             // 
-            this.outState.DataPropertyName = "outState";
-            this.outState.HeaderText = "送签状态";
-            this.outState.Name = "outState";
-            this.outState.ReadOnly = true;
             // 
-            // HasTypeIn
             // 
-            this.HasTypeIn.DataPropertyName = "HasTypeIn";
-            this.HasTypeIn.HeaderText = "资料录入";
-            this.HasTypeIn.Name = "HasTypeIn";
-            this.HasTypeIn.ReadOnly = true;
+            this.txtLicenseTime.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtLicenseTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.txtLicenseTime.ButtonDropDown.Visible = true;
+            this.txtLicenseTime.IsPopupCalendarOpen = false;
+            this.txtLicenseTime.Location = new System.Drawing.Point(93, 212);
             // 
-            // GroupNo
             // 
-            this.GroupNo.DataPropertyName = "GroupNo";
-            this.GroupNo.HeaderText = "团号";
-            this.GroupNo.Name = "GroupNo";
-            this.GroupNo.ReadOnly = true;
             // 
-            // VisaInfo_id
             // 
-            this.VisaInfo_id.DataPropertyName = "VisaInfo_id";
-            this.VisaInfo_id.HeaderText = "VisaInfo_id";
-            this.VisaInfo_id.Name = "VisaInfo_id";
-            this.VisaInfo_id.ReadOnly = true;
-            this.VisaInfo_id.Visible = false;
+            // 
+            // 
+            this.txtLicenseTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.txtLicenseTime.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.txtLicenseTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseTime.MonthCalendar.TodayButtonVisible = true;
+            this.txtLicenseTime.Name = "txtLicenseTime";
+            this.txtLicenseTime.Size = new System.Drawing.Size(100, 21);
+            this.txtLicenseTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtLicenseTime.TabIndex = 20;
             // 
             // FrmVisaTypeIn
             // 
@@ -814,6 +892,8 @@
             this.panelEx2.ResumeLayout(false);
             this.panelEx2.PerformLayout();
             this.cmsDgvRb.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -850,8 +930,6 @@
         private System.Windows.Forms.TextBox txtIssuePlace;
         private System.Windows.Forms.TextBox txtBirthPlace;
         private System.Windows.Forms.TextBox txtExpireDate;
-        private System.Windows.Forms.TextBox txtLicenseTime;
-        private System.Windows.Forms.TextBox txtBirthday;
         private System.Windows.Forms.TextBox txtSex;
         private System.Windows.Forms.TextBox txtEnglishName;
         private DevComponents.DotNetBar.ComboBoxItem cbCurPage;
@@ -890,6 +968,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HasTypeIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn VisaInfo_id;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtBirthday;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtLicenseTime;
 
     }
 }

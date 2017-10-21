@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TravletAgence.CSUI;
 
-namespace WindowsFormsApplication1
+namespace CtrlsDemos
 {
     public partial class Form1 : Form
     {
@@ -18,10 +17,14 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void dateTimeInput1_Click(object sender, EventArgs e)
         {
-           int nRet = IDCardDll.LoadLibrary("IDCard");
-            
+            MessageBox.Show(dateTimeInput1.Text);
+        }
+
+        private void monthCalendarAdv1_ItemClick(object sender, EventArgs e)
+        {
+
         }
     }
 }

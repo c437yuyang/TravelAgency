@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.panelBottom = new DevComponents.DotNetBar.PanelEx();
             this.btnCreateReport = new DevComponents.DotNetBar.ButtonX();
@@ -62,7 +62,7 @@
             this.Sex = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.dgvGroup_IssuePlace = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.Residence = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDay = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.Occuaption = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.DepartureRecord = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.Marriaged = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
@@ -70,6 +70,9 @@
             this.FinancialCapacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remark = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.AgencyOpinion = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.txtDepartureTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.lbCount = new DevComponents.DotNetBar.LabelX();
             this.panelMain.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelMid2.SuspendLayout();
@@ -77,6 +80,7 @@
             this.panelMid.SuspendLayout();
             this.panelInOutBtns.SuspendLayout();
             this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDepartureTime)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
@@ -206,15 +210,14 @@
             this.dgvGroupInfo.AllowUserToAddRows = false;
             this.dgvGroupInfo.AllowUserToDeleteRows = false;
             this.dgvGroupInfo.AllowUserToOrderColumns = true;
-            this.dgvGroupInfo.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroupInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGroupInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvGroupInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGroupInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -230,27 +233,27 @@
             this.FinancialCapacity,
             this.Remark,
             this.AgencyOpinion});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvGroupInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGroupInfo.EnableHeadersVisualStyles = false;
             this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvGroupInfo.Location = new System.Drawing.Point(0, 0);
             this.dgvGroupInfo.Name = "dgvGroupInfo";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroupInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGroupInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvGroupInfo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvGroupInfo.RowTemplate.Height = 30;
             this.dgvGroupInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -433,6 +436,9 @@
             // 
             this.panelTop.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelTop.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelTop.Controls.Add(this.lbCount);
+            this.panelTop.Controls.Add(this.txtDepartureTime);
+            this.panelTop.Controls.Add(this.labelX3);
             this.panelTop.Controls.Add(this.txtGroupNo);
             this.panelTop.Controls.Add(this.labelX2);
             this.panelTop.DisabledBackColor = System.Drawing.Color.Empty;
@@ -494,6 +500,7 @@
             this.Sex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Sex.HeaderText = "性别";
             this.Sex.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Sex.IntegralHeight = false;
             this.Sex.ItemHeight = 16;
             this.Sex.Items.AddRange(new object[] {
             "男",
@@ -510,6 +517,7 @@
             this.dgvGroup_IssuePlace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dgvGroup_IssuePlace.HeaderText = "护照发行地";
             this.dgvGroup_IssuePlace.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgvGroup_IssuePlace.IntegralHeight = false;
             this.dgvGroup_IssuePlace.ItemHeight = 16;
             this.dgvGroup_IssuePlace.Name = "dgvGroup_IssuePlace";
             this.dgvGroup_IssuePlace.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -524,9 +532,34 @@
             // 
             // BirthDay
             // 
+            // 
+            // 
+            // 
+            this.BirthDay.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.BirthDay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.BirthDay.DataPropertyName = "Birthday";
             this.BirthDay.HeaderText = "生日";
+            this.BirthDay.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.BirthDay.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.BirthDay.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            // 
+            // 
+            // 
+            this.BirthDay.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.BirthDay.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.BirthDay.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.BirthDay.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.BirthDay.Name = "BirthDay";
+            this.BirthDay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Occuaption
             // 
@@ -536,6 +569,7 @@
             this.Occuaption.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Occuaption.HeaderText = "职业";
             this.Occuaption.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Occuaption.IntegralHeight = false;
             this.Occuaption.ItemHeight = 16;
             this.Occuaption.Items.AddRange(new object[] {
             "教师",
@@ -556,6 +590,7 @@
             this.DepartureRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DepartureRecord.HeaderText = "出境记录";
             this.DepartureRecord.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.DepartureRecord.IntegralHeight = false;
             this.DepartureRecord.ItemHeight = 16;
             this.DepartureRecord.Items.AddRange(new object[] {
             "无",
@@ -573,6 +608,7 @@
             this.Marriaged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Marriaged.HeaderText = "婚姻";
             this.Marriaged.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Marriaged.IntegralHeight = false;
             this.Marriaged.ItemHeight = 16;
             this.Marriaged.Items.AddRange(new object[] {
             "未婚",
@@ -605,6 +641,7 @@
             this.Remark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Remark.HeaderText = "备注";
             this.Remark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Remark.IntegralHeight = false;
             this.Remark.ItemHeight = 16;
             this.Remark.Items.AddRange(new object[] {
             "一家人",
@@ -624,6 +661,7 @@
             this.AgencyOpinion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AgencyOpinion.HeaderText = "旅行社意见";
             this.AgencyOpinion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.AgencyOpinion.IntegralHeight = false;
             this.AgencyOpinion.ItemHeight = 16;
             this.AgencyOpinion.Items.AddRange(new object[] {
             "没问题",
@@ -632,6 +670,75 @@
             this.AgencyOpinion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.AgencyOpinion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.AgencyOpinion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(475, 7);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(75, 23);
+            this.labelX3.TabIndex = 2;
+            this.labelX3.Text = "出发日期:";
+            // 
+            // txtDepartureTime
+            // 
+            // 
+            // 
+            // 
+            this.txtDepartureTime.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtDepartureTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDepartureTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.txtDepartureTime.ButtonDropDown.Visible = true;
+            this.txtDepartureTime.IsPopupCalendarOpen = false;
+            this.txtDepartureTime.Location = new System.Drawing.Point(556, 7);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.txtDepartureTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDepartureTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.txtDepartureTime.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.txtDepartureTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.txtDepartureTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtDepartureTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.txtDepartureTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtDepartureTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.txtDepartureTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.txtDepartureTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDepartureTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.txtDepartureTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.txtDepartureTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.txtDepartureTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtDepartureTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.txtDepartureTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDepartureTime.MonthCalendar.TodayButtonVisible = true;
+            this.txtDepartureTime.Name = "txtDepartureTime";
+            this.txtDepartureTime.Size = new System.Drawing.Size(147, 21);
+            this.txtDepartureTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtDepartureTime.TabIndex = 3;
+            // 
+            // lbCount
+            // 
+            // 
+            // 
+            // 
+            this.lbCount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbCount.Location = new System.Drawing.Point(710, 7);
+            this.lbCount.Name = "lbCount";
+            this.lbCount.Size = new System.Drawing.Size(138, 23);
+            this.lbCount.TabIndex = 4;
+            this.lbCount.Text = "团队人数:0人";
             // 
             // FrmSetGroup
             // 
@@ -649,6 +756,7 @@
             this.panelMid.ResumeLayout(false);
             this.panelInOutBtns.ResumeLayout(false);
             this.panelTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtDepartureTime)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -686,7 +794,7 @@
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Sex;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn dgvGroup_IssuePlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn Residence;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn BirthDay;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Occuaption;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn DepartureRecord;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Marriaged;
@@ -694,5 +802,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FinancialCapacity;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Remark;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn AgencyOpinion;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtDepartureTime;
+        private DevComponents.DotNetBar.LabelX lbCount;
     }
 }

@@ -86,7 +86,7 @@ namespace TravletAgence.CSUI
             }
             catch (Exception)
             {
-                MessageBox.Show("请确保信息格式正确\n如日期为:2010-10-19");
+                MessageBox.Show("请确保信息格式正确\n如日期为:2010/10/19");
                 return null;
             }
             return model;
