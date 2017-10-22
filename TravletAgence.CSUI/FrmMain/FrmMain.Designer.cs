@@ -524,7 +524,7 @@
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "FrmMain";
-            this.Text = "东瀛假日:签证自动扫描识别系统V1.4";
+            this.Text = "东瀛假日:签证自动扫描识别系统V1.5";
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
             this.ribbonPanel3.ResumeLayout(false);
