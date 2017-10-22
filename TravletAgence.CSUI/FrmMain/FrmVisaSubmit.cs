@@ -72,8 +72,8 @@ namespace TravletAgence.CSUI.FrmMain
                     MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                     return count;
                 }
-                //数据中根据状态进行更新
-                model.outState = _outState;
+                
+                UpdateModelState(model,_outState);
                 if (!bll.Update(model))
                 {
                     MessageBox.Show(Resources.FailedUpdateVisaInfoState);
@@ -107,7 +107,9 @@ namespace TravletAgence.CSUI.FrmMain
                             MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                             return count;
                         }
-                        model.outState = outState;
+
+                        UpdateModelState(model, outState);
+
                         if (!bll.Update(model))
                         {
                             MessageBox.Show(Resources.FailedUpdateVisaInfoState);
@@ -122,6 +124,20 @@ namespace TravletAgence.CSUI.FrmMain
             if (!updateSingle)
                 loadDataToDataGridView(_curPage);
             return count;
+        }
+
+        private void UpdateModelState(VisaInfo model, string outState1)
+        {
+            //TODO:添加判断逻辑，
+            model.outState = outState1;
+            if (outState1 == OutState.Type02In)
+                model.InTime = DateTime.Now;
+            else if (outState1 == OutState.Type03NormalOut)
+                model.OutTime = DateTime.Now;
+            else if (outState1 == OutState.TYPE04AbnormalOut)
+                model.AbnormalOutTime = DateTime.Now;
+            else
+                MessageBox.Show(Resources.OutStateLengthEqualZero);
         }
 
         private VisaInfo GetModelByLine(string line)
