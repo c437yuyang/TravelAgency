@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TravletAgence.Common.QRCode;
 
-namespace TravletAgence.CSUI
+namespace TravletAgence.CSUI.FrmSub
 {
     public partial class FrmQRCode : Form
     {

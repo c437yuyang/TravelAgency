@@ -1,4 +1,4 @@
-﻿namespace TravletAgence.CSUI
+﻿namespace TravletAgence.CSUI.FrmSub
 {
     partial class FrmInfoTypeIn
     {

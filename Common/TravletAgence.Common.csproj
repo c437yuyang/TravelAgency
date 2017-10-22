@@ -148,10 +148,12 @@
   <ItemGroup>
     <Compile Include="DateTimeFormator.cs" />
     <Compile Include="Excel\GroupExcel.cs" />
-    <Compile Include="HasTypeIn.cs" />
+    <Compile Include="Enums\HasTypeIn.cs" />
+    <Compile Include="IDCard\IDCard.cs" />
+    <Compile Include="IDCard\IDCardDll.cs" />
     <Compile Include="MD5Computer\MyMd5.cs" />
-    <Compile Include="OutState.cs" />
-    <Compile Include="OutStateString.cs" />
+    <Compile Include="Enums\OutState.cs" />
+    <Compile Include="Enums\OutStateString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,11 +1,11 @@
-﻿namespace TravletAgence.Common
+﻿namespace TravletAgence.Common.Enums
 {
     /// <summary>
     /// 状态文本
     /// </summary>
     public static class OutState
     {
-        public static string TYPE01NoRecord
+        public static string Type01NoRecord
         {
             get
             {
@@ -14,7 +14,7 @@
             
         }
 
-        public static string TYPE02In
+        public static string Type02In
         {
             get
             {
@@ -23,7 +23,7 @@
             
         }
 
-        public static string TYPE03NormalOut
+        public static string Type03NormalOut
         {
             get
             {

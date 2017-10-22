@@ -8,8 +8,12 @@ namespace TravletAgence.Common
         {
             try
             {
-                DateTime dt = (DateTime)dateTime;
-                return dt.ToString("yyyy/MM/dd");
+                if (dateTime != null)
+                {
+                    DateTime dt = (DateTime)dateTime;
+                    return dt.ToString("yyyy/MM/dd");
+                }
+                return "9999/99/99";
             }
             catch (Exception)
             {

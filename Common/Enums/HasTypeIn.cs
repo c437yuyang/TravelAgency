@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TravletAgence.Common
+﻿namespace TravletAgence.Common.Enums
 {
     public static class HasTypeIn
     {

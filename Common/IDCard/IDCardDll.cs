@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-namespace TravletAgence.CSUI
+﻿using System.Runtime.InteropServices;
+
+namespace TravletAgence.Common.IDCard
 {
     public static class IDCardDll
     {

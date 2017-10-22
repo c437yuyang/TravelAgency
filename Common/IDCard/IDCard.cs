@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using TravletAgence.Model;
 
-namespace TravletAgence.CSUI
+namespace TravletAgence.Common.IDCard
 {
-    class IDCard
+    public class IDCard
     {
         private bool _kernelLoaded;
         public bool KernelLoaded

@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TravletAgence.BLL;
 using TravletAgence.Common;
+using TravletAgence.Common.Enums;
+using TravletAgence.Model;
 
-namespace TravletAgence.CSUI
+namespace TravletAgence.CSUI.FrmSub
 {
     public partial class FrmInfoTypeIn : Form
     {
 
-        private Model.VisaInfo _model;
+        private readonly Model.VisaInfo _model; //readonly本身是修饰的这个引用，只要后面(构造函数之外)不再重新new来指向另外的对象即可
         private readonly BLL.VisaInfo bll = new BLL.VisaInfo();
-        private Action<int> _updateDel;
-        private int _curPage;
+        private readonly Action<int> _updateDel; //副界面传来更新数据库的委托
+        private readonly int _curPage; //主界面更新数据库需要一个当前页
 
         public FrmInfoTypeIn(Model.VisaInfo model, Action<int> updateDel,int page)
         {

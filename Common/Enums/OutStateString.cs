@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TravletAgence.Common
+﻿namespace TravletAgence.Common.Enums
 {
     /// <summary>
     /// 用来做判断的分隔符字符串
     /// </summary>
     public static class OutStateString
     {
-        public static string TYPE02In
+        public static string Type02In
         {
             get
             {
@@ -20,7 +14,7 @@ namespace TravletAgence.Common
 
         }
 
-        public static string TYPE03NormalOut
+        public static string Type03NormalOut
         {
             get
             {
@@ -29,7 +23,7 @@ namespace TravletAgence.Common
 
         }
 
-        public static string TYPE04AbnormalOut
+        public static string Type04AbnormalOut
         {
             get
             {

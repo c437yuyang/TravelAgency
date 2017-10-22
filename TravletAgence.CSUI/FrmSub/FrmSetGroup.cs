@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TravletAgence.Common;
+using TravletAgence.Common.Enums;
 using TravletAgence.Common.Excel;
 using TravletAgence.Model;
 
-namespace TravletAgence.CSUI
+namespace TravletAgence.CSUI.FrmSub
 {
     public partial class FrmSetGroup : Form
     {
@@ -19,7 +14,6 @@ namespace TravletAgence.CSUI
         private List<Model.VisaInfo> _list = new List<VisaInfo>();
         private List<Model.VisaInfo> _dgvList = new List<VisaInfo>();
         private BLL.VisaInfo bll = new BLL.VisaInfo();
-        private bool _bDgvInitilized = false;
 
         private string _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
 

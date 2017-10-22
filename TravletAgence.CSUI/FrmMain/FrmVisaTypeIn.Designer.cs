@@ -1,4 +1,4 @@
-﻿namespace TravletAgence.CSUI
+﻿namespace TravletAgence.CSUI.FrmMain
 {
     partial class FrmVisaTypeIn
     {

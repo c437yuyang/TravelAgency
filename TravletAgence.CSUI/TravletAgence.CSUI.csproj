@@ -70,62 +70,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmInfoTypeIn.cs">
+    <Compile Include="FrmSub\FrmInfoTypeIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmInfoTypeIn.Designer.cs">
+    <Compile Include="FrmSub\FrmInfoTypeIn.Designer.cs">
       <DependentUpon>FrmInfoTypeIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMain.cs">
+    <Compile Include="FrmMain\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMain.Designer.cs">
+    <Compile Include="FrmMain\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSetGroup.cs">
+    <Compile Include="FrmSub\FrmSetGroup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSetGroup.Designer.cs">
+    <Compile Include="FrmSub\FrmSetGroup.Designer.cs">
       <DependentUpon>FrmSetGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmVisaSubmit.cs">
+    <Compile Include="FrmMain\FrmVisaSubmit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmVisaSubmit.Designer.cs">
+    <Compile Include="FrmMain\FrmVisaSubmit.Designer.cs">
       <DependentUpon>FrmVisaSubmit.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmVisaTypeIn.cs">
+    <Compile Include="FrmMain\FrmVisaTypeIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmVisaTypeIn.Designer.cs">
+    <Compile Include="FrmMain\FrmVisaTypeIn.Designer.cs">
       <DependentUpon>FrmVisaTypeIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmQRCode.cs">
+    <Compile Include="FrmSub\FrmQRCode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmQRCode.Designer.cs">
+    <Compile Include="FrmSub\FrmQRCode.Designer.cs">
       <DependentUpon>FrmQRCode.cs</DependentUpon>
     </Compile>
-    <Compile Include="IDCard.cs" />
-    <Compile Include="IDCardDll.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmInfoTypeIn.resx">
+    <EmbeddedResource Include="FrmSub\FrmInfoTypeIn.resx">
       <DependentUpon>FrmInfoTypeIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain.resx">
+    <EmbeddedResource Include="FrmMain\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSetGroup.resx">
+    <EmbeddedResource Include="FrmSub\FrmSetGroup.resx">
       <DependentUpon>FrmSetGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmVisaSubmit.resx">
+    <EmbeddedResource Include="FrmMain\FrmVisaSubmit.resx">
       <DependentUpon>FrmVisaSubmit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmVisaTypeIn.resx">
+    <EmbeddedResource Include="FrmMain\FrmVisaTypeIn.resx">
       <DependentUpon>FrmVisaTypeIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmQRCode.resx">
+    <EmbeddedResource Include="FrmSub\FrmQRCode.resx">
       <DependentUpon>FrmQRCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

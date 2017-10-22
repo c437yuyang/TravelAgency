@@ -1,241 +1,171 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar.Controls;
-using TravletAgence.BLL;
 using TravletAgence.Common;
+using TravletAgence.Common.Enums;
+using TravletAgence.Common.IDCard;
 using TravletAgence.Common.QRCode;
-using VisaInfo = TravletAgence.Model.VisaInfo;
+using TravletAgence.CSUI.FrmSub;
+using TravletAgence.Model;
 
-namespace TravletAgence.CSUI
+namespace TravletAgence.CSUI.FrmMain
 {
-    enum Inputmode
-    {
-        Single,
-        Batch
-    }
-    public partial class FrmVisaSubmit : Form
+    public partial class FrmVisaTypeIn : Form
     {
         private readonly TravletAgence.BLL.VisaInfo bll = new TravletAgence.BLL.VisaInfo();
         private int _curPage = 1;
         private int _pageCount = 0;
         private readonly int _pageSize = 30;
         private int _recordCount = 0;
-        private string _preTxt = string.Empty;
-        private string _outState = string.Empty; //Single模式下的状态设置
-        private Inputmode _inputMode = Inputmode.Single;
-        private readonly MyQRCode _qrCode = new MyQRCode();
+        private readonly IDCard _idCard = new IDCard();
+        private bool _autoRead = false;
+        private System.Windows.Forms.Timer _t = new System.Windows.Forms.Timer();
+        private readonly MyQRCode _qrCode = new MyQRCode(); //只用于批量生成二维码
 
-        //class PersonInfo
-        //{
-        //    public string passportNo { get; set; }
-        //    public string englishName { get; set; }
-        //}
-
-        public FrmVisaSubmit()
+        public FrmVisaTypeIn()
         {
             InitializeComponent();
+            _t.Tick += new System.EventHandler(this.AutoClassAndRecognize);
+            _t.Interval = 200;
         }
 
-        private void txtInput_TextChanged(object sender, EventArgs e)
-        {
-            if (_inputMode == Inputmode.Single)
-            {
-                if (_preTxt + "\r\n" != txtInput.Text)
-                {
-                    _preTxt = txtInput.Text;
-                    return;
-                }
-                _preTxt = txtInput.Text;
-                UpdateByLines(txtInput.Text, _inputMode);
-            }
-
-            //Console.WriteLine(model.EntryTime.ToString());
-        }
-
-        private int UpdateByLines(string txt, Inputmode inputMode)
-        {
-            int count = 0; //成功记录数
-            string str = txtInput.Text.TrimEnd(); //去掉最后的\r\n
-            string[] lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-            bool updateSingle = !(lines.Length > 20); //多行模式下设置显示更新模式
-            if (inputMode == Inputmode.Single)
-            {
-                VisaInfo model = GetModelByLine(lines[lines.Length - 1]);
-                if (model == null)
-                {
-                    MessageBox.Show("数据库查询失败，请检查信息是否正确?");
-                    return count;
-                }
-                //数据中根据状态进行更新
-                model.outState = _outState;
-                if (!bll.Update(model))
-                {
-                    MessageBox.Show("更新签证状态失败!");
-                    return count;
-                }
-                ++count;
-                loadDataToDataGridView(_curPage);
-            }
-            else if (inputMode == Inputmode.Batch)
-            {
-                string outState = string.Empty;
-
-                for (int i = 0; i != lines.Length; ++i)
-                {
-                    if (lines[i].Equals(OutStateString.TYPE02In))
-                        outState = OutState.TYPE02In;
-                    else if (lines[i].Equals(OutStateString.TYPE03NormalOut))
-                        outState = OutState.TYPE03NormalOut;
-                    else if (lines[i].Equals(OutStateString.TYPE04AbnormalOut))
-                        outState = OutState.TYPE04AbnormalOut;
-                    else
-                    {
-                        if (outState.Length == 0)
-                        {
-                            MessageBox.Show("输入有误，请重试！");
-                            return count;
-                        }
-                        VisaInfo model = GetModelByLine(lines[i]);
-                        if (model == null)
-                        {
-                            MessageBox.Show("数据库查询失败，请检查信息是否正确?");
-                            return count;
-                        }
-                        model.outState = outState;
-                        if (!bll.Update(model))
-                        {
-                            MessageBox.Show("更新签证状态失败!");
-                            return count;
-                        }
-                        ++count;
-                        if (updateSingle)
-                            loadDataToDataGridView(_curPage);
-                    }
-                }
-            }
-            if (!updateSingle)
-                loadDataToDataGridView(_curPage);
-            return count;
-        }
-
-        private VisaInfo GetModelByLine(string line)
-        {
-            if (!line.Contains('|'))
-            {
-                MessageBox.Show("输入有误，请清空后重新输入!");
-                return null;
-            }
-
-            Model.VisaInfo model = new Model.VisaInfo();
-            try
-            {
-                model = bll.GetModelByPassportNo(line.Split('|')[0]);
-                return model;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("输入有误，请清空后重新输入!");
-                return null;
-            }
-        }
-
-
-        private void FrmVisaSubmit_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             _recordCount = bll.GetRecordCount(string.Empty);
             _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
+            txtPicPath.Text = System.Windows.Forms.Application.StartupPath;
             cbPageSize.Items.Add(_pageSize.ToString());
             cbPageSize.SelectedIndex = 0;
-            dataGridView1.AutoGenerateColumns = false; //不显示指定之外的列
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
-            rbtnIn.Select();
-            rbtnSingle.Select();
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //加载数据
             loadDataToDataGridView(_curPage);
             UpdateState();
         }
 
-        private void btnShowInQR_Click(object sender, EventArgs e)
+
+
+        private void btnLoadKernel_Click(object sender, EventArgs e)
         {
-            FrmQRCode frm = new FrmQRCode(OutStateString.TYPE02In);
-            frm.ShowDialog();
+            _idCard.LoadKernel();
         }
 
-        private void btnShowAbnormalOutQR_Click(object sender, EventArgs e)
+        private void ModelToCtrls(TravletAgence.Model.VisaInfo model)
         {
-            FrmQRCode frm = new FrmQRCode(OutStateString.TYPE03NormalOut);
-            frm.ShowDialog();
+            model.Types = "个签";
+            model.EntryTime = DateTime.Now;
+            model.outState = OutState.Type01NoRecord;
+            txtName.Text = model.Name;
+            txtEnglishName.Text = model.EnglishName;
+            txtSex.Text = model.Sex;
+            txtBirthday.Text = model.Birthday.ToString();
+            txtPassNo.Text = model.PassportNo;
+            txtLicenseTime.Text = model.LicenceTime.ToString();
+            txtExpireDate.Text = model.ExpiryDate.ToString();
+            txtBirthPlace.Text = model.Birthplace;
+            txtIssuePlace.Text = model.IssuePlace;
         }
 
-        private void btnShowNormalOutQR_Click(object sender, EventArgs e)
+        private VisaInfo CtrlsToModel()
         {
-            FrmQRCode frm = new FrmQRCode(OutStateString.TYPE04AbnormalOut);
-            frm.ShowDialog();
-        }
-
-        private void rbtnIn_CheckedChanged(object sender, EventArgs e)
-        {
-            _outState = OutState.TYPE02In;
-        }
-
-        private void rBtnOut_CheckedChanged(object sender, EventArgs e)
-        {
-            _outState = OutState.TYPE03NormalOut;
-        }
-
-        private void rbtnAbOut_CheckedChanged(object sender, EventArgs e)
-        {
-            _outState = OutState.TYPE04AbnormalOut;
-        }
-
-
-        private void btnClearInput_Click(object sender, EventArgs e)
-        {
-            txtInput.Clear();
-            txtInput.Focus();
-        }
-
-        private void btnParseBatchInput_Click(object sender, EventArgs e)
-        {
-            string txt = txtInput.Text;
-            if (txt == string.Empty ||
-                (!txt.Contains(OutStateString.TYPE02In)
-                 && !txt.Contains(OutStateString.TYPE03NormalOut)
-                 && !txt.Contains(OutStateString.TYPE04AbnormalOut)))
+            VisaInfo model = new VisaInfo();
+            model.Types = "个签";
+            model.EntryTime = DateTime.Now;
+            model.outState = OutState.Type01NoRecord;
+            try
             {
-                MessageBox.Show("输入有误，请检查输入!");
+                model.Name = txtName.Text;
+                model.EnglishName = txtEnglishName.Text;
+                model.Sex = txtSex.Text;
+                model.Birthday = DateTime.Parse(txtBirthday.Text);
+                model.PassportNo = txtPassNo.Text;
+                model.LicenceTime = DateTime.Parse(txtLicenseTime.Text);
+                model.ExpiryDate = DateTime.Parse(txtExpireDate.Text);
+                model.Birthplace = txtBirthPlace.Text;
+                model.IssuePlace = txtIssuePlace.Text;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("请确保信息格式正确\n如日期为:2010/10/19");
+                return null;
+            }
+            return model;
+        }
+
+        private void btnReadData_Click(object sender, EventArgs e)
+        {
+            TravletAgence.Model.VisaInfo model = _idCard.RecogoInfo(txtPicPath.Text);
+            if (model == null) return;
+            ModelToCtrls(model);
+            ConfirmAddToDataBase(model);
+        }
+
+
+        private void btnFreeKernel_Click(object sender, EventArgs e)
+        {
+            _idCard.FreeKernel();
+        }
+
+        private void AutoClassAndRecognize(object sender, EventArgs eventArgs)
+        {
+            Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text);
+            if (model == null) return;
+            ModelToCtrls(model);
+            ConfirmAddToDataBase(model);
+        }
+
+        private void ConfirmAddToDataBase(VisaInfo model)
+        {
+            if (MessageBox.Show("是否添加指定数据到数据库?", "确认", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (bll.Add(model))
+                {
+                    loadDataToDataGridView(_curPage);
+                    UpdateState();
+                }
+                else
+                    MessageBox.Show("添加到数据库失败！");
+            }
+        }
+
+        private void btnAutoRead_Click(object sender, EventArgs e)
+        {
+            if (!_idCard.KernelLoaded)
+            {
+                MessageBox.Show("Please press load kernel button first!");
                 return;
             }
-            int count = UpdateByLines(txt, _inputMode);
-            if (count > 0)
+            if (!_autoRead)
             {
-                MessageBox.Show("成功更新" + count + "条记录.");
+                // t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)； 
+                _t.Enabled = true;
+                this.btnAutoRead.Text = "停止自动读取";
+                _autoRead = true;
+            }
+            else
+            {
+                _t.Enabled = false;
+                this.btnAutoRead.Text = "开始自动读取";
+                _autoRead = false;
             }
         }
 
-
-
-        private void rbtnSingle_CheckedChanged(object sender, EventArgs e)
+        private void buttonAddToDatabase_Click(object sender, EventArgs e)
         {
-            _inputMode = Inputmode.Single;
-            btnParseBatchInput.Enabled = false;
-            panelOutState.Enabled = true;
+            VisaInfo model = CtrlsToModel();
+            if (model == null) return;
+            if (!bll.Add(model))
+            {
+                MessageBox.Show("添加到数据库失败!");
+                return;
+            }
+            loadDataToDataGridView(_curPage);
+            UpdateState();
         }
 
-        private void rbtnBatch_CheckedChanged(object sender, EventArgs e)
-        {
-            _inputMode = Inputmode.Batch;
-            btnParseBatchInput.Enabled = true;
-            panelOutState.Enabled = false;
-
-        }
 
         #region dgv用到的相关方法
         public void loadDataToDataGridView(int page) //刷新后保持选中
@@ -248,7 +178,7 @@ namespace TravletAgence.CSUI
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
         }
 
-        public void UpdateState()
+        private void UpdateState()
         {
             _recordCount = bll.GetRecordCount(string.Empty);
             _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
@@ -266,7 +196,6 @@ namespace TravletAgence.CSUI
             lbCurPage.Text = "当前为第" + _curPage + "页";
         }
         #endregion
-
 
         #region dgv的bar栏
         private void btnPageNext_Click(object sender, EventArgs e)
@@ -366,7 +295,10 @@ namespace TravletAgence.CSUI
                         if (e.ColumnIndex != -1) //选中表头了
                             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
                         else
+                        {
                             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
+                        }
+
                     }
                     //弹出操作菜单
                     cmsDgvRb.Show(MousePosition.X, MousePosition.Y);
@@ -468,7 +400,6 @@ namespace TravletAgence.CSUI
         /// <param name="e"></param>
         private void cmsItemDelete_Click(object sender, EventArgs e)
         {
-
             int count = this.dataGridView1.SelectedRows.Count;
             if (MessageBox.Show("确认删除" + count + "条记录?", "确认", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                 return;
@@ -513,20 +444,9 @@ namespace TravletAgence.CSUI
 
         }
 
-
-        private void cmsItemModify_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
         #endregion
 
-
-
-
-
+        
 
 
 
