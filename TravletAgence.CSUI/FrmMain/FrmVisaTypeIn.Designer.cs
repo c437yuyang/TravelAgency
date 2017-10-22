@@ -66,6 +66,8 @@
             this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.txtLicenseTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.txtBirthday = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.btnAddToDatabase = new DevComponents.DotNetBar.ButtonX();
             this.btnReadData = new DevComponents.DotNetBar.ButtonX();
@@ -87,7 +89,6 @@
             this.txtPassNo = new System.Windows.Forms.TextBox();
             this.txtIssuePlace = new System.Windows.Forms.TextBox();
             this.txtBirthPlace = new System.Windows.Forms.TextBox();
-            this.txtExpireDate = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtEnglishName = new System.Windows.Forms.TextBox();
             this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -100,15 +101,15 @@
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemSetGroup = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtBirthday = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.txtLicenseTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.txtExpireDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panelEx2.SuspendLayout();
-            this.cmsDgvRb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
+            this.cmsDgvRb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -416,6 +417,7 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.txtExpireDate);
             this.panelEx2.Controls.Add(this.txtLicenseTime);
             this.panelEx2.Controls.Add(this.txtBirthday);
             this.panelEx2.Controls.Add(this.labelX11);
@@ -439,7 +441,6 @@
             this.panelEx2.Controls.Add(this.txtPassNo);
             this.panelEx2.Controls.Add(this.txtIssuePlace);
             this.panelEx2.Controls.Add(this.txtBirthPlace);
-            this.panelEx2.Controls.Add(this.txtExpireDate);
             this.panelEx2.Controls.Add(this.txtSex);
             this.panelEx2.Controls.Add(this.txtEnglishName);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
@@ -455,6 +456,96 @@
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 19;
+            // 
+            // txtLicenseTime
+            // 
+            // 
+            // 
+            // 
+            this.txtLicenseTime.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtLicenseTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.txtLicenseTime.ButtonDropDown.Visible = true;
+            this.txtLicenseTime.IsPopupCalendarOpen = false;
+            this.txtLicenseTime.Location = new System.Drawing.Point(93, 212);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.txtLicenseTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.txtLicenseTime.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.txtLicenseTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLicenseTime.MonthCalendar.TodayButtonVisible = true;
+            this.txtLicenseTime.Name = "txtLicenseTime";
+            this.txtLicenseTime.Size = new System.Drawing.Size(100, 21);
+            this.txtLicenseTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtLicenseTime.TabIndex = 20;
+            // 
+            // txtBirthday
+            // 
+            // 
+            // 
+            // 
+            this.txtBirthday.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtBirthday.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthday.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.txtBirthday.ButtonDropDown.Visible = true;
+            this.txtBirthday.IsPopupCalendarOpen = false;
+            this.txtBirthday.Location = new System.Drawing.Point(93, 152);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.txtBirthday.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthday.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.txtBirthday.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthday.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.txtBirthday.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBirthday.MonthCalendar.TodayButtonVisible = true;
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.Size = new System.Drawing.Size(100, 21);
+            this.txtBirthday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtBirthday.TabIndex = 20;
             // 
             // labelX11
             // 
@@ -691,13 +782,6 @@
             this.txtBirthPlace.Size = new System.Drawing.Size(100, 21);
             this.txtBirthPlace.TabIndex = 9;
             // 
-            // txtExpireDate
-            // 
-            this.txtExpireDate.Location = new System.Drawing.Point(93, 244);
-            this.txtExpireDate.Name = "txtExpireDate";
-            this.txtExpireDate.Size = new System.Drawing.Size(100, 21);
-            this.txtExpireDate.TabIndex = 9;
-            // 
             // txtSex
             // 
             this.txtSex.Location = new System.Drawing.Point(93, 125);
@@ -787,95 +871,50 @@
             this.cmsItemSetGroup.Text = "设置团号";
             this.cmsItemSetGroup.Click += new System.EventHandler(this.cmsItemSetGroup_Click);
             // 
-            // txtBirthday
+            // txtExpireDate
             // 
             // 
             // 
             // 
-            this.txtBirthday.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtBirthday.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBirthday.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.txtBirthday.ButtonDropDown.Visible = true;
-            this.txtBirthday.IsPopupCalendarOpen = false;
-            this.txtBirthday.Location = new System.Drawing.Point(93, 152);
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.txtBirthday.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBirthday.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.txtBirthday.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.txtBirthday.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBirthday.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
-            this.txtBirthday.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.txtBirthday.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBirthday.MonthCalendar.TodayButtonVisible = true;
-            this.txtBirthday.Name = "txtBirthday";
-            this.txtBirthday.Size = new System.Drawing.Size(100, 21);
-            this.txtBirthday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtBirthday.TabIndex = 20;
-            // 
-            // txtLicenseTime
-            // 
-            // 
-            // 
-            // 
-            this.txtLicenseTime.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtLicenseTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtLicenseTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.txtLicenseTime.ButtonDropDown.Visible = true;
-            this.txtLicenseTime.IsPopupCalendarOpen = false;
-            this.txtLicenseTime.Location = new System.Drawing.Point(93, 212);
+            this.txtExpireDate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtExpireDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtExpireDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.txtExpireDate.ButtonDropDown.Visible = true;
+            this.txtExpireDate.IsPopupCalendarOpen = false;
+            this.txtExpireDate.Location = new System.Drawing.Point(93, 244);
             // 
             // 
             // 
             // 
             // 
             // 
-            this.txtLicenseTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtLicenseTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.txtLicenseTime.MonthCalendar.ClearButtonVisible = true;
+            this.txtExpireDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtExpireDate.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.txtExpireDate.MonthCalendar.ClearButtonVisible = true;
             // 
             // 
             // 
-            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.txtLicenseTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtLicenseTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
-            this.txtLicenseTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.txtExpireDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.txtExpireDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtExpireDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.txtExpireDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtExpireDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.txtExpireDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.txtExpireDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtExpireDate.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.txtExpireDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
             // 
             // 
             // 
-            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.txtLicenseTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtLicenseTime.MonthCalendar.TodayButtonVisible = true;
-            this.txtLicenseTime.Name = "txtLicenseTime";
-            this.txtLicenseTime.Size = new System.Drawing.Size(100, 21);
-            this.txtLicenseTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtLicenseTime.TabIndex = 20;
+            this.txtExpireDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.txtExpireDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtExpireDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.txtExpireDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtExpireDate.MonthCalendar.TodayButtonVisible = true;
+            this.txtExpireDate.Name = "txtExpireDate";
+            this.txtExpireDate.Size = new System.Drawing.Size(100, 21);
+            this.txtExpireDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtExpireDate.TabIndex = 20;
             // 
             // FrmVisaTypeIn
             // 
@@ -891,9 +930,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.panelEx2.ResumeLayout(false);
             this.panelEx2.PerformLayout();
-            this.cmsDgvRb.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
+            this.cmsDgvRb.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -929,7 +969,6 @@
         private System.Windows.Forms.TextBox txtPassNo;
         private System.Windows.Forms.TextBox txtIssuePlace;
         private System.Windows.Forms.TextBox txtBirthPlace;
-        private System.Windows.Forms.TextBox txtExpireDate;
         private System.Windows.Forms.TextBox txtSex;
         private System.Windows.Forms.TextBox txtEnglishName;
         private DevComponents.DotNetBar.ComboBoxItem cbCurPage;
@@ -970,6 +1009,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VisaInfo_id;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtBirthday;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtLicenseTime;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtExpireDate;
 
     }
 }
