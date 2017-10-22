@@ -22,6 +22,12 @@ namespace TravletAgence.BLL
             return DataTableToList(dt);
         }
 
+
+        public int DeleteList(string VisaInfo_idlist)
+        {
+            return dal.DeleteList(VisaInfo_idlist);
+        }
+
         public int DeleteListByPassNo(List<string> passNums)
         {
             return dal.DeleteListByPassNo(passNums);

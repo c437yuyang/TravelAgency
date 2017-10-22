@@ -46,13 +46,8 @@ namespace TravletAgence.BLL
 			
 			return dal.Delete(VisaInfo_id);
 		}
-		/// <summary>
-		/// 删除一条数据
-		/// </summary>
-		public int DeleteList(string VisaInfo_idlist )
-		{
-		    return dal.DeleteList(VisaInfo_idlist);
-		}
+
+
 
 		/// <summary>
 		/// 得到一个对象实体
@@ -63,9 +58,9 @@ namespace TravletAgence.BLL
 			return dal.GetModel(VisaInfo_id);
 		}
 
-		/// <summary>
-		/// 得到一个对象实体，从缓存中
-		/// </summary>
+        ///// <summary>
+        ///// 得到一个对象实体，从缓存中
+        ///// </summary>
         //public TravletAgence.Model.VisaInfo GetModelByCache(Guid VisaInfo_id)
         //{
 			

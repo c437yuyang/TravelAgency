@@ -48,6 +48,7 @@ namespace TravletAgence.Model
 		private string _financialcapacity;
 		private string _agencyopinion;
 		private string _hastypein="否";
+		private DateTime? _abnormalouttime;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -351,6 +352,14 @@ namespace TravletAgence.Model
 		{
 			set{ _hastypein=value;}
 			get{return _hastypein;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public DateTime? AbnormalOutTime
+		{
+			set{ _abnormalouttime=value;}
+			get{return _abnormalouttime;}
 		}
 		#endregion Model
 
