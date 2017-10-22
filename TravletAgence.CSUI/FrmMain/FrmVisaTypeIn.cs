@@ -9,6 +9,7 @@ using TravletAgence.Common.Enums;
 using TravletAgence.Common.IDCard;
 using TravletAgence.Common.QRCode;
 using TravletAgence.CSUI.FrmSub;
+using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
 
 namespace TravletAgence.CSUI.FrmMain
@@ -22,21 +23,21 @@ namespace TravletAgence.CSUI.FrmMain
         private int _recordCount = 0;
         private readonly IDCard _idCard = new IDCard();
         private bool _autoRead = false;
-        private System.Windows.Forms.Timer _t = new System.Windows.Forms.Timer();
+        private readonly Timer _t = new Timer();
         private readonly MyQRCode _qrCode = new MyQRCode(); //只用于批量生成二维码
 
         public FrmVisaTypeIn()
         {
             InitializeComponent();
-            _t.Tick += new System.EventHandler(this.AutoClassAndRecognize);
+            _t.Tick += AutoClassAndRecognize;
             _t.Interval = 200;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             _recordCount = bll.GetRecordCount(string.Empty);
-            _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
-            txtPicPath.Text = System.Windows.Forms.Application.StartupPath;
+            _pageCount = (int)Math.Ceiling(_recordCount / (double)_pageSize);
+            txtPicPath.Text = Application.StartupPath;
             cbPageSize.Items.Add(_pageSize.ToString());
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false;
@@ -89,7 +90,7 @@ namespace TravletAgence.CSUI.FrmMain
             }
             catch (Exception)
             {
-                MessageBox.Show("请确保信息格式正确\n如日期为:2010/10/19");
+                MessageBox.Show(Resources.PleaseCheckDateTimeFormat);
                 return null;
             }
             return model;
@@ -119,7 +120,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void ConfirmAddToDataBase(VisaInfo model)
         {
-            if (MessageBox.Show("是否添加指定数据到数据库?", "确认", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show(Resources.WhetherAddToDatabase, Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 if (bll.Add(model))
                 {
@@ -127,7 +128,7 @@ namespace TravletAgence.CSUI.FrmMain
                     UpdateState();
                 }
                 else
-                    MessageBox.Show("添加到数据库失败！");
+                    MessageBox.Show(Resources.FailedAddToDatabase);
             }
         }
 
@@ -159,7 +160,7 @@ namespace TravletAgence.CSUI.FrmMain
             if (model == null) return;
             if (!bll.Add(model))
             {
-                MessageBox.Show("添加到数据库失败!");
+                MessageBox.Show(Resources.FailedAddToDatabase);
                 return;
             }
             loadDataToDataGridView(_curPage);
@@ -236,24 +237,17 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 DataGridViewX dgv = (DataGridViewX)sender;
                 Color c = Color.Empty;
-                switch (e.Value.ToString())
-                {
-                    case "01未记录":
-                        c = Color.AliceBlue;
-                        break;
-                    case "02进签":
-                        c = Color.Yellow;
-                        break;
-                    case "03出签":
-                        c = Color.Green;
-                        break;
-                    case "04未正常出签":
-                        c = Color.Red;
-                        break;
-                    default:
-                        c = Color.Black;
-                        break;
-                }
+                string state = e.Value.ToString();
+                if (state == OutState.Type01NoRecord)
+                    c = Color.AliceBlue;
+                else if (state == OutState.Type02In)
+                    c = Color.Yellow;
+                else if (state == OutState.Type03NormalOut)
+                    c = Color.Green;
+                else if (state == OutState.TYPE04AbnormalOut)
+                    c = Color.Red;
+                else
+                    c = Color.Black;
                 dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
             }
         }
@@ -329,7 +323,7 @@ namespace TravletAgence.CSUI.FrmMain
 
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
-                MessageBox.Show("请选择一行数据进行查看");
+                MessageBox.Show(Resources.SelectShowMoreThanOne);
                 return;
             }
 
@@ -376,7 +370,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
-                MessageBox.Show("请选择一行数据进行编辑");
+                MessageBox.Show(Resources.SelectEditMoreThanOne);
                 return;
             }
 
@@ -384,7 +378,7 @@ namespace TravletAgence.CSUI.FrmMain
             Model.VisaInfo model = bll.GetModel(new Guid(visainfoid));
             if (model == null)
             {
-                MessageBox.Show("数据查询出错，请重试!");
+                MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                 return;
             }
 
@@ -401,7 +395,7 @@ namespace TravletAgence.CSUI.FrmMain
         private void cmsItemDelete_Click(object sender, EventArgs e)
         {
             int count = this.dataGridView1.SelectedRows.Count;
-            if (MessageBox.Show("确认删除" + count + "条记录?", "确认", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            if (MessageBox.Show("确认删除" + count + "条记录?", Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                 return;
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i != count; ++i)
@@ -445,11 +439,5 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
-
-        
-
-
-
-
     }
 }

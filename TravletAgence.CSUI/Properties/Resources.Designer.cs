@@ -59,5 +59,105 @@ namespace TravletAgence.CSUI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找类似 确认 的本地化字符串。
+        /// </summary>
+        internal static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 添加到数据库失败！ 的本地化字符串。
+        /// </summary>
+        internal static string FailedAddToDatabase {
+            get {
+                return ResourceManager.GetString("FailedAddToDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 更新签证状态失败! 的本地化字符串。
+        /// </summary>
+        internal static string FailedUpdateVisaInfoState {
+            get {
+                return ResourceManager.GetString("FailedUpdateVisaInfoState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 数据库查询失败，请检查信息是否正确? 的本地化字符串。
+        /// </summary>
+        internal static string FindModelFailedPleaseCheckInfoCorrect {
+            get {
+                return ResourceManager.GetString("FindModelFailedPleaseCheckInfoCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 输入有误，请检查输入! 的本地化字符串。
+        /// </summary>
+        internal static string InputNoStateInfo {
+            get {
+                return ResourceManager.GetString("InputNoStateInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 输入有误，请清空后重新输入! 的本地化字符串。
+        /// </summary>
+        internal static string LineNotContainDelimeter {
+            get {
+                return ResourceManager.GetString("LineNotContainDelimeter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 输入有误，请重试！ 的本地化字符串。
+        /// </summary>
+        internal static string OutStateLengthEqualZero {
+            get {
+                return ResourceManager.GetString("OutStateLengthEqualZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请确保信息格式正确
+        ///如日期为:2010/10/19 的本地化字符串。
+        /// </summary>
+        internal static string PleaseCheckDateTimeFormat {
+            get {
+                return ResourceManager.GetString("PleaseCheckDateTimeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请选择一行数据进行编辑 的本地化字符串。
+        /// </summary>
+        internal static string SelectEditMoreThanOne {
+            get {
+                return ResourceManager.GetString("SelectEditMoreThanOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请选择一行数据进行查看 的本地化字符串。
+        /// </summary>
+        internal static string SelectShowMoreThanOne {
+            get {
+                return ResourceManager.GetString("SelectShowMoreThanOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 是否添加指定数据到数据库? 的本地化字符串。
+        /// </summary>
+        internal static string WhetherAddToDatabase {
+            get {
+                return ResourceManager.GetString("WhetherAddToDatabase", resourceCulture);
+            }
+        }
     }
 }

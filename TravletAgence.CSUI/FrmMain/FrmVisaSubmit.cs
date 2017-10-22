@@ -9,6 +9,7 @@ using TravletAgence.Common;
 using TravletAgence.Common.Enums;
 using TravletAgence.Common.QRCode;
 using TravletAgence.CSUI.FrmSub;
+using TravletAgence.CSUI.Properties;
 using VisaInfo = TravletAgence.Model.VisaInfo;
 
 namespace TravletAgence.CSUI.FrmMain
@@ -68,14 +69,14 @@ namespace TravletAgence.CSUI.FrmMain
                 VisaInfo model = GetModelByLine(lines[lines.Length - 1]);
                 if (model == null)
                 {
-                    MessageBox.Show("数据库查询失败，请检查信息是否正确?");
+                    MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                     return count;
                 }
                 //数据中根据状态进行更新
                 model.outState = _outState;
                 if (!bll.Update(model))
                 {
-                    MessageBox.Show("更新签证状态失败!");
+                    MessageBox.Show(Resources.FailedUpdateVisaInfoState);
                     return count;
                 }
                 ++count;
@@ -97,19 +98,19 @@ namespace TravletAgence.CSUI.FrmMain
                     {
                         if (outState.Length == 0)
                         {
-                            MessageBox.Show("输入有误，请重试！");
+                            MessageBox.Show(Resources.OutStateLengthEqualZero);
                             return count;
                         }
                         VisaInfo model = GetModelByLine(lines[i]);
                         if (model == null)
                         {
-                            MessageBox.Show("数据库查询失败，请检查信息是否正确?");
+                            MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                             return count;
                         }
                         model.outState = outState;
                         if (!bll.Update(model))
                         {
-                            MessageBox.Show("更新签证状态失败!");
+                            MessageBox.Show(Resources.FailedUpdateVisaInfoState);
                             return count;
                         }
                         ++count;
@@ -127,11 +128,11 @@ namespace TravletAgence.CSUI.FrmMain
         {
             if (!line.Contains('|'))
             {
-                MessageBox.Show("输入有误，请清空后重新输入!");
+                MessageBox.Show(Resources.LineNotContainDelimeter);
                 return null;
             }
 
-            Model.VisaInfo model = new Model.VisaInfo();
+            Model.VisaInfo model;
             try
             {
                 model = bll.GetModelByPassportNo(line.Split('|')[0]);
@@ -139,7 +140,7 @@ namespace TravletAgence.CSUI.FrmMain
             }
             catch (Exception)
             {
-                MessageBox.Show("输入有误，请清空后重新输入!");
+                MessageBox.Show(Resources.LineNotContainDelimeter);
                 return null;
             }
         }
@@ -148,7 +149,7 @@ namespace TravletAgence.CSUI.FrmMain
         private void FrmVisaSubmit_Load(object sender, EventArgs e)
         {
             _recordCount = bll.GetRecordCount(string.Empty);
-            _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
+            _pageCount = (int)Math.Ceiling((double)_recordCount / _pageSize);
             cbPageSize.Items.Add(_pageSize.ToString());
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false; //不显示指定之外的列
@@ -208,7 +209,7 @@ namespace TravletAgence.CSUI.FrmMain
                  && !txt.Contains(OutStateString.Type03NormalOut)
                  && !txt.Contains(OutStateString.Type04AbnormalOut)))
             {
-                MessageBox.Show("输入有误，请检查输入!");
+                MessageBox.Show(Resources.InputNoStateInfo);
                 return;
             }
             int count = UpdateByLines(txt, _inputMode);
@@ -305,24 +306,18 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 DataGridViewX dgv = (DataGridViewX)sender;
                 Color c = Color.Empty;
-                switch (e.Value.ToString())
-                {
-                    case "01未记录":
-                        c = Color.AliceBlue;
-                        break;
-                    case "02进签":
-                        c = Color.Yellow;
-                        break;
-                    case "03出签":
-                        c = Color.Green;
-                        break;
-                    case "04未正常出签":
-                        c = Color.Red;
-                        break;
-                    default:
-                        c = Color.Black;
-                        break;
-                }
+                string state = e.Value.ToString();
+                if (state == OutState.Type01NoRecord)
+                    c = Color.AliceBlue;
+                else if (state == OutState.Type02In)
+                    c = Color.Yellow;
+                else if (state == OutState.Type03NormalOut)
+                    c = Color.Green;
+                else if (state == OutState.TYPE04AbnormalOut)
+                    c = Color.Red;
+                else
+                    c = Color.Black;
+
                 dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
             }
         }
@@ -395,7 +390,7 @@ namespace TravletAgence.CSUI.FrmMain
 
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
-                MessageBox.Show("请选择一行数据进行查看");
+                MessageBox.Show(Resources.SelectShowMoreThanOne);
                 return;
             }
 
@@ -442,7 +437,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
-                MessageBox.Show("请选择一行数据进行编辑");
+                MessageBox.Show(Resources.SelectEditMoreThanOne);
                 return;
             }
 
@@ -450,11 +445,11 @@ namespace TravletAgence.CSUI.FrmMain
             Model.VisaInfo model = bll.GetModel(new Guid(visainfoid));
             if (model == null)
             {
-                MessageBox.Show("数据查询出错，请重试!");
+                MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                 return;
             }
 
-            Action<int> updateDel = new Action<int>(loadDataToDataGridView);
+            Action<int> updateDel = loadDataToDataGridView;
             FrmInfoTypeIn dlg = new FrmInfoTypeIn(model, updateDel, _curPage);
             dlg.ShowDialog();
         }
@@ -516,18 +511,6 @@ namespace TravletAgence.CSUI.FrmMain
         {
 
         }
-
-
-
         #endregion
-
-
-
-
-
-
-
-
-
     }
 }
