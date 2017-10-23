@@ -33,8 +33,8 @@
             this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.btnVisaTypeIn = new DevComponents.DotNetBar.ButtonItem();
-            this.btnSupp = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
+            this.btnVisaQuery = new DevComponents.DotNetBar.ButtonItem();
+            this.btnVisaSubmit = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel2 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.btnGoods = new DevComponents.DotNetBar.ButtonItem();
@@ -150,8 +150,8 @@
             this.ribbonBar2.DragDropSupport = true;
             this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnVisaTypeIn,
-            this.btnSupp,
-            this.buttonItem1});
+            this.btnVisaQuery,
+            this.btnVisaSubmit});
             this.ribbonBar2.Location = new System.Drawing.Point(3, 0);
             this.ribbonBar2.Name = "ribbonBar2";
             this.ribbonBar2.Size = new System.Drawing.Size(193, 65);
@@ -177,22 +177,22 @@
             this.btnVisaTypeIn.Text = "签证录入";
             this.btnVisaTypeIn.Click += new System.EventHandler(this.btnVisaTypeIn_Click);
             // 
-            // btnSupp
+            // btnVisaQuery
             // 
-            this.btnSupp.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
-            this.btnSupp.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnSupp.Name = "btnSupp";
-            this.btnSupp.SubItemsExpandWidth = 14;
-            this.btnSupp.Text = "签证查询";
+            this.btnVisaQuery.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
+            this.btnVisaQuery.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnVisaQuery.Name = "btnVisaQuery";
+            this.btnVisaQuery.SubItemsExpandWidth = 14;
+            this.btnVisaQuery.Text = "团号管理";
             // 
-            // buttonItem1
+            // btnVisaSubmit
             // 
-            this.buttonItem1.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
-            this.buttonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem1.Name = "buttonItem1";
-            this.buttonItem1.SubItemsExpandWidth = 14;
-            this.buttonItem1.Text = "送签管理";
-            this.buttonItem1.Click += new System.EventHandler(this.buttonItem1_Click);
+            this.btnVisaSubmit.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
+            this.btnVisaSubmit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnVisaSubmit.Name = "btnVisaSubmit";
+            this.btnVisaSubmit.SubItemsExpandWidth = 14;
+            this.btnVisaSubmit.Text = "送签管理";
+            this.btnVisaSubmit.Click += new System.EventHandler(this.buttonItem1_Click);
             // 
             // ribbonPanel2
             // 
@@ -542,8 +542,8 @@
         private DevComponents.DotNetBar.RibbonPanel ribbonPanel3;
         private DevComponents.DotNetBar.RibbonBar ribbonBar2;
         private DevComponents.DotNetBar.ButtonItem btnVisaTypeIn;
-        private DevComponents.DotNetBar.ButtonItem btnSupp;
-        private DevComponents.DotNetBar.ButtonItem buttonItem1;
+        private DevComponents.DotNetBar.ButtonItem btnVisaQuery;
+        private DevComponents.DotNetBar.ButtonItem btnVisaSubmit;
         private DevComponents.DotNetBar.RibbonPanel ribbonPanel2;
         private DevComponents.DotNetBar.RibbonBar ribbonBar3;
         private DevComponents.DotNetBar.ButtonItem btnGoods;

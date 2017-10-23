@@ -123,6 +123,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SysNode.cs" />
+    <Compile Include="Visa.cs" />
     <Compile Include="VisaInfo.cs" />
   </ItemGroup>
   <ItemGroup>
