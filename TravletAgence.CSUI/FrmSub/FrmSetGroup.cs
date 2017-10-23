@@ -136,6 +136,44 @@ namespace TravletAgence.CSUI.FrmSub
             }
         }
 
+
+        private void dgvGroupInfo_KeyUp(object sender, KeyEventArgs e)
+        {
+
+
+        }
+
+        private void dgvGroupInfo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 实现赋值粘贴,Ctrl+C,Ctrl+V响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 现在只能单条记录，多条记录其实也可以
+        /// TODO:多条记录赋值粘贴，用|做分割
+        private void dgvGroupInfo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvGroupInfo.SelectedCells.Count != 0 && e.Control && e.KeyCode == Keys.C)
+            {
+                if (dgvGroupInfo.SelectedCells[0].Value != null)
+                    Clipboard.SetText(dgvGroupInfo.SelectedCells[0].Value.ToString());
+            }
+
+            if (dgvGroupInfo.SelectedCells.Count != 0 && e.Control && e.KeyCode == Keys.V)
+            {
+
+                for (int i = 0; i < dgvGroupInfo.SelectedCells.Count; i++)
+                {
+                    dgvGroupInfo.SelectedCells[i].Value = Clipboard.GetText();
+                }
+
+               
+            }
+        }
         #endregion
 
 
@@ -226,6 +264,12 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         #endregion
+
+
+
+
+
+
 
 
 
