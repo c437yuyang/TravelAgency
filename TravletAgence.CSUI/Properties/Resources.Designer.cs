@@ -172,6 +172,16 @@ namespace TravletAgence.CSUI.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Thailand {
+            get {
+                object obj = ResourceManager.GetObject("Thailand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 是否添加指定数据到数据库? 的本地化字符串。
         /// </summary>
         internal static string WhetherAddToDatabase {

@@ -118,6 +118,9 @@ namespace TravletAgence.CSUI.FrmMain
                         dataGridView1.Rows[i].Cells["CountryImage"].Value =Resources.Japan;
                     else if(countryName == "韩国")
                         dataGridView1.Rows[i].Cells["CountryImage"].Value = Resources.Korea;
+                    else if(countryName == "泰国")
+                        dataGridView1.Rows[i].Cells["CountryImage"].Value = Resources.Thailand;
+
                 }
             }
         }
