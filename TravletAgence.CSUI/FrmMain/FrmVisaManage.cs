@@ -115,10 +115,10 @@ namespace TravletAgence.CSUI.FrmMain
                 {
                     string countryName = dataGridView1.Rows[i].Cells["Country"].Value.ToString();
                     if (countryName == "日本")
-                        dataGridView1.Rows[i].Cells["CountryImage"].Value =Resources.Japan;
-                    else if(countryName == "韩国")
+                        dataGridView1.Rows[i].Cells["CountryImage"].Value = Resources.Japan;
+                    else if (countryName == "韩国")
                         dataGridView1.Rows[i].Cells["CountryImage"].Value = Resources.Korea;
-                    else if(countryName == "泰国")
+                    else if (countryName == "泰国")
                         dataGridView1.Rows[i].Cells["CountryImage"].Value = Resources.Thailand;
 
                 }
