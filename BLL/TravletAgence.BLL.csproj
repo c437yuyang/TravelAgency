@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="SysManage.cs" />
     <Compile Include="Visa.cs" />
+    <Compile Include="VisaBll.cs" />
     <Compile Include="VisaInfo.cs" />
     <Compile Include="VisaInfoBll.cs" />
   </ItemGroup>

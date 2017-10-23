@@ -11,6 +11,8 @@ namespace TravletAgence.CSUI.FrmMain
             InitializeComponent();
         }
 
+
+        #region ribbon control上点击按钮
         private void btnVisaTypeIn_Click(object sender, EventArgs e)
         {
             FrmVisaTypeIn frm = new FrmVisaTypeIn();
@@ -22,6 +24,14 @@ namespace TravletAgence.CSUI.FrmMain
             FrmVisaSubmit frm = new FrmVisaSubmit();
             openWindow(frm, frm.Name);
         }
+
+        private void btnVisaQuery_Click(object sender, EventArgs e)
+        {
+            FrmVisaManage frm = new FrmVisaManage();
+            openWindow(frm, frm.Name);
+        }
+        #endregion
+
 
 
         public void openWindow(Form frm, string Name)
@@ -99,12 +109,14 @@ namespace TravletAgence.CSUI.FrmMain
 
             tabMain.Refresh();
         }
-        
-        
+
+
         private void tabMain_TabItemClose(object sender, TabStripActionEventArgs e)
         {
             TabItem tb = tabMain.SelectedTab;
             tabMain.Tabs.Remove(tb);
         }
+
+
     }
 }

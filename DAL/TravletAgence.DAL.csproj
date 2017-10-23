@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="SysManage.cs" />
     <Compile Include="Visa.cs" />
+    <Compile Include="VisaDal.cs" />
     <Compile Include="VisaInfo.cs" />
     <Compile Include="VisaInfoDal.cs" />
   </ItemGroup>

@@ -184,6 +184,7 @@
             this.btnVisaQuery.Name = "btnVisaQuery";
             this.btnVisaQuery.SubItemsExpandWidth = 14;
             this.btnVisaQuery.Text = "团号管理";
+            this.btnVisaQuery.Click += new System.EventHandler(this.btnVisaQuery_Click);
             // 
             // btnVisaSubmit
             // 
