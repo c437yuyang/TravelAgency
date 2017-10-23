@@ -94,6 +94,9 @@ namespace TravletAgence.CSUI.FrmSub
             for (int i = 0; i < list.Count; i++)
             {
                 list[i].HasTypeIn = HasTypeIn.Yes;
+                list[i].Country = cbCountry.Text;
+                //TODO:修改对应团号VisaId
+                //list[i].Visa_id = 
             }
             int res = bll.UpdateByList(_dgvList);
             MessageBox.Show(res + "条记录成功更新," + (list.Count - res) + "条记录更新失败.");
@@ -209,7 +212,7 @@ namespace TravletAgence.CSUI.FrmSub
         /// <param name="e"></param>
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("是否提交修改?", "确认", MessageBoxButtons.YesNoCancel);
+            DialogResult res = MessageBox.Show("是否提交修改?", "确认", MessageBoxButtons.OKCancel);
             if (res == DialogResult.Cancel)
                 return;
 
@@ -217,7 +220,7 @@ namespace TravletAgence.CSUI.FrmSub
             _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
             //2.1更新VisaInfo数据库
             dgvToModelList(_dgvList);
-            //2.2保存团号信息修改到数据库,Visa表
+            //2.2保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
 
             //
         }
