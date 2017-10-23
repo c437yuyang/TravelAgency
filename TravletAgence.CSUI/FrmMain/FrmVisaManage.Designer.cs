@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVisaManage));
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.btnPageFirst = new DevComponents.DotNetBar.ButtonItem();
             this.btnPagePre = new DevComponents.DotNetBar.ButtonItem();
@@ -45,8 +47,10 @@
             this.lbCurPage = new DevComponents.DotNetBar.LabelItem();
             this.panelDgv = new DevComponents.DotNetBar.PanelEx();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.imageCountries = new System.Windows.Forms.ImageList(this.components);
             this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CountryImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.PredictTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EntryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalesPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,21 +93,25 @@
             // 
             this.btnPageFirst.Name = "btnPageFirst";
             this.btnPageFirst.Text = "首页";
+            this.btnPageFirst.Click += new System.EventHandler(this.btnPageFirst_Click);
             // 
             // btnPagePre
             // 
             this.btnPagePre.Name = "btnPagePre";
             this.btnPagePre.Text = "上一页";
+            this.btnPagePre.Click += new System.EventHandler(this.btnPagePre_Click);
             // 
             // btnPageNext
             // 
             this.btnPageNext.Name = "btnPageNext";
             this.btnPageNext.Text = "下一页";
+            this.btnPageNext.Click += new System.EventHandler(this.btnPageNext_Click);
             // 
             // btnPageLast
             // 
             this.btnPageLast.Name = "btnPageLast";
             this.btnPageLast.Text = "尾页";
+            this.btnPageLast.Click += new System.EventHandler(this.btnPageLast_Click);
             // 
             // cbCurPage
             // 
@@ -177,6 +185,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.GroupNo,
             this.Country,
+            this.CountryImage,
             this.PredictTime,
             this.EntryTime,
             this.SalesPerson,
@@ -186,7 +195,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -208,6 +217,39 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1041, 546);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            // 
+            // imageCountries
+            // 
+            this.imageCountries.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageCountries.ImageStream")));
+            this.imageCountries.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCountries.Images.SetKeyName(0, "Print");
+            this.imageCountries.Images.SetKeyName(1, "User");
+            this.imageCountries.Images.SetKeyName(2, "Canada");
+            this.imageCountries.Images.SetKeyName(3, "France");
+            this.imageCountries.Images.SetKeyName(4, "Sweden");
+            this.imageCountries.Images.SetKeyName(5, "Spain");
+            this.imageCountries.Images.SetKeyName(6, "Mexico");
+            this.imageCountries.Images.SetKeyName(7, "Germany");
+            this.imageCountries.Images.SetKeyName(8, "Ireland");
+            this.imageCountries.Images.SetKeyName(9, "Switzerland");
+            this.imageCountries.Images.SetKeyName(10, "UK");
+            this.imageCountries.Images.SetKeyName(11, "USA");
+            this.imageCountries.Images.SetKeyName(12, "Venezuela");
+            this.imageCountries.Images.SetKeyName(13, "Argentina");
+            this.imageCountries.Images.SetKeyName(14, "Brazil");
+            this.imageCountries.Images.SetKeyName(15, "Austria");
+            this.imageCountries.Images.SetKeyName(16, "Italy");
+            this.imageCountries.Images.SetKeyName(17, "Portugal");
+            this.imageCountries.Images.SetKeyName(18, "Denmark");
+            this.imageCountries.Images.SetKeyName(19, "Belgium");
+            this.imageCountries.Images.SetKeyName(20, "Finland");
+            this.imageCountries.Images.SetKeyName(21, "Poland");
+            this.imageCountries.Images.SetKeyName(22, "SecHigh");
+            this.imageCountries.Images.SetKeyName(23, "SecMedium");
+            this.imageCountries.Images.SetKeyName(24, "SecLow");
+            this.imageCountries.Images.SetKeyName(25, "Japan");
+            this.imageCountries.Images.SetKeyName(26, "Korea");
             // 
             // GroupNo
             // 
@@ -223,6 +265,14 @@
             this.Country.HeaderText = "国家";
             this.Country.Name = "Country";
             this.Country.ReadOnly = true;
+            // 
+            // CountryImage
+            // 
+            this.CountryImage.HeaderText = "国家图标";
+            this.CountryImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.CountryImage.Name = "CountryImage";
+            this.CountryImage.ReadOnly = true;
+            this.CountryImage.Width = 200;
             // 
             // PredictTime
             // 
@@ -286,8 +336,10 @@
         private DevComponents.DotNetBar.LabelItem lbCurPage;
         private DevComponents.DotNetBar.PanelEx panelDgv;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridView1;
+        private System.Windows.Forms.ImageList imageCountries;
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
+        private System.Windows.Forms.DataGridViewImageColumn CountryImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn PredictTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn EntryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn SalesPerson;

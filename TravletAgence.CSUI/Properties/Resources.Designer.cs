@@ -106,6 +106,26 @@ namespace TravletAgence.CSUI.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Japan {
+            get {
+                object obj = ResourceManager.GetObject("Japan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Korea {
+            get {
+                object obj = ResourceManager.GetObject("Korea", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 输入有误，请清空后重新输入! 的本地化字符串。
         /// </summary>
         internal static string LineNotContainDelimeter {

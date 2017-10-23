@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TravletAgence.CSUI.Properties;
 
 namespace TravletAgence.CSUI.FrmMain
 {
@@ -31,6 +32,7 @@ namespace TravletAgence.CSUI.FrmMain
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false; //不显示指定之外的列
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
+            //dataGridView1.Columns["CountryImage"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             //加载数据
             loadDataToDataGridView(_curPage);
             UpdateState();
@@ -67,6 +69,63 @@ namespace TravletAgence.CSUI.FrmMain
             lbCurPage.Text = "当前为第" + _curPage + "页";
         }
         #endregion
+
+
+        #region dgv的bar栏
+        private void btnPageNext_Click(object sender, EventArgs e)
+        {
+            loadDataToDataGridView(++_curPage);
+            UpdateState();
+        }
+
+        private void btnPagePre_Click(object sender, EventArgs e)
+        {
+            loadDataToDataGridView(--_curPage);
+            UpdateState();
+        }
+
+        private void btnPageFirst_Click(object sender, EventArgs e)
+        {
+            _curPage = 1;
+            loadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
+        private void btnPageLast_Click(object sender, EventArgs e)
+        {
+            _curPage = _pageCount;
+            loadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+        #endregion
+
+
+        #region dgv消息响应
+        /// <summary>
+        /// dgv设置行号以及国家图标
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                if (dataGridView1.Rows[i].Cells["Country"].Value != null)
+                {
+                    string countryName = dataGridView1.Rows[i].Cells["Country"].Value.ToString();
+                    if (countryName == "日本")
+                        dataGridView1.Rows[i].Cells["CountryImage"].Value =Resources.Japan;
+                    else if(countryName == "韩国")
+                        dataGridView1.Rows[i].Cells["CountryImage"].Value = Resources.Korea;
+                }
+            }
+        }
+
+        #endregion
+
+
+
 
     }
 }
