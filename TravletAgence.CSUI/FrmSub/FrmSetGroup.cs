@@ -88,6 +88,8 @@ namespace TravletAgence.CSUI.FrmSub
             _list = _bllVisaInfo.GetModelList(" GroupNo = '" + _visaModel.GroupNo + "'");
 
             //根据list加载列表
+            lvOut.Items.Clear();
+            lvIn.Items.Clear();
             for (int i = 0; i < _list.Count; i++)
             {
                 ListViewItem liv = new ListViewItem(_list[i].Name);
