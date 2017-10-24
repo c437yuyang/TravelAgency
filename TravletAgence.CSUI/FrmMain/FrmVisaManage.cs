@@ -164,6 +164,11 @@ namespace TravletAgence.CSUI.FrmMain
    
 
         #region dgv右键响应
+        /// <summary>
+        /// 查看选中团号，可以移出团号里的人
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmsItemShowGroupNo_Click(object sender, EventArgs e)
         {
             if (this.dataGridView1.SelectedRows.Count > 1)
@@ -178,10 +183,7 @@ namespace TravletAgence.CSUI.FrmMain
                 MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                 return;
             }
- 
-
             FrmSetGroup frm = new FrmSetGroup(model);
-
             frm.ShowDialog();
         }
 

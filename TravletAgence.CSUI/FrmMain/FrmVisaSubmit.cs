@@ -443,84 +443,10 @@ namespace TravletAgence.CSUI.FrmMain
 
         }
 
-        /// <summary>
-        /// 录入资料
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cmsItemTypeInInfo_Click(object sender, EventArgs e)
-        {
-            if (this.dataGridView1.SelectedRows.Count > 1)
-            {
-                MessageBox.Show(Resources.SelectEditMoreThanOne);
-                return;
-            }
+        
 
-            string visainfoid = dataGridView1.SelectedRows[0].Cells["VisaInfo_id"].Value.ToString();
-            Model.VisaInfo model = bll.GetModel(new Guid(visainfoid));
-            if (model == null)
-            {
-                MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
-                return;
-            }
+       
 
-            Action<int> updateDel = loadDataToDataGridView;
-            FrmInfoTypeIn dlg = new FrmInfoTypeIn(model, updateDel, _curPage);
-            dlg.ShowDialog();
-        }
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cmsItemDelete_Click(object sender, EventArgs e)
-        {
-            int count = this.dataGridView1.SelectedRows.Count;
-            if (MessageBox.Show("确认删除" + count + "条记录?", "确认", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
-                return;
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i != count; ++i)
-            {
-                sb.Append("'");
-                sb.Append(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value);
-                sb.Append("'");
-                if (i == count - 1)
-                    break;
-                sb.Append(",");
-            }
-
-            int n = bll.DeleteList(sb.ToString());
-            MessageBox.Show(n + "条记录删除成功," + (count - n) + "条记录删除失败.");
-            loadDataToDataGridView(_curPage);
-            UpdateState();
-        }
-
-        /// <summary>
-        /// 设置团号
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cmsItemSetGroup_Click(object sender, EventArgs e)
-        {
-            int count = this.dataGridView1.SelectedRows.Count;
-            List<Model.VisaInfo> list = new List<VisaInfo>();
-
-            for (int i = 0; i != count; ++i)
-            {
-                Model.VisaInfo model = bll.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
-                if (model != null)
-                    list.Add(model);
-            }
-            FrmSetGroup frmSetGroup = new FrmSetGroup(list);
-            frmSetGroup.ShowDialog();
-        }
-
-
-        private void cmsItemModify_Click(object sender, EventArgs e)
-        {
-
-        }
         #endregion
     }
 }

@@ -422,20 +422,26 @@ namespace TravletAgence.CSUI.FrmMain
         private void cmsItemSetGroup_Click(object sender, EventArgs e)
         {
             int count = this.dataGridView1.SelectedRows.Count;
-
             List<Model.VisaInfo> list = new List<VisaInfo>();
-
-
             for (int i = 0; i != count; ++i)
             {
                 Model.VisaInfo model = bll.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
+                if (model == null)
+                {
+                    MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                    return;
+                }
+                if (model.Visa_id != string.Empty)
+                {
+                    MessageBox.Show("选中项中有已经设置过团号的签证!");
+                    return;
+                }
                 if (model != null)
                     list.Add(model);
             }
 
             FrmSetGroup frmSetGroup = new FrmSetGroup(list);
             frmSetGroup.ShowDialog();
-
         }
 
         #endregion

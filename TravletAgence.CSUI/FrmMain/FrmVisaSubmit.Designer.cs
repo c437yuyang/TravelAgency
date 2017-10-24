@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
@@ -86,16 +86,11 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtInput = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsItemDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsItemModify = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsItemTypeInInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeShow = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeBatchGenerate = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodeBatchPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsItemSetGroup = new System.Windows.Forms.ToolStripMenuItem();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx4.SuspendLayout();
@@ -173,14 +168,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._Name,
@@ -196,28 +191,28 @@
             this.HasTypeIn,
             this.GroupNo,
             this.VisaInfo_id});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -714,6 +709,7 @@
             // 
             this.txtInput.Border.Class = "TextBoxBorder";
             this.txtInput.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtInput.DisabledBackColor = System.Drawing.Color.White;
             this.txtInput.Location = new System.Drawing.Point(0, 37);
             this.txtInput.Multiline = true;
             this.txtInput.Name = "txtInput";
@@ -726,38 +722,13 @@
             // cmsDgvRb
             // 
             this.cmsDgvRb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsItemDelete,
-            this.cmsItemModify,
-            this.cmsItemTypeInInfo,
             this.cmsItemQRCodeShow,
             this.cmsItemQRCodeBatchGenerate,
             this.cmsItemQRCodeBatchPrint,
             this.cmsItemQRCodePrint,
-            this.cmsItemRefreshState,
-            this.cmsItemSetGroup});
+            this.cmsItemRefreshState});
             this.cmsDgvRb.Name = "cmsDgvRb";
-            this.cmsDgvRb.Size = new System.Drawing.Size(161, 202);
-            // 
-            // cmsItemDelete
-            // 
-            this.cmsItemDelete.Name = "cmsItemDelete";
-            this.cmsItemDelete.Size = new System.Drawing.Size(160, 22);
-            this.cmsItemDelete.Text = "删除";
-            this.cmsItemDelete.Click += new System.EventHandler(this.cmsItemDelete_Click);
-            // 
-            // cmsItemModify
-            // 
-            this.cmsItemModify.Name = "cmsItemModify";
-            this.cmsItemModify.Size = new System.Drawing.Size(160, 22);
-            this.cmsItemModify.Text = "修改";
-            this.cmsItemModify.Click += new System.EventHandler(this.cmsItemModify_Click);
-            // 
-            // cmsItemTypeInInfo
-            // 
-            this.cmsItemTypeInInfo.Name = "cmsItemTypeInInfo";
-            this.cmsItemTypeInInfo.Size = new System.Drawing.Size(160, 22);
-            this.cmsItemTypeInInfo.Text = "录入资料";
-            this.cmsItemTypeInInfo.Click += new System.EventHandler(this.cmsItemTypeInInfo_Click);
+            this.cmsDgvRb.Size = new System.Drawing.Size(161, 136);
             // 
             // cmsItemQRCodeShow
             // 
@@ -791,18 +762,6 @@
             this.cmsItemRefreshState.Size = new System.Drawing.Size(160, 22);
             this.cmsItemRefreshState.Text = "刷新数据库状态";
             this.cmsItemRefreshState.Click += new System.EventHandler(this.cmsItemRefreshState_Click);
-            // 
-            // cmsItemSetGroup
-            // 
-            this.cmsItemSetGroup.Name = "cmsItemSetGroup";
-            this.cmsItemSetGroup.Size = new System.Drawing.Size(160, 22);
-            this.cmsItemSetGroup.Text = "设置团号";
-            this.cmsItemSetGroup.Click += new System.EventHandler(this.cmsItemSetGroup_Click);
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
             // FrmVisaSubmit
             // 
@@ -852,15 +811,12 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private System.Windows.Forms.ContextMenuStrip cmsDgvRb;
-        private System.Windows.Forms.ToolStripMenuItem cmsItemDelete;
-        private System.Windows.Forms.ToolStripMenuItem cmsItemModify;
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeShow;
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeBatchGenerate;
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodeBatchPrint;
         private System.Windows.Forms.ToolStripMenuItem cmsItemQRCodePrint;
         private DevComponents.DotNetBar.PanelEx panelEx4;
         private DevComponents.DotNetBar.PanelEx panelEx3;
-        private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.PanelEx panelOutState;
         private DevComponents.DotNetBar.LabelX labelX2;
         private System.Windows.Forms.RadioButton rbtnIn;
@@ -879,7 +835,6 @@
         private System.Windows.Forms.RadioButton rbtnSingle;
         private System.Windows.Forms.RadioButton rbtnBatch;
         private DevComponents.DotNetBar.LabelX labelX3;
-        private System.Windows.Forms.ToolStripMenuItem cmsItemTypeInInfo;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnglishName;
@@ -894,6 +849,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HasTypeIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn VisaInfo_id;
-        private System.Windows.Forms.ToolStripMenuItem cmsItemSetGroup;
     }
 }
