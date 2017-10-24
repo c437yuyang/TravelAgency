@@ -156,6 +156,7 @@ namespace TravletAgence.CSUI.FrmSub
             //dgvGroupInfo.Update();
         }
 
+        //TODO:考虑移出的人
         private void UpdateListVisaInfo(List<Model.VisaInfo> list)
         {
             for (int i = 0; i < list.Count; i++)
@@ -320,7 +321,6 @@ namespace TravletAgence.CSUI.FrmSub
             DialogResult res = MessageBox.Show("是否提交修改?", "确认", MessageBoxButtons.OKCancel);
             if (res == DialogResult.Cancel)
                 return;
-
             if (!_initFromVisaModel)
             {
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
@@ -345,6 +345,27 @@ namespace TravletAgence.CSUI.FrmSub
                 //2.1更新VisaInfo数据库
                 UpdateListVisaInfo(_dgvList);
             }
+            else
+            {
+                //从model初始化的
+                //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
+                _visaModel.GroupNo = txtGroupNo.Text;
+                _visaModel.SalesPerson = txtSalesPerson.Text;
+                _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+                _visaModel.Country = cbCountry.Text;
+
+                if (!_bllVisa.Update(_visaModel)) //执行更新
+                {
+                    MessageBox.Show("更新团号信息失败!");
+                    return;
+                }
+                //2.更新model,设置资料已录入，团号，国家等
+                _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
+                //2.1更新VisaInfo数据库
+                UpdateListVisaInfo(_dgvList);
+            }
+
+
             Close();
         }
 
