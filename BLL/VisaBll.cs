@@ -18,5 +18,37 @@ namespace TravletAgence.BLL
             DataTable dt = ds.Tables[0];
             return DataTableToList(dt);
         }
+
+        public bool DeleteVisaAndModifyVisaInfos(Model.Visa model)
+        {
+
+            //1.更新对应visainfo
+            BLL.VisaInfo bllVisaInfo = new VisaInfo();
+            List<Model.VisaInfo> list = bllVisaInfo.GetModelList(" Visa_id = '" + model.Visa_id + "'");
+
+            //修改对应项
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i].Country = string.Empty;
+                list[i].Visa_id = string.Empty;
+                list[i].GroupNo = String.Empty;
+                //TODO:资料录入情况怎么处理
+                if (!bllVisaInfo.Update(list[i]))
+                {
+                    return false;
+                }
+            }
+            //2.删除自身
+            return Delete(model.Visa_id);
+        }
+
+        /// <summary>
+        /// 增加一条数据
+        /// </summary>
+        public Guid Add(TravletAgence.Model.Visa model)
+        {
+            return dal.Add(model);
+        }
+
     }
 }

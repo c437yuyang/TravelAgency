@@ -22,13 +22,7 @@ namespace TravletAgence.BLL
 			return dal.Exists(Visa_id);
 		}
 
-		/// <summary>
-		/// 增加一条数据
-		/// </summary>
-		public bool Add(TravletAgence.Model.Visa model)
-		{
-			return dal.Add(model);
-		}
+
 
 		/// <summary>
 		/// 更新一条数据

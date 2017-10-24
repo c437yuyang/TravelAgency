@@ -340,17 +340,20 @@ namespace TravletAgence.CSUI.FrmSub
                     return;
                 }
                 _visaModel = new Visa();
+                //_visaModel.Visa_id = Guid.NewGuid(); //这里必须要给一个，虽然这里不给也会入库正确，数据库会赋给默认值，但是后面更新对应visainfo就会有错
+                //这里代码生成器默认给了一个guid，不能再自己给了
                 _visaModel.EntryTime = DateTime.Now;
                 _visaModel.GroupNo = txtGroupNo.Text;
                 _visaModel.SalesPerson = txtSalesPerson.Text;
                 _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
                 _visaModel.Country = cbCountry.Text;
                 _visaModel.Number = lvIn.Items.Count; //团号的人数
-                if (!_bllVisa.Add(_visaModel)) //执行更新
+                if ((_visaModel.Visa_id = _bllVisa.Add(_visaModel)) == Guid.Empty) //执行更新,返回值是新插入的visamodel的guid
                 {
                     MessageBox.Show("添加团号到数据库失败，请重试!");
                     return;
                 }
+
                 //2.更新model,设置资料已录入，团号，国家等
                 _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
                 //2.1更新VisaInfo数据库
@@ -364,7 +367,7 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.SalesPerson = txtSalesPerson.Text;
                 _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
                 _visaModel.Country = cbCountry.Text;
-
+                _visaModel.Number = lvIn.Items.Count;
                 if (!_bllVisa.Update(_visaModel)) //执行更新
                 {
                     MessageBox.Show("更新团号信息失败!");
@@ -421,7 +424,17 @@ namespace TravletAgence.CSUI.FrmSub
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("是否删除该团号?", "警告", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                return;
+            }
+            if (!_bllVisa.DeleteVisaAndModifyVisaInfos(_visaModel))
+            {
+                MessageBox.Show("删除团号失败!");
+                return;
+            }
+            MessageBox.Show("删除团号成功!");
+            Close();
         }
 
         #endregion
