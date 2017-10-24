@@ -43,7 +43,7 @@ namespace TravletAgence.CSUI.FrmMain
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //加载数据
-            loadDataToDataGridView(_curPage);
+            LoadDataToDataGridView(_curPage);
             UpdateState();
         }
 
@@ -124,7 +124,7 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 if (bll.Add(model))
                 {
-                    loadDataToDataGridView(_curPage);
+                    LoadDataToDataGridView(_curPage);
                     UpdateState();
                 }
                 else
@@ -163,18 +163,18 @@ namespace TravletAgence.CSUI.FrmMain
                 MessageBox.Show(Resources.FailedAddToDatabase);
                 return;
             }
-            loadDataToDataGridView(_curPage);
+            LoadDataToDataGridView(_curPage);
             UpdateState();
         }
 
 
         #region dgv用到的相关方法
-        public void loadDataToDataGridView(int page) //刷新后保持选中
+        public void LoadDataToDataGridView(int page) //刷新后保持选中
         {
             int curSelectedRow = -1;
             if (dataGridView1.SelectedRows.Count > 0)
                 curSelectedRow = dataGridView1.SelectedRows[0].Index;
-            dataGridView1.DataSource = bll.GetListByPage(page, _pageSize);
+            dataGridView1.DataSource = bll.GetListByPageOrderByGroupNo(page, _pageSize);
             if (curSelectedRow != -1)
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
         }
@@ -201,27 +201,27 @@ namespace TravletAgence.CSUI.FrmMain
         #region dgv的bar栏
         private void btnPageNext_Click(object sender, EventArgs e)
         {
-            loadDataToDataGridView(++_curPage);
+            LoadDataToDataGridView(++_curPage);
             UpdateState();
         }
 
         private void btnPagePre_Click(object sender, EventArgs e)
         {
-            loadDataToDataGridView(--_curPage);
+            LoadDataToDataGridView(--_curPage);
             UpdateState();
         }
 
         private void btnPageFirst_Click(object sender, EventArgs e)
         {
             _curPage = 1;
-            loadDataToDataGridView(_curPage);
+            LoadDataToDataGridView(_curPage);
             UpdateState();
         }
 
         private void btnPageLast_Click(object sender, EventArgs e)
         {
             _curPage = _pageCount;
-            loadDataToDataGridView(_curPage);
+            LoadDataToDataGridView(_curPage);
             UpdateState();
         }
         #endregion
@@ -310,7 +310,7 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void cmsItemRefreshState_Click(object sender, EventArgs e)
         {
-            loadDataToDataGridView(_curPage);
+            LoadDataToDataGridView(_curPage);
         }
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace TravletAgence.CSUI.FrmMain
                 return;
             }
 
-            Action<int> updateDel = new Action<int>(loadDataToDataGridView);
+            Action<int> updateDel = new Action<int>(LoadDataToDataGridView);
             FrmInfoTypeIn dlg = new FrmInfoTypeIn(model, updateDel, _curPage);
             dlg.ShowDialog();
         }
@@ -410,7 +410,7 @@ namespace TravletAgence.CSUI.FrmMain
 
             int n = bll.DeleteList(sb.ToString());
             MessageBox.Show(n + "条记录删除成功," + (count - n) + "条记录删除失败.");
-            loadDataToDataGridView(_curPage);
+            LoadDataToDataGridView(_curPage);
             UpdateState();
         }
 
@@ -440,7 +440,7 @@ namespace TravletAgence.CSUI.FrmMain
                     list.Add(model);
             }
 
-            FrmSetGroup frmSetGroup = new FrmSetGroup(list);
+            FrmSetGroup frmSetGroup = new FrmSetGroup(list,LoadDataToDataGridView,_curPage);
             frmSetGroup.ShowDialog();
         }
 

@@ -179,7 +179,7 @@ namespace DgvMergeDemo
             TravletAgence.BLL.VisaInfo bll = new TravletAgence.BLL.VisaInfo();
 
 
-            dataGridView1.DataSource = bll.GetListByPage(1, 30);
+            dataGridView1.DataSource = bll.GetListByPageOrderByOutState(1, 30);
 
 
         }

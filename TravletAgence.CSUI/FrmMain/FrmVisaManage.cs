@@ -183,7 +183,7 @@ namespace TravletAgence.CSUI.FrmMain
                 MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                 return;
             }
-            FrmSetGroup frm = new FrmSetGroup(model);
+            FrmSetGroup frm = new FrmSetGroup(model,loadDataToDataGridView,_curPage);
             frm.ShowDialog();
         }
 

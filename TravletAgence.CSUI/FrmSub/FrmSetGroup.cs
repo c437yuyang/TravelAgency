@@ -24,6 +24,8 @@ namespace TravletAgence.CSUI.FrmSub
         private readonly BLL.VisaInfo _bllVisaInfo = new BLL.VisaInfo();
         private readonly BLL.Visa _bllVisa = new BLL.Visa();
         private string _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
+        private readonly Action<int> _updateDel; //副界面传来更新数据库的委托
+        private readonly int _curPage; //主界面更新数据库需要一个当前页
 
         public FrmSetGroup()
         {
@@ -34,11 +36,13 @@ namespace TravletAgence.CSUI.FrmSub
         /// 从已有list初始化窗口(还未设置团号)
         /// </summary>
         /// <param name="list"></param>
-        public FrmSetGroup(List<Model.VisaInfo> list)
+        public FrmSetGroup(List<Model.VisaInfo> list,Action<int> updateDel,int curpage)
         {
             InitializeComponent();
             _list = list;
             _initFromVisaModel = false;
+            _updateDel = updateDel;
+            _curPage = curpage;
         }
 
         /// <summary>
@@ -74,11 +78,13 @@ namespace TravletAgence.CSUI.FrmSub
         /// 从已有visaModel设置窗口(已经设置了团号)
         /// </summary>
         /// <param name="_visaModel"></param>
-        public FrmSetGroup(Model.Visa model)
+        public FrmSetGroup(Model.Visa model, Action<int> updateDel, int curpage)
         {
             InitializeComponent();
             _visaModel = model;
             _initFromVisaModel = true;
+            _updateDel = updateDel;
+            _curPage = curpage;
         }
 
         /// <summary>
@@ -380,6 +386,7 @@ namespace TravletAgence.CSUI.FrmSub
                 //2.2更新移出的人的数据库
                 UpdateOutListVisaInfo();
             }
+            _updateDel(_curPage);
             Close();
         }
 
@@ -434,6 +441,7 @@ namespace TravletAgence.CSUI.FrmSub
                 return;
             }
             MessageBox.Show("删除团号成功!");
+            _updateDel(_curPage);
             Close();
         }
 

@@ -28,7 +28,7 @@ namespace TravletAgence.UI.Controllers
             string schRemark = Request["schRemark"];
             int total = bll.GetRecordCount(string.Empty);
 
-            var visaInfoList = bll.GetListByPage(pageIndex,pageSize);
+            var visaInfoList = bll.GetListByPageOrderByOutState(pageIndex,pageSize);
 
             var data = new { total = total, rows = visaInfoList };
 
