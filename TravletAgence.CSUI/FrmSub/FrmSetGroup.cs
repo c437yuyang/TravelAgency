@@ -13,10 +13,10 @@ namespace TravletAgence.CSUI.FrmSub
         private List<Model.VisaInfo> _list; //保存所有传进来的visainfo
         private List<Model.VisaInfo> _dgvList = new List<VisaInfo>(); //保存所有进入dgv的visainfo
         private Model.Visa _visaModel;
-        private bool _initFromVisaModel;
+        private readonly bool _initFromVisaModel;
 
-        private BLL.VisaInfo _bllVisaInfo = new BLL.VisaInfo();
-        private BLL.Visa _bllVisa = new BLL.Visa();
+        private readonly BLL.VisaInfo _bllVisaInfo = new BLL.VisaInfo();
+        private readonly BLL.Visa _bllVisa = new BLL.Visa();
 
         private string _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
 
@@ -77,7 +77,7 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         /// <summary>
-        /// 从已有list初始化窗口(还未设置团号)
+        /// 从已有visaModel设置窗口(已经设置了团号)
         /// </summary>
         private void InitFrmFromVisaModel()
         {
@@ -85,7 +85,7 @@ namespace TravletAgence.CSUI.FrmSub
                 return;
 
             //查询得到所有的属于这个团的用户
-            _list = _bllVisaInfo.GetModelList(" GroupNo = " + _visaModel.GroupNo);
+            _list = _bllVisaInfo.GetModelList(" GroupNo = '" + _visaModel.GroupNo + "'");
 
             //根据list加载列表
             for (int i = 0; i < _list.Count; i++)
@@ -98,6 +98,13 @@ namespace TravletAgence.CSUI.FrmSub
                 liv.Tag = _list[i];
                 lvIn.Items.Add(liv); //这里是默认进入的在里面
             }
+
+            //初始化团号
+            updateGroupNo();
+
+            //初始化dgv
+            updateDgvData();
+
             //初始化时间选择控件
             txtDepartureTime.Text = DateTimeFormator.DateTimeToString(_visaModel.PredictTime);
 
@@ -338,9 +345,7 @@ namespace TravletAgence.CSUI.FrmSub
                 //2.1更新VisaInfo数据库
                 UpdateListVisaInfo(_dgvList);
             }
-
             Close();
-
         }
 
 

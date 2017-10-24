@@ -47,7 +47,6 @@
             this.lbCurPage = new DevComponents.DotNetBar.LabelItem();
             this.panelDgv = new DevComponents.DotNetBar.PanelEx();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.imageCountries = new System.Windows.Forms.ImageList(this.components);
             this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountryImage = new System.Windows.Forms.DataGridViewImageColumn();
@@ -55,9 +54,15 @@
             this.EntryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalesPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Visa_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageCountries = new System.Windows.Forms.ImageList(this.components);
+            this.cmsDgv = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsItemShowGroupNo = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemRefreshDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panelDgv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.cmsDgv.SuspendLayout();
             this.SuspendLayout();
             // 
             // bar1
@@ -217,39 +222,8 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1041, 546);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
-            // 
-            // imageCountries
-            // 
-            this.imageCountries.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageCountries.ImageStream")));
-            this.imageCountries.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCountries.Images.SetKeyName(0, "Print");
-            this.imageCountries.Images.SetKeyName(1, "User");
-            this.imageCountries.Images.SetKeyName(2, "Canada");
-            this.imageCountries.Images.SetKeyName(3, "France");
-            this.imageCountries.Images.SetKeyName(4, "Sweden");
-            this.imageCountries.Images.SetKeyName(5, "Spain");
-            this.imageCountries.Images.SetKeyName(6, "Mexico");
-            this.imageCountries.Images.SetKeyName(7, "Germany");
-            this.imageCountries.Images.SetKeyName(8, "Ireland");
-            this.imageCountries.Images.SetKeyName(9, "Switzerland");
-            this.imageCountries.Images.SetKeyName(10, "UK");
-            this.imageCountries.Images.SetKeyName(11, "USA");
-            this.imageCountries.Images.SetKeyName(12, "Venezuela");
-            this.imageCountries.Images.SetKeyName(13, "Argentina");
-            this.imageCountries.Images.SetKeyName(14, "Brazil");
-            this.imageCountries.Images.SetKeyName(15, "Austria");
-            this.imageCountries.Images.SetKeyName(16, "Italy");
-            this.imageCountries.Images.SetKeyName(17, "Portugal");
-            this.imageCountries.Images.SetKeyName(18, "Denmark");
-            this.imageCountries.Images.SetKeyName(19, "Belgium");
-            this.imageCountries.Images.SetKeyName(20, "Finland");
-            this.imageCountries.Images.SetKeyName(21, "Poland");
-            this.imageCountries.Images.SetKeyName(22, "SecHigh");
-            this.imageCountries.Images.SetKeyName(23, "SecMedium");
-            this.imageCountries.Images.SetKeyName(24, "SecLow");
-            this.imageCountries.Images.SetKeyName(25, "Japan");
-            this.imageCountries.Images.SetKeyName(26, "Korea");
             // 
             // GroupNo
             // 
@@ -303,6 +277,67 @@
             this.Visa_id.ReadOnly = true;
             this.Visa_id.Visible = false;
             // 
+            // imageCountries
+            // 
+            this.imageCountries.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageCountries.ImageStream")));
+            this.imageCountries.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCountries.Images.SetKeyName(0, "Print");
+            this.imageCountries.Images.SetKeyName(1, "User");
+            this.imageCountries.Images.SetKeyName(2, "Canada");
+            this.imageCountries.Images.SetKeyName(3, "France");
+            this.imageCountries.Images.SetKeyName(4, "Sweden");
+            this.imageCountries.Images.SetKeyName(5, "Spain");
+            this.imageCountries.Images.SetKeyName(6, "Mexico");
+            this.imageCountries.Images.SetKeyName(7, "Germany");
+            this.imageCountries.Images.SetKeyName(8, "Ireland");
+            this.imageCountries.Images.SetKeyName(9, "Switzerland");
+            this.imageCountries.Images.SetKeyName(10, "UK");
+            this.imageCountries.Images.SetKeyName(11, "USA");
+            this.imageCountries.Images.SetKeyName(12, "Venezuela");
+            this.imageCountries.Images.SetKeyName(13, "Argentina");
+            this.imageCountries.Images.SetKeyName(14, "Brazil");
+            this.imageCountries.Images.SetKeyName(15, "Austria");
+            this.imageCountries.Images.SetKeyName(16, "Italy");
+            this.imageCountries.Images.SetKeyName(17, "Portugal");
+            this.imageCountries.Images.SetKeyName(18, "Denmark");
+            this.imageCountries.Images.SetKeyName(19, "Belgium");
+            this.imageCountries.Images.SetKeyName(20, "Finland");
+            this.imageCountries.Images.SetKeyName(21, "Poland");
+            this.imageCountries.Images.SetKeyName(22, "SecHigh");
+            this.imageCountries.Images.SetKeyName(23, "SecMedium");
+            this.imageCountries.Images.SetKeyName(24, "SecLow");
+            this.imageCountries.Images.SetKeyName(25, "Japan");
+            this.imageCountries.Images.SetKeyName(26, "Korea");
+            // 
+            // cmsDgv
+            // 
+            this.cmsDgv.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.删除ToolStripMenuItem,
+            this.cmsItemShowGroupNo,
+            this.cmsItemRefreshDatabase});
+            this.cmsDgv.Name = "cmsDgv";
+            this.cmsDgv.Size = new System.Drawing.Size(161, 70);
+            // 
+            // cmsItemShowGroupNo
+            // 
+            this.cmsItemShowGroupNo.Name = "cmsItemShowGroupNo";
+            this.cmsItemShowGroupNo.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemShowGroupNo.Text = "查看选中团号";
+            this.cmsItemShowGroupNo.Click += new System.EventHandler(this.cmsItemShowGroupNo_Click);
+            // 
+            // cmsItemRefreshDatabase
+            // 
+            this.cmsItemRefreshDatabase.Name = "cmsItemRefreshDatabase";
+            this.cmsItemRefreshDatabase.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemRefreshDatabase.Text = "刷新数据库状态";
+            this.cmsItemRefreshDatabase.Click += new System.EventHandler(this.cmsItemRefreshDatabase_Click);
+            // 
+            // 删除ToolStripMenuItem
+            // 
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.删除ToolStripMenuItem.Text = "删除";
+            // 
             // FrmVisaManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -316,6 +351,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.panelDgv.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.cmsDgv.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -344,5 +380,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EntryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn SalesPerson;
         private System.Windows.Forms.DataGridViewTextBoxColumn Visa_id;
+        private System.Windows.Forms.ContextMenuStrip cmsDgv;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemShowGroupNo;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemRefreshDatabase;
+        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
     }
 }

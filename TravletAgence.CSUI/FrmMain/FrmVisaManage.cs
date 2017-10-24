@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TravletAgence.CSUI.FrmSub;
 using TravletAgence.CSUI.Properties;
+using TravletAgence.Model;
 
 namespace TravletAgence.CSUI.FrmMain
 {
@@ -125,7 +127,76 @@ namespace TravletAgence.CSUI.FrmMain
             }
         }
 
+        /// <summary>
+        /// dgv右键响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    //若行已是选中状态就不再进行设置
+                    //如果没选中当前活动行则选中这一行
+                    if (dataGridView1.Rows[e.RowIndex].Selected == false)
+                    {
+                        dataGridView1.ClearSelection();
+                        dataGridView1.Rows[e.RowIndex].Selected = true;
+                    }
+                    //只选中一行时设置活动单元格
+                    if (dataGridView1.SelectedRows.Count == 1)
+                    {
+                        if (e.ColumnIndex != -1) //选中表头了
+                            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                        else
+                            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
+                    }
+                    //弹出操作菜单
+                    cmsDgv.Show(MousePosition.X, MousePosition.Y);
+                }
+            }
+        }
+
         #endregion
+
+   
+
+        #region dgv右键响应
+        private void cmsItemShowGroupNo_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBox.Show(Resources.SelectShowMoreThanOne);
+                return;
+            }
+
+            Model.Visa model = _bllVisa.GetModel((Guid) dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
+            if (model == null)
+            {
+                MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                return;
+            }
+ 
+
+            FrmSetGroup frm = new FrmSetGroup(model);
+
+            frm.ShowDialog();
+        }
+
+        private void cmsItemRefreshDatabase_Click(object sender, EventArgs e)
+        {
+            loadDataToDataGridView(_curPage);
+        }
+
+        #endregion
+
+
+
+
+
+
 
 
 

@@ -424,7 +424,6 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void cmsItemQRCodeBatchGenerate_Click(object sender, EventArgs e)
         {
-
             int count = this.dataGridView1.SelectedRows.Count;
 
             //选择保存路径
@@ -477,7 +476,6 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void cmsItemDelete_Click(object sender, EventArgs e)
         {
-
             int count = this.dataGridView1.SelectedRows.Count;
             if (MessageBox.Show("确认删除" + count + "条记录?", "确认", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                 return;
@@ -506,9 +504,7 @@ namespace TravletAgence.CSUI.FrmMain
         private void cmsItemSetGroup_Click(object sender, EventArgs e)
         {
             int count = this.dataGridView1.SelectedRows.Count;
-
             List<Model.VisaInfo> list = new List<VisaInfo>();
-
 
             for (int i = 0; i != count; ++i)
             {
@@ -516,10 +512,8 @@ namespace TravletAgence.CSUI.FrmMain
                 if (model != null)
                     list.Add(model);
             }
-
             FrmSetGroup frmSetGroup = new FrmSetGroup(list);
             frmSetGroup.ShowDialog();
-
         }
 
 
