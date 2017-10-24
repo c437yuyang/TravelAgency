@@ -4,10 +4,16 @@ using System.Windows.Forms;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
 using TravletAgence.Common.Excel;
+using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
 
 namespace TravletAgence.CSUI.FrmSub
 {
+    /// <summary>
+    /// 总的来说，两套逻辑，一套是从签证管理界面进来，选中那些还没设置过团号的人，然后设置团号
+    /// 第二套是从团号管理界面进入，可以从当前团移出人以及删除团，以及修改团的信息
+    /// 
+    /// </summary>
     public partial class FrmSetGroup : Form
     {
         private List<Model.VisaInfo> _list; //保存所有传进来的visainfo
@@ -17,7 +23,6 @@ namespace TravletAgence.CSUI.FrmSub
 
         private readonly BLL.VisaInfo _bllVisaInfo = new BLL.VisaInfo();
         private readonly BLL.Visa _bllVisa = new BLL.Visa();
-
         private string _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
 
         public FrmSetGroup()
@@ -158,8 +163,11 @@ namespace TravletAgence.CSUI.FrmSub
             //dgvGroupInfo.Update();
         }
 
-        //TODO:考虑移出的人
-        private void UpdateListVisaInfo(List<Model.VisaInfo> list)
+        /// <summary>
+        /// 第一套逻辑
+        /// </summary>
+        /// <param name="list"></param>
+        private void UpdateInListVisaInfo(List<Model.VisaInfo> list)
         {
             for (int i = 0; i < list.Count; i++)
             {
@@ -337,6 +345,7 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.SalesPerson = txtSalesPerson.Text;
                 _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
                 _visaModel.Country = cbCountry.Text;
+                _visaModel.Number = lvIn.Items.Count; //团号的人数
                 if (!_bllVisa.Add(_visaModel)) //执行更新
                 {
                     MessageBox.Show("添加团号到数据库失败，请重试!");
@@ -345,11 +354,11 @@ namespace TravletAgence.CSUI.FrmSub
                 //2.更新model,设置资料已录入，团号，国家等
                 _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
                 //2.1更新VisaInfo数据库
-                UpdateListVisaInfo(_dgvList);
+                UpdateInListVisaInfo(_dgvList);
             }
             else
             {
-                //从model初始化的
+                //从model初始化的，只考虑信息的修改以及移出人
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
                 _visaModel.GroupNo = txtGroupNo.Text;
                 _visaModel.SalesPerson = txtSalesPerson.Text;
@@ -363,12 +372,34 @@ namespace TravletAgence.CSUI.FrmSub
                 }
                 //2.更新model,设置资料已录入，团号，国家等
                 _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
-                //2.1更新VisaInfo数据库
-                UpdateListVisaInfo(_dgvList);
+                //2.1更新还留在团内的人的VisaInfo数据库
+                UpdateInListVisaInfo(_dgvList);
+                //2.2更新移出的人的数据库
+                UpdateOutListVisaInfo();
             }
-
-
             Close();
+        }
+
+        /// <summary>
+        /// 更新移出了的人的数据库
+        /// </summary>
+        private void UpdateOutListVisaInfo()
+        {
+            for (int i = 0; i < lvOut.Items.Count; i++)
+            {
+                Model.VisaInfo model = lvOut.Items[i].Tag as Model.VisaInfo;
+                model.Visa_id = string.Empty;
+                model.GroupNo = string.Empty;
+                model.Country = string.Empty;
+                //TODO:资料录入情况怎么处理
+                //执行更新
+                if (_bllVisaInfo.Update(model) == false)
+                {
+                    MessageBox.Show(Resources.FailedUpdateVisaInfoState);
+                    return;
+                }
+            }
+            MessageBox.Show("成功从当前团移出" + lvOut.Items.Count + "条记录.");
         }
 
 
@@ -383,8 +414,19 @@ namespace TravletAgence.CSUI.FrmSub
             InitFrmFromVisaModel();
         }
 
+        /// <summary>
+        /// 删除团号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
+
+
     }
 
 
