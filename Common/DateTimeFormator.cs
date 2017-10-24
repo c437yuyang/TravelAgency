@@ -13,7 +13,7 @@ namespace TravletAgence.Common
                     DateTime dt = (DateTime)dateTime;
                     return dt.ToString("yyyy/MM/dd");
                 }
-                return "9999/99/99";
+                return "";
             }
             catch (Exception)
             {

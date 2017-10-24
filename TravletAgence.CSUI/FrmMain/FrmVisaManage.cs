@@ -192,7 +192,35 @@ namespace TravletAgence.CSUI.FrmMain
             loadDataToDataGridView(_curPage);
         }
 
+        /// <summary>
+        /// 右键删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int count = this.dataGridView1.SelectedRows.Count;
+            if (MessageBox.Show("确认删除" + count + "条记录?", Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                return;
+            int n = 0;
+            for (int i = 0; i != count; ++i)
+            {
+                Model.Visa model =
+                    _bllVisa.GetModel(Guid.Parse(dataGridView1.SelectedRows[i].Cells["Visa_id"].Value.ToString()));
+                if(!_bllVisa.DeleteVisaAndModifyVisaInfos(model))
+                {
+                    MessageBox.Show("删除失败!");
+                }
+                ++n;
+            }
+            MessageBox.Show(n + "条记录删除成功," + (count - n) + "条记录删除失败.");
+            loadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
         #endregion
+
+
 
 
 
