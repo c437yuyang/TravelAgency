@@ -301,7 +301,7 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 9)
+            if (e.ColumnIndex == 10)
             {
                 DataGridViewX dgv = (DataGridViewX)sender;
                 Color c = Color.Empty;
@@ -329,7 +329,14 @@ namespace TravletAgence.CSUI.FrmMain
         {
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                DataGridViewRow row = dataGridView1.Rows[i];
+                row.HeaderCell.Value = (i + 1).ToString();
+
+                if (row.Cells["EnglishName"].Value != string.Empty && row.Cells["PassportNo"].Value != string.Empty)
+                {
+                    dataGridView1.Rows[i].Cells["QRCodeImage"].Value = _qrCode.EncodeToImage(row.Cells["EnglishName"].Value + "|" + row.Cells["PassportNo"].Value,
+                        QRCodeSaveSize.Size165X165);
+                }
             }
         }
 

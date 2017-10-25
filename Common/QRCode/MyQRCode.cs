@@ -39,6 +39,25 @@ namespace TravletAgence.Common.QRCode
             {
                 render.WriteToStream(qrCode.Matrix, ImageFormat.Png, stream);
             }
+
+            Bitmap bitmap = new Bitmap(165,165);
+            Graphics g = Graphics.FromImage(bitmap);
+            render.Draw(g, qrCode.Matrix);
+            bitmap.Save("a.bmp");
+
+
+        }
+
+        public Bitmap EncodeToImage(string str,QRCodeSaveSize saveSize)
+        {
+            QrCode qrCode = _qrEncoder.Encode(str);
+            //保存成png文件
+            GraphicsRenderer render = new GraphicsRenderer(new FixedModuleSize(Convert.ToInt32(saveSize), QuietZoneModules.Two), Brushes.Black, Brushes.White);
+
+            MemoryStream ms = new MemoryStream();
+            render.WriteToStream(qrCode.Matrix, ImageFormat.Png, ms);
+            Bitmap bitmap = new Bitmap(ms);
+            return bitmap;
         }
 
         //public void EncodeToCtrl(string str, QrCodeGraphicControl qcgtrl)

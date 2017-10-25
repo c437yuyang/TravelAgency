@@ -99,6 +99,10 @@ namespace QRCodeWinform
         {
             MyQRCode qrcode = new MyQRCode();
             //qrcode.EncodeToCtrl(this.qrCodeGraphicControl1.Text + 1, this.qrCodeGraphicControl1);
+
+            //qrcode.EncodeToPng("aa","aa",QRCodeSaveSize.Size165X165);
+            qrcode.EncodeToImage(QRCodeSaveSize.Size165X165);
+
         }
 
 
