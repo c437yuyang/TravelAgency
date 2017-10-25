@@ -27,6 +27,7 @@ namespace TravletAgence.CSUI.FrmSub
 
         private void FrmQRCode_Load(object sender, EventArgs e)
         {
+            this.MinimumSize = this.Size;
             SetQRCodeToPicBox();
         }
 

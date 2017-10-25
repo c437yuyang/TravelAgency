@@ -36,6 +36,8 @@ namespace TravletAgence.CSUI.FrmSub
         /// 从已有list初始化窗口(还未设置团号)
         /// </summary>
         /// <param name="list"></param>
+        /// <param name="updateDel"></param>
+        /// <param name="curpage"></param>
         public FrmSetGroup(List<Model.VisaInfo> list, Action<int> updateDel, int curpage)
         {
             InitializeComponent();
@@ -48,7 +50,7 @@ namespace TravletAgence.CSUI.FrmSub
         /// <summary>
         /// 从已有list初始化窗口(还未设置团号)
         /// </summary>
-        /// TODO:应该先校验是否都是还没分配等逻辑
+        /// 校验是否都是还没分配写在了调用者那边
         private void InitFrmFromList()
         {
             if (_list.Count == 0)
@@ -77,7 +79,9 @@ namespace TravletAgence.CSUI.FrmSub
         /// <summary>
         /// 从已有visaModel设置窗口(已经设置了团号)
         /// </summary>
-        /// <param name="_visaModel"></param>
+        /// <param name="model"></param>
+        /// <param name="updateDel"></param>
+        /// <param name="curpage"></param>
         public FrmSetGroup(Model.Visa model, Action<int> updateDel, int curpage)
         {
             InitializeComponent();
@@ -128,6 +132,7 @@ namespace TravletAgence.CSUI.FrmSub
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
         {
+            this.MinimumSize = this.Size;
             dgvGroupInfo.AutoGenerateColumns = false;
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
             dgvGroupInfo.Columns["Birthday"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;//某一些列关闭自适应
@@ -257,9 +262,6 @@ namespace TravletAgence.CSUI.FrmSub
             }
 
         }
-
-
-
 
         /// <summary>
         /// 右键菜单弹出
@@ -526,13 +528,6 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         #endregion
-
-
-
-
-
-
-
 
     }
 

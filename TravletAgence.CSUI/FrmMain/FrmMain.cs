@@ -117,6 +117,11 @@ namespace TravletAgence.CSUI.FrmMain
             tabMain.Tabs.Remove(tb);
         }
 
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            MinimumSize = Size;
+        }
+
 
     }
 }

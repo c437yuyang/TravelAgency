@@ -78,6 +78,7 @@ namespace TravletAgence.CSUI.FrmSub
         }
         private void FrmInfoTypeIn_Load(object sender, EventArgs e)
         {
+            this.MinimumSize = this.Size;
             this.StartPosition = FormStartPosition.CenterParent; //不能写在form_load里面，是已经加载完成了
         }
 
