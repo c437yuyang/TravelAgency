@@ -46,6 +46,9 @@ namespace TravletAgence.CSUI.FrmSub
             txtDepartureRecord.Text = model.DepartureRecord;
         }
 
+        /// <summary>
+        /// TODO:这里面的团号修改逻辑
+        /// </summary>
         private void CtrlsToModel()
         {
             if (_model == null)

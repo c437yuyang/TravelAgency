@@ -349,7 +349,7 @@ namespace TravletAgence.CSUI.FrmMain
                 DataGridViewRow row = dataGridView1.Rows[i];
                 row.HeaderCell.Value = (i + 1).ToString();
 
-                if (row.Cells["EnglishName"].Value != string.Empty && row.Cells["PassportNo"].Value != string.Empty)
+                if ((string)row.Cells["EnglishName"].Value != string.Empty && (string)row.Cells["PassportNo"].Value != string.Empty)
                 {
                     dataGridView1.Rows[i].Cells["QRCodeImage"].Value = _qrCode.EncodeToImage(row.Cells["EnglishName"].Value + "|" + row.Cells["PassportNo"].Value,
                         QRCodeSaveSize.Size165X165);
