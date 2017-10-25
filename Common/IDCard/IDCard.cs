@@ -134,7 +134,7 @@ namespace TravletAgence.Common.IDCard
             //返回的model
             TravletAgence.Model.VisaInfo visaInfo = new VisaInfo();
             sb.Clear();
-            string info = "";
+            //string info = "";
             for (int i = 1; ; i++)
             {
                 nRet = IDCardDll.GetRecogResult(i, cArrFieldValue, ref MAX_CH_NUM);
@@ -151,23 +151,18 @@ namespace TravletAgence.Common.IDCard
                 string strFiledName = new string(cArrFieldName);
                 strFiledName = strFiledName.Substring(0, strFiledName.IndexOf('\0'));
 
-                //TODO:替换为StringBuilder
-                info += strFiledName;
-                info += ":";
-                info += strFiledValue;
-                info += "\n";
-                //sb.Append(new String(cArrFieldName));
-                //sb.Append(":");
-                //sb.Append(new String(cArrFieldValue));
-                //sb.Append("\r\n");
-                //MessageBox.Show(sb.ToString());
+                sb.Append(strFiledName);
+                sb.Append(":");
+                sb.Append(strFiledValue);
+                sb.Append("\n");
+
             }
             //MessageBox.Show(info); //显示一下返回的信息
-            Console.WriteLine(info);
+            Console.WriteLine(sb.ToString());
 
             //DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
             //dtFormat.ShortDatePattern = "yyyy-MM-dd";
-            string[] infos = info.Split('\n');
+            string[] infos = sb.ToString().Split('\n');
 
             try
             {
@@ -276,13 +271,12 @@ namespace TravletAgence.Common.IDCard
                     return null;
                 }
 
-                string info = "";
                 int MAX_CH_NUM = 128;
                 char[] cArrFieldValue = new char[MAX_CH_NUM];
                 char[] cArrFieldName = new char[MAX_CH_NUM];
                 MessageBox.Show("recognition Success\r\n");
                 TravletAgence.Model.VisaInfo visaInfo = new TravletAgence.Model.VisaInfo();
-
+                sb.Clear();
                 for (int i = 1; ; i++)
                 {
 
@@ -298,17 +292,17 @@ namespace TravletAgence.Common.IDCard
                     string strFiledName = new string(cArrFieldName);
                     strFiledName = strFiledName.Substring(0, strFiledName.IndexOf('\0'));
 
-                    info += strFiledName;
-                    info += ":";
-                    info += strFiledValue;
-                    info += "\n";
+                    sb.Append(strFiledName);
+                    sb.Append(":");
+                    sb.Append(strFiledValue);
+                    sb.Append("\n");
 
                 }
-                Console.WriteLine(info);
+                Console.WriteLine(sb.ToString());
 
                 //DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
                 //dtFormat.ShortDatePattern = "yyyy/MM/dd";
-                string[] infos = info.Split('\n');
+                string[] infos = sb.ToString().Split('\n');
 
                 try
                 {
