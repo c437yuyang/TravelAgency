@@ -368,6 +368,14 @@ namespace TravletAgence.CSUI.FrmSub
             else
             {
                 //从model初始化的，只考虑信息的修改以及移出人
+
+                //如果所有人都移出了，提示请点击删除
+                if (lvIn.Items.Count == 0)
+                {
+                    MessageBox.Show("若需要将全部成员移出此团号，请点击\"删除团号\"按钮");
+                    return;
+                }
+
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
                 _visaModel.GroupNo = txtGroupNo.Text;
                 _visaModel.SalesPerson = txtSalesPerson.Text;
