@@ -243,32 +243,23 @@ namespace TravletAgence.CSUI.FrmSub
         {
             if (dgvGroupInfo.SelectedCells.Count != 0 && e.Control && e.KeyCode == Keys.C)
             {
-                if (dgvGroupInfo.SelectedCells.Count > 1)
-                {
-                    MessageBox.Show("请选中一条记录复制!");
-                    return;
-                }
-                if (dgvGroupInfo.SelectedCells[0].Value != null)
-                    Clipboard.SetText(dgvGroupInfo.SelectedCells[0].Value.ToString());
+                SendCellToClipboard();
             }
-
+            
             if (dgvGroupInfo.SelectedCells.Count != 0 && e.Control && e.KeyCode == Keys.V)
             {
-                for (int i = 0; i < dgvGroupInfo.SelectedCells.Count; i++)
-                {
-                    dgvGroupInfo.SelectedCells[i].Value = Clipboard.GetText();
-                }
+                SetCellsFromClipboard();
             }
 
             if (dgvGroupInfo.SelectedCells.Count != 0  && e.KeyCode == Keys.Delete)
             {
-                for (int i = 0; i < dgvGroupInfo.SelectedCells.Count; i++)
-                {
-                    dgvGroupInfo.SelectedCells[i].Value = string.Empty;
-                }
+                ClearCells();
             }
 
         }
+
+
+
 
         /// <summary>
         /// 右键菜单弹出
@@ -486,6 +477,59 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         #endregion
+
+        #region 右键菜单及按键的消息
+        private void SendCellToClipboard()
+        {
+            if (dgvGroupInfo.SelectedCells.Count > 1)
+            {
+                MessageBox.Show("请选中一条记录复制!");
+                return;
+            }
+            if (dgvGroupInfo.SelectedCells[0].Value != null)
+                Clipboard.SetText(dgvGroupInfo.SelectedCells[0].Value.ToString());
+        }
+
+        private void SetCellsFromClipboard()
+        {
+            for (int i = 0; i < dgvGroupInfo.SelectedCells.Count; i++)
+            {
+                dgvGroupInfo.SelectedCells[i].Value = Clipboard.GetText();
+            }
+        }
+
+        private void ClearCells()
+        {
+            for (int i = 0; i < dgvGroupInfo.SelectedCells.Count; i++)
+            {
+                dgvGroupInfo.SelectedCells[i].Value = string.Empty;
+            }
+        }
+        #endregion
+        
+
+        #region dgv右键弹出菜单响应
+
+        private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SendCellToClipboard();
+        }
+
+        private void 粘贴ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetCellsFromClipboard();
+        }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClearCells();
+        }
+
+        #endregion
+
+
+
+
 
 
 
