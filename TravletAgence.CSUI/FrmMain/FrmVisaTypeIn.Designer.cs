@@ -53,6 +53,7 @@
             this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.btnAutoReadThreadStart = new DevComponents.DotNetBar.ButtonX();
             this.txtExpireDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtLicenseTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtBirthday = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -88,7 +89,6 @@
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemSetGroup = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnAutoReadThreadStart = new DevComponents.DotNetBar.ButtonX();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QRCodeImage = new System.Windows.Forms.DataGridViewImageColumn();
@@ -103,6 +103,7 @@
             this.HasTypeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Visa_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
@@ -141,13 +142,14 @@
             this.outState,
             this.HasTypeIn,
             this.GroupNo,
-            this.VisaInfo_id});
+            this.VisaInfo_id,
+            this.Visa_id});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -367,6 +369,18 @@
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 19;
+            // 
+            // btnAutoReadThreadStart
+            // 
+            this.btnAutoReadThreadStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAutoReadThreadStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAutoReadThreadStart.Location = new System.Drawing.Point(118, 501);
+            this.btnAutoReadThreadStart.Name = "btnAutoReadThreadStart";
+            this.btnAutoReadThreadStart.Size = new System.Drawing.Size(81, 23);
+            this.btnAutoReadThreadStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAutoReadThreadStart.TabIndex = 21;
+            this.btnAutoReadThreadStart.Text = "开始自动读取";
+            this.btnAutoReadThreadStart.Click += new System.EventHandler(this.btnAutoReadThreadStart_Click);
             // 
             // txtExpireDate
             // 
@@ -821,18 +835,6 @@
             this.cmsItemSetGroup.Text = "设置团号";
             this.cmsItemSetGroup.Click += new System.EventHandler(this.cmsItemSetGroup_Click);
             // 
-            // btnAutoReadThreadStart
-            // 
-            this.btnAutoReadThreadStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAutoReadThreadStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAutoReadThreadStart.Location = new System.Drawing.Point(118, 501);
-            this.btnAutoReadThreadStart.Name = "btnAutoReadThreadStart";
-            this.btnAutoReadThreadStart.Size = new System.Drawing.Size(81, 23);
-            this.btnAutoReadThreadStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAutoReadThreadStart.TabIndex = 21;
-            this.btnAutoReadThreadStart.Text = "开始自动读取";
-            this.btnAutoReadThreadStart.Click += new System.EventHandler(this.btnAutoReadThreadStart_Click);
-            // 
             // _Name
             // 
             this._Name.DataPropertyName = "Name";
@@ -932,6 +934,14 @@
             this.VisaInfo_id.ReadOnly = true;
             this.VisaInfo_id.Visible = false;
             // 
+            // Visa_id
+            // 
+            this.Visa_id.DataPropertyName = "Visa_id";
+            this.Visa_id.HeaderText = "Visa_id";
+            this.Visa_id.Name = "Visa_id";
+            this.Visa_id.ReadOnly = true;
+            this.Visa_id.Visible = false;
+            // 
             // FrmVisaTypeIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1027,6 +1037,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HasTypeIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn VisaInfo_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Visa_id;
 
     }
 }

@@ -475,6 +475,11 @@ namespace TravletAgence.CSUI.FrmMain
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i != count; ++i)
             {
+                if (dataGridView1.SelectedRows[i].Cells["Visa_id"].Value != string.Empty )
+                {
+                    MessageBox.Show("选中用户已经在团号中，若需删除请先将其移出团号!");
+                    return;
+                }
                 sb.Append("'");
                 sb.Append(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value);
                 sb.Append("'");
