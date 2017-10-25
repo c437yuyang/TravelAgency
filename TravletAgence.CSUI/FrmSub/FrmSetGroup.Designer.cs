@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -82,6 +83,10 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.txtGroupNo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.粘贴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMain.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelMid2.SuspendLayout();
@@ -90,6 +95,7 @@
             this.panelInOutBtns.SuspendLayout();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDepartureTime)).BeginInit();
+            this.cmsDgvRb.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
@@ -297,6 +303,7 @@
             this.dgvGroupInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvGroupInfo.Size = new System.Drawing.Size(1070, 364);
             this.dgvGroupInfo.TabIndex = 13;
+            this.dgvGroupInfo.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGroupInfo_CellMouseUp);
             this.dgvGroupInfo.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGroupInfo_CellValueChanged);
             this.dgvGroupInfo.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvGroupInfo_RowsAdded);
             this.dgvGroupInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvGroupInfo_KeyDown);
@@ -836,6 +843,33 @@
             this.labelX2.TabIndex = 0;
             this.labelX2.Text = "团号:";
             // 
+            // cmsDgvRb
+            // 
+            this.cmsDgvRb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.复制ToolStripMenuItem,
+            this.粘贴ToolStripMenuItem,
+            this.删除ToolStripMenuItem});
+            this.cmsDgvRb.Name = "cmsDgvRb";
+            this.cmsDgvRb.Size = new System.Drawing.Size(101, 70);
+            // 
+            // 复制ToolStripMenuItem
+            // 
+            this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
+            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.复制ToolStripMenuItem.Text = "复制";
+            // 
+            // 粘贴ToolStripMenuItem
+            // 
+            this.粘贴ToolStripMenuItem.Name = "粘贴ToolStripMenuItem";
+            this.粘贴ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.粘贴ToolStripMenuItem.Text = "粘贴";
+            // 
+            // 删除ToolStripMenuItem
+            // 
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.删除ToolStripMenuItem.Text = "删除";
+            // 
             // FrmSetGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -853,6 +887,7 @@
             this.panelInOutBtns.ResumeLayout(false);
             this.panelTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtDepartureTime)).EndInit();
+            this.cmsDgvRb.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -910,5 +945,9 @@
         private DevComponents.Editors.ComboItem Thailand;
         private DevComponents.DotNetBar.ButtonX btnReset;
         private DevComponents.DotNetBar.ButtonX btnDelete;
+        private System.Windows.Forms.ContextMenuStrip cmsDgvRb;
+        private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 粘贴ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
     }
 }

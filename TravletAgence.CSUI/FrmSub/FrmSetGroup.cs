@@ -269,6 +269,26 @@ namespace TravletAgence.CSUI.FrmSub
             }
 
         }
+
+        /// <summary>
+        /// 右键菜单弹出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvGroupInfo_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    //只有在选中的单元格上
+                    if(dgvGroupInfo.SelectedCells.Contains(dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex]))
+                        //弹出操作菜单
+                        cmsDgvRb.Show(MousePosition.X, MousePosition.Y);
+                }
+            }
+        }
+
         #endregion
 
 
@@ -466,6 +486,8 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         #endregion
+
+
 
 
     }
