@@ -36,7 +36,7 @@ namespace TravletAgence.CSUI.FrmSub
         /// 从已有list初始化窗口(还未设置团号)
         /// </summary>
         /// <param name="list"></param>
-        public FrmSetGroup(List<Model.VisaInfo> list,Action<int> updateDel,int curpage)
+        public FrmSetGroup(List<Model.VisaInfo> list, Action<int> updateDel, int curpage)
         {
             InitializeComponent();
             _list = list;
@@ -416,8 +416,9 @@ namespace TravletAgence.CSUI.FrmSub
                     MessageBox.Show(Resources.FailedUpdateVisaInfoState);
                     return;
                 }
+                MessageBox.Show("成功从当前团移出" + lvOut.Items.Count + "条记录.");
             }
-            MessageBox.Show("成功从当前团移出" + lvOut.Items.Count + "条记录.");
+
         }
 
 
