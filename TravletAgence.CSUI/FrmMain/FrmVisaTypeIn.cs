@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using DevComponents.DotNetBar.Controls;
 using TravletAgence.Common;
@@ -11,6 +12,7 @@ using TravletAgence.Common.QRCode;
 using TravletAgence.CSUI.FrmSub;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
+using Timer = System.Windows.Forms.Timer;
 
 namespace TravletAgence.CSUI.FrmMain
 {
@@ -23,6 +25,7 @@ namespace TravletAgence.CSUI.FrmMain
         private int _recordCount = 0;
         private readonly IDCard _idCard = new IDCard();
         private bool _autoRead = false;
+        private bool _autoReadThreadRun = false;
         private readonly Timer _t = new Timer();
         private readonly MyQRCode _qrCode = new MyQRCode(); //只用于批量生成二维码
 
@@ -42,18 +45,16 @@ namespace TravletAgence.CSUI.FrmMain
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            //设置可跨线程访问窗体
+            Control.CheckForIllegalCrossThreadCalls = false;
+
             //加载数据
             LoadDataToDataGridView(_curPage);
             UpdateState();
         }
 
-
-
-        private void btnLoadKernel_Click(object sender, EventArgs e)
-        {
-            _idCard.LoadKernel();
-        }
-
+        #region model与control
         private void ModelToCtrls(TravletAgence.Model.VisaInfo model)
         {
             model.Types = "个签";
@@ -95,6 +96,14 @@ namespace TravletAgence.CSUI.FrmMain
             }
             return model;
         }
+        #endregion
+
+        #region 自己的按钮
+
+        private void btnLoadKernel_Click(object sender, EventArgs e)
+        {
+            _idCard.LoadKernel();
+        }
 
         private void btnReadData_Click(object sender, EventArgs e)
         {
@@ -110,13 +119,6 @@ namespace TravletAgence.CSUI.FrmMain
             _idCard.FreeKernel();
         }
 
-        private void AutoClassAndRecognize(object sender, EventArgs eventArgs)
-        {
-            Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text);
-            if (model == null) return;
-            ModelToCtrls(model);
-            ConfirmAddToDataBase(model);
-        }
 
         private void ConfirmAddToDataBase(VisaInfo model)
         {
@@ -154,6 +156,69 @@ namespace TravletAgence.CSUI.FrmMain
             }
         }
 
+        /// <summary>
+        /// 自动识别回调函数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+        private void AutoClassAndRecognize(object sender, EventArgs eventArgs)
+        {
+            Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text);
+            if (model == null) return;
+            ModelToCtrls(model);
+            ConfirmAddToDataBase(model);
+        }
+
+        /// <summary>
+        /// 自动识别线程函数
+        /// </summary>
+        /// <param name="o"></param>
+        private void AutoClassAndRecognize(object o)
+        {
+            while (_autoReadThreadRun)
+            {
+                Thread.Sleep(200);
+                Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text);
+                if (model == null) continue;
+                ModelToCtrls(model);
+                ConfirmAddToDataBase(model);
+            }
+        }
+
+        /// <summary>
+        /// 开启自动识别线程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAutoReadThreadStart_Click(object sender, EventArgs e)
+        {
+
+            if (!_idCard.KernelLoaded)
+            {
+                MessageBox.Show("Please press load kernel button first!");
+                return;
+            }
+            if (!_autoReadThreadRun)
+            {
+                // t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)； 
+                this.btnAutoReadThreadStart.Text = "停止自动读取";
+                _autoReadThreadRun = true;
+
+                Thread th = new Thread(this.AutoClassAndRecognize);
+                th.IsBackground = true;
+                th.Start();
+
+            }
+            else
+            {
+                this.btnAutoReadThreadStart.Text = "开始自动读取";
+                _autoReadThreadRun = false;
+            }
+
+
+        }
+
+
         private void buttonAddToDatabase_Click(object sender, EventArgs e)
         {
             VisaInfo model = CtrlsToModel();
@@ -166,6 +231,9 @@ namespace TravletAgence.CSUI.FrmMain
             LoadDataToDataGridView(_curPage);
             UpdateState();
         }
+        #endregion
+
+
 
 
         #region dgv用到的相关方法
@@ -440,10 +508,12 @@ namespace TravletAgence.CSUI.FrmMain
                     list.Add(model);
             }
 
-            FrmSetGroup frmSetGroup = new FrmSetGroup(list,LoadDataToDataGridView,_curPage);
+            FrmSetGroup frmSetGroup = new FrmSetGroup(list, LoadDataToDataGridView, _curPage);
             frmSetGroup.ShowDialog();
         }
 
         #endregion
+
+
     }
 }
