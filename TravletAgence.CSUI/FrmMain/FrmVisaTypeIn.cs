@@ -51,7 +51,8 @@ namespace TravletAgence.CSUI.FrmMain
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             //设置可跨线程访问窗体
-            Control.CheckForIllegalCrossThreadCalls = false;
+            //TODO:这里可能需要修改
+            //Control.CheckForIllegalCrossThreadCalls = false;
 
             //加载数据
             //使用异步加载
@@ -63,6 +64,26 @@ namespace TravletAgence.CSUI.FrmMain
         #region model与control
         private void ModelToCtrls(TravletAgence.Model.VisaInfo model)
         {
+            //添加多线程情况的时候的判断
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    model.Types = "个签";
+                    model.EntryTime = DateTime.Now;
+                    model.outState = OutState.Type01NoRecord;
+                    txtName.Text = model.Name;
+                    txtEnglishName.Text = model.EnglishName;
+                    txtSex.Text = model.Sex;
+                    txtBirthday.Text = model.Birthday.ToString();
+                    txtPassNo.Text = model.PassportNo;
+                    txtLicenseTime.Text = model.LicenceTime.ToString();
+                    txtExpireDate.Text = model.ExpiryDate.ToString();
+                    txtBirthPlace.Text = model.Birthplace;
+                    txtIssuePlace.Text = model.IssuePlace;
+                }));
+                return;
+            }
             model.Types = "个签";
             model.EntryTime = DateTime.Now;
             model.outState = OutState.Type01NoRecord;
