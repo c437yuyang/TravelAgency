@@ -109,6 +109,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\COM.Excel.dll</HintPath>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="Excel, Version=1.5.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Excel.dll</HintPath>

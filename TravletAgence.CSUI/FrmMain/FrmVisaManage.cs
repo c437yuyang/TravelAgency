@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 using TravletAgence.CSUI.FrmSub;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
@@ -173,14 +174,14 @@ namespace TravletAgence.CSUI.FrmMain
         {
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
-                MessageBox.Show(Resources.SelectShowMoreThanOne);
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
                 return;
             }
 
             Model.Visa model = _bllVisa.GetModel((Guid) dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
             if (model == null)
             {
-                MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                 return;
             }
             FrmSetGroup frm = new FrmSetGroup(model,loadDataToDataGridView,_curPage);
@@ -200,7 +201,7 @@ namespace TravletAgence.CSUI.FrmMain
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int count = this.dataGridView1.SelectedRows.Count;
-            if (MessageBox.Show("确认删除" + count + "条记录?", Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            if (MessageBoxEx.Show("确认删除" + count + "条记录?", Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                 return;
             int n = 0;
             for (int i = 0; i != count; ++i)
@@ -209,11 +210,11 @@ namespace TravletAgence.CSUI.FrmMain
                     _bllVisa.GetModel(Guid.Parse(dataGridView1.SelectedRows[i].Cells["Visa_id"].Value.ToString()));
                 if(!_bllVisa.DeleteVisaAndModifyVisaInfos(model))
                 {
-                    MessageBox.Show("删除失败!");
+                    MessageBoxEx.Show("删除失败!");
                 }
                 ++n;
             }
-            MessageBox.Show(n + "条记录删除成功," + (count - n) + "条记录删除失败.");
+            MessageBoxEx.Show(n + "条记录删除成功," + (count - n) + "条记录删除失败.");
             loadDataToDataGridView(_curPage);
             UpdateState();
         }

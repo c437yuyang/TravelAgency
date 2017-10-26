@@ -16,26 +16,27 @@ namespace TravletAgence.CSUI.FrmMain
         private void btnVisaTypeIn_Click(object sender, EventArgs e)
         {
             FrmVisaTypeIn frm = new FrmVisaTypeIn();
-            openWindow(frm, frm.Name);
+            OpenTab(frm, frm.Name);
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)
         {
             FrmVisaSubmit frm = new FrmVisaSubmit();
-            openWindow(frm, frm.Name);
+            OpenTab(frm, frm.Name);
         }
 
         private void btnVisaQuery_Click(object sender, EventArgs e)
         {
             FrmVisaManage frm = new FrmVisaManage();
-            openWindow(frm, frm.Name);
+            OpenTab(frm, frm.Name);
         }
         #endregion
 
 
 
-        public void openWindow(Form frm, string Name)
+        public void OpenTab(Form frm, string Name)
         {
+            
             DevComponents.DotNetBar.TabItem tp = new DevComponents.DotNetBar.TabItem();
             DevComponents.DotNetBar.TabControlPanel tcp = new DevComponents.DotNetBar.TabControlPanel();
             tp.MouseDown += new MouseEventHandler(tp_MouseDown);

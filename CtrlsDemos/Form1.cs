@@ -19,7 +19,7 @@ namespace CtrlsDemos
 
         private void dateTimeInput1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(dateTimeInput1.Text);
+            MessageBoxEx.Show(dateTimeInput1.Text);
         }
 
         private void monthCalendarAdv1_ItemClick(object sender, EventArgs e)

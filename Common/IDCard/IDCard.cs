@@ -2,7 +2,9 @@
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 using TravletAgence.Model;
+
 
 namespace TravletAgence.Common.IDCard
 {
@@ -31,14 +33,14 @@ namespace TravletAgence.Common.IDCard
         {
             if (_kernelLoaded)
             {
-                MessageBox.Show("kernel已经成功加载！");
+                MessageBoxEx.Show("kernel已经成功加载！");
                 return true;
             }
             int nRet;
             nRet = IDCardDll.LoadLibrary("IDCard");
             if (nRet == 0)
             {
-                MessageBox.Show("Failed to load IDCard.dll");
+                MessageBoxEx.Show("Failed to load IDCard.dll");
 
                 //textBoxDisplayResult.Text = "Failed to load IDCard.dll";
                 return false;
@@ -50,14 +52,14 @@ namespace TravletAgence.Common.IDCard
             nRet = IDCardDll.InitIDCard(arr, 1, null);
             if (nRet != 0)
             {
-                MessageBox.Show("Failed to initialize the recognition engine.\r\n");
+                MessageBoxEx.Show("Failed to initialize the recognition engine.\r\n");
                 String strtmp = nRet.ToString();
                 //textBoxDisplayResult.Text += "Return Value：" + strtmp;
                 return false;
             }
             IDCardDll.SetSpecialAttribute(1, 1);
             _kernelLoaded = true;
-            MessageBox.Show("The recognition engine is loaded successfully.");
+            MessageBoxEx.Show("The recognition engine is loaded successfully.");
             return true;
         }
 
@@ -67,7 +69,7 @@ namespace TravletAgence.Common.IDCard
             {
                 IDCardDll.FreeIDCard();
                 _kernelLoaded = false;
-                MessageBox.Show("Free Kernel Successful");
+                MessageBoxEx.Show("Free Kernel Successful");
                 return true;
             }
             return true;
@@ -78,14 +80,14 @@ namespace TravletAgence.Common.IDCard
             //直接返回
             if (!_kernelLoaded)
             {
-                MessageBox.Show("Please successful loading recognition engine");
+                MessageBoxEx.Show("Please successful loading recognition engine");
                 return null;
             }
             int nRet = 0;
             int nCardType = 13;
             if (nCardType <= 0)
             {
-                MessageBox.Show("Invalid CardSizeType,please re-enter a valid.");
+                MessageBoxEx.Show("Invalid CardSizeType,please re-enter a valid.");
                 return null;
             }
 
@@ -122,14 +124,14 @@ namespace TravletAgence.Common.IDCard
                 sb.Append(nRet.ToString());
                 sb.Append("\r\n");
                 sb.Append("recognition failure");
-                MessageBox.Show(sb.ToString());
+                MessageBoxEx.Show(sb.ToString());
                 return null;
             }
 
             int MAX_CH_NUM = 128;
             char[] cArrFieldValue = new char[MAX_CH_NUM];
             char[] cArrFieldName = new char[MAX_CH_NUM];
-            MessageBox.Show("recognition successful\r\n");
+            MessageBoxEx.Show("recognition successful\r\n");
 
             //返回的model
             TravletAgence.Model.VisaInfo visaInfo = new VisaInfo();
@@ -157,7 +159,7 @@ namespace TravletAgence.Common.IDCard
                 sb.Append("\n");
 
             }
-            //MessageBox.Show(info); //显示一下返回的信息
+            //MessageBoxEx.Show(info); //显示一下返回的信息
             Console.WriteLine(sb.ToString());
 
             //DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
@@ -192,7 +194,7 @@ namespace TravletAgence.Common.IDCard
             }
             catch (Exception)
             {
-                MessageBox.Show("解析信息出现错误，请放好签证后重新进行识别!");
+                MessageBoxEx.Show("解析信息出现错误，请放好签证后重新进行识别!");
                 return null;
             }
             //save Image
@@ -201,7 +203,7 @@ namespace TravletAgence.Common.IDCard
             nRet = IDCardDll.SaveImageEx(carrImgPath, nSaveImage);
             if (nRet != 0)
             {
-                MessageBox.Show("SaveImage Failed！");
+                MessageBoxEx.Show("SaveImage Failed！");
                 return null;
             }
             return visaInfo;
@@ -244,7 +246,7 @@ namespace TravletAgence.Common.IDCard
 
                 if (nRet <= 0)
                 {
-                    MessageBox.Show("Return Value:" + nRet.ToString() + "\r\n" + "Classify failed");
+                    MessageBoxEx.Show("Return Value:" + nRet.ToString() + "\r\n" + "Classify failed");
                     return null;
                 }
 
@@ -267,14 +269,14 @@ namespace TravletAgence.Common.IDCard
 
                 if (nRet < 0)
                 {
-                    MessageBox.Show("Return Value:" + nRet.ToString() + "\r\n" + "recognition failure");
+                    MessageBoxEx.Show("Return Value:" + nRet.ToString() + "\r\n" + "recognition failure");
                     return null;
                 }
 
                 int MAX_CH_NUM = 128;
                 char[] cArrFieldValue = new char[MAX_CH_NUM];
                 char[] cArrFieldName = new char[MAX_CH_NUM];
-                MessageBox.Show("recognition Success\r\n");
+                MessageBoxEx.Show("recognition Success\r\n");
                 TravletAgence.Model.VisaInfo visaInfo = new TravletAgence.Model.VisaInfo();
                 sb.Clear();
                 for (int i = 1; ; i++)
@@ -322,7 +324,7 @@ namespace TravletAgence.Common.IDCard
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("解析信息出现错误，请放好签证后重新进行识别!");
+                    MessageBoxEx.Show("解析信息出现错误，请放好签证后重新进行识别!");
                     return null;
                 }
 
@@ -355,7 +357,7 @@ namespace TravletAgence.Common.IDCard
                 //    for (int i = myArr.Count; i > 0; i--)
                 //    {
                 //        int nResu = IDCardDll.GetDataGroupContent((int)myArr[i - 1], false, szDGBuffer, ref MAX_DG_NUM);
-                //        //MessageBox.Show(nResu.ToString());
+                //        //MessageBoxEx.Show(nResu.ToString());
 
                 //        textBoxDG.Text += "DG" + myArr[i - 1].ToString();
                 //        textBoxDG.Text += ":";
@@ -377,7 +379,7 @@ namespace TravletAgence.Common.IDCard
                 nRet = IDCardDll.SaveImageEx(carrImgPath, nSaveImage);
                 if (nRet != 0)
                 {
-                    MessageBox.Show("SaveImage Failed！");
+                    MessageBoxEx.Show("SaveImage Failed！");
                     return null;
                 }
                 return visaInfo;

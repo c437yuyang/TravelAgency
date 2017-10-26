@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
 using TravletAgence.Common.Excel;
@@ -194,7 +195,7 @@ namespace TravletAgence.CSUI.FrmSub
                 list[i].Visa_id = _visaModel.Visa_id.ToString(); //修改visainfo对应visa_id
             }
             int res = _bllVisaInfo.UpdateByList(_dgvList);
-            MessageBox.Show(res + "条记录成功更新," + (list.Count - res) + "条记录更新失败.");
+            MessageBoxEx.Show(res + "条记录成功更新," + (list.Count - res) + "条记录更新失败.");
         }
 
         #endregion
@@ -364,7 +365,7 @@ namespace TravletAgence.CSUI.FrmSub
         /// TODO:处理需要修改团号的逻辑
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("是否提交修改?", "确认", MessageBoxButtons.OKCancel);
+            DialogResult res = MessageBoxEx.Show("是否提交修改?", "确认", MessageBoxButtons.OKCancel);
             if (res == DialogResult.Cancel)
                 return;
             if (!_initFromVisaModel)
@@ -372,7 +373,7 @@ namespace TravletAgence.CSUI.FrmSub
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
                 if (_visaModel != null)
                 {
-                    MessageBox.Show("内部错误!");
+                    MessageBoxEx.Show("内部错误!");
                     return;
                 }
                 _visaModel = new Visa();
@@ -386,7 +387,7 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.Number = lvIn.Items.Count; //团号的人数
                 if ((_visaModel.Visa_id = _bllVisa.Add(_visaModel)) == Guid.Empty) //执行更新,返回值是新插入的visamodel的guid
                 {
-                    MessageBox.Show("添加团号到数据库失败，请重试!");
+                    MessageBoxEx.Show("添加团号到数据库失败，请重试!");
                     return;
                 }
 
@@ -402,7 +403,7 @@ namespace TravletAgence.CSUI.FrmSub
                 //如果所有人都移出了，提示请点击删除
                 if (lvIn.Items.Count == 0)
                 {
-                    MessageBox.Show("若需要将全部成员移出此团号，请点击\"删除团号\"按钮");
+                    MessageBoxEx.Show("若需要将全部成员移出此团号，请点击\"删除团号\"按钮");
                     return;
                 }
 
@@ -414,7 +415,7 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.Number = lvIn.Items.Count;
                 if (!_bllVisa.Update(_visaModel)) //执行更新
                 {
-                    MessageBox.Show("更新团号信息失败!");
+                    MessageBoxEx.Show("更新团号信息失败!");
                     return;
                 }
                 //2.更新model,设置资料已录入，团号，国家等
@@ -443,10 +444,10 @@ namespace TravletAgence.CSUI.FrmSub
                 //执行更新
                 if (_bllVisaInfo.Update(model) == false)
                 {
-                    MessageBox.Show(Resources.FailedUpdateVisaInfoState);
+                    MessageBoxEx.Show(Resources.FailedUpdateVisaInfoState);
                     return;
                 }
-                MessageBox.Show("成功从当前团移出" + lvOut.Items.Count + "条记录.");
+                MessageBoxEx.Show("成功从当前团移出" + lvOut.Items.Count + "条记录.");
             }
 
         }
@@ -470,16 +471,16 @@ namespace TravletAgence.CSUI.FrmSub
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("是否删除该团号?", "警告", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBoxEx.Show("是否删除该团号?", "警告", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
             }
             if (!_bllVisa.DeleteVisaAndModifyVisaInfos(_visaModel))
             {
-                MessageBox.Show("删除团号失败!");
+                MessageBoxEx.Show("删除团号失败!");
                 return;
             }
-            MessageBox.Show("删除团号成功!");
+            MessageBoxEx.Show("删除团号成功!");
             _updateDel(_curPage);
             Close();
         }
@@ -491,7 +492,7 @@ namespace TravletAgence.CSUI.FrmSub
         {
             if (dgvGroupInfo.SelectedCells.Count > 1)
             {
-                MessageBox.Show("请选中一条记录复制!");
+                MessageBoxEx.Show("请选中一条记录复制!");
                 return;
             }
             if (dgvGroupInfo.SelectedCells[0].Value != null)

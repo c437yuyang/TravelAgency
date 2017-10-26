@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
 using TravletAgence.Model;
@@ -74,7 +75,7 @@ namespace TravletAgence.CSUI.FrmSub
             }
             catch (Exception)
             {
-                MessageBox.Show("请确保日期输入信息正确!");
+                MessageBoxEx.Show("请确保日期输入信息正确!");
                 return;
             }
 
@@ -87,7 +88,7 @@ namespace TravletAgence.CSUI.FrmSub
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("是否同时更新为已录入状态?", "确认", MessageBoxButtons.YesNoCancel);
+            DialogResult res = MessageBoxEx.Show("是否同时更新为已录入状态?", "确认", MessageBoxButtons.YesNoCancel);
             if (res == DialogResult.Cancel)
                 return;
             CtrlsToModel();
@@ -95,7 +96,7 @@ namespace TravletAgence.CSUI.FrmSub
                 _model.HasTypeIn = HasTypeIn.Yes;
             if (!bll.Update(_model))
             {
-                MessageBox.Show("更新失败，请重试!");
+                MessageBoxEx.Show("更新失败，请重试!");
                 return;
             }
             _updateDel(_curPage);

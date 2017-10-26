@@ -15,28 +15,28 @@
     };
 
 
-    $.ligerDefaults.MessageBox = {
+    $.ligerDefaults.MessageBoxEx = {
         isDrag: true
     };
 
-    $.ligerMethos.MessageBox = {};
+    $.ligerMethos.MessageBoxEx = {};
 
-    $.ligerui.controls.MessageBox = function (options)
+    $.ligerui.controls.MessageBoxEx = function (options)
     {
-        $.ligerui.controls.MessageBox.base.constructor.call(this, null, options);
+        $.ligerui.controls.MessageBoxEx.base.constructor.call(this, null, options);
     };
-    $.ligerui.controls.MessageBox.ligerExtend($.ligerui.core.UIComponent, {
+    $.ligerui.controls.MessageBoxEx.ligerExtend($.ligerui.core.UIComponent, {
         __getType: function ()
         {
-            return 'MessageBox';
+            return 'MessageBoxEx';
         },
         __idPrev: function ()
         {
-            return 'MessageBox';
+            return 'MessageBoxEx';
         },
         _extendMethods: function ()
         {
-            return $.ligerMethos.MessageBox;
+            return $.ligerMethos.MessageBoxEx;
         },
         _render: function ()
         {

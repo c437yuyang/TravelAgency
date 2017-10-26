@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
@@ -69,14 +70,14 @@ namespace TravletAgence.CSUI.FrmMain
                 VisaInfo model = GetModelByLine(lines[lines.Length - 1]);
                 if (model == null)
                 {
-                    MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                    MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                     return count;
                 }
 
                 UpdateModelState(model, _outState);
                 if (!bll.Update(model))
                 {
-                    MessageBox.Show(Resources.FailedUpdateVisaInfoState);
+                    MessageBoxEx.Show(Resources.FailedUpdateVisaInfoState);
                     return count;
                 }
                 ++count;
@@ -98,13 +99,13 @@ namespace TravletAgence.CSUI.FrmMain
                     {
                         if (outState.Length == 0)
                         {
-                            MessageBox.Show(Resources.OutStateLengthEqualZero);
+                            MessageBoxEx.Show(Resources.OutStateLengthEqualZero);
                             return count;
                         }
                         VisaInfo model = GetModelByLine(lines[i]);
                         if (model == null)
                         {
-                            MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                            MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                             return count;
                         }
 
@@ -112,7 +113,7 @@ namespace TravletAgence.CSUI.FrmMain
 
                         if (!bll.Update(model))
                         {
-                            MessageBox.Show(Resources.FailedUpdateVisaInfoState);
+                            MessageBoxEx.Show(Resources.FailedUpdateVisaInfoState);
                             return count;
                         }
                         ++count;
@@ -137,14 +138,14 @@ namespace TravletAgence.CSUI.FrmMain
             else if (outState1 == OutState.TYPE04AbnormalOut)
                 model.AbnormalOutTime = DateTime.Now;
             else
-                MessageBox.Show(Resources.OutStateLengthEqualZero);
+                MessageBoxEx.Show(Resources.OutStateLengthEqualZero);
         }
 
         private VisaInfo GetModelByLine(string line)
         {
             if (!line.Contains('|'))
             {
-                MessageBox.Show(Resources.LineNotContainDelimeter);
+                MessageBoxEx.Show(Resources.LineNotContainDelimeter);
                 return null;
             }
 
@@ -156,7 +157,7 @@ namespace TravletAgence.CSUI.FrmMain
             }
             catch (Exception)
             {
-                MessageBox.Show(Resources.LineNotContainDelimeter);
+                MessageBoxEx.Show(Resources.LineNotContainDelimeter);
                 return null;
             }
         }
@@ -225,13 +226,13 @@ namespace TravletAgence.CSUI.FrmMain
                  && !txt.Contains(OutStateString.Type03NormalOut)
                  && !txt.Contains(OutStateString.Type04AbnormalOut)))
             {
-                MessageBox.Show(Resources.InputNoStateInfo);
+                MessageBoxEx.Show(Resources.InputNoStateInfo);
                 return;
             }
             int count = UpdateByLines(txt, _inputMode);
             if (count > 0)
             {
-                MessageBox.Show("成功更新" + count + "条记录.");
+                MessageBoxEx.Show("成功更新" + count + "条记录.");
             }
         }
 
@@ -412,7 +413,7 @@ namespace TravletAgence.CSUI.FrmMain
 
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
-                MessageBox.Show(Resources.SelectShowMoreThanOne);
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
                 return;
             }
 
@@ -445,7 +446,7 @@ namespace TravletAgence.CSUI.FrmMain
                 _qrCode.EncodeToPng(passportNo + "|" + name, path + "\\" + passportNo + ".jpg", QRCodeSaveSize.Size165X165);
             }
 
-            MessageBox.Show("成功保存" + count + "条记录二维码.");
+            MessageBoxEx.Show("成功保存" + count + "条记录二维码.");
 
         }
 

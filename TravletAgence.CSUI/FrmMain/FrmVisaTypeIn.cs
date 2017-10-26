@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
@@ -91,7 +92,7 @@ namespace TravletAgence.CSUI.FrmMain
             }
             catch (Exception)
             {
-                MessageBox.Show(Resources.PleaseCheckDateTimeFormat);
+                MessageBoxEx.Show(Resources.PleaseCheckDateTimeFormat);
                 return null;
             }
             return model;
@@ -122,7 +123,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void ConfirmAddToDataBase(VisaInfo model)
         {
-            if (MessageBox.Show(Resources.WhetherAddToDatabase, Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBoxEx.Show(Resources.WhetherAddToDatabase, Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 if (bll.Add(model))
                 {
@@ -130,7 +131,7 @@ namespace TravletAgence.CSUI.FrmMain
                     UpdateState();
                 }
                 else
-                    MessageBox.Show(Resources.FailedAddToDatabase);
+                    MessageBoxEx.Show(Resources.FailedAddToDatabase);
             }
         }
 
@@ -138,7 +139,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             if (!_idCard.KernelLoaded)
             {
-                MessageBox.Show("Please press load kernel button first!");
+                MessageBoxEx.Show("Please press load kernel button first!");
                 return;
             }
             if (!_autoRead)
@@ -195,7 +196,7 @@ namespace TravletAgence.CSUI.FrmMain
 
             if (!_idCard.KernelLoaded)
             {
-                MessageBox.Show("Please press load kernel button first!");
+                MessageBoxEx.Show("Please press load kernel button first!");
                 return;
             }
             if (!_autoReadThreadRun)
@@ -225,7 +226,7 @@ namespace TravletAgence.CSUI.FrmMain
             if (model == null) return;
             if (!bll.Add(model))
             {
-                MessageBox.Show(Resources.FailedAddToDatabase);
+                MessageBoxEx.Show(Resources.FailedAddToDatabase);
                 return;
             }
             LoadDataToDataGridView(_curPage);
@@ -398,7 +399,7 @@ namespace TravletAgence.CSUI.FrmMain
 
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
-                MessageBox.Show(Resources.SelectShowMoreThanOne);
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
                 return;
             }
 
@@ -432,7 +433,7 @@ namespace TravletAgence.CSUI.FrmMain
                 _qrCode.EncodeToPng(passportNo + "|" + name, path + "\\" + passportNo + ".jpg", QRCodeSaveSize.Size165X165);
             }
 
-            MessageBox.Show("成功保存" + count + "条记录二维码.");
+            MessageBoxEx.Show("成功保存" + count + "条记录二维码.");
 
         }
 
@@ -445,7 +446,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
-                MessageBox.Show(Resources.SelectEditMoreThanOne);
+                MessageBoxEx.Show(Resources.SelectEditMoreThanOne);
                 return;
             }
 
@@ -453,7 +454,7 @@ namespace TravletAgence.CSUI.FrmMain
             Model.VisaInfo model = bll.GetModel(new Guid(visainfoid));
             if (model == null)
             {
-                MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                 return;
             }
 
@@ -470,14 +471,14 @@ namespace TravletAgence.CSUI.FrmMain
         private void cmsItemDelete_Click(object sender, EventArgs e)
         {
             int count = this.dataGridView1.SelectedRows.Count;
-            if (MessageBox.Show("确认删除" + count + "条记录?", Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            if (MessageBoxEx.Show("确认删除" + count + "条记录?", Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                 return;
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i != count; ++i)
             {
                 if ((string)dataGridView1.SelectedRows[i].Cells["Visa_id"].Value != string.Empty )
                 {
-                    MessageBox.Show("选中用户已经在团号中，若需删除请先将其移出团号!");
+                    MessageBoxEx.Show("选中用户已经在团号中，若需删除请先将其移出团号!");
                     return;
                 }
                 sb.Append("'");
@@ -489,7 +490,7 @@ namespace TravletAgence.CSUI.FrmMain
             }
 
             int n = bll.DeleteList(sb.ToString());
-            MessageBox.Show(n + "条记录删除成功," + (count - n) + "条记录删除失败.");
+            MessageBoxEx.Show(n + "条记录删除成功," + (count - n) + "条记录删除失败.");
             LoadDataToDataGridView(_curPage);
             UpdateState();
         }
@@ -508,12 +509,12 @@ namespace TravletAgence.CSUI.FrmMain
                 Model.VisaInfo model = bll.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
                 if (model == null)
                 {
-                    MessageBox.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                    MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                     return;
                 }
                 if (model.Visa_id != string.Empty)
                 {
-                    MessageBox.Show("选中项中有已经设置过团号的签证!");
+                    MessageBoxEx.Show("选中项中有已经设置过团号的签证!");
                     return;
                 }
                 if (model != null)

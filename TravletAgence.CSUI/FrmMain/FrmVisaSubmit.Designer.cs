@@ -29,13 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QRCodeImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LicenseTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outState = new DevComponents.DotNetBar.Controls.DataGridViewLabelXColumn();
+            this.HasTypeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.btnPageFirst = new DevComponents.DotNetBar.ButtonItem();
@@ -78,20 +92,6 @@
             this.cmsItemQRCodeBatchPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
-            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QRCodeImage = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LicenseTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Birthplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.outState = new DevComponents.DotNetBar.Controls.DataGridViewLabelXColumn();
-            this.HasTypeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx4.SuspendLayout();
@@ -169,14 +169,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._Name,
@@ -193,28 +193,28 @@
             this.HasTypeIn,
             this.GroupNo,
             this.VisaInfo_id});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -223,6 +223,107 @@
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            // 
+            // _Name
+            // 
+            this._Name.DataPropertyName = "Name";
+            this._Name.HeaderText = "本国姓名";
+            this._Name.Name = "_Name";
+            this._Name.ReadOnly = true;
+            // 
+            // EnglishName
+            // 
+            this.EnglishName.DataPropertyName = "EnglishName";
+            this.EnglishName.HeaderText = "英语姓名";
+            this.EnglishName.Name = "EnglishName";
+            this.EnglishName.ReadOnly = true;
+            // 
+            // QRCodeImage
+            // 
+            this.QRCodeImage.HeaderText = "二维码";
+            this.QRCodeImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.QRCodeImage.Name = "QRCodeImage";
+            this.QRCodeImage.ReadOnly = true;
+            // 
+            // Sex
+            // 
+            this.Sex.DataPropertyName = "Sex";
+            this.Sex.HeaderText = "性别";
+            this.Sex.Name = "Sex";
+            this.Sex.ReadOnly = true;
+            // 
+            // BirthDay
+            // 
+            this.BirthDay.DataPropertyName = "Birthday";
+            this.BirthDay.HeaderText = "生日";
+            this.BirthDay.Name = "BirthDay";
+            this.BirthDay.ReadOnly = true;
+            // 
+            // PassportNo
+            // 
+            this.PassportNo.DataPropertyName = "PassportNo";
+            this.PassportNo.HeaderText = "护照号";
+            this.PassportNo.Name = "PassportNo";
+            this.PassportNo.ReadOnly = true;
+            // 
+            // LicenseTime
+            // 
+            this.LicenseTime.DataPropertyName = "LicenseTime";
+            this.LicenseTime.HeaderText = "发证日期";
+            this.LicenseTime.Name = "LicenseTime";
+            this.LicenseTime.ReadOnly = true;
+            // 
+            // ExpiryDate
+            // 
+            this.ExpiryDate.DataPropertyName = "ExpiryDate";
+            this.ExpiryDate.HeaderText = "有效期";
+            this.ExpiryDate.Name = "ExpiryDate";
+            this.ExpiryDate.ReadOnly = true;
+            // 
+            // Birthplace
+            // 
+            this.Birthplace.DataPropertyName = "Birthplace";
+            this.Birthplace.HeaderText = "出生地";
+            this.Birthplace.Name = "Birthplace";
+            this.Birthplace.ReadOnly = true;
+            // 
+            // IssuePlace
+            // 
+            this.IssuePlace.DataPropertyName = "IssuePlace";
+            this.IssuePlace.HeaderText = "签发地";
+            this.IssuePlace.Name = "IssuePlace";
+            this.IssuePlace.ReadOnly = true;
+            // 
+            // outState
+            // 
+            this.outState.DataPropertyName = "outState";
+            this.outState.HeaderText = "送签状态";
+            this.outState.Name = "outState";
+            this.outState.ReadOnly = true;
+            this.outState.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.outState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // HasTypeIn
+            // 
+            this.HasTypeIn.DataPropertyName = "HasTypeIn";
+            this.HasTypeIn.HeaderText = "资料录入";
+            this.HasTypeIn.Name = "HasTypeIn";
+            this.HasTypeIn.ReadOnly = true;
+            // 
+            // GroupNo
+            // 
+            this.GroupNo.DataPropertyName = "GroupNo";
+            this.GroupNo.HeaderText = "团号";
+            this.GroupNo.Name = "GroupNo";
+            this.GroupNo.ReadOnly = true;
+            // 
+            // VisaInfo_id
+            // 
+            this.VisaInfo_id.DataPropertyName = "VisaInfo_id";
+            this.VisaInfo_id.HeaderText = "VisaInfo_id";
+            this.VisaInfo_id.Name = "VisaInfo_id";
+            this.VisaInfo_id.ReadOnly = true;
+            this.VisaInfo_id.Visible = false;
             // 
             // panelEx3
             // 
@@ -670,107 +771,6 @@
             this.cmsItemRefreshState.Size = new System.Drawing.Size(160, 22);
             this.cmsItemRefreshState.Text = "刷新数据库状态";
             this.cmsItemRefreshState.Click += new System.EventHandler(this.cmsItemRefreshState_Click);
-            // 
-            // _Name
-            // 
-            this._Name.DataPropertyName = "Name";
-            this._Name.HeaderText = "本国姓名";
-            this._Name.Name = "_Name";
-            this._Name.ReadOnly = true;
-            // 
-            // EnglishName
-            // 
-            this.EnglishName.DataPropertyName = "EnglishName";
-            this.EnglishName.HeaderText = "英语姓名";
-            this.EnglishName.Name = "EnglishName";
-            this.EnglishName.ReadOnly = true;
-            // 
-            // QRCodeImage
-            // 
-            this.QRCodeImage.HeaderText = "二维码";
-            this.QRCodeImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.QRCodeImage.Name = "QRCodeImage";
-            this.QRCodeImage.ReadOnly = true;
-            // 
-            // Sex
-            // 
-            this.Sex.DataPropertyName = "Sex";
-            this.Sex.HeaderText = "性别";
-            this.Sex.Name = "Sex";
-            this.Sex.ReadOnly = true;
-            // 
-            // BirthDay
-            // 
-            this.BirthDay.DataPropertyName = "Birthday";
-            this.BirthDay.HeaderText = "生日";
-            this.BirthDay.Name = "BirthDay";
-            this.BirthDay.ReadOnly = true;
-            // 
-            // PassportNo
-            // 
-            this.PassportNo.DataPropertyName = "PassportNo";
-            this.PassportNo.HeaderText = "护照号";
-            this.PassportNo.Name = "PassportNo";
-            this.PassportNo.ReadOnly = true;
-            // 
-            // LicenseTime
-            // 
-            this.LicenseTime.DataPropertyName = "LicenseTime";
-            this.LicenseTime.HeaderText = "发证日期";
-            this.LicenseTime.Name = "LicenseTime";
-            this.LicenseTime.ReadOnly = true;
-            // 
-            // ExpiryDate
-            // 
-            this.ExpiryDate.DataPropertyName = "ExpiryDate";
-            this.ExpiryDate.HeaderText = "有效期";
-            this.ExpiryDate.Name = "ExpiryDate";
-            this.ExpiryDate.ReadOnly = true;
-            // 
-            // Birthplace
-            // 
-            this.Birthplace.DataPropertyName = "Birthplace";
-            this.Birthplace.HeaderText = "出生地";
-            this.Birthplace.Name = "Birthplace";
-            this.Birthplace.ReadOnly = true;
-            // 
-            // IssuePlace
-            // 
-            this.IssuePlace.DataPropertyName = "IssuePlace";
-            this.IssuePlace.HeaderText = "签发地";
-            this.IssuePlace.Name = "IssuePlace";
-            this.IssuePlace.ReadOnly = true;
-            // 
-            // outState
-            // 
-            this.outState.DataPropertyName = "outState";
-            this.outState.HeaderText = "送签状态";
-            this.outState.Name = "outState";
-            this.outState.ReadOnly = true;
-            this.outState.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.outState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // HasTypeIn
-            // 
-            this.HasTypeIn.DataPropertyName = "HasTypeIn";
-            this.HasTypeIn.HeaderText = "资料录入";
-            this.HasTypeIn.Name = "HasTypeIn";
-            this.HasTypeIn.ReadOnly = true;
-            // 
-            // GroupNo
-            // 
-            this.GroupNo.DataPropertyName = "GroupNo";
-            this.GroupNo.HeaderText = "团号";
-            this.GroupNo.Name = "GroupNo";
-            this.GroupNo.ReadOnly = true;
-            // 
-            // VisaInfo_id
-            // 
-            this.VisaInfo_id.DataPropertyName = "VisaInfo_id";
-            this.VisaInfo_id.HeaderText = "VisaInfo_id";
-            this.VisaInfo_id.Name = "VisaInfo_id";
-            this.VisaInfo_id.ReadOnly = true;
-            this.VisaInfo_id.Visible = false;
             // 
             // FrmVisaSubmit
             // 
