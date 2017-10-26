@@ -75,9 +75,9 @@ namespace TravletAgence.CSUI.FrmSub
             //初始化时间选择控件
             txtDepartureTime.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
-            //从list初始化就不能reset
+            //从list初始化就不能reset和删除团号
             btnReset.Enabled = false;
-
+            btnDelete.Enabled = false;
         }
 
         /// <summary>
@@ -293,6 +293,15 @@ namespace TravletAgence.CSUI.FrmSub
 
 
         #region 自己的按钮
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void btnAllIn_Click(object sender, EventArgs e)
         {
@@ -535,6 +544,8 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         #endregion
+
+
 
     }
 
