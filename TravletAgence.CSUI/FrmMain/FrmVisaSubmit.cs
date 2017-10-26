@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
@@ -31,6 +32,7 @@ namespace TravletAgence.CSUI.FrmMain
         private string _outState = string.Empty; //Single模式下的状态设置
         private Inputmode _inputMode = Inputmode.Single;
         private readonly MyQRCode _qrCode = new MyQRCode();
+        private readonly Thread _thLoadDataToDgvAndUpdateState;
 
         //class PersonInfo
         //{
@@ -41,6 +43,8 @@ namespace TravletAgence.CSUI.FrmMain
         public FrmVisaSubmit()
         {
             InitializeComponent();
+            _thLoadDataToDgvAndUpdateState = new Thread(LoadAndUpdate);
+            _thLoadDataToDgvAndUpdateState.IsBackground = true;
         }
 
         private void txtInput_TextChanged(object sender, EventArgs e)
@@ -174,8 +178,11 @@ namespace TravletAgence.CSUI.FrmMain
             rbtnIn.Select();
             rbtnSingle.Select();
             //加载数据
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            //LoadDataToDataGridView(_curPage);
+            //UpdateState();
+
+            _thLoadDataToDgvAndUpdateState.Start();
+
         }
 
         private void btnShowInQR_Click(object sender, EventArgs e)
@@ -254,6 +261,18 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #region dgv用到的相关方法
+
+        //用于异步加载
+        public void LoadAndUpdate()
+        {
+            this.Invoke(new Action(() =>
+            {
+                //dataGridView1.DataSource = null;
+                LoadDataToDataGridView(_curPage);
+                UpdateState();
+            }));
+        }
+
         public void LoadDataToDataGridView(int page) //刷新后保持选中
         {
             int curSelectedRow = -1;

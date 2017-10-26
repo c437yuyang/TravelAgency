@@ -29,12 +29,15 @@ namespace TravletAgence.CSUI.FrmMain
         private bool _autoReadThreadRun = false;
         private readonly Timer _t = new Timer();
         private readonly MyQRCode _qrCode = new MyQRCode(); //只用于批量生成二维码
+        private readonly Thread _thLoadDataToDgvAndUpdateState;
 
         public FrmVisaTypeIn()
         {
             InitializeComponent();
             _t.Tick += AutoClassAndRecognize;
             _t.Interval = 200;
+            _thLoadDataToDgvAndUpdateState = new Thread(LoadAndUpdate);
+            _thLoadDataToDgvAndUpdateState.IsBackground = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -51,8 +54,10 @@ namespace TravletAgence.CSUI.FrmMain
             Control.CheckForIllegalCrossThreadCalls = false;
 
             //加载数据
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            //使用异步加载
+            _thLoadDataToDgvAndUpdateState.Start();
+            //LoadDataToDataGridView(_curPage);
+            //UpdateState();
         }
 
         #region model与control
@@ -238,6 +243,18 @@ namespace TravletAgence.CSUI.FrmMain
 
 
         #region dgv用到的相关方法
+
+        //用于异步加载
+        public void LoadAndUpdate()
+        {
+            this.Invoke(new Action(() =>
+            {
+                //dataGridView1.DataSource = null;
+                LoadDataToDataGridView(_curPage);
+                UpdateState();
+            }));
+        }
+
         public void LoadDataToDataGridView(int page) //刷新后保持选中
         {
             int curSelectedRow = -1;
@@ -246,6 +263,7 @@ namespace TravletAgence.CSUI.FrmMain
             dataGridView1.DataSource = bll.GetListByPageOrderByGroupNo(page, _pageSize);
             if (curSelectedRow != -1)
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
+            dataGridView1.Update();
         }
 
         private void UpdateState()

@@ -36,6 +36,8 @@ namespace TravletAgence.CSUI.FrmMain
 
         public void OpenTab(Form frm, string Name)
         {
+            if (IsOpenTab(Name))
+                return;
             
             DevComponents.DotNetBar.TabItem tp = new DevComponents.DotNetBar.TabItem();
             DevComponents.DotNetBar.TabControlPanel tcp = new DevComponents.DotNetBar.TabControlPanel();
@@ -110,7 +112,6 @@ namespace TravletAgence.CSUI.FrmMain
 
             tabMain.Refresh();
         }
-
 
         private void tabMain_TabItemClose(object sender, TabStripActionEventArgs e)
         {
