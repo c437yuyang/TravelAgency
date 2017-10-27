@@ -135,6 +135,9 @@ namespace TravletAgence.CSUI.FrmSub
             //初始化国家选择控件
             cbCountry.Text = _visaModel.Country;
 
+            //初始化销售人
+            txtSalesPerson.Text = _visaModel.SalesPerson;
+
         }
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
