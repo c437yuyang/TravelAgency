@@ -29,9 +29,9 @@ namespace TravletAgence.BLL
             //修改对应项
             for (int i = 0; i < list.Count; i++)
             {
-                list[i].Country = string.Empty;
-                list[i].Visa_id = string.Empty;
-                list[i].GroupNo = String.Empty;
+                list[i].Country = null;
+                list[i].Visa_id = null;
+                list[i].GroupNo = null;
                 //TODO:资料录入情况怎么处理
                 if (!bllVisaInfo.Update(list[i]))
                 {

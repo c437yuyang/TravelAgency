@@ -372,7 +372,7 @@ namespace TravletAgence.CSUI.FrmMain
                 DataGridViewRow row = dataGridView1.Rows[i];
                 row.HeaderCell.Value = (i + 1).ToString();
 
-                if ((string)row.Cells["EnglishName"].Value != string.Empty && (string)row.Cells["PassportNo"].Value != string.Empty)
+                if (!string.IsNullOrEmpty((string)row.Cells["EnglishName"].Value) && !string.IsNullOrEmpty((string)row.Cells["PassportNo"].Value))
                 {
                     dataGridView1.Rows[i].Cells["QRCodeImage"].Value = _qrCode.EncodeToImage(row.Cells["EnglishName"].Value + "|" + row.Cells["PassportNo"].Value,
                         QRCodeSaveSize.Size165X165);
@@ -515,7 +515,7 @@ namespace TravletAgence.CSUI.FrmMain
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i != count; ++i)
             {
-                if ((string)dataGridView1.SelectedRows[i].Cells["Visa_id"].Value != string.Empty )
+                if (!string.IsNullOrEmpty((string)dataGridView1.SelectedRows[i].Cells["Visa_id"].Value))
                 {
                     MessageBoxEx.Show("选中用户已经在团号中，若需删除请先将其移出团号!");
                     return;
@@ -551,7 +551,7 @@ namespace TravletAgence.CSUI.FrmMain
                     MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                     return;
                 }
-                if (model.Visa_id != string.Empty)
+                if (!string.IsNullOrEmpty(model.Visa_id))
                 {
                     MessageBoxEx.Show("选中项中有已经设置过团号的签证!");
                     return;

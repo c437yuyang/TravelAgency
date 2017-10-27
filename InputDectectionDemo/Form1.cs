@@ -68,8 +68,6 @@ namespace InputDectectionDemo
 
             TravletAgence.Model.VisaInfo model = bll.GetModelByPassportNo(personInfo.passportNo);
 
-            //TODO:添加更新数据库签证状态逻辑
-
             Console.WriteLine(model.EntryTime.ToString());
 
 

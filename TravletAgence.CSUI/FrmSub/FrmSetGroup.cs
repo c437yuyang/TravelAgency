@@ -446,9 +446,9 @@ namespace TravletAgence.CSUI.FrmSub
             for (int i = 0; i < lvOut.Items.Count; i++)
             {
                 Model.VisaInfo model = lvOut.Items[i].Tag as Model.VisaInfo;
-                model.Visa_id = string.Empty;
-                model.GroupNo = string.Empty;
-                model.Country = string.Empty;
+                model.Visa_id = null;
+                model.GroupNo = null;
+                model.Country = null;
                 //TODO:资料录入情况怎么处理
                 //执行更新
                 if (_bllVisaInfo.Update(model) == false)
@@ -520,7 +520,7 @@ namespace TravletAgence.CSUI.FrmSub
         {
             for (int i = 0; i < dgvGroupInfo.SelectedCells.Count; i++)
             {
-                dgvGroupInfo.SelectedCells[i].Value = string.Empty;
+                dgvGroupInfo.SelectedCells[i].Value = null;
             }
         }
         #endregion
