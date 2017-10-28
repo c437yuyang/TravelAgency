@@ -112,7 +112,7 @@ namespace TravletAgence.CSUI.FrmSub
             for (int i = 0; i < _list.Count; i++)
             {
                 ListViewItem liv = new ListViewItem(_list[i].Name);
-                
+
                 ListViewItem.ListViewSubItem livSubItem1 = new ListViewItem.ListViewSubItem(liv, DateTimeFormator.DateTimeToString(_list[i].EntryTime));
                 ListViewItem.ListViewSubItem livSubItem2 = new ListViewItem.ListViewSubItem(liv, _list[i].IssuePlace);
                 ListViewItem.ListViewSubItem livSubItem3 = new ListViewItem.ListViewSubItem(liv, _list[i].PassportNo);
@@ -124,10 +124,10 @@ namespace TravletAgence.CSUI.FrmSub
             }
 
             //初始化团号
-            updateGroupNo();
+            UpdateGroupNo();
 
             //初始化dgv
-            updateDgvData();
+            UpdateDgvData();
 
             //初始化时间选择控件
             txtDepartureTime.Text = DateTimeFormator.DateTimeToString(_visaModel.PredictTime);
@@ -142,6 +142,7 @@ namespace TravletAgence.CSUI.FrmSub
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
         {
+            //设置最小尺寸
             this.MinimumSize = this.Size;
             dgvGroupInfo.AutoGenerateColumns = false;
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
@@ -149,6 +150,28 @@ namespace TravletAgence.CSUI.FrmSub
             //设置列表多选
             lvIn.MultiSelect = true;
             lvOut.MultiSelect = true;
+            //初始化comboBox的成员
+            //出境类型
+            txtDepartureType.Items.Add("单次");
+            txtDepartureType.Items.Add("三年多往");
+            txtDepartureType.Items.Add("五年多往");
+            txtDepartureType.Items.Add("十年多往");
+            txtDepartureType.Items.Add("其他");
+            //外领送签条件
+            txtSubmitCondition.Items.Add("暂住证");
+            txtSubmitCondition.Items.Add("居住证明");
+            txtSubmitCondition.Items.Add("结婚证");
+            txtSubmitCondition.Items.Add("身份证");
+            txtSubmitCondition.Items.Add("户口本");
+            txtSubmitCondition.Items.Add("其他");
+            //客人取签方式
+            txtFetchType.Items.Add("回签证部");
+            txtFetchType.Items.Add("快递");
+            txtFetchType.Items.Add("机场自提");
+            txtFetchType.Items.Add("重庆自取");
+            txtFetchType.Items.Add("车托到五桂桥");
+            txtFetchType.Items.Add("其他");
+
 
             if (_list != null && _visaModel == null && !_initFromVisaModel)
                 InitFrmFromList();
@@ -157,7 +180,7 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         #region 状态更新函数
-        private void updateGroupNo()
+        private void UpdateGroupNo()
         {
             _visaName = "QZC" + txtDepartureTime.Value.ToString("yyMMdd");
             for (int i = 0; i < lvIn.Items.Count; ++i)
@@ -171,7 +194,7 @@ namespace TravletAgence.CSUI.FrmSub
             lbCount.Text = "团队人数:" + lvIn.Items.Count + "人";
         }
 
-        private void updateDgvData()
+        private void UpdateDgvData()
         {
             _dgvList.Clear();
             for (int i = 0; i < lvIn.Items.Count; ++i)
@@ -196,6 +219,8 @@ namespace TravletAgence.CSUI.FrmSub
                 list[i].HasTypeIn = HasTypeIn.Yes; //修改为已录入状态
                 list[i].Country = cbCountry.Text;
                 list[i].Visa_id = _visaModel.Visa_id.ToString(); //修改visainfo对应visa_id
+                list[i].Client = txtClient.Text;
+                list[i].Salesperson = txtSalesPerson.Text;
             }
             int res = _bllVisaInfo.UpdateByList(_dgvList);
             MessageBoxEx.Show(res + "条记录成功更新," + (list.Count - res) + "条记录更新失败.");
@@ -260,13 +285,13 @@ namespace TravletAgence.CSUI.FrmSub
             {
                 SendCellToClipboard();
             }
-            
+
             if (dgvGroupInfo.SelectedCells.Count != 0 && e.Control && e.KeyCode == Keys.V)
             {
                 SetCellsFromClipboard();
             }
 
-            if (dgvGroupInfo.SelectedCells.Count != 0  && e.KeyCode == Keys.Delete)
+            if (dgvGroupInfo.SelectedCells.Count != 0 && e.KeyCode == Keys.Delete)
             {
                 ClearCells();
             }
@@ -285,7 +310,7 @@ namespace TravletAgence.CSUI.FrmSub
                 if (e.RowIndex >= 0)
                 {
                     //只有在选中的单元格上
-                    if(dgvGroupInfo.SelectedCells.Contains(dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex]))
+                    if (dgvGroupInfo.SelectedCells.Contains(dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex]))
                         //弹出操作菜单
                         cmsDgvRb.Show(MousePosition.X, MousePosition.Y);
                 }
@@ -314,8 +339,8 @@ namespace TravletAgence.CSUI.FrmSub
                 lvOut.Items.Remove(lvOut.Items[i]);
                 lvIn.Items.Add(lvItem);
             }
-            updateGroupNo();
-            updateDgvData();
+            UpdateGroupNo();
+            UpdateDgvData();
         }
 
         private void btnAllOut_Click(object sender, EventArgs e)
@@ -326,8 +351,8 @@ namespace TravletAgence.CSUI.FrmSub
                 lvIn.Items.Remove(lvIn.Items[i]);
                 lvOut.Items.Add(lvItem);
             }
-            updateGroupNo();
-            updateDgvData();
+            UpdateGroupNo();
+            UpdateDgvData();
 
         }
 
@@ -339,8 +364,8 @@ namespace TravletAgence.CSUI.FrmSub
                 lvOut.Items.Remove(lvOut.SelectedItems[i]);
                 lvIn.Items.Insert(0, lvItem);
             }
-            updateGroupNo();
-            updateDgvData();
+            UpdateGroupNo();
+            UpdateDgvData();
         }
 
         private void btnOut_Click(object sender, EventArgs e)
@@ -351,8 +376,8 @@ namespace TravletAgence.CSUI.FrmSub
                 lvIn.Items.Remove(lvIn.SelectedItems[i]);
                 lvOut.Items.Insert(0, lvItem);
             }
-            updateGroupNo();
-            updateDgvData();
+            UpdateGroupNo();
+            UpdateDgvData();
         }
 
 
@@ -388,15 +413,11 @@ namespace TravletAgence.CSUI.FrmSub
                     MessageBoxEx.Show("内部错误!");
                     return;
                 }
-                _visaModel = new Visa();
-                //_visaModel.Visa_id = Guid.NewGuid(); //这里必须要给一个，虽然这里不给也会入库正确，数据库会赋给默认值，但是后面更新对应visainfo就会有错
-                //这里代码生成器默认给了一个guid，不能再自己给了
-                _visaModel.EntryTime = DateTime.Now;
-                _visaModel.GroupNo = txtGroupNo.Text;
-                _visaModel.SalesPerson = txtSalesPerson.Text;
-                _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
-                _visaModel.Country = cbCountry.Text;
-                _visaModel.Number = lvIn.Items.Count; //团号的人数
+
+
+                CtrlsToVisaModel();
+
+
                 if ((_visaModel.Visa_id = _bllVisa.Add(_visaModel)) == Guid.Empty) //执行更新,返回值是新插入的visamodel的guid
                 {
                     MessageBoxEx.Show("添加团号到数据库失败，请重试!");
@@ -420,11 +441,7 @@ namespace TravletAgence.CSUI.FrmSub
                 }
 
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
-                _visaModel.GroupNo = txtGroupNo.Text;
-                _visaModel.SalesPerson = txtSalesPerson.Text;
-                _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
-                _visaModel.Country = cbCountry.Text;
-                _visaModel.Number = lvIn.Items.Count;
+                CtrlsToVisaModel(_visaModel);
                 if (!_bllVisa.Update(_visaModel)) //执行更新
                 {
                     MessageBoxEx.Show("更新团号信息失败!");
@@ -439,6 +456,31 @@ namespace TravletAgence.CSUI.FrmSub
             }
             _updateDel(_curPage);
             Close();
+        }
+
+        private void CtrlsToVisaModel()
+        {
+            _visaModel = new Visa();
+            //_visaModel.Visa_id = Guid.NewGuid(); //这里必须要给一个，虽然这里不给也会入库正确，数据库会赋给默认值，但是后面更新对应visainfo就会有错
+            //这里代码生成器默认给了一个guid，不能再自己给了
+            _visaModel.EntryTime = DateTime.Now;
+            _visaModel.GroupNo = txtGroupNo.Text;
+            _visaModel.SalesPerson = txtSalesPerson.Text;
+            _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+            _visaModel.Country = cbCountry.Text;
+            _visaModel.Number = lvIn.Items.Count; //团号的人数
+            
+        }
+
+        private void CtrlsToVisaModel(Model.Visa model)
+        {
+
+            //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
+            _visaModel.GroupNo = txtGroupNo.Text;
+            _visaModel.SalesPerson = txtSalesPerson.Text;
+            _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+            _visaModel.Country = cbCountry.Text;
+            _visaModel.Number = lvIn.Items.Count;
         }
 
         /// <summary>
@@ -527,7 +569,7 @@ namespace TravletAgence.CSUI.FrmSub
             }
         }
         #endregion
-        
+
 
         #region dgv右键弹出菜单响应
 
