@@ -423,7 +423,8 @@ namespace TravletAgence.CSUI.FrmSub
                     MessageBoxEx.Show("内部错误!");
                     return;
                 }
-                CtrlsToVisaModel();
+                if (!CtrlsToVisaModel())
+                    return;
 
 
                 if ((_visaModel.Visa_id = _bllVisa.Add(_visaModel)) == Guid.Empty) //执行更新,返回值是新插入的visamodel的guid
@@ -449,7 +450,9 @@ namespace TravletAgence.CSUI.FrmSub
                 }
 
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
-                CtrlsToVisaModel(_visaModel);
+                if (!CtrlsToVisaModel(_visaModel))
+                    return;
+
                 if (!_bllVisa.Update(_visaModel)) //执行更新
                 {
                     MessageBoxEx.Show("更新团号信息失败!");
@@ -466,7 +469,7 @@ namespace TravletAgence.CSUI.FrmSub
             Close();
         }
 
-        private void CtrlsToVisaModel()
+        private bool CtrlsToVisaModel()
         {
             _visaModel = new Visa();
             //_visaModel.Visa_id = Guid.NewGuid(); //这里必须要给一个，虽然这里不给也会入库正确，数据库会赋给默认值，但是后面更新对应visainfo就会有错
@@ -474,8 +477,8 @@ namespace TravletAgence.CSUI.FrmSub
             try
             {
                 //单独处理remark
-                if(!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
-                _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
+                if (!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
+                    _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
 
                 _visaModel.EntryTime = DateTime.Now;
                 _visaModel.GroupNo = txtGroupNo.Text;
@@ -492,17 +495,20 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.FetchCondition = txtFetchType.Text;
                 _visaModel.TypeInPerson = txtTypeInPerson.Text;
                 _visaModel.CheckPerson = txtCheckPerson.Text;
+                return true;
             }
             catch (Exception)
             {
-
+                _visaModel = null; //一定要这里重新赋值为null
                 MessageBoxEx.Show(Resources.PleaseCheckDateTimeFormat);
+                return false;
+
             }
 
 
         }
 
-        private void CtrlsToVisaModel(Model.Visa model)
+        private bool CtrlsToVisaModel(Model.Visa model)
         {
             try
             {
@@ -527,13 +533,14 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.FetchCondition = txtFetchType.Text;
                 _visaModel.TypeInPerson = txtTypeInPerson.Text;
                 _visaModel.CheckPerson = txtCheckPerson.Text;
+                return true;
             }
             catch (Exception)
             {
                 MessageBoxEx.Show(Resources.PleaseCheckDateTimeFormat);
-                
+                return false;
             }
-           
+
 
         }
 

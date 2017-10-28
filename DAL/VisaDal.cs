@@ -22,9 +22,9 @@ namespace TravletAgence.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into Visa(");
-            strSql.Append("Visa_id,GroupNo,Name,Types,Tips,PredictTime,RealTime,FinishTime,Satus,Person,Number,Picture,ListCount,List,SalesPerson,Receipt,Quidco,Cost,OtherCost,ExpressNo,Call,Sale_id,DepartmentId,EntryTime,Country,Passengers,WorkId,Documenter,Price,ConsulateCost,VisaPersonCost,MailCost,Tips2,SubmitFlag,GroupPrice,InvitationCost)");
+            strSql.Append("Visa_id,GroupNo,Name,Types,Tips,PredictTime,RealTime,FinishTime,Satus,Person,Number,Picture,ListCount,List,SalesPerson,Receipt,Quidco,Cost,OtherCost,ExpressNo,Call,Sale_id,DepartmentId,EntryTime,Country,Passengers,WorkId,Documenter,Price,ConsulateCost,VisaPersonCost,MailCost,Tips2,SubmitFlag,GroupPrice,InvitationCost,Remark,SubmitTime,InTime,OutTime,Client,DepartureType,SubmitCondition,FetchCondition,TypeInPerson,CheckPerson)");
             strSql.Append(" values (");
-            strSql.Append("@Visa_id,@GroupNo,@Name,@Types,@Tips,@PredictTime,@RealTime,@FinishTime,@Satus,@Person,@Number,@Picture,@ListCount,@List,@SalesPerson,@Receipt,@Quidco,@Cost,@OtherCost,@ExpressNo,@Call,@Sale_id,@DepartmentId,@EntryTime,@Country,@Passengers,@WorkId,@Documenter,@Price,@ConsulateCost,@VisaPersonCost,@MailCost,@Tips2,@SubmitFlag,@GroupPrice,@InvitationCost)");
+            strSql.Append("@Visa_id,@GroupNo,@Name,@Types,@Tips,@PredictTime,@RealTime,@FinishTime,@Satus,@Person,@Number,@Picture,@ListCount,@List,@SalesPerson,@Receipt,@Quidco,@Cost,@OtherCost,@ExpressNo,@Call,@Sale_id,@DepartmentId,@EntryTime,@Country,@Passengers,@WorkId,@Documenter,@Price,@ConsulateCost,@VisaPersonCost,@MailCost,@Tips2,@SubmitFlag,@GroupPrice,@InvitationCost,@Remark,@SubmitTime,@InTime,@OutTime,@Client,@DepartureType,@SubmitCondition,@FetchCondition,@TypeInPerson,@CheckPerson)");
             SqlParameter[] parameters = {
 					new SqlParameter("@Visa_id", SqlDbType.UniqueIdentifier,16),
 					new SqlParameter("@GroupNo", SqlDbType.VarChar,500),
@@ -61,7 +61,17 @@ namespace TravletAgence.DAL
 					new SqlParameter("@Tips2", SqlDbType.VarChar,50),
 					new SqlParameter("@SubmitFlag", SqlDbType.Int,4),
 					new SqlParameter("@GroupPrice", SqlDbType.Float,8),
-					new SqlParameter("@InvitationCost", SqlDbType.Float,8)};
+					new SqlParameter("@InvitationCost", SqlDbType.Float,8),
+					new SqlParameter("@Remark", SqlDbType.VarChar,20),
+					new SqlParameter("@SubmitTime", SqlDbType.DateTime),
+					new SqlParameter("@InTime", SqlDbType.DateTime),
+					new SqlParameter("@OutTime", SqlDbType.DateTime),
+					new SqlParameter("@Client", SqlDbType.VarChar,50),
+					new SqlParameter("@DepartureType", SqlDbType.VarChar,50),
+					new SqlParameter("@SubmitCondition", SqlDbType.VarChar,50),
+					new SqlParameter("@FetchCondition", SqlDbType.VarChar,50),
+					new SqlParameter("@TypeInPerson", SqlDbType.VarChar,50),
+					new SqlParameter("@CheckPerson", SqlDbType.VarChar,50)};
             parameters[0].Value = Guid.NewGuid();
             parameters[1].Value = model.GroupNo;
             parameters[2].Value = model.Name;
@@ -98,6 +108,17 @@ namespace TravletAgence.DAL
             parameters[33].Value = model.SubmitFlag;
             parameters[34].Value = model.GroupPrice;
             parameters[35].Value = model.InvitationCost;
+            parameters[36].Value = model.Remark;
+            parameters[37].Value = model.SubmitTime;
+            parameters[38].Value = model.InTime;
+            parameters[39].Value = model.OutTime;
+            parameters[40].Value = model.Client;
+            parameters[41].Value = model.DepartureType;
+            parameters[42].Value = model.SubmitCondition;
+            parameters[43].Value = model.FetchCondition;
+            parameters[44].Value = model.TypeInPerson;
+            parameters[45].Value = model.CheckPerson;
+
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
