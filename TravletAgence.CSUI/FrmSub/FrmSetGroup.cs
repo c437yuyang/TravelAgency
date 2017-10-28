@@ -194,7 +194,13 @@ namespace TravletAgence.CSUI.FrmSub
         #region 状态更新函数
         private void UpdateGroupNo()
         {
-            _visaName = "QZC" + txtDepartureTime.Value.ToString("yyMMdd");
+            if (txtDepartureTime.Value.ToString() != "0001/1/1 0:00:00")
+            {
+                _visaName = "QZC" + txtDepartureTime.Value.ToString("yyMMdd");
+                
+            }else
+                _visaName = "QZC" + DateTime.Now.ToString("yyMMdd");
+            
             for (int i = 0; i < lvIn.Items.Count; ++i)
             {
                 _visaName += ((Model.VisaInfo)lvIn.Items[i].Tag).Name;
@@ -652,6 +658,19 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         #endregion
+
+
+        /// <summary>
+        /// 根据选中的出发时间设置团号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtDepartureTime_TextChanged(object sender, EventArgs e)
+        {
+            UpdateGroupNo();
+        }
+
+        
 
 
 
