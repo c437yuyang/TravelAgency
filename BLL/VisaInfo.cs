@@ -46,8 +46,7 @@ namespace TravletAgence.BLL
 			
 			return dal.Delete(VisaInfo_id);
 		}
-
-
+		
 
 		/// <summary>
 		/// 得到一个对象实体

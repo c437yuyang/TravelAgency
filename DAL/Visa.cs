@@ -30,7 +30,9 @@ namespace TravletAgence.DAL
 		}
 
 
-		
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
@@ -72,7 +74,17 @@ namespace TravletAgence.DAL
 			strSql.Append("Tips2=@Tips2,");
 			strSql.Append("SubmitFlag=@SubmitFlag,");
 			strSql.Append("GroupPrice=@GroupPrice,");
-			strSql.Append("InvitationCost=@InvitationCost");
+			strSql.Append("InvitationCost=@InvitationCost,");
+			strSql.Append("Remark=@Remark,");
+			strSql.Append("SubmitTime=@SubmitTime,");
+			strSql.Append("InTime=@InTime,");
+			strSql.Append("OutTime=@OutTime,");
+			strSql.Append("Clent=@Clent,");
+			strSql.Append("DepartureType=@DepartureType,");
+			strSql.Append("SubmitCondition=@SubmitCondition,");
+			strSql.Append("FetchCondition=@FetchCondition,");
+			strSql.Append("TypeInPerson=@TypeInPerson,");
+			strSql.Append("CheckPerson=@CheckPerson");
 			strSql.Append(" where Visa_id=@Visa_id ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@GroupNo", SqlDbType.VarChar,500),
@@ -110,6 +122,16 @@ namespace TravletAgence.DAL
 					new SqlParameter("@SubmitFlag", SqlDbType.Int,4),
 					new SqlParameter("@GroupPrice", SqlDbType.Float,8),
 					new SqlParameter("@InvitationCost", SqlDbType.Float,8),
+					new SqlParameter("@Remark", SqlDbType.VarChar,20),
+					new SqlParameter("@SubmitTime", SqlDbType.DateTime),
+					new SqlParameter("@InTime", SqlDbType.DateTime),
+					new SqlParameter("@OutTime", SqlDbType.DateTime),
+					new SqlParameter("@Clent", SqlDbType.VarChar,50),
+					new SqlParameter("@DepartureType", SqlDbType.VarChar,50),
+					new SqlParameter("@SubmitCondition", SqlDbType.VarChar,50),
+					new SqlParameter("@FetchCondition", SqlDbType.VarChar,50),
+					new SqlParameter("@TypeInPerson", SqlDbType.VarChar,50),
+					new SqlParameter("@CheckPerson", SqlDbType.VarChar,50),
 					new SqlParameter("@Visa_id", SqlDbType.UniqueIdentifier,16)};
 			parameters[0].Value = model.GroupNo;
 			parameters[1].Value = model.Name;
@@ -146,7 +168,17 @@ namespace TravletAgence.DAL
 			parameters[32].Value = model.SubmitFlag;
 			parameters[33].Value = model.GroupPrice;
 			parameters[34].Value = model.InvitationCost;
-			parameters[35].Value = model.Visa_id;
+			parameters[35].Value = model.Remark;
+			parameters[36].Value = model.SubmitTime;
+			parameters[37].Value = model.InTime;
+			parameters[38].Value = model.OutTime;
+			parameters[39].Value = model.Clent;
+			parameters[40].Value = model.DepartureType;
+			parameters[41].Value = model.SubmitCondition;
+			parameters[42].Value = model.FetchCondition;
+			parameters[43].Value = model.TypeInPerson;
+			parameters[44].Value = model.CheckPerson;
+			parameters[45].Value = model.Visa_id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -182,24 +214,7 @@ namespace TravletAgence.DAL
 				return false;
 			}
 		}
-		/// <summary>
-		/// 批量删除数据
-		/// </summary>
-		public bool DeleteList(string Visa_idlist )
-		{
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from Visa ");
-			strSql.Append(" where Visa_id in ("+Visa_idlist + ")  ");
-			int rows=DbHelperSQL.ExecuteSql(strSql.ToString());
-			if (rows > 0)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
+		
 
 
 		/// <summary>
@@ -209,7 +224,7 @@ namespace TravletAgence.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 Visa_id,GroupNo,Name,Types,Tips,PredictTime,RealTime,FinishTime,Satus,Person,Number,Picture,ListCount,List,SalesPerson,Receipt,Quidco,Cost,OtherCost,ExpressNo,Call,Sale_id,DepartmentId,EntryTime,Country,Passengers,WorkId,Documenter,Price,ConsulateCost,VisaPersonCost,MailCost,Tips2,SubmitFlag,GroupPrice,InvitationCost from Visa ");
+			strSql.Append("select  top 1 Visa_id,GroupNo,Name,Types,Tips,PredictTime,RealTime,FinishTime,Satus,Person,Number,Picture,ListCount,List,SalesPerson,Receipt,Quidco,Cost,OtherCost,ExpressNo,Call,Sale_id,DepartmentId,EntryTime,Country,Passengers,WorkId,Documenter,Price,ConsulateCost,VisaPersonCost,MailCost,Tips2,SubmitFlag,GroupPrice,InvitationCost,Remark,SubmitTime,InTime,OutTime,Clent,DepartureType,SubmitCondition,FetchCondition,TypeInPerson,CheckPerson from Visa ");
 			strSql.Append(" where Visa_id=@Visa_id ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Visa_id", SqlDbType.UniqueIdentifier,16)			};
@@ -380,6 +395,46 @@ namespace TravletAgence.DAL
 				{
 					model.InvitationCost=decimal.Parse(row["InvitationCost"].ToString());
 				}
+				if(row["Remark"]!=null)
+				{
+					model.Remark=row["Remark"].ToString();
+				}
+				if(row["SubmitTime"]!=null && row["SubmitTime"].ToString()!="")
+				{
+					model.SubmitTime=DateTime.Parse(row["SubmitTime"].ToString());
+				}
+				if(row["InTime"]!=null && row["InTime"].ToString()!="")
+				{
+					model.InTime=DateTime.Parse(row["InTime"].ToString());
+				}
+				if(row["OutTime"]!=null && row["OutTime"].ToString()!="")
+				{
+					model.OutTime=DateTime.Parse(row["OutTime"].ToString());
+				}
+				if(row["Clent"]!=null)
+				{
+					model.Clent=row["Clent"].ToString();
+				}
+				if(row["DepartureType"]!=null)
+				{
+					model.DepartureType=row["DepartureType"].ToString();
+				}
+				if(row["SubmitCondition"]!=null)
+				{
+					model.SubmitCondition=row["SubmitCondition"].ToString();
+				}
+				if(row["FetchCondition"]!=null)
+				{
+					model.FetchCondition=row["FetchCondition"].ToString();
+				}
+				if(row["TypeInPerson"]!=null)
+				{
+					model.TypeInPerson=row["TypeInPerson"].ToString();
+				}
+				if(row["CheckPerson"]!=null)
+				{
+					model.CheckPerson=row["CheckPerson"].ToString();
+				}
 			}
 			return model;
 		}
@@ -390,7 +445,7 @@ namespace TravletAgence.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select Visa_id,GroupNo,Name,Types,Tips,PredictTime,RealTime,FinishTime,Satus,Person,Number,Picture,ListCount,List,SalesPerson,Receipt,Quidco,Cost,OtherCost,ExpressNo,Call,Sale_id,DepartmentId,EntryTime,Country,Passengers,WorkId,Documenter,Price,ConsulateCost,VisaPersonCost,MailCost,Tips2,SubmitFlag,GroupPrice,InvitationCost ");
+			strSql.Append("select Visa_id,GroupNo,Name,Types,Tips,PredictTime,RealTime,FinishTime,Satus,Person,Number,Picture,ListCount,List,SalesPerson,Receipt,Quidco,Cost,OtherCost,ExpressNo,Call,Sale_id,DepartmentId,EntryTime,Country,Passengers,WorkId,Documenter,Price,ConsulateCost,VisaPersonCost,MailCost,Tips2,SubmitFlag,GroupPrice,InvitationCost,Remark,SubmitTime,InTime,OutTime,Clent,DepartureType,SubmitCondition,FetchCondition,TypeInPerson,CheckPerson ");
 			strSql.Append(" FROM Visa ");
 			if(strWhere.Trim()!="")
 			{
@@ -410,7 +465,7 @@ namespace TravletAgence.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" Visa_id,GroupNo,Name,Types,Tips,PredictTime,RealTime,FinishTime,Satus,Person,Number,Picture,ListCount,List,SalesPerson,Receipt,Quidco,Cost,OtherCost,ExpressNo,Call,Sale_id,DepartmentId,EntryTime,Country,Passengers,WorkId,Documenter,Price,ConsulateCost,VisaPersonCost,MailCost,Tips2,SubmitFlag,GroupPrice,InvitationCost ");
+			strSql.Append(" Visa_id,GroupNo,Name,Types,Tips,PredictTime,RealTime,FinishTime,Satus,Person,Number,Picture,ListCount,List,SalesPerson,Receipt,Quidco,Cost,OtherCost,ExpressNo,Call,Sale_id,DepartmentId,EntryTime,Country,Passengers,WorkId,Documenter,Price,ConsulateCost,VisaPersonCost,MailCost,Tips2,SubmitFlag,GroupPrice,InvitationCost,Remark,SubmitTime,InTime,OutTime,Clent,DepartureType,SubmitCondition,FetchCondition,TypeInPerson,CheckPerson ");
 			strSql.Append(" FROM Visa ");
 			if(strWhere.Trim()!="")
 			{

@@ -22,8 +22,7 @@ namespace TravletAgence.BLL
 			return dal.Exists(Visa_id);
 		}
 
-
-
+		
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
@@ -40,13 +39,7 @@ namespace TravletAgence.BLL
 			
 			return dal.Delete(Visa_id);
 		}
-        ///// <summary>
-        ///// 删除一条数据
-        ///// </summary>
-        //public bool DeleteList(string Visa_idlist )
-        //{
-        //    return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(Visa_idlist,0) );
-        //}
+		
 
 		/// <summary>
 		/// 得到一个对象实体

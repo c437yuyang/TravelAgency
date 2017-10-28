@@ -46,6 +46,16 @@ namespace TravletAgence.Model
 		private int? _submitflag;
 		private decimal? _groupprice;
 		private decimal? _invitationcost;
+		private string _remark;
+		private DateTime? _submittime;
+		private DateTime? _intime;
+		private DateTime? _outtime;
+		private string _clent;
+		private string _departuretype;
+		private string _submitcondition;
+		private string _fetchcondition;
+		private string _typeinperson;
+		private string _checkperson;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -333,6 +343,86 @@ namespace TravletAgence.Model
 		{
 			set{ _invitationcost=value;}
 			get{return _invitationcost;}
+		}
+		/// <summary>
+		/// 备注:如一家人
+		/// </summary>
+		public string Remark
+		{
+			set{ _remark=value;}
+			get{return _remark;}
+		}
+		/// <summary>
+		/// 交资料时间
+		/// </summary>
+		public DateTime? SubmitTime
+		{
+			set{ _submittime=value;}
+			get{return _submittime;}
+		}
+		/// <summary>
+		/// 客人人境时间
+		/// </summary>
+		public DateTime? InTime
+		{
+			set{ _intime=value;}
+			get{return _intime;}
+		}
+		/// <summary>
+		/// 客人出境时间
+		/// </summary>
+		public DateTime? OutTime
+		{
+			set{ _outtime=value;}
+			get{return _outtime;}
+		}
+		/// <summary>
+		/// 客户
+		/// </summary>
+		public string Clent
+		{
+			set{ _clent=value;}
+			get{return _clent;}
+		}
+		/// <summary>
+		/// 出境类型:如三年多往，五年多往
+		/// </summary>
+		public string DepartureType
+		{
+			set{ _departuretype=value;}
+			get{return _departuretype;}
+		}
+		/// <summary>
+		/// 外领送签条件
+		/// </summary>
+		public string SubmitCondition
+		{
+			set{ _submitcondition=value;}
+			get{return _submitcondition;}
+		}
+		/// <summary>
+		/// 客人取签方式
+		/// </summary>
+		public string FetchCondition
+		{
+			set{ _fetchcondition=value;}
+			get{return _fetchcondition;}
+		}
+		/// <summary>
+		/// 录入人员
+		/// </summary>
+		public string TypeInPerson
+		{
+			set{ _typeinperson=value;}
+			get{return _typeinperson;}
+		}
+		/// <summary>
+		/// 审查人员
+		/// </summary>
+		public string CheckPerson
+		{
+			set{ _checkperson=value;}
+			get{return _checkperson;}
 		}
 		#endregion Model
 
