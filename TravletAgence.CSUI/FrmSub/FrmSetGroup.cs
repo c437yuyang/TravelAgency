@@ -129,15 +129,19 @@ namespace TravletAgence.CSUI.FrmSub
             //初始化dgv
             UpdateDgvData();
 
-            //初始化时间选择控件
+            //初始数据项
             txtDepartureTime.Text = DateTimeFormator.DateTimeToString(_visaModel.PredictTime);
-
-            //初始化国家选择控件
             cbCountry.Text = _visaModel.Country;
-
-            //初始化销售人
             txtSalesPerson.Text = _visaModel.SalesPerson;
-
+            txtSubmitTime.Text = DateTimeFormator.DateTimeToString(_visaModel.SubmitTime);
+            txtInTime.Text = DateTimeFormator.DateTimeToString(_visaModel.InTime);
+            txtOutTime.Text = DateTimeFormator.DateTimeToString(_visaModel.OutTime);
+            txtClient.Text = _visaModel.Clent;
+            txtDepartureType.Text = _visaModel.DepartureType;
+            txtSubmitCondition.Text = _visaModel.SubmitCondition;
+            txtFetchType.Text = _visaModel.FetchCondition;
+            txtTypeInPerson.Text = _visaModel.TypeInPerson;
+            txtCheckPerson.Text = _visaModel.CheckPerson;
         }
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
@@ -476,11 +480,11 @@ namespace TravletAgence.CSUI.FrmSub
         {
 
             //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
-            _visaModel.GroupNo = txtGroupNo.Text;
-            _visaModel.SalesPerson = txtSalesPerson.Text;
-            _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
-            _visaModel.Country = cbCountry.Text;
-            _visaModel.Number = lvIn.Items.Count;
+            model.GroupNo = txtGroupNo.Text;
+            model.SalesPerson = txtSalesPerson.Text;
+            model.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+            model.Country = cbCountry.Text;
+            model.Number = lvIn.Items.Count;
         }
 
         /// <summary>
@@ -549,7 +553,7 @@ namespace TravletAgence.CSUI.FrmSub
                 MessageBoxEx.Show("请选中一条记录复制!");
                 return;
             }
-            if (dgvGroupInfo.SelectedCells[0].Value != null)
+            if (!string.IsNullOrEmpty(dgvGroupInfo.SelectedCells[0].Value))
                 Clipboard.SetText(dgvGroupInfo.SelectedCells[0].Value.ToString());
         }
 
