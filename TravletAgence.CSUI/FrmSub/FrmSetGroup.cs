@@ -73,7 +73,7 @@ namespace TravletAgence.CSUI.FrmSub
             }
 
             //初始化时间选择控件
-            txtDepartureTime.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            //还是不初始化的比较好   
 
             //从list初始化就不能reset和删除团号
             btnReset.Enabled = false;
@@ -154,6 +154,8 @@ namespace TravletAgence.CSUI.FrmSub
         {
             //设置最小尺寸
             this.MinimumSize = this.Size;
+            //不允许调整大小
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             dgvGroupInfo.AutoGenerateColumns = false;
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
             dgvGroupInfo.Columns["Birthday"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;//某一些列关闭自适应

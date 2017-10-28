@@ -119,7 +119,6 @@ namespace TravletAgence.DAL
             parameters[44].Value = model.TypeInPerson;
             parameters[45].Value = model.CheckPerson;
 
-
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
             {

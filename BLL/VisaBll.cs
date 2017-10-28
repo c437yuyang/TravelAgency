@@ -33,6 +33,9 @@ namespace TravletAgence.BLL
                 list[i].Visa_id = null;
                 list[i].GroupNo = null;
                 //TODO:资料录入情况怎么处理
+                //TODO:销售人员和客户怎么处理?
+                list[i].Salesperson = null;
+                list[i].Client = null;
                 if (!bllVisaInfo.Update(list[i]))
                 {
                     return false;
