@@ -129,6 +129,12 @@ namespace TravletAgence.CSUI.FrmSub
             //初始化dgv
             UpdateDgvData();
 
+            //初始化备注项
+            for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
+            {
+                dgvGroupInfo.Rows[i].Cells["Remark"].Value = _visaModel.Remark;
+            }
+
             //初始数据项
             txtDepartureTime.Text = DateTimeFormator.DateTimeToString(_visaModel.PredictTime);
             cbCountry.Text = _visaModel.Country;
@@ -136,7 +142,7 @@ namespace TravletAgence.CSUI.FrmSub
             txtSubmitTime.Text = DateTimeFormator.DateTimeToString(_visaModel.SubmitTime);
             txtInTime.Text = DateTimeFormator.DateTimeToString(_visaModel.InTime);
             txtOutTime.Text = DateTimeFormator.DateTimeToString(_visaModel.OutTime);
-            txtClient.Text = _visaModel.Clent;
+            txtClient.Text = _visaModel.Client;
             txtDepartureType.Text = _visaModel.DepartureType;
             txtSubmitCondition.Text = _visaModel.SubmitCondition;
             txtFetchType.Text = _visaModel.FetchCondition;
@@ -212,7 +218,7 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         /// <summary>
-        /// 第一套逻辑
+        /// 根据输入信息更新LisitViewIn里面的人的visainfo数据库(一些没有在dgv里面的信息)
         /// </summary>
         /// <param name="list"></param>
         private void UpdateInListVisaInfo(List<Model.VisaInfo> list)
@@ -409,7 +415,7 @@ namespace TravletAgence.CSUI.FrmSub
             DialogResult res = MessageBoxEx.Show("是否提交修改?", "确认", MessageBoxButtons.OKCancel);
             if (res == DialogResult.Cancel)
                 return;
-            if (!_initFromVisaModel)
+            if (!_initFromVisaModel) //从List列表初始化
             {
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
                 if (_visaModel != null)
@@ -417,8 +423,6 @@ namespace TravletAgence.CSUI.FrmSub
                     MessageBoxEx.Show("内部错误!");
                     return;
                 }
-
-
                 CtrlsToVisaModel();
 
 
@@ -467,24 +471,70 @@ namespace TravletAgence.CSUI.FrmSub
             _visaModel = new Visa();
             //_visaModel.Visa_id = Guid.NewGuid(); //这里必须要给一个，虽然这里不给也会入库正确，数据库会赋给默认值，但是后面更新对应visainfo就会有错
             //这里代码生成器默认给了一个guid，不能再自己给了
-            _visaModel.EntryTime = DateTime.Now;
-            _visaModel.GroupNo = txtGroupNo.Text;
-            _visaModel.SalesPerson = txtSalesPerson.Text;
-            _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
-            _visaModel.Country = cbCountry.Text;
-            _visaModel.Number = lvIn.Items.Count; //团号的人数
-            
+            try
+            {
+                //单独处理remark
+                if(!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
+                _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
+
+                _visaModel.EntryTime = DateTime.Now;
+                _visaModel.GroupNo = txtGroupNo.Text;
+                _visaModel.SalesPerson = txtSalesPerson.Text;
+                _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+                _visaModel.Country = cbCountry.Text;
+                _visaModel.Number = lvIn.Items.Count; //团号的人数
+                _visaModel.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
+                _visaModel.InTime = DateTime.Parse(txtInTime.Text);
+                _visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
+                _visaModel.Client = txtClient.Text;
+                _visaModel.DepartureType = txtDepartureType.Text;
+                _visaModel.SubmitCondition = txtSubmitCondition.Text;
+                _visaModel.FetchCondition = txtFetchType.Text;
+                _visaModel.TypeInPerson = txtTypeInPerson.Text;
+                _visaModel.CheckPerson = txtCheckPerson.Text;
+            }
+            catch (Exception)
+            {
+
+                MessageBoxEx.Show(Resources.PleaseCheckDateTimeFormat);
+            }
+
+
         }
 
         private void CtrlsToVisaModel(Model.Visa model)
         {
+            try
+            {
 
-            //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
-            model.GroupNo = txtGroupNo.Text;
-            model.SalesPerson = txtSalesPerson.Text;
-            model.PredictTime = DateTime.Parse(txtDepartureTime.Text);
-            model.Country = cbCountry.Text;
-            model.Number = lvIn.Items.Count;
+                //单独处理remark
+                if (!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
+                    _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
+
+                //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
+                model.GroupNo = txtGroupNo.Text;
+                model.SalesPerson = txtSalesPerson.Text;
+                model.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+                model.Country = cbCountry.Text;
+                model.Number = lvIn.Items.Count;
+
+                _visaModel.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
+                _visaModel.InTime = DateTime.Parse(txtInTime.Text);
+                _visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
+                _visaModel.Client = txtClient.Text;
+                _visaModel.DepartureType = txtDepartureType.Text;
+                _visaModel.SubmitCondition = txtSubmitCondition.Text;
+                _visaModel.FetchCondition = txtFetchType.Text;
+                _visaModel.TypeInPerson = txtTypeInPerson.Text;
+                _visaModel.CheckPerson = txtCheckPerson.Text;
+            }
+            catch (Exception)
+            {
+                MessageBoxEx.Show(Resources.PleaseCheckDateTimeFormat);
+                
+            }
+           
+
         }
 
         /// <summary>
@@ -553,7 +603,7 @@ namespace TravletAgence.CSUI.FrmSub
                 MessageBoxEx.Show("请选中一条记录复制!");
                 return;
             }
-            if (!string.IsNullOrEmpty(dgvGroupInfo.SelectedCells[0].Value))
+            if (!string.IsNullOrEmpty((string)dgvGroupInfo.SelectedCells[0].Value))
                 Clipboard.SetText(dgvGroupInfo.SelectedCells[0].Value.ToString());
         }
 

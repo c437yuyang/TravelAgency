@@ -50,7 +50,7 @@ namespace TravletAgence.Model
 		private DateTime? _submittime;
 		private DateTime? _intime;
 		private DateTime? _outtime;
-		private string _clent;
+		private string _client;
 		private string _departuretype;
 		private string _submitcondition;
 		private string _fetchcondition;
@@ -379,10 +379,10 @@ namespace TravletAgence.Model
 		/// <summary>
 		/// 客户
 		/// </summary>
-		public string Clent
+		public string Client
 		{
-			set{ _clent=value;}
-			get{return _clent;}
+			set{ _client=value;}
+			get{return _client;}
 		}
 		/// <summary>
 		/// 出境类型:如三年多往，五年多往
