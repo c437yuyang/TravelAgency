@@ -40,6 +40,8 @@ namespace TravletAgence.Common.Excel
             row.CreateCell(11).SetCellValue("经济能力确认");
             row.CreateCell(12).SetCellValue("备注");
             row.CreateCell(13).SetCellValue("旅行社意见");
+            row.CreateCell(14).SetCellValue("护照号");
+            row.CreateCell(15).SetCellValue("手机号");
 
             //2.2设置列宽度
             sheet.SetColumnWidth(0, 5 * 256);//编号
@@ -56,6 +58,8 @@ namespace TravletAgence.Common.Excel
             sheet.SetColumnWidth(11, 25 * 256);//经济能力确认
             sheet.SetColumnWidth(12, 10 * 256);//备注
             sheet.SetColumnWidth(13, 10 * 256);//旅行社意见
+            sheet.SetColumnWidth(14, 15 * 256);//护照号
+            sheet.SetColumnWidth(15, 15 * 256);//手机号
             //3.插入行和单元格
             for (int i = 0; i != list.Count; ++i)
             {
@@ -78,6 +82,8 @@ namespace TravletAgence.Common.Excel
                 row.CreateCell(11).SetCellValue(list[i].FinancialCapacity);
                 row.CreateCell(12).SetCellValue(remark);
                 row.CreateCell(13).SetCellValue(list[i].AgencyOpinion);
+                row.CreateCell(14).SetCellValue(list[i].PassportNo);
+                row.CreateCell(15).SetCellValue(list[i].Phone);
             }
 
             //4.1设置对齐风格和边框
