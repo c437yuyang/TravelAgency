@@ -144,6 +144,16 @@ namespace TravletAgence.CSUI.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap PassportPictureNotFound {
+            get {
+                object obj = ResourceManager.GetObject("PassportPictureNotFound", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 请确保信息格式正确
         ///如日期为:2010/10/19 的本地化字符串。
         /// </summary>

@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTimeFormator.cs" />
+    <Compile Include="Enums\HasChecked.cs" />
     <Compile Include="Excel\GroupExcel.cs" />
     <Compile Include="Enums\HasTypeIn.cs" />
     <Compile Include="IDCard\IDCard.cs" />

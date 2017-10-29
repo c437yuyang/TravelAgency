@@ -36,6 +36,16 @@ namespace TravletAgence.DAL
             return DbHelperSQL.Query(sql, pams);
         }
 
+        public DataSet GetDataByPageOrderByHasChecked(int start, int end)
+        {
+            string sql = "SELECT * from(SELECT *,ROW_NUMBER() OVER(ORDER BY EntryTime desc) as num from VisaInfo) as t WHERE t.num>=@Start AND t.num<=@End order by EntryTime desc,HasChecked desc,GroupNo desc";
+            SqlParameter[] pams = new SqlParameter[]{
+                new SqlParameter("@Start",SqlDbType.Int){Value=start},
+                new SqlParameter("@End",SqlDbType.Int){Value=end}
+            };
+            return DbHelperSQL.Query(sql, pams);
+        }
+
         /// <summary>
         /// 获取总记录条数
         /// </summary>

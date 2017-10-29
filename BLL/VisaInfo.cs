@@ -57,8 +57,6 @@ namespace TravletAgence.BLL
 			return dal.GetModel(VisaInfo_id);
 		}
 
-		
-
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>

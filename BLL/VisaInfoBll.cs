@@ -11,8 +11,6 @@ namespace TravletAgence.BLL
     /// </summary>
     public partial class VisaInfo
     {
-
-
         public List<Model.VisaInfo> GetListByPageOrderByOutState(int pageIndex, int pageSize)
         {
             int start = (pageIndex - 1) * pageSize + 1;
@@ -30,6 +28,16 @@ namespace TravletAgence.BLL
             int end = pageIndex * pageSize;
 
             DataSet ds = dal.GetDataByPageOrderByGroupNo(start, end);
+            DataTable dt = ds.Tables[0];
+            return DataTableToList(dt);
+        }
+
+        public List<Model.VisaInfo> GetListByPageOrderByHasChecked(int pageIndex, int pageSize)
+        {
+            int start = (pageIndex - 1) * pageSize + 1;
+            int end = pageIndex * pageSize;
+
+            DataSet ds = dal.GetDataByPageOrderByHasChecked(start, end);
             DataTable dt = ds.Tables[0];
             return DataTableToList(dt);
         }
