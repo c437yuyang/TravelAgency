@@ -49,6 +49,8 @@ namespace TravletAgence.Model
 		private string _agencyopinion;
 		private string _hastypein="否";
 		private DateTime? _abnormalouttime;
+		private string _haschecked="否";
+		private string _checkperson;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -360,6 +362,22 @@ namespace TravletAgence.Model
 		{
 			set{ _abnormalouttime=value;}
 			get{return _abnormalouttime;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string HasChecked
+		{
+			set{ _haschecked=value;}
+			get{return _haschecked;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string CheckPerson
+		{
+			set{ _checkperson=value;}
+			get{return _checkperson;}
 		}
 		#endregion Model
 

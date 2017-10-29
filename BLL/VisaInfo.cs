@@ -46,7 +46,7 @@ namespace TravletAgence.BLL
 			
 			return dal.Delete(VisaInfo_id);
 		}
-		
+
 
 		/// <summary>
 		/// 得到一个对象实体
@@ -57,29 +57,7 @@ namespace TravletAgence.BLL
 			return dal.GetModel(VisaInfo_id);
 		}
 
-        ///// <summary>
-        ///// 得到一个对象实体，从缓存中
-        ///// </summary>
-        //public TravletAgence.Model.VisaInfo GetModelByCache(Guid VisaInfo_id)
-        //{
-			
-        //    string CacheKey = "VisaInfoModel-" + VisaInfo_id;
-        //    object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
-        //    if (objModel == null)
-        //    {
-        //        try
-        //        {
-        //            objModel = dal.GetModel(VisaInfo_id);
-        //            if (objModel != null)
-        //            {
-        //                int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-        //                Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-        //            }
-        //        }
-        //        catch{}
-        //    }
-        //    return (TravletAgence.Model.VisaInfo)objModel;
-        //}
+		
 
 		/// <summary>
 		/// 获得数据列表

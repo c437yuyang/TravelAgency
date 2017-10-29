@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmMain\FrmCheckAutoInputInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain\FrmCheckAutoInputInfo.Designer.cs">
+      <DependentUpon>FrmCheckAutoInputInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain\FrmVisaManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmMain\FrmCheckAutoInputInfo.resx">
+      <DependentUpon>FrmCheckAutoInputInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain\FrmVisaManage.resx">
       <DependentUpon>FrmVisaManage.cs</DependentUpon>
     </EmbeddedResource>

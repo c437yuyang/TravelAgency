@@ -63,6 +63,7 @@
             this.btnMCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMCloseOther = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.btnCheckAutoInputInfo = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
@@ -151,11 +152,12 @@
             this.ribbonBar2.DragDropSupport = true;
             this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnVisaTypeIn,
+            this.btnCheckAutoInputInfo,
             this.btnVisaQuery,
             this.btnVisaSubmit});
             this.ribbonBar2.Location = new System.Drawing.Point(3, 0);
             this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(193, 66);
+            this.ribbonBar2.Size = new System.Drawing.Size(286, 66);
             this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar2.TabIndex = 0;
             this.ribbonBar2.Text = "ribbonBar2";
@@ -523,6 +525,15 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(71)))), ((int)(((byte)(42))))));
             // 
+            // btnCheckAutoInputInfo
+            // 
+            this.btnCheckAutoInputInfo.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
+            this.btnCheckAutoInputInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnCheckAutoInputInfo.Name = "btnCheckAutoInputInfo";
+            this.btnCheckAutoInputInfo.SubItemsExpandWidth = 14;
+            this.btnCheckAutoInputInfo.Text = "录入信息核对";
+            this.btnCheckAutoInputInfo.Click += new System.EventHandler(this.btnCheckAutoInputInfo_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -580,6 +591,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnMCloseAll;
         private System.Windows.Forms.ToolStripMenuItem btnMCloseOther;
         private DevComponents.DotNetBar.StyleManager styleManager1;
+        private DevComponents.DotNetBar.ButtonItem btnCheckAutoInputInfo;
 
     }
 }

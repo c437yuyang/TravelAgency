@@ -30,6 +30,13 @@ namespace TravletAgence.CSUI.FrmMain
             FrmVisaManage frm = new FrmVisaManage();
             OpenTab(frm, frm.Name);
         }
+
+        private void btnCheckAutoInputInfo_Click(object sender, EventArgs e)
+        {
+            FrmCheckAutoInputInfo frm = new FrmCheckAutoInputInfo();
+            OpenTab(frm, frm.Name);
+        }
+
         #endregion
 
 
@@ -123,6 +130,8 @@ namespace TravletAgence.CSUI.FrmMain
         {
             MinimumSize = Size;
         }
+
+
 
 
     }
