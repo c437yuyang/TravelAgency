@@ -563,6 +563,7 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void cmsItemSetGroup_Click(object sender, EventArgs e)
         {
+
             int count = this.dataGridView1.SelectedRows.Count;
             List<Model.VisaInfo> list = new List<VisaInfo>();
             for (int i = 0; i != count; ++i)
@@ -582,8 +583,11 @@ namespace TravletAgence.CSUI.FrmMain
                     list.Add(model);
             }
 
-            FrmSetGroup frmSetGroup = new FrmSetGroup(list, LoadDataToDataGridView, _curPage);
-            frmSetGroup.ShowDialog();
+            FrmGroupOrIndividual frmGroupOrIndividual = new FrmGroupOrIndividual(list,LoadDataToDataGridView,_curPage);
+            frmGroupOrIndividual.ShowDialog();
+
+            //FrmSetGroup frmSetGroup = new FrmSetGroup(list, LoadDataToDataGridView, _curPage);
+            //frmSetGroup.ShowDialog();
         }
 
         #endregion

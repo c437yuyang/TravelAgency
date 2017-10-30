@@ -82,6 +82,12 @@
     <Compile Include="FrmMain\FrmVisaManage.Designer.cs">
       <DependentUpon>FrmVisaManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSub\FrmGroupOrIndividual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSub\FrmGroupOrIndividual.Designer.cs">
+      <DependentUpon>FrmGroupOrIndividual.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSub\FrmInfoTypeIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain\FrmVisaManage.resx">
       <DependentUpon>FrmVisaManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSub\FrmGroupOrIndividual.resx">
+      <DependentUpon>FrmGroupOrIndividual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSub\FrmInfoTypeIn.resx">
       <DependentUpon>FrmInfoTypeIn.cs</DependentUpon>

@@ -72,6 +72,9 @@ namespace TravletAgence.CSUI.FrmSub
                 lvOut.Items.Add(liv);
             }
 
+            //TODO:把这些visainfo的类型都设置为个签
+
+
             //初始化时间选择控件
             //还是不初始化的比较好   
 
