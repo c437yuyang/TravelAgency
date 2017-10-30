@@ -26,13 +26,14 @@ namespace TravletAgence.CSUI.FrmMain
         private readonly TravletAgence.BLL.VisaInfo bll = new TravletAgence.BLL.VisaInfo();
         private int _curPage = 1;
         private int _pageCount = 0;
-        private readonly int _pageSize = 30;
+        private int _pageSize = 30;
         private int _recordCount = 0;
         private string _preTxt = string.Empty;
         private string _outState = string.Empty; //Single模式下的状态设置
         private Inputmode _inputMode = Inputmode.Single;
         private readonly MyQRCode _qrCode = new MyQRCode();
         private readonly Thread _thLoadDataToDgvAndUpdateState;
+        private bool _init = false;
 
         //class PersonInfo
         //{
@@ -171,7 +172,9 @@ namespace TravletAgence.CSUI.FrmMain
         {
             _recordCount = bll.GetRecordCount(string.Empty);
             _pageCount = (int)Math.Ceiling((double)_recordCount / _pageSize);
-            cbPageSize.Items.Add(_pageSize.ToString());
+            cbPageSize.Items.Add("30");
+            cbPageSize.Items.Add("50");
+            cbPageSize.Items.Add("100");
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false; //不显示指定之外的列
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
@@ -271,6 +274,7 @@ namespace TravletAgence.CSUI.FrmMain
                 LoadDataToDataGridView(_curPage);
                 UpdateState();
             }));
+            _init = true;
         }
 
         public void LoadDataToDataGridView(int page) //刷新后保持选中
@@ -329,6 +333,17 @@ namespace TravletAgence.CSUI.FrmMain
             LoadDataToDataGridView(_curPage);
             UpdateState();
         }
+
+        private void cbPageSize_TextChanged(object sender, EventArgs e)
+        {
+            if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
+                return;
+
+            _pageSize = int.Parse(cbPageSize.Text);
+            LoadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
         #endregion
         #region dgv消息相应
         /// <summary>
@@ -338,11 +353,11 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 10)
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "outState")
             {
-                DataGridViewX dgv = (DataGridViewX)sender;
                 Color c = Color.Empty;
-                string state = e.Value.ToString();
+                //string state = e.Value.ToString();
+                string state = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 if (state == OutState.Type01NoRecord)
                     c = Color.AliceBlue;
                 else if (state == OutState.Type02In)
@@ -353,7 +368,7 @@ namespace TravletAgence.CSUI.FrmMain
                     c = Color.Red;
                 else
                     c = Color.Black;
-                dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
             }
         }
 
@@ -474,5 +489,7 @@ namespace TravletAgence.CSUI.FrmMain
 
 
         #endregion
+
+
     }
 }

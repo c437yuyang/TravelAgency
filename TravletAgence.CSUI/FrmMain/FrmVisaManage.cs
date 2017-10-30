@@ -21,8 +21,10 @@ namespace TravletAgence.CSUI.FrmMain
         private readonly TravletAgence.BLL.VisaInfo _bllVisaInfo = new TravletAgence.BLL.VisaInfo();
         private int _curPage = 1;
         private int _pageCount = 0;
-        private readonly int _pageSize = 30;
+        private int _pageSize = 30;
         private int _recordCount = 0;
+        private bool _init = false;
+
 
         private readonly Thread _thLoadDataToDgvAndUpdateState;
 
@@ -37,7 +39,9 @@ namespace TravletAgence.CSUI.FrmMain
         {
             _recordCount = _bllVisa.GetRecordCount(string.Empty);
             _pageCount = (int)Math.Ceiling((double)_recordCount / _pageSize);
-            cbPageSize.Items.Add(_pageSize.ToString());
+            cbPageSize.Items.Add("30");
+            cbPageSize.Items.Add("50");
+            cbPageSize.Items.Add("100");
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false; //不显示指定之外的列
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
@@ -63,6 +67,7 @@ namespace TravletAgence.CSUI.FrmMain
                 LoadDataToDataGridView(_curPage);
                 UpdateState();
             }));
+            _init = true;
         }
 
         public void LoadDataToDataGridView(int page) //刷新后保持选中
@@ -121,6 +126,17 @@ namespace TravletAgence.CSUI.FrmMain
             LoadDataToDataGridView(_curPage);
             UpdateState();
         }
+
+        private void cbPageSize_TextChanged(object sender, EventArgs e)
+        {
+            if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
+                return;
+
+            _pageSize = int.Parse(cbPageSize.Text);
+            LoadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
         #endregion
 
 
@@ -241,6 +257,8 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
+
+
 
 
 

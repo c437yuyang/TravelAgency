@@ -30,6 +30,7 @@ namespace TravletAgence.CSUI.FrmMain
         private readonly Timer _t = new Timer();
         private readonly MyQRCode _qrCode = new MyQRCode(); //只用于批量生成二维码
         private readonly Thread _thLoadDataToDgvAndUpdateState;
+        private bool _init = false;
 
         public FrmVisaTypeIn()
         {
@@ -278,6 +279,7 @@ namespace TravletAgence.CSUI.FrmMain
                 LoadDataToDataGridView(_curPage);
                 UpdateState();
             }));
+            _init = true;
         }
 
         public void LoadDataToDataGridView(int page) //刷新后保持选中
@@ -345,6 +347,9 @@ namespace TravletAgence.CSUI.FrmMain
         }
         private void cbPageSize_TextChanged(object sender, EventArgs e)
         {
+            if(!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
+                return;
+            
             _pageSize = int.Parse(cbPageSize.Text);
             LoadDataToDataGridView(_curPage);
             UpdateState();
