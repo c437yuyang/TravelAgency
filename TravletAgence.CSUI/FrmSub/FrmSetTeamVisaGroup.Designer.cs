@@ -1,6 +1,6 @@
 ﻿namespace TravletAgence.CSUI.FrmSub
 {
-    partial class FrmSetGroup
+    partial class FrmSetTeamVisaGroup
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.panelBottom = new DevComponents.DotNetBar.PanelEx();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
@@ -44,18 +44,16 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sex = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.dgvGroup_IssuePlace = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Residence = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthPlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BirthDay = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
-            this.Occupation = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.DepartureRecord = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Marriaged = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Identification = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FinancialCapacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remark = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.AgencyOpinion = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LicenceTime = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.ExpiryDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.Occupation = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Client = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SalesPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMid = new DevComponents.DotNetBar.PanelEx();
             this.lvIn = new DevComponents.DotNetBar.Controls.ListViewEx();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -63,6 +61,8 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelGroupInfo = new DevComponents.DotNetBar.PanelEx();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.txtClient = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cbCountry = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.China = new DevComponents.Editors.ComboItem();
             this.America = new DevComponents.Editors.ComboItem();
@@ -72,26 +72,8 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.txtDepartureTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.txtOutTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.txtInTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.txtSubmitTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.txtCheckPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtTypeInPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtSalesPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.labelX13 = new DevComponents.DotNetBar.LabelX();
-            this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.txtClient = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtFetchType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.txtSubmitCondition = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.txtDepartureType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.panelInOutBtns = new DevComponents.DotNetBar.PanelEx();
             this.btnAllOut = new DevComponents.DotNetBar.ButtonX();
             this.btnOut = new DevComponents.DotNetBar.ButtonX();
@@ -117,9 +99,6 @@
             this.panelMid.SuspendLayout();
             this.panelGroupInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDepartureTime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOutTime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInTime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSubmitTime)).BeginInit();
             this.panelInOutBtns.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.cmsDgvRb.SuspendLayout();
@@ -254,52 +233,50 @@
             this.dgvGroupInfo.AllowUserToAddRows = false;
             this.dgvGroupInfo.AllowUserToDeleteRows = false;
             this.dgvGroupInfo.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroupInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGroupInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvGroupInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGroupInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.EnglishName,
             this.Sex,
-            this.dgvGroup_IssuePlace,
-            this.Residence,
+            this.BirthPlace,
             this.BirthDay,
+            this.dgvPassportNo,
+            this._IssuePlace,
+            this.LicenceTime,
+            this.ExpiryDate,
             this.Occupation,
-            this.DepartureRecord,
-            this.Marriaged,
-            this.Identification,
-            this.FinancialCapacity,
-            this.Remark,
-            this.AgencyOpinion,
             this.Phone,
-            this.dgvPassportNo});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Client,
+            this.SalesPerson});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvGroupInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGroupInfo.EnableHeadersVisualStyles = false;
             this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvGroupInfo.Location = new System.Drawing.Point(0, 0);
             this.dgvGroupInfo.Name = "dgvGroupInfo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroupInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGroupInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvGroupInfo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvGroupInfo.RowTemplate.Height = 30;
             this.dgvGroupInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -341,26 +318,11 @@
             this.Sex.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Sex.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
-            // dgvGroup_IssuePlace
+            // BirthPlace
             // 
-            this.dgvGroup_IssuePlace.DataPropertyName = "IssuePlace";
-            this.dgvGroup_IssuePlace.DropDownHeight = 106;
-            this.dgvGroup_IssuePlace.DropDownWidth = 121;
-            this.dgvGroup_IssuePlace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dgvGroup_IssuePlace.HeaderText = "护照发行地";
-            this.dgvGroup_IssuePlace.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgvGroup_IssuePlace.IntegralHeight = false;
-            this.dgvGroup_IssuePlace.ItemHeight = 16;
-            this.dgvGroup_IssuePlace.Name = "dgvGroup_IssuePlace";
-            this.dgvGroup_IssuePlace.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroup_IssuePlace.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dgvGroup_IssuePlace.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Residence
-            // 
-            this.Residence.DataPropertyName = "Residence";
-            this.Residence.HeaderText = "居住地";
-            this.Residence.Name = "Residence";
+            this.BirthPlace.DataPropertyName = "BirthPlace";
+            this.BirthPlace.HeaderText = "出生地";
+            this.BirthPlace.Name = "BirthPlace";
             // 
             // BirthDay
             // 
@@ -370,7 +332,7 @@
             this.BirthDay.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
             this.BirthDay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.BirthDay.DataPropertyName = "Birthday";
-            this.BirthDay.HeaderText = "生日";
+            this.BirthDay.HeaderText = "出生日期";
             this.BirthDay.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
             // 
             // 
@@ -393,6 +355,78 @@
             this.BirthDay.Name = "BirthDay";
             this.BirthDay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // dgvPassportNo
+            // 
+            this.dgvPassportNo.DataPropertyName = "PassportNo";
+            this.dgvPassportNo.HeaderText = "护照号";
+            this.dgvPassportNo.Name = "dgvPassportNo";
+            // 
+            // _IssuePlace
+            // 
+            this._IssuePlace.DataPropertyName = "IssuePlace";
+            this._IssuePlace.HeaderText = "签发地";
+            this._IssuePlace.Name = "_IssuePlace";
+            // 
+            // LicenceTime
+            // 
+            // 
+            // 
+            // 
+            this.LicenceTime.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.LicenceTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LicenceTime.DataPropertyName = "LicenceTime";
+            this.LicenceTime.HeaderText = "签发日期";
+            this.LicenceTime.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.LicenceTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LicenceTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            // 
+            // 
+            // 
+            this.LicenceTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LicenceTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.LicenceTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.LicenceTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LicenceTime.Name = "LicenceTime";
+            // 
+            // ExpiryDate
+            // 
+            // 
+            // 
+            // 
+            this.ExpiryDate.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.ExpiryDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ExpiryDate.DataPropertyName = "ExpiryDate";
+            this.ExpiryDate.HeaderText = "有效期至";
+            this.ExpiryDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.ExpiryDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ExpiryDate.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            // 
+            // 
+            // 
+            this.ExpiryDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ExpiryDate.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.ExpiryDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.ExpiryDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ExpiryDate.Name = "ExpiryDate";
+            // 
             // Occupation
             // 
             this.Occupation.DataPropertyName = "Occupation";
@@ -414,106 +448,23 @@
             this.Occupation.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Occupation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // DepartureRecord
-            // 
-            this.DepartureRecord.DataPropertyName = "DepartureRecord";
-            this.DepartureRecord.DropDownHeight = 106;
-            this.DepartureRecord.DropDownWidth = 121;
-            this.DepartureRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DepartureRecord.HeaderText = "出境记录";
-            this.DepartureRecord.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.DepartureRecord.IntegralHeight = false;
-            this.DepartureRecord.ItemHeight = 16;
-            this.DepartureRecord.Items.AddRange(new object[] {
-            "无",
-            "有"});
-            this.DepartureRecord.Name = "DepartureRecord";
-            this.DepartureRecord.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DepartureRecord.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.DepartureRecord.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Marriaged
-            // 
-            this.Marriaged.DataPropertyName = "Marriaged";
-            this.Marriaged.DropDownHeight = 106;
-            this.Marriaged.DropDownWidth = 121;
-            this.Marriaged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Marriaged.HeaderText = "婚姻";
-            this.Marriaged.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Marriaged.IntegralHeight = false;
-            this.Marriaged.ItemHeight = 16;
-            this.Marriaged.Items.AddRange(new object[] {
-            "未婚",
-            "已婚"});
-            this.Marriaged.Name = "Marriaged";
-            this.Marriaged.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Marriaged.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Marriaged.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Identification
-            // 
-            this.Identification.DataPropertyName = "Identification";
-            this.Identification.HeaderText = "身份确认";
-            this.Identification.Name = "Identification";
-            this.Identification.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Identification.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // FinancialCapacity
-            // 
-            this.FinancialCapacity.DataPropertyName = "FinancialCapacity";
-            this.FinancialCapacity.HeaderText = "经济能力确认";
-            this.FinancialCapacity.Name = "FinancialCapacity";
-            this.FinancialCapacity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.FinancialCapacity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Remark
-            // 
-            this.Remark.DropDownHeight = 106;
-            this.Remark.DropDownWidth = 121;
-            this.Remark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Remark.HeaderText = "备注";
-            this.Remark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Remark.IntegralHeight = false;
-            this.Remark.ItemHeight = 16;
-            this.Remark.Items.AddRange(new object[] {
-            "一家人",
-            "父子",
-            "母子",
-            "父女",
-            "母女"});
-            this.Remark.Name = "Remark";
-            this.Remark.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Remark.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            // 
-            // AgencyOpinion
-            // 
-            this.AgencyOpinion.DataPropertyName = "AgencyOpinion";
-            this.AgencyOpinion.DropDownHeight = 106;
-            this.AgencyOpinion.DropDownWidth = 121;
-            this.AgencyOpinion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AgencyOpinion.HeaderText = "旅行社意见";
-            this.AgencyOpinion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.AgencyOpinion.IntegralHeight = false;
-            this.AgencyOpinion.ItemHeight = 16;
-            this.AgencyOpinion.Items.AddRange(new object[] {
-            "没问题",
-            "有问题"});
-            this.AgencyOpinion.Name = "AgencyOpinion";
-            this.AgencyOpinion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.AgencyOpinion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.AgencyOpinion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // Phone
             // 
             this.Phone.DataPropertyName = "Phone";
-            this.Phone.HeaderText = "手机号";
+            this.Phone.HeaderText = "联系电话";
             this.Phone.Name = "Phone";
             // 
-            // dgvPassportNo
+            // Client
             // 
-            this.dgvPassportNo.DataPropertyName = "PassportNo";
-            this.dgvPassportNo.HeaderText = "护照号";
-            this.dgvPassportNo.Name = "dgvPassportNo";
+            this.Client.DataPropertyName = "Client";
+            this.Client.HeaderText = "客户";
+            this.Client.Name = "Client";
+            // 
+            // SalesPerson
+            // 
+            this.SalesPerson.DataPropertyName = "SalesPerson";
+            this.SalesPerson.HeaderText = "销售";
+            this.SalesPerson.Name = "SalesPerson";
             // 
             // panelMid
             // 
@@ -550,10 +501,11 @@
             this.columnHeader3,
             this.columnHeader4});
             this.lvIn.DisabledBackColor = System.Drawing.Color.Empty;
+            this.lvIn.Dock = System.Windows.Forms.DockStyle.Left;
             this.lvIn.FullRowSelect = true;
             this.lvIn.Location = new System.Drawing.Point(481, 0);
             this.lvIn.Name = "lvIn";
-            this.lvIn.Size = new System.Drawing.Size(352, 192);
+            this.lvIn.Size = new System.Drawing.Size(359, 192);
             this.lvIn.TabIndex = 51;
             this.lvIn.UseCompatibleStateImageBehavior = false;
             this.lvIn.View = System.Windows.Forms.View.Details;
@@ -585,35 +537,19 @@
             // 
             this.panelGroupInfo.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelGroupInfo.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelGroupInfo.Controls.Add(this.labelX6);
+            this.panelGroupInfo.Controls.Add(this.txtClient);
             this.panelGroupInfo.Controls.Add(this.cbCountry);
             this.panelGroupInfo.Controls.Add(this.labelX4);
             this.panelGroupInfo.Controls.Add(this.txtDepartureTime);
             this.panelGroupInfo.Controls.Add(this.labelX3);
-            this.panelGroupInfo.Controls.Add(this.txtOutTime);
-            this.panelGroupInfo.Controls.Add(this.txtInTime);
-            this.panelGroupInfo.Controls.Add(this.txtSubmitTime);
-            this.panelGroupInfo.Controls.Add(this.txtCheckPerson);
-            this.panelGroupInfo.Controls.Add(this.txtTypeInPerson);
             this.panelGroupInfo.Controls.Add(this.txtSalesPerson);
             this.panelGroupInfo.Controls.Add(this.labelX1);
-            this.panelGroupInfo.Controls.Add(this.labelX9);
-            this.panelGroupInfo.Controls.Add(this.labelX13);
-            this.panelGroupInfo.Controls.Add(this.labelX12);
-            this.panelGroupInfo.Controls.Add(this.labelX11);
-            this.panelGroupInfo.Controls.Add(this.labelX10);
-            this.panelGroupInfo.Controls.Add(this.labelX8);
-            this.panelGroupInfo.Controls.Add(this.labelX7);
-            this.panelGroupInfo.Controls.Add(this.labelX6);
-            this.panelGroupInfo.Controls.Add(this.labelX5);
-            this.panelGroupInfo.Controls.Add(this.txtClient);
-            this.panelGroupInfo.Controls.Add(this.txtFetchType);
-            this.panelGroupInfo.Controls.Add(this.txtSubmitCondition);
-            this.panelGroupInfo.Controls.Add(this.txtDepartureType);
             this.panelGroupInfo.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelGroupInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelGroupInfo.Location = new System.Drawing.Point(821, 0);
+            this.panelGroupInfo.Location = new System.Drawing.Point(839, 0);
             this.panelGroupInfo.Name = "panelGroupInfo";
-            this.panelGroupInfo.Size = new System.Drawing.Size(519, 192);
+            this.panelGroupInfo.Size = new System.Drawing.Size(501, 192);
             this.panelGroupInfo.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelGroupInfo.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelGroupInfo.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -622,6 +558,32 @@
             this.panelGroupInfo.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelGroupInfo.Style.GradientAngle = 90;
             this.panelGroupInfo.TabIndex = 47;
+            // 
+            // labelX6
+            // 
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(49, 52);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(91, 23);
+            this.labelX6.TabIndex = 75;
+            this.labelX6.Text = "客户:";
+            // 
+            // txtClient
+            // 
+            // 
+            // 
+            // 
+            this.txtClient.Border.Class = "TextBoxBorder";
+            this.txtClient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtClient.Location = new System.Drawing.Point(146, 52);
+            this.txtClient.Name = "txtClient";
+            this.txtClient.PreventEnterBeep = true;
+            this.txtClient.Size = new System.Drawing.Size(108, 21);
+            this.txtClient.TabIndex = 74;
+            this.txtClient.TextChanged += new System.EventHandler(this.txtClient_TextChanged);
             // 
             // cbCountry
             // 
@@ -636,7 +598,7 @@
             this.Japan,
             this.Korea,
             this.Thailand});
-            this.cbCountry.Location = new System.Drawing.Point(387, 16);
+            this.cbCountry.Location = new System.Drawing.Point(334, 16);
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(121, 21);
             this.cbCountry.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -684,7 +646,7 @@
             this.txtDepartureTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.txtDepartureTime.ButtonDropDown.Visible = true;
             this.txtDepartureTime.IsPopupCalendarOpen = false;
-            this.txtDepartureTime.Location = new System.Drawing.Point(134, 165);
+            this.txtDepartureTime.Location = new System.Drawing.Point(146, 18);
             // 
             // 
             // 
@@ -726,174 +688,11 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(37, 166);
+            this.labelX3.Location = new System.Drawing.Point(49, 19);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(75, 23);
             this.labelX3.TabIndex = 70;
             this.labelX3.Text = "出发日期:";
-            // 
-            // txtOutTime
-            // 
-            // 
-            // 
-            // 
-            this.txtOutTime.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtOutTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOutTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.txtOutTime.ButtonDropDown.Visible = true;
-            this.txtOutTime.IsPopupCalendarOpen = false;
-            this.txtOutTime.Location = new System.Drawing.Point(134, 133);
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.txtOutTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOutTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.txtOutTime.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.txtOutTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.txtOutTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtOutTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.txtOutTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.txtOutTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.txtOutTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.txtOutTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOutTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
-            this.txtOutTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.txtOutTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.txtOutTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtOutTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.txtOutTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOutTime.MonthCalendar.TodayButtonVisible = true;
-            this.txtOutTime.Name = "txtOutTime";
-            this.txtOutTime.Size = new System.Drawing.Size(108, 21);
-            this.txtOutTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtOutTime.TabIndex = 69;
-            // 
-            // txtInTime
-            // 
-            // 
-            // 
-            // 
-            this.txtInTime.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtInTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtInTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.txtInTime.ButtonDropDown.Visible = true;
-            this.txtInTime.IsPopupCalendarOpen = false;
-            this.txtInTime.Location = new System.Drawing.Point(134, 106);
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.txtInTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtInTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.txtInTime.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.txtInTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.txtInTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtInTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.txtInTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.txtInTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.txtInTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.txtInTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtInTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
-            this.txtInTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.txtInTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.txtInTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtInTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.txtInTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtInTime.MonthCalendar.TodayButtonVisible = true;
-            this.txtInTime.Name = "txtInTime";
-            this.txtInTime.Size = new System.Drawing.Size(108, 21);
-            this.txtInTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtInTime.TabIndex = 68;
-            // 
-            // txtSubmitTime
-            // 
-            // 
-            // 
-            // 
-            this.txtSubmitTime.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtSubmitTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSubmitTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.txtSubmitTime.ButtonDropDown.Visible = true;
-            this.txtSubmitTime.IsPopupCalendarOpen = false;
-            this.txtSubmitTime.Location = new System.Drawing.Point(134, 77);
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.txtSubmitTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSubmitTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.txtSubmitTime.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.txtSubmitTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.txtSubmitTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtSubmitTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.txtSubmitTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.txtSubmitTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.txtSubmitTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.txtSubmitTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSubmitTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
-            this.txtSubmitTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.txtSubmitTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.txtSubmitTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.txtSubmitTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.txtSubmitTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSubmitTime.MonthCalendar.TodayButtonVisible = true;
-            this.txtSubmitTime.Name = "txtSubmitTime";
-            this.txtSubmitTime.Size = new System.Drawing.Size(108, 21);
-            this.txtSubmitTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtSubmitTime.TabIndex = 67;
-            // 
-            // txtCheckPerson
-            // 
-            // 
-            // 
-            // 
-            this.txtCheckPerson.Border.Class = "TextBoxBorder";
-            this.txtCheckPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCheckPerson.DisabledBackColor = System.Drawing.Color.White;
-            this.txtCheckPerson.Location = new System.Drawing.Point(387, 137);
-            this.txtCheckPerson.Name = "txtCheckPerson";
-            this.txtCheckPerson.PreventEnterBeep = true;
-            this.txtCheckPerson.Size = new System.Drawing.Size(100, 21);
-            this.txtCheckPerson.TabIndex = 66;
-            // 
-            // txtTypeInPerson
-            // 
-            // 
-            // 
-            // 
-            this.txtTypeInPerson.Border.Class = "TextBoxBorder";
-            this.txtTypeInPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTypeInPerson.DisabledBackColor = System.Drawing.Color.White;
-            this.txtTypeInPerson.Location = new System.Drawing.Point(387, 110);
-            this.txtTypeInPerson.Name = "txtTypeInPerson";
-            this.txtTypeInPerson.PreventEnterBeep = true;
-            this.txtTypeInPerson.Size = new System.Drawing.Size(100, 21);
-            this.txtTypeInPerson.TabIndex = 65;
             // 
             // txtSalesPerson
             // 
@@ -903,11 +702,12 @@
             this.txtSalesPerson.Border.Class = "TextBoxBorder";
             this.txtSalesPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtSalesPerson.DisabledBackColor = System.Drawing.Color.White;
-            this.txtSalesPerson.Location = new System.Drawing.Point(386, 164);
+            this.txtSalesPerson.Location = new System.Drawing.Point(334, 52);
             this.txtSalesPerson.Name = "txtSalesPerson";
             this.txtSalesPerson.PreventEnterBeep = true;
-            this.txtSalesPerson.Size = new System.Drawing.Size(100, 21);
+            this.txtSalesPerson.Size = new System.Drawing.Size(121, 21);
             this.txtSalesPerson.TabIndex = 64;
+            this.txtSalesPerson.TextChanged += new System.EventHandler(this.txtSalesPerson_TextChanged);
             // 
             // labelX1
             // 
@@ -915,168 +715,11 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(290, 164);
+            this.labelX1.Location = new System.Drawing.Point(280, 52);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(48, 23);
             this.labelX1.TabIndex = 63;
             this.labelX1.Text = "操作员:";
-            // 
-            // labelX9
-            // 
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(37, 133);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(91, 23);
-            this.labelX9.TabIndex = 61;
-            this.labelX9.Text = "客人出境时间:";
-            // 
-            // labelX13
-            // 
-            // 
-            // 
-            // 
-            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX13.Location = new System.Drawing.Point(290, 135);
-            this.labelX13.Name = "labelX13";
-            this.labelX13.Size = new System.Drawing.Size(91, 23);
-            this.labelX13.TabIndex = 62;
-            this.labelX13.Text = "审查人员:";
-            // 
-            // labelX12
-            // 
-            // 
-            // 
-            // 
-            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX12.Location = new System.Drawing.Point(290, 104);
-            this.labelX12.Name = "labelX12";
-            this.labelX12.Size = new System.Drawing.Size(91, 23);
-            this.labelX12.TabIndex = 60;
-            this.labelX12.Text = "录入人员:";
-            // 
-            // labelX11
-            // 
-            // 
-            // 
-            // 
-            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(290, 75);
-            this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(91, 23);
-            this.labelX11.TabIndex = 59;
-            this.labelX11.Text = "客人取签方式:";
-            // 
-            // labelX10
-            // 
-            // 
-            // 
-            // 
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(290, 46);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(91, 23);
-            this.labelX10.TabIndex = 58;
-            this.labelX10.Text = "外领送签条件:";
-            // 
-            // labelX8
-            // 
-            // 
-            // 
-            // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(37, 104);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(91, 23);
-            this.labelX8.TabIndex = 57;
-            this.labelX8.Text = "客人入境时间:";
-            // 
-            // labelX7
-            // 
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(37, 75);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(91, 23);
-            this.labelX7.TabIndex = 56;
-            this.labelX7.Text = "交资料时间:";
-            // 
-            // labelX6
-            // 
-            // 
-            // 
-            // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(37, 46);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(91, 23);
-            this.labelX6.TabIndex = 55;
-            this.labelX6.Text = "客户:";
-            // 
-            // labelX5
-            // 
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(37, 17);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(91, 23);
-            this.labelX5.TabIndex = 54;
-            this.labelX5.Text = "出境记录类型:";
-            // 
-            // txtClient
-            // 
-            // 
-            // 
-            // 
-            this.txtClient.Border.Class = "TextBoxBorder";
-            this.txtClient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtClient.Location = new System.Drawing.Point(134, 50);
-            this.txtClient.Name = "txtClient";
-            this.txtClient.PreventEnterBeep = true;
-            this.txtClient.Size = new System.Drawing.Size(100, 21);
-            this.txtClient.TabIndex = 53;
-            // 
-            // txtFetchType
-            // 
-            this.txtFetchType.DisplayMember = "Text";
-            this.txtFetchType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.txtFetchType.FormattingEnabled = true;
-            this.txtFetchType.ItemHeight = 15;
-            this.txtFetchType.Location = new System.Drawing.Point(387, 77);
-            this.txtFetchType.Name = "txtFetchType";
-            this.txtFetchType.Size = new System.Drawing.Size(121, 21);
-            this.txtFetchType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtFetchType.TabIndex = 51;
-            // 
-            // txtSubmitCondition
-            // 
-            this.txtSubmitCondition.DisplayMember = "Text";
-            this.txtSubmitCondition.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.txtSubmitCondition.FormattingEnabled = true;
-            this.txtSubmitCondition.ItemHeight = 15;
-            this.txtSubmitCondition.Location = new System.Drawing.Point(386, 46);
-            this.txtSubmitCondition.Name = "txtSubmitCondition";
-            this.txtSubmitCondition.Size = new System.Drawing.Size(121, 21);
-            this.txtSubmitCondition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtSubmitCondition.TabIndex = 52;
-            // 
-            // txtDepartureType
-            // 
-            this.txtDepartureType.DisplayMember = "Text";
-            this.txtDepartureType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.txtDepartureType.FormattingEnabled = true;
-            this.txtDepartureType.ItemHeight = 15;
-            this.txtDepartureType.Location = new System.Drawing.Point(134, 17);
-            this.txtDepartureType.Name = "txtDepartureType";
-            this.txtDepartureType.Size = new System.Drawing.Size(121, 21);
-            this.txtDepartureType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtDepartureType.TabIndex = 50;
             // 
             // panelInOutBtns
             // 
@@ -1224,7 +867,7 @@
             // 
             // 
             this.lbCount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbCount.Location = new System.Drawing.Point(727, 6);
+            this.lbCount.Location = new System.Drawing.Point(589, 5);
             this.lbCount.Name = "lbCount";
             this.lbCount.Size = new System.Drawing.Size(119, 23);
             this.lbCount.TabIndex = 4;
@@ -1286,16 +929,16 @@
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
-            // FrmSetGroup
+            // FrmSetTeamVisaGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1340, 725);
             this.Controls.Add(this.panelMain);
             this.MaximizeBox = false;
-            this.Name = "FrmSetGroup";
+            this.Name = "FrmSetTeamVisaGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "设置个签团号";
+            this.Text = "设置团签团号";
             this.Load += new System.EventHandler(this.FrmSetGroup_Load);
             this.panelMain.ResumeLayout(false);
             this.panelBottom.ResumeLayout(false);
@@ -1304,9 +947,6 @@
             this.panelMid.ResumeLayout(false);
             this.panelGroupInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtDepartureTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOutTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSubmitTime)).EndInit();
             this.panelInOutBtns.ResumeLayout(false);
             this.panelTop.ResumeLayout(false);
             this.cmsDgvRb.ResumeLayout(false);
@@ -1345,26 +985,8 @@
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader PassportNo;
         private DevComponents.DotNetBar.PanelEx panelGroupInfo;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtOutTime;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtInTime;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtSubmitTime;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtCheckPerson;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtTypeInPerson;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSalesPerson;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX labelX9;
-        private DevComponents.DotNetBar.LabelX labelX13;
-        private DevComponents.DotNetBar.LabelX labelX12;
-        private DevComponents.DotNetBar.LabelX labelX11;
-        private DevComponents.DotNetBar.LabelX labelX10;
-        private DevComponents.DotNetBar.LabelX labelX8;
-        private DevComponents.DotNetBar.LabelX labelX7;
-        private DevComponents.DotNetBar.LabelX labelX6;
-        private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtClient;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx txtFetchType;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx txtSubmitCondition;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx txtDepartureType;
         private DevComponents.DotNetBar.Controls.ListViewEx lvIn;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -1382,17 +1004,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnglishName;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Sex;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn dgvGroup_IssuePlace;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Residence;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthPlace;
         private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn BirthDay;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Occupation;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn DepartureRecord;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Marriaged;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Identification;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FinancialCapacity;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Remark;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn AgencyOpinion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvPassportNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _IssuePlace;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn LicenceTime;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn ExpiryDate;
+        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Occupation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Client;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SalesPerson;
+        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtClient;
     }
 }

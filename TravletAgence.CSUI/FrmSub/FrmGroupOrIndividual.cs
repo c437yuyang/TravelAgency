@@ -36,7 +36,8 @@ namespace TravletAgence.CSUI.FrmSub
             }
             else if (cbType.Text == "团签")
             {
-                
+                FrmSetTeamVisaGroup frmSetGroup = new FrmSetTeamVisaGroup(_list, _updateDel, _curPage);
+                frmSetGroup.ShowDialog();
             }
             this.Close();
         }
