@@ -17,12 +17,12 @@ namespace TravletAgence.CSUI.FrmMain
 {
     public partial class FrmCheckAutoInputInfo : Form
     {
-        private Model.VisaInfo _model;
-        private List<Model.VisaInfo> _list;
-        private BLL.VisaInfo _bll = new BLL.VisaInfo();
+        private Model.VisaInfo _model; //当前对应的所有编辑框对应的model
+        private List<Model.VisaInfo> _list; //当前dgv对应的list
+        private readonly BLL.VisaInfo _bll = new BLL.VisaInfo();
         private int _curPage = 1;
         private int _curIdx = 0;
-        private int _pageSize = 20;
+        private int _pageSize = 15;
 
         public FrmCheckAutoInputInfo()
         {
@@ -106,43 +106,42 @@ namespace TravletAgence.CSUI.FrmMain
                 picPassportNo.Image = Resources.PassportPictureNotFound;
         }
 
-        private void GetNextModel()
-        {
-            if (++_curIdx >= _pageSize)
-            {
-                ++_curPage;
-                _list = _bll.GetListByPageOrderByHasChecked(_curPage, _pageSize);
-                _curIdx = 0;
-            }
-            _model = _list[_curIdx];
-            btnPre.Enabled = true;
-        }
-
-        private void GetPreModel()
-        {
-            if (--_curIdx < 0)
-            {
-                if (--_curPage < 1) //当前就是第1个
-                {
-                    _curPage = 1;
-                    _curIdx = 0;
-                    btnPre.Enabled = false;
-                    return;
-                }
-                _list = _bll.GetListByPageOrderByHasChecked(_curPage, _pageSize);
-                _curIdx = _pageSize - 1;
-            }
-            if (_curIdx == 0 && _curPage == 1)
-                btnPre.Enabled = false;
-            _model = _list[_curIdx];
-        }
-
         public void LoadDataToDataGridView(int page) //刷新后保持选中
         {
-            dataGridView1.DataSource = _bll.GetListByPageOrderByGroupNo(page, _pageSize);
+            dataGridView1.DataSource = _bll.GetListByPageOrderByHasChecked(page, _pageSize);
             dataGridView1.CurrentCell = dataGridView1.Rows[_curIdx].Cells[0];
+           
             dataGridView1.Update();
         }
+
+        private void UpdateDataGridViewDisplay()
+        {
+            //更新dgv显示
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _list;
+            //更新选中项
+            dataGridView1.CurrentCell = dataGridView1.Rows[_curIdx].Cells[0];
+        }
+
+        private void UpdateState()
+        {
+            //_recordCount = bll.GetRecordCount(string.Empty);
+            //_pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
+            if (_curIdx == 0)
+                btnPre.Enabled = false;
+            else
+                btnPre.Enabled = true;
+            if (_curIdx == _pageSize - 1)
+                btnNext.Enabled = false;
+            else
+                btnNext.Enabled = true;
+
+            ////lbRecordCount.Text = "当前为第:" + Convert.ToInt32(_curPage)
+            ////                + "页,共" + Convert.ToInt32(_pageCount) + "页,每页共" + _pageSize + "条.";
+            //lbRecordCount.Text = "共有记录:" + _recordCount + "条";
+            //lbCurPage.Text = "当前为第" + _curPage + "页";
+        }
+
         #endregion
 
 
@@ -155,53 +154,65 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void btnNoFault_Click(object sender, EventArgs e)
         {
+            //修改Model
+            _model = CtrlsToModel(_model);
             _model.HasChecked = Common.Enums.HasChecked.Yes;
             _model.CheckPerson = txtCheckPerson.Text;
-            if (!_bll.Update(_model))
-            {
-                MessageBoxEx.Show(Resources.FailedUpdateVisaInfoState);
-            }
-            else
-            {
-                MessageBoxEx.Show("保存成功!");
-                LoadDataToDataGridView(_curPage);
-            }
+
+            UpdateDataGridViewDisplay();
+
+
+            //if (!_bll.Update(_model))
+            //{
+            //    MessageBoxEx.Show(Resources.FailedUpdateVisaInfoState);
+            //}
+            //else
+            //{
+            //    MessageBoxEx.Show("保存成功!");
+            //    LoadDataToDataGridView(_curPage);
+            //}
         }
 
         /// <summary>
-        /// 这个按钮只用来修改录入的信息
+        /// 保存当前页的所有状态
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            CtrlsToModel(_model);
-            //_model.HasChecked = Common.Enums.HasChecked.Yes;
-            //_model.CheckPerson = txtCheckPerson.Text;
-            if (!_bll.Update(_model))
-            {
-                MessageBoxEx.Show(Resources.FailedUpdateVisaInfoState);
-            }
-            else
-            {
-                MessageBoxEx.Show("信息保存成功!");
-            }
+            //保存修改
+            int res = _bll.UpdateByList(_list);
+            MessageBoxEx.Show(res.ToString() + "条记录更新成功," + (_list.Count - res) + "条记录更新失败！");
+            //重新加载数据
+            LoadDataToDataGridView(_curPage);
         }
 
         private void btnPre_Click(object sender, EventArgs e)
         {
-            GetPreModel();
+            if (_curIdx > 0)
+                --_curIdx;
+
+            UpdateState();
+            _model = _list[_curIdx];
+
             ModelToCtrls(_model);
             LoadImageFromModel(_model);
-            LoadDataToDataGridView(_curPage);
+            UpdateDataGridViewDisplay();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            GetNextModel();
+
+            if (_curIdx < _pageSize - 1)
+                ++_curIdx;
+
+            UpdateState();
+            _model = _list[_curIdx];
+
             ModelToCtrls(_model);
             LoadImageFromModel(_model);
-            LoadDataToDataGridView(_curPage);
+            UpdateDataGridViewDisplay();
+
         }
         #endregion
 

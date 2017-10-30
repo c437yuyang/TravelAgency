@@ -33,6 +33,7 @@
             this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.btnVisaTypeIn = new DevComponents.DotNetBar.ButtonItem();
+            this.btnCheckAutoInputInfo = new DevComponents.DotNetBar.ButtonItem();
             this.btnVisaQuery = new DevComponents.DotNetBar.ButtonItem();
             this.btnVisaSubmit = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel2 = new DevComponents.DotNetBar.RibbonPanel();
@@ -63,7 +64,6 @@
             this.btnMCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMCloseOther = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.btnCheckAutoInputInfo = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
@@ -179,6 +179,15 @@
             this.btnVisaTypeIn.SubItemsExpandWidth = 14;
             this.btnVisaTypeIn.Text = "签证录入";
             this.btnVisaTypeIn.Click += new System.EventHandler(this.btnVisaTypeIn_Click);
+            // 
+            // btnCheckAutoInputInfo
+            // 
+            this.btnCheckAutoInputInfo.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
+            this.btnCheckAutoInputInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnCheckAutoInputInfo.Name = "btnCheckAutoInputInfo";
+            this.btnCheckAutoInputInfo.SubItemsExpandWidth = 14;
+            this.btnCheckAutoInputInfo.Text = "录入信息核对";
+            this.btnCheckAutoInputInfo.Click += new System.EventHandler(this.btnCheckAutoInputInfo_Click);
             // 
             // btnVisaQuery
             // 
@@ -491,7 +500,7 @@
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.tabMain.SelectedTabIndex = -1;
-            this.tabMain.Size = new System.Drawing.Size(1284, 564);
+            this.tabMain.Size = new System.Drawing.Size(1284, 594);
             this.tabMain.Style = DevComponents.DotNetBar.eTabStripStyle.Office2007Dock;
             this.tabMain.TabIndex = 5;
             this.tabMain.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
@@ -525,20 +534,11 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(71)))), ((int)(((byte)(42))))));
             // 
-            // btnCheckAutoInputInfo
-            // 
-            this.btnCheckAutoInputInfo.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
-            this.btnCheckAutoInputInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnCheckAutoInputInfo.Name = "btnCheckAutoInputInfo";
-            this.btnCheckAutoInputInfo.SubItemsExpandWidth = 14;
-            this.btnCheckAutoInputInfo.Text = "录入信息核对";
-            this.btnCheckAutoInputInfo.Click += new System.EventHandler(this.btnCheckAutoInputInfo_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 661);
+            this.ClientSize = new System.Drawing.Size(1284, 691);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "FrmMain";
