@@ -389,6 +389,8 @@
             this.cbPageSize.DropDownHeight = 106;
             this.cbPageSize.ItemHeight = 17;
             this.cbPageSize.Name = "cbPageSize";
+            this.cbPageSize.Click += new System.EventHandler(this.cbPageSize_Click);
+            this.cbPageSize.TextChanged += new System.EventHandler(this.cbPageSize_TextChanged);
             // 
             // labelItem2
             // 

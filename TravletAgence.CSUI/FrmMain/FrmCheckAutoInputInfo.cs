@@ -74,7 +74,7 @@ namespace TravletAgence.CSUI.FrmMain
             txtIssuePlace.Text = model.IssuePlace;
         }
 
-        private VisaInfo CtrlsToModel(TravletAgence.Model.VisaInfo model)
+        private bool CtrlsToModel(TravletAgence.Model.VisaInfo model)
         {
             try
             {
@@ -87,13 +87,13 @@ namespace TravletAgence.CSUI.FrmMain
                 model.ExpiryDate = DateTime.Parse(txtExpireDate.Text);
                 model.Birthplace = txtBirthPlace.Text;
                 model.IssuePlace = txtIssuePlace.Text;
+                return true;
             }
             catch (Exception)
             {
                 MessageBoxEx.Show(Resources.PleaseCheckDateTimeFormat);
-                return null;
+                return false;
             }
-            return model;
         }
 
         private void LoadImageFromModel(Model.VisaInfo model)
@@ -110,7 +110,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             dataGridView1.DataSource = _bll.GetListByPageOrderByHasChecked(page, _pageSize);
             dataGridView1.CurrentCell = dataGridView1.Rows[_curIdx].Cells[0];
-           
+
             dataGridView1.Update();
         }
 
@@ -155,22 +155,12 @@ namespace TravletAgence.CSUI.FrmMain
         private void btnNoFault_Click(object sender, EventArgs e)
         {
             //修改Model
-            _model = CtrlsToModel(_model);
+            if (!CtrlsToModel(_model))
+                return;
             _model.HasChecked = Common.Enums.HasChecked.Yes;
             _model.CheckPerson = txtCheckPerson.Text;
 
             UpdateDataGridViewDisplay();
-
-
-            //if (!_bll.Update(_model))
-            //{
-            //    MessageBoxEx.Show(Resources.FailedUpdateVisaInfoState);
-            //}
-            //else
-            //{
-            //    MessageBoxEx.Show("保存成功!");
-            //    LoadDataToDataGridView(_curPage);
-            //}
         }
 
         /// <summary>

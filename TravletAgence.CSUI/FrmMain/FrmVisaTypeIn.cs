@@ -22,7 +22,7 @@ namespace TravletAgence.CSUI.FrmMain
         private readonly TravletAgence.BLL.VisaInfo bll = new TravletAgence.BLL.VisaInfo();
         private int _curPage = 1;
         private int _pageCount = 0;
-        private readonly int _pageSize = 30;
+        private int _pageSize = 30;
         private int _recordCount = 0;
         private readonly IDCard _idCard = new IDCard();
         private bool _autoRead = false;
@@ -44,8 +44,12 @@ namespace TravletAgence.CSUI.FrmMain
         {
             _recordCount = bll.GetRecordCount(string.Empty);
             _pageCount = (int)Math.Ceiling(_recordCount / (double)_pageSize);
+
+            //初始化一些控件
             txtPicPath.Text = Application.StartupPath;
-            cbPageSize.Items.Add(_pageSize.ToString());
+            cbPageSize.Items.Add("30");
+            cbPageSize.Items.Add("50");
+            cbPageSize.Items.Add("100");
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -332,6 +336,19 @@ namespace TravletAgence.CSUI.FrmMain
             LoadDataToDataGridView(_curPage);
             UpdateState();
         }
+
+        private void cbPageSize_Click(object sender, EventArgs e)
+        {
+            //_pageSize = int.Parse(cbPageSize.Text);
+            //LoadDataToDataGridView(_curPage);
+            //UpdateState();
+        }
+        private void cbPageSize_TextChanged(object sender, EventArgs e)
+        {
+            _pageSize = int.Parse(cbPageSize.Text);
+            LoadDataToDataGridView(_curPage);
+            UpdateState();
+        }
         #endregion
         #region dgv消息相应
         /// <summary>
@@ -341,11 +358,11 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 10)
+            if (dataGridView1.Columns[e.ColumnIndex].Name=="outState")
             {
-                DataGridViewX dgv = (DataGridViewX)sender;
                 Color c = Color.Empty;
-                string state = e.Value.ToString();
+                //string state = e.Value.ToString();
+                string state = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 if (state == OutState.Type01NoRecord)
                     c = Color.AliceBlue;
                 else if (state == OutState.Type02In)
@@ -356,7 +373,7 @@ namespace TravletAgence.CSUI.FrmMain
                     c = Color.Red;
                 else
                     c = Color.Black;
-                dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
             }
         }
 
@@ -565,6 +582,10 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
+
+
+
+
 
 
     }
