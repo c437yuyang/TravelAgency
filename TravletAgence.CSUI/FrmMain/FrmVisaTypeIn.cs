@@ -312,7 +312,7 @@ namespace TravletAgence.CSUI.FrmMain
                 where = " Types = '团签' ";
             }
             dataGridView1.DataSource = bll.GetListByPageOrderByGroupNo(page, _pageSize, where);
-            if (curSelectedRow != -1 && dataGridView1.Rows.Count > 0)
+            if (curSelectedRow != -1 && dataGridView1.Rows.Count > curSelectedRow)
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
             dataGridView1.Update();
         }

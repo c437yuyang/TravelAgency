@@ -131,9 +131,20 @@ namespace TravletAgence.DAL
         }
 
 
-        public DataSet GetDataByPage(int start, int end)
+        public DataSet GetDataByPage(int start, int end,string where)
         {
-            string sql = "SELECT * from(SELECT *,ROW_NUMBER() OVER(ORDER BY EntryTime desc) as num from Visa) as t WHERE t.num>=@Start AND t.num<=@End order by EntryTime desc";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT * from(SELECT *,ROW_NUMBER() OVER(ORDER BY EntryTime desc) as num from Visa");
+
+            if (!string.IsNullOrEmpty(where))
+            {
+                sb.Append(" where ");
+                sb.Append(where);
+            }
+            sb.Append(")");
+
+            sb.Append(" as t WHERE t.num>=@Start AND t.num<=@End order by EntryTime desc");
+            string sql = sb.ToString();
             SqlParameter[] pams = new SqlParameter[]{
                 new SqlParameter("@Start",SqlDbType.Int){Value=start},
                 new SqlParameter("@End",SqlDbType.Int){Value=end}

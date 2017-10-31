@@ -43,6 +43,13 @@ namespace TravletAgence.CSUI.FrmMain
             cbPageSize.Items.Add("50");
             cbPageSize.Items.Add("100");
             cbPageSize.SelectedIndex = 0;
+
+            cbDisplayType.Items.Add("全部");
+            cbDisplayType.Items.Add("未记录");
+            cbDisplayType.Items.Add("个签");
+            cbDisplayType.Items.Add("团签");
+            cbDisplayType.SelectedIndex = 0;
+
             dataGridView1.AutoGenerateColumns = false; //不显示指定之外的列
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
             //dataGridView1.Columns["CountryImage"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -75,9 +82,28 @@ namespace TravletAgence.CSUI.FrmMain
             int curSelectedRow = -1;
             if (dataGridView1.SelectedRows.Count > 0)
                 curSelectedRow = dataGridView1.SelectedRows[0].Index;
-            dataGridView1.DataSource = _bllVisa.GetListByPage(page, _pageSize);
-            if (curSelectedRow != -1)
+            string where = string.Empty;
+            if (cbDisplayType.Text == "全部")
+            {
+
+            }
+            else if (cbDisplayType.Text == "未记录")
+            {
+                where = " Types is null or Types='' ";
+            }
+            else if (cbDisplayType.Text == "个签")
+            {
+                where = " Types = '个签' ";
+
+            }
+            else if (cbDisplayType.Text == "团签")
+            {
+                where = " Types = '团签' ";
+            }
+            dataGridView1.DataSource = _bllVisa.GetListByPage(page, _pageSize, where);
+            if (curSelectedRow != -1 && dataGridView1.Rows.Count > curSelectedRow)
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
+
         }
 
         public void UpdateState()
@@ -133,6 +159,14 @@ namespace TravletAgence.CSUI.FrmMain
                 return;
 
             _pageSize = int.Parse(cbPageSize.Text);
+            LoadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
+        private void cbDisplayType_TextChanged(object sender, EventArgs e)
+        {
+            if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
+                return;
             LoadDataToDataGridView(_curPage);
             UpdateState();
         }
@@ -267,6 +301,8 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
+
+
 
 
 
