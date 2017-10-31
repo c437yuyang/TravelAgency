@@ -399,6 +399,12 @@ namespace TravletAgence.CSUI.FrmSub
         /// TODO:处理需要修改团号的逻辑
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            //检查团号为空?
+            if (string.IsNullOrEmpty(txtGroupNo.Text))
+            {
+                MessageBoxEx.Show("团号不能为空!");
+                return;
+            }
             DialogResult res = MessageBoxEx.Show("是否提交修改?", "确认", MessageBoxButtons.OKCancel);
             if (res == DialogResult.Cancel)
                 return;
@@ -421,6 +427,7 @@ namespace TravletAgence.CSUI.FrmSub
                 }
 
                 //2.更新model,设置资料已录入，团号，国家等
+                //TODO:应该在这里设置类型为团签
                 _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
                 //2.1更新VisaInfo数据库
                 UpdateInListVisaInfo(_dgvList);

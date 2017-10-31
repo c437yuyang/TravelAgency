@@ -74,7 +74,7 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 this.Invoke(new Action(() =>
                 {
-                    model.Types = "个签";
+                    //model.Types = "个签";
                     model.EntryTime = DateTime.Now;
                     model.outState = OutState.Type01NoRecord;
                     txtName.Text = model.Name;
@@ -89,7 +89,7 @@ namespace TravletAgence.CSUI.FrmMain
                 }));
                 return;
             }
-            model.Types = "个签";
+            //model.Types = "个签";
             model.EntryTime = DateTime.Now;
             model.outState = OutState.Type01NoRecord;
             txtName.Text = model.Name;
@@ -106,7 +106,7 @@ namespace TravletAgence.CSUI.FrmMain
         private VisaInfo CtrlsToModel()
         {
             VisaInfo model = new VisaInfo();
-            model.Types = "个签";
+            //model.Types = "个签";
             model.EntryTime = DateTime.Now;
             model.outState = OutState.Type01NoRecord;
             try

@@ -445,6 +445,7 @@ namespace TravletAgence.CSUI.FrmSub
                 }
 
                 //2.更新model,设置资料已录入，团号，国家等
+                //TODO:应该在这里设置为个签 
                 _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
                 //2.1更新VisaInfo数据库
                 UpdateInListVisaInfo(_dgvList);
