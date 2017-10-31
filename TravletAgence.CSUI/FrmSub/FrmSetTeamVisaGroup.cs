@@ -127,22 +127,22 @@ namespace TravletAgence.CSUI.FrmSub
             }
 
             //初始化团号
-            UpdateGroupNo();
+            txtGroupNo.Text = _visaModel.GroupNo;
 
             //初始化dgv
             UpdateDgvData();
 
-            //初始化备注项
-            for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
-            {
-                dgvGroupInfo.Rows[i].Cells["Remark"].Value = _visaModel.Remark;
-            }
+            ////初始化备注项
+            //for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
+            //{
+            //    dgvGroupInfo.Rows[i].Cells["Remark"].Value = _visaModel.Remark;
+            //}
 
             //初始数据项
             txtDepartureTime.Text = DateTimeFormator.DateTimeToString(_visaModel.PredictTime);
             cbCountry.Text = _visaModel.Country;
             txtSalesPerson.Text = _visaModel.SalesPerson;
-            
+            txtClient.Text = _visaModel.Client;            
         }
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
@@ -501,9 +501,9 @@ namespace TravletAgence.CSUI.FrmSub
         {
             try
             {
-                //单独处理remark
-                if (!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
-                    _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
+                ////单独处理remark
+                //if (!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
+                //    _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
 
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
                 model.GroupNo = txtGroupNo.Text;

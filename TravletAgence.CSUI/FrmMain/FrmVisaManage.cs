@@ -221,8 +221,18 @@ namespace TravletAgence.CSUI.FrmMain
                 MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                 return;
             }
-            FrmSetGroup frm = new FrmSetGroup(model,LoadDataToDataGridView,_curPage);
-            frm.ShowDialog();
+
+            if (model.Types == Common.Enums.Types.Individual)
+            {
+                FrmSetGroup frm = new FrmSetGroup(model, LoadDataToDataGridView, _curPage);
+                frm.ShowDialog();
+            }
+            else if (model.Types == Common.Enums.Types.Team)
+            {
+                FrmSetTeamVisaGroup frm = new FrmSetTeamVisaGroup(model, LoadDataToDataGridView, _curPage);
+                frm.ShowDialog();
+            }
+            
         }
 
         private void cmsItemRefreshDatabase_Click(object sender, EventArgs e)
