@@ -218,6 +218,7 @@ namespace TravletAgence.CSUI.FrmSub
                 list[i].Visa_id = _visaModel.Visa_id.ToString(); //修改visainfo对应visa_id
                 list[i].Client = txtClient.Text;
                 list[i].Salesperson = txtSalesPerson.Text;
+                list[i].Types = Common.Enums.Types.Team;//设置为团签
             }
             int res = _bllVisaInfo.UpdateByList(_dgvList);
             MessageBoxEx.Show(res + "条记录成功更新," + (list.Count - res) + "条记录更新失败.");
@@ -482,7 +483,7 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.Number = lvIn.Items.Count; //团号的人数
                 
                 _visaModel.Client = txtClient.Text;
-                
+                _visaModel.Types = Common.Enums.Types.Team; //设置为团签
                 return true;
             }
             catch (Exception)
@@ -511,6 +512,7 @@ namespace TravletAgence.CSUI.FrmSub
                 model.Country = cbCountry.Text;
                 model.Number = lvIn.Items.Count;
                 _visaModel.Client = txtClient.Text;
+                _visaModel.Types = Common.Enums.Types.Team; //设置为团签
                 return true;
             }
             catch (Exception)

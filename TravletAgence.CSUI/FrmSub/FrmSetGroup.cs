@@ -242,6 +242,7 @@ namespace TravletAgence.CSUI.FrmSub
                 list[i].Visa_id = _visaModel.Visa_id.ToString(); //修改visainfo对应visa_id
                 list[i].Client = txtClient.Text;
                 list[i].Salesperson = txtSalesPerson.Text;
+                list[i].Types = Common.Enums.Types.Individual; //设置为个签
             }
             int res = _bllVisaInfo.UpdateByList(_dgvList);
             MessageBoxEx.Show(res + "条记录成功更新," + (list.Count - res) + "条记录更新失败.");
@@ -423,6 +424,12 @@ namespace TravletAgence.CSUI.FrmSub
         /// TODO:处理需要修改团号的逻辑
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            //检查团号为空?
+            if (string.IsNullOrEmpty(txtGroupNo.Text))
+            {
+                MessageBoxEx.Show("团号不能为空!");
+                return;
+            }
             DialogResult res = MessageBoxEx.Show("是否提交修改?", "确认", MessageBoxButtons.OKCancel);
             if (res == DialogResult.Cancel)
                 return;
@@ -507,6 +514,8 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.FetchCondition = txtFetchType.Text;
                 _visaModel.TypeInPerson = txtTypeInPerson.Text;
                 _visaModel.CheckPerson = txtCheckPerson.Text;
+                _visaModel.Types = Common.Enums.Types.Individual; //设置为个签
+
                 return true;
             }
             catch (Exception)
@@ -545,6 +554,7 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.FetchCondition = txtFetchType.Text;
                 _visaModel.TypeInPerson = txtTypeInPerson.Text;
                 _visaModel.CheckPerson = txtCheckPerson.Text;
+                _visaModel.Types = Common.Enums.Types.Individual; //设置为个签
                 return true;
             }
             catch (Exception)
@@ -552,8 +562,6 @@ namespace TravletAgence.CSUI.FrmSub
                 MessageBoxEx.Show(Resources.PleaseCheckDateTimeFormat);
                 return false;
             }
-
-
         }
 
         /// <summary>
