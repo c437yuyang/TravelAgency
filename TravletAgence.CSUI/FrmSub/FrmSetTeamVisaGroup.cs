@@ -386,10 +386,17 @@ namespace TravletAgence.CSUI.FrmSub
         /// <param name="e"></param>
         private void btnCreateReport_Click(object sender, EventArgs e)
         {
-            if (dgvGroupInfo.Rows[0].Cells["Remark"].Value != null)
-                GroupExcel.GenGroupInfoExcel(_dgvList, dgvGroupInfo.Rows[0].Cells["Remark"].Value.ToString(), txtGroupNo.Text);
-            else
-                GroupExcel.GenGroupInfoExcel(_dgvList, string.Empty, txtGroupNo.Text);
+
+
+            if (cbCountry.Text == "日本")
+            {
+                GroupExcel.GetTeamVisaExcelOfJapan(_dgvList, txtGroupNo.Text);
+            }
+            else if (cbCountry.Text == "泰国")
+            {
+                GroupExcel.GetTeamVisaExcelOfThailand(_dgvList, txtGroupNo.Text);
+                
+            }
         }
 
         /// <summary>
