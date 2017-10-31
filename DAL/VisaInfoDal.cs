@@ -17,14 +17,20 @@ namespace TravletAgence.DAL
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
+        /// <param name="where"></param>
         /// <returns></returns>
-        public DataSet GetDataByPageOrderByOutState(int start, int end)
+        public DataSet GetDataByPageOrderByOutState(int start, int end,string where)
         {
-            string sql = "SELECT * from(SELECT *," +
-                         "ROW_NUMBER() OVER(ORDER BY EntryTime desc) " +
-                         "as num from VisaInfo) as t " +
-                         "WHERE t.num>=@Start AND t.num<=@End " +
-                         "order by EntryTime desc,OutState desc,GroupNo desc";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT * from(SELECT *,ROW_NUMBER() OVER(ORDER BY EntryTime desc) as num from VisaInfo");
+            if (!string.IsNullOrEmpty(where))
+            {
+                sb.Append(" where ");
+                sb.Append(where);
+            }
+            sb.Append(")");
+            sb.Append(" as t WHERE t.num>=@Start AND t.num<=@End order by EntryTime desc,OutState desc,GroupNo desc");
+            string sql = sb.ToString();
             SqlParameter[] pams = new SqlParameter[]{
                 new SqlParameter("@Start",SqlDbType.Int){Value=start},
                 new SqlParameter("@End",SqlDbType.Int){Value=end}
@@ -32,21 +38,7 @@ namespace TravletAgence.DAL
             return DbHelperSQL.Query(sql, pams);
         }
 
-        /// <summary>
-        /// 按照entrytime,groupNo,outstate排序，给签证录入界面用的
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public DataSet GetDataByPageOrderByGroupNo(int start, int end)
-        {
-            string sql = "SELECT * from(SELECT *,ROW_NUMBER() OVER(ORDER BY EntryTime desc) as num from VisaInfo) as t WHERE t.num>=@Start AND t.num<=@End order by EntryTime desc,GroupNo desc,OutState desc";
-            SqlParameter[] pams = new SqlParameter[]{
-                new SqlParameter("@Start",SqlDbType.Int){Value=start},
-                new SqlParameter("@End",SqlDbType.Int){Value=end}
-            };
-            return DbHelperSQL.Query(sql, pams);
-        }
+
 
         /// <summary>
         /// 按照entrytime,groupNo,outstate排序，给签证录入界面用的

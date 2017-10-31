@@ -11,12 +11,12 @@ namespace TravletAgence.BLL
     /// </summary>
     public partial class VisaInfo
     {
-        public List<Model.VisaInfo> GetListByPageOrderByOutState(int pageIndex, int pageSize)
+        public List<Model.VisaInfo> GetListByPageOrderByOutState(int pageIndex, int pageSize,string where)
         {
             int start = (pageIndex - 1) * pageSize + 1;
             int end = pageIndex * pageSize;
 
-            DataSet ds = dal.GetDataByPageOrderByOutState(start, end);
+            DataSet ds = dal.GetDataByPageOrderByOutState(start, end,where);
             DataTable dt = ds.Tables[0];
             return DataTableToList(dt);
             
