@@ -32,6 +32,7 @@ namespace TravletAgence.CSUI.FrmMain
         private readonly Thread _thLoadDataToDgvAndUpdateState;
         private bool _init = false;
 
+
         public FrmVisaTypeIn()
         {
             InitializeComponent();
@@ -292,8 +293,26 @@ namespace TravletAgence.CSUI.FrmMain
             int curSelectedRow = -1;
             if (dataGridView1.SelectedRows.Count > 0)
                 curSelectedRow = dataGridView1.SelectedRows[0].Index;
-            dataGridView1.DataSource = bll.GetListByPageOrderByGroupNo(page, _pageSize);
-            if (curSelectedRow != -1)
+            string where = string.Empty;
+            if (cbDisplayType.Text == "全部")
+            {
+
+            }
+            else if (cbDisplayType.Text == "未记录")
+            {
+                where = " Types is null or Types='' ";
+            }
+            else if (cbDisplayType.Text == "个签")
+            {
+                where = " Types = '个签' ";
+
+            }
+            else if (cbDisplayType.Text == "团签")
+            {
+                where = " Types = '团签' ";
+            }
+            dataGridView1.DataSource = bll.GetListByPageOrderByGroupNo(page, _pageSize, where);
+            if (curSelectedRow != -1 && dataGridView1.Rows.Count > 0)
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
             dataGridView1.Update();
         }
@@ -352,13 +371,23 @@ namespace TravletAgence.CSUI.FrmMain
         }
         private void cbPageSize_TextChanged(object sender, EventArgs e)
         {
-            if(!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
+            if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
                 return;
-            
+
             _pageSize = int.Parse(cbPageSize.Text);
             LoadDataToDataGridView(_curPage);
             UpdateState();
         }
+
+
+        private void cbDisplayType_TextChanged(object sender, EventArgs e)
+        {
+            if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
+                return;
+            LoadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
         #endregion
         #region dgv消息相应
         /// <summary>
@@ -368,7 +397,7 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].Name=="outState")
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "outState")
             {
                 Color c = Color.Empty;
                 //string state = e.Value.ToString();
@@ -588,7 +617,7 @@ namespace TravletAgence.CSUI.FrmMain
                     list.Add(model);
             }
 
-            FrmGroupOrIndividual frmGroupOrIndividual = new FrmGroupOrIndividual(list,LoadDataToDataGridView,_curPage);
+            FrmGroupOrIndividual frmGroupOrIndividual = new FrmGroupOrIndividual(list, LoadDataToDataGridView, _curPage);
             frmGroupOrIndividual.ShowDialog();
 
             //FrmSetGroup frmSetGroup = new FrmSetGroup(list, LoadDataToDataGridView, _curPage);
@@ -596,6 +625,7 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
+
 
 
 
