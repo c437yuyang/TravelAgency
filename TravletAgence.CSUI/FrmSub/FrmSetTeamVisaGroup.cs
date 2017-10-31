@@ -173,21 +173,21 @@ namespace TravletAgence.CSUI.FrmSub
         #region 状态更新函数
         private void UpdateGroupNo()
         {
-            if (txtDepartureTime.Value.ToString() != "0001/1/1 0:00:00")
-            {
-                _visaName = "QZC" + txtDepartureTime.Value.ToString("yyMMdd");
+            //if (txtDepartureTime.Value.ToString() != "0001/1/1 0:00:00")
+            //{
+            //    _visaName = "QZC" + txtDepartureTime.Value.ToString("yyMMdd");
                 
-            }else
-                _visaName = "QZC" + DateTime.Now.ToString("yyMMdd");
+            //}else
+            //    _visaName = "QZC" + DateTime.Now.ToString("yyMMdd");
             
-            for (int i = 0; i < lvIn.Items.Count; ++i)
-            {
-                _visaName += ((Model.VisaInfo)lvIn.Items[i].Tag).Name;
-                if (i == lvIn.Items.Count - 1)
-                    break;
-                _visaName += "、";
-            }
-            txtGroupNo.Text = _visaName;
+            //for (int i = 0; i < lvIn.Items.Count; ++i)
+            //{
+            //    _visaName += ((Model.VisaInfo)lvIn.Items[i].Tag).Name;
+            //    if (i == lvIn.Items.Count - 1)
+            //        break;
+            //    _visaName += "、";
+            //}
+            //txtGroupNo.Text = _visaName;
             lbCount.Text = "团队人数:" + lvIn.Items.Count + "人";
         }
 
@@ -337,7 +337,7 @@ namespace TravletAgence.CSUI.FrmSub
                 lvOut.Items.Remove(lvOut.Items[i]);
                 lvIn.Items.Add(lvItem);
             }
-            //UpdateGroupNo();
+            UpdateGroupNo();
             UpdateDgvData();
         }
 
@@ -349,7 +349,7 @@ namespace TravletAgence.CSUI.FrmSub
                 lvIn.Items.Remove(lvIn.Items[i]);
                 lvOut.Items.Add(lvItem);
             }
-            //UpdateGroupNo();
+            UpdateGroupNo();
             UpdateDgvData();
 
         }
@@ -362,7 +362,7 @@ namespace TravletAgence.CSUI.FrmSub
                 lvOut.Items.Remove(lvOut.SelectedItems[i]);
                 lvIn.Items.Insert(0, lvItem);
             }
-            //UpdateGroupNo();
+            UpdateGroupNo();
             UpdateDgvData();
         }
 
@@ -374,7 +374,7 @@ namespace TravletAgence.CSUI.FrmSub
                 lvIn.Items.Remove(lvIn.SelectedItems[i]);
                 lvOut.Items.Insert(0, lvItem);
             }
-            //UpdateGroupNo();
+            UpdateGroupNo();
             UpdateDgvData();
         }
 
@@ -471,9 +471,9 @@ namespace TravletAgence.CSUI.FrmSub
             //这里代码生成器默认给了一个guid，不能再自己给了
             try
             {
-                //单独处理remark
-                if (!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
-                    _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
+                ////单独处理remark
+                //if (!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
+                //    _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
 
                 _visaModel.EntryTime = DateTime.Now;
                 _visaModel.GroupNo = txtGroupNo.Text;
@@ -535,6 +535,7 @@ namespace TravletAgence.CSUI.FrmSub
                 model.Visa_id = null;
                 model.GroupNo = null;
                 model.Country = null;
+                model.Types = null;
                 //TODO:资料录入情况怎么处理
                 //执行更新
                 if (_bllVisaInfo.Update(model) == false)
@@ -663,16 +664,6 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         #endregion
-
-
-
-
-        
-
-
-
     }
-
-
 
 }

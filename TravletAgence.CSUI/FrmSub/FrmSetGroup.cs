@@ -575,6 +575,7 @@ namespace TravletAgence.CSUI.FrmSub
                 model.Visa_id = null;
                 model.GroupNo = null;
                 model.Country = null;
+                model.Types = null;
                 //TODO:资料录入情况怎么处理
                 //执行更新
                 if (_bllVisaInfo.Update(model) == false)

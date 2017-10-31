@@ -54,6 +54,11 @@ namespace TravletAgence.CSUI.FrmMain
             cbPageSize.SelectedIndex = 0;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            cbDisplayType.Items.Add("全部");
+            cbDisplayType.Items.Add("未记录");
+            cbDisplayType.Items.Add("个签");
+            cbDisplayType.Items.Add("团签");
+            cbDisplayType.SelectedIndex = 0;
 
             //设置可跨线程访问窗体
             //TODO:这里可能需要修改
