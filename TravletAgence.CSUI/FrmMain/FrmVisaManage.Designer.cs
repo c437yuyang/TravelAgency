@@ -46,17 +46,18 @@
             this.lbCurPage = new DevComponents.DotNetBar.LabelItem();
             this.panelDgv = new DevComponents.DotNetBar.PanelEx();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.cmsDgv = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemShowGroupNo = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsItemRefreshDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountryImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.PredictTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EntryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalesPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Types = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Visa_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmsDgv = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsItemShowGroupNo = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsItemRefreshDatabase = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panelDgv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -193,6 +194,7 @@
             this.PredictTime,
             this.EntryTime,
             this.SalesPerson,
+            this.Types,
             this.Visa_id});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -223,6 +225,36 @@
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            // 
+            // cmsDgv
+            // 
+            this.cmsDgv.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.删除ToolStripMenuItem,
+            this.cmsItemShowGroupNo,
+            this.cmsItemRefreshDatabase});
+            this.cmsDgv.Name = "cmsDgv";
+            this.cmsDgv.Size = new System.Drawing.Size(161, 70);
+            // 
+            // 删除ToolStripMenuItem
+            // 
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.删除ToolStripMenuItem.Text = "删除";
+            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
+            // 
+            // cmsItemShowGroupNo
+            // 
+            this.cmsItemShowGroupNo.Name = "cmsItemShowGroupNo";
+            this.cmsItemShowGroupNo.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemShowGroupNo.Text = "查看选中团号";
+            this.cmsItemShowGroupNo.Click += new System.EventHandler(this.cmsItemShowGroupNo_Click);
+            // 
+            // cmsItemRefreshDatabase
+            // 
+            this.cmsItemRefreshDatabase.Name = "cmsItemRefreshDatabase";
+            this.cmsItemRefreshDatabase.Size = new System.Drawing.Size(160, 22);
+            this.cmsItemRefreshDatabase.Text = "刷新数据库状态";
+            this.cmsItemRefreshDatabase.Click += new System.EventHandler(this.cmsItemRefreshDatabase_Click);
             // 
             // GroupNo
             // 
@@ -268,6 +300,13 @@
             this.SalesPerson.Name = "SalesPerson";
             this.SalesPerson.ReadOnly = true;
             // 
+            // Types
+            // 
+            this.Types.DataPropertyName = "Types";
+            this.Types.HeaderText = "类型";
+            this.Types.Name = "Types";
+            this.Types.ReadOnly = true;
+            // 
             // Visa_id
             // 
             this.Visa_id.DataPropertyName = "Visa_id";
@@ -275,36 +314,6 @@
             this.Visa_id.Name = "Visa_id";
             this.Visa_id.ReadOnly = true;
             this.Visa_id.Visible = false;
-            // 
-            // cmsDgv
-            // 
-            this.cmsDgv.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.删除ToolStripMenuItem,
-            this.cmsItemShowGroupNo,
-            this.cmsItemRefreshDatabase});
-            this.cmsDgv.Name = "cmsDgv";
-            this.cmsDgv.Size = new System.Drawing.Size(161, 70);
-            // 
-            // 删除ToolStripMenuItem
-            // 
-            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.删除ToolStripMenuItem.Text = "删除";
-            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
-            // 
-            // cmsItemShowGroupNo
-            // 
-            this.cmsItemShowGroupNo.Name = "cmsItemShowGroupNo";
-            this.cmsItemShowGroupNo.Size = new System.Drawing.Size(160, 22);
-            this.cmsItemShowGroupNo.Text = "查看选中团号";
-            this.cmsItemShowGroupNo.Click += new System.EventHandler(this.cmsItemShowGroupNo_Click);
-            // 
-            // cmsItemRefreshDatabase
-            // 
-            this.cmsItemRefreshDatabase.Name = "cmsItemRefreshDatabase";
-            this.cmsItemRefreshDatabase.Size = new System.Drawing.Size(160, 22);
-            this.cmsItemRefreshDatabase.Text = "刷新数据库状态";
-            this.cmsItemRefreshDatabase.Click += new System.EventHandler(this.cmsItemRefreshDatabase_Click);
             // 
             // FrmVisaManage
             // 
@@ -340,16 +349,17 @@
         private DevComponents.DotNetBar.LabelItem lbCurPage;
         private DevComponents.DotNetBar.PanelEx panelDgv;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridView1;
+        private System.Windows.Forms.ContextMenuStrip cmsDgv;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemShowGroupNo;
+        private System.Windows.Forms.ToolStripMenuItem cmsItemRefreshDatabase;
+        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
         private System.Windows.Forms.DataGridViewImageColumn CountryImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn PredictTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn EntryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn SalesPerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Types;
         private System.Windows.Forms.DataGridViewTextBoxColumn Visa_id;
-        private System.Windows.Forms.ContextMenuStrip cmsDgv;
-        private System.Windows.Forms.ToolStripMenuItem cmsItemShowGroupNo;
-        private System.Windows.Forms.ToolStripMenuItem cmsItemRefreshDatabase;
-        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
     }
 }
