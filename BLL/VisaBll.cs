@@ -21,7 +21,6 @@ namespace TravletAgence.BLL
 
         public bool DeleteVisaAndModifyVisaInfos(Model.Visa model)
         {
-
             //1.更新对应visainfo
             BLL.VisaInfo bllVisaInfo = new VisaInfo();
             List<Model.VisaInfo> list = bllVisaInfo.GetModelList(" Visa_id = '" + model.Visa_id + "'");
@@ -36,6 +35,8 @@ namespace TravletAgence.BLL
                 //TODO:销售人员和客户怎么处理?
                 list[i].Salesperson = null;
                 list[i].Client = null;
+                //TODO:Types怎么处理
+                list[i].Types = null;
                 if (!bllVisaInfo.Update(list[i]))
                 {
                     return false;
