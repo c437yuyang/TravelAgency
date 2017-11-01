@@ -160,6 +160,7 @@
     <Compile Include="MD5Computer\MyMd5.cs" />
     <Compile Include="Enums\OutState.cs" />
     <Compile Include="Enums\OutStateString.cs" />
+    <Compile Include="ObjDeepClone.cs" />
     <Compile Include="PinyinParse\PinYinConverter.cs" />
     <Compile Include="PinyinParse\PinYinConverterHelp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

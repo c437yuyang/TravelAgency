@@ -28,6 +28,7 @@ namespace TravletAgence.CSUI.FrmSub
         private string _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
         private readonly Action<int> _updateDel; //副界面传来更新数据库的委托
         private readonly int _curPage; //主界面更新数据库需要一个当前页
+        private Model.Visa _visaModelBackup;
 
         public FrmSetTeamVisaGroup()
         {
@@ -426,8 +427,6 @@ namespace TravletAgence.CSUI.FrmSub
                 }
                 if (!CtrlsToVisaModel())
                     return;
-
-
                 if ((_visaModel.Visa_id = _bllVisa.Add(_visaModel)) == Guid.Empty) //执行更新,返回值是新插入的visamodel的guid
                 {
                     MessageBoxEx.Show("添加团号到数据库失败，请重试!");
@@ -506,6 +505,10 @@ namespace TravletAgence.CSUI.FrmSub
 
         private bool CtrlsToVisaModel(Model.Visa model)
         {
+            //这里执行备份，这种逻辑是对现有的model进行修改
+
+            _visaModelBackup = _visaModel.ToObjectCopy();
+
             try
             {
                 ////单独处理remark
@@ -561,9 +564,10 @@ namespace TravletAgence.CSUI.FrmSub
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        /// TODO:是否应该备份一份visaModel，不备份的话先提交过修改再reset就没用了
+        /// TODO:是否应该备份一份visaModel，不备份的话先提交过修改再reset就没用了,这样做了还是有问题，因为数据库那边已经提交了，所以最终应该备份数据库那边的状态，或者最终关闭窗口的时候才保存修改
         private void btnReset_Click(object sender, EventArgs e)
         {
+            _visaModel = _visaModelBackup;//目前来说没有多少用
             InitFrmFromVisaModel();
         }
 
