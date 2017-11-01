@@ -104,7 +104,7 @@ namespace TravletAgence.Common.Excel
                 }
             }
             //4.2合并单元格
-            sheet.AddMergedRegion(new CellRangeAddress(1,sheet.LastRowNum,12, 12));
+            sheet.AddMergedRegion(new CellRangeAddress(1, sheet.LastRowNum, 12, 12));
 
             //5.执行写入磁盘
 
@@ -115,10 +115,10 @@ namespace TravletAgence.Common.Excel
             {
                 saveFileDialog1.FileName = groupNo + ".xls"; //TODO:处理文件名太长
             }
-               
-            if(saveFileDialog1.ShowDialog()== DialogResult.Cancel)
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return true;
-            
+
             if (saveFileDialog1.FileName != "")
             {
                 try
@@ -167,8 +167,8 @@ namespace TravletAgence.Common.Excel
             row.CreateCell(11).SetCellValue("联系电话");
             row.CreateCell(12).SetCellValue("客户");
             row.CreateCell(13).SetCellValue("销售");
-            
-            
+
+
 
             //2.2设置列宽度
             sheet.SetColumnWidth(0, 5 * 256);//序号
@@ -301,20 +301,6 @@ namespace TravletAgence.Common.Excel
             sheet.SetColumnWidth(9, 20 * 256);//有效期至
             sheet.SetColumnWidth(10, 20 * 256);//职业
 
-
-            //IRow row = sheet.CreateRow(0);
-            //row.CreateCell(0).SetCellValue("姓名");
-            //row.CreateCell(1).SetCellValue("英文姓");
-            //row.CreateCell(2).SetCellValue("英文名");
-            //row.CreateCell(3).SetCellValue("性别");
-            //row.CreateCell(4).SetCellValue("出生日期");
-            //row.CreateCell(5).SetCellValue("护照号");
-            //row.CreateCell(6).SetCellValue("签发日期");
-            //row.CreateCell(7).SetCellValue("有效期至");
-            //row.CreateCell(8).SetCellValue("出生地点拼音");
-            //row.CreateCell(9).SetCellValue("签发地点拼音");
-            //row.CreateCell(10).SetCellValue("英文姓名");
-
             //3.插入行和单元格
             for (int i = 0; i != list.Count; ++i)
             {
@@ -334,22 +320,23 @@ namespace TravletAgence.Common.Excel
                 {
                     row.CreateCell(3).SetCellValue("M");
                 }
-                
+
                 row.CreateCell(4).SetCellValue(DateTimeFormator.DateTimeToStringOfThailand(list[i].Birthday));
                 row.CreateCell(5).SetCellValue(list[i].PassportNo);
                 row.CreateCell(6).SetCellValue(DateTimeFormator.DateTimeToStringOfThailand(list[i].LicenceTime));
                 row.CreateCell(7).SetCellValue(DateTimeFormator.DateTimeToStringOfThailand(list[i].ExpiryDate));
-                row.CreateCell(8).SetCellValue(list[i].Birthplace);
-                row.CreateCell(9).SetCellValue(list[i].IssuePlace);
-                row.CreateCell(10).SetCellValue(list[i].EnglishName);
+                List<string> pinyins = Common.PinyinParse.PinYinConverterHelp.GetTotalPingYin(list[i].Birthplace).TotalPingYin;
 
-              
+                row.CreateCell(8).SetCellValue(pinyins[pinyins.Count - 1].ToUpper()); //TODO:这个地方拼音还有点问题，因为可能有多个
+                pinyins = Common.PinyinParse.PinYinConverterHelp.GetTotalPingYin(list[i].IssuePlace).TotalPingYin;
+                row.CreateCell(9).SetCellValue(pinyins[pinyins.Count - 1].ToUpper());
+                row.CreateCell(10).SetCellValue(list[i].EnglishName);
             }
 
             //4.1设置对齐风格和边框
             ICellStyle style = wkbook.CreateCellStyle();
             style.VerticalAlignment = VerticalAlignment.CENTER;
-            style.Alignment = HorizontalAlignment.CENTER;
+            style.Alignment = HorizontalAlignment.LEFT;
             style.BorderTop = BorderStyle.THIN;
             style.BorderBottom = BorderStyle.THIN;
             style.BorderLeft = BorderStyle.THIN;

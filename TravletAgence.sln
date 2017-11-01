@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DgvMergeDemo", "DgvMergeDem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimeFormatDemo", "DateTimeFormatDemo\DateTimeFormatDemo.csproj", "{31681C9E-4B0D-432D-912E-B9C2953C8A70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinyinDemo", "PinyinDemo\PinyinDemo.csproj", "{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -251,6 +253,18 @@ Global
 		{31681C9E-4B0D-432D-912E-B9C2953C8A70}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{31681C9E-4B0D-432D-912E-B9C2953C8A70}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{31681C9E-4B0D-432D-912E-B9C2953C8A70}.Release|x86.ActiveCfg = Release|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Release|.NET.ActiveCfg = Release|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -264,5 +278,6 @@ Global
 		{CA4B5748-7DD1-4D0B-98E6-A19D51844F36} = {3F9A535C-0513-451F-92D3-58D71E4A8A6A}
 		{981FA098-D3D3-4315-8F56-2593C46545C4} = {3F9A535C-0513-451F-92D3-58D71E4A8A6A}
 		{31681C9E-4B0D-432D-912E-B9C2953C8A70} = {3F9A535C-0513-451F-92D3-58D71E4A8A6A}
+		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954} = {3F9A535C-0513-451F-92D3-58D71E4A8A6A}
 	EndGlobalSection
 EndGlobal
