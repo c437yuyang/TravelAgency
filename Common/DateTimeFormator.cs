@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace TravletAgence.Common
 {
@@ -30,7 +31,7 @@ namespace TravletAgence.Common
                 if (dateTime != null)
                 {
                     DateTime dt = (DateTime)dateTime;
-                    return dt.ToString("dd-MMMM-yyyy");
+                    return dt.ToString("dd-MMM-yyyy", new CultureInfo("en-US"));
                     //return dt.ToString("yy");
                 }
                 return "";

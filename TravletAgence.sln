@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimeFormatDemo", "DateT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinyinDemo", "PinyinDemo\PinyinDemo.csproj", "{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.CSUI.Test", "TravletAgence.CSUI.Test\TravletAgence.CSUI.Test.csproj", "{7C31B487-AAD2-4418-A947-6810EB7677E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -265,6 +267,18 @@ Global
 		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}.Release|x86.ActiveCfg = Release|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Release|.NET.ActiveCfg = Release|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7C31B487-AAD2-4418-A947-6810EB7677E2}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
