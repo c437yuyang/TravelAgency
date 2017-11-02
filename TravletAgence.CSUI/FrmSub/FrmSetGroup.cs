@@ -187,6 +187,9 @@ namespace TravletAgence.CSUI.FrmSub
             txtFetchType.Items.Add("车托到五桂桥");
             txtFetchType.Items.Add("其他");
 
+            //设置操作员
+            txtSalesPerson.Text = Common.GlobalInfo.LoginUser.UserName;
+            txtSalesPerson.Enabled = false;
 
             if (_list != null && _visaModel == null && !_initFromVisaModel)
                 InitFrmFromList();

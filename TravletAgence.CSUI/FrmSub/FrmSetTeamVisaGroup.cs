@@ -161,8 +161,10 @@ namespace TravletAgence.CSUI.FrmSub
             //设置列表多选
             lvIn.MultiSelect = true;
             lvOut.MultiSelect = true;
-            
-            
+
+            //设置操作员
+            txtSalesPerson.Text = Common.GlobalInfo.LoginUser.UserName;
+            txtSalesPerson.Enabled = false;
 
 
             if (_list != null && _visaModel == null && !_initFromVisaModel)
