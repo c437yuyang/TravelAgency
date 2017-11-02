@@ -128,7 +128,13 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            this.Text = this.Text + "     当前登录用户:" + Common.GlobalInfo.LoginUser.UserName;
             MinimumSize = Size;
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
 

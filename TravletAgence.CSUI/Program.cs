@@ -14,7 +14,7 @@ namespace TravletAgence.CSUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain.FrmMain());
+            Application.Run(new FrmMain.frmLogin());
         }
     }
 }

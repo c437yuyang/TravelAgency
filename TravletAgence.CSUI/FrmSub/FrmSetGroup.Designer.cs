@@ -178,7 +178,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDelete.TabIndex = 33;
+            this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "删除团号";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -190,7 +190,7 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnReset.TabIndex = 32;
+            this.btnReset.TabIndex = 22;
             this.btnReset.Text = "恢复";
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
@@ -202,7 +202,7 @@
             this.btnCreateReport.Name = "btnCreateReport";
             this.btnCreateReport.Size = new System.Drawing.Size(75, 23);
             this.btnCreateReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCreateReport.TabIndex = 29;
+            this.btnCreateReport.TabIndex = 21;
             this.btnCreateReport.Text = "生成报表";
             this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
             // 
@@ -214,7 +214,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 30;
+            this.btnCancel.TabIndex = 20;
             this.btnCancel.Text = "取消";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -226,7 +226,7 @@
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnConfirm.TabIndex = 31;
+            this.btnConfirm.TabIndex = 19;
             this.btnConfirm.Text = "确认修改";
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -289,7 +289,7 @@
             this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvGroupInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGroupInfo.EnableHeadersVisualStyles = false;
-            this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvGroupInfo.Location = new System.Drawing.Point(0, 0);
             this.dgvGroupInfo.Name = "dgvGroupInfo";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -304,7 +304,7 @@
             this.dgvGroupInfo.RowTemplate.Height = 30;
             this.dgvGroupInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvGroupInfo.Size = new System.Drawing.Size(1340, 498);
-            this.dgvGroupInfo.TabIndex = 13;
+            this.dgvGroupInfo.TabIndex = 18;
             this.dgvGroupInfo.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGroupInfo_CellMouseUp);
             this.dgvGroupInfo.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGroupInfo_CellValueChanged);
             this.dgvGroupInfo.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvGroupInfo_RowsAdded);
@@ -640,7 +640,7 @@
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(121, 21);
             this.cbCountry.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbCountry.TabIndex = 73;
+            this.cbCountry.TabIndex = 12;
             // 
             // China
             // 
@@ -717,7 +717,7 @@
             this.txtDepartureTime.Name = "txtDepartureTime";
             this.txtDepartureTime.Size = new System.Drawing.Size(108, 21);
             this.txtDepartureTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtDepartureTime.TabIndex = 71;
+            this.txtDepartureTime.TabIndex = 11;
             this.txtDepartureTime.TextChanged += new System.EventHandler(this.txtDepartureTime_TextChanged);
             // 
             // labelX3
@@ -775,7 +775,7 @@
             this.txtOutTime.Name = "txtOutTime";
             this.txtOutTime.Size = new System.Drawing.Size(108, 21);
             this.txtOutTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtOutTime.TabIndex = 69;
+            this.txtOutTime.TabIndex = 10;
             // 
             // txtInTime
             // 
@@ -820,7 +820,7 @@
             this.txtInTime.Name = "txtInTime";
             this.txtInTime.Size = new System.Drawing.Size(108, 21);
             this.txtInTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtInTime.TabIndex = 68;
+            this.txtInTime.TabIndex = 9;
             // 
             // txtSubmitTime
             // 
@@ -865,7 +865,7 @@
             this.txtSubmitTime.Name = "txtSubmitTime";
             this.txtSubmitTime.Size = new System.Drawing.Size(108, 21);
             this.txtSubmitTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtSubmitTime.TabIndex = 67;
+            this.txtSubmitTime.TabIndex = 8;
             // 
             // txtCheckPerson
             // 
@@ -879,7 +879,7 @@
             this.txtCheckPerson.Name = "txtCheckPerson";
             this.txtCheckPerson.PreventEnterBeep = true;
             this.txtCheckPerson.Size = new System.Drawing.Size(100, 21);
-            this.txtCheckPerson.TabIndex = 66;
+            this.txtCheckPerson.TabIndex = 16;
             // 
             // txtTypeInPerson
             // 
@@ -893,7 +893,7 @@
             this.txtTypeInPerson.Name = "txtTypeInPerson";
             this.txtTypeInPerson.PreventEnterBeep = true;
             this.txtTypeInPerson.Size = new System.Drawing.Size(100, 21);
-            this.txtTypeInPerson.TabIndex = 65;
+            this.txtTypeInPerson.TabIndex = 15;
             // 
             // txtSalesPerson
             // 
@@ -907,7 +907,7 @@
             this.txtSalesPerson.Name = "txtSalesPerson";
             this.txtSalesPerson.PreventEnterBeep = true;
             this.txtSalesPerson.Size = new System.Drawing.Size(100, 21);
-            this.txtSalesPerson.TabIndex = 64;
+            this.txtSalesPerson.TabIndex = 17;
             // 
             // labelX1
             // 
@@ -1040,7 +1040,7 @@
             this.txtClient.Name = "txtClient";
             this.txtClient.PreventEnterBeep = true;
             this.txtClient.Size = new System.Drawing.Size(100, 21);
-            this.txtClient.TabIndex = 53;
+            this.txtClient.TabIndex = 7;
             // 
             // txtFetchType
             // 
@@ -1052,7 +1052,7 @@
             this.txtFetchType.Name = "txtFetchType";
             this.txtFetchType.Size = new System.Drawing.Size(121, 21);
             this.txtFetchType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtFetchType.TabIndex = 51;
+            this.txtFetchType.TabIndex = 14;
             // 
             // txtSubmitCondition
             // 
@@ -1064,7 +1064,7 @@
             this.txtSubmitCondition.Name = "txtSubmitCondition";
             this.txtSubmitCondition.Size = new System.Drawing.Size(121, 21);
             this.txtSubmitCondition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtSubmitCondition.TabIndex = 52;
+            this.txtSubmitCondition.TabIndex = 13;
             // 
             // txtDepartureType
             // 
@@ -1076,7 +1076,7 @@
             this.txtDepartureType.Name = "txtDepartureType";
             this.txtDepartureType.Size = new System.Drawing.Size(121, 21);
             this.txtDepartureType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtDepartureType.TabIndex = 50;
+            this.txtDepartureType.TabIndex = 6;
             // 
             // panelInOutBtns
             // 
@@ -1109,7 +1109,7 @@
             this.btnAllOut.Name = "btnAllOut";
             this.btnAllOut.Size = new System.Drawing.Size(75, 23);
             this.btnAllOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAllOut.TabIndex = 35;
+            this.btnAllOut.TabIndex = 5;
             this.btnAllOut.Text = "<<";
             this.btnAllOut.Click += new System.EventHandler(this.btnAllOut_Click);
             // 
@@ -1122,7 +1122,7 @@
             this.btnOut.Name = "btnOut";
             this.btnOut.Size = new System.Drawing.Size(75, 23);
             this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOut.TabIndex = 36;
+            this.btnOut.TabIndex = 4;
             this.btnOut.Text = "<";
             this.btnOut.Click += new System.EventHandler(this.btnOut_Click);
             // 
@@ -1135,7 +1135,7 @@
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnIn.TabIndex = 37;
+            this.btnIn.TabIndex = 3;
             this.btnIn.Text = ">";
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
@@ -1148,7 +1148,7 @@
             this.btnAllIn.Name = "btnAllIn";
             this.btnAllIn.Size = new System.Drawing.Size(75, 23);
             this.btnAllIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAllIn.TabIndex = 38;
+            this.btnAllIn.TabIndex = 2;
             this.btnAllIn.Text = ">>";
             this.btnAllIn.Click += new System.EventHandler(this.btnAllIn_Click);
             // 
