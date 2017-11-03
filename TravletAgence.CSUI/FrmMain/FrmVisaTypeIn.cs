@@ -46,7 +46,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _recordCount = bll.GetRecordCount(string.Empty);
+            _recordCount = bll.GetRecordCount(_where);
             _pageCount = (int)Math.Ceiling(_recordCount / (double)_pageSize);
 
             //初始化一些控件
@@ -306,7 +306,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void UpdateState()
         {
-            _recordCount = bll.GetRecordCount(string.Empty);
+            _recordCount = bll.GetRecordCount(_where);
             _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
             if (_curPage == 1)
                 btnPagePre.Enabled = false;
@@ -367,13 +367,13 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
 
-        private void cbDisplayType_TextChanged(object sender, EventArgs e)
-        {
-            if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
-                return;
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
-        }
+        //private void cbDisplayType_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
+        //        return;
+        //    LoadDataToDataGridView(_curPage);
+        //    UpdateState();
+        //}
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
