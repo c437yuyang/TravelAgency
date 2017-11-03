@@ -28,15 +28,10 @@ namespace TravletAgence.CSUI.FrmMain
                 MessageBoxEx.Show("未找到指定用户!");
                 return;
             }
-            else
-            {
-                Common.GlobalInfo.LoginUser = list[0];
-                FrmMain frm = new FrmMain();
-                frm.Show();
-                this.Visible = false;
-            }
-
-            
+            Common.GlobalInfo.LoginUser = list[0];
+            FrmMain frm = new FrmMain();
+            frm.Show();
+            this.Visible = false;
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

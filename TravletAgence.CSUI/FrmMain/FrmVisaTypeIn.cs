@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -31,6 +32,7 @@ namespace TravletAgence.CSUI.FrmMain
         private readonly MyQRCode _qrCode = new MyQRCode(); //只用于批量生成二维码
         private readonly Thread _thLoadDataToDgvAndUpdateState;
         private bool _init = false;
+        private string _where = string.Empty;
 
 
         public FrmVisaTypeIn()
@@ -59,6 +61,8 @@ namespace TravletAgence.CSUI.FrmMain
             cbDisplayType.Items.Add("未记录");
             cbDisplayType.Items.Add("个签");
             cbDisplayType.Items.Add("团签");
+            cbDisplayType.DropDownStyle = ComboBoxStyle.DropDownList;
+
             cbDisplayType.SelectedIndex = 0;
 
             //设置可跨线程访问窗体
@@ -288,30 +292,13 @@ namespace TravletAgence.CSUI.FrmMain
             _init = true;
         }
 
+
         public void LoadDataToDataGridView(int page) //刷新后保持选中
         {
             int curSelectedRow = -1;
             if (dataGridView1.SelectedRows.Count > 0)
                 curSelectedRow = dataGridView1.SelectedRows[0].Index;
-            string where = string.Empty;
-            if (cbDisplayType.Text == "全部")
-            {
-
-            }
-            else if (cbDisplayType.Text == "未记录")
-            {
-                where = " Types is null or Types='' ";
-            }
-            else if (cbDisplayType.Text == "个签")
-            {
-                where = " Types = '个签' ";
-
-            }
-            else if (cbDisplayType.Text == "团签")
-            {
-                where = " Types = '团签' ";
-            }
-            dataGridView1.DataSource = bll.GetListByPageOrderByGroupNo(page, _pageSize, where);
+            dataGridView1.DataSource = bll.GetListByPageOrderByGroupNo(page, _pageSize, _where);
             if (curSelectedRow != -1 && dataGridView1.Rows.Count > curSelectedRow)
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
             dataGridView1.Update();
@@ -336,7 +323,7 @@ namespace TravletAgence.CSUI.FrmMain
         }
         #endregion
 
-        #region dgv的bar栏
+        #region dgv的bar栏和搜索栏
         private void btnPageNext_Click(object sender, EventArgs e)
         {
             LoadDataToDataGridView(++_curPage);
@@ -387,6 +374,78 @@ namespace TravletAgence.CSUI.FrmMain
             LoadDataToDataGridView(_curPage);
             UpdateState();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            _where = GetWhereCondition();
+
+            LoadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            _where = string.Empty;
+
+            LoadDataToDataGridView(_curPage);
+            UpdateState();
+        }
+
+        private string GetWhereCondition()
+        {
+            List<string> conditions = new List<string>();
+            if (cbDisplayType.Text == "全部")
+            {
+            }
+            else if (cbDisplayType.Text == "未记录")
+            {
+                conditions.Add(" Types is null or Types='' ");
+            }
+            else if (cbDisplayType.Text == "个签")
+            {
+                conditions.Add(" Types = '个签' ");
+            }
+            else if (cbDisplayType.Text == "团签")
+            {
+                conditions.Add(" Types = '团签' ");
+            }
+
+            if (!string.IsNullOrEmpty(txtSchPassportNo.Text.Trim()))
+            {
+                conditions.Add(" (PassportNo like '%" + txtSchPassportNo.Text + "%') ");
+            }
+
+            if (!string.IsNullOrEmpty(txtSchName.Text.Trim()))
+            {
+                conditions.Add(" (Name like  '%" + txtSchName.Text + "%') ");
+            }
+
+            if (!string.IsNullOrEmpty(txtSchGroupNo.Text.Trim()))
+            {
+                conditions.Add(" (GroupNo like '%" + txtSchGroupNo.Text + "%') ");
+            }
+
+            if (!string.IsNullOrEmpty(txtSchEntryTimeFrom.Text.Trim()) && !string.IsNullOrEmpty(txtSchEntryTimeTo.Text.Trim()))
+            {
+                conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + "' and " + " '" + txtSchEntryTimeTo.Text +
+                               "') ");
+            }
+
+            string[] arr = conditions.ToArray();
+            string where = string.Join(" and ", arr);
+            return where;
+        }
+
+        private void btnClearSchConditions_Click(object sender, EventArgs e)
+        {
+            cbDisplayType.Text = "全部";
+            txtSchPassportNo.Text = string.Empty;
+            txtSchEntryTimeFrom.Text = string.Empty;
+            txtSchEntryTimeTo.Text = string.Empty;
+            txtSchGroupNo.Text = string.Empty;
+            txtSchName.Text = string.Empty;
+        }
+
 
         #endregion
         #region dgv消息相应
@@ -625,6 +684,11 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
+
+
+
+
+
 
 
 

@@ -106,7 +106,7 @@
             this.txtPswd.PasswordChar = '*';
             this.txtPswd.Size = new System.Drawing.Size(150, 21);
             this.txtPswd.TabIndex = 6;
-            this.txtPswd.Text = "1001";
+            this.txtPswd.Text = "123456";
             // 
             // txtUserName
             // 
@@ -119,6 +119,7 @@
             this.txtUserName.Size = new System.Drawing.Size(150, 21);
             this.txtUserName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtUserName.TabIndex = 5;
+            this.txtUserName.Text = "user_test";
             // 
             // btnLogin
             // 
