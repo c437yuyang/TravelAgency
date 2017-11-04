@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
@@ -41,6 +42,7 @@ namespace TravletAgence.CSUI.FrmMain
             _t.Tick += AutoClassAndRecognize;
             _t.Interval = 200;
             _thLoadDataToDgvAndUpdateState = new Thread(LoadAndUpdate);
+
             _thLoadDataToDgvAndUpdateState.IsBackground = true;
         }
 
@@ -70,10 +72,18 @@ namespace TravletAgence.CSUI.FrmMain
             //Control.CheckForIllegalCrossThreadCalls = false;
 
             //加载数据
+
+            //
+            bgWorkerLoadData.WorkerReportsProgress = true;
+
             //使用异步加载
-            _thLoadDataToDgvAndUpdateState.Start();
+            //_thLoadDataToDgvAndUpdateState.Start();
             //LoadDataToDataGridView(_curPage);
             //UpdateState();
+            progressLoading.Visible = false;
+
+            LoadDataToGgvAsyn();
+            _init = true;
         }
 
         #region model与control
@@ -292,6 +302,17 @@ namespace TravletAgence.CSUI.FrmMain
             _init = true;
         }
 
+        /// <summary>
+        /// 显示进度条
+        /// </summary>
+        public void ShowProgress()
+        {
+            progressLoading.Visible = true;
+            progressLoading.IsRunning = true;
+        }
+
+
+
 
         public void LoadDataToDataGridView(int page) //刷新后保持选中
         {
@@ -326,7 +347,9 @@ namespace TravletAgence.CSUI.FrmMain
         #region dgv的bar栏和搜索栏
         private void btnPageNext_Click(object sender, EventArgs e)
         {
-            LoadDataToDataGridView(++_curPage);
+            ++_curPage;
+            bgWorkerLoadData.RunWorkerAsync();
+            //LoadDataToDataGridView(++_curPage);
             UpdateState();
         }
 
@@ -362,8 +385,7 @@ namespace TravletAgence.CSUI.FrmMain
                 return;
 
             _pageSize = int.Parse(cbPageSize.Text);
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToGgvAsyn();
         }
 
 
@@ -684,6 +706,55 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
+
+
+        #region backgroundworker load data to datagridview
+
+        private void LoadDataToGgvAsyn()
+        {
+            while (bgWorkerLoadData.IsBusy)
+            {
+                ;
+            }
+            ShowProgress();
+            bgWorkerLoadData.RunWorkerAsync();
+        }
+
+        private void bgWorkerLoadData_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    LoadDataToDataGridView(_curPage);
+                    UpdateState();
+                }));
+            }
+            else
+            {
+                LoadDataToDataGridView(_curPage);
+                UpdateState();
+            }
+        }
+
+        private void bgWorkerLoadData_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            //this.progressLoading.Visible = true;
+            //this.progressLoading.IsRunning = true;
+        }
+
+        private void bgWorkerLoadData_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            this.progressLoading.Visible = false;
+            this.progressLoading.IsRunning = false;
+        }
+        #endregion
+
+
+
+
+
+
 
 
 
