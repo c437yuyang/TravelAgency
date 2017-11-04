@@ -165,6 +165,7 @@ namespace TravletAgence.CSUI.FrmSub
             //设置操作员
             txtSalesPerson.Text = Common.GlobalInfo.LoginUser.UserName;
             txtSalesPerson.Enabled = false;
+            
 
 
             if (_list != null && _visaModel == null && !_initFromVisaModel)
@@ -205,6 +206,13 @@ namespace TravletAgence.CSUI.FrmSub
             dgvGroupInfo.DataSource = _dgvList;
             //dgvGroupInfo.Invalidate();
             //dgvGroupInfo.Update();
+
+            int n = dgvGroupInfo.RowCount;
+            for (int i = 0; i != n; ++i)
+            {
+                dgvGroupInfo.Rows[i].Cells["SalesPerson"].Value = txtSalesPerson.Text;
+            }
+
         }
 
         /// <summary>

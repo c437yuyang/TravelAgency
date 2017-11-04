@@ -64,8 +64,6 @@
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.txtClient = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cbCountry = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.China = new DevComponents.Editors.ComboItem();
-            this.America = new DevComponents.Editors.ComboItem();
             this.Japan = new DevComponents.Editors.ComboItem();
             this.Korea = new DevComponents.Editors.ComboItem();
             this.Thailand = new DevComponents.Editors.ComboItem();
@@ -266,7 +264,7 @@
             this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvGroupInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGroupInfo.EnableHeadersVisualStyles = false;
-            this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvGroupInfo.Location = new System.Drawing.Point(0, 0);
             this.dgvGroupInfo.Name = "dgvGroupInfo";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -593,8 +591,6 @@
             this.cbCountry.FormattingEnabled = true;
             this.cbCountry.ItemHeight = 15;
             this.cbCountry.Items.AddRange(new object[] {
-            this.China,
-            this.America,
             this.Japan,
             this.Korea,
             this.Thailand});
@@ -603,14 +599,6 @@
             this.cbCountry.Size = new System.Drawing.Size(121, 21);
             this.cbCountry.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbCountry.TabIndex = 8;
-            // 
-            // China
-            // 
-            this.China.Text = "中国";
-            // 
-            // America
-            // 
-            this.America.Text = "美国";
             // 
             // Japan
             // 
@@ -995,8 +983,6 @@
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtDepartureTime;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbCountry;
-        private DevComponents.Editors.ComboItem China;
-        private DevComponents.Editors.ComboItem America;
         private DevComponents.Editors.ComboItem Japan;
         private DevComponents.Editors.ComboItem Korea;
         private DevComponents.Editors.ComboItem Thailand;
