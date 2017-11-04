@@ -31,7 +31,7 @@ namespace TravletAgence.CSUI.FrmMain
         private bool _autoReadThreadRun = false;
         private readonly Timer _t = new Timer();
         private readonly MyQRCode _qrCode = new MyQRCode(); //只用于批量生成二维码
-        private readonly Thread _thLoadDataToDgvAndUpdateState;
+        //private readonly Thread _thLoadDataToDgvAndUpdateState;
         private bool _init = false;
         private string _where = string.Empty;
 
@@ -41,9 +41,9 @@ namespace TravletAgence.CSUI.FrmMain
             InitializeComponent();
             _t.Tick += AutoClassAndRecognize;
             _t.Interval = 200;
-            _thLoadDataToDgvAndUpdateState = new Thread(LoadAndUpdate);
+            //_thLoadDataToDgvAndUpdateState = new Thread(LoadAndUpdate);
 
-            _thLoadDataToDgvAndUpdateState.IsBackground = true;
+            //_thLoadDataToDgvAndUpdateState.IsBackground = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace TravletAgence.CSUI.FrmMain
             //UpdateState();
             progressLoading.Visible = false;
 
-            LoadDataToGgvAsyn();
+            LoadDataToDgvAsyn();
             _init = true;
         }
 
@@ -178,8 +178,9 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 if (bll.Add(model))
                 {
-                    LoadDataToDataGridView(_curPage);
-                    UpdateState();
+                    //LoadDataToDataGridView(_curPage);
+                    //UpdateState();
+                    LoadDataToDgvAsyn();
                 }
                 else
                     MessageBoxEx.Show(Resources.FailedAddToDatabase);
@@ -280,8 +281,7 @@ namespace TravletAgence.CSUI.FrmMain
                 MessageBoxEx.Show(Resources.FailedAddToDatabase);
                 return;
             }
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
         #endregion
 
@@ -290,17 +290,15 @@ namespace TravletAgence.CSUI.FrmMain
 
         #region dgv用到的相关方法
 
-        //用于异步加载
-        public void LoadAndUpdate()
-        {
-            this.Invoke(new Action(() =>
-            {
-                //dataGridView1.DataSource = null;
-                LoadDataToDataGridView(_curPage);
-                UpdateState();
-            }));
-            _init = true;
-        }
+//        //用于异步加载
+//        public void LoadAndUpdate()
+//        {
+//            this.Invoke(new Action(() =>
+//            {
+//LoadDataToDgvAsyn();
+//            }));
+//            _init = true;
+//        }
 
         /// <summary>
         /// 显示进度条
@@ -348,29 +346,25 @@ namespace TravletAgence.CSUI.FrmMain
         private void btnPageNext_Click(object sender, EventArgs e)
         {
             ++_curPage;
-            bgWorkerLoadData.RunWorkerAsync();
-            //LoadDataToDataGridView(++_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
 
         private void btnPagePre_Click(object sender, EventArgs e)
         {
-            LoadDataToDataGridView(--_curPage);
-            UpdateState();
+            --_curPage;
+            LoadDataToDgvAsyn();
         }
 
         private void btnPageFirst_Click(object sender, EventArgs e)
         {
             _curPage = 1;
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
 
         private void btnPageLast_Click(object sender, EventArgs e)
         {
             _curPage = _pageCount;
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
 
         private void cbPageSize_Click(object sender, EventArgs e)
@@ -385,7 +379,7 @@ namespace TravletAgence.CSUI.FrmMain
                 return;
 
             _pageSize = int.Parse(cbPageSize.Text);
-            LoadDataToGgvAsyn();
+            LoadDataToDgvAsyn();
         }
 
 
@@ -401,16 +395,16 @@ namespace TravletAgence.CSUI.FrmMain
         {
             _where = GetWhereCondition();
 
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
+
         }
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             _where = string.Empty;
 
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
+
         }
 
         private string GetWhereCondition()
@@ -710,7 +704,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         #region backgroundworker load data to datagridview
 
-        private void LoadDataToGgvAsyn()
+        private void LoadDataToDgvAsyn()
         {
             while (bgWorkerLoadData.IsBusy)
             {
