@@ -43,7 +43,7 @@ namespace TravletAgence.DAL
 			SqlParameter[] parameters = {
 					new SqlParameter("@VisaInfo_id", SqlDbType.UniqueIdentifier,16),
 					new SqlParameter("@Visa_id", SqlDbType.VarChar,50),
-					new SqlParameter("@GroupNo", SqlDbType.VarChar,50),
+					new SqlParameter("@GroupNo", SqlDbType.VarChar,500),
 					new SqlParameter("@Name", SqlDbType.VarChar,50),
 					new SqlParameter("@EnglishName", SqlDbType.VarChar,50),
 					new SqlParameter("@Sex", SqlDbType.VarChar,50),
@@ -184,7 +184,7 @@ namespace TravletAgence.DAL
 			strSql.Append(" where VisaInfo_id=@VisaInfo_id ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Visa_id", SqlDbType.VarChar,50),
-					new SqlParameter("@GroupNo", SqlDbType.VarChar,50),
+					new SqlParameter("@GroupNo", SqlDbType.VarChar,500),
 					new SqlParameter("@Name", SqlDbType.VarChar,50),
 					new SqlParameter("@EnglishName", SqlDbType.VarChar,50),
 					new SqlParameter("@Sex", SqlDbType.VarChar,50),

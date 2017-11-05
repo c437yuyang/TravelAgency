@@ -25,9 +25,19 @@ namespace TravletAgence.CSUI.FrmMain
         private int _recordCount = 0;
         private bool _init = false;
         private string _where = string.Empty;
+        private bool _forAddToGroup = false; //为没有添加团号的用户添加到团号的时候选择团号而设计
+        private List<Model.VisaInfo> _listToAddToGroup;
 
         public FrmVisaManage()
         {
+            InitializeComponent();
+        }
+
+        public FrmVisaManage(bool forAddToGroup, List<Model.VisaInfo> list)
+        {
+            _forAddToGroup = forAddToGroup;
+            _listToAddToGroup = list;
+            this.StartPosition = FormStartPosition.CenterParent;
             InitializeComponent();
         }
 
@@ -60,17 +70,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         #region dgv用到的相关方法
 
-        //用于异步加载
-        //public void LoadAndUpdate()
-        //{
-        //    this.Invoke(new Action(() =>
-        //    {
-        //        //dataGridView1.DataSource = null;
-        //        LoadDataToDataGridView(_curPage);
-        //        UpdateState();
-        //    }));
-        //    _init = true;
-        //}
+
 
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace TravletAgence.CSUI.FrmMain
                 conditions.Add(" Types = '团签' ");
             }
 
-            
+
 
             if (!string.IsNullOrEmpty(txtSchGroupNo.Text.Trim()))
             {
@@ -197,9 +197,9 @@ namespace TravletAgence.CSUI.FrmMain
                 conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + "' and " + " '" + txtSchEntryTimeTo.Text +
                                "') ");
             }
-            if(!string.IsNullOrEmpty(txtSchSalesPerson.Text.Trim()))
+            if (!string.IsNullOrEmpty(txtSchSalesPerson.Text.Trim()))
             {
-                    conditions.Add(" (SalesPerson like '%" + txtSchSalesPerson.Text + "%') ");
+                conditions.Add(" (SalesPerson like '%" + txtSchSalesPerson.Text + "%') ");
             }
 
             string[] arr = conditions.ToArray();
@@ -254,6 +254,7 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 if (e.RowIndex >= 0)
                 {
+
                     //若行已是选中状态就不再进行设置
                     //如果没选中当前活动行则选中这一行
                     if (dataGridView1.Rows[e.RowIndex].Selected == false)
@@ -270,7 +271,14 @@ namespace TravletAgence.CSUI.FrmMain
                             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
                     }
                     //弹出操作菜单
-                    cmsDgv.Show(MousePosition.X, MousePosition.Y);
+                    if (!_forAddToGroup)
+                    {
+                        cmsDgv.Show(MousePosition.X, MousePosition.Y);
+                    }
+                    else
+                    {
+                        cmsAddToGroup.Show(MousePosition.X, MousePosition.Y);
+                    }
                 }
             }
         }
@@ -282,22 +290,29 @@ namespace TravletAgence.CSUI.FrmMain
                 MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
                 return;
             }
-            Model.Visa model = _bllVisa.GetModel((Guid)dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
-            if (model == null)
+            if (!_forAddToGroup)
             {
-                MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
-                return;
-            }
+                Model.Visa model = _bllVisa.GetModel((Guid)dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
+                if (model == null)
+                {
+                    MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                    return;
+                }
 
-            if (model.Types == Common.Enums.Types.Individual)
-            {
-                FrmSetGroup frm = new FrmSetGroup(model, LoadDataToDataGridView, _curPage);
-                frm.ShowDialog();
+                if (model.Types == Common.Enums.Types.Individual)
+                {
+                    FrmSetGroup frm = new FrmSetGroup(model, LoadDataToDataGridView, _curPage);
+                    frm.ShowDialog();
+                }
+                else if (model.Types == Common.Enums.Types.Team)
+                {
+                    FrmSetTeamVisaGroup frm = new FrmSetTeamVisaGroup(model, LoadDataToDataGridView, _curPage);
+                    frm.ShowDialog();
+                }
             }
-            else if (model.Types == Common.Enums.Types.Team)
+            else //添加用户的情况
             {
-                FrmSetTeamVisaGroup frm = new FrmSetTeamVisaGroup(model, LoadDataToDataGridView, _curPage);
-                frm.ShowDialog();
+                //执行添加到此团号的逻辑
             }
         }
 
@@ -359,7 +374,7 @@ namespace TravletAgence.CSUI.FrmMain
                 return;
             }
 
-            Model.Visa model = _bllVisa.GetModel((Guid) dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
+            Model.Visa model = _bllVisa.GetModel((Guid)dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
             if (model == null)
             {
                 MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
@@ -376,7 +391,7 @@ namespace TravletAgence.CSUI.FrmMain
                 FrmSetTeamVisaGroup frm = new FrmSetTeamVisaGroup(model, LoadDataToDataGridView, _curPage);
                 frm.ShowDialog();
             }
-            
+
         }
 
         private void cmsItemRefreshDatabase_Click(object sender, EventArgs e)
@@ -399,7 +414,7 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 Model.Visa model =
                     _bllVisa.GetModel(Guid.Parse(dataGridView1.SelectedRows[i].Cells["Visa_id"].Value.ToString()));
-                if(!_bllVisa.DeleteVisaAndModifyVisaInfos(model))
+                if (!_bllVisa.DeleteVisaAndModifyVisaInfos(model))
                 {
                     MessageBoxEx.Show("删除失败!");
                 }
@@ -410,6 +425,67 @@ namespace TravletAgence.CSUI.FrmMain
             UpdateState();
         }
 
+        private void 添加到团号ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //执行添加到团号的逻辑
+            Model.Visa visaModel = _bllVisa.GetModel(Guid.Parse(dataGridView1.SelectedRows[0].Cells["Visa_id"].Value.ToString()));
+            //
+            for (int i = 0; i != _listToAddToGroup.Count; ++i)
+            {
+                _listToAddToGroup[i].Visa_id = visaModel.Visa_id.ToString();
+                _listToAddToGroup[i].GroupNo = visaModel.GroupNo;
+                _listToAddToGroup[i].Types = visaModel.Types;
+            }
+
+
+            //更新团号的人数
+            visaModel.Number += _listToAddToGroup.Count;
+            if (visaModel.Types == Common.Enums.Types.Individual)
+            {
+                if (MessageBoxEx.Show("是否自动更新团号名称?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    visaModel.GroupNo += "、";
+                    for (int i = 0; i < _listToAddToGroup.Count; ++i)
+                    {
+                        visaModel.GroupNo += _listToAddToGroup[i].Name;
+                        if (i == _listToAddToGroup.Count - 1)
+                            break;
+                        visaModel.GroupNo += "、";
+                    }
+
+                    for (int i = 0; i < _listToAddToGroup.Count; ++i)
+                    {
+                        _listToAddToGroup[i].GroupNo = visaModel.GroupNo;
+                    }
+                }
+
+            }
+
+            int n = _bllVisaInfo.UpdateByList(_listToAddToGroup);
+            MessageBoxEx.Show(n.ToString() + "条记录更新成功," + (_listToAddToGroup.Count - n) + "条记录更新失败!");
+
+            if (!_bllVisa.Update(visaModel))
+            {
+                MessageBoxEx.Show("更新团号信息失败!");
+                return;
+            }
+            //之后询问用户是否重新设置资料
+            if (MessageBoxEx.Show("是否进入资料设置？", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (visaModel.Types == Common.Enums.Types.Individual)
+                {
+                    FrmSetGroup frm = new FrmSetGroup(visaModel, this.LoadDataToDataGridView, _curPage);
+                    frm.ShowDialog();
+                }
+                else if (visaModel.Types == Common.Enums.Types.Team)
+                {
+                    FrmSetTeamVisaGroup frm = new FrmSetTeamVisaGroup(visaModel, this.LoadDataToDataGridView, _curPage);
+                    frm.ShowDialog();
+                    
+                }
+            }
+            this.Close();
+        }
 
         #endregion
 

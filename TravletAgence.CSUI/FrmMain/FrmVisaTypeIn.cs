@@ -34,6 +34,7 @@ namespace TravletAgence.CSUI.FrmMain
         //private readonly Thread _thLoadDataToDgvAndUpdateState;
         private bool _init = false;
         private string _where = string.Empty;
+        
 
 
         public FrmVisaTypeIn()
@@ -686,6 +687,18 @@ namespace TravletAgence.CSUI.FrmMain
         {
 
             int count = this.dataGridView1.SelectedRows.Count;
+            var list = GetSelecttionList();
+            if (list == null)
+                return;
+            FrmGroupOrIndividual frmGroupOrIndividual = new FrmGroupOrIndividual(list, LoadDataToDataGridView, _curPage);
+            frmGroupOrIndividual.ShowDialog();
+
+        }
+
+
+        private List<Model.VisaInfo> GetSelecttionList()
+        {
+            int count = this.dataGridView1.SelectedRows.Count;
             List<Model.VisaInfo> list = new List<VisaInfo>();
             for (int i = 0; i != count; ++i)
             {
@@ -693,22 +706,26 @@ namespace TravletAgence.CSUI.FrmMain
                 if (model == null)
                 {
                     MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
-                    return;
+                    return null;
                 }
                 if (!string.IsNullOrEmpty(model.Visa_id))
                 {
                     MessageBoxEx.Show("选中项中有已经设置过团号的签证!");
-                    return;
+                    return null;
                 }
                 if (model != null)
                     list.Add(model);
             }
+            return list;
+        }
 
-            FrmGroupOrIndividual frmGroupOrIndividual = new FrmGroupOrIndividual(list, LoadDataToDataGridView, _curPage);
-            frmGroupOrIndividual.ShowDialog();
-
-            //FrmSetGroup frmSetGroup = new FrmSetGroup(list, LoadDataToDataGridView, _curPage);
-            //frmSetGroup.ShowDialog();
+        private void 添加到团号ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var list = GetSelecttionList();
+            if (list == null)
+                return;
+            FrmVisaManage frm = new FrmVisaManage(true, list);
+            frm.ShowDialog();
         }
 
         #endregion
@@ -754,6 +771,7 @@ namespace TravletAgence.CSUI.FrmMain
             this.progressLoading.Visible = false;
             this.progressLoading.IsRunning = false;
         }
+
 
         #endregion
 
