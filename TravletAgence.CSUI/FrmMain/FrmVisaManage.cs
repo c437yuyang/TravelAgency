@@ -24,15 +24,11 @@ namespace TravletAgence.CSUI.FrmMain
         private int _pageSize = 30;
         private int _recordCount = 0;
         private bool _init = false;
-
-
-        private readonly Thread _thLoadDataToDgvAndUpdateState;
+        private string _where = string.Empty;
 
         public FrmVisaManage()
         {
             InitializeComponent();
-            _thLoadDataToDgvAndUpdateState = new Thread(LoadAndUpdate);
-            _thLoadDataToDgvAndUpdateState.IsBackground = true;
         }
 
         private void FrmVisaManage_Load(object sender, EventArgs e)
@@ -44,6 +40,7 @@ namespace TravletAgence.CSUI.FrmMain
             cbPageSize.Items.Add("100");
             cbPageSize.SelectedIndex = 0;
 
+            cbDisplayType.DropDownStyle = ComboBoxStyle.DropDownList;
             cbDisplayType.Items.Add("全部");
             cbDisplayType.Items.Add("未记录");
             cbDisplayType.Items.Add("个签");
@@ -52,12 +49,11 @@ namespace TravletAgence.CSUI.FrmMain
 
             dataGridView1.AutoGenerateColumns = false; //不显示指定之外的列
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
-            //dataGridView1.Columns["CountryImage"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //加载数据
-            //loadDataToDataGridView(_curPage);
-            //UpdateState();
-            _thLoadDataToDgvAndUpdateState.Start();
 
+            bgWorkerLoadData.WorkerReportsProgress = true;
+            progressLoading.Visible = false;
+            LoadDataToDgvAsyn();
+            _init = true;
         }
 
 
@@ -65,41 +61,35 @@ namespace TravletAgence.CSUI.FrmMain
         #region dgv用到的相关方法
 
         //用于异步加载
-        public void LoadAndUpdate()
+        //public void LoadAndUpdate()
+        //{
+        //    this.Invoke(new Action(() =>
+        //    {
+        //        //dataGridView1.DataSource = null;
+        //        LoadDataToDataGridView(_curPage);
+        //        UpdateState();
+        //    }));
+        //    _init = true;
+        //}
+
+
+        /// <summary>
+        /// 显示进度条
+        /// </summary>
+        public void ShowProgress()
         {
-            this.Invoke(new Action(() =>
-            {
-                //dataGridView1.DataSource = null;
-                LoadDataToDataGridView(_curPage);
-                UpdateState();
-            }));
-            _init = true;
+            progressLoading.Visible = true;
+            progressLoading.IsRunning = true;
         }
+
 
         public void LoadDataToDataGridView(int page) //刷新后保持选中
         {
             int curSelectedRow = -1;
             if (dataGridView1.SelectedRows.Count > 0)
                 curSelectedRow = dataGridView1.SelectedRows[0].Index;
-            string where = string.Empty;
-            if (cbDisplayType.Text == "全部")
-            {
 
-            }
-            else if (cbDisplayType.Text == "未记录")
-            {
-                where = " Types is null or Types='' ";
-            }
-            else if (cbDisplayType.Text == "个签")
-            {
-                where = " Types = '个签' ";
-
-            }
-            else if (cbDisplayType.Text == "团签")
-            {
-                where = " Types = '团签' ";
-            }
-            dataGridView1.DataSource = _bllVisa.GetListByPage(page, _pageSize, where);
+            dataGridView1.DataSource = _bllVisa.GetListByPage(page, _pageSize, _where);
             if (curSelectedRow != -1 && dataGridView1.Rows.Count > curSelectedRow)
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
 
@@ -107,7 +97,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         public void UpdateState()
         {
-            _recordCount = _bllVisa.GetRecordCount(string.Empty);
+            _recordCount = _bllVisa.GetRecordCount(_where);
             _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
             if (_curPage == 1)
                 btnPagePre.Enabled = false;
@@ -117,8 +107,6 @@ namespace TravletAgence.CSUI.FrmMain
                 btnPageNext.Enabled = false;
             else
                 btnPageNext.Enabled = true;
-            //lbRecordCount.Text = "当前为第:" + Convert.ToInt32(_curPage)
-            //                + "页,共" + Convert.ToInt32(_pageCount) + "页,每页共" + _pageSize + "条.";
             lbRecordCount.Text = "共有记录:" + _recordCount + "条";
             lbCurPage.Text = "当前为第" + _curPage + "页";
         }
@@ -128,29 +116,28 @@ namespace TravletAgence.CSUI.FrmMain
         #region dgv的bar栏
         private void btnPageNext_Click(object sender, EventArgs e)
         {
-            LoadDataToDataGridView(++_curPage);
-            UpdateState();
+            ++_curPage;
+            LoadDataToDgvAsyn();
         }
 
         private void btnPagePre_Click(object sender, EventArgs e)
         {
-            LoadDataToDataGridView(--_curPage);
-            UpdateState();
+            --_curPage;
+            LoadDataToDgvAsyn();
         }
 
         private void btnPageFirst_Click(object sender, EventArgs e)
         {
             _curPage = 1;
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
 
         private void btnPageLast_Click(object sender, EventArgs e)
         {
             _curPage = _pageCount;
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
+
 
         private void cbPageSize_TextChanged(object sender, EventArgs e)
         {
@@ -158,16 +145,74 @@ namespace TravletAgence.CSUI.FrmMain
                 return;
 
             _pageSize = int.Parse(cbPageSize.Text);
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
 
-        private void cbDisplayType_TextChanged(object sender, EventArgs e)
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
-                return;
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            _where = GetWhereCondition();
+
+            LoadDataToDgvAsyn();
+
+        }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            _where = string.Empty;
+
+            LoadDataToDgvAsyn();
+
+        }
+
+        private string GetWhereCondition()
+        {
+            List<string> conditions = new List<string>();
+            if (cbDisplayType.Text == "全部")
+            {
+            }
+            else if (cbDisplayType.Text == "未记录")
+            {
+                conditions.Add(" Types is null or Types='' ");
+            }
+            else if (cbDisplayType.Text == "个签")
+            {
+                conditions.Add(" Types = '个签' ");
+            }
+            else if (cbDisplayType.Text == "团签")
+            {
+                conditions.Add(" Types = '团签' ");
+            }
+
+            
+
+            if (!string.IsNullOrEmpty(txtSchGroupNo.Text.Trim()))
+            {
+                conditions.Add(" (GroupNo like '%" + txtSchGroupNo.Text + "%') ");
+            }
+
+            if (!string.IsNullOrEmpty(txtSchEntryTimeFrom.Text.Trim()) && !string.IsNullOrEmpty(txtSchEntryTimeTo.Text.Trim()))
+            {
+                conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + "' and " + " '" + txtSchEntryTimeTo.Text +
+                               "') ");
+            }
+            if(!string.IsNullOrEmpty(txtSchSalesPerson.Text.Trim()))
+            {
+                    conditions.Add(" (SalesPerson like '%" + txtSchSalesPerson.Text + "%') ");
+            }
+
+            string[] arr = conditions.ToArray();
+            string where = string.Join(" and ", arr);
+            return where;
+        }
+
+        private void btnClearSchConditions_Click(object sender, EventArgs e)
+        {
+            cbDisplayType.Text = "全部";
+            txtSchEntryTimeFrom.Text = string.Empty;
+            txtSchEntryTimeTo.Text = string.Empty;
+            txtSchGroupNo.Text = string.Empty;
         }
 
         #endregion
@@ -232,8 +277,48 @@ namespace TravletAgence.CSUI.FrmMain
 
         #endregion
 
-   
 
+        #region backgroundworker load data to datagridview
+
+        private void LoadDataToDgvAsyn()
+        {
+            while (bgWorkerLoadData.IsBusy)
+            {
+                ;
+            }
+            ShowProgress();
+            bgWorkerLoadData.RunWorkerAsync();
+        }
+
+        private void bgWorkerLoadData_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    LoadDataToDataGridView(_curPage);
+                    UpdateState();
+                }));
+            }
+            else
+            {
+                LoadDataToDataGridView(_curPage);
+                UpdateState();
+            }
+        }
+
+        private void bgWorkerLoadData_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            //this.progressLoading.Visible = true;
+            //this.progressLoading.IsRunning = true;
+        }
+
+        private void bgWorkerLoadData_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            this.progressLoading.Visible = false;
+            this.progressLoading.IsRunning = false;
+        }
+        #endregion
         #region dgv右键响应
         /// <summary>
         /// 查看选中团号，可以移出团号里的人
@@ -301,20 +386,6 @@ namespace TravletAgence.CSUI.FrmMain
 
         #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
     }
 }
