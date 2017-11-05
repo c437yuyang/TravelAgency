@@ -38,6 +38,7 @@ namespace TravletAgence.CSUI.FrmMain
             _forAddToGroup = forAddToGroup;
             _listToAddToGroup = list;
             this.StartPosition = FormStartPosition.CenterParent;
+            this.Text = "请选择需要添加到的团号";
             InitializeComponent();
         }
 
@@ -313,6 +314,7 @@ namespace TravletAgence.CSUI.FrmMain
             else //添加用户的情况
             {
                 //执行添加到此团号的逻辑
+                AddToSelectGroup();
             }
         }
 
@@ -427,6 +429,16 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void 添加到团号ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AddToSelectGroup();
+        }
+
+
+        private void AddToSelectGroup()
+        {
+            if(MessageBoxEx.Show("是否添加到选中团号?", "确认", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                return;
+            }
             //执行添加到团号的逻辑
             Model.Visa visaModel = _bllVisa.GetModel(Guid.Parse(dataGridView1.SelectedRows[0].Cells["Visa_id"].Value.ToString()));
             //
@@ -481,7 +493,7 @@ namespace TravletAgence.CSUI.FrmMain
                 {
                     FrmSetTeamVisaGroup frm = new FrmSetTeamVisaGroup(visaModel, this.LoadDataToDataGridView, _curPage);
                     frm.ShowDialog();
-                    
+
                 }
             }
             this.Close();

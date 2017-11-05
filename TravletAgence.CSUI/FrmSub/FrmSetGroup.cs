@@ -107,7 +107,7 @@ namespace TravletAgence.CSUI.FrmSub
                 return;
 
             //查询得到所有的属于这个团的用户
-            _list = _bllVisaInfo.GetModelList(" GroupNo = '" + _visaModel.GroupNo + "'");
+            _list = _bllVisaInfo.GetModelList(" Visa_id = '" + _visaModel.Visa_id.ToString() + "'");
 
             //根据list加载列表
             lvOut.Items.Clear();
