@@ -507,7 +507,18 @@ namespace TravletAgence.CSUI.FrmMain
                 }
             }
         }
-
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                var row = dataGridView1.CurrentRow;
+                if (!string.IsNullOrEmpty((string)row.Cells["EnglishName"].Value) && !string.IsNullOrEmpty((string)row.Cells["PassportNo"].Value))
+                {
+                    FrmQRCode frm = new FrmQRCode(row.Cells["EnglishName"].Value + "|" + row.Cells["PassportNo"].Value);
+                    frm.ShowDialog();
+                }
+            }
+        }
         #endregion
 
         #region dgv右键菜单相应
@@ -622,6 +633,7 @@ namespace TravletAgence.CSUI.FrmMain
             this.progressLoading.Visible = false;
             this.progressLoading.IsRunning = false;
         }
+
 
 
         #endregion

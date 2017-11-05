@@ -275,6 +275,32 @@ namespace TravletAgence.CSUI.FrmMain
             }
         }
 
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
+                return;
+            }
+            Model.Visa model = _bllVisa.GetModel((Guid)dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
+            if (model == null)
+            {
+                MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                return;
+            }
+
+            if (model.Types == Common.Enums.Types.Individual)
+            {
+                FrmSetGroup frm = new FrmSetGroup(model, LoadDataToDataGridView, _curPage);
+                frm.ShowDialog();
+            }
+            else if (model.Types == Common.Enums.Types.Team)
+            {
+                FrmSetTeamVisaGroup frm = new FrmSetTeamVisaGroup(model, LoadDataToDataGridView, _curPage);
+                frm.ShowDialog();
+            }
+        }
+
         #endregion
 
 
@@ -384,8 +410,9 @@ namespace TravletAgence.CSUI.FrmMain
             UpdateState();
         }
 
+
         #endregion
 
-       
+
     }
 }
