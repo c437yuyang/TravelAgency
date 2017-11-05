@@ -745,21 +745,5 @@ namespace TravletAgence.CSUI.FrmMain
         #endregion
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

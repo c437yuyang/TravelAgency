@@ -56,7 +56,6 @@ namespace TravletAgence.CSUI.FrmMain
             //加载数据
             //loadDataToDataGridView(_curPage);
             //UpdateState();
-
             _thLoadDataToDgvAndUpdateState.Start();
 
         }

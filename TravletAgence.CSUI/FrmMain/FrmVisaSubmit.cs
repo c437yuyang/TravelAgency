@@ -32,20 +32,15 @@ namespace TravletAgence.CSUI.FrmMain
         private string _outState = string.Empty; //Single模式下的状态设置
         private Inputmode _inputMode = Inputmode.Single;
         private readonly MyQRCode _qrCode = new MyQRCode();
-        private readonly Thread _thLoadDataToDgvAndUpdateState;
+        //private readonly Thread _thLoadDataToDgvAndUpdateState;
         private bool _init = false;
-
-        //class PersonInfo
-        //{
-        //    public string passportNo { get; set; }
-        //    public string englishName { get; set; }
-        //}
+        private string _where = string.Empty;
 
         public FrmVisaSubmit()
         {
             InitializeComponent();
-            _thLoadDataToDgvAndUpdateState = new Thread(LoadAndUpdate);
-            _thLoadDataToDgvAndUpdateState.IsBackground = true;
+            //_thLoadDataToDgvAndUpdateState = new Thread(LoadAndUpdate);
+            //_thLoadDataToDgvAndUpdateState.IsBackground = true;
         }
 
         private void txtInput_TextChanged(object sender, EventArgs e)
@@ -187,11 +182,16 @@ namespace TravletAgence.CSUI.FrmMain
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
             rbtnIn.Select();
             rbtnSingle.Select();
-            //加载数据
-            //LoadDataToDataGridView(_curPage);
-            //UpdateState();
 
-            _thLoadDataToDgvAndUpdateState.Start();
+            cbDisplayType.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            //加载数据
+
+            bgWorkerLoadData.WorkerReportsProgress = true;
+            progressLoading.Visible = false;
+
+            LoadDataToDgvAsyn();
+            _init = true;
 
         }
 
@@ -289,27 +289,10 @@ namespace TravletAgence.CSUI.FrmMain
             int curSelectedRow = -1;
             if (dataGridView1.SelectedRows.Count > 0)
                 curSelectedRow = dataGridView1.SelectedRows[0].Index;
-            string where = string.Empty;
-            if (cbDisplayType.Text == "全部")
-            {
-
-            }
-            else if (cbDisplayType.Text == "未记录")
-            {
-                where = " Types is null or Types='' ";
-            }
-            else if (cbDisplayType.Text == "个签")
-            {
-                where = " Types = '个签' ";
-
-            }
-            else if (cbDisplayType.Text == "团签")
-            {
-                where = " Types = '团签' ";
-            }
-            dataGridView1.DataSource = bll.GetListByPageOrderByOutState(page, _pageSize, where);
+            dataGridView1.DataSource = bll.GetListByPageOrderByOutState(page, _pageSize, _where);
             if (curSelectedRow != -1 && dataGridView1.Rows.Count > curSelectedRow)
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
+            dataGridView1.Update();
         }
 
         public void UpdateState()
@@ -335,46 +318,115 @@ namespace TravletAgence.CSUI.FrmMain
         #region dgv的bar栏
         private void btnPageNext_Click(object sender, EventArgs e)
         {
-            LoadDataToDataGridView(++_curPage);
-            UpdateState();
+            ++_curPage;
+            LoadDataToDgvAsyn();
         }
 
         private void btnPagePre_Click(object sender, EventArgs e)
         {
-            LoadDataToDataGridView(--_curPage);
-            UpdateState();
+            --_curPage;
+            LoadDataToDgvAsyn();
         }
 
         private void btnPageFirst_Click(object sender, EventArgs e)
         {
             _curPage = 1;
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
 
         private void btnPageLast_Click(object sender, EventArgs e)
         {
             _curPage = _pageCount;
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
 
+        private void cbPageSize_Click(object sender, EventArgs e)
+        {
+            //_pageSize = int.Parse(cbPageSize.Text);
+            //LoadDataToDataGridView(_curPage);
+            //UpdateState();
+        }
         private void cbPageSize_TextChanged(object sender, EventArgs e)
         {
             if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
                 return;
 
             _pageSize = int.Parse(cbPageSize.Text);
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            LoadDataToDgvAsyn();
         }
-        private void cbDisplayType_TextChanged(object sender, EventArgs e)
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (!_init) //因为窗口初始化的时候也会调用，所以禁止多次调用
-                return;
-            LoadDataToDataGridView(_curPage);
-            UpdateState();
+            _where = GetWhereCondition();
+
+            LoadDataToDgvAsyn();
+
         }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            _where = string.Empty;
+
+            LoadDataToDgvAsyn();
+
+        }
+
+        private string GetWhereCondition()
+        {
+            List<string> conditions = new List<string>();
+            if (cbDisplayType.Text == "全部")
+            {
+            }
+            else if (cbDisplayType.Text == "未记录")
+            {
+                conditions.Add(" Types is null or Types='' ");
+            }
+            else if (cbDisplayType.Text == "个签")
+            {
+                conditions.Add(" Types = '个签' ");
+            }
+            else if (cbDisplayType.Text == "团签")
+            {
+                conditions.Add(" Types = '团签' ");
+            }
+
+            if (!string.IsNullOrEmpty(txtSchPassportNo.Text.Trim()))
+            {
+                conditions.Add(" (PassportNo like '%" + txtSchPassportNo.Text + "%') ");
+            }
+
+            if (!string.IsNullOrEmpty(txtSchName.Text.Trim()))
+            {
+                conditions.Add(" (Name like  '%" + txtSchName.Text + "%') ");
+            }
+
+            if (!string.IsNullOrEmpty(txtSchGroupNo.Text.Trim()))
+            {
+                conditions.Add(" (GroupNo like '%" + txtSchGroupNo.Text + "%') ");
+            }
+
+            if (!string.IsNullOrEmpty(txtSchEntryTimeFrom.Text.Trim()) && !string.IsNullOrEmpty(txtSchEntryTimeTo.Text.Trim()))
+            {
+                conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + "' and " + " '" + txtSchEntryTimeTo.Text +
+                               "') ");
+            }
+
+            string[] arr = conditions.ToArray();
+            string where = string.Join(" and ", arr);
+            return where;
+        }
+
+        private void btnClearSchConditions_Click(object sender, EventArgs e)
+        {
+            cbDisplayType.Text = "全部";
+            txtSchPassportNo.Text = string.Empty;
+            txtSchEntryTimeFrom.Text = string.Empty;
+            txtSchEntryTimeTo.Text = string.Empty;
+            txtSchGroupNo.Text = string.Empty;
+            txtSchName.Text = string.Empty;
+        }
+
 
         #endregion
         #region dgv消息相应
@@ -523,6 +575,56 @@ namespace TravletAgence.CSUI.FrmMain
         #endregion
 
 
+        #region backgroundworker load data to datagridview
+
+        public void ShowProgress()
+        {
+            progressLoading.Visible = true;
+            progressLoading.IsRunning = true;
+        }
+
+
+        private void LoadDataToDgvAsyn()
+        {
+            while (bgWorkerLoadData.IsBusy)
+            {
+                ;
+            }
+            ShowProgress();
+            bgWorkerLoadData.RunWorkerAsync();
+        }
+
+        private void bgWorkerLoadData_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    LoadDataToDataGridView(_curPage);
+                    UpdateState();
+                }));
+            }
+            else
+            {
+                LoadDataToDataGridView(_curPage);
+                UpdateState();
+            }
+        }
+
+        private void bgWorkerLoadData_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            //this.progressLoading.Visible = true;
+            //this.progressLoading.IsRunning = true;
+        }
+
+        private void bgWorkerLoadData_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            this.progressLoading.Visible = false;
+            this.progressLoading.IsRunning = false;
+        }
+
+
+        #endregion
 
 
     }

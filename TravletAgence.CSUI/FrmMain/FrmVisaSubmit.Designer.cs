@@ -35,6 +35,7 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
+            this.panelDgv = new DevComponents.DotNetBar.PanelEx();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +52,23 @@
             this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Types = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelSerachBar = new DevComponents.DotNetBar.PanelEx();
+            this.progressLoading = new DevComponents.DotNetBar.Controls.CircularProgress();
+            this.btnClearSchConditions = new DevComponents.DotNetBar.ButtonX();
+            this.cbDisplayType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX15 = new DevComponents.DotNetBar.LabelX();
+            this.txtSchGroupNo = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.lb1 = new DevComponents.DotNetBar.LabelX();
+            this.txtSchEntryTimeTo = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.txtSchEntryTimeFrom = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.labelX12 = new DevComponents.DotNetBar.LabelX();
+            this.txtSchPassportNo = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX13 = new DevComponents.DotNetBar.LabelX();
+            this.btnShowAll = new DevComponents.DotNetBar.ButtonX();
+            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
+            this.txtSchName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.lbSchName = new DevComponents.DotNetBar.LabelX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.btnPageFirst = new DevComponents.DotNetBar.ButtonItem();
@@ -63,8 +81,6 @@
             this.lbl = new DevComponents.DotNetBar.LabelItem();
             this.cbPageSize = new DevComponents.DotNetBar.ComboBoxItem();
             this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem8 = new DevComponents.DotNetBar.LabelItem();
-            this.cbDisplayType = new DevComponents.DotNetBar.ComboBoxItem();
             this.lbCurPage = new DevComponents.DotNetBar.LabelItem();
             this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
@@ -95,10 +111,15 @@
             this.cmsItemQRCodeBatchPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemQRCodePrint = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
+            this.bgWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx4.SuspendLayout();
+            this.panelDgv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelSerachBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSchEntryTimeTo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSchEntryTimeFrom)).BeginInit();
             this.panelEx3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -151,7 +172,8 @@
             // 
             this.panelEx4.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx4.Controls.Add(this.dataGridView1);
+            this.panelEx4.Controls.Add(this.panelDgv);
+            this.panelEx4.Controls.Add(this.panelSerachBar);
             this.panelEx4.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx4.Location = new System.Drawing.Point(0, 31);
@@ -166,6 +188,26 @@
             this.panelEx4.Style.GradientAngle = 90;
             this.panelEx4.TabIndex = 29;
             this.panelEx4.Text = "panelEx4";
+            // 
+            // panelDgv
+            // 
+            this.panelDgv.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelDgv.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelDgv.Controls.Add(this.dataGridView1);
+            this.panelDgv.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelDgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDgv.Location = new System.Drawing.Point(0, 63);
+            this.panelDgv.Name = "panelDgv";
+            this.panelDgv.Size = new System.Drawing.Size(1006, 531);
+            this.panelDgv.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelDgv.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelDgv.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelDgv.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelDgv.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelDgv.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelDgv.Style.GradientAngle = 90;
+            this.panelDgv.TabIndex = 29;
+            this.panelDgv.Text = "panelEx5";
             // 
             // dataGridView1
             // 
@@ -202,7 +244,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -222,7 +264,7 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1006, 594);
+            this.dataGridView1.Size = new System.Drawing.Size(1006, 531);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
@@ -336,6 +378,303 @@
             this.VisaInfo_id.ReadOnly = true;
             this.VisaInfo_id.Visible = false;
             // 
+            // panelSerachBar
+            // 
+            this.panelSerachBar.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelSerachBar.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelSerachBar.Controls.Add(this.progressLoading);
+            this.panelSerachBar.Controls.Add(this.btnClearSchConditions);
+            this.panelSerachBar.Controls.Add(this.cbDisplayType);
+            this.panelSerachBar.Controls.Add(this.labelX15);
+            this.panelSerachBar.Controls.Add(this.txtSchGroupNo);
+            this.panelSerachBar.Controls.Add(this.lb1);
+            this.panelSerachBar.Controls.Add(this.txtSchEntryTimeTo);
+            this.panelSerachBar.Controls.Add(this.txtSchEntryTimeFrom);
+            this.panelSerachBar.Controls.Add(this.labelX14);
+            this.panelSerachBar.Controls.Add(this.labelX12);
+            this.panelSerachBar.Controls.Add(this.txtSchPassportNo);
+            this.panelSerachBar.Controls.Add(this.labelX13);
+            this.panelSerachBar.Controls.Add(this.btnShowAll);
+            this.panelSerachBar.Controls.Add(this.btnSearch);
+            this.panelSerachBar.Controls.Add(this.txtSchName);
+            this.panelSerachBar.Controls.Add(this.lbSchName);
+            this.panelSerachBar.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelSerachBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSerachBar.Location = new System.Drawing.Point(0, 0);
+            this.panelSerachBar.Name = "panelSerachBar";
+            this.panelSerachBar.Size = new System.Drawing.Size(1006, 63);
+            this.panelSerachBar.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelSerachBar.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelSerachBar.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelSerachBar.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelSerachBar.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelSerachBar.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelSerachBar.Style.GradientAngle = 90;
+            this.panelSerachBar.TabIndex = 28;
+            // 
+            // progressLoading
+            // 
+            // 
+            // 
+            // 
+            this.progressLoading.BackgroundStyle.BackgroundImageAlpha = ((byte)(64));
+            this.progressLoading.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.progressLoading.FocusCuesEnabled = false;
+            this.progressLoading.Location = new System.Drawing.Point(730, 5);
+            this.progressLoading.Name = "progressLoading";
+            this.progressLoading.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot;
+            this.progressLoading.ProgressColor = System.Drawing.Color.YellowGreen;
+            this.progressLoading.Size = new System.Drawing.Size(73, 55);
+            this.progressLoading.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.progressLoading.TabIndex = 27;
+            this.progressLoading.Value = 100;
+            // 
+            // btnClearSchConditions
+            // 
+            this.btnClearSchConditions.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClearSchConditions.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClearSchConditions.Location = new System.Drawing.Point(521, 34);
+            this.btnClearSchConditions.Name = "btnClearSchConditions";
+            this.btnClearSchConditions.Size = new System.Drawing.Size(92, 23);
+            this.btnClearSchConditions.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClearSchConditions.TabIndex = 26;
+            this.btnClearSchConditions.Text = "清空搜索条件";
+            this.btnClearSchConditions.Click += new System.EventHandler(this.btnClearSchConditions_Click);
+            // 
+            // cbDisplayType
+            // 
+            this.cbDisplayType.DisplayMember = "Text";
+            this.cbDisplayType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbDisplayType.FormattingEnabled = true;
+            this.cbDisplayType.ItemHeight = 15;
+            this.cbDisplayType.Location = new System.Drawing.Point(399, 34);
+            this.cbDisplayType.Name = "cbDisplayType";
+            this.cbDisplayType.Size = new System.Drawing.Size(103, 21);
+            this.cbDisplayType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbDisplayType.TabIndex = 25;
+            // 
+            // labelX15
+            // 
+            // 
+            // 
+            // 
+            this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX15.Location = new System.Drawing.Point(340, 36);
+            this.labelX15.Name = "labelX15";
+            this.labelX15.Size = new System.Drawing.Size(63, 21);
+            this.labelX15.TabIndex = 24;
+            this.labelX15.Text = "类型:";
+            // 
+            // txtSchGroupNo
+            // 
+            // 
+            // 
+            // 
+            this.txtSchGroupNo.Border.Class = "TextBoxBorder";
+            this.txtSchGroupNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchGroupNo.Location = new System.Drawing.Point(399, 5);
+            this.txtSchGroupNo.Name = "txtSchGroupNo";
+            this.txtSchGroupNo.Size = new System.Drawing.Size(103, 21);
+            this.txtSchGroupNo.TabIndex = 23;
+            // 
+            // lb1
+            // 
+            // 
+            // 
+            // 
+            this.lb1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lb1.Location = new System.Drawing.Point(340, 6);
+            this.lb1.Name = "lb1";
+            this.lb1.Size = new System.Drawing.Size(63, 21);
+            this.lb1.TabIndex = 22;
+            this.lb1.Text = "所在团号:";
+            // 
+            // txtSchEntryTimeTo
+            // 
+            // 
+            // 
+            // 
+            this.txtSchEntryTimeTo.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtSchEntryTimeTo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchEntryTimeTo.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.txtSchEntryTimeTo.ButtonDropDown.Visible = true;
+            this.txtSchEntryTimeTo.IsPopupCalendarOpen = false;
+            this.txtSchEntryTimeTo.Location = new System.Drawing.Point(204, 32);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.txtSchEntryTimeTo.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchEntryTimeTo.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.txtSchEntryTimeTo.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.txtSchEntryTimeTo.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.txtSchEntryTimeTo.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtSchEntryTimeTo.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.txtSchEntryTimeTo.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtSchEntryTimeTo.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.txtSchEntryTimeTo.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.txtSchEntryTimeTo.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchEntryTimeTo.MonthCalendar.DisplayMonth = new System.DateTime(2017, 11, 1, 0, 0, 0, 0);
+            this.txtSchEntryTimeTo.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.txtSchEntryTimeTo.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.txtSchEntryTimeTo.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtSchEntryTimeTo.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.txtSchEntryTimeTo.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchEntryTimeTo.MonthCalendar.TodayButtonVisible = true;
+            this.txtSchEntryTimeTo.Name = "txtSchEntryTimeTo";
+            this.txtSchEntryTimeTo.Size = new System.Drawing.Size(121, 21);
+            this.txtSchEntryTimeTo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtSchEntryTimeTo.TabIndex = 21;
+            // 
+            // txtSchEntryTimeFrom
+            // 
+            // 
+            // 
+            // 
+            this.txtSchEntryTimeFrom.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtSchEntryTimeFrom.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchEntryTimeFrom.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.txtSchEntryTimeFrom.ButtonDropDown.Visible = true;
+            this.txtSchEntryTimeFrom.IsPopupCalendarOpen = false;
+            this.txtSchEntryTimeFrom.Location = new System.Drawing.Point(58, 32);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.txtSchEntryTimeFrom.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchEntryTimeFrom.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.txtSchEntryTimeFrom.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.txtSchEntryTimeFrom.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.txtSchEntryTimeFrom.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtSchEntryTimeFrom.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.txtSchEntryTimeFrom.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtSchEntryTimeFrom.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.txtSchEntryTimeFrom.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.txtSchEntryTimeFrom.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchEntryTimeFrom.MonthCalendar.DisplayMonth = new System.DateTime(2017, 11, 1, 0, 0, 0, 0);
+            this.txtSchEntryTimeFrom.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.txtSchEntryTimeFrom.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.txtSchEntryTimeFrom.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtSchEntryTimeFrom.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.txtSchEntryTimeFrom.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchEntryTimeFrom.MonthCalendar.TodayButtonVisible = true;
+            this.txtSchEntryTimeFrom.Name = "txtSchEntryTimeFrom";
+            this.txtSchEntryTimeFrom.Size = new System.Drawing.Size(121, 21);
+            this.txtSchEntryTimeFrom.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtSchEntryTimeFrom.TabIndex = 20;
+            // 
+            // labelX14
+            // 
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Location = new System.Drawing.Point(185, 33);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.Size = new System.Drawing.Size(13, 21);
+            this.labelX14.TabIndex = 19;
+            this.labelX14.Text = "-";
+            // 
+            // labelX12
+            // 
+            // 
+            // 
+            // 
+            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX12.Location = new System.Drawing.Point(0, 33);
+            this.labelX12.Name = "labelX12";
+            this.labelX12.Size = new System.Drawing.Size(63, 21);
+            this.labelX12.TabIndex = 17;
+            this.labelX12.Text = "录入时间:";
+            // 
+            // txtSchPassportNo
+            // 
+            // 
+            // 
+            // 
+            this.txtSchPassportNo.Border.Class = "TextBoxBorder";
+            this.txtSchPassportNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchPassportNo.Location = new System.Drawing.Point(58, 5);
+            this.txtSchPassportNo.Name = "txtSchPassportNo";
+            this.txtSchPassportNo.Size = new System.Drawing.Size(121, 21);
+            this.txtSchPassportNo.TabIndex = 16;
+            // 
+            // labelX13
+            // 
+            // 
+            // 
+            // 
+            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX13.Location = new System.Drawing.Point(0, 6);
+            this.labelX13.Name = "labelX13";
+            this.labelX13.Size = new System.Drawing.Size(63, 21);
+            this.labelX13.TabIndex = 15;
+            this.labelX13.Text = "护照号:";
+            // 
+            // btnShowAll
+            // 
+            this.btnShowAll.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowAll.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowAll.Location = new System.Drawing.Point(619, 5);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(91, 23);
+            this.btnShowAll.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowAll.TabIndex = 14;
+            this.btnShowAll.Text = "显示全部";
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSearch.Location = new System.Drawing.Point(521, 4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(92, 23);
+            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSearch.TabIndex = 13;
+            this.btnSearch.Text = "搜索";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSchName
+            // 
+            // 
+            // 
+            // 
+            this.txtSchName.Border.Class = "TextBoxBorder";
+            this.txtSchName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSchName.Location = new System.Drawing.Point(222, 6);
+            this.txtSchName.Name = "txtSchName";
+            this.txtSchName.Size = new System.Drawing.Size(103, 21);
+            this.txtSchName.TabIndex = 12;
+            // 
+            // lbSchName
+            // 
+            // 
+            // 
+            // 
+            this.lbSchName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbSchName.Location = new System.Drawing.Point(185, 6);
+            this.lbSchName.Name = "lbSchName";
+            this.lbSchName.Size = new System.Drawing.Size(63, 21);
+            this.lbSchName.TabIndex = 11;
+            this.lbSchName.Text = "姓名:";
+            // 
             // panelEx3
             // 
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
@@ -375,8 +714,6 @@
             this.lbl,
             this.cbPageSize,
             this.labelItem2,
-            this.labelItem8,
-            this.cbDisplayType,
             this.lbCurPage,
             this.labelItem1,
             this.labelItem3,
@@ -450,19 +787,6 @@
             // 
             this.labelItem2.Name = "labelItem2";
             this.labelItem2.Text = "条";
-            // 
-            // labelItem8
-            // 
-            this.labelItem8.Name = "labelItem8";
-            this.labelItem8.Text = "显示类型:";
-            // 
-            // cbDisplayType
-            // 
-            this.cbDisplayType.ComboWidth = 80;
-            this.cbDisplayType.DropDownHeight = 106;
-            this.cbDisplayType.ItemHeight = 17;
-            this.cbDisplayType.Name = "cbDisplayType";
-            this.cbDisplayType.TextChanged += new System.EventHandler(this.cbDisplayType_TextChanged);
             // 
             // lbCurPage
             // 
@@ -799,6 +1123,12 @@
             this.cmsItemRefreshState.Text = "刷新数据库状态";
             this.cmsItemRefreshState.Click += new System.EventHandler(this.cmsItemRefreshState_Click);
             // 
+            // bgWorkerLoadData
+            // 
+            this.bgWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadData_DoWork);
+            this.bgWorkerLoadData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerLoadData_ProgressChanged);
+            this.bgWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadData_RunWorkerCompleted);
+            // 
             // FrmVisaSubmit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -811,7 +1141,11 @@
             this.panelEx1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
             this.panelEx4.ResumeLayout(false);
+            this.panelDgv.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelSerachBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtSchEntryTimeTo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSchEntryTimeFrom)).EndInit();
             this.panelEx3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -887,7 +1221,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Types;
         private System.Windows.Forms.DataGridViewTextBoxColumn VisaInfo_id;
-        private DevComponents.DotNetBar.LabelItem labelItem8;
-        private DevComponents.DotNetBar.ComboBoxItem cbDisplayType;
+        private DevComponents.DotNetBar.PanelEx panelDgv;
+        private DevComponents.DotNetBar.PanelEx panelSerachBar;
+        private DevComponents.DotNetBar.Controls.CircularProgress progressLoading;
+        private DevComponents.DotNetBar.ButtonX btnClearSchConditions;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbDisplayType;
+        private DevComponents.DotNetBar.LabelX labelX15;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtSchGroupNo;
+        private DevComponents.DotNetBar.LabelX lb1;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtSchEntryTimeTo;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtSchEntryTimeFrom;
+        private DevComponents.DotNetBar.LabelX labelX14;
+        private DevComponents.DotNetBar.LabelX labelX12;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtSchPassportNo;
+        private DevComponents.DotNetBar.LabelX labelX13;
+        private DevComponents.DotNetBar.ButtonX btnShowAll;
+        private DevComponents.DotNetBar.ButtonX btnSearch;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtSchName;
+        private DevComponents.DotNetBar.LabelX lbSchName;
+        private System.ComponentModel.BackgroundWorker bgWorkerLoadData;
     }
 }

@@ -1,5 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.BLL", "BLL\TravletAgence.BLL.csproj", "{38D7AA58-C95B-449B-86C6-A8073A56E11F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.Model", "Model\TravletAgence.Model.csproj", "{53995DBB-9836-4647-AD22-865884FDEB9E}"
@@ -9,10 +11,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.DBUtility", "DBUtility\TravletAgence.DBUtility.csproj", "{0988C62E-247F-471F-A183-DB509C7A3839}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.Common", "Common\TravletAgence.Common.csproj", "{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.UI", "TravletAgence.UI\TravletAgence.UI.csproj", "{C5FFC804-68F1-4656-855F-9ACAEE0CF551}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.UI.Tests", "TravletAgence.UI.Tests\TravletAgence.UI.Tests.csproj", "{5305BF1B-5C00-4505-9A4E-54133D656661}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.CSUI", "TravletAgence.CSUI\TravletAgence.CSUI.csproj", "{3FE063B6-57A1-4890-98CF-C23811BCBDD9}"
 EndProject
@@ -124,31 +122,6 @@ Global
 		{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}.Release|x86.ActiveCfg = Release|Any CPU
 		{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}.Release|x86.Build.0 = Release|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Debug|x86.Build.0 = Debug|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Release|.NET.ActiveCfg = Release|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{C5FFC804-68F1-4656-855F-9ACAEE0CF551}.Release|x86.ActiveCfg = Release|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Release|.NET.ActiveCfg = Release|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{5305BF1B-5C00-4505-9A4E-54133D656661}.Release|x86.ActiveCfg = Release|Any CPU
 		{3FE063B6-57A1-4890-98CF-C23811BCBDD9}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{3FE063B6-57A1-4890-98CF-C23811BCBDD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3FE063B6-57A1-4890-98CF-C23811BCBDD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
