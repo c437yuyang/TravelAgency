@@ -50,7 +50,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>东瀛假日1.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Icons\东瀛假日.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Layout, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
@@ -226,20 +226,26 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Japan.jpg" />
+    <None Include="Resources\CountryImages\Japan.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Korea.jpg" />
+    <None Include="Resources\CountryImages\Korea.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Thailand.jpg" />
+    <None Include="Resources\CountryImages\Thailand.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PassportPictureNotFound.jpg" />
+    <None Include="Resources\CountryImages\PassportPictureNotFound.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="东瀛假日.ico" />
-    <Content Include="东瀛假日1.ico" />
+    <Content Include="Resources\Icons\Add Card.ico" />
+    <Content Include="Resources\Icons\add_group-256.ico" />
+    <Content Include="Resources\Icons\apply-256.ico" />
+    <Content Include="Resources\Icons\edit_add-256.ico" />
+    <Content Include="Resources\Icons\pencil.ico" />
+    <Content Include="Resources\Icons\users.ico" />
+    <Content Include="Resources\Icons\vista桌面图标下载17.ico" />
+    <Content Include="Resources\Icons\东瀛假日.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

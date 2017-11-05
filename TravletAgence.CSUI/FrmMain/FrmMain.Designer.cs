@@ -174,6 +174,7 @@
             // 
             // btnVisaTypeIn
             // 
+            this.btnVisaTypeIn.Icon = ((System.Drawing.Icon)(resources.GetObject("btnVisaTypeIn.Icon")));
             this.btnVisaTypeIn.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
             this.btnVisaTypeIn.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnVisaTypeIn.Name = "btnVisaTypeIn";
@@ -183,6 +184,7 @@
             // 
             // btnCheckAutoInputInfo
             // 
+            this.btnCheckAutoInputInfo.Icon = ((System.Drawing.Icon)(resources.GetObject("btnCheckAutoInputInfo.Icon")));
             this.btnCheckAutoInputInfo.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
             this.btnCheckAutoInputInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnCheckAutoInputInfo.Name = "btnCheckAutoInputInfo";
@@ -192,6 +194,7 @@
             // 
             // btnVisaQuery
             // 
+            this.btnVisaQuery.Icon = ((System.Drawing.Icon)(resources.GetObject("btnVisaQuery.Icon")));
             this.btnVisaQuery.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
             this.btnVisaQuery.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnVisaQuery.Name = "btnVisaQuery";
@@ -201,6 +204,7 @@
             // 
             // btnVisaSubmit
             // 
+            this.btnVisaSubmit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnVisaSubmit.Icon")));
             this.btnVisaSubmit.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
             this.btnVisaSubmit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnVisaSubmit.Name = "btnVisaSubmit";
