@@ -257,11 +257,9 @@ namespace TravletAgence.CSUI.FrmMain
                 // t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)； 
                 this.btnAutoReadThreadStart.Text = "停止自动读取";
                 _autoReadThreadRun = true;
-
                 Thread th = new Thread(this.AutoClassAndRecognize);
                 th.IsBackground = true;
                 th.Start();
-
             }
             else
             {

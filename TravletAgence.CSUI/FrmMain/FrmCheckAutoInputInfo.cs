@@ -108,9 +108,11 @@ namespace TravletAgence.CSUI.FrmMain
 
         public void LoadDataToDataGridView(int page) //刷新后保持选中
         {
-            dataGridView1.DataSource = _bll.GetListByPageOrderByHasChecked(page, _pageSize);
-            dataGridView1.CurrentCell = dataGridView1.Rows[_curIdx].Cells[0];
+            //更新list以及dgv里的数据
+            _list = _bll.GetListByPageOrderByHasChecked(page, _pageSize);
 
+            dataGridView1.DataSource = _list;
+            dataGridView1.CurrentCell = dataGridView1.Rows[_curIdx].Cells[0];
             dataGridView1.Update();
         }
 
@@ -171,10 +173,13 @@ namespace TravletAgence.CSUI.FrmMain
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
             //保存修改
+
             int res = _bll.UpdateByList(_list);
+
             MessageBoxEx.Show(res.ToString() + "条记录更新成功," + (_list.Count - res) + "条记录更新失败！");
             //重新加载数据
             LoadDataToDataGridView(_curPage);
+
         }
 
         private void btnPre_Click(object sender, EventArgs e)
