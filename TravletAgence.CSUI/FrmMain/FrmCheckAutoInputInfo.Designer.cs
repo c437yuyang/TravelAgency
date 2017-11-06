@@ -33,24 +33,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.panelRight = new DevComponents.DotNetBar.PanelEx();
+            this.txtCheckPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HasChecked = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelX12 = new DevComponents.DotNetBar.LabelX();
+            this.btnSaveChanges = new DevComponents.DotNetBar.ButtonX();
+            this.btnNoFault = new DevComponents.DotNetBar.ButtonX();
+            this.btnPre = new DevComponents.DotNetBar.ButtonX();
+            this.btnNext = new DevComponents.DotNetBar.ButtonX();
+            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.btnNextPage = new DevComponents.DotNetBar.ButtonX();
             this.btnPrePage = new DevComponents.DotNetBar.ButtonX();
-            this.btnSaveChanges = new DevComponents.DotNetBar.ButtonX();
-            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.txtCheckPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.txtExpireDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtLicenseTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtBirthday = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.btnNoFault = new DevComponents.DotNetBar.ButtonX();
-            this.btnNext = new DevComponents.DotNetBar.ButtonX();
-            this.btnPre = new DevComponents.DotNetBar.ButtonX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
@@ -81,9 +81,9 @@
             // 
             this.panelMain.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelMain.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelMain.Controls.Add(this.picPassportNo);
             this.panelMain.Controls.Add(this.panelRight);
             this.panelMain.Controls.Add(this.panelEx2);
-            this.panelMain.Controls.Add(this.picPassportNo);
             this.panelMain.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
@@ -122,6 +122,19 @@
             this.panelRight.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelRight.Style.GradientAngle = 90;
             this.panelRight.TabIndex = 33;
+            // 
+            // txtCheckPerson
+            // 
+            // 
+            // 
+            // 
+            this.txtCheckPerson.Border.Class = "TextBoxBorder";
+            this.txtCheckPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCheckPerson.Location = new System.Drawing.Point(110, 526);
+            this.txtCheckPerson.Name = "txtCheckPerson";
+            this.txtCheckPerson.PreventEnterBeep = true;
+            this.txtCheckPerson.Size = new System.Drawing.Size(89, 21);
+            this.txtCheckPerson.TabIndex = 24;
             // 
             // dataGridView1
             // 
@@ -201,27 +214,17 @@
             this.VisaInfo_id.ReadOnly = true;
             this.VisaInfo_id.Visible = false;
             // 
-            // btnNextPage
+            // labelX12
             // 
-            this.btnNextPage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNextPage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNextPage.Location = new System.Drawing.Point(128, 395);
-            this.btnNextPage.Name = "btnNextPage";
-            this.btnNextPage.Size = new System.Drawing.Size(81, 23);
-            this.btnNextPage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNextPage.TabIndex = 32;
-            this.btnNextPage.Text = "下一页";
             // 
-            // btnPrePage
             // 
-            this.btnPrePage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPrePage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnPrePage.Location = new System.Drawing.Point(6, 395);
-            this.btnPrePage.Name = "btnPrePage";
-            this.btnPrePage.Size = new System.Drawing.Size(89, 23);
-            this.btnPrePage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPrePage.TabIndex = 31;
-            this.btnPrePage.Text = "上一页";
+            // 
+            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX12.Location = new System.Drawing.Point(37, 526);
+            this.labelX12.Name = "labelX12";
+            this.labelX12.Size = new System.Drawing.Size(56, 23);
+            this.labelX12.TabIndex = 22;
+            this.labelX12.Text = "操作员:";
             // 
             // btnSaveChanges
             // 
@@ -234,6 +237,42 @@
             this.btnSaveChanges.TabIndex = 16;
             this.btnSaveChanges.Text = "保存当前页";
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
+            // 
+            // btnNoFault
+            // 
+            this.btnNoFault.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNoFault.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnNoFault.Location = new System.Drawing.Point(13, 495);
+            this.btnNoFault.Name = "btnNoFault";
+            this.btnNoFault.Size = new System.Drawing.Size(88, 23);
+            this.btnNoFault.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNoFault.TabIndex = 17;
+            this.btnNoFault.Text = "确认无误";
+            this.btnNoFault.Click += new System.EventHandler(this.btnNoFault_Click);
+            // 
+            // btnPre
+            // 
+            this.btnPre.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnPre.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnPre.Location = new System.Drawing.Point(110, 495);
+            this.btnPre.Name = "btnPre";
+            this.btnPre.Size = new System.Drawing.Size(89, 23);
+            this.btnPre.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPre.TabIndex = 14;
+            this.btnPre.Text = "上一张";
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNext.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnNext.Location = new System.Drawing.Point(211, 495);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(81, 23);
+            this.btnNext.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNext.TabIndex = 15;
+            this.btnNext.Text = "下一张";
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // panelEx2
             // 
@@ -274,30 +313,27 @@
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 23;
             // 
-            // txtCheckPerson
+            // btnNextPage
             // 
+            this.btnNextPage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNextPage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnNextPage.Location = new System.Drawing.Point(128, 395);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(81, 23);
+            this.btnNextPage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNextPage.TabIndex = 32;
+            this.btnNextPage.Text = "下一页";
             // 
+            // btnPrePage
             // 
-            // 
-            this.txtCheckPerson.Border.Class = "TextBoxBorder";
-            this.txtCheckPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCheckPerson.Location = new System.Drawing.Point(110, 526);
-            this.txtCheckPerson.Name = "txtCheckPerson";
-            this.txtCheckPerson.PreventEnterBeep = true;
-            this.txtCheckPerson.Size = new System.Drawing.Size(89, 21);
-            this.txtCheckPerson.TabIndex = 24;
-            // 
-            // labelX12
-            // 
-            // 
-            // 
-            // 
-            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX12.Location = new System.Drawing.Point(37, 526);
-            this.labelX12.Name = "labelX12";
-            this.labelX12.Size = new System.Drawing.Size(56, 23);
-            this.labelX12.TabIndex = 22;
-            this.labelX12.Text = "操作员:";
+            this.btnPrePage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnPrePage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnPrePage.Location = new System.Drawing.Point(6, 395);
+            this.btnPrePage.Name = "btnPrePage";
+            this.btnPrePage.Size = new System.Drawing.Size(89, 23);
+            this.btnPrePage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPrePage.TabIndex = 31;
+            this.btnPrePage.Text = "上一页";
             // 
             // txtExpireDate
             // 
@@ -446,42 +482,6 @@
             this.labelX11.Size = new System.Drawing.Size(150, 23);
             this.labelX11.TabIndex = 19;
             this.labelX11.Text = "护照信息确认:";
-            // 
-            // btnNoFault
-            // 
-            this.btnNoFault.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNoFault.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNoFault.Location = new System.Drawing.Point(13, 495);
-            this.btnNoFault.Name = "btnNoFault";
-            this.btnNoFault.Size = new System.Drawing.Size(88, 23);
-            this.btnNoFault.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNoFault.TabIndex = 17;
-            this.btnNoFault.Text = "确认无误";
-            this.btnNoFault.Click += new System.EventHandler(this.btnNoFault_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNext.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNext.Location = new System.Drawing.Point(211, 495);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(81, 23);
-            this.btnNext.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNext.TabIndex = 15;
-            this.btnNext.Text = "下一张";
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnPre
-            // 
-            this.btnPre.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPre.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnPre.Location = new System.Drawing.Point(110, 495);
-            this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(89, 23);
-            this.btnPre.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPre.TabIndex = 14;
-            this.btnPre.Text = "上一张";
-            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
             // 
             // labelX10
             // 
@@ -636,10 +636,10 @@
             // picPassportNo
             // 
             this.picPassportNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picPassportNo.Location = new System.Drawing.Point(0, 0);
+            this.picPassportNo.Location = new System.Drawing.Point(220, 0);
             this.picPassportNo.Name = "picPassportNo";
-            this.picPassportNo.Size = new System.Drawing.Size(1247, 556);
-            this.picPassportNo.TabIndex = 0;
+            this.picPassportNo.Size = new System.Drawing.Size(730, 556);
+            this.picPassportNo.TabIndex = 40;
             this.picPassportNo.TabStop = false;
             // 
             // FrmCheckAutoInputInfo
@@ -667,7 +667,6 @@
         #endregion
 
         private DevComponents.DotNetBar.PanelEx panelMain;
-        private System.Windows.Forms.PictureBox picPassportNo;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtExpireDate;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtLicenseTime;
@@ -702,5 +701,6 @@
         private DevComponents.DotNetBar.PanelEx panelRight;
         private DevComponents.DotNetBar.ButtonX btnNextPage;
         private DevComponents.DotNetBar.ButtonX btnPrePage;
+        private System.Windows.Forms.PictureBox picPassportNo;
     }
 }

@@ -192,7 +192,6 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-
             if (_curIdx < _pageSize - 1)
                 ++_curIdx;
 
@@ -233,6 +232,7 @@ namespace TravletAgence.CSUI.FrmMain
                 _model = _list[e.RowIndex];
                 _curIdx = e.RowIndex;
                 ModelToCtrls(_model);
+                LoadImageFromModel(_model);
             }
         }
 
