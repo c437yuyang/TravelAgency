@@ -400,11 +400,11 @@ namespace TravletAgence.CSUI.FrmSub
 
             if (cbCountry.Text == "日本")
             {
-                GroupExcel.GetTeamVisaExcelOfJapan(_dgvList, txtGroupNo.Text);
+                ExcelGenerator.GetTeamVisaExcelOfJapan(_dgvList, txtGroupNo.Text);
             }
             else if (cbCountry.Text == "泰国")
             {
-                GroupExcel.GetTeamVisaExcelOfThailand(_dgvList, txtGroupNo.Text);
+                ExcelGenerator.GetTeamVisaExcelOfThailand(_dgvList, txtGroupNo.Text);
                 
             }
         }

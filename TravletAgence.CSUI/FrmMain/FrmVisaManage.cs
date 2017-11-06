@@ -499,7 +499,14 @@ namespace TravletAgence.CSUI.FrmMain
             this.Close();
         }
 
+        private void 生成金桥报表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
+
+
 
 
     }

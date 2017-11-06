@@ -12,6 +12,7 @@ using TravletAgence.Common;
 using TravletAgence.Common.Enums;
 using TravletAgence.Common.IDCard;
 using TravletAgence.Common.QRCode;
+using TravletAgence.Common.Word;
 using TravletAgence.CSUI.FrmSub;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
@@ -34,7 +35,7 @@ namespace TravletAgence.CSUI.FrmMain
         //private readonly Thread _thLoadDataToDgvAndUpdateState;
         private bool _init = false;
         private string _where = string.Empty;
-        
+
 
 
         public FrmVisaTypeIn()
@@ -53,7 +54,7 @@ namespace TravletAgence.CSUI.FrmMain
             _pageCount = (int)Math.Ceiling(_recordCount / (double)_pageSize);
 
             //初始化一些控件
-            txtPicPath.Text = Application.StartupPath;
+            txtPicPath.Text = GlobalInfo.AppPath;
             cbPageSize.Items.Add("30");
             cbPageSize.Items.Add("50");
             cbPageSize.Items.Add("100");
@@ -289,15 +290,15 @@ namespace TravletAgence.CSUI.FrmMain
 
         #region dgv用到的相关方法
 
-//        //用于异步加载
-//        public void LoadAndUpdate()
-//        {
-//            this.Invoke(new Action(() =>
-//            {
-//LoadDataToDgvAsyn();
-//            }));
-//            _init = true;
-//        }
+        //        //用于异步加载
+        //        public void LoadAndUpdate()
+        //        {
+        //            this.Invoke(new Action(() =>
+        //            {
+        //LoadDataToDgvAsyn();
+        //            }));
+        //            _init = true;
+        //        }
 
         /// <summary>
         /// 显示进度条
@@ -685,7 +686,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
 
             int count = this.dataGridView1.SelectedRows.Count;
-            var list = GetSelecttionList();
+            var list = GetDgvSelNotSetGroupList();
             if (list == null)
                 return;
             FrmGroupOrIndividual frmGroupOrIndividual = new FrmGroupOrIndividual(list, LoadDataToDataGridView, _curPage);
@@ -693,8 +694,11 @@ namespace TravletAgence.CSUI.FrmMain
 
         }
 
-
-        private List<Model.VisaInfo> GetSelecttionList()
+        /// <summary>
+        /// 获取没有设置过团号的list,若有设置过的会报错
+        /// </summary>
+        /// <returns></returns>
+        private List<Model.VisaInfo> GetDgvSelNotSetGroupList()
         {
             int count = this.dataGridView1.SelectedRows.Count;
             List<Model.VisaInfo> list = new List<VisaInfo>();
@@ -717,9 +721,31 @@ namespace TravletAgence.CSUI.FrmMain
             return list;
         }
 
+        /// <summary>
+        /// 获取选中项的list
+        /// </summary>
+        /// <returns></returns>
+        private List<Model.VisaInfo> GetDgvSelList()
+        {
+            int count = this.dataGridView1.SelectedRows.Count;
+            List<Model.VisaInfo> list = new List<VisaInfo>();
+            for (int i = 0; i != count; ++i)
+            {
+                Model.VisaInfo model = bll.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
+                if (model == null)
+                {
+                    MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                    return null;
+                }
+                if (model != null)
+                    list.Add(model);
+            }
+            return list;
+        }
+
         private void 添加到团号ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var list = GetSelecttionList();
+            var list = GetDgvSelNotSetGroupList();
             if (list == null)
                 return;
             FrmVisaManage frm = new FrmVisaManage(true, list);
@@ -772,6 +798,11 @@ namespace TravletAgence.CSUI.FrmMain
 
 
         #endregion
+
+        private void 金桥大名单ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            JapanWordGenerator.GetJinQiaoMingDan(GetDgvSelList());
+        }
 
 
     }

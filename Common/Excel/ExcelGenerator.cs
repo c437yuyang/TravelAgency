@@ -15,7 +15,7 @@ using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 
 namespace TravletAgence.Common.Excel
 {
-    public static class GroupExcel
+    public static class ExcelGenerator
     {
 
         public static bool GetIndividualVisaExcel(List<TravletAgence.Model.VisaInfo> list, string remark, string groupNo)

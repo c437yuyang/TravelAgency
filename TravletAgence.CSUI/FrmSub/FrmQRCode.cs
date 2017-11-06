@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Forms;
+using TravletAgence.Common;
 using TravletAgence.Common.QRCode;
 
 namespace TravletAgence.CSUI.FrmSub
@@ -10,8 +11,8 @@ namespace TravletAgence.CSUI.FrmSub
     public partial class FrmQRCode : Form
     {
         private string _qrinfo;
-        private MyQRCode _qrCode = new MyQRCode();
-        private string _tmpFileName = System.Windows.Forms.Application.StartupPath +"\\tmp.png";
+        private readonly MyQRCode _qrCode = new MyQRCode();
+        private readonly string _tmpFileName = GlobalInfo.AppPath +"\\tmp.png";
 
         public FrmQRCode()
         {

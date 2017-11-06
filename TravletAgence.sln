@@ -1,7 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.BLL", "BLL\TravletAgence.BLL.csproj", "{38D7AA58-C95B-449B-86C6-A8073A56E11F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.Model", "Model\TravletAgence.Model.csproj", "{53995DBB-9836-4647-AD22-865884FDEB9E}"

@@ -414,9 +414,9 @@ namespace TravletAgence.CSUI.FrmSub
         private void btnCreateReport_Click(object sender, EventArgs e)
         {
             if (dgvGroupInfo.Rows[0].Cells["Remark"].Value != null)
-                GroupExcel.GetIndividualVisaExcel(_dgvList, dgvGroupInfo.Rows[0].Cells["Remark"].Value.ToString(), txtGroupNo.Text);
+                ExcelGenerator.GetIndividualVisaExcel(_dgvList, dgvGroupInfo.Rows[0].Cells["Remark"].Value.ToString(), txtGroupNo.Text);
             else
-                GroupExcel.GetIndividualVisaExcel(_dgvList, string.Empty, txtGroupNo.Text);
+                ExcelGenerator.GetIndividualVisaExcel(_dgvList, string.Empty, txtGroupNo.Text);
         }
 
         /// <summary>
