@@ -129,6 +129,8 @@
             this.金桥大名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.外领担保函ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnShowToday = new DevComponents.DotNetBar.ButtonX();
+            this.checkShowConfirm = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             this.panelDgv.SuspendLayout();
@@ -385,6 +387,7 @@
             // 
             this.panelSerachBar.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelSerachBar.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelSerachBar.Controls.Add(this.btnShowToday);
             this.panelSerachBar.Controls.Add(this.progressLoading);
             this.panelSerachBar.Controls.Add(this.btnClearSchConditions);
             this.panelSerachBar.Controls.Add(this.cbDisplayType);
@@ -423,7 +426,7 @@
             this.progressLoading.BackgroundStyle.BackgroundImageAlpha = ((byte)(64));
             this.progressLoading.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.progressLoading.FocusCuesEnabled = false;
-            this.progressLoading.Location = new System.Drawing.Point(730, 5);
+            this.progressLoading.Location = new System.Drawing.Point(962, 3);
             this.progressLoading.Name = "progressLoading";
             this.progressLoading.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot;
             this.progressLoading.ProgressColor = System.Drawing.Color.YellowGreen;
@@ -813,14 +816,15 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.checkShowConfirm);
             this.panelEx2.Controls.Add(this.btnAutoReadThreadStart);
+            this.panelEx2.Controls.Add(this.btnAutoRead);
             this.panelEx2.Controls.Add(this.txtExpireDate);
             this.panelEx2.Controls.Add(this.txtLicenseTime);
             this.panelEx2.Controls.Add(this.txtBirthday);
             this.panelEx2.Controls.Add(this.labelX11);
             this.panelEx2.Controls.Add(this.btnAddToDatabase);
             this.panelEx2.Controls.Add(this.btnReadData);
-            this.panelEx2.Controls.Add(this.btnAutoRead);
             this.panelEx2.Controls.Add(this.btnLoadKernel);
             this.panelEx2.Controls.Add(this.btnFreeKernel);
             this.panelEx2.Controls.Add(this.labelX10);
@@ -858,9 +862,9 @@
             // 
             this.btnAutoReadThreadStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAutoReadThreadStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAutoReadThreadStart.Location = new System.Drawing.Point(118, 501);
+            this.btnAutoReadThreadStart.Location = new System.Drawing.Point(118, 472);
             this.btnAutoReadThreadStart.Name = "btnAutoReadThreadStart";
-            this.btnAutoReadThreadStart.Size = new System.Drawing.Size(81, 23);
+            this.btnAutoReadThreadStart.Size = new System.Drawing.Size(88, 23);
             this.btnAutoReadThreadStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAutoReadThreadStart.TabIndex = 21;
             this.btnAutoReadThreadStart.Text = "开始自动读取";
@@ -1042,12 +1046,13 @@
             // 
             this.btnAutoRead.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAutoRead.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAutoRead.Location = new System.Drawing.Point(118, 472);
+            this.btnAutoRead.Location = new System.Drawing.Point(204, 587);
             this.btnAutoRead.Name = "btnAutoRead";
-            this.btnAutoRead.Size = new System.Drawing.Size(81, 23);
+            this.btnAutoRead.Size = new System.Drawing.Size(97, 24);
             this.btnAutoRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAutoRead.TabIndex = 16;
-            this.btnAutoRead.Text = "开始自动读取";
+            this.btnAutoRead.Text = "时钟版自动读取";
+            this.btnAutoRead.Visible = false;
             this.btnAutoRead.Click += new System.EventHandler(this.btnAutoRead_Click);
             // 
             // btnLoadKernel
@@ -1068,7 +1073,7 @@
             this.btnFreeKernel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnFreeKernel.Location = new System.Drawing.Point(118, 441);
             this.btnFreeKernel.Name = "btnFreeKernel";
-            this.btnFreeKernel.Size = new System.Drawing.Size(81, 23);
+            this.btnFreeKernel.Size = new System.Drawing.Size(88, 23);
             this.btnFreeKernel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnFreeKernel.TabIndex = 14;
             this.btnFreeKernel.Text = "释放识别内核";
@@ -1265,7 +1270,7 @@
             this.添加到团号ToolStripMenuItem,
             this.生成报表ToolStripMenuItem});
             this.cmsDgvRb.Name = "cmsDgvRb";
-            this.cmsDgvRb.Size = new System.Drawing.Size(161, 246);
+            this.cmsDgvRb.Size = new System.Drawing.Size(161, 224);
             // 
             // cmsItemDelete
             // 
@@ -1356,6 +1361,31 @@
             this.外领担保函ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.外领担保函ToolStripMenuItem.Text = "外领担保函";
             this.外领担保函ToolStripMenuItem.Click += new System.EventHandler(this.外领担保函ToolStripMenuItem_Click);
+            // 
+            // btnShowToday
+            // 
+            this.btnShowToday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowToday.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowToday.Location = new System.Drawing.Point(619, 33);
+            this.btnShowToday.Name = "btnShowToday";
+            this.btnShowToday.Size = new System.Drawing.Size(92, 23);
+            this.btnShowToday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowToday.TabIndex = 28;
+            this.btnShowToday.Text = "显示今日";
+            this.btnShowToday.Click += new System.EventHandler(this.btnShowToday_Click);
+            // 
+            // checkShowConfirm
+            // 
+            // 
+            // 
+            // 
+            this.checkShowConfirm.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkShowConfirm.Location = new System.Drawing.Point(13, 531);
+            this.checkShowConfirm.Name = "checkShowConfirm";
+            this.checkShowConfirm.Size = new System.Drawing.Size(100, 23);
+            this.checkShowConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkShowConfirm.TabIndex = 22;
+            this.checkShowConfirm.Text = "checkBoxX1";
             // 
             // FrmVisaTypeIn
             // 
@@ -1483,6 +1513,8 @@
         private System.Windows.Forms.ToolStripMenuItem 生成报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 金桥大名单ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 外领担保函ToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX btnShowToday;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkShowConfirm;
     }
 }
 

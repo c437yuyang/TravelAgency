@@ -70,6 +70,7 @@ namespace TravletAgence.CSUI.FrmMain
             cbDisplayType.DropDownStyle = ComboBoxStyle.DropDownList;
 
             cbDisplayType.SelectedIndex = 0;
+            checkShowConfirm.Checked = true;
 
             //设置可跨线程访问窗体
             //TODO:这里可能需要修改
@@ -166,7 +167,7 @@ namespace TravletAgence.CSUI.FrmMain
             TravletAgence.Model.VisaInfo model = _idCard.RecogoInfo(txtPicPath.Text);
             if (model == null) return;
             ModelToCtrls(model);
-            ConfirmAddToDataBase(model);
+            ConfirmAddToDataBase(model,checkShowConfirm.Checked);
         }
 
 
@@ -176,19 +177,32 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
 
-        private void ConfirmAddToDataBase(VisaInfo model)
+        private void ConfirmAddToDataBase(VisaInfo model,bool showConfirm=true)
         {
-            if (MessageBoxEx.Show(Resources.WhetherAddToDatabase, Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (showConfirm)
+            {
+                if (MessageBoxEx.Show(Resources.WhetherAddToDatabase, Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    if (bll.Add(model))
+                    {
+                        //LoadDataToDataGridView(_curPage);
+                        //UpdateState();
+                        LoadDataToDgvAsyn();
+                    }
+                    else
+                        MessageBoxEx.Show(Resources.FailedAddToDatabase);
+                }
+            }
+            else
             {
                 if (bll.Add(model))
                 {
-                    //LoadDataToDataGridView(_curPage);
-                    //UpdateState();
                     LoadDataToDgvAsyn();
                 }
                 else
                     MessageBoxEx.Show(Resources.FailedAddToDatabase);
             }
+
         }
 
         private void btnAutoRead_Click(object sender, EventArgs e)
@@ -223,7 +237,7 @@ namespace TravletAgence.CSUI.FrmMain
             Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text);
             if (model == null) return;
             ModelToCtrls(model);
-            ConfirmAddToDataBase(model);
+            ConfirmAddToDataBase(model,checkShowConfirm.Checked);
         }
 
         /// <summary>
@@ -238,7 +252,7 @@ namespace TravletAgence.CSUI.FrmMain
                 Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text);
                 if (model == null) continue;
                 ModelToCtrls(model);
-                ConfirmAddToDataBase(model);
+                ConfirmAddToDataBase(model,checkShowConfirm.Checked);
             }
         }
 
@@ -285,6 +299,13 @@ namespace TravletAgence.CSUI.FrmMain
             }
             LoadDataToDgvAsyn();
         }
+
+
+        private void btnShowToday_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
 
@@ -813,30 +834,30 @@ namespace TravletAgence.CSUI.FrmMain
             docGenerator.Generate(list);
         }
 
+        //TODO:增加进度条显示
         private void 外领担保函ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type02WaiLingDanBaohan);
             var visainfos = GetDgvSelList();
-            List<List<string>> stringinfos = new List<List<string>>();
-            for (int i = 0; i < visainfos.Count; i++)
-            {
-                List<string> list = new List<string>();
-                list.Add(visainfos[i].Name);
-                list.Add(visainfos[i].PassportNo);
-                list.Add(visainfos[i].IssuePlace);
-                list.Add(DateTimeFormator.DateTimeToStringOfChinese(DateTime.Today));
-                stringinfos.Add(list);
-            }
+            
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
+                //多余一条的时候生成二维list用于打印
+                List<List<string>> stringinfos = new List<List<string>>();
+                for (int i = 0; i < visainfos.Count; i++)
+                {
+                    List<string> list = new List<string>();
+                    list.Add(visainfos[i].Name);
+                    list.Add(visainfos[i].PassportNo);
+                    list.Add(visainfos[i].IssuePlace);
+                    list.Add(DateTimeFormator.DateTimeToStringOfChinese(DateTime.Today));
+                    stringinfos.Add(list);
+                }
                 //多余1条的时候选择保存文件夹
-                string path;
                 FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
                 if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                     return;
-                path = fbd.SelectedPath;
-                docGenerator.GenerateBatch(stringinfos,path);
-
+                docGenerator.GenerateBatch(stringinfos, fbd.SelectedPath);
             }
             else //一条单独的时候就直接获取就行
             {
@@ -849,6 +870,8 @@ namespace TravletAgence.CSUI.FrmMain
                 docGenerator.Generate(list);
             }
         }
+
+
 
 
     }
