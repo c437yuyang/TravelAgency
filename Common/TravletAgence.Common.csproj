@@ -181,7 +181,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="QRCode\MyQRCode.cs" />
-    <Compile Include="Word\JapanWordGenerator.cs" />
+    <Compile Include="Word\Japan\DocGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -236,6 +236,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Word\Templates\template_外领区人员特别担保函 （国旅四川）_添加占位符1-4.doc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Word\Templates\template_成都金桥大名单_添加占位符1-31.doc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

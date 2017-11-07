@@ -44,6 +44,25 @@ namespace TravletAgence.Common
 
         }
 
+        public static string DateTimeToStringOfChinese(DateTime? dateTime)
+        {
+            try
+            {
+                if (dateTime != null)
+                {
+                    DateTime dt = (DateTime)dateTime;
+                    return dt.ToString("yyyy年MM月dd日");
+                    //return dt.ToString("yy");
+                }
+                return "";
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+
+        }
 
     }
 }

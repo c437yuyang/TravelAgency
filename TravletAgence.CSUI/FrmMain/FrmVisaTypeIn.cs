@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using TravletAgence.Common.Enums;
 using TravletAgence.Common.IDCard;
 using TravletAgence.Common.QRCode;
 using TravletAgence.Common.Word;
+using TravletAgence.Common.Word.Japan;
 using TravletAgence.CSUI.FrmSub;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
@@ -801,7 +803,51 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void 金桥大名单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            JapanWordGenerator.GetJinQiaoMingDan(GetDgvSelList());
+            var visainfos = GetDgvSelList();
+            List<string> list = new List<string>();
+            for (int i = 0; i < visainfos.Count; i++)
+            {
+                list.Add(visainfos[i].Name);
+            }
+            DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type01JinQiaoList);
+            docGenerator.Generate(list);
+        }
+
+        private void 外领担保函ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type02WaiLingDanBaohan);
+            var visainfos = GetDgvSelList();
+            List<List<string>> stringinfos = new List<List<string>>();
+            for (int i = 0; i < visainfos.Count; i++)
+            {
+                List<string> list = new List<string>();
+                list.Add(visainfos[i].Name);
+                list.Add(visainfos[i].PassportNo);
+                list.Add(visainfos[i].IssuePlace);
+                list.Add(DateTimeFormator.DateTimeToStringOfChinese(DateTime.Today));
+                stringinfos.Add(list);
+            }
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                //多余1条的时候选择保存文件夹
+                string path;
+                FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
+                if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                    return;
+                path = fbd.SelectedPath;
+                docGenerator.GenerateBatch(stringinfos,path);
+
+            }
+            else //一条单独的时候就直接获取就行
+            {
+                //生成需要替换的list
+                List<string> list = new List<string>();
+                list.Add(visainfos[0].Name);
+                list.Add(visainfos[0].PassportNo);
+                list.Add(visainfos[0].IssuePlace);
+                list.Add(DateTimeFormator.DateTimeToStringOfChinese(DateTime.Today));
+                docGenerator.Generate(list);
+            }
         }
 
 

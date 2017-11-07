@@ -125,9 +125,10 @@
             this.cmsItemRefreshState = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemSetGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.添加到团号ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bgWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.生成报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.金桥大名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bgWorkerLoadData = new System.ComponentModel.BackgroundWorker();
+            this.外领担保函ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             this.panelDgv.SuspendLayout();
@@ -1327,16 +1328,11 @@
             this.添加到团号ToolStripMenuItem.Text = "添加到团号";
             this.添加到团号ToolStripMenuItem.Click += new System.EventHandler(this.添加到团号ToolStripMenuItem_Click);
             // 
-            // bgWorkerLoadData
-            // 
-            this.bgWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadData_DoWork);
-            this.bgWorkerLoadData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerLoadData_ProgressChanged);
-            this.bgWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadData_RunWorkerCompleted);
-            // 
             // 生成报表ToolStripMenuItem
             // 
             this.生成报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.金桥大名单ToolStripMenuItem});
+            this.金桥大名单ToolStripMenuItem,
+            this.外领担保函ToolStripMenuItem});
             this.生成报表ToolStripMenuItem.Name = "生成报表ToolStripMenuItem";
             this.生成报表ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.生成报表ToolStripMenuItem.Text = "生成报表";
@@ -1347,6 +1343,19 @@
             this.金桥大名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.金桥大名单ToolStripMenuItem.Text = "金桥大名单";
             this.金桥大名单ToolStripMenuItem.Click += new System.EventHandler(this.金桥大名单ToolStripMenuItem_Click);
+            // 
+            // bgWorkerLoadData
+            // 
+            this.bgWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadData_DoWork);
+            this.bgWorkerLoadData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerLoadData_ProgressChanged);
+            this.bgWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadData_RunWorkerCompleted);
+            // 
+            // 外领担保函ToolStripMenuItem
+            // 
+            this.外领担保函ToolStripMenuItem.Name = "外领担保函ToolStripMenuItem";
+            this.外领担保函ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.外领担保函ToolStripMenuItem.Text = "外领担保函";
+            this.外领担保函ToolStripMenuItem.Click += new System.EventHandler(this.外领担保函ToolStripMenuItem_Click);
             // 
             // FrmVisaTypeIn
             // 
@@ -1473,6 +1482,7 @@
         private System.Windows.Forms.ToolStripMenuItem 添加到团号ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 生成报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 金桥大名单ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 外领担保函ToolStripMenuItem;
     }
 }
 
