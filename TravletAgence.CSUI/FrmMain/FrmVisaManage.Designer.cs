@@ -57,6 +57,7 @@
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemShowGroupNo = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.生成金桥报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelBars = new DevComponents.DotNetBar.PanelEx();
             this.panelSerachBar = new DevComponents.DotNetBar.PanelEx();
             this.cbDisplayType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -78,7 +79,7 @@
             this.panelDgv = new DevComponents.DotNetBar.PanelEx();
             this.cmsAddToGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加到团号ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.生成金桥报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnShowToday = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.cmsDgv.SuspendLayout();
@@ -209,7 +210,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -302,7 +303,7 @@
             this.cmsItemRefreshDatabase,
             this.生成金桥报表ToolStripMenuItem});
             this.cmsDgv.Name = "cmsDgv";
-            this.cmsDgv.Size = new System.Drawing.Size(161, 114);
+            this.cmsDgv.Size = new System.Drawing.Size(161, 92);
             // 
             // 删除ToolStripMenuItem
             // 
@@ -324,6 +325,13 @@
             this.cmsItemRefreshDatabase.Size = new System.Drawing.Size(160, 22);
             this.cmsItemRefreshDatabase.Text = "刷新数据库状态";
             this.cmsItemRefreshDatabase.Click += new System.EventHandler(this.cmsItemRefreshDatabase_Click);
+            // 
+            // 生成金桥报表ToolStripMenuItem
+            // 
+            this.生成金桥报表ToolStripMenuItem.Name = "生成金桥报表ToolStripMenuItem";
+            this.生成金桥报表ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.生成金桥报表ToolStripMenuItem.Text = "生成金桥报表";
+            this.生成金桥报表ToolStripMenuItem.Click += new System.EventHandler(this.生成金桥报表ToolStripMenuItem_Click);
             // 
             // panelBars
             // 
@@ -349,6 +357,7 @@
             // 
             this.panelSerachBar.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelSerachBar.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelSerachBar.Controls.Add(this.btnShowToday);
             this.panelSerachBar.Controls.Add(this.cbDisplayType);
             this.panelSerachBar.Controls.Add(this.txtSchSalesPerson);
             this.panelSerachBar.Controls.Add(this.labelX1);
@@ -662,12 +671,17 @@
             this.添加到团号ToolStripMenuItem.Text = "添加到此团号";
             this.添加到团号ToolStripMenuItem.Click += new System.EventHandler(this.添加到团号ToolStripMenuItem_Click);
             // 
-            // 生成金桥报表ToolStripMenuItem
+            // btnShowToday
             // 
-            this.生成金桥报表ToolStripMenuItem.Name = "生成金桥报表ToolStripMenuItem";
-            this.生成金桥报表ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.生成金桥报表ToolStripMenuItem.Text = "生成金桥报表";
-            this.生成金桥报表ToolStripMenuItem.Click += new System.EventHandler(this.生成金桥报表ToolStripMenuItem_Click);
+            this.btnShowToday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowToday.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowToday.Location = new System.Drawing.Point(619, 34);
+            this.btnShowToday.Name = "btnShowToday";
+            this.btnShowToday.Size = new System.Drawing.Size(92, 23);
+            this.btnShowToday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowToday.TabIndex = 31;
+            this.btnShowToday.Text = "显示今日";
+            this.btnShowToday.Click += new System.EventHandler(this.btnShowToday_Click);
             // 
             // FrmVisaManage
             // 
@@ -741,5 +755,6 @@
         private System.Windows.Forms.ContextMenuStrip cmsAddToGroup;
         private System.Windows.Forms.ToolStripMenuItem 添加到团号ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 生成金桥报表ToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX btnShowToday;
     }
 }

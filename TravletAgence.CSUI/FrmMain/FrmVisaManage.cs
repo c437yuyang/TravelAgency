@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using TravletAgence.Common;
 using TravletAgence.CSUI.FrmSub;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
@@ -195,8 +196,8 @@ namespace TravletAgence.CSUI.FrmMain
 
             if (!string.IsNullOrEmpty(txtSchEntryTimeFrom.Text.Trim()) && !string.IsNullOrEmpty(txtSchEntryTimeTo.Text.Trim()))
             {
-                conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + "' and " + " '" + txtSchEntryTimeTo.Text +
-                               "') ");
+                conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + " 00:00:0.000' and " + " '" + txtSchEntryTimeTo.Text +
+                               " 23:59:59.999') ");
             }
             if (!string.IsNullOrEmpty(txtSchSalesPerson.Text.Trim()))
             {
@@ -214,6 +215,14 @@ namespace TravletAgence.CSUI.FrmMain
             txtSchEntryTimeFrom.Text = string.Empty;
             txtSchEntryTimeTo.Text = string.Empty;
             txtSchGroupNo.Text = string.Empty;
+        }
+
+
+        private void btnShowToday_Click(object sender, EventArgs e)
+        {
+            txtSchEntryTimeFrom.Text = DateTimeFormator.DateTimeToString(DateTime.Today);
+            txtSchEntryTimeTo.Text = DateTimeFormator.DateTimeToString(DateTime.Today);
+            btnSearch_Click(null, null);
         }
 
         #endregion
@@ -505,6 +514,7 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
+
 
 
 
