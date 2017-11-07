@@ -11,6 +11,7 @@ using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
+using TravletAgence.Common.Excel.Japan;
 using TravletAgence.Common.IDCard;
 using TravletAgence.Common.QRCode;
 using TravletAgence.Common.Word;
@@ -871,6 +872,12 @@ namespace TravletAgence.CSUI.FrmMain
                 list.Add(DateTimeFormator.DateTimeToStringOfChinese(DateTime.Today));
                 docGenerator.Generate(list);
             }
+        }
+
+        private void 人申请表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var visainfos = GetDgvSelList();
+            XlsGenerator.GetPre8List(visainfos);
         }
 
 

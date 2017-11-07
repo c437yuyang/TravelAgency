@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikDemo", "TelerikDemo\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PictureBoxDemo", "PictureBoxDemo\PictureBoxDemo.csproj", "{84FB8C7F-BE8B-41F2-89C5-B2390713D6F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetCharNum", "GetCharNum\GetCharNum.csproj", "{C30D12F5-705D-40E6-9285-BA0E32383176}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -296,6 +298,18 @@ Global
 		{84FB8C7F-BE8B-41F2-89C5-B2390713D6F9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{84FB8C7F-BE8B-41F2-89C5-B2390713D6F9}.Release|x86.ActiveCfg = Release|Any CPU
 		{84FB8C7F-BE8B-41F2-89C5-B2390713D6F9}.Release|x86.Build.0 = Release|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Release|.NET.ActiveCfg = Release|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C30D12F5-705D-40E6-9285-BA0E32383176}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -313,5 +327,6 @@ Global
 		{F9A0B3B1-C7F9-4617-819F-04AA3B3DDE71} = {3F9A535C-0513-451F-92D3-58D71E4A8A6A}
 		{B21EDFDC-CBC2-4F49-8A77-CFFBD35687AB} = {3F9A535C-0513-451F-92D3-58D71E4A8A6A}
 		{84FB8C7F-BE8B-41F2-89C5-B2390713D6F9} = {3F9A535C-0513-451F-92D3-58D71E4A8A6A}
+		{C30D12F5-705D-40E6-9285-BA0E32383176} = {3F9A535C-0513-451F-92D3-58D71E4A8A6A}
 	EndGlobalSection
 EndGlobal

@@ -250,6 +250,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Excel\Templates\template_%28前8人）旅行社申请名单表_（表3）_添加占位符.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Word\Templates\template_外领区人员特别担保函 （国旅四川）_添加占位符1-4.doc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
