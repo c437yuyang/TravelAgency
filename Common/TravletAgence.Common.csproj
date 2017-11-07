@@ -120,8 +120,21 @@
     <Reference Include="Gma.QrCodeNet.Encoding.Net45">
       <HintPath>..\packages\Gma.QrCodeNet.Encoding.Net45\Gma.QrCodeNet.Encoding.Net45.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI">
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\NOPI\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=1.2.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NOPI\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\packages\NOPI\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\packages\NOPI\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\packages\NOPI\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="OpenSmtp, Version=1.11.0.34196, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
@@ -151,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTimeFormator.cs" />
+    <Compile Include="Excel\Japan\XlsGenerator.cs" />
     <Compile Include="Word\DocCOMHandler.cs" />
     <Compile Include="Enums\HasChecked.cs" />
     <Compile Include="Enums\Types.cs" />
@@ -243,9 +257,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Excel\Japan\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

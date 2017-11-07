@@ -89,12 +89,12 @@ namespace TravletAgence.Common.Excel
 
             //4.1设置对齐风格和边框
             ICellStyle style = wkbook.CreateCellStyle();
-            style.VerticalAlignment = VerticalAlignment.CENTER;
-            style.Alignment = HorizontalAlignment.CENTER;
-            style.BorderTop = BorderStyle.THIN;
-            style.BorderBottom = BorderStyle.THIN;
-            style.BorderLeft = BorderStyle.THIN;
-            style.BorderRight = BorderStyle.THIN;
+            style.VerticalAlignment = VerticalAlignment.Center;
+            style.Alignment = HorizontalAlignment.Center;
+            style.BorderTop = BorderStyle.Thin;
+            style.BorderBottom = BorderStyle.Thin;
+            style.BorderLeft = BorderStyle.Thin;
+            style.BorderRight = BorderStyle.Thin;
             for (int i = 0; i <= sheet.LastRowNum; i++)
             {
                 row = sheet.GetRow(i);
@@ -140,10 +140,6 @@ namespace TravletAgence.Common.Excel
             return true;
 
         }
-
-
-
-
         public static bool GetTeamVisaExcelOfJapan(List<TravletAgence.Model.VisaInfo> list, string groupNo)
         {
             //1.创建工作簿对象
@@ -212,12 +208,12 @@ namespace TravletAgence.Common.Excel
 
             //4.1设置对齐风格和边框
             ICellStyle style = wkbook.CreateCellStyle();
-            style.VerticalAlignment = VerticalAlignment.CENTER;
-            style.Alignment = HorizontalAlignment.CENTER;
-            style.BorderTop = BorderStyle.THIN;
-            style.BorderBottom = BorderStyle.THIN;
-            style.BorderLeft = BorderStyle.THIN;
-            style.BorderRight = BorderStyle.THIN;
+            style.VerticalAlignment = VerticalAlignment.Center;
+            style.Alignment = HorizontalAlignment.Center;
+            style.BorderTop = BorderStyle.Thin;
+            style.BorderBottom = BorderStyle.Thin;
+            style.BorderLeft = BorderStyle.Thin;
+            style.BorderRight = BorderStyle.Thin;
             for (int i = 0; i <= sheet.LastRowNum; i++)
             {
                 row = sheet.GetRow(i);
@@ -335,12 +331,12 @@ namespace TravletAgence.Common.Excel
 
             //4.1设置对齐风格和边框
             ICellStyle style = wkbook.CreateCellStyle();
-            style.VerticalAlignment = VerticalAlignment.CENTER;
-            style.Alignment = HorizontalAlignment.LEFT;
-            style.BorderTop = BorderStyle.THIN;
-            style.BorderBottom = BorderStyle.THIN;
-            style.BorderLeft = BorderStyle.THIN;
-            style.BorderRight = BorderStyle.THIN;
+            style.VerticalAlignment = VerticalAlignment.Center;
+            style.Alignment = HorizontalAlignment.Left;
+            style.BorderTop = BorderStyle.Thin;
+            style.BorderBottom = BorderStyle.Thin;
+            style.BorderLeft = BorderStyle.Thin;
+            style.BorderRight = BorderStyle.Thin;
             for (int i = 0; i <= sheet.LastRowNum; i++)
             {
                 row = sheet.GetRow(i);
