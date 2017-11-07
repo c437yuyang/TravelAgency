@@ -505,7 +505,7 @@
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.tabMain.SelectedTabIndex = -1;
-            this.tabMain.Size = new System.Drawing.Size(1284, 594);
+            this.tabMain.Size = new System.Drawing.Size(1284, 614);
             this.tabMain.Style = DevComponents.DotNetBar.eTabStripStyle.Office2007Dock;
             this.tabMain.TabIndex = 5;
             this.tabMain.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
@@ -543,7 +543,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 691);
+            this.ClientSize = new System.Drawing.Size(1284, 711);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.ribbonControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

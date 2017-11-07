@@ -131,6 +131,7 @@
             this.外领担保函ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowToday = new DevComponents.DotNetBar.ButtonX();
             this.checkShowConfirm = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkRegSucShowDlg = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             this.panelDgv.SuspendLayout();
@@ -816,6 +817,7 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.checkRegSucShowDlg);
             this.panelEx2.Controls.Add(this.checkShowConfirm);
             this.panelEx2.Controls.Add(this.btnAutoReadThreadStart);
             this.panelEx2.Controls.Add(this.btnAutoRead);
@@ -1382,10 +1384,23 @@
             this.checkShowConfirm.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.checkShowConfirm.Location = new System.Drawing.Point(13, 531);
             this.checkShowConfirm.Name = "checkShowConfirm";
-            this.checkShowConfirm.Size = new System.Drawing.Size(100, 23);
+            this.checkShowConfirm.Size = new System.Drawing.Size(149, 23);
             this.checkShowConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkShowConfirm.TabIndex = 22;
-            this.checkShowConfirm.Text = "checkBoxX1";
+            this.checkShowConfirm.Text = "添加前显示提示对话框";
+            // 
+            // checkRegSucShowDlg
+            // 
+            // 
+            // 
+            // 
+            this.checkRegSucShowDlg.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkRegSucShowDlg.Location = new System.Drawing.Point(12, 560);
+            this.checkRegSucShowDlg.Name = "checkRegSucShowDlg";
+            this.checkRegSucShowDlg.Size = new System.Drawing.Size(149, 23);
+            this.checkRegSucShowDlg.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkRegSucShowDlg.TabIndex = 23;
+            this.checkRegSucShowDlg.Text = "识别成功显示提示";
             // 
             // FrmVisaTypeIn
             // 
@@ -1515,6 +1530,7 @@
         private System.Windows.Forms.ToolStripMenuItem 外领担保函ToolStripMenuItem;
         private DevComponents.DotNetBar.ButtonX btnShowToday;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkShowConfirm;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkRegSucShowDlg;
     }
 }
 

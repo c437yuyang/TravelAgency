@@ -71,6 +71,7 @@ namespace TravletAgence.CSUI.FrmMain
 
             cbDisplayType.SelectedIndex = 0;
             checkShowConfirm.Checked = true;
+            checkRegSucShowDlg.Checked = true;
 
             //设置可跨线程访问窗体
             //TODO:这里可能需要修改
@@ -167,7 +168,7 @@ namespace TravletAgence.CSUI.FrmMain
             TravletAgence.Model.VisaInfo model = _idCard.RecogoInfo(txtPicPath.Text);
             if (model == null) return;
             ModelToCtrls(model);
-            ConfirmAddToDataBase(model,checkShowConfirm.Checked);
+            ConfirmAddToDataBase(model, checkShowConfirm.Checked);
         }
 
 
@@ -177,7 +178,7 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
 
-        private void ConfirmAddToDataBase(VisaInfo model,bool showConfirm=true)
+        private void ConfirmAddToDataBase(VisaInfo model, bool showConfirm = true)
         {
             if (showConfirm)
             {
@@ -234,10 +235,10 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="eventArgs"></param>
         private void AutoClassAndRecognize(object sender, EventArgs eventArgs)
         {
-            Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text);
+            Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
             if (model == null) return;
             ModelToCtrls(model);
-            ConfirmAddToDataBase(model,checkShowConfirm.Checked);
+            ConfirmAddToDataBase(model, checkShowConfirm.Checked);
         }
 
         /// <summary>
@@ -249,10 +250,10 @@ namespace TravletAgence.CSUI.FrmMain
             while (_autoReadThreadRun)
             {
                 Thread.Sleep(200);
-                Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text);
+                Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
                 if (model == null) continue;
                 ModelToCtrls(model);
-                ConfirmAddToDataBase(model,checkShowConfirm.Checked);
+                ConfirmAddToDataBase(model, checkShowConfirm.Checked);
             }
         }
 
@@ -263,7 +264,6 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void btnAutoReadThreadStart_Click(object sender, EventArgs e)
         {
-
             if (!_idCard.KernelLoaded)
             {
                 MessageBoxEx.Show("Please press load kernel button first!");
@@ -303,7 +303,9 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void btnShowToday_Click(object sender, EventArgs e)
         {
-
+            txtSchEntryTimeFrom.Text = DateTimeFormator.DateTimeToString(DateTime.Today);
+            txtSchEntryTimeTo.Text = DateTimeFormator.DateTimeToString(DateTime.Today);
+            btnSearch_Click(null,null);
         }
 
         #endregion
@@ -466,8 +468,8 @@ namespace TravletAgence.CSUI.FrmMain
 
             if (!string.IsNullOrEmpty(txtSchEntryTimeFrom.Text.Trim()) && !string.IsNullOrEmpty(txtSchEntryTimeTo.Text.Trim()))
             {
-                conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + "' and " + " '" + txtSchEntryTimeTo.Text +
-                               "') ");
+                conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + " 00:00:0.000' and " + " '" + txtSchEntryTimeTo.Text +
+                               " 23:59:59.999') ");
             }
 
             string[] arr = conditions.ToArray();
@@ -839,7 +841,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type02WaiLingDanBaohan);
             var visainfos = GetDgvSelList();
-            
+
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
                 //多余一条的时候生成二维list用于打印

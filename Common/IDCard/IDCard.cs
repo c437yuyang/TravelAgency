@@ -75,7 +75,7 @@ namespace TravletAgence.Common.IDCard
             return true;
         }
 
-        public TravletAgence.Model.VisaInfo RecogoInfo(string picPath)
+        public TravletAgence.Model.VisaInfo RecogoInfo(string picPath, bool showDlgWhenSuccess = true)
         {
             //直接返回
             if (!_kernelLoaded)
@@ -131,7 +131,8 @@ namespace TravletAgence.Common.IDCard
             int MAX_CH_NUM = 128;
             char[] cArrFieldValue = new char[MAX_CH_NUM];
             char[] cArrFieldName = new char[MAX_CH_NUM];
-            MessageBoxEx.Show("recognition successful\r\n");
+            if (showDlgWhenSuccess)
+                MessageBoxEx.Show("recognition successful\r\n");
 
             //返回的model
             TravletAgence.Model.VisaInfo visaInfo = new VisaInfo();
@@ -160,7 +161,7 @@ namespace TravletAgence.Common.IDCard
 
             }
             //MessageBoxEx.Show(info); //显示一下返回的信息
-            Console.WriteLine(sb.ToString());
+            //Console.WriteLine(sb.ToString());
 
             //DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
             //dtFormat.ShortDatePattern = "yyyy-MM-dd";
@@ -168,29 +169,15 @@ namespace TravletAgence.Common.IDCard
 
             try
             {
-                //visaInfo.Name = infos[1].Split(':')[1];
-                //visaInfo.EnglishName = infos[2].Split(':')[1];
-                //visaInfo.Sex = infos[3].Split(':')[1];
-                //visaInfo.Birthday = Convert.ToDateTime(infos[4].Split(':')[1], dtFormat);
-                //visaInfo.PassportNo = infos[0].Split(':')[1];
-                //visaInfo.LicenceTime = Convert.ToDateTime(infos[15].Split(':')[1], dtFormat);
-                //visaInfo.Birthplace = infos[13].Split(':')[1];
-                //visaInfo.IssuePlace = infos[14].Split(':')[1];
-                //visaInfo.ExpiryDate = Convert.ToDateTime(infos[5].Split(':')[1], dtFormat);
-
                 visaInfo.Name = infos[1].Split(':')[1];
                 visaInfo.EnglishName = infos[2].Split(':')[1];
                 visaInfo.Sex = infos[3].Split(':')[1];
-                //visaInfo.Birthday = Convert.ToDateTime(infos[4].Split(':')[1], dtFormat);
                 visaInfo.Birthday = DateTime.Parse(infos[4].Split(':')[1]);
                 visaInfo.PassportNo = infos[0].Split(':')[1];
-                //visaInfo.LicenceTime = Convert.ToDateTime(infos[15].Split(':')[1], dtFormat);
                 visaInfo.LicenceTime = DateTime.Parse(infos[15].Split(':')[1]);
                 visaInfo.Birthplace = infos[13].Split(':')[1];
                 visaInfo.IssuePlace = infos[14].Split(':')[1];
-                //visaInfo.ExpiryDate = Convert.ToDateTime(infos[5].Split(':')[1], dtFormat);
                 visaInfo.ExpiryDate = DateTime.Parse(infos[5].Split(':')[1]);
-
             }
             catch (Exception)
             {
@@ -210,7 +197,7 @@ namespace TravletAgence.Common.IDCard
         }
 
 
-        public TravletAgence.Model.VisaInfo AutoClassAndRecognize(string picPath)
+        public TravletAgence.Model.VisaInfo AutoClassAndRecognize(string picPath, bool showDlgWhenSuccess = true)
         {
             if (!_kernelLoaded)
             {
@@ -276,7 +263,8 @@ namespace TravletAgence.Common.IDCard
                 int MAX_CH_NUM = 128;
                 char[] cArrFieldValue = new char[MAX_CH_NUM];
                 char[] cArrFieldName = new char[MAX_CH_NUM];
-                MessageBoxEx.Show("recognition Success\r\n");
+                if (showDlgWhenSuccess)
+                    MessageBoxEx.Show("recognition Success\r\n");
                 TravletAgence.Model.VisaInfo visaInfo = new TravletAgence.Model.VisaInfo();
                 sb.Clear();
                 for (int i = 1; ; i++)
@@ -302,25 +290,18 @@ namespace TravletAgence.Common.IDCard
                 }
                 Console.WriteLine(sb.ToString());
 
-                //DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
-                //dtFormat.ShortDatePattern = "yyyy/MM/dd";
                 string[] infos = sb.ToString().Split('\n');
-
                 try
                 {
                     visaInfo.Name = infos[1].Split(':')[1];
                     visaInfo.EnglishName = infos[2].Split(':')[1];
                     visaInfo.Sex = infos[3].Split(':')[1];
-                    //visaInfo.Birthday = Convert.ToDateTime(infos[4].Split(':')[1], dtFormat);
                     visaInfo.Birthday = DateTime.Parse(infos[4].Split(':')[1]);
                     visaInfo.PassportNo = infos[0].Split(':')[1];
-                    //visaInfo.LicenceTime = Convert.ToDateTime(infos[15].Split(':')[1], dtFormat);
                     visaInfo.LicenceTime = DateTime.Parse(infos[15].Split(':')[1]);
                     visaInfo.Birthplace = infos[13].Split(':')[1];
                     visaInfo.IssuePlace = infos[14].Split(':')[1];
-                    //visaInfo.ExpiryDate = Convert.ToDateTime(infos[5].Split(':')[1], dtFormat);
                     visaInfo.ExpiryDate = DateTime.Parse(infos[5].Split(':')[1]);
-
                 }
                 catch (Exception)
                 {
