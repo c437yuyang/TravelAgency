@@ -59,7 +59,9 @@ namespace TravletAgence.CSUI.FrmSub
             saveFileDialog1.Title = "Save";
             if(!_qrinfo.Contains("State:"))
                 saveFileDialog1.FileName = _qrinfo.Split('|')[0] + "_QRCode.jpg";
-            saveFileDialog1.ShowDialog();
+
+            if(saveFileDialog1.ShowDialog()==DialogResult.Cancel)
+                return;
 
             // If the file name is not an empty string open it for saving.
             if (saveFileDialog1.FileName != "")

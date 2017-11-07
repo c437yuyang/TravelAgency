@@ -7,6 +7,8 @@ namespace TravletAgence.Common.Word
 {
     public static class DocComHandler
     {
+        //TODO:这里其实后面的replaceString里面doc不应该暴露给用户，应该弄成成员变量就行了
+        //TODO:替换placeholder的接口应该修改一下，来适应不同placeholder的数目
         static word.ApplicationClass _application = null;
         /// <summary>
         /// 打开指定路径，返回doc对象
@@ -111,7 +113,6 @@ namespace TravletAgence.Common.Word
         }
 
 
-
         /// <summary>
         /// 根据{1},{2}这种的占位符替换文本并保存到outFileName文件
         /// </summary>
@@ -119,18 +120,29 @@ namespace TravletAgence.Common.Word
         /// <param name="doc"></param>
         /// <param name="origialString"></param>
         /// <param name="destinationString"></param>
+        /// <param name="wait4ReplaceList"></param>
+        /// <param name="removeRedundantPlaceHolder">是否去掉多余的placeholder</param>
+        /// <param name="placeholdernum">placeholder的数量</param>
         /// <returns></returns>
-        public static bool BatchReplaceStringByPlaceHolder(string outFileName, word.Document doc, List<string> wait4ReplaceList)
+        public static bool BatchReplaceStringByPlaceHolder(string outFileName, word.Document doc, List<string> wait4ReplaceList, bool removeRedundantPlaceHolder, int placeholdernum)
         {
             bool result = false;
             Object missing = System.Reflection.Missing.Value;
             object replaceAll = word.WdReplace.wdReplaceAll;
             try
             {
-                for (int i = 0; i < wait4ReplaceList.Count; i++)
+                for (int i = 0; i < placeholdernum; i++)
                 {
-                    string src = "{" + (i+1) + "}";
-                    string dst = wait4ReplaceList[i];
+                    string src = "{" + (i + 1) + "}";
+                    string dst;
+
+                    if (i >= wait4ReplaceList.Count && !removeRedundantPlaceHolder)
+                        break;
+
+                    if (i >= wait4ReplaceList.Count && removeRedundantPlaceHolder)
+                        dst = "";
+                    else
+                        dst = wait4ReplaceList[i];
                     _application.Selection.Find.ClearFormatting();
                     _application.Selection.Find.Text = src;
                     _application.Selection.Find.Replacement.ClearFormatting();
@@ -164,7 +176,9 @@ namespace TravletAgence.Common.Word
                         }
                     }
                     result = true;
+
                 }
+
 
             }
             catch

@@ -11,12 +11,12 @@ namespace TravletAgence.Common.Word
             get { return 31; }
         }
 
-        public static bool GetJinQiaoMingDan(List<Model.VisaInfo> list)
+        public static void GetJinQiaoMingDan(List<Model.VisaInfo> list)
         {
             if (list.Count > PlaceHolderNum)
             {
                 MessageBoxEx.Show("最多支持同时生成" + PlaceHolderNum + "个人的报表!");
-                return false;
+                return;
             }
 
             List<string> listWait4Replace = new List<string>();
@@ -30,27 +30,26 @@ namespace TravletAgence.Common.Word
             if (doc == null)
             {
                 MessageBoxEx.Show("打开模板文件失败，请检查文件路径！");
-                return false;
+                return;
             }
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Word2003 Doc|*.doc";
             saveFileDialog1.Title = "保存到文件";
             saveFileDialog1.FileName = "金桥大名单";
-            saveFileDialog1.ShowDialog();
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
 
             // If the file name is not an empty string open it for saving.
             if (saveFileDialog1.FileName != "")
             {
-                // Saves the Image via a FileStream created by the OpenFile method.
-                if (!DocComHandler.BatchReplaceStringByPlaceHolder(saveFileDialog1.FileName, doc, listWait4Replace))
+                if (!DocComHandler.BatchReplaceStringByPlaceHolder(saveFileDialog1.FileName, doc, listWait4Replace, true, PlaceHolderNum))
                 {
                     MessageBoxEx.Show("生成报表失败，请联系技术人员!");
-                    return false;
+                    return;
                 }
             }
             MessageBoxEx.Show("生成成功!");
-            return true;
         }
 
     }
