@@ -63,11 +63,11 @@ namespace TravletAgence.CSUI.FrmSub
             for (int i = 0; i < _list.Count; i++)
             {
                 ListViewItem liv = new ListViewItem(_list[i].Name);
-                ListViewItem.ListViewSubItem livSubItem1 = new ListViewItem.ListViewSubItem(liv, DateTimeFormator.DateTimeToString(_list[i].EntryTime));
-                ListViewItem.ListViewSubItem livSubItem2 = new ListViewItem.ListViewSubItem(liv, _list[i].IssuePlace);
+                //ListViewItem.ListViewSubItem livSubItem1 = new ListViewItem.ListViewSubItem(liv, DateTimeFormator.DateTimeToString(_list[i].EntryTime));
+                //ListViewItem.ListViewSubItem livSubItem2 = new ListViewItem.ListViewSubItem(liv, _list[i].IssuePlace);
                 ListViewItem.ListViewSubItem livSubItem3 = new ListViewItem.ListViewSubItem(liv, _list[i].PassportNo);
-                liv.SubItems.Add(livSubItem1);
-                liv.SubItems.Add(livSubItem2);
+                //liv.SubItems.Add(livSubItem1);
+                //liv.SubItems.Add(livSubItem2);
                 liv.SubItems.Add(livSubItem3);
                 liv.Tag = _list[i];
                 lvOut.Items.Add(liv);
@@ -116,11 +116,11 @@ namespace TravletAgence.CSUI.FrmSub
             {
                 ListViewItem liv = new ListViewItem(_list[i].Name);
 
-                ListViewItem.ListViewSubItem livSubItem1 = new ListViewItem.ListViewSubItem(liv, DateTimeFormator.DateTimeToString(_list[i].EntryTime));
-                ListViewItem.ListViewSubItem livSubItem2 = new ListViewItem.ListViewSubItem(liv, _list[i].IssuePlace);
+                //ListViewItem.ListViewSubItem livSubItem1 = new ListViewItem.ListViewSubItem(liv, DateTimeFormator.DateTimeToString(_list[i].EntryTime));
+                //ListViewItem.ListViewSubItem livSubItem2 = new ListViewItem.ListViewSubItem(liv, _list[i].IssuePlace);
                 ListViewItem.ListViewSubItem livSubItem3 = new ListViewItem.ListViewSubItem(liv, _list[i].PassportNo);
-                liv.SubItems.Add(livSubItem1);
-                liv.SubItems.Add(livSubItem2);
+                //liv.SubItems.Add(livSubItem1);
+                //liv.SubItems.Add(livSubItem2);
                 liv.SubItems.Add(livSubItem3);
                 liv.Tag = _list[i];
                 lvIn.Items.Add(liv); //这里是默认进入的在里面
