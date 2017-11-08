@@ -890,9 +890,9 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 list.Add(visainfos[i].EnglishName.Replace(' ','/'));
             }
-            var datearr = DateTimeFormator.DateTimeToStringOfThailand(DateTime.Now).Split('-');
+            //var datearr = DateTimeFormator.DateTimeToStringOfThailand(DateTime.Now).Split('-');
 
-            list.Add(datearr[0] + datearr[1]);
+            //list.Add(datearr[0] + datearr[1]);
             docGenerator.Generate(list);
         }
 

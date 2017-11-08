@@ -190,6 +190,8 @@ namespace TravletAgence.CSUI.FrmSub
             //设置操作员
             txtSalesPerson.Text = Common.GlobalInfo.LoginUser.UserName;
             txtSalesPerson.Enabled = false;
+            cbCountry.Text = "日本";
+            txtDepartureType.SelectedIndex = 0;
 
             if (_list != null && _visaModel == null && !_initFromVisaModel)
                 InitFrmFromList();

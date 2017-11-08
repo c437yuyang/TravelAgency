@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.panelBottom = new DevComponents.DotNetBar.PanelEx();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
@@ -231,14 +231,14 @@
             this.dgvGroupInfo.AllowUserToAddRows = false;
             this.dgvGroupInfo.AllowUserToDeleteRows = false;
             this.dgvGroupInfo.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroupInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGroupInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvGroupInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGroupInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -254,27 +254,27 @@
             this.Phone,
             this.Client,
             this.SalesPerson});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvGroupInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGroupInfo.EnableHeadersVisualStyles = false;
             this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvGroupInfo.Location = new System.Drawing.Point(0, 0);
             this.dgvGroupInfo.Name = "dgvGroupInfo";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroupInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGroupInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvGroupInfo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvGroupInfo.RowTemplate.Height = 30;
             this.dgvGroupInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -675,7 +675,7 @@
             this.panelInOutBtns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelInOutBtns.Location = new System.Drawing.Point(0, 0);
             this.panelInOutBtns.Name = "panelInOutBtns";
-            this.panelInOutBtns.Size = new System.Drawing.Size(557, 192);
+            this.panelInOutBtns.Size = new System.Drawing.Size(569, 192);
             this.panelInOutBtns.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelInOutBtns.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelInOutBtns.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -690,7 +690,7 @@
             this.btnAllOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAllOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAllOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAllOut.Location = new System.Drawing.Point(241, 152);
+            this.btnAllOut.Location = new System.Drawing.Point(247, 152);
             this.btnAllOut.Name = "btnAllOut";
             this.btnAllOut.Size = new System.Drawing.Size(75, 23);
             this.btnAllOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -703,7 +703,7 @@
             this.btnOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOut.Location = new System.Drawing.Point(241, 109);
+            this.btnOut.Location = new System.Drawing.Point(247, 109);
             this.btnOut.Name = "btnOut";
             this.btnOut.Size = new System.Drawing.Size(75, 23);
             this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -716,7 +716,7 @@
             this.btnIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnIn.Location = new System.Drawing.Point(241, 65);
+            this.btnIn.Location = new System.Drawing.Point(247, 65);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -729,7 +729,7 @@
             this.btnAllIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAllIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAllIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAllIn.Location = new System.Drawing.Point(241, 16);
+            this.btnAllIn.Location = new System.Drawing.Point(247, 16);
             this.btnAllIn.Name = "btnAllIn";
             this.btnAllIn.Size = new System.Drawing.Size(75, 23);
             this.btnAllIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -836,7 +836,7 @@
             this.panelInAndOut.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelInAndOut.Location = new System.Drawing.Point(276, 0);
             this.panelInAndOut.Name = "panelInAndOut";
-            this.panelInAndOut.Size = new System.Drawing.Size(557, 192);
+            this.panelInAndOut.Size = new System.Drawing.Size(569, 192);
             this.panelInAndOut.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelInAndOut.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelInAndOut.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -890,7 +890,7 @@
             this.lvIn.DisabledBackColor = System.Drawing.Color.Empty;
             this.lvIn.Dock = System.Windows.Forms.DockStyle.Right;
             this.lvIn.FullRowSelect = true;
-            this.lvIn.Location = new System.Drawing.Point(319, 0);
+            this.lvIn.Location = new System.Drawing.Point(331, 0);
             this.lvIn.Name = "lvIn";
             this.lvIn.Size = new System.Drawing.Size(238, 192);
             this.lvIn.TabIndex = 58;

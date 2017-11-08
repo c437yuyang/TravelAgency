@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using TravletAgence.Common;
 using TravletAgence.Common.Enums;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
@@ -48,6 +49,9 @@ namespace TravletAgence.CSUI.FrmMain
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
 
+            //初始化操作员
+            txtCheckPerson.Text = GlobalInfo.LoginUser.UserName;
+            txtCheckPerson.Enabled = false;
 
             //初始化数据信息
             ModelToCtrls(_model);
