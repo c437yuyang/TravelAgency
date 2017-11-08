@@ -19,6 +19,8 @@ namespace DateTimeFormatDemo
 
             dt = DateTime.Parse("2017-05-12");
             Console.WriteLine(dt.ToString());
+
+            Console.WriteLine(DateTime.Now.Day.ToString());
             Console.Read();
 
         }
