@@ -53,6 +53,11 @@ namespace TravletAgence.CSUI.FrmMain
             txtCheckPerson.Text = GlobalInfo.LoginUser.UserName;
             txtCheckPerson.Enabled = false;
 
+            //初始化控件
+            txtPicPath.Text = GlobalInfo.AppPath;
+            checkShowConfirm.Checked = true;
+            checkRegSucShowDlg.Checked = true;
+
             //初始化数据信息
             ModelToCtrls(_model);
 

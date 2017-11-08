@@ -25,7 +25,10 @@ namespace TravletAgence.CSUI.FrmMain
 {
     public partial class FrmVisaTypeIn : Form
     {
-        private readonly TravletAgence.BLL.VisaInfo bll = new TravletAgence.BLL.VisaInfo();
+        private readonly TravletAgence.BLL.VisaInfo _bll = new BLL.VisaInfo();
+        private Model.VisaInfo _model; //当前对应的所有编辑框对应的model
+        private List<Model.VisaInfo> _list; //当前dgv对应的list
+
         private int _curPage = 1;
         private int _pageCount = 0;
         private int _pageSize = 30;
@@ -44,16 +47,13 @@ namespace TravletAgence.CSUI.FrmMain
         public FrmVisaTypeIn()
         {
             InitializeComponent();
-            _t.Tick += AutoClassAndRecognize;
-            _t.Interval = 200;
-            //_thLoadDataToDgvAndUpdateState = new Thread(LoadAndUpdate);
-
-            //_thLoadDataToDgvAndUpdateState.IsBackground = true;
+            //_t.Tick += AutoClassAndRecognize;
+            //_t.Interval = 200;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _recordCount = bll.GetRecordCount(_where);
+            _recordCount = _bll.GetRecordCount(_where);
             _pageCount = (int)Math.Ceiling(_recordCount / (double)_pageSize);
 
             //初始化一些控件
@@ -185,7 +185,7 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 if (MessageBoxEx.Show(Resources.WhetherAddToDatabase, Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    if (bll.Add(model))
+                    if (_bll.Add(model))
                     {
                         //LoadDataToDataGridView(_curPage);
                         //UpdateState();
@@ -197,7 +197,7 @@ namespace TravletAgence.CSUI.FrmMain
             }
             else
             {
-                if (bll.Add(model))
+                if (_bll.Add(model))
                 {
                     //LoadDataToDgvAsyn();
                 }
@@ -293,7 +293,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             VisaInfo model = CtrlsToModel();
             if (model == null) return;
-            if (!bll.Add(model))
+            if (!_bll.Add(model))
             {
                 MessageBoxEx.Show(Resources.FailedAddToDatabase);
                 return;
