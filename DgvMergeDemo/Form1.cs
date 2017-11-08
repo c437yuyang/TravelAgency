@@ -16,6 +16,8 @@ namespace DgvMergeDemo
         List<String> colsHeaderText_V = new List<String>();
         List<String> colsHeaderText_H = new List<String>();
 
+        List<TravletAgence.Model.VisaInfo> _list = new List<TravletAgence.Model.VisaInfo>(); 
+
         public Form1()
         {
             InitializeComponent();
@@ -182,11 +184,22 @@ namespace DgvMergeDemo
         private void Form1_Load(object sender, EventArgs e)
         {
             TravletAgence.BLL.VisaInfo bll = new TravletAgence.BLL.VisaInfo();
+            _list = bll.GetListByPageOrderByOutState(1,30,string.Empty);
 
+            dataGridView1.DataSource = _list;
+            
 
-            dataGridView1.DataSource = bll.GetListByPageOrderByOutState(1,30,string.Empty);
+        }
 
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            if (_list[0].Name != "test111")
+                _list[0].Name = "test111";
+            else
+                _list[0].Name = "test222";
 
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _list;
         }
     }
 
