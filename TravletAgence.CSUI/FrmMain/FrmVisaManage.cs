@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravletAgence.Common;
 using TravletAgence.Common.Excel;
+using TravletAgence.Common.Word.Japan;
 using TravletAgence.CSUI.FrmSub;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
@@ -568,6 +569,29 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
+
+        private void 金桥大名单ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
+                return;
+            }
+            Model.Visa visaModel = _bllVisa.GetModel((Guid)dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
+            if (visaModel == null)
+            {
+                MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                return;
+            }
+            var visainfoList = _bllVisaInfo.GetModelList(" visa_id = '" + visaModel.Visa_id + "' ");
+            List<string> list = new List<string>();
+            for (int i = 0; i < visainfoList.Count; i++)
+            {
+                list.Add(visainfoList[i].Name);
+            }
+            DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type01JinQiaoList);
+            docGenerator.Generate(list);
+        }
 
 
 
