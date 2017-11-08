@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravletAgence.Common;
+using TravletAgence.Common.Excel;
 using TravletAgence.CSUI.FrmSub;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
@@ -444,7 +445,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void AddToSelectGroup()
         {
-            if(MessageBoxEx.Show("是否添加到选中团号?", "确认", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBoxEx.Show("是否添加到选中团号?", "确认", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
             }
@@ -513,7 +514,62 @@ namespace TravletAgence.CSUI.FrmMain
 
         }
 
+        private void 个签意见书ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
+                return;
+            }
+            Model.Visa visaModel = _bllVisa.GetModel((Guid)dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
+            if (visaModel == null)
+            {
+                MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                return;
+            }
+
+            if (visaModel.Types == Common.Enums.Types.Team)
+            {
+                MessageBoxEx.Show("团签类型不能导出此报表!");
+                return;
+            }
+
+            var list = _bllVisaInfo.GetModelList(" visa_id = '" + visaModel.Visa_id + "' ");
+
+            ExcelGenerator.GetIndividualVisaExcel(list, visaModel.Remark, visaModel.GroupNo);
+
+        }
+
+        private void 日本团队综合名单ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
+                return;
+            }
+            Model.Visa visaModel = _bllVisa.GetModel((Guid)dataGridView1.SelectedRows[0].Cells["Visa_id"].Value);
+            if (visaModel == null)
+            {
+                MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                return;
+            }
+
+            if (visaModel.Types == Common.Enums.Types.Individual)
+            {
+                MessageBoxEx.Show("个签类型不能导出此报表!");
+                return;
+            }
+
+            var list = _bllVisaInfo.GetModelList(" visa_id = '" + visaModel.Visa_id + "' ");
+            ExcelGenerator.GetTeamVisaExcelOfJapan(list, visaModel.GroupNo);
+        }
+
         #endregion
+
+
 
 
 

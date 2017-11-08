@@ -396,8 +396,6 @@ namespace TravletAgence.CSUI.FrmSub
         /// <param name="e"></param>
         private void btnCreateReport_Click(object sender, EventArgs e)
         {
-
-
             if (cbCountry.Text == "日本")
             {
                 ExcelGenerator.GetTeamVisaExcelOfJapan(_dgvList, txtGroupNo.Text);
