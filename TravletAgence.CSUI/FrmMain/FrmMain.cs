@@ -36,7 +36,11 @@ namespace TravletAgence.CSUI.FrmMain
             FrmCheckAutoInputInfo frm = new FrmCheckAutoInputInfo();
             OpenTab(frm, frm.Name);
         }
-
+        private void btnVisaInfoManage_Click(object sender, EventArgs e)
+        {
+            FrmVisaInfoManage frm = new FrmVisaInfoManage();
+            OpenTab(frm, frm.Name);
+        }
         #endregion
 
 
@@ -136,6 +140,8 @@ namespace TravletAgence.CSUI.FrmMain
         {
             Application.Exit();
         }
+
+
 
 
 

@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
+            this.picPassportNo = new System.Windows.Forms.PictureBox();
             this.panelRight = new DevComponents.DotNetBar.PanelEx();
             this.txtCheckPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -45,8 +46,6 @@
             this.btnPre = new DevComponents.DotNetBar.ButtonX();
             this.btnNext = new DevComponents.DotNetBar.ButtonX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.btnNextPage = new DevComponents.DotNetBar.ButtonX();
-            this.btnPrePage = new DevComponents.DotNetBar.ButtonX();
             this.txtExpireDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtLicenseTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtBirthday = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -66,15 +65,14 @@
             this.txtBirthPlace = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtEnglishName = new System.Windows.Forms.TextBox();
-            this.picPassportNo = new System.Windows.Forms.PictureBox();
             this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPassportNo)).BeginInit();
             this.panelRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPassportNo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
@@ -97,6 +95,15 @@
             this.panelMain.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelMain.Style.GradientAngle = 90;
             this.panelMain.TabIndex = 0;
+            // 
+            // picPassportNo
+            // 
+            this.picPassportNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picPassportNo.Location = new System.Drawing.Point(220, 0);
+            this.picPassportNo.Name = "picPassportNo";
+            this.picPassportNo.Size = new System.Drawing.Size(730, 556);
+            this.picPassportNo.TabIndex = 40;
+            this.picPassportNo.TabStop = false;
             // 
             // panelRight
             // 
@@ -278,8 +285,6 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx2.Controls.Add(this.btnNextPage);
-            this.panelEx2.Controls.Add(this.btnPrePage);
             this.panelEx2.Controls.Add(this.txtExpireDate);
             this.panelEx2.Controls.Add(this.txtLicenseTime);
             this.panelEx2.Controls.Add(this.txtBirthday);
@@ -312,28 +317,6 @@
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 23;
-            // 
-            // btnNextPage
-            // 
-            this.btnNextPage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNextPage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNextPage.Location = new System.Drawing.Point(128, 395);
-            this.btnNextPage.Name = "btnNextPage";
-            this.btnNextPage.Size = new System.Drawing.Size(81, 23);
-            this.btnNextPage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNextPage.TabIndex = 32;
-            this.btnNextPage.Text = "下一页";
-            // 
-            // btnPrePage
-            // 
-            this.btnPrePage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPrePage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnPrePage.Location = new System.Drawing.Point(6, 395);
-            this.btnPrePage.Name = "btnPrePage";
-            this.btnPrePage.Size = new System.Drawing.Size(89, 23);
-            this.btnPrePage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPrePage.TabIndex = 31;
-            this.btnPrePage.Text = "上一页";
             // 
             // txtExpireDate
             // 
@@ -633,15 +616,6 @@
             this.txtEnglishName.Size = new System.Drawing.Size(100, 21);
             this.txtEnglishName.TabIndex = 9;
             // 
-            // picPassportNo
-            // 
-            this.picPassportNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picPassportNo.Location = new System.Drawing.Point(220, 0);
-            this.picPassportNo.Name = "picPassportNo";
-            this.picPassportNo.Size = new System.Drawing.Size(730, 556);
-            this.picPassportNo.TabIndex = 40;
-            this.picPassportNo.TabStop = false;
-            // 
             // FrmCheckAutoInputInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -652,6 +626,7 @@
             this.Text = "自动录入信息校验:";
             this.Load += new System.EventHandler(this.FrmCheckAutoInputInfo_Load);
             this.panelMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picPassportNo)).EndInit();
             this.panelRight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelEx2.ResumeLayout(false);
@@ -659,7 +634,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPassportNo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -699,8 +673,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HasChecked;
         private System.Windows.Forms.DataGridViewTextBoxColumn VisaInfo_id;
         private DevComponents.DotNetBar.PanelEx panelRight;
-        private DevComponents.DotNetBar.ButtonX btnNextPage;
-        private DevComponents.DotNetBar.ButtonX btnPrePage;
         private System.Windows.Forms.PictureBox picPassportNo;
     }
 }
