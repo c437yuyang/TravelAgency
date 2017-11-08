@@ -67,6 +67,7 @@ namespace TravletAgence.CSUI.FrmMain
         #region 状态更新函数
         private void ModelToCtrls(TravletAgence.Model.VisaInfo model)
         {
+            
             txtName.Text = model.Name;
             txtEnglishName.Text = model.EnglishName;
             txtSex.Text = model.Sex;

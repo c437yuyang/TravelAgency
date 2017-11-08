@@ -273,7 +273,7 @@ namespace TravletAgence.CSUI.FrmMain
             if (!_autoReadThreadRun)
             {
                 // t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)； 
-                this.btnAutoReadThreadStart.Text = "停止自动读取";
+                this.btnAutoReadThreadStart.Text = "■停止自动读取";
                 _autoReadThreadRun = true;
                 Thread th = new Thread(this.AutoClassAndRecognize);
                 th.IsBackground = true;
@@ -825,17 +825,17 @@ namespace TravletAgence.CSUI.FrmMain
 
         #endregion
 
-        private void 金桥大名单ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var visainfos = GetDgvSelList();
-            List<string> list = new List<string>();
-            for (int i = 0; i < visainfos.Count; i++)
-            {
-                list.Add(visainfos[i].Name);
-            }
-            DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type01JinQiaoList);
-            docGenerator.Generate(list);
-        }
+        //private void 金桥大名单ToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    var visainfos = GetDgvSelList();
+        //    List<string> list = new List<string>();
+        //    for (int i = 0; i < visainfos.Count; i++)
+        //    {
+        //        list.Add(visainfos[i].Name);
+        //    }
+        //    DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type01JinQiaoList);
+        //    docGenerator.Generate(list);
+        //}
 
         //TODO:增加进度条显示
         private void 外领担保函ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -894,6 +894,11 @@ namespace TravletAgence.CSUI.FrmMain
 
             //list.Add(datearr[0] + datearr[1]);
             docGenerator.Generate(list);
+        }
+
+        private void FrmVisaTypeIn_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //_idCard.FreeKernel();
         }
 
 
