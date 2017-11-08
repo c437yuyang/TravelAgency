@@ -14,7 +14,8 @@ namespace TravletAgence.Common.Word.Japan
         public enum DocType
         {
             Type01JinQiaoList,
-            Type02WaiLingDanBaohan
+            Type02WaiLingDanBaohan,
+            Type03JiPiao
         }
 
         /// <summary>
@@ -45,6 +46,12 @@ namespace TravletAgence.Common.Word.Japan
                 PlaceHolderNum = 4;
                 DefaultName = "外领区人员特别担保函 （国旅四川）";
                 TemplaceDocFileName = "template_外领区人员特别担保函 （国旅四川）_添加占位符1-4.doc";
+            }
+            if (type == DocType.Type03JiPiao)
+            {
+                PlaceHolderNum = 17;
+                DefaultName = "机票（表7）";
+                TemplaceDocFileName = "template_机票（表7）.doc";
             }
         }
 

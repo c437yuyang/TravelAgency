@@ -165,6 +165,7 @@
   <ItemGroup>
     <Compile Include="DateTimeFormator.cs" />
     <Compile Include="Excel\Japan\XlsGenerator.cs" />
+    <Compile Include="RngWord.cs" />
     <Compile Include="Word\DocCOMHandler.cs" />
     <Compile Include="Enums\HasChecked.cs" />
     <Compile Include="Enums\Types.cs" />
@@ -257,6 +258,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Word\Templates\template_成都金桥大名单_添加占位符1-31.doc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Word\Templates\template_机票（表7）.doc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

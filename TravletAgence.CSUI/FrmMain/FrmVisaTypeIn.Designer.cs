@@ -53,6 +53,7 @@
             this.panelDgv = new DevComponents.DotNetBar.PanelEx();
             this.panelBars = new DevComponents.DotNetBar.PanelEx();
             this.panelSerachBar = new DevComponents.DotNetBar.PanelEx();
+            this.btnShowToday = new DevComponents.DotNetBar.ButtonX();
             this.progressLoading = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.btnClearSchConditions = new DevComponents.DotNetBar.ButtonX();
             this.cbDisplayType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -88,14 +89,16 @@
             this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.checkRegSucShowDlg = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkShowConfirm = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.btnAutoReadThreadStart = new DevComponents.DotNetBar.ButtonX();
+            this.btnAutoRead = new DevComponents.DotNetBar.ButtonX();
             this.txtExpireDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtLicenseTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtBirthday = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.btnAddToDatabase = new DevComponents.DotNetBar.ButtonX();
             this.btnReadData = new DevComponents.DotNetBar.ButtonX();
-            this.btnAutoRead = new DevComponents.DotNetBar.ButtonX();
             this.btnLoadKernel = new DevComponents.DotNetBar.ButtonX();
             this.btnFreeKernel = new DevComponents.DotNetBar.ButtonX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
@@ -127,12 +130,10 @@
             this.添加到团号ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.生成报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.金桥大名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bgWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.外领担保函ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnShowToday = new DevComponents.DotNetBar.ButtonX();
-            this.checkShowConfirm = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkRegSucShowDlg = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.人申请表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bgWorkerLoadData = new System.ComponentModel.BackgroundWorker();
+            this.机票报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             this.panelDgv.SuspendLayout();
@@ -184,7 +185,7 @@
             dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -419,6 +420,18 @@
             this.panelSerachBar.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelSerachBar.Style.GradientAngle = 90;
             this.panelSerachBar.TabIndex = 24;
+            // 
+            // btnShowToday
+            // 
+            this.btnShowToday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowToday.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowToday.Location = new System.Drawing.Point(619, 33);
+            this.btnShowToday.Name = "btnShowToday";
+            this.btnShowToday.Size = new System.Drawing.Size(92, 23);
+            this.btnShowToday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowToday.TabIndex = 28;
+            this.btnShowToday.Text = "显示今日";
+            this.btnShowToday.Click += new System.EventHandler(this.btnShowToday_Click);
             // 
             // progressLoading
             // 
@@ -861,6 +874,32 @@
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 19;
             // 
+            // checkRegSucShowDlg
+            // 
+            // 
+            // 
+            // 
+            this.checkRegSucShowDlg.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkRegSucShowDlg.Location = new System.Drawing.Point(12, 560);
+            this.checkRegSucShowDlg.Name = "checkRegSucShowDlg";
+            this.checkRegSucShowDlg.Size = new System.Drawing.Size(149, 23);
+            this.checkRegSucShowDlg.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkRegSucShowDlg.TabIndex = 23;
+            this.checkRegSucShowDlg.Text = "识别成功显示提示";
+            // 
+            // checkShowConfirm
+            // 
+            // 
+            // 
+            // 
+            this.checkShowConfirm.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkShowConfirm.Location = new System.Drawing.Point(13, 531);
+            this.checkShowConfirm.Name = "checkShowConfirm";
+            this.checkShowConfirm.Size = new System.Drawing.Size(149, 23);
+            this.checkShowConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkShowConfirm.TabIndex = 22;
+            this.checkShowConfirm.Text = "添加前显示提示对话框";
+            // 
             // btnAutoReadThreadStart
             // 
             this.btnAutoReadThreadStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -872,6 +911,19 @@
             this.btnAutoReadThreadStart.TabIndex = 21;
             this.btnAutoReadThreadStart.Text = "开始自动读取";
             this.btnAutoReadThreadStart.Click += new System.EventHandler(this.btnAutoReadThreadStart_Click);
+            // 
+            // btnAutoRead
+            // 
+            this.btnAutoRead.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAutoRead.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAutoRead.Location = new System.Drawing.Point(204, 587);
+            this.btnAutoRead.Name = "btnAutoRead";
+            this.btnAutoRead.Size = new System.Drawing.Size(97, 24);
+            this.btnAutoRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAutoRead.TabIndex = 16;
+            this.btnAutoRead.Text = "时钟版自动读取";
+            this.btnAutoRead.Visible = false;
+            this.btnAutoRead.Click += new System.EventHandler(this.btnAutoRead_Click);
             // 
             // txtExpireDate
             // 
@@ -1044,19 +1096,6 @@
             this.btnReadData.TabIndex = 17;
             this.btnReadData.Text = "读取签证信息";
             this.btnReadData.Click += new System.EventHandler(this.btnReadData_Click);
-            // 
-            // btnAutoRead
-            // 
-            this.btnAutoRead.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAutoRead.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAutoRead.Location = new System.Drawing.Point(204, 587);
-            this.btnAutoRead.Name = "btnAutoRead";
-            this.btnAutoRead.Size = new System.Drawing.Size(97, 24);
-            this.btnAutoRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAutoRead.TabIndex = 16;
-            this.btnAutoRead.Text = "时钟版自动读取";
-            this.btnAutoRead.Visible = false;
-            this.btnAutoRead.Click += new System.EventHandler(this.btnAutoRead_Click);
             // 
             // btnLoadKernel
             // 
@@ -1341,7 +1380,8 @@
             this.生成报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.金桥大名单ToolStripMenuItem,
             this.外领担保函ToolStripMenuItem,
-            this.人申请表ToolStripMenuItem});
+            this.人申请表ToolStripMenuItem,
+            this.机票报表ToolStripMenuItem});
             this.生成报表ToolStripMenuItem.Name = "生成报表ToolStripMenuItem";
             this.生成报表ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.生成报表ToolStripMenuItem.Text = "生成报表";
@@ -1353,12 +1393,6 @@
             this.金桥大名单ToolStripMenuItem.Text = "金桥大名单";
             this.金桥大名单ToolStripMenuItem.Click += new System.EventHandler(this.金桥大名单ToolStripMenuItem_Click);
             // 
-            // bgWorkerLoadData
-            // 
-            this.bgWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadData_DoWork);
-            this.bgWorkerLoadData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerLoadData_ProgressChanged);
-            this.bgWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadData_RunWorkerCompleted);
-            // 
             // 外领担保函ToolStripMenuItem
             // 
             this.外领担保函ToolStripMenuItem.Name = "外领担保函ToolStripMenuItem";
@@ -1366,50 +1400,25 @@
             this.外领担保函ToolStripMenuItem.Text = "外领担保函";
             this.外领担保函ToolStripMenuItem.Click += new System.EventHandler(this.外领担保函ToolStripMenuItem_Click);
             // 
-            // btnShowToday
-            // 
-            this.btnShowToday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShowToday.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowToday.Location = new System.Drawing.Point(619, 33);
-            this.btnShowToday.Name = "btnShowToday";
-            this.btnShowToday.Size = new System.Drawing.Size(92, 23);
-            this.btnShowToday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnShowToday.TabIndex = 28;
-            this.btnShowToday.Text = "显示今日";
-            this.btnShowToday.Click += new System.EventHandler(this.btnShowToday_Click);
-            // 
-            // checkShowConfirm
-            // 
-            // 
-            // 
-            // 
-            this.checkShowConfirm.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkShowConfirm.Location = new System.Drawing.Point(13, 531);
-            this.checkShowConfirm.Name = "checkShowConfirm";
-            this.checkShowConfirm.Size = new System.Drawing.Size(149, 23);
-            this.checkShowConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkShowConfirm.TabIndex = 22;
-            this.checkShowConfirm.Text = "添加前显示提示对话框";
-            // 
-            // checkRegSucShowDlg
-            // 
-            // 
-            // 
-            // 
-            this.checkRegSucShowDlg.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkRegSucShowDlg.Location = new System.Drawing.Point(12, 560);
-            this.checkRegSucShowDlg.Name = "checkRegSucShowDlg";
-            this.checkRegSucShowDlg.Size = new System.Drawing.Size(149, 23);
-            this.checkRegSucShowDlg.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkRegSucShowDlg.TabIndex = 23;
-            this.checkRegSucShowDlg.Text = "识别成功显示提示";
-            // 
             // 人申请表ToolStripMenuItem
             // 
             this.人申请表ToolStripMenuItem.Name = "人申请表ToolStripMenuItem";
             this.人申请表ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.人申请表ToolStripMenuItem.Text = "8人申请表";
             this.人申请表ToolStripMenuItem.Click += new System.EventHandler(this.人申请表ToolStripMenuItem_Click);
+            // 
+            // bgWorkerLoadData
+            // 
+            this.bgWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadData_DoWork);
+            this.bgWorkerLoadData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerLoadData_ProgressChanged);
+            this.bgWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadData_RunWorkerCompleted);
+            // 
+            // 机票报表ToolStripMenuItem
+            // 
+            this.机票报表ToolStripMenuItem.Name = "机票报表ToolStripMenuItem";
+            this.机票报表ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.机票报表ToolStripMenuItem.Text = "机票报表";
+            this.机票报表ToolStripMenuItem.Click += new System.EventHandler(this.机票报表ToolStripMenuItem_Click);
             // 
             // FrmVisaTypeIn
             // 
@@ -1541,6 +1550,7 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX checkShowConfirm;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkRegSucShowDlg;
         private System.Windows.Forms.ToolStripMenuItem 人申请表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 机票报表ToolStripMenuItem;
     }
 }
 

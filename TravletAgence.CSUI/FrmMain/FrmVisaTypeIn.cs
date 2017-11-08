@@ -880,6 +880,22 @@ namespace TravletAgence.CSUI.FrmMain
             XlsGenerator.GetPre8List(visainfos);
         }
 
+        private void 机票报表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type03JiPiao);
+            var visainfos = GetDgvSelList();
+            List<string> list = new List<string>();
+            list.Add(RngWord.GetRandomWord());
+            for (int i = 0; i < visainfos.Count; i++)
+            {
+                list.Add(visainfos[i].EnglishName.Replace(' ','/'));
+            }
+            var datearr = DateTimeFormator.DateTimeToStringOfThailand(DateTime.Now).Split('-');
+
+            list.Add(datearr[0] + datearr[1]);
+            docGenerator.Generate(list);
+        }
+
 
 
 
