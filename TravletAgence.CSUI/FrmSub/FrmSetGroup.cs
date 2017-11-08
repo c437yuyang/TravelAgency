@@ -203,10 +203,11 @@ namespace TravletAgence.CSUI.FrmSub
             if (txtDepartureTime.Value.ToString() != "0001/1/1 0:00:00")
             {
                 _visaName = "QZC" + txtDepartureTime.Value.ToString("yyMMdd");
-                
-            }else
+
+            }
+            else
                 _visaName = "QZC" + DateTime.Now.ToString("yyMMdd");
-            
+
             for (int i = 0; i < lvIn.Items.Count; ++i)
             {
                 _visaName += ((Model.VisaInfo)lvIn.Items[i].Tag).Name;
@@ -505,12 +506,17 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.EntryTime = DateTime.Now;
                 _visaModel.GroupNo = txtGroupNo.Text;
                 _visaModel.SalesPerson = txtSalesPerson.Text;
-                _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
                 _visaModel.Country = cbCountry.Text;
                 _visaModel.Number = lvIn.Items.Count; //团号的人数
-                _visaModel.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
-                _visaModel.InTime = DateTime.Parse(txtInTime.Text);
-                _visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
+                if (!string.IsNullOrEmpty(txtDepartureTime.Text))
+                    _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+                if (!string.IsNullOrEmpty(txtSubmitTime.Text))
+                    _visaModel.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
+                if (!string.IsNullOrEmpty(txtInTime.Text))
+                    _visaModel.InTime = DateTime.Parse(txtInTime.Text);
+                if (!string.IsNullOrEmpty(txtOutTime.Text))
+                    _visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
+
                 _visaModel.Client = txtClient.Text;
                 _visaModel.DepartureType = txtDepartureType.Text;
                 _visaModel.SubmitCondition = txtSubmitCondition.Text;
@@ -686,7 +692,7 @@ namespace TravletAgence.CSUI.FrmSub
             UpdateGroupNo();
         }
 
-        
+
 
 
 

@@ -142,7 +142,7 @@ namespace TravletAgence.CSUI.FrmSub
             txtDepartureTime.Text = DateTimeFormator.DateTimeToString(_visaModel.PredictTime);
             cbCountry.Text = _visaModel.Country;
             txtSalesPerson.Text = _visaModel.SalesPerson;
-            txtClient.Text = _visaModel.Client;            
+            txtClient.Text = _visaModel.Client;
         }
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
@@ -164,7 +164,7 @@ namespace TravletAgence.CSUI.FrmSub
             //设置操作员
             txtSalesPerson.Text = Common.GlobalInfo.LoginUser.UserName;
             txtSalesPerson.Enabled = false;
-            
+
 
 
             if (_list != null && _visaModel == null && !_initFromVisaModel)
@@ -179,10 +179,10 @@ namespace TravletAgence.CSUI.FrmSub
             //if (txtDepartureTime.Value.ToString() != "0001/1/1 0:00:00")
             //{
             //    _visaName = "QZC" + txtDepartureTime.Value.ToString("yyMMdd");
-                
+
             //}else
             //    _visaName = "QZC" + DateTime.Now.ToString("yyMMdd");
-            
+
             //for (int i = 0; i < lvIn.Items.Count; ++i)
             //{
             //    _visaName += ((Model.VisaInfo)lvIn.Items[i].Tag).Name;
@@ -403,7 +403,7 @@ namespace TravletAgence.CSUI.FrmSub
             else if (cbCountry.Text == "泰国")
             {
                 ExcelGenerator.GetTeamVisaExcelOfThailand(_dgvList, txtGroupNo.Text);
-                
+
             }
         }
 
@@ -491,10 +491,11 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.EntryTime = DateTime.Now;
                 _visaModel.GroupNo = txtGroupNo.Text;
                 _visaModel.SalesPerson = txtSalesPerson.Text;
-                _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+                if (!string.IsNullOrEmpty(txtDepartureTime.Text))
+                    _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
                 _visaModel.Country = cbCountry.Text;
                 _visaModel.Number = lvIn.Items.Count; //团号的人数
-                
+
                 _visaModel.Client = txtClient.Text;
                 _visaModel.Types = Common.Enums.Types.Team; //设置为团签
                 return true;
