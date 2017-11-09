@@ -11,23 +11,49 @@ namespace TravletAgence.BLL
     /// </summary>
     public partial class VisaInfo_Tmp
     {
-        public List<Model.VisaInfo_Tmp> GetListByPageOrderByOutState(int pageIndex, int pageSize,string where)
-        {
-            int start = (pageIndex - 1) * pageSize + 1;
-            int end = pageIndex * pageSize;
+        private BLL.VisaInfo _bllVisaInfo = new BLL.VisaInfo();
 
-            DataSet ds = dal.GetDataByPageOrderByOutState(start, end,where);
-            DataTable dt = ds.Tables[0];
-            return DataTableToList(dt);
-            
+        public int MoveCheckedDataToVisaInfo()
+        {
+            int res = 0;
+            var list = GetModelList(string.Empty);
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].HasChecked==Common.Enums.HasChecked.Yes)
+                {
+                    Model.VisaInfo model = new Model.VisaInfo();
+                    list[i].CopyToVisaInfo(model);
+                    if(_bllVisaInfo.Add(model) &&  Delete(list[i].VisaInfo_id))
+                        res++; 
+                }
+            }
+            return res;
         }
 
-        public List<Model.VisaInfo_Tmp> GetListByPageOrderByGroupNo(int pageIndex, int pageSize,string where)
+        public List<Model.VisaInfo_Tmp> GetModelList(int top, string where, string order)
+        {
+            DataSet ds = dal.GetList(0, where, order);
+            DataTable dt = ds.Tables[0];
+            return DataTableToList(dt);
+        }
+
+        public List<Model.VisaInfo_Tmp> GetListByPageOrderByOutState(int pageIndex, int pageSize, string where)
         {
             int start = (pageIndex - 1) * pageSize + 1;
             int end = pageIndex * pageSize;
 
-            DataSet ds = dal.GetDataByPageOrderByGroupNo(start, end,where);
+            DataSet ds = dal.GetDataByPageOrderByOutState(start, end, where);
+            DataTable dt = ds.Tables[0];
+            return DataTableToList(dt);
+
+        }
+
+        public List<Model.VisaInfo_Tmp> GetListByPageOrderByGroupNo(int pageIndex, int pageSize, string where)
+        {
+            int start = (pageIndex - 1) * pageSize + 1;
+            int end = pageIndex * pageSize;
+
+            DataSet ds = dal.GetDataByPageOrderByGroupNo(start, end, where);
             DataTable dt = ds.Tables[0];
             return DataTableToList(dt);
         }

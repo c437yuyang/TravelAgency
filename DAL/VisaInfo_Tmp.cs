@@ -134,6 +134,7 @@ namespace TravletAgence.DAL
 				return false;
 			}
 		}
+
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
@@ -540,6 +541,8 @@ namespace TravletAgence.DAL
 			strSql.Append(" order by " + filedOrder);
 			return DbHelperSQL.Query(strSql.ToString());
 		}
+
+
 
 		/// <summary>
 		/// 获取记录总数

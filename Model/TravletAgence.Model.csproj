@@ -127,6 +127,7 @@
     <Compile Include="Visa.cs" />
     <Compile Include="VisaInfo.cs" />
     <Compile Include="VisaInfo_Tmp.cs" />
+    <Compile Include="VisaInfo_TmpModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

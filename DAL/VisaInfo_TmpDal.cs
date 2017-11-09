@@ -12,6 +12,9 @@ namespace TravletAgence.DAL
     /// </summary>
     public partial class VisaInfo_Tmp
     {
+
+
+
         /// <summary>
         /// 按照entrytime,outstate,groupNo排序，给送签管理界面用的
         /// </summary>
@@ -150,6 +153,9 @@ namespace TravletAgence.DAL
                 return null;
             }
         }
+
+
+
 
     }
 }

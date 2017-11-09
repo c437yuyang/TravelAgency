@@ -82,16 +82,16 @@ namespace TravletAgence.DAL
 					new SqlParameter("@AbnormalOutTime", SqlDbType.DateTime),
 					new SqlParameter("@HasChecked", SqlDbType.VarChar,2),
 					new SqlParameter("@CheckPerson", SqlDbType.VarChar,50)};
-			parameters[0].Value = Guid.NewGuid();
-			parameters[1].Value = model.Visa_id;
-			parameters[2].Value = model.GroupNo;
-			parameters[3].Value = model.Name;
-			parameters[4].Value = model.EnglishName;
-			parameters[5].Value = model.Sex;
-			parameters[6].Value = model.Birthday;
-			parameters[7].Value = model.PassportNo;
-			parameters[8].Value = model.LicenceTime;
-			parameters[9].Value = model.ExpiryDate;
+			parameters[0].Value =  Guid.NewGuid();
+			parameters[1].Value =  model.Visa_id;
+			parameters[2].Value =  model.GroupNo;
+			parameters[3].Value =  model.Name;
+			parameters[4].Value =  model.EnglishName;
+			parameters[5].Value =  model.Sex;
+			parameters[6].Value =  model.Birthday;
+			parameters[7].Value =  model.PassportNo;
+			parameters[8].Value =  model.LicenceTime;
+			parameters[9].Value =  model.ExpiryDate;
 			parameters[10].Value = model.Birthplace;
 			parameters[11].Value = model.IssuePlace;
 			parameters[12].Value = model.Post;

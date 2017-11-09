@@ -33,8 +33,7 @@
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnVisaTypeIn = new DevComponents.DotNetBar.ButtonItem();
-            this.btnCheckAutoInputInfo = new DevComponents.DotNetBar.ButtonItem();
+            this.btnVisaInfoManage = new DevComponents.DotNetBar.ButtonItem();
             this.btnVisaQuery = new DevComponents.DotNetBar.ButtonItem();
             this.btnVisaSubmit = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel5 = new DevComponents.DotNetBar.RibbonPanel();
@@ -47,7 +46,7 @@
             this.btnMCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMCloseOther = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.btnVisaInfoManage = new DevComponents.DotNetBar.ButtonItem();
+            this.btnVisaTypeIn = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).BeginInit();
@@ -131,7 +130,6 @@
             this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnVisaTypeIn,
             this.btnVisaInfoManage,
-            this.btnCheckAutoInputInfo,
             this.btnVisaQuery,
             this.btnVisaSubmit});
             this.ribbonBar2.Location = new System.Drawing.Point(3, 0);
@@ -150,25 +148,15 @@
             this.ribbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonBar2.TitleVisible = false;
             // 
-            // btnVisaTypeIn
+            // btnVisaInfoManage
             // 
-            this.btnVisaTypeIn.Icon = ((System.Drawing.Icon)(resources.GetObject("btnVisaTypeIn.Icon")));
-            this.btnVisaTypeIn.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
-            this.btnVisaTypeIn.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnVisaTypeIn.Name = "btnVisaTypeIn";
-            this.btnVisaTypeIn.SubItemsExpandWidth = 14;
-            this.btnVisaTypeIn.Text = "签证录入";
-            this.btnVisaTypeIn.Click += new System.EventHandler(this.btnVisaTypeIn_Click);
-            // 
-            // btnCheckAutoInputInfo
-            // 
-            this.btnCheckAutoInputInfo.Icon = ((System.Drawing.Icon)(resources.GetObject("btnCheckAutoInputInfo.Icon")));
-            this.btnCheckAutoInputInfo.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
-            this.btnCheckAutoInputInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnCheckAutoInputInfo.Name = "btnCheckAutoInputInfo";
-            this.btnCheckAutoInputInfo.SubItemsExpandWidth = 14;
-            this.btnCheckAutoInputInfo.Text = "录入信息核对";
-            this.btnCheckAutoInputInfo.Click += new System.EventHandler(this.btnCheckAutoInputInfo_Click);
+            this.btnVisaInfoManage.Icon = ((System.Drawing.Icon)(resources.GetObject("btnVisaInfoManage.Icon")));
+            this.btnVisaInfoManage.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
+            this.btnVisaInfoManage.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnVisaInfoManage.Name = "btnVisaInfoManage";
+            this.btnVisaInfoManage.SubItemsExpandWidth = 14;
+            this.btnVisaInfoManage.Text = "签证管理";
+            this.btnVisaInfoManage.Click += new System.EventHandler(this.btnVisaInfoManage_Click);
             // 
             // btnVisaQuery
             // 
@@ -286,15 +274,15 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(71)))), ((int)(((byte)(42))))));
             // 
-            // btnVisaInfoManage
+            // btnVisaTypeIn
             // 
-            this.btnVisaInfoManage.Icon = ((System.Drawing.Icon)(resources.GetObject("btnVisaInfoManage.Icon")));
-            this.btnVisaInfoManage.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
-            this.btnVisaInfoManage.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnVisaInfoManage.Name = "btnVisaInfoManage";
-            this.btnVisaInfoManage.SubItemsExpandWidth = 14;
-            this.btnVisaInfoManage.Text = "签证管理";
-            this.btnVisaInfoManage.Click += new System.EventHandler(this.btnVisaInfoManage_Click);
+            this.btnVisaTypeIn.Icon = ((System.Drawing.Icon)(resources.GetObject("btnVisaTypeIn.Icon")));
+            this.btnVisaTypeIn.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
+            this.btnVisaTypeIn.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnVisaTypeIn.Name = "btnVisaTypeIn";
+            this.btnVisaTypeIn.SubItemsExpandWidth = 14;
+            this.btnVisaTypeIn.Text = "签证录入";
+            this.btnVisaTypeIn.Click += new System.EventHandler(this.btnVisaTypeIn_Click);
             // 
             // FrmMain
             // 
@@ -305,7 +293,7 @@
             this.Controls.Add(this.ribbonControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
-            this.Text = "东瀛假日:签证自动扫描识别系统V1.8";
+            this.Text = "东瀛假日:签证自动扫描识别系统V2.0";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ribbonControl1.ResumeLayout(false);
@@ -322,7 +310,6 @@
         private DevComponents.DotNetBar.RibbonControl ribbonControl1;
         private DevComponents.DotNetBar.RibbonPanel ribbonPanel3;
         private DevComponents.DotNetBar.RibbonBar ribbonBar2;
-        private DevComponents.DotNetBar.ButtonItem btnVisaTypeIn;
         private DevComponents.DotNetBar.ButtonItem btnVisaQuery;
         private DevComponents.DotNetBar.ButtonItem btnVisaSubmit;
         private DevComponents.DotNetBar.RibbonPanel ribbonPanel5;
@@ -335,8 +322,8 @@
         private System.Windows.Forms.ToolStripMenuItem btnMCloseAll;
         private System.Windows.Forms.ToolStripMenuItem btnMCloseOther;
         private DevComponents.DotNetBar.StyleManager styleManager1;
-        private DevComponents.DotNetBar.ButtonItem btnCheckAutoInputInfo;
         private DevComponents.DotNetBar.ButtonItem btnVisaInfoManage;
+        private DevComponents.DotNetBar.ButtonItem btnVisaTypeIn;
 
     }
 }

@@ -73,11 +73,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmMain\FrmCheckAutoInputInfo.cs">
+    <Compile Include="FrmMain\FrmVisaTypeIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMain\FrmCheckAutoInputInfo.Designer.cs">
-      <DependentUpon>FrmCheckAutoInputInfo.cs</DependentUpon>
+    <Compile Include="FrmMain\FrmVisaTypeIn.Designer.cs">
+      <DependentUpon>FrmVisaTypeIn.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMain\frmLogin.cs">
       <SubType>Form</SubType>
@@ -141,8 +141,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmMain\FrmCheckAutoInputInfo.resx">
-      <DependentUpon>FrmCheckAutoInputInfo.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMain\FrmVisaTypeIn.resx">
+      <DependentUpon>FrmVisaTypeIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -238,6 +238,8 @@
     <None Include="Resources\CountryImages\PassportPictureNotFound.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Icons\passport.ico" />
+    <Content Include="Resources\Icons\passport.jpg" />
     <Content Include="Resources\Icons\Add Card.ico" />
     <Content Include="Resources\Icons\add_group-256.ico" />
     <Content Include="Resources\Icons\apply-256.ico" />
