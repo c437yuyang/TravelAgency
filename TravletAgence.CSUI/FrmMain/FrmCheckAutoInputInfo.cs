@@ -23,13 +23,9 @@ namespace TravletAgence.CSUI.FrmMain
         private Model.VisaInfo _model; //当前对应的所有编辑框对应的model
         private List<Model.VisaInfo> _list; //当前dgv对应的list
         private readonly BLL.VisaInfo _bll = new BLL.VisaInfo();
-        private int _curPage = 1;
         private int _curIdx = 0;
-        private int _pageSize = 15;
         private int _recordCount = 0;
-        private int _pageCount = 0;
         private readonly IDCard _idCard = new IDCard();
-        private bool _autoRead = false;
         private bool _autoReadThreadRun = false;
 
         public FrmCheckAutoInputInfo()
@@ -52,6 +48,11 @@ namespace TravletAgence.CSUI.FrmMain
             dgvWait4Check.MultiSelect = false;
             txtCheckPerson.Text = GlobalInfo.LoginUser.UserName; //初始化操作员
             txtCheckPerson.Enabled = false;
+
+            //debug用
+            txtLicenseTime.Text = DateTimeFormator.DateTimeToString(DateTime.Now);
+            txtBirthday.Text = DateTimeFormator.DateTimeToString(DateTime.Now);
+            txtExpireDate.Text = DateTimeFormator.DateTimeToString(DateTime.Now);
 
             //加载数据（list和dgv的数据都在这里面）,会加载之前还没有进行校验的那些VisaInfo
             LoadDataToDgvAndList();
@@ -222,7 +223,7 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 if (_list[i].HasChecked == Common.Enums.HasChecked.Yes)
                 {
-                    if (string.IsNullOrEmpty(_list[i].VisaInfo_id.ToString())) //不存在的数据（新录入的）执行添加
+                    if (_list[i].VisaInfo_id.ToString() == "00000000-0000-0000-0000-000000000000" || string.IsNullOrEmpty(_list[i].VisaInfo_id.ToString()) ) //不存在的数据（新录入的）执行添加
                         res += _bll.Add(_list[i]) ? 1 : 0;
                     else res += _bll.Update(_list[i]) ? 1 : 0; //以前存在的但是没校验的执行update
                 }
