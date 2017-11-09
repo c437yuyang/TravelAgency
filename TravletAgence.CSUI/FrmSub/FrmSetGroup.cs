@@ -6,6 +6,7 @@ using DevComponents.DotNetBar;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
 using TravletAgence.Common.Excel;
+using TravletAgence.Common.Excel.Japan;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
 

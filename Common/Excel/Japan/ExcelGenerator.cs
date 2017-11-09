@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
+using TravletAgence.Model;
 using BorderStyle = NPOI.SS.UserModel.BorderStyle;
 using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 
-namespace TravletAgence.Common.Excel
+namespace TravletAgence.Common.Excel.Japan
 {
+    /// <summary>
+    /// 这个类是自己生成的Excel
+    /// </summary>
     public static class ExcelGenerator
     {
 
@@ -383,6 +384,132 @@ namespace TravletAgence.Common.Excel
 
         }
 
+        public static bool GetEverydayExcel(List<Model.Visa> visaList,List<List<VisaInfo>> visaInfoList)
+        {
+            //1.创建工作簿对象
+            IWorkbook wkbook = new HSSFWorkbook();
+            //2.创建工作表对象
+            ISheet sheet = wkbook.CreateSheet("每日送签客人情况");
 
+            //2.1创建表头
+            IRow row = sheet.CreateRow(0);
+            row.CreateCell(0).SetCellValue("");
+            row.CreateCell(1).SetCellValue("姓名");
+            row.CreateCell(2).SetCellValue("签发地");
+            row.CreateCell(3).SetCellValue("居住地");
+            row.CreateCell(4).SetCellValue("签证类型");
+            row.CreateCell(5).SetCellValue("归国时间");
+            row.CreateCell(6).SetCellValue("关系");
+            row.CreateCell(7).SetCellValue("");
+
+            //2.2设置列宽度
+            sheet.SetColumnWidth(0, 5 * 256);
+            sheet.SetColumnWidth(1, 10 * 256);
+            sheet.SetColumnWidth(2, 10 * 256);
+            sheet.SetColumnWidth(3, 10 * 256);
+            sheet.SetColumnWidth(4, 10 * 256);
+            sheet.SetColumnWidth(5, 13 * 256);
+            sheet.SetColumnWidth(6, 10 * 256);
+            sheet.SetColumnWidth(7, 35 * 256); 
+            
+            //3.插入行和单元格
+            int rowNum = 0;
+            for (int i = 0; i != visaList.Count; ++i)
+            {
+                for (int j = 0; j < visaInfoList[i].Count; j++)
+                {
+                    ++rowNum;
+                    row = sheet.CreateRow(rowNum);
+                    row.CreateCell(0).SetCellValue(rowNum);
+                    row.CreateCell(1).SetCellValue(visaInfoList[i][j].Name);
+                    row.CreateCell(2).SetCellValue(visaInfoList[i][j].IssuePlace);
+                    row.CreateCell(3).SetCellValue(visaInfoList[i][j].Residence);
+                    row.CreateCell(4).SetCellValue(visaList[i].DepartureType);
+                    row.CreateCell(5).SetCellValue(""); //归国时间先不设置
+                    row.CreateCell(6).SetCellValue(visaList[i].Remark);
+                    row.CreateCell(7).SetCellValue(visaInfoList[i][j].Identification);
+                }
+                //创建单元格
+                
+                //设置行高
+                //row.HeightInPoints = 50;
+                //设置值
+
+
+            }
+
+            HSSFFont font = (HSSFFont) wkbook.CreateFont();
+            font.FontName = "宋体";
+            font.FontHeightInPoints = 11;
+
+            //4.1设置对齐风格和边框
+            ICellStyle style = wkbook.CreateCellStyle();
+            style.SetFont(font);
+            style.BorderTop = BorderStyle.Thin;
+            style.BorderBottom = BorderStyle.Thin;
+            style.BorderLeft = BorderStyle.Thin;
+            style.BorderRight = BorderStyle.Thin;
+            for (int i = 0; i <= sheet.LastRowNum; i++)
+            {
+                row = sheet.GetRow(i);
+                for (int c = 0; c < row.LastCellNum; ++c)
+                {
+                    row.GetCell(c).CellStyle = style;
+                }
+            }
+
+            //4.2合并单元格
+            int dp = 1;
+            for (int i = 0; i != visaList.Count; ++i)
+            {
+                sheet.AddMergedRegion(new CellRangeAddress(dp, dp + visaInfoList[i].Count-1, 6, 6));
+               
+                //单独处理合并区域的单元格格式
+                ICellStyle mergeStyle = wkbook.CreateCellStyle();
+                mergeStyle.SetFont(font);
+                mergeStyle.VerticalAlignment = VerticalAlignment.Center;
+                mergeStyle.Alignment = HorizontalAlignment.Center;
+                mergeStyle.BorderTop = BorderStyle.Thin;
+                mergeStyle.BorderBottom = BorderStyle.Thin;
+                mergeStyle.BorderLeft = BorderStyle.Thin;
+                mergeStyle.BorderRight = BorderStyle.Thin;
+                sheet.GetRow(dp).Cells[6].CellStyle = mergeStyle;
+                dp += visaInfoList[i].Count;
+            }
+            
+
+            //5.执行写入磁盘
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "office 2003 excel|*.xls";
+            saveFileDialog1.Title = "Save";
+            //if (groupNo.Length > 0)
+            //{
+            //    //TODO:处理文件名太长
+            //}
+            saveFileDialog1.FileName = "每日送签客人情况表" + ".xls";
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return true;
+
+            if (saveFileDialog1.FileName != "")
+            {
+                try
+                {
+                    using (FileStream fs = (FileStream)saveFileDialog1.OpenFile())
+                    {
+                        wkbook.Write(fs);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    MessageBoxEx.Show("指定文件名的文件正在使用中，无法写入，请关闭后重试!");
+                    return false;
+                }
+
+            }
+            Process.Start(saveFileDialog1.FileName);
+            return true;
+        }
     }
 }

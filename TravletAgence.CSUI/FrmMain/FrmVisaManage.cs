@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravletAgence.Common;
 using TravletAgence.Common.Excel;
+using TravletAgence.Common.Excel.Japan;
 using TravletAgence.Common.Word.Japan;
 using TravletAgence.CSUI.FrmSub;
 using TravletAgence.CSUI.Properties;
@@ -517,8 +518,6 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void 个签意见书ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
                 MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
@@ -591,6 +590,32 @@ namespace TravletAgence.CSUI.FrmMain
             }
             DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type01JinQiaoList);
             docGenerator.Generate(list);
+        }
+
+        private void btnGetTodayExcel_Click(object sender, EventArgs e)
+        {
+            
+            List<Visa> visaList =
+                _bllVisa.GetModelList(" (EntryTime between '" + DateTimeFormator.DateTimeToString(DateTime.Now) + " 00:00:0.000' and " + " '" +
+                                     DateTimeFormator.DateTimeToString(DateTime.Now) +
+                                      " 23:59:59.999') ");
+            if (visaList.Count <= 0)
+            {
+                MessageBoxEx.Show("今日没有报表需要生成!");
+                return;
+            }
+
+            List<List<VisaInfo>> visaInfoList = new List<List<VisaInfo>>();
+
+            for (int i = 0; i < visaList.Count; i++)
+            {
+                List<VisaInfo> list = _bllVisaInfo.GetModelList(" visa_id = '" + visaList[i].Visa_id.ToString() + "' ");
+                visaInfoList.Add(list);
+            }
+
+            ExcelGenerator.GetEverydayExcel(visaList, visaInfoList);
+
+
         }
 
 

@@ -169,7 +169,7 @@
     <Compile Include="Word\DocCOMHandler.cs" />
     <Compile Include="Enums\HasChecked.cs" />
     <Compile Include="Enums\Types.cs" />
-    <Compile Include="Excel\ExcelGenerator.cs" />
+    <Compile Include="Excel\Japan\ExcelGenerator.cs" />
     <Compile Include="Enums\HasTypeIn.cs" />
     <Compile Include="GlobalInfo.cs" />
     <Compile Include="IDCard\IDCard.cs" />

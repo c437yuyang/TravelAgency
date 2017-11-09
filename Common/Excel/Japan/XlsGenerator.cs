@@ -11,6 +11,9 @@ using TravletAgence.Model;
 
 namespace TravletAgence.Common.Excel.Japan
 {
+    /// <summary>
+    /// 这个类是用占位符替换生成的报表
+    /// </summary>
     public class XlsGenerator
     {
 

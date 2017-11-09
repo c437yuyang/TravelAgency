@@ -57,6 +57,10 @@
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemShowGroupNo = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemRefreshDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.日本团队综合名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.个签意见书ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.金桥大名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelBars = new DevComponents.DotNetBar.PanelEx();
             this.panelSerachBar = new DevComponents.DotNetBar.PanelEx();
             this.btnShowToday = new DevComponents.DotNetBar.ButtonX();
@@ -79,10 +83,7 @@
             this.panelDgv = new DevComponents.DotNetBar.PanelEx();
             this.cmsAddToGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加到团号ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导出报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.日本团队综合名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.个签意见书ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.金桥大名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGetTodayExcel = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.cmsDgv.SuspendLayout();
@@ -213,7 +214,7 @@
             dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -306,7 +307,7 @@
             this.cmsItemRefreshDatabase,
             this.导出报表ToolStripMenuItem});
             this.cmsDgv.Name = "cmsDgv";
-            this.cmsDgv.Size = new System.Drawing.Size(161, 114);
+            this.cmsDgv.Size = new System.Drawing.Size(161, 92);
             // 
             // 删除ToolStripMenuItem
             // 
@@ -328,6 +329,37 @@
             this.cmsItemRefreshDatabase.Size = new System.Drawing.Size(160, 22);
             this.cmsItemRefreshDatabase.Text = "刷新数据库状态";
             this.cmsItemRefreshDatabase.Click += new System.EventHandler(this.cmsItemRefreshDatabase_Click);
+            // 
+            // 导出报表ToolStripMenuItem
+            // 
+            this.导出报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.日本团队综合名单ToolStripMenuItem,
+            this.个签意见书ToolStripMenuItem,
+            this.金桥大名单ToolStripMenuItem});
+            this.导出报表ToolStripMenuItem.Name = "导出报表ToolStripMenuItem";
+            this.导出报表ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.导出报表ToolStripMenuItem.Text = "导出报表";
+            // 
+            // 日本团队综合名单ToolStripMenuItem
+            // 
+            this.日本团队综合名单ToolStripMenuItem.Name = "日本团队综合名单ToolStripMenuItem";
+            this.日本团队综合名单ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.日本团队综合名单ToolStripMenuItem.Text = "日本团队综合名单";
+            this.日本团队综合名单ToolStripMenuItem.Click += new System.EventHandler(this.日本团队综合名单ToolStripMenuItem_Click);
+            // 
+            // 个签意见书ToolStripMenuItem
+            // 
+            this.个签意见书ToolStripMenuItem.Name = "个签意见书ToolStripMenuItem";
+            this.个签意见书ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.个签意见书ToolStripMenuItem.Text = "个签意见书";
+            this.个签意见书ToolStripMenuItem.Click += new System.EventHandler(this.个签意见书ToolStripMenuItem_Click);
+            // 
+            // 金桥大名单ToolStripMenuItem
+            // 
+            this.金桥大名单ToolStripMenuItem.Name = "金桥大名单ToolStripMenuItem";
+            this.金桥大名单ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.金桥大名单ToolStripMenuItem.Text = "金桥大名单";
+            this.金桥大名单ToolStripMenuItem.Click += new System.EventHandler(this.金桥大名单ToolStripMenuItem_Click);
             // 
             // panelBars
             // 
@@ -353,6 +385,7 @@
             // 
             this.panelSerachBar.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelSerachBar.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelSerachBar.Controls.Add(this.btnGetTodayExcel);
             this.panelSerachBar.Controls.Add(this.btnShowToday);
             this.panelSerachBar.Controls.Add(this.cbDisplayType);
             this.panelSerachBar.Controls.Add(this.txtSchSalesPerson);
@@ -439,7 +472,7 @@
             this.progressLoading.BackgroundStyle.BackgroundImageAlpha = ((byte)(64));
             this.progressLoading.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.progressLoading.FocusCuesEnabled = false;
-            this.progressLoading.Location = new System.Drawing.Point(730, 5);
+            this.progressLoading.Location = new System.Drawing.Point(861, 5);
             this.progressLoading.Name = "progressLoading";
             this.progressLoading.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot;
             this.progressLoading.ProgressColor = System.Drawing.Color.YellowGreen;
@@ -679,36 +712,17 @@
             this.添加到团号ToolStripMenuItem.Text = "添加到此团号";
             this.添加到团号ToolStripMenuItem.Click += new System.EventHandler(this.添加到团号ToolStripMenuItem_Click);
             // 
-            // 导出报表ToolStripMenuItem
+            // btnGetTodayExcel
             // 
-            this.导出报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.日本团队综合名单ToolStripMenuItem,
-            this.个签意见书ToolStripMenuItem,
-            this.金桥大名单ToolStripMenuItem});
-            this.导出报表ToolStripMenuItem.Name = "导出报表ToolStripMenuItem";
-            this.导出报表ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.导出报表ToolStripMenuItem.Text = "导出报表";
-            // 
-            // 日本团队综合名单ToolStripMenuItem
-            // 
-            this.日本团队综合名单ToolStripMenuItem.Name = "日本团队综合名单ToolStripMenuItem";
-            this.日本团队综合名单ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.日本团队综合名单ToolStripMenuItem.Text = "日本团队综合名单";
-            this.日本团队综合名单ToolStripMenuItem.Click += new System.EventHandler(this.日本团队综合名单ToolStripMenuItem_Click);
-            // 
-            // 个签意见书ToolStripMenuItem
-            // 
-            this.个签意见书ToolStripMenuItem.Name = "个签意见书ToolStripMenuItem";
-            this.个签意见书ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.个签意见书ToolStripMenuItem.Text = "个签意见书";
-            this.个签意见书ToolStripMenuItem.Click += new System.EventHandler(this.个签意见书ToolStripMenuItem_Click);
-            // 
-            // 金桥大名单ToolStripMenuItem
-            // 
-            this.金桥大名单ToolStripMenuItem.Name = "金桥大名单ToolStripMenuItem";
-            this.金桥大名单ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.金桥大名单ToolStripMenuItem.Text = "金桥大名单";
-            this.金桥大名单ToolStripMenuItem.Click += new System.EventHandler(this.金桥大名单ToolStripMenuItem_Click);
+            this.btnGetTodayExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnGetTodayExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnGetTodayExcel.Location = new System.Drawing.Point(728, 7);
+            this.btnGetTodayExcel.Name = "btnGetTodayExcel";
+            this.btnGetTodayExcel.Size = new System.Drawing.Size(108, 46);
+            this.btnGetTodayExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnGetTodayExcel.TabIndex = 32;
+            this.btnGetTodayExcel.Text = "生成每日\r\n送签客人情况表";
+            this.btnGetTodayExcel.Click += new System.EventHandler(this.btnGetTodayExcel_Click);
             // 
             // FrmVisaManage
             // 
@@ -786,5 +800,6 @@
         private System.Windows.Forms.ToolStripMenuItem 日本团队综合名单ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 个签意见书ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 金桥大名单ToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX btnGetTodayExcel;
     }
 }
