@@ -20,9 +20,9 @@ namespace TravletAgence.CSUI.FrmMain
 {
     public partial class FrmCheckAutoInputInfo : Form
     {
-        private Model.VisaInfo _model; //当前对应的所有编辑框对应的model
-        private List<Model.VisaInfo> _list; //当前dgv对应的list
-        private readonly BLL.VisaInfo _bll = new BLL.VisaInfo();
+        private Model.VisaInfo_Tmp _model; //当前对应的所有编辑框对应的model
+        private List<Model.VisaInfo_Tmp> _list; //当前dgv对应的list
+        private readonly BLL.VisaInfo_Tmp _bll = new BLL.VisaInfo_Tmp();
         private int _curIdx = 0;
         private int _recordCount = 0;
         private readonly IDCard _idCard = new IDCard();
@@ -54,7 +54,7 @@ namespace TravletAgence.CSUI.FrmMain
             txtBirthday.Text = DateTimeFormator.DateTimeToString(DateTime.Now);
             txtExpireDate.Text = DateTimeFormator.DateTimeToString(DateTime.Now);
 
-            //加载数据（list和dgv的数据都在这里面）,会加载之前还没有进行校验的那些VisaInfo
+            //加载数据（list和dgv的数据都在这里面）,会加载之前还没有进行校验的那些VisaInfo_Tmp
             LoadDataToDgvAndList();
 
             //初始化bar栏及按钮状态及图片控件
@@ -63,7 +63,7 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #region 状态更新函数
-        private void ModelToCtrls(TravletAgence.Model.VisaInfo model)
+        private void ModelToCtrls(TravletAgence.Model.VisaInfo_Tmp model)
         {
             if (model == null)
             {
@@ -89,9 +89,9 @@ namespace TravletAgence.CSUI.FrmMain
             txtIssuePlace.Text = model.IssuePlace;
         }
 
-        private Model.VisaInfo CtrlsToModel()
+        private Model.VisaInfo_Tmp CtrlsToModel()
         {
-            Model.VisaInfo model = new VisaInfo();
+            Model.VisaInfo_Tmp model = new VisaInfo_Tmp();
             try
             {
                 model.Name = txtName.Text;
@@ -112,7 +112,7 @@ namespace TravletAgence.CSUI.FrmMain
             }
         }
 
-        private void LoadImageFromModel(Model.VisaInfo model)
+        private void LoadImageFromModel(Model.VisaInfo_Tmp model)
         {
             if (model == null)
                 return;
@@ -132,11 +132,6 @@ namespace TravletAgence.CSUI.FrmMain
         public void LoadDataToDgvAndList() //刷新后保持选中
         {
             _list = _bll.GetModelList(" HasChecked = '" + Common.Enums.HasChecked.No + "' "); //里面的DataTableToList保证了不会是null,只可能是空的list
-            //dataGridView1.DataSource = null;
-            //dataGridView1.DataSource = _list;
-            //if (_list.Count > 0)
-            //    dataGridView1.CurrentCell = dataGridView1.Rows[_curIdx].Cells[0]; //每次录入后刷新当前选中项为新录入的
-            //dataGridView1.Update();
         }
 
 
@@ -225,7 +220,8 @@ namespace TravletAgence.CSUI.FrmMain
                 {
                     if (_list[i].VisaInfo_id.ToString() == "00000000-0000-0000-0000-000000000000" || string.IsNullOrEmpty(_list[i].VisaInfo_id.ToString()) ) //不存在的数据（新录入的）执行添加
                         res += _bll.Add(_list[i]) ? 1 : 0;
-                    else res += _bll.Update(_list[i]) ? 1 : 0; //以前存在的但是没校验的执行update
+                    else 
+                        res += _bll.Update(_list[i]) ? 1 : 0; //以前存在的但是没校验的执行update
                 }
 
             }
@@ -260,7 +256,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void btnReadData_Click(object sender, EventArgs e)
         {
-            VisaInfo model = _idCard.RecogoInfo(txtPicPath.Text, checkRegSucShowDlg.Checked);
+            VisaInfo_Tmp model = _idCard.RecogoInfo(txtPicPath.Text, checkRegSucShowDlg.Checked);
             if (model == null)
                 return;
             //读取成功了
@@ -278,7 +274,7 @@ namespace TravletAgence.CSUI.FrmMain
             while (_autoReadThreadRun)
             {
                 Thread.Sleep(200);
-                Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
+                Model.VisaInfo_Tmp model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
                 if (model != null)
                 {
                     _list.Insert(0, model);
@@ -287,35 +283,6 @@ namespace TravletAgence.CSUI.FrmMain
                 }
             }
         }
-
-        //private void ConfirmAddToDataBase(VisaInfo model, bool showConfirm = true)
-        //{
-        //    if (model == null)
-        //        return;
-        //    if (showConfirm)
-        //    {
-        //        if (MessageBoxEx.Show(Resources.WhetherAddToDatabase, Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.OK)
-        //        {
-        //            if (_bll.Add(model))
-        //            {
-        //                LoadDataToDgvAndList();
-        //                UpdateState();
-        //            }
-        //            else
-        //                MessageBoxEx.Show(Resources.FailedAddToDatabase);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (_bll.Add(model))
-        //        {
-        //            LoadDataToDgvAndList();
-        //            UpdateState();
-        //        }
-        //        else
-        //            MessageBoxEx.Show(Resources.FailedAddToDatabase);
-        //    }
-        //}
 
         /// <summary>
         /// 开启自动识别线程
@@ -350,7 +317,7 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void btnAddToDatabase_Click(object sender, EventArgs e)
         {
-            Model.VisaInfo model = CtrlsToModel();
+            Model.VisaInfo_Tmp model = CtrlsToModel();
             if (model == null)
                 return;
 
@@ -386,36 +353,6 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
-
-        #region bar栏
-        //private void btnPageFirst_Click(object sender, EventArgs e)
-        //{
-        //    _curPage = 1;
-        //    LoadDataToDgvAndList(_curPage);
-        //}
-
-        //private void btnPagePre_Click(object sender, EventArgs e)
-        //{
-        //    LoadDataToDgvAndList(--_curPage);
-        //}
-
-        //private void btnPageNext_Click(object sender, EventArgs e)
-        //{
-        //    LoadDataToDgvAndList(++_curPage);
-
-        //}
-
-        //private void btnPageLast_Click(object sender, EventArgs e)
-        //{
-        //    _curPage = _pageCount;
-        //    LoadDataToDgvAndList(_curPage);
-        //}
-        #endregion
-
-
-
-
-
-
+        
     }
 }

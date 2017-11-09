@@ -127,12 +127,6 @@
     <Compile Include="FrmMain\FrmVisaSubmit.Designer.cs">
       <DependentUpon>FrmVisaSubmit.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMain\FrmVisaTypeIn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmMain\FrmVisaTypeIn.Designer.cs">
-      <DependentUpon>FrmVisaTypeIn.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmSub\FrmQRCode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,9 +167,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain\FrmVisaSubmit.resx">
       <DependentUpon>FrmVisaSubmit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain\FrmVisaTypeIn.resx">
-      <DependentUpon>FrmVisaTypeIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSub\FrmQRCode.resx">
       <DependentUpon>FrmQRCode.cs</DependentUpon>

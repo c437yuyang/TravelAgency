@@ -94,7 +94,7 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #region model与control
-        private void ModelToCtrls(TravletAgence.Model.VisaInfo model)
+        private void ModelToCtrls(TravletAgence.Model.VisaInfo_Tmp model)
         {
             //添加多线程情况的时候的判断
             if (this.InvokeRequired)
@@ -166,7 +166,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void btnReadData_Click(object sender, EventArgs e)
         {
-            TravletAgence.Model.VisaInfo model = _idCard.RecogoInfo(txtPicPath.Text);
+            TravletAgence.Model.VisaInfo_Tmp model = _idCard.RecogoInfo(txtPicPath.Text);
             if (model == null) return;
             ModelToCtrls(model);
             ConfirmAddToDataBase(model, checkShowConfirm.Checked);
@@ -179,7 +179,7 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
 
-        private void ConfirmAddToDataBase(VisaInfo model, bool showConfirm = true)
+        private void ConfirmAddToDataBase(VisaInfo_Tmp model, bool showConfirm = true)
         {
             if (showConfirm)
             {
@@ -236,7 +236,7 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="eventArgs"></param>
         private void AutoClassAndRecognize(object sender, EventArgs eventArgs)
         {
-            Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
+            Model.VisaInfo_Tmp model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
             if (model == null) return;
             ModelToCtrls(model);
             ConfirmAddToDataBase(model, checkShowConfirm.Checked);
@@ -251,7 +251,7 @@ namespace TravletAgence.CSUI.FrmMain
             while (_autoReadThreadRun)
             {
                 Thread.Sleep(200);
-                Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
+                Model.VisaInfo_Tmp model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
                 if (model == null) continue;
                 ModelToCtrls(model);
                 ConfirmAddToDataBase(model, checkShowConfirm.Checked);

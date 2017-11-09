@@ -75,7 +75,7 @@ namespace TravletAgence.Common.IDCard
             return true;
         }
 
-        public TravletAgence.Model.VisaInfo RecogoInfo(string picPath, bool showDlgWhenSuccess = true)
+        public TravletAgence.Model.VisaInfo_Tmp RecogoInfo(string picPath, bool showDlgWhenSuccess = true)
         {
             //直接返回
             if (!_kernelLoaded)
@@ -135,7 +135,7 @@ namespace TravletAgence.Common.IDCard
                 MessageBoxEx.Show("recognition successful\r\n");
 
             //返回的model
-            TravletAgence.Model.VisaInfo visaInfo = new VisaInfo();
+            TravletAgence.Model.VisaInfo_Tmp visaInfo = new VisaInfo_Tmp();
             sb.Clear();
             //string info = "";
             for (int i = 1; ; i++)
@@ -197,7 +197,7 @@ namespace TravletAgence.Common.IDCard
         }
 
 
-        public TravletAgence.Model.VisaInfo AutoClassAndRecognize(string picPath, bool showDlgWhenSuccess = true)
+        public TravletAgence.Model.VisaInfo_Tmp AutoClassAndRecognize(string picPath, bool showDlgWhenSuccess = true)
         {
             if (!_kernelLoaded)
             {
@@ -265,7 +265,7 @@ namespace TravletAgence.Common.IDCard
                 char[] cArrFieldName = new char[MAX_CH_NUM];
                 if (showDlgWhenSuccess)
                     MessageBoxEx.Show("recognition Success\r\n");
-                TravletAgence.Model.VisaInfo visaInfo = new TravletAgence.Model.VisaInfo();
+                TravletAgence.Model.VisaInfo_Tmp visaInfo = new TravletAgence.Model.VisaInfo_Tmp();
                 sb.Clear();
                 for (int i = 1; ; i++)
                 {

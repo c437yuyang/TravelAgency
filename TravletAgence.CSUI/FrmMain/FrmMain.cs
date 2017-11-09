@@ -15,8 +15,8 @@ namespace TravletAgence.CSUI.FrmMain
         #region ribbon control上点击按钮
         private void btnVisaTypeIn_Click(object sender, EventArgs e)
         {
-            FrmVisaTypeIn frm = new FrmVisaTypeIn();
-            OpenTab(frm, frm.Name);
+            //FrmVisaTypeIn frm = new FrmVisaTypeIn();
+            //OpenTab(frm, frm.Name);
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)
