@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTodaySubmit));
             this.panelDgv = new DevComponents.DotNetBar.PanelEx();
             this.panelBottom = new DevComponents.DotNetBar.PanelEx();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.btnGetTodaySubmitExcel = new DevComponents.DotNetBar.ButtonX();
+            this.cmsDgv = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.导出报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.个签意见书ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.金桥大名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.人申请表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rowMergeView1 = new RowMergeView();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +50,7 @@
             this.Visa_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDgv.SuspendLayout();
             this.panelBottom.SuspendLayout();
+            this.cmsDgv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rowMergeView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +77,7 @@
             // 
             this.panelBottom.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelBottom.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelBottom.Controls.Add(this.buttonX1);
+            this.panelBottom.Controls.Add(this.btnGetTodaySubmitExcel);
             this.panelBottom.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 385);
@@ -85,17 +92,55 @@
             this.panelBottom.Style.GradientAngle = 90;
             this.panelBottom.TabIndex = 5;
             // 
-            // buttonX1
+            // btnGetTodaySubmitExcel
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(370, 4);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(137, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 0;
-            this.buttonX1.Text = "生成今日送签情况报表";
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            this.btnGetTodaySubmitExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnGetTodaySubmitExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnGetTodaySubmitExcel.Location = new System.Drawing.Point(370, 4);
+            this.btnGetTodaySubmitExcel.Name = "btnGetTodaySubmitExcel";
+            this.btnGetTodaySubmitExcel.Size = new System.Drawing.Size(137, 23);
+            this.btnGetTodaySubmitExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnGetTodaySubmitExcel.TabIndex = 0;
+            this.btnGetTodaySubmitExcel.Text = "生成今日送签情况报表";
+            this.btnGetTodaySubmitExcel.Click += new System.EventHandler(this.buttonGetTodaySubmitExcel_Click);
+            // 
+            // cmsDgv
+            // 
+            this.cmsDgv.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.导出报表ToolStripMenuItem});
+            this.cmsDgv.Name = "cmsDgv";
+            this.cmsDgv.Size = new System.Drawing.Size(125, 26);
+            // 
+            // 导出报表ToolStripMenuItem
+            // 
+            this.导出报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.个签意见书ToolStripMenuItem,
+            this.金桥大名单ToolStripMenuItem,
+            this.人申请表ToolStripMenuItem});
+            this.导出报表ToolStripMenuItem.Name = "导出报表ToolStripMenuItem";
+            this.导出报表ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.导出报表ToolStripMenuItem.Text = "导出报表";
+            // 
+            // 个签意见书ToolStripMenuItem
+            // 
+            this.个签意见书ToolStripMenuItem.Name = "个签意见书ToolStripMenuItem";
+            this.个签意见书ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.个签意见书ToolStripMenuItem.Text = "个签意见书";
+            this.个签意见书ToolStripMenuItem.Click += new System.EventHandler(this.个签意见书ToolStripMenuItem_Click);
+            // 
+            // 金桥大名单ToolStripMenuItem
+            // 
+            this.金桥大名单ToolStripMenuItem.Name = "金桥大名单ToolStripMenuItem";
+            this.金桥大名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.金桥大名单ToolStripMenuItem.Text = "金桥大名单";
+            this.金桥大名单ToolStripMenuItem.Click += new System.EventHandler(this.金桥大名单ToolStripMenuItem_Click);
+            // 
+            // 人申请表ToolStripMenuItem
+            // 
+            this.人申请表ToolStripMenuItem.Name = "人申请表ToolStripMenuItem";
+            this.人申请表ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.人申请表ToolStripMenuItem.Text = "8人申请表";
+            this.人申请表ToolStripMenuItem.Click += new System.EventHandler(this.人申请表ToolStripMenuItem_Click);
             // 
             // rowMergeView1
             // 
@@ -121,6 +166,7 @@
             this.rowMergeView1.RowTemplate.Height = 23;
             this.rowMergeView1.Size = new System.Drawing.Size(896, 424);
             this.rowMergeView1.TabIndex = 0;
+            this.rowMergeView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rowMergeView1_CellMouseClick);
             this.rowMergeView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.rowMergeView1_RowsAdded);
             // 
             // _Name
@@ -200,6 +246,7 @@
             this.Load += new System.EventHandler(this.FrmTodaySubmit_Load);
             this.panelDgv.ResumeLayout(false);
             this.panelBottom.ResumeLayout(false);
+            this.cmsDgv.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rowMergeView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -210,7 +257,7 @@
         private RowMergeView rowMergeView1;
         private DevComponents.DotNetBar.PanelEx panelDgv;
         private DevComponents.DotNetBar.PanelEx panelBottom;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX btnGetTodaySubmitExcel;
         private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn IssuePlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn Residence;
@@ -220,5 +267,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Identification;
         private System.Windows.Forms.DataGridViewTextBoxColumn VisaInfo_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Visa_Id;
+        private System.Windows.Forms.ContextMenuStrip cmsDgv;
+        private System.Windows.Forms.ToolStripMenuItem 导出报表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 个签意见书ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 金桥大名单ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 人申请表ToolStripMenuItem;
     }
 }
