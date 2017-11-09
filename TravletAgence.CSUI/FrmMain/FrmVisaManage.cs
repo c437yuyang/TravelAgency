@@ -594,7 +594,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void btnGetTodayExcel_Click(object sender, EventArgs e)
         {
-            
+
             List<Visa> visaList =
                 _bllVisa.GetModelList(" (EntryTime between '" + DateTimeFormator.DateTimeToString(DateTime.Now) + " 00:00:0.000' and " + " '" +
                                      DateTimeFormator.DateTimeToString(DateTime.Now) +
@@ -613,9 +613,10 @@ namespace TravletAgence.CSUI.FrmMain
                 visaInfoList.Add(list);
             }
 
-            ExcelGenerator.GetEverydayExcel(visaList, visaInfoList);
+            FrmTodaySubmit frm = new FrmTodaySubmit(visaList,visaInfoList);
+            frm.ShowDialog();
 
-
+            //ExcelGenerator.GetEverydayExcel(visaList, visaInfoList);
         }
 
 

@@ -73,6 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomCtrls\RowMergeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomCtrls\RowMergeView.designer.cs" />
     <Compile Include="FrmMain\FrmVisaTypeIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +143,12 @@
     <Compile Include="FrmSub\FrmSetTeamVisaGroup.Designer.cs">
       <DependentUpon>FrmSetTeamVisaGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSub\FrmTodaySubmit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSub\FrmTodaySubmit.Designer.cs">
+      <DependentUpon>FrmTodaySubmit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain\FrmVisaTypeIn.resx">
@@ -173,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSub\FrmSetTeamVisaGroup.resx">
       <DependentUpon>FrmSetTeamVisaGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSub\FrmTodaySubmit.resx">
+      <DependentUpon>FrmTodaySubmit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
