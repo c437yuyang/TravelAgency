@@ -150,6 +150,8 @@
     <Compile Include="VisaDal.cs" />
     <Compile Include="VisaInfo.cs" />
     <Compile Include="VisaInfoDal.cs" />
+    <Compile Include="VisaInfo_Tmp.cs" />
+    <Compile Include="VisaInfo_TmpDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.panelMid = new DevComponents.DotNetBar.PanelEx();
+            this.picPassportNo = new System.Windows.Forms.PictureBox();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.checkRegSucShowDlg = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkShowConfirm = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -63,23 +64,15 @@
             this.txtBirthPlace = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtEnglishName = new System.Windows.Forms.TextBox();
-            this.picPassportNo = new System.Windows.Forms.PictureBox();
             this.panelRight = new DevComponents.DotNetBar.PanelEx();
             this.panelRightMid = new DevComponents.DotNetBar.PanelEx();
-            this.dataGridView1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.dgvWait4Check = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.PassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HasChecked = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelRightTop = new DevComponents.DotNetBar.PanelEx();
-            this.bar1 = new DevComponents.DotNetBar.Bar();
-            this.btnPageFirst = new DevComponents.DotNetBar.ButtonItem();
-            this.btnPagePre = new DevComponents.DotNetBar.ButtonItem();
-            this.btnPageNext = new DevComponents.DotNetBar.ButtonItem();
-            this.btnPageLast = new DevComponents.DotNetBar.ButtonItem();
-            this.lbRecordCount = new DevComponents.DotNetBar.LabelItem();
-            this.lbCurPage = new DevComponents.DotNetBar.LabelItem();
-            this.labelX13 = new DevComponents.DotNetBar.LabelX();
+            this.lbRecordCount = new DevComponents.DotNetBar.LabelX();
             this.panelRightBottom = new DevComponents.DotNetBar.PanelEx();
             this.btnNoFault = new DevComponents.DotNetBar.ButtonX();
             this.txtCheckPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -88,16 +81,16 @@
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.btnSaveChanges = new DevComponents.DotNetBar.ButtonX();
             this.panelMain.SuspendLayout();
+            this.panelMid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPassportNo)).BeginInit();
             this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPassportNo)).BeginInit();
             this.panelRight.SuspendLayout();
             this.panelRightMid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWait4Check)).BeginInit();
             this.panelRightTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panelRightBottom.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,13 +100,12 @@
             this.panelMain.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelMain.Controls.Add(this.panelMid);
             this.panelMain.Controls.Add(this.panelEx2);
-            this.panelMain.Controls.Add(this.picPassportNo);
             this.panelMain.Controls.Add(this.panelRight);
             this.panelMain.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1247, 622);
+            this.panelMain.Size = new System.Drawing.Size(1247, 599);
             this.panelMain.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelMain.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelMain.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -127,11 +119,12 @@
             // 
             this.panelMid.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelMid.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelMid.Controls.Add(this.picPassportNo);
             this.panelMid.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelMid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMid.Location = new System.Drawing.Point(224, 0);
             this.panelMid.Name = "panelMid";
-            this.panelMid.Size = new System.Drawing.Size(726, 622);
+            this.panelMid.Size = new System.Drawing.Size(726, 599);
             this.panelMid.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelMid.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelMid.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -140,6 +133,15 @@
             this.panelMid.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelMid.Style.GradientAngle = 90;
             this.panelMid.TabIndex = 51;
+            // 
+            // picPassportNo
+            // 
+            this.picPassportNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picPassportNo.Location = new System.Drawing.Point(0, 0);
+            this.picPassportNo.Name = "picPassportNo";
+            this.picPassportNo.Size = new System.Drawing.Size(726, 599);
+            this.picPassportNo.TabIndex = 40;
+            this.picPassportNo.TabStop = false;
             // 
             // panelEx2
             // 
@@ -178,7 +180,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(224, 622);
+            this.panelEx2.Size = new System.Drawing.Size(224, 599);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -230,7 +232,7 @@
             // 
             this.btnAutoRead.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAutoRead.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAutoRead.Location = new System.Drawing.Point(13, 589);
+            this.btnAutoRead.Location = new System.Drawing.Point(181, 525);
             this.btnAutoRead.Name = "btnAutoRead";
             this.btnAutoRead.Size = new System.Drawing.Size(97, 24);
             this.btnAutoRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -395,7 +397,7 @@
             this.btnAddToDatabase.Size = new System.Drawing.Size(100, 23);
             this.btnAddToDatabase.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddToDatabase.TabIndex = 18;
-            this.btnAddToDatabase.Text = "添加到数据库";
+            this.btnAddToDatabase.Text = "手动添加";
             this.btnAddToDatabase.Click += new System.EventHandler(this.btnAddToDatabase_Click);
             // 
             // btnReadData
@@ -611,15 +613,6 @@
             this.txtEnglishName.Size = new System.Drawing.Size(100, 21);
             this.txtEnglishName.TabIndex = 9;
             // 
-            // picPassportNo
-            // 
-            this.picPassportNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picPassportNo.Location = new System.Drawing.Point(0, 0);
-            this.picPassportNo.Name = "picPassportNo";
-            this.picPassportNo.Size = new System.Drawing.Size(950, 622);
-            this.picPassportNo.TabIndex = 40;
-            this.picPassportNo.TabStop = false;
-            // 
             // panelRight
             // 
             this.panelRight.CanvasColor = System.Drawing.SystemColors.Control;
@@ -631,7 +624,7 @@
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelRight.Location = new System.Drawing.Point(950, 0);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(297, 622);
+            this.panelRight.Size = new System.Drawing.Size(297, 599);
             this.panelRight.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelRight.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelRight.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -645,12 +638,12 @@
             // 
             this.panelRightMid.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelRightMid.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelRightMid.Controls.Add(this.dataGridView1);
+            this.panelRightMid.Controls.Add(this.dgvWait4Check);
             this.panelRightMid.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelRightMid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRightMid.Location = new System.Drawing.Point(0, 63);
+            this.panelRightMid.Location = new System.Drawing.Point(0, 39);
             this.panelRightMid.Name = "panelRightMid";
-            this.panelRightMid.Size = new System.Drawing.Size(297, 497);
+            this.panelRightMid.Size = new System.Drawing.Size(297, 492);
             this.panelRightMid.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelRightMid.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelRightMid.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -660,11 +653,11 @@
             this.panelRightMid.Style.GradientAngle = 90;
             this.panelRightMid.TabIndex = 36;
             // 
-            // dataGridView1
+            // dgvWait4Check
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dgvWait4Check.AllowUserToAddRows = false;
+            this.dgvWait4Check.AllowUserToDeleteRows = false;
+            this.dgvWait4Check.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -672,9 +665,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvWait4Check.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvWait4Check.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvWait4Check.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PassportNo,
             this._Name,
             this.HasChecked,
@@ -686,13 +679,13 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
+            this.dgvWait4Check.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvWait4Check.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvWait4Check.EnableHeadersVisualStyles = false;
+            this.dgvWait4Check.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvWait4Check.Location = new System.Drawing.Point(0, 0);
+            this.dgvWait4Check.Name = "dgvWait4Check";
+            this.dgvWait4Check.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -700,14 +693,14 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(297, 497);
-            this.dataGridView1.TabIndex = 27;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            this.dgvWait4Check.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvWait4Check.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvWait4Check.RowTemplate.Height = 30;
+            this.dgvWait4Check.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvWait4Check.Size = new System.Drawing.Size(297, 492);
+            this.dgvWait4Check.TabIndex = 27;
+            this.dgvWait4Check.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dgvWait4Check.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
             // PassportNo
             // 
@@ -742,13 +735,12 @@
             // 
             this.panelRightTop.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelRightTop.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelRightTop.Controls.Add(this.bar1);
-            this.panelRightTop.Controls.Add(this.labelX13);
+            this.panelRightTop.Controls.Add(this.lbRecordCount);
             this.panelRightTop.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelRightTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelRightTop.Location = new System.Drawing.Point(0, 0);
             this.panelRightTop.Name = "panelRightTop";
-            this.panelRightTop.Size = new System.Drawing.Size(297, 63);
+            this.panelRightTop.Size = new System.Drawing.Size(297, 39);
             this.panelRightTop.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelRightTop.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelRightTop.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -758,76 +750,18 @@
             this.panelRightTop.Style.GradientAngle = 90;
             this.panelRightTop.TabIndex = 32;
             // 
-            // bar1
-            // 
-            this.bar1.AntiAlias = true;
-            this.bar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bar1.DockSide = DevComponents.DotNetBar.eDockSide.Top;
-            this.bar1.DockTabStripHeight = 30;
-            this.bar1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.bar1.IsMaximized = false;
-            this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnPageFirst,
-            this.btnPagePre,
-            this.btnPageNext,
-            this.btnPageLast,
-            this.lbRecordCount,
-            this.lbCurPage});
-            this.bar1.ItemSpacing = 5;
-            this.bar1.Location = new System.Drawing.Point(0, 37);
-            this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(297, 26);
-            this.bar1.Stretch = true;
-            this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.bar1.TabIndex = 25;
-            this.bar1.TabStop = false;
-            this.bar1.Text = "bar1";
-            // 
-            // btnPageFirst
-            // 
-            this.btnPageFirst.Name = "btnPageFirst";
-            this.btnPageFirst.Text = "首页";
-            this.btnPageFirst.Click += new System.EventHandler(this.btnPageFirst_Click);
-            // 
-            // btnPagePre
-            // 
-            this.btnPagePre.Name = "btnPagePre";
-            this.btnPagePre.Text = "上一页";
-            this.btnPagePre.Click += new System.EventHandler(this.btnPagePre_Click);
-            // 
-            // btnPageNext
-            // 
-            this.btnPageNext.Name = "btnPageNext";
-            this.btnPageNext.Text = "下一页";
-            this.btnPageNext.Click += new System.EventHandler(this.btnPageNext_Click);
-            // 
-            // btnPageLast
-            // 
-            this.btnPageLast.Name = "btnPageLast";
-            this.btnPageLast.Text = "尾页";
-            this.btnPageLast.Click += new System.EventHandler(this.btnPageLast_Click);
-            // 
             // lbRecordCount
             // 
+            // 
+            // 
+            // 
+            this.lbRecordCount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbRecordCount.Font = new System.Drawing.Font("华文新魏", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbRecordCount.Location = new System.Drawing.Point(6, 8);
             this.lbRecordCount.Name = "lbRecordCount";
-            this.lbRecordCount.Text = "共有记录";
-            // 
-            // lbCurPage
-            // 
-            this.lbCurPage.Name = "lbCurPage";
-            // 
-            // labelX13
-            // 
-            // 
-            // 
-            // 
-            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX13.Font = new System.Drawing.Font("华文新魏", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX13.Location = new System.Drawing.Point(6, 8);
-            this.labelX13.Name = "labelX13";
-            this.labelX13.Size = new System.Drawing.Size(150, 23);
-            this.labelX13.TabIndex = 20;
-            this.labelX13.Text = "待校验信息:";
+            this.lbRecordCount.Size = new System.Drawing.Size(279, 23);
+            this.lbRecordCount.TabIndex = 20;
+            this.lbRecordCount.Text = "待校验信息:";
             // 
             // panelRightBottom
             // 
@@ -841,9 +775,9 @@
             this.panelRightBottom.Controls.Add(this.btnSaveChanges);
             this.panelRightBottom.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelRightBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelRightBottom.Location = new System.Drawing.Point(0, 560);
+            this.panelRightBottom.Location = new System.Drawing.Point(0, 531);
             this.panelRightBottom.Name = "panelRightBottom";
-            this.panelRightBottom.Size = new System.Drawing.Size(297, 62);
+            this.panelRightBottom.Size = new System.Drawing.Size(297, 68);
             this.panelRightBottom.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelRightBottom.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelRightBottom.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -887,7 +821,7 @@
             this.btnNext.Size = new System.Drawing.Size(81, 23);
             this.btnNext.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnNext.TabIndex = 15;
-            this.btnNext.Text = "下一张";
+            this.btnNext.Text = "下一条";
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPre
@@ -899,7 +833,7 @@
             this.btnPre.Size = new System.Drawing.Size(89, 23);
             this.btnPre.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnPre.TabIndex = 14;
-            this.btnPre.Text = "上一张";
+            this.btnPre.Text = "上一条";
             this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
             // 
             // labelX12
@@ -930,23 +864,23 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1247, 622);
+            this.ClientSize = new System.Drawing.Size(1247, 599);
             this.Controls.Add(this.panelMain);
             this.Name = "FrmCheckAutoInputInfo";
             this.Text = "签证录入:";
             this.Load += new System.EventHandler(this.FrmCheckAutoInputInfo_Load);
             this.panelMain.ResumeLayout(false);
+            this.panelMid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picPassportNo)).EndInit();
             this.panelEx2.ResumeLayout(false);
             this.panelEx2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPassportNo)).EndInit();
             this.panelRight.ResumeLayout(false);
             this.panelRightMid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWait4Check)).EndInit();
             this.panelRightTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.panelRightBottom.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -961,7 +895,7 @@
         private DevComponents.DotNetBar.LabelX labelX12;
         private DevComponents.DotNetBar.Controls.TextBoxX txtCheckPerson;
         private DevComponents.DotNetBar.ButtonX btnNext;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridView1;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgvWait4Check;
         private System.Windows.Forms.DataGridViewTextBoxColumn PassportNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn HasChecked;
@@ -1001,14 +935,7 @@
         private DevComponents.DotNetBar.PanelEx panelRightTop;
         private DevComponents.DotNetBar.PanelEx panelRightBottom;
         private DevComponents.DotNetBar.PanelEx panelRightMid;
-        private DevComponents.DotNetBar.LabelX labelX13;
+        private DevComponents.DotNetBar.LabelX lbRecordCount;
         private DevComponents.DotNetBar.PanelEx panelMid;
-        private DevComponents.DotNetBar.Bar bar1;
-        private DevComponents.DotNetBar.ButtonItem btnPageFirst;
-        private DevComponents.DotNetBar.ButtonItem btnPagePre;
-        private DevComponents.DotNetBar.ButtonItem btnPageNext;
-        private DevComponents.DotNetBar.ButtonItem btnPageLast;
-        private DevComponents.DotNetBar.LabelItem lbRecordCount;
-        private DevComponents.DotNetBar.LabelItem lbCurPage;
     }
 }

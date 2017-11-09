@@ -44,30 +44,21 @@ namespace TravletAgence.CSUI.FrmMain
             txtPicPath.Text = GlobalInfo.AppPath;
             checkShowConfirm.Checked = true;
             checkRegSucShowDlg.Checked = true;
-            this.picPassportNo.SizeMode = PictureBoxSizeMode.Zoom;
+            picPassportNo.SizeMode = PictureBoxSizeMode.Zoom;
             btnPre.Enabled = false;
-            dataGridView1.AutoGenerateColumns = false; //dgv初始化
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
+            dgvWait4Check.AutoGenerateColumns = false; //dgv初始化
+            dgvWait4Check.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvWait4Check.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvWait4Check.MultiSelect = false;
             txtCheckPerson.Text = GlobalInfo.LoginUser.UserName; //初始化操作员
             txtCheckPerson.Enabled = false;
 
-            //加载数据（list和dgv的数据都在这里面）
-            LoadDataToDgvAndList(_curPage);
-            
-            //初始化bar栏及按钮状态
+            //加载数据（list和dgv的数据都在这里面）,会加载之前还没有进行校验的那些VisaInfo
+            LoadDataToDgvAndList();
+
+            //初始化bar栏及按钮状态及图片控件
             UpdateState();
 
-            //初始化数据项
-            if (_list.Count > 0)
-                _model = _list[_curIdx]; //如果没有指定model加载，就直接找第一个
-
-            //初始化数据信息
-            ModelToCtrls(_model);
-
-            //加载图片
-            LoadImageFromModel(_model);
         }
 
         #region 状态更新函数
@@ -127,6 +118,7 @@ namespace TravletAgence.CSUI.FrmMain
             if (File.Exists(model.PassportNo + ".jpg"))
             {
                 picPassportNo.Image = Image.FromFile(model.PassportNo + ".jpg");
+                //picPassportNo.Image = Image.FromFile("G49457929" + ".jpg");
             }
             else
                 picPassportNo.Image = Resources.PassportPictureNotFound;
@@ -136,43 +128,53 @@ namespace TravletAgence.CSUI.FrmMain
         /// 更新list以及dgv里的数据
         /// </summary>
         /// <param name="page"></param>
-        public void LoadDataToDgvAndList(int page) //刷新后保持选中
+        public void LoadDataToDgvAndList() //刷新后保持选中
         {
-            _list = _bll.GetListByPageOrderByHasChecked(page, _pageSize);
-            dataGridView1.DataSource = _list;
-            if (_list.Count > 0)
-                dataGridView1.CurrentCell = dataGridView1.Rows[_curIdx].Cells[0]; //每次录入后刷新当前选中项为新录入的
-            dataGridView1.Update();
+            _list = _bll.GetModelList(" HasChecked = '" + Common.Enums.HasChecked.No + "' "); //里面的DataTableToList保证了不会是null,只可能是空的list
+            //dataGridView1.DataSource = null;
+            //dataGridView1.DataSource = _list;
+            //if (_list.Count > 0)
+            //    dataGridView1.CurrentCell = dataGridView1.Rows[_curIdx].Cells[0]; //每次录入后刷新当前选中项为新录入的
+            //dataGridView1.Update();
         }
 
-        private void UpdateDataGridViewDisplay()
-        {
-            //更新dgv显示
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = _list;
-            //更新选中项
-            dataGridView1.CurrentCell = dataGridView1.Rows[_curIdx].Cells[0];
-        }
 
+        /// <summary>
+        /// 根据curIdx更新标签，待检查数量，_model,picbox,ctrls,dgv显示
+        /// </summary>
         public void UpdateState()
         {
-            _recordCount = _bll.GetRecordCount(string.Empty);
-            _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
-            if (_curPage == 1)
-                btnPagePre.Enabled = false;
+            _recordCount = _list.Count;
+            if (_curIdx == 0)
+                btnPre.Enabled = false;
             else
-                btnPagePre.Enabled = true;
-            if (_curPage == _pageCount)
-                btnPageNext.Enabled = false;
+                btnPre.Enabled = true;
+            if (_curIdx == _recordCount - 1)
+                btnNext.Enabled = false;
             else
-                btnPageNext.Enabled = true;
-            //lbRecordCount.Text = "当前为第:" + Convert.ToInt32(_curPage)
-            //                + "页,共" + Convert.ToInt32(_pageCount) + "页,每页共" + _pageSize + "条.";
-            lbRecordCount.Text = "共有记录:" + _recordCount + "条";
-            //lbCurPage.Text = "当前为第" + _curPage + "页";
+                btnNext.Enabled = true;
 
-            LoadImageFromModel(_model);
+            lbRecordCount.Text = "待校验信息:" + _recordCount + "条.";
+            if (_list.Count > _curIdx)
+            {
+                _model = _list[_curIdx];
+                ModelToCtrls(_model);
+                LoadImageFromModel(_model);
+            }
 
+            //更新dgv显示
+
+            int curSelectedCol = -1; //保持列选中，有点问题还
+            if (dgvWait4Check.SelectedCells.Count > 0)
+                curSelectedCol = dgvWait4Check.SelectedCells[0].ColumnIndex;
+
+            dgvWait4Check.DataSource = null;
+            if (_list != null && _list.Count > 0) //这里必须判断count大于0，不然有bug,参见https://www.cnblogs.com/seasons1987/p/3513135.html
+                dgvWait4Check.DataSource = _list;
+            if (_recordCount == 0)
+                return;
+            if (curSelectedCol != -1 && dgvWait4Check.Rows.Count > _curIdx)
+                dgvWait4Check.CurrentCell = dgvWait4Check.Rows[_curIdx].Cells[curSelectedCol];
         }
         #endregion
 
@@ -186,15 +188,11 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void btnNoFault_Click(object sender, EventArgs e)
         {
-            //修改Model
-            _model = CtrlsToModel();
             if (_model == null)
                 return;
-
             _model.HasChecked = Common.Enums.HasChecked.Yes;
             _model.CheckPerson = txtCheckPerson.Text;
-
-            UpdateDataGridViewDisplay();
+            UpdateState();
         }
 
         /// <summary>
@@ -204,41 +202,49 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
+            bool HasDataNotChecked = false;
+            for (int i = 0; i < _list.Count; i++)
+            {
+                if (_list[i].HasChecked == Common.Enums.HasChecked.No)
+                {
+                    HasDataNotChecked = true;
+                    break;
+                }
+            }
+
+            if (HasDataNotChecked && MessageBoxEx.Show("还有数据未校验，保存修改将会丢失，是否继续?", "提示", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+
             //保存修改
+            int res = 0;
+            for (int i = 0; i < _list.Count; i++)
+            {
+                if (_list[i].HasChecked == Common.Enums.HasChecked.Yes)
+                {
+                    if (string.IsNullOrEmpty(_list[i].VisaInfo_id.ToString())) //不存在的数据（新录入的）执行添加
+                        res += _bll.Add(_list[i]) ? 1 : 0;
+                    else res += _bll.Update(_list[i]) ? 1 : 0; //以前存在的但是没校验的执行update
+                }
 
-            int res = _bll.UpdateByList(_list);
-
-            MessageBoxEx.Show(res.ToString() + "条记录更新成功," + (_list.Count - res) + "条记录更新失败！");
-            //重新加载数据
-            LoadDataToDgvAndList(_curPage);
-
+            }
+            MessageBoxEx.Show(res + "条记录更新成功.");
+            //重新从数据库加载数据
+            LoadDataToDgvAndList();
+            _curIdx = 0;
+            UpdateState();
         }
 
         private void btnPre_Click(object sender, EventArgs e)
         {
-            if (_curIdx > 0)
-                --_curIdx;
-
+            --_curIdx;
             UpdateState();
-            _model = _list[_curIdx];
-
-            ModelToCtrls(_model);
-            LoadImageFromModel(_model);
-            UpdateDataGridViewDisplay();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (_curIdx < _pageSize - 1)
-                ++_curIdx;
-
+            ++_curIdx;
             UpdateState();
-            _model = _list[_curIdx];
-
-            ModelToCtrls(_model);
-            LoadImageFromModel(_model);
-            UpdateDataGridViewDisplay();
-
         }
 
         private void btnLoadKernel_Click(object sender, EventArgs e)
@@ -253,9 +259,13 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void btnReadData_Click(object sender, EventArgs e)
         {
-            _model = _idCard.RecogoInfo(txtPicPath.Text,checkRegSucShowDlg.Checked);
-            ModelToCtrls(_model);
-            ConfirmAddToDataBase(_model, checkShowConfirm.Checked);
+            VisaInfo model = _idCard.RecogoInfo(txtPicPath.Text, checkRegSucShowDlg.Checked);
+            if (model == null)
+                return;
+            //读取成功了
+            _list.Insert(0, model);
+            _curIdx = 0;
+            UpdateState();
         }
 
         /// <summary>
@@ -267,40 +277,44 @@ namespace TravletAgence.CSUI.FrmMain
             while (_autoReadThreadRun)
             {
                 Thread.Sleep(200);
-                _model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
-                ModelToCtrls(_model);
-                ConfirmAddToDataBase(_model, checkShowConfirm.Checked);
+                Model.VisaInfo model = _idCard.AutoClassAndRecognize(this.txtPicPath.Text, checkRegSucShowDlg.Checked);
+                if (model != null)
+                {
+                    _list.Insert(0, model);
+                    _curIdx = 0;
+                    UpdateState();
+                }
             }
         }
 
-        private void ConfirmAddToDataBase(VisaInfo model, bool showConfirm = true)
-        {
-            if (model == null)
-                return;
-            if (showConfirm)
-            {
-                if (MessageBoxEx.Show(Resources.WhetherAddToDatabase, Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    if (_bll.Add(model))
-                    {
-                        LoadDataToDgvAndList(_curPage);
-                        UpdateState();
-                    }
-                    else
-                        MessageBoxEx.Show(Resources.FailedAddToDatabase);
-                }
-            }
-            else
-            {
-                if (_bll.Add(model))
-                {
-                    LoadDataToDgvAndList(_curPage);
-                    UpdateState();
-                }
-                else
-                    MessageBoxEx.Show(Resources.FailedAddToDatabase);
-            }
-        }
+        //private void ConfirmAddToDataBase(VisaInfo model, bool showConfirm = true)
+        //{
+        //    if (model == null)
+        //        return;
+        //    if (showConfirm)
+        //    {
+        //        if (MessageBoxEx.Show(Resources.WhetherAddToDatabase, Resources.Confirm, MessageBoxButtons.OKCancel) == DialogResult.OK)
+        //        {
+        //            if (_bll.Add(model))
+        //            {
+        //                LoadDataToDgvAndList();
+        //                UpdateState();
+        //            }
+        //            else
+        //                MessageBoxEx.Show(Resources.FailedAddToDatabase);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (_bll.Add(model))
+        //        {
+        //            LoadDataToDgvAndList();
+        //            UpdateState();
+        //        }
+        //        else
+        //            MessageBoxEx.Show(Resources.FailedAddToDatabase);
+        //    }
+        //}
 
         /// <summary>
         /// 开启自动识别线程
@@ -318,7 +332,7 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 btnAutoReadThreadStart.Text = "■停止自动读取";
                 _autoReadThreadRun = true;
-                Thread th = new Thread(AutoClassAndRecognize) {IsBackground = true};
+                Thread th = new Thread(AutoClassAndRecognize) { IsBackground = true };
                 th.Start();
             }
             else
@@ -328,17 +342,19 @@ namespace TravletAgence.CSUI.FrmMain
             }
         }
 
+        /// <summary>
+        /// 手动添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddToDatabase_Click(object sender, EventArgs e)
         {
-            _model = CtrlsToModel();
-            if (model == null) 
+            Model.VisaInfo model = CtrlsToModel();
+            if (model == null)
                 return;
-            if (!_bll.Add(model))
-            {
-                MessageBoxEx.Show(Resources.FailedAddToDatabase);
-                return;
-            }
-            LoadDataToDgvAndList(_curPage);
+
+            _list.Insert(0, model);
+            _curIdx = 0;
             UpdateState();
         }
 
@@ -347,9 +363,9 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dgvWait4Check.Rows.Count; i++)
             {
-                DataGridViewRow row = dataGridView1.Rows[i];
+                DataGridViewRow row = dgvWait4Check.Rows[i];
                 row.HeaderCell.Value = (i + 1).ToString(); //添加行号显示
             }
         }
@@ -361,40 +377,38 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < _pageSize)
+            if (e.RowIndex >= 0 && e.RowIndex < _recordCount)
             {
-                _model = _list[e.RowIndex];
                 _curIdx = e.RowIndex;
-                ModelToCtrls(_model);
-                LoadImageFromModel(_model);
+                UpdateState();
             }
         }
 
         #endregion
 
         #region bar栏
-        private void btnPageFirst_Click(object sender, EventArgs e)
-        {
-            _curPage = 1;
-            LoadDataToDgvAndList(_curPage);
-        }
+        //private void btnPageFirst_Click(object sender, EventArgs e)
+        //{
+        //    _curPage = 1;
+        //    LoadDataToDgvAndList(_curPage);
+        //}
 
-        private void btnPagePre_Click(object sender, EventArgs e)
-        {
-            LoadDataToDgvAndList(--_curPage);
-        }
+        //private void btnPagePre_Click(object sender, EventArgs e)
+        //{
+        //    LoadDataToDgvAndList(--_curPage);
+        //}
 
-        private void btnPageNext_Click(object sender, EventArgs e)
-        {
-            LoadDataToDgvAndList(++_curPage);
+        //private void btnPageNext_Click(object sender, EventArgs e)
+        //{
+        //    LoadDataToDgvAndList(++_curPage);
 
-        }
+        //}
 
-        private void btnPageLast_Click(object sender, EventArgs e)
-        {
-            _curPage = _pageCount;
-            LoadDataToDgvAndList(_curPage);
-        }
+        //private void btnPageLast_Click(object sender, EventArgs e)
+        //{
+        //    _curPage = _pageCount;
+        //    LoadDataToDgvAndList(_curPage);
+        //}
         #endregion
 
 
