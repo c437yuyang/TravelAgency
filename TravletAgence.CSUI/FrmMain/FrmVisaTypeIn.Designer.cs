@@ -200,7 +200,7 @@
             this.checkRegSucShowDlg.Name = "checkRegSucShowDlg";
             this.checkRegSucShowDlg.Size = new System.Drawing.Size(149, 23);
             this.checkRegSucShowDlg.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkRegSucShowDlg.TabIndex = 23;
+            this.checkRegSucShowDlg.TabIndex = 17;
             this.checkRegSucShowDlg.Text = "识别成功显示提示";
             // 
             // checkShowConfirm
@@ -213,7 +213,7 @@
             this.checkShowConfirm.Name = "checkShowConfirm";
             this.checkShowConfirm.Size = new System.Drawing.Size(149, 23);
             this.checkShowConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkShowConfirm.TabIndex = 22;
+            this.checkShowConfirm.TabIndex = 16;
             this.checkShowConfirm.Text = "添加前显示提示对话框";
             // 
             // btnAutoReadThreadStart
@@ -224,7 +224,7 @@
             this.btnAutoReadThreadStart.Name = "btnAutoReadThreadStart";
             this.btnAutoReadThreadStart.Size = new System.Drawing.Size(100, 23);
             this.btnAutoReadThreadStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAutoReadThreadStart.TabIndex = 21;
+            this.btnAutoReadThreadStart.TabIndex = 14;
             this.btnAutoReadThreadStart.Text = "开始自动读取";
             this.btnAutoReadThreadStart.Click += new System.EventHandler(this.btnAutoReadThreadStart_Click);
             // 
@@ -283,7 +283,7 @@
             this.txtExpireDate.Name = "txtExpireDate";
             this.txtExpireDate.Size = new System.Drawing.Size(100, 21);
             this.txtExpireDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtExpireDate.TabIndex = 20;
+            this.txtExpireDate.TabIndex = 7;
             // 
             // txtLicenseTime
             // 
@@ -328,7 +328,7 @@
             this.txtLicenseTime.Name = "txtLicenseTime";
             this.txtLicenseTime.Size = new System.Drawing.Size(100, 21);
             this.txtLicenseTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtLicenseTime.TabIndex = 20;
+            this.txtLicenseTime.TabIndex = 6;
             // 
             // txtBirthday
             // 
@@ -373,7 +373,7 @@
             this.txtBirthday.Name = "txtBirthday";
             this.txtBirthday.Size = new System.Drawing.Size(100, 21);
             this.txtBirthday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtBirthday.TabIndex = 20;
+            this.txtBirthday.TabIndex = 4;
             // 
             // labelX11
             // 
@@ -396,7 +396,7 @@
             this.btnAddToDatabase.Name = "btnAddToDatabase";
             this.btnAddToDatabase.Size = new System.Drawing.Size(100, 23);
             this.btnAddToDatabase.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAddToDatabase.TabIndex = 18;
+            this.btnAddToDatabase.TabIndex = 15;
             this.btnAddToDatabase.Text = "手动添加";
             this.btnAddToDatabase.Click += new System.EventHandler(this.btnAddToDatabase_Click);
             // 
@@ -408,7 +408,7 @@
             this.btnReadData.Name = "btnReadData";
             this.btnReadData.Size = new System.Drawing.Size(100, 23);
             this.btnReadData.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnReadData.TabIndex = 17;
+            this.btnReadData.TabIndex = 13;
             this.btnReadData.Text = "读取签证信息";
             this.btnReadData.Click += new System.EventHandler(this.btnReadData_Click);
             // 
@@ -420,7 +420,7 @@
             this.btnLoadKernel.Name = "btnLoadKernel";
             this.btnLoadKernel.Size = new System.Drawing.Size(100, 23);
             this.btnLoadKernel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnLoadKernel.TabIndex = 15;
+            this.btnLoadKernel.TabIndex = 11;
             this.btnLoadKernel.Text = "加载识别内核";
             this.btnLoadKernel.Click += new System.EventHandler(this.btnLoadKernel_Click);
             // 
@@ -432,7 +432,7 @@
             this.btnFreeKernel.Name = "btnFreeKernel";
             this.btnFreeKernel.Size = new System.Drawing.Size(100, 23);
             this.btnFreeKernel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnFreeKernel.TabIndex = 14;
+            this.btnFreeKernel.TabIndex = 12;
             this.btnFreeKernel.Text = "释放识别内核";
             this.btnFreeKernel.Click += new System.EventHandler(this.btnFreeKernel_Click);
             // 
@@ -557,7 +557,7 @@
             this.txtPicPath.Name = "txtPicPath";
             this.txtPicPath.PreventEnterBeep = true;
             this.txtPicPath.Size = new System.Drawing.Size(206, 72);
-            this.txtPicPath.TabIndex = 12;
+            this.txtPicPath.TabIndex = 10;
             // 
             // labelX1
             // 
@@ -576,14 +576,14 @@
             this.txtName.Location = new System.Drawing.Point(93, 52);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 21);
-            this.txtName.TabIndex = 9;
+            this.txtName.TabIndex = 1;
             // 
             // txtPassNo
             // 
             this.txtPassNo.Location = new System.Drawing.Point(93, 181);
             this.txtPassNo.Name = "txtPassNo";
             this.txtPassNo.Size = new System.Drawing.Size(100, 21);
-            this.txtPassNo.TabIndex = 10;
+            this.txtPassNo.TabIndex = 5;
             // 
             // txtIssuePlace
             // 
@@ -597,21 +597,21 @@
             this.txtBirthPlace.Location = new System.Drawing.Point(93, 274);
             this.txtBirthPlace.Name = "txtBirthPlace";
             this.txtBirthPlace.Size = new System.Drawing.Size(100, 21);
-            this.txtBirthPlace.TabIndex = 9;
+            this.txtBirthPlace.TabIndex = 8;
             // 
             // txtSex
             // 
             this.txtSex.Location = new System.Drawing.Point(93, 125);
             this.txtSex.Name = "txtSex";
             this.txtSex.Size = new System.Drawing.Size(100, 21);
-            this.txtSex.TabIndex = 9;
+            this.txtSex.TabIndex = 3;
             // 
             // txtEnglishName
             // 
             this.txtEnglishName.Location = new System.Drawing.Point(93, 90);
             this.txtEnglishName.Name = "txtEnglishName";
             this.txtEnglishName.Size = new System.Drawing.Size(100, 21);
-            this.txtEnglishName.TabIndex = 9;
+            this.txtEnglishName.TabIndex = 2;
             // 
             // panelRight
             // 
@@ -795,7 +795,7 @@
             this.btnNoFault.Name = "btnNoFault";
             this.btnNoFault.Size = new System.Drawing.Size(88, 23);
             this.btnNoFault.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNoFault.TabIndex = 17;
+            this.btnNoFault.TabIndex = 18;
             this.btnNoFault.Text = "确认无误";
             this.btnNoFault.Click += new System.EventHandler(this.btnNoFault_Click);
             // 
@@ -810,7 +810,7 @@
             this.txtCheckPerson.Name = "txtCheckPerson";
             this.txtCheckPerson.PreventEnterBeep = true;
             this.txtCheckPerson.Size = new System.Drawing.Size(89, 21);
-            this.txtCheckPerson.TabIndex = 24;
+            this.txtCheckPerson.TabIndex = 21;
             // 
             // btnNext
             // 
@@ -820,7 +820,7 @@
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(81, 23);
             this.btnNext.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNext.TabIndex = 15;
+            this.btnNext.TabIndex = 20;
             this.btnNext.Text = "下一条";
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
@@ -832,7 +832,7 @@
             this.btnPre.Name = "btnPre";
             this.btnPre.Size = new System.Drawing.Size(89, 23);
             this.btnPre.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPre.TabIndex = 14;
+            this.btnPre.TabIndex = 19;
             this.btnPre.Text = "上一条";
             this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
             // 
@@ -856,17 +856,17 @@
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(81, 23);
             this.btnSaveChanges.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSaveChanges.TabIndex = 16;
+            this.btnSaveChanges.TabIndex = 22;
             this.btnSaveChanges.Text = "保存当前页";
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
-            // FrmCheckAutoInputInfo
+            // FrmVisaTypeIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 599);
             this.Controls.Add(this.panelMain);
-            this.Name = "FrmCheckAutoInputInfo";
+            this.Name = "FrmVisaTypeIn";
             this.Text = "签证录入:";
             this.Load += new System.EventHandler(this.FrmCheckAutoInputInfo_Load);
             this.panelMain.ResumeLayout(false);
