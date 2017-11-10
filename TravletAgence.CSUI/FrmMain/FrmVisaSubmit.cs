@@ -408,8 +408,8 @@ namespace TravletAgence.CSUI.FrmMain
 
             if (!string.IsNullOrEmpty(txtSchEntryTimeFrom.Text.Trim()) && !string.IsNullOrEmpty(txtSchEntryTimeTo.Text.Trim()))
             {
-                conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + "' and " + " '" + txtSchEntryTimeTo.Text +
-                               "') ");
+                conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + " 00:00:0.000' and " + " '" + txtSchEntryTimeTo.Text +
+                               " 23:59:59.999') ");
             }
 
             string[] arr = conditions.ToArray();
@@ -425,6 +425,14 @@ namespace TravletAgence.CSUI.FrmMain
             txtSchEntryTimeTo.Text = string.Empty;
             txtSchGroupNo.Text = string.Empty;
             txtSchName.Text = string.Empty;
+        }
+
+
+        private void btnShowToday_Click(object sender, EventArgs e)
+        {
+            txtSchEntryTimeFrom.Text = DateTimeFormator.DateTimeToString(DateTime.Today);
+            txtSchEntryTimeTo.Text = DateTimeFormator.DateTimeToString(DateTime.Today);
+            btnSearch_Click(null, null);
         }
 
 
@@ -637,6 +645,8 @@ namespace TravletAgence.CSUI.FrmMain
 
 
         #endregion
+
+
 
 
     }
