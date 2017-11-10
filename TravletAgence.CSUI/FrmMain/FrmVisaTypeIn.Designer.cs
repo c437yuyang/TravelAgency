@@ -677,7 +677,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvWait4Check.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvWait4Check.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -857,7 +857,7 @@
             this.btnSaveChanges.Size = new System.Drawing.Size(81, 23);
             this.btnSaveChanges.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSaveChanges.TabIndex = 22;
-            this.btnSaveChanges.Text = "保存当前页";
+            this.btnSaveChanges.Text = "提交已校验";
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // FrmVisaTypeIn

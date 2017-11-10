@@ -336,7 +336,6 @@ namespace TravletAgence.CSUI.FrmMain
             }
         }
 
-        private int num = 1;
         /// <summary>
         /// 手动添加
         /// </summary>

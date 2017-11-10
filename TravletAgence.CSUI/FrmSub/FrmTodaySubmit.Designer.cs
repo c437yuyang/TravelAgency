@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTodaySubmit));
             this.panelDgv = new DevComponents.DotNetBar.PanelEx();
+            this.rowMergeView1 = new RowMergeView();
             this.panelBottom = new DevComponents.DotNetBar.PanelEx();
             this.btnGetTodaySubmitExcel = new DevComponents.DotNetBar.ButtonX();
             this.cmsDgv = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -38,7 +39,6 @@
             this.个签意见书ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.金桥大名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.人申请表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rowMergeView1 = new RowMergeView();
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IssuePlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Residence = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,9 +49,9 @@
             this.VisaInfo_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Visa_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDgv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rowMergeView1)).BeginInit();
             this.panelBottom.SuspendLayout();
             this.cmsDgv.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rowMergeView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDgv
@@ -72,6 +72,33 @@
             this.panelDgv.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelDgv.Style.GradientAngle = 90;
             this.panelDgv.TabIndex = 1;
+            // 
+            // rowMergeView1
+            // 
+            this.rowMergeView1.AllowUserToAddRows = false;
+            this.rowMergeView1.AllowUserToDeleteRows = false;
+            this.rowMergeView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rowMergeView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this._Name,
+            this.IssuePlace,
+            this.Residence,
+            this.DepartureType,
+            this.ReturnTime,
+            this.Remark,
+            this.Identification,
+            this.VisaInfo_id,
+            this.Visa_Id});
+            this.rowMergeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rowMergeView1.Location = new System.Drawing.Point(0, 0);
+            this.rowMergeView1.MergeColumnHeaderBackColor = System.Drawing.SystemColors.Control;
+            this.rowMergeView1.MergeColumnNames = ((System.Collections.Generic.List<string>)(resources.GetObject("rowMergeView1.MergeColumnNames")));
+            this.rowMergeView1.Name = "rowMergeView1";
+            this.rowMergeView1.ReadOnly = true;
+            this.rowMergeView1.RowTemplate.Height = 23;
+            this.rowMergeView1.Size = new System.Drawing.Size(896, 424);
+            this.rowMergeView1.TabIndex = 0;
+            this.rowMergeView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rowMergeView1_CellMouseClick);
+            this.rowMergeView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.rowMergeView1_RowsAdded);
             // 
             // panelBottom
             // 
@@ -124,50 +151,23 @@
             // 个签意见书ToolStripMenuItem
             // 
             this.个签意见书ToolStripMenuItem.Name = "个签意见书ToolStripMenuItem";
-            this.个签意见书ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.个签意见书ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.个签意见书ToolStripMenuItem.Text = "个签意见书";
             this.个签意见书ToolStripMenuItem.Click += new System.EventHandler(this.个签意见书ToolStripMenuItem_Click);
             // 
             // 金桥大名单ToolStripMenuItem
             // 
             this.金桥大名单ToolStripMenuItem.Name = "金桥大名单ToolStripMenuItem";
-            this.金桥大名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.金桥大名单ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.金桥大名单ToolStripMenuItem.Text = "金桥大名单";
             this.金桥大名单ToolStripMenuItem.Click += new System.EventHandler(this.金桥大名单ToolStripMenuItem_Click);
             // 
             // 人申请表ToolStripMenuItem
             // 
             this.人申请表ToolStripMenuItem.Name = "人申请表ToolStripMenuItem";
-            this.人申请表ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.人申请表ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.人申请表ToolStripMenuItem.Text = "8人申请表";
             this.人申请表ToolStripMenuItem.Click += new System.EventHandler(this.人申请表ToolStripMenuItem_Click);
-            // 
-            // rowMergeView1
-            // 
-            this.rowMergeView1.AllowUserToAddRows = false;
-            this.rowMergeView1.AllowUserToDeleteRows = false;
-            this.rowMergeView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.rowMergeView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this._Name,
-            this.IssuePlace,
-            this.Residence,
-            this.DepartureType,
-            this.ReturnTime,
-            this.Remark,
-            this.Identification,
-            this.VisaInfo_id,
-            this.Visa_Id});
-            this.rowMergeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rowMergeView1.Location = new System.Drawing.Point(0, 0);
-            this.rowMergeView1.MergeColumnHeaderBackColor = System.Drawing.SystemColors.Control;
-            this.rowMergeView1.MergeColumnNames = ((System.Collections.Generic.List<string>)(resources.GetObject("rowMergeView1.MergeColumnNames")));
-            this.rowMergeView1.Name = "rowMergeView1";
-            this.rowMergeView1.ReadOnly = true;
-            this.rowMergeView1.RowTemplate.Height = 23;
-            this.rowMergeView1.Size = new System.Drawing.Size(896, 424);
-            this.rowMergeView1.TabIndex = 0;
-            this.rowMergeView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rowMergeView1_CellMouseClick);
-            this.rowMergeView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.rowMergeView1_RowsAdded);
             // 
             // _Name
             // 
@@ -186,7 +186,7 @@
             // Residence
             // 
             this.Residence.DataPropertyName = "Residence";
-            this.Residence.HeaderText = "签发地";
+            this.Residence.HeaderText = "居住地";
             this.Residence.Name = "Residence";
             this.Residence.ReadOnly = true;
             // 
@@ -245,9 +245,9 @@
             this.Text = "今日送签情况";
             this.Load += new System.EventHandler(this.FrmTodaySubmit_Load);
             this.panelDgv.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rowMergeView1)).EndInit();
             this.panelBottom.ResumeLayout(false);
             this.cmsDgv.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rowMergeView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,6 +258,11 @@
         private DevComponents.DotNetBar.PanelEx panelDgv;
         private DevComponents.DotNetBar.PanelEx panelBottom;
         private DevComponents.DotNetBar.ButtonX btnGetTodaySubmitExcel;
+        private System.Windows.Forms.ContextMenuStrip cmsDgv;
+        private System.Windows.Forms.ToolStripMenuItem 导出报表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 个签意见书ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 金桥大名单ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 人申请表ToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn IssuePlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn Residence;
@@ -267,10 +272,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Identification;
         private System.Windows.Forms.DataGridViewTextBoxColumn VisaInfo_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Visa_Id;
-        private System.Windows.Forms.ContextMenuStrip cmsDgv;
-        private System.Windows.Forms.ToolStripMenuItem 导出报表ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 个签意见书ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 金桥大名单ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 人申请表ToolStripMenuItem;
     }
 }
