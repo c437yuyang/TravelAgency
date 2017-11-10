@@ -431,7 +431,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && e.ColumnIndex>=0)
                 {
                     //若行已是选中状态就不再进行设置
                     //如果没选中当前活动行则选中这一行

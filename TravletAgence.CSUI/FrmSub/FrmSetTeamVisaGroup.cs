@@ -317,7 +317,7 @@ namespace TravletAgence.CSUI.FrmSub
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {
                     //只有在选中的单元格上
                     if (dgvGroupInfo.SelectedCells.Contains(dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex]))
