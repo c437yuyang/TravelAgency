@@ -598,7 +598,7 @@ namespace TravletAgence.CSUI.FrmMain
             List<Visa> visaList =
                 _bllVisa.GetModelList(" (EntryTime between '" + DateTimeFormator.DateTimeToString(DateTime.Now) + " 00:00:0.000' and " + " '" +
                                      DateTimeFormator.DateTimeToString(DateTime.Now) +
-                                      " 23:59:59.999') ");
+                                      " 23:59:59.999') and Types='个签'");
             if (visaList.Count <= 0)
             {
                 MessageBoxEx.Show("今日没有报表需要生成!");

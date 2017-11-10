@@ -23,7 +23,7 @@ namespace TravletAgence.CSUI.FrmSub
         public FrmTodaySubmit(List<Visa> listVisa, List<List<VisaInfo>> listVisaInfo)
         {
             this.StartPosition = FormStartPosition.CenterParent;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             InitializeComponent();
@@ -39,9 +39,11 @@ namespace TravletAgence.CSUI.FrmSub
         {
             rowMergeView1.AutoGenerateColumns = false;
             rowMergeView1.MultiSelect = true;
+            rowMergeView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             rowMergeView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             rowMergeView1.DataSource = _listDgv;
-            rowMergeView1.MergeColumnNames.Add("Remark");
+            //rowMergeView1.MergeColumnNames.Add("Remark");
+            rowMergeView1.MergeColumnNames.Add("GroupNo");
         }
 
         private void rowMergeView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

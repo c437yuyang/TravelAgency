@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
+using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
 
 namespace TravletAgence.CSUI.FrmSub
@@ -22,6 +25,7 @@ namespace TravletAgence.CSUI.FrmSub
             _updateDel = updateDel;
             _curPage = page;
             ModelToCtrls(this._model);
+            
         }
 
         private void ModelToCtrls(Model.VisaInfo model)
@@ -84,6 +88,8 @@ namespace TravletAgence.CSUI.FrmSub
         {
             this.MinimumSize = this.Size;
             this.StartPosition = FormStartPosition.CenterParent; //不能写在form_load里面，是已经加载完成了
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            LoadImageFromModel(_model);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -107,5 +113,20 @@ namespace TravletAgence.CSUI.FrmSub
         {
             Close();
         }
+
+
+        private void LoadImageFromModel(Model.VisaInfo model)
+        {
+            if (model == null)
+                return;
+            if (File.Exists(model.PassportNo + ".jpg"))
+            {
+                pictureBox1.Image = Image.FromFile(model.PassportNo + ".jpg");
+                //pictureBox1.Image = Image.FromFile("G49457929" + ".jpg");
+            }
+            else
+                pictureBox1.Image = Resources.PassportPictureNotFound;
+        }
+
     }
 }

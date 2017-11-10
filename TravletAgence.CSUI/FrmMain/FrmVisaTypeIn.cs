@@ -119,7 +119,11 @@ namespace TravletAgence.CSUI.FrmMain
         private void LoadImageFromModel(Model.VisaInfo_Tmp model)
         {
             if (model == null)
+            {
+                picPassportNo.Image = Resources.PassportPictureNotFound;
                 return;
+            }
+                
             if (File.Exists(model.PassportNo + ".jpg"))
             {
                 picPassportNo.Image = Image.FromFile(model.PassportNo + ".jpg");
@@ -144,11 +148,12 @@ namespace TravletAgence.CSUI.FrmMain
         public void UpdateState()
         {
             _recordCount = _list.Count;
-            if (_curIdx == 0)
+
+            if (_curIdx == 0 || _recordCount==0)
                 btnPre.Enabled = false;
             else
                 btnPre.Enabled = true;
-            if (_curIdx == _recordCount - 1)
+            if (_curIdx == _recordCount - 1 || _recordCount==0)
                 btnNext.Enabled = false;
             else
                 btnNext.Enabled = true;
