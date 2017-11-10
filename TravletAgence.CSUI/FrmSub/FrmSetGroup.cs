@@ -553,13 +553,21 @@ namespace TravletAgence.CSUI.FrmSub
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
                 model.GroupNo = txtGroupNo.Text;
                 model.SalesPerson = txtSalesPerson.Text;
-                model.PredictTime = DateTime.Parse(txtDepartureTime.Text);
                 model.Country = cbCountry.Text;
                 model.Number = lvIn.Items.Count;
 
-                _visaModel.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
-                _visaModel.InTime = DateTime.Parse(txtInTime.Text);
-                _visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
+                if (!string.IsNullOrEmpty(txtDepartureTime.Text))
+                    _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+                if (!string.IsNullOrEmpty(txtSubmitTime.Text))
+                    _visaModel.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
+                if (!string.IsNullOrEmpty(txtInTime.Text))
+                    _visaModel.InTime = DateTime.Parse(txtInTime.Text);
+                if (!string.IsNullOrEmpty(txtOutTime.Text))
+                    _visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
+
+                //_visaModel.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
+                //_visaModel.InTime = DateTime.Parse(txtInTime.Text);
+                //_visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
                 _visaModel.Client = txtClient.Text;
                 _visaModel.DepartureType = txtDepartureType.Text;
                 _visaModel.SubmitCondition = txtSubmitCondition.Text;
