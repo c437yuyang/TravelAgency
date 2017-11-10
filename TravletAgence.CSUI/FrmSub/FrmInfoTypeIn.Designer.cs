@@ -391,9 +391,10 @@
             this.txtGroupNo.Border.Class = "TextBoxBorder";
             this.txtGroupNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtGroupNo.Location = new System.Drawing.Point(382, 100);
+            this.txtGroupNo.Multiline = true;
             this.txtGroupNo.Name = "txtGroupNo";
             this.txtGroupNo.PreventEnterBeep = true;
-            this.txtGroupNo.Size = new System.Drawing.Size(174, 21);
+            this.txtGroupNo.Size = new System.Drawing.Size(174, 49);
             this.txtGroupNo.TabIndex = 51;
             // 
             // txtFinancialCapacity

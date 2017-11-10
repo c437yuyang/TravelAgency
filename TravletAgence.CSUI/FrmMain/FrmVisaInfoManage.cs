@@ -462,11 +462,26 @@ namespace TravletAgence.CSUI.FrmMain
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 var row = dataGridView1.CurrentRow;
-                if (!string.IsNullOrEmpty((string)row.Cells["EnglishName"].Value) && !string.IsNullOrEmpty((string)row.Cells["PassportNo"].Value))
+                if (dataGridView1.CurrentCell.ColumnIndex == dataGridView1.Columns["QRCodeImage"].Index)
                 {
-                    FrmQRCode frm = new FrmQRCode(row.Cells["EnglishName"].Value + "|" + row.Cells["PassportNo"].Value);
+                    if (!string.IsNullOrEmpty((string)row.Cells["EnglishName"].Value) && !string.IsNullOrEmpty((string)row.Cells["PassportNo"].Value))
+                    {
+                        FrmQRCode frm = new FrmQRCode(row.Cells["EnglishName"].Value + "|" + row.Cells["PassportNo"].Value);
+                        frm.ShowDialog();
+                    }
+                }
+                else
+                {
+                    VisaInfo model = _bll.GetModel(Guid.Parse(dataGridView1.CurrentRow.Cells["VisaInfo_id"].Value.ToString()));
+                    if (model == null)
+                    {
+                        MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
+                        return;
+                    }
+                    FrmInfoTypeIn frm = new FrmInfoTypeIn(model,LoadDataToDataGridView,_curPage);
                     frm.ShowDialog();
                 }
+
             }
         }
         #endregion

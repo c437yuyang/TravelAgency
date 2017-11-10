@@ -33,6 +33,7 @@
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnVisaTypeIn = new DevComponents.DotNetBar.ButtonItem();
             this.btnVisaInfoManage = new DevComponents.DotNetBar.ButtonItem();
             this.btnVisaQuery = new DevComponents.DotNetBar.ButtonItem();
             this.btnVisaSubmit = new DevComponents.DotNetBar.ButtonItem();
@@ -46,7 +47,6 @@
             this.btnMCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMCloseOther = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.btnVisaTypeIn = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).BeginInit();
@@ -147,6 +147,16 @@
             // 
             this.ribbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonBar2.TitleVisible = false;
+            // 
+            // btnVisaTypeIn
+            // 
+            this.btnVisaTypeIn.Icon = ((System.Drawing.Icon)(resources.GetObject("btnVisaTypeIn.Icon")));
+            this.btnVisaTypeIn.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
+            this.btnVisaTypeIn.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnVisaTypeIn.Name = "btnVisaTypeIn";
+            this.btnVisaTypeIn.SubItemsExpandWidth = 14;
+            this.btnVisaTypeIn.Text = "签证录入";
+            this.btnVisaTypeIn.Click += new System.EventHandler(this.btnVisaTypeIn_Click);
             // 
             // btnVisaInfoManage
             // 
@@ -273,16 +283,6 @@
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(71)))), ((int)(((byte)(42))))));
-            // 
-            // btnVisaTypeIn
-            // 
-            this.btnVisaTypeIn.Icon = ((System.Drawing.Icon)(resources.GetObject("btnVisaTypeIn.Icon")));
-            this.btnVisaTypeIn.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Medium;
-            this.btnVisaTypeIn.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnVisaTypeIn.Name = "btnVisaTypeIn";
-            this.btnVisaTypeIn.SubItemsExpandWidth = 14;
-            this.btnVisaTypeIn.Text = "签证录入";
-            this.btnVisaTypeIn.Click += new System.EventHandler(this.btnVisaTypeIn_Click);
             // 
             // FrmMain
             // 

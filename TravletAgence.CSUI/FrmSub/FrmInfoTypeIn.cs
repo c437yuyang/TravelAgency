@@ -20,12 +20,12 @@ namespace TravletAgence.CSUI.FrmSub
 
         public FrmInfoTypeIn(Model.VisaInfo model, Action<int> updateDel,int page)
         {
+            this.StartPosition = FormStartPosition.CenterParent; //不能写在form_load里面，是已经加载完成了
             InitializeComponent();
             this._model = model;
             _updateDel = updateDel;
             _curPage = page;
             ModelToCtrls(this._model);
-            
         }
 
         private void ModelToCtrls(Model.VisaInfo model)
@@ -87,8 +87,9 @@ namespace TravletAgence.CSUI.FrmSub
         private void FrmInfoTypeIn_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
-            this.StartPosition = FormStartPosition.CenterParent; //不能写在form_load里面，是已经加载完成了
+
             this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            this.txtGroupNo.Enabled = false;
             LoadImageFromModel(_model);
         }
 
