@@ -189,7 +189,7 @@ namespace TravletAgence.CSUI.FrmSub
             txtFetchType.Items.Add("其他");
 
             //设置操作员
-            txtSalesPerson.Text = Common.GlobalInfo.LoginUser.UserName;
+            txtSalesPerson.Text = Common.GlobalUtils.LoginUser.UserName;
             txtSalesPerson.Enabled = false;
             cbCountry.Text = "日本";
             txtDepartureType.SelectedIndex = 0;

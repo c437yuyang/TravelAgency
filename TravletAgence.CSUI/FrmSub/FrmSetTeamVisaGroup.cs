@@ -163,7 +163,7 @@ namespace TravletAgence.CSUI.FrmSub
             lvOut.MultiSelect = true;
 
             //设置操作员
-            txtSalesPerson.Text = Common.GlobalInfo.LoginUser.UserName;
+            txtSalesPerson.Text = Common.GlobalUtils.LoginUser.UserName;
             txtSalesPerson.Enabled = false;
 
             cbCountry.Text = "日本";

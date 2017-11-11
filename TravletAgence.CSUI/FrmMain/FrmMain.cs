@@ -127,7 +127,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            this.Text = this.Text + "     当前登录用户:" + Common.GlobalInfo.LoginUser.UserName;
+            this.Text = this.Text + "     当前登录用户:" + Common.GlobalUtils.LoginUser.UserName;
             MinimumSize = Size;
         }
 

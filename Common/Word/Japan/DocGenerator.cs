@@ -63,7 +63,7 @@ namespace TravletAgence.Common.Word.Japan
                 return;
             }
 
-            var doc = DocComHandler.OpenDocFile(GlobalInfo.AppPath + @"\Word\Templates\" + TemplaceDocFileName);
+            var doc = DocComHandler.OpenDocFile(GlobalUtils.AppPath + @"\Word\Templates\" + TemplaceDocFileName);
             if (doc == null)
             {
                 MessageBoxEx.Show("打开模板文件失败，请检查文件路径！");
@@ -102,7 +102,7 @@ namespace TravletAgence.Common.Word.Japan
                     continue;
                 }
 
-                var doc = DocComHandler.OpenDocFile(GlobalInfo.AppPath + @"\Word\Templates\" + TemplaceDocFileName);
+                var doc = DocComHandler.OpenDocFile(GlobalUtils.AppPath + @"\Word\Templates\" + TemplaceDocFileName);
                 if (doc == null)
                 {
                     MessageBoxEx.Show("打开模板文件失败，请检查文件路径！");

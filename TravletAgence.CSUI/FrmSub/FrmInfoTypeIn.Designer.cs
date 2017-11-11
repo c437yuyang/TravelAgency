@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
+            this.panelRight = new DevComponents.DotNetBar.PanelEx();
+            this.panelPicBox = new DevComponents.DotNetBar.PanelEx();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.paneBtns = new DevComponents.DotNetBar.PanelEx();
+            this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.panelInputs = new DevComponents.DotNetBar.PanelEx();
             this.txtExpireDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtLicenseTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -62,21 +68,17 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.panelPicBox = new DevComponents.DotNetBar.PanelEx();
-            this.panelRight = new DevComponents.DotNetBar.PanelEx();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
-            this.paneBtns = new DevComponents.DotNetBar.PanelEx();
+            this.labelX17 = new DevComponents.DotNetBar.LabelX();
+            this.txtPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelMain.SuspendLayout();
+            this.panelRight.SuspendLayout();
+            this.panelPicBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.paneBtns.SuspendLayout();
             this.panelInputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
-            this.panelPicBox.SuspendLayout();
-            this.panelRight.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.paneBtns.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
@@ -89,7 +91,7 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1151, 426);
+            this.panelMain.Size = new System.Drawing.Size(1151, 418);
             this.panelMain.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelMain.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelMain.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -99,10 +101,104 @@
             this.panelMain.Style.GradientAngle = 90;
             this.panelMain.TabIndex = 0;
             // 
+            // panelRight
+            // 
+            this.panelRight.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelRight.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelRight.Controls.Add(this.panelPicBox);
+            this.panelRight.Controls.Add(this.paneBtns);
+            this.panelRight.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRight.Location = new System.Drawing.Point(562, 0);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(589, 418);
+            this.panelRight.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelRight.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelRight.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelRight.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelRight.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelRight.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelRight.Style.GradientAngle = 90;
+            this.panelRight.TabIndex = 37;
+            // 
+            // panelPicBox
+            // 
+            this.panelPicBox.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelPicBox.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelPicBox.Controls.Add(this.pictureBox1);
+            this.panelPicBox.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPicBox.Location = new System.Drawing.Point(0, 0);
+            this.panelPicBox.Name = "panelPicBox";
+            this.panelPicBox.Size = new System.Drawing.Size(589, 368);
+            this.panelPicBox.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelPicBox.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelPicBox.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelPicBox.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelPicBox.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelPicBox.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelPicBox.Style.GradientAngle = 90;
+            this.panelPicBox.TabIndex = 29;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(589, 368);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // paneBtns
+            // 
+            this.paneBtns.CanvasColor = System.Drawing.SystemColors.Control;
+            this.paneBtns.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.paneBtns.Controls.Add(this.btnConfirm);
+            this.paneBtns.Controls.Add(this.btnCancel);
+            this.paneBtns.DisabledBackColor = System.Drawing.Color.Empty;
+            this.paneBtns.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.paneBtns.Location = new System.Drawing.Point(0, 368);
+            this.paneBtns.Name = "paneBtns";
+            this.paneBtns.Size = new System.Drawing.Size(589, 50);
+            this.paneBtns.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.paneBtns.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.paneBtns.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.paneBtns.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.paneBtns.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.paneBtns.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.paneBtns.Style.GradientAngle = 90;
+            this.paneBtns.TabIndex = 33;
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnConfirm.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnConfirm.Location = new System.Drawing.Point(213, 15);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnConfirm.TabIndex = 17;
+            this.btnConfirm.Text = "确认修改";
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Location = new System.Drawing.Point(294, 15);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 18;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // panelInputs
             // 
             this.panelInputs.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelInputs.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelInputs.Controls.Add(this.txtPhone);
+            this.panelInputs.Controls.Add(this.labelX17);
             this.panelInputs.Controls.Add(this.txtExpireDate);
             this.panelInputs.Controls.Add(this.txtLicenseTime);
             this.panelInputs.Controls.Add(this.txtBirthday);
@@ -139,7 +235,7 @@
             this.panelInputs.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelInputs.Location = new System.Drawing.Point(0, 0);
             this.panelInputs.Name = "panelInputs";
-            this.panelInputs.Size = new System.Drawing.Size(562, 426);
+            this.panelInputs.Size = new System.Drawing.Size(562, 418);
             this.panelInputs.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelInputs.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelInputs.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -649,116 +745,49 @@
             this.labelX1.TabIndex = 25;
             this.labelX1.Text = "姓名(中文)：";
             // 
-            // panelPicBox
+            // labelX17
             // 
-            this.panelPicBox.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelPicBox.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelPicBox.Controls.Add(this.pictureBox1);
-            this.panelPicBox.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPicBox.Location = new System.Drawing.Point(0, 0);
-            this.panelPicBox.Name = "panelPicBox";
-            this.panelPicBox.Size = new System.Drawing.Size(589, 376);
-            this.panelPicBox.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelPicBox.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelPicBox.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelPicBox.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelPicBox.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelPicBox.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelPicBox.Style.GradientAngle = 90;
-            this.panelPicBox.TabIndex = 29;
             // 
-            // panelRight
             // 
-            this.panelRight.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelRight.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelRight.Controls.Add(this.panelPicBox);
-            this.panelRight.Controls.Add(this.paneBtns);
-            this.panelRight.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight.Location = new System.Drawing.Point(562, 0);
-            this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(589, 426);
-            this.panelRight.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelRight.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelRight.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelRight.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelRight.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelRight.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelRight.Style.GradientAngle = 90;
-            this.panelRight.TabIndex = 37;
             // 
-            // pictureBox1
+            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX17.Location = new System.Drawing.Point(301, 155);
+            this.labelX17.Name = "labelX17";
+            this.labelX17.Size = new System.Drawing.Size(75, 23);
+            this.labelX17.TabIndex = 57;
+            this.labelX17.Text = "电话号码:";
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(589, 376);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            // txtPhone
             // 
-            // btnCancel
             // 
-            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Location = new System.Drawing.Point(294, 15);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 18;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnConfirm
             // 
-            this.btnConfirm.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnConfirm.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnConfirm.Location = new System.Drawing.Point(213, 15);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
-            this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnConfirm.TabIndex = 17;
-            this.btnConfirm.Text = "确认修改";
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // paneBtns
-            // 
-            this.paneBtns.CanvasColor = System.Drawing.SystemColors.Control;
-            this.paneBtns.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.paneBtns.Controls.Add(this.btnConfirm);
-            this.paneBtns.Controls.Add(this.btnCancel);
-            this.paneBtns.DisabledBackColor = System.Drawing.Color.Empty;
-            this.paneBtns.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.paneBtns.Location = new System.Drawing.Point(0, 376);
-            this.paneBtns.Name = "paneBtns";
-            this.paneBtns.Size = new System.Drawing.Size(589, 50);
-            this.paneBtns.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.paneBtns.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.paneBtns.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.paneBtns.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.paneBtns.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.paneBtns.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.paneBtns.Style.GradientAngle = 90;
-            this.paneBtns.TabIndex = 33;
+            this.txtPhone.Border.Class = "TextBoxBorder";
+            this.txtPhone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPhone.Location = new System.Drawing.Point(382, 155);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.PreventEnterBeep = true;
+            this.txtPhone.Size = new System.Drawing.Size(174, 21);
+            this.txtPhone.TabIndex = 58;
             // 
             // FrmInfoTypeIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1151, 426);
+            this.ClientSize = new System.Drawing.Size(1151, 418);
             this.Controls.Add(this.panelMain);
             this.Name = "FrmInfoTypeIn";
             this.Text = "用户资料录入";
             this.Load += new System.EventHandler(this.FrmInfoTypeIn_Load);
             this.panelMain.ResumeLayout(false);
+            this.panelRight.ResumeLayout(false);
+            this.panelPicBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.paneBtns.ResumeLayout(false);
             this.panelInputs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
-            this.panelPicBox.ResumeLayout(false);
-            this.panelRight.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.paneBtns.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -805,6 +834,8 @@
         private DevComponents.DotNetBar.ButtonX btnConfirm;
         private DevComponents.DotNetBar.ButtonX btnCancel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private DevComponents.DotNetBar.LabelX labelX17;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPhone;
 
     }
 }

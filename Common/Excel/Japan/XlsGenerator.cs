@@ -32,7 +32,7 @@ namespace TravletAgence.Common.Excel.Japan
             }
 
             //READEXCEL
-            using (FileStream fs = File.OpenRead(GlobalInfo.AppPath + @"\Excel\Templates\template_(前8人）旅行社申请名单表_（表3）_添加占位符.xlsx"))
+            using (FileStream fs = File.OpenRead(GlobalUtils.AppPath + @"\Excel\Templates\template_(前8人）旅行社申请名单表_（表3）_添加占位符.xlsx"))
             {
                 IWorkbook wkbook = new XSSFWorkbook(fs);
                 ISheet sheet = wkbook.GetSheetAt(0);

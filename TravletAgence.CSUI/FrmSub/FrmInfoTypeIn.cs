@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
+using TravletAgence.Common.FTP;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
 
@@ -18,7 +19,7 @@ namespace TravletAgence.CSUI.FrmSub
         private readonly Action<int> _updateDel; //副界面传来更新数据库的委托
         private readonly int _curPage; //主界面更新数据库需要一个当前页
 
-        public FrmInfoTypeIn(Model.VisaInfo model, Action<int> updateDel,int page)
+        public FrmInfoTypeIn(Model.VisaInfo model, Action<int> updateDel, int page)
         {
             this.StartPosition = FormStartPosition.CenterParent; //不能写在form_load里面，是已经加载完成了
             InitializeComponent();
@@ -49,6 +50,9 @@ namespace TravletAgence.CSUI.FrmSub
             txtBirthPlace.Text = model.Birthplace;
             txtGroupNo.Text = model.GroupNo;
             txtDepartureRecord.Text = model.DepartureRecord;
+
+            txtPhone.Text = model.Phone;
+
         }
 
         /// <summary>
@@ -60,19 +64,28 @@ namespace TravletAgence.CSUI.FrmSub
                 return;
             try
             {
+                //会出错的放到前面
+                if (txtPhone.Text.Length > 11)
+                {
+                    MessageBoxEx.Show("手机号码不能多于11位!");
+                    return;
+                }
+                _model.Phone = txtPhone.Text;
+
+                _model.Birthday = DateTime.Parse(txtBirthday.Text);
+                _model.LicenceTime = DateTime.Parse(txtLicenseTime.Text);
+                _model.ExpiryDate = DateTime.Parse(txtExpireDate.Text);
+
                 _model.Name = txtName.Text;
                 _model.EnglishName = txtEnglishName.Text;
                 _model.Sex = txtSex.Text;
                 _model.IssuePlace = txtIssuePlace.Text;
                 _model.Residence = txtResidence.Text;
-                _model.Birthday = DateTime.Parse(txtBirthday.Text);
                 _model.Occupation = txtOccupation.Text;
                 _model.Identification = txtIdentification.Text;
                 _model.Marriaged = txtMarrige.Text;
                 _model.FinancialCapacity = txtFinancialCapacity.Text;
                 _model.PassportNo = txtPassportNo.Text;
-                _model.LicenceTime = DateTime.Parse(txtLicenseTime.Text);
-                _model.ExpiryDate = DateTime.Parse(txtExpireDate.Text);
                 _model.Birthplace = txtBirthPlace.Text;
                 _model.GroupNo = txtGroupNo.Text;
                 _model.DepartureRecord = txtDepartureRecord.Text; //这里应该做校验,以及给用户做成comboBox那种
@@ -119,14 +132,26 @@ namespace TravletAgence.CSUI.FrmSub
         private void LoadImageFromModel(Model.VisaInfo model)
         {
             if (model == null)
-                return;
-            if (File.Exists(model.PassportNo + ".jpg"))
             {
-                pictureBox1.Image = Image.FromFile(model.PassportNo + ".jpg");
-                //pictureBox1.Image = Image.FromFile("G49457929" + ".jpg");
+                pictureBox1.Image = Resources.PassportPictureNotFound;
+                return;
+            }
+
+            if (File.Exists(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg")) //先检查本地是否存在
+            {
+                pictureBox1.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
             }
             else
+            {
+                if (FtpHandler.FileExist(model.PassportNo + ".jpg"))
+                    if (FtpHandler.Download(GlobalUtils.PassportPicPath, model.PassportNo + ".jpg"))
+                    {
+                        pictureBox1.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
+                        return;
+                    }
                 pictureBox1.Image = Resources.PassportPictureNotFound;
+
+            }
         }
 
     }

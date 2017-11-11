@@ -12,7 +12,7 @@ namespace TravletAgence.CSUI.FrmSub
     {
         private string _qrinfo;
         private readonly MyQRCode _qrCode = new MyQRCode();
-        private readonly string _tmpFileName = GlobalInfo.AppPath +"\\tmp.png";
+        private readonly string _tmpFileName = GlobalUtils.AppPath +"\\tmp.png";
 
         public FrmQRCode()
         {

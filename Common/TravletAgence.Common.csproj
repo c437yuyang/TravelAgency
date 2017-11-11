@@ -165,13 +165,14 @@
   <ItemGroup>
     <Compile Include="DateTimeFormator.cs" />
     <Compile Include="Excel\Japan\XlsGenerator.cs" />
+    <Compile Include="FTP\FtpHandler.cs" />
     <Compile Include="RngWord.cs" />
     <Compile Include="Word\DocCOMHandler.cs" />
     <Compile Include="Enums\HasChecked.cs" />
     <Compile Include="Enums\Types.cs" />
     <Compile Include="Excel\Japan\ExcelGenerator.cs" />
     <Compile Include="Enums\HasTypeIn.cs" />
-    <Compile Include="GlobalInfo.cs" />
+    <Compile Include="GlobalUtils.cs" />
     <Compile Include="IDCard\IDCard.cs" />
     <Compile Include="IDCard\IDCardDll.cs" />
     <Compile Include="MD5Computer\MyMd5.cs" />

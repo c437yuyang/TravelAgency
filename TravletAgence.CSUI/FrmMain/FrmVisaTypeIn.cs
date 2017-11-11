@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravletAgence.Common;
 using TravletAgence.Common.Enums;
+using TravletAgence.Common.FTP;
 using TravletAgence.Common.IDCard;
 using TravletAgence.CSUI.Properties;
 using TravletAgence.Model;
@@ -28,6 +29,7 @@ namespace TravletAgence.CSUI.FrmMain
         private readonly IDCard _idCard = new IDCard();
         private bool _autoReadThreadRun = false;
 
+
         public FrmVisaTypeIn()
         {
             InitializeComponent();
@@ -37,7 +39,7 @@ namespace TravletAgence.CSUI.FrmMain
         private void FrmCheckAutoInputInfo_Load(object sender, EventArgs e)
         {
             //初始化控件
-            txtPicPath.Text = GlobalInfo.AppPath;
+            txtPicPath.Text = GlobalUtils.PassportPicPath;
             checkShowConfirm.Checked = true;
             checkRegSucShowDlg.Checked = true;
             picPassportNo.SizeMode = PictureBoxSizeMode.Zoom;
@@ -46,7 +48,7 @@ namespace TravletAgence.CSUI.FrmMain
             dgvWait4Check.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvWait4Check.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvWait4Check.MultiSelect = false;
-            txtCheckPerson.Text = GlobalInfo.LoginUser.UserName; //初始化操作员
+            txtCheckPerson.Text = GlobalUtils.LoginUser.UserName; //初始化操作员
             txtCheckPerson.Enabled = false;
 
             //debug用
@@ -123,14 +125,21 @@ namespace TravletAgence.CSUI.FrmMain
                 picPassportNo.Image = Resources.PassportPictureNotFound;
                 return;
             }
-                
-            if (File.Exists(model.PassportNo + ".jpg"))
+
+            if (File.Exists(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg")) //先检查本地是否存在
             {
-                picPassportNo.Image = Image.FromFile(model.PassportNo + ".jpg");
-                //picPassportNo.Image = Image.FromFile("G49457929" + ".jpg");
+                picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
             }
             else
-                picPassportNo.Image = Resources.PassportPictureNotFound;
+            {
+                if (FtpHandler.FileExist(model.PassportNo + ".jpg"))
+                    if (FtpHandler.Download(GlobalUtils.PassportPicPath, model.PassportNo + ".jpg"))
+                    {
+                        picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
+                        return;
+                    }
+                picPassportNo.Image = Resources.PassportPictureNotFound;                
+            }
         }
 
         /// <summary>
@@ -138,7 +147,7 @@ namespace TravletAgence.CSUI.FrmMain
         /// </summary>
         public void LoadDataToList() //刷新后保持选中
         {
-            _list = _bllVisaInfoTmp.GetModelList(0,string.Empty,"haschecked asc,entrytime desc"); //里面的DataTableToList保证了不会是null,只可能是空的list
+            _list = _bllVisaInfoTmp.GetModelList(0, string.Empty, "haschecked asc,entrytime desc"); //里面的DataTableToList保证了不会是null,只可能是空的list
         }
 
 
@@ -149,11 +158,11 @@ namespace TravletAgence.CSUI.FrmMain
         {
             _recordCount = _list.Count;
 
-            if (_curIdx == 0 || _recordCount==0)
+            if (_curIdx == 0 || _recordCount == 0)
                 btnPre.Enabled = false;
             else
                 btnPre.Enabled = true;
-            if (_curIdx == _recordCount - 1 || _recordCount==0)
+            if (_curIdx == _recordCount - 1 || _recordCount == 0)
                 btnNext.Enabled = false;
             else
                 btnNext.Enabled = true;
@@ -192,7 +201,7 @@ namespace TravletAgence.CSUI.FrmMain
         /// <param name="e"></param>
         private void btnNoFault_Click(object sender, EventArgs e)
         {
-            if(!CtrlsToModel(_model))
+            if (!CtrlsToModel(_model))
                 return;
             _model.HasChecked = Common.Enums.HasChecked.Yes;
             _model.CheckPerson = txtCheckPerson.Text;
@@ -246,7 +255,7 @@ namespace TravletAgence.CSUI.FrmMain
 
             //直接在数据库那边执行提交操作，从visainfo_tmp移动到visainfo，然后这边重新加载数据库就OK
             int res = _bllVisaInfoTmp.MoveCheckedDataToVisaInfo();
-            MessageBoxEx.Show(res + "条记录更新成功." );
+            MessageBoxEx.Show(res + "条记录更新成功.");
             LoadDataToList();
             _curIdx = 0;
             UpdateState();
@@ -349,7 +358,7 @@ namespace TravletAgence.CSUI.FrmMain
         private void btnAddToDatabase_Click(object sender, EventArgs e)
         {
             Model.VisaInfo_Tmp model = new VisaInfo_Tmp();
-            if(!CtrlsToModel(model))
+            if (!CtrlsToModel(model))
                 return;
 
             //读取成功了
@@ -390,6 +399,6 @@ namespace TravletAgence.CSUI.FrmMain
         }
 
         #endregion
-        
+
     }
 }
