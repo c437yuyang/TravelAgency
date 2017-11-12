@@ -29,6 +29,23 @@ namespace TravletAgence.CSUI.FrmSub
             ModelToCtrls(this._model);
         }
 
+        private void FrmInfoTypeIn_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = this.Size;
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            this.pictureBox1.MouseWheel += pictureBox1_MouseWheel;
+            this.txtGroupNo.Enabled = false;
+            LoadImageFromModel(_model);
+            SetLabelStates();
+        }
+
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+
+        
+        }
+
+        #region 状态更新函数
         private void ModelToCtrls(Model.VisaInfo model)
         {
             if (model == null)
@@ -56,7 +73,7 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         /// <summary>
-        /// TODO:这里面的团号修改逻辑
+        /// 这里不让修改团号
         /// </summary>
         private void CtrlsToModel()
         {
@@ -97,37 +114,6 @@ namespace TravletAgence.CSUI.FrmSub
             }
 
         }
-        private void FrmInfoTypeIn_Load(object sender, EventArgs e)
-        {
-            this.MinimumSize = this.Size;
-
-            this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            this.txtGroupNo.Enabled = false;
-            LoadImageFromModel(_model);
-        }
-
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
-            DialogResult res = MessageBoxEx.Show("是否同时更新为已录入状态?", "确认", MessageBoxButtons.YesNoCancel);
-            if (res == DialogResult.Cancel)
-                return;
-            CtrlsToModel();
-            if (res == DialogResult.Yes)
-                _model.HasTypeIn = HasTypeIn.Yes;
-            if (!bll.Update(_model))
-            {
-                MessageBoxEx.Show("更新失败，请重试!");
-                return;
-            }
-            _updateDel(_curPage);
-            Close();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
 
         private void LoadImageFromModel(Model.VisaInfo model)
         {
@@ -153,6 +139,53 @@ namespace TravletAgence.CSUI.FrmSub
 
             }
         }
+
+        private void SetLabelStates()
+        {
+            if (!string.IsNullOrEmpty(_model.EntryTime.ToString()))
+                lbTimeTypeIn.Text = _model.EntryTime.ToString();
+            lbPersonTypeIn.Text = "";
+            lbTimeCheck.Text = "";
+            if (!string.IsNullOrEmpty(_model.CheckPerson))
+                lbPersonCheck.Text = _model.CheckPerson;
+
+            //if(!string.IsNullOrEmpty(_model.Salesperson))
+
+        }
+
+
+        #endregion
+
+
+
+
+
+
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBoxEx.Show("是否同时更新为已录入状态?", "确认", MessageBoxButtons.YesNoCancel);
+            if (res == DialogResult.Cancel)
+                return;
+            CtrlsToModel();
+            if (res == DialogResult.Yes)
+                _model.HasTypeIn = HasTypeIn.Yes;
+            if (!bll.Update(_model))
+            {
+                MessageBoxEx.Show("更新失败，请重试!");
+                return;
+            }
+            _updateDel(_curPage);
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+
+
 
     }
 }

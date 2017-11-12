@@ -261,6 +261,7 @@
     <Content Include="Resources\Icons\users.ico" />
     <Content Include="Resources\Icons\vista桌面图标下载17.ico" />
     <Content Include="Resources\Icons\东瀛假日.ico" />
+    <Content Include="Resources\时间轴.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

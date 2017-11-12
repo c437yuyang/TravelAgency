@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelMain = new DevComponents.DotNetBar.PanelEx();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInfoTypeIn));
+            this.panelTop = new DevComponents.DotNetBar.PanelEx();
             this.panelRight = new DevComponents.DotNetBar.PanelEx();
             this.panelPicBox = new DevComponents.DotNetBar.PanelEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -36,6 +37,8 @@
             this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.panelInputs = new DevComponents.DotNetBar.PanelEx();
+            this.txtPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX17 = new DevComponents.DotNetBar.LabelX();
             this.txtExpireDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtLicenseTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtBirthday = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -68,9 +71,21 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX17 = new DevComponents.DotNetBar.LabelX();
-            this.txtPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.panelMain.SuspendLayout();
+            this.panelBottom = new DevComponents.DotNetBar.PanelEx();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbTimeOutSubmit = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonOutSubmit = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeTypeIn = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonTypeIn = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeCheck = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonCheck = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeSetGroup = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonSetGroup = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonTypeInInfo = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeTypeInInfo = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeInSubmit = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonInSubmit = new DevComponents.DotNetBar.LabelX();
+            this.panelTop.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.panelPicBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,27 +94,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
+            this.panelBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // panelMain
+            // panelTop
             // 
-            this.panelMain.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelMain.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelMain.Controls.Add(this.panelRight);
-            this.panelMain.Controls.Add(this.panelInputs);
-            this.panelMain.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(0, 0);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1151, 418);
-            this.panelMain.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelMain.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelMain.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelMain.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelMain.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelMain.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelMain.Style.GradientAngle = 90;
-            this.panelMain.TabIndex = 0;
+            this.panelTop.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelTop.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelTop.Controls.Add(this.panelRight);
+            this.panelTop.Controls.Add(this.panelInputs);
+            this.panelTop.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(1151, 418);
+            this.panelTop.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelTop.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelTop.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelTop.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelTop.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelTop.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelTop.Style.GradientAngle = 90;
+            this.panelTop.TabIndex = 0;
             // 
             // panelRight
             // 
@@ -142,7 +158,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(589, 368);
@@ -244,6 +259,31 @@
             this.panelInputs.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelInputs.Style.GradientAngle = 90;
             this.panelInputs.TabIndex = 25;
+            // 
+            // txtPhone
+            // 
+            // 
+            // 
+            // 
+            this.txtPhone.Border.Class = "TextBoxBorder";
+            this.txtPhone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPhone.Location = new System.Drawing.Point(382, 155);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.PreventEnterBeep = true;
+            this.txtPhone.Size = new System.Drawing.Size(174, 21);
+            this.txtPhone.TabIndex = 58;
+            // 
+            // labelX17
+            // 
+            // 
+            // 
+            // 
+            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX17.Location = new System.Drawing.Point(301, 155);
+            this.labelX17.Name = "labelX17";
+            this.labelX17.Size = new System.Drawing.Size(75, 23);
+            this.labelX17.TabIndex = 57;
+            this.labelX17.Text = "电话号码:";
             // 
             // txtExpireDate
             // 
@@ -745,41 +785,192 @@
             this.labelX1.TabIndex = 25;
             this.labelX1.Text = "姓名(中文)：";
             // 
-            // labelX17
+            // panelBottom
+            // 
+            this.panelBottom.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelBottom.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelBottom.Controls.Add(this.lbTimeInSubmit);
+            this.panelBottom.Controls.Add(this.lbPersonInSubmit);
+            this.panelBottom.Controls.Add(this.lbPersonTypeInInfo);
+            this.panelBottom.Controls.Add(this.lbTimeTypeInInfo);
+            this.panelBottom.Controls.Add(this.lbTimeSetGroup);
+            this.panelBottom.Controls.Add(this.lbPersonSetGroup);
+            this.panelBottom.Controls.Add(this.lbTimeCheck);
+            this.panelBottom.Controls.Add(this.lbPersonCheck);
+            this.panelBottom.Controls.Add(this.lbTimeTypeIn);
+            this.panelBottom.Controls.Add(this.lbPersonTypeIn);
+            this.panelBottom.Controls.Add(this.lbTimeOutSubmit);
+            this.panelBottom.Controls.Add(this.lbPersonOutSubmit);
+            this.panelBottom.Controls.Add(this.pictureBox2);
+            this.panelBottom.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottom.Location = new System.Drawing.Point(0, 417);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Size = new System.Drawing.Size(1151, 317);
+            this.panelBottom.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelBottom.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelBottom.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelBottom.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelBottom.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelBottom.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelBottom.Style.GradientAngle = 90;
+            this.panelBottom.TabIndex = 4;
+            this.panelBottom.Text = "panelEx1";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1151, 317);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // lbTimeOutSubmit
             // 
             // 
             // 
             // 
-            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX17.Location = new System.Drawing.Point(301, 155);
-            this.labelX17.Name = "labelX17";
-            this.labelX17.Size = new System.Drawing.Size(75, 23);
-            this.labelX17.TabIndex = 57;
-            this.labelX17.Text = "电话号码:";
+            this.lbTimeOutSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeOutSubmit.Location = new System.Drawing.Point(805, 115);
+            this.lbTimeOutSubmit.Name = "lbTimeOutSubmit";
+            this.lbTimeOutSubmit.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeOutSubmit.TabIndex = 10;
             // 
-            // txtPhone
-            // 
+            // lbPersonOutSubmit
             // 
             // 
             // 
-            this.txtPhone.Border.Class = "TextBoxBorder";
-            this.txtPhone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPhone.Location = new System.Drawing.Point(382, 155);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.PreventEnterBeep = true;
-            this.txtPhone.Size = new System.Drawing.Size(174, 21);
-            this.txtPhone.TabIndex = 58;
+            // 
+            this.lbPersonOutSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonOutSubmit.Location = new System.Drawing.Point(868, 73);
+            this.lbPersonOutSubmit.Name = "lbPersonOutSubmit";
+            this.lbPersonOutSubmit.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonOutSubmit.TabIndex = 11;
+            // 
+            // lbTimeTypeIn
+            // 
+            // 
+            // 
+            // 
+            this.lbTimeTypeIn.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeTypeIn.Location = new System.Drawing.Point(56, 282);
+            this.lbTimeTypeIn.Name = "lbTimeTypeIn";
+            this.lbTimeTypeIn.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeTypeIn.TabIndex = 12;
+            // 
+            // lbPersonTypeIn
+            // 
+            // 
+            // 
+            // 
+            this.lbPersonTypeIn.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonTypeIn.Location = new System.Drawing.Point(119, 238);
+            this.lbPersonTypeIn.Name = "lbPersonTypeIn";
+            this.lbPersonTypeIn.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonTypeIn.TabIndex = 13;
+            // 
+            // lbTimeCheck
+            // 
+            // 
+            // 
+            // 
+            this.lbTimeCheck.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeCheck.Location = new System.Drawing.Point(201, 115);
+            this.lbTimeCheck.Name = "lbTimeCheck";
+            this.lbTimeCheck.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeCheck.TabIndex = 14;
+            // 
+            // lbPersonCheck
+            // 
+            // 
+            // 
+            // 
+            this.lbPersonCheck.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonCheck.Location = new System.Drawing.Point(264, 73);
+            this.lbPersonCheck.Name = "lbPersonCheck";
+            this.lbPersonCheck.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonCheck.TabIndex = 15;
+            // 
+            // lbTimeSetGroup
+            // 
+            // 
+            // 
+            // 
+            this.lbTimeSetGroup.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeSetGroup.Location = new System.Drawing.Point(348, 282);
+            this.lbTimeSetGroup.Name = "lbTimeSetGroup";
+            this.lbTimeSetGroup.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeSetGroup.TabIndex = 16;
+            // 
+            // lbPersonSetGroup
+            // 
+            // 
+            // 
+            // 
+            this.lbPersonSetGroup.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonSetGroup.Location = new System.Drawing.Point(411, 240);
+            this.lbPersonSetGroup.Name = "lbPersonSetGroup";
+            this.lbPersonSetGroup.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonSetGroup.TabIndex = 17;
+            // 
+            // lbPersonTypeInInfo
+            // 
+            // 
+            // 
+            // 
+            this.lbPersonTypeInInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonTypeInInfo.Location = new System.Drawing.Point(513, 115);
+            this.lbPersonTypeInInfo.Name = "lbPersonTypeInInfo";
+            this.lbPersonTypeInInfo.Size = new System.Drawing.Size(126, 23);
+            this.lbPersonTypeInInfo.TabIndex = 18;
+            // 
+            // lbTimeTypeInInfo
+            // 
+            // 
+            // 
+            // 
+            this.lbTimeTypeInInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeTypeInInfo.Location = new System.Drawing.Point(576, 73);
+            this.lbTimeTypeInInfo.Name = "lbTimeTypeInInfo";
+            this.lbTimeTypeInInfo.Size = new System.Drawing.Size(63, 23);
+            this.lbTimeTypeInInfo.TabIndex = 19;
+            // 
+            // lbTimeInSubmit
+            // 
+            // 
+            // 
+            // 
+            this.lbTimeInSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeInSubmit.Location = new System.Drawing.Point(678, 282);
+            this.lbTimeInSubmit.Name = "lbTimeInSubmit";
+            this.lbTimeInSubmit.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeInSubmit.TabIndex = 20;
+            // 
+            // lbPersonInSubmit
+            // 
+            // 
+            // 
+            // 
+            this.lbPersonInSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonInSubmit.Location = new System.Drawing.Point(741, 240);
+            this.lbPersonInSubmit.Name = "lbPersonInSubmit";
+            this.lbPersonInSubmit.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonInSubmit.TabIndex = 21;
             // 
             // FrmInfoTypeIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1151, 418);
-            this.Controls.Add(this.panelMain);
+            this.ClientSize = new System.Drawing.Size(1151, 734);
+            this.Controls.Add(this.panelTop);
+            this.Controls.Add(this.panelBottom);
             this.Name = "FrmInfoTypeIn";
             this.Text = "用户资料录入";
             this.Load += new System.EventHandler(this.FrmInfoTypeIn_Load);
-            this.panelMain.ResumeLayout(false);
+            this.panelTop.ResumeLayout(false);
             this.panelRight.ResumeLayout(false);
             this.panelPicBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -788,13 +979,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtExpireDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenseTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
+            this.panelBottom.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevComponents.DotNetBar.PanelEx panelMain;
+        private DevComponents.DotNetBar.PanelEx panelTop;
         private DevComponents.DotNetBar.PanelEx panelInputs;
         private DevComponents.DotNetBar.PanelEx panelPicBox;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtExpireDate;
@@ -836,6 +1029,20 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevComponents.DotNetBar.LabelX labelX17;
         private DevComponents.DotNetBar.Controls.TextBoxX txtPhone;
+        private DevComponents.DotNetBar.PanelEx panelBottom;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private DevComponents.DotNetBar.LabelX lbTimeOutSubmit;
+        private DevComponents.DotNetBar.LabelX lbPersonOutSubmit;
+        private DevComponents.DotNetBar.LabelX lbTimeInSubmit;
+        private DevComponents.DotNetBar.LabelX lbPersonInSubmit;
+        private DevComponents.DotNetBar.LabelX lbPersonTypeInInfo;
+        private DevComponents.DotNetBar.LabelX lbTimeTypeInInfo;
+        private DevComponents.DotNetBar.LabelX lbTimeSetGroup;
+        private DevComponents.DotNetBar.LabelX lbPersonSetGroup;
+        private DevComponents.DotNetBar.LabelX lbTimeCheck;
+        private DevComponents.DotNetBar.LabelX lbPersonCheck;
+        private DevComponents.DotNetBar.LabelX lbTimeTypeIn;
+        private DevComponents.DotNetBar.LabelX lbPersonTypeIn;
 
     }
 }
