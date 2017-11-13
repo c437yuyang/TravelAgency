@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using NPOI.XWPF.UserModel;
 
 namespace ExcelDemo
 {
@@ -85,6 +86,9 @@ namespace ExcelDemo
             //    new Person() {Name="张s",Age=28,Email="zw@qq.com" },
             //    new Person() {Name="张w",Age=22,Email="zd@qq.com" }
             //};
+
+            XWPFDocument wkbook = new XWPFDocument();
+            wkbook.Document 
            
         }
     }
