@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.IO;
+using System.Windows.Forms;
 using Excel;
 using TravletAgence.Common.FTP;
 using TravletAgence.Common.Word.Japan;
@@ -13,11 +14,11 @@ namespace TravletAgence.Common
         public static readonly DocDocxGenerator DocDocxGenerator;
         static GlobalUtils()
         {
-            InitFTP();
+            InitFtp();
             DocDocxGenerator = new DocDocxGenerator();
         }
 
-        private static void InitFTP()
+        private static void InitFtp()
         {
             //初始化FTP参数
             string ftpServer = ConfigurationManager.AppSettings["FTPServer"];
@@ -48,7 +49,29 @@ namespace TravletAgence.Common
             }
         }
 
-        
+        /// <summary>
+        /// 返回openfileDialog的文件名
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <param name="Filter"></param>
+        /// <returns></returns>
+        public static string OpenSaveFileDlg(string filename, string Filter = "图像文件|*.jpg")
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = Filter;
+            saveFileDialog1.Title = "Save";
+            if (!string.IsNullOrEmpty(filename))
+                saveFileDialog1.FileName = filename;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return null;
+
+            if (saveFileDialog1.FileName != "")
+                return saveFileDialog1.FileName;
+
+            return null;
+        }
+
 
     }
 }

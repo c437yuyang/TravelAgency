@@ -18,6 +18,25 @@ namespace TravletAgence.Common.Excel.Japan
     /// </summary>
     public static class ExcelGenerator
     {
+        private static bool SaveFile(string dstName, IWorkbook wk)
+        {
+            if (string.IsNullOrEmpty(dstName))
+                return false;
+            try
+            {
+                using (FileStream fs = new FileStream(dstName, FileMode.Create))
+                    wk.Write(fs);
+            }
+            catch (Exception)
+            {
+                MessageBoxEx.Show("指定文件名的文件正在使用中，无法写入，请关闭后重试!");
+                return false;
+            }
+
+            Process.Start(dstName);
+            return true;
+        }
+
 
         public static bool GetIndividualVisaExcel(List<TravletAgence.Model.VisaInfo> list, string remark, string groupNo)
         {
@@ -108,37 +127,8 @@ namespace TravletAgence.Common.Excel.Japan
             sheet.AddMergedRegion(new CellRangeAddress(1, sheet.LastRowNum, 12, 12));
 
             //5.执行写入磁盘
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "office 2003 excel|*.xls";
-            saveFileDialog1.Title = "Save";
-            if (groupNo.Length > 0)
-            {
-                saveFileDialog1.FileName = groupNo + ".xls"; //TODO:处理文件名太长
-            }
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return true;
-
-            if (saveFileDialog1.FileName != "")
-            {
-                try
-                {
-                    using (FileStream fs = (FileStream)saveFileDialog1.OpenFile())
-                    {
-                        wkbook.Write(fs);
-                    }
-                }
-                catch (Exception)
-                {
-
-                    MessageBoxEx.Show("指定文件名的文件正在使用中，无法写入，请关闭后重试!");
-                    return false;
-                }
-
-            }
-            Process.Start(saveFileDialog1.FileName);
-            return true;
+            string dstName = GlobalUtils.OpenSaveFileDlg(groupNo + ".xls", "office 2003 excel|*.xls");
+            return SaveFile(dstName,wkbook);
 
         }
         public static bool GetTeamVisaExcelOfJapan(List<TravletAgence.Model.VisaInfo> list, string groupNo)
@@ -228,37 +218,8 @@ namespace TravletAgence.Common.Excel.Japan
             sheet.AddMergedRegion(new CellRangeAddress(1, sheet.LastRowNum, 13, 13));
 
             //5.执行写入磁盘
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "office 2003 excel|*.xls";
-            saveFileDialog1.Title = "Save";
-            if (groupNo.Length > 0)
-            {
-                saveFileDialog1.FileName = groupNo + ".xls"; //TODO:处理文件名太长
-            }
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return true;
-
-            if (saveFileDialog1.FileName != "")
-            {
-                try
-                {
-                    using (FileStream fs = (FileStream)saveFileDialog1.OpenFile())
-                    {
-                        wkbook.Write(fs);
-                    }
-                }
-                catch (Exception)
-                {
-
-                    MessageBoxEx.Show("指定文件名的文件正在使用中，无法写入，请关闭后重试!");
-                    return false;
-                }
-            }
-            Process.Start(saveFileDialog1.FileName);
-            return true;
-
+            string dstName = GlobalUtils.OpenSaveFileDlg(groupNo + ".xls", "office 2003 excel|*.xls");
+            return SaveFile(dstName, wkbook);
         }
 
         public static bool GetTeamVisaExcelOfThailand(List<TravletAgence.Model.VisaInfo> list, string groupNo)
@@ -281,9 +242,6 @@ namespace TravletAgence.Common.Excel.Japan
             row.CreateCell(8).SetCellValue("出生地点拼音");
             row.CreateCell(9).SetCellValue("签发地点拼音");
             row.CreateCell(10).SetCellValue("英文姓名");
-
-
-
 
             //2.2设置列宽度
             sheet.SetColumnWidth(0, 20 * 256);//序号
@@ -351,40 +309,13 @@ namespace TravletAgence.Common.Excel.Japan
             //sheet.AddMergedRegion(new CellRangeAddress(1, sheet.LastRowNum, 13, 13));
 
             //5.执行写入磁盘
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "office 2003 excel|*.xls";
-            saveFileDialog1.Title = "Save";
-            if (groupNo.Length > 0)
-            {
-                saveFileDialog1.FileName = groupNo + ".xls"; //TODO:处理文件名太长
-            }
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return true;
-
-            if (saveFileDialog1.FileName != "")
-            {
-                try
-                {
-                    using (FileStream fs = (FileStream)saveFileDialog1.OpenFile())
-                    {
-                        wkbook.Write(fs);
-                    }
-                }
-                catch (Exception)
-                {
-
-                    MessageBoxEx.Show("指定文件名的文件正在使用中，无法写入，请关闭后重试!");
-                    return false;
-                }
-            }
-            Process.Start(saveFileDialog1.FileName);
-            return true;
-
+            string dstName = GlobalUtils.OpenSaveFileDlg(groupNo + ".xls", "office 2003 excel|*.xls");
+            return SaveFile(dstName, wkbook);
         }
 
-        public static bool GetEverydayExcel(List<Model.Visa> visaList,List<List<VisaInfo>> visaInfoList)
+
+
+        public static bool GetEverydayExcel(List<Model.Visa> visaList, List<List<VisaInfo>> visaInfoList)
         {
             //1.创建工作簿对象
             IWorkbook wkbook = new HSSFWorkbook();
@@ -410,8 +341,8 @@ namespace TravletAgence.Common.Excel.Japan
             sheet.SetColumnWidth(4, 10 * 256);
             sheet.SetColumnWidth(5, 13 * 256);
             sheet.SetColumnWidth(6, 10 * 256);
-            sheet.SetColumnWidth(7, 35 * 256); 
-            
+            sheet.SetColumnWidth(7, 35 * 256);
+
             //3.插入行和单元格
             int rowNum = 0;
             for (int i = 0; i != visaList.Count; ++i)
@@ -430,7 +361,7 @@ namespace TravletAgence.Common.Excel.Japan
                     row.CreateCell(7).SetCellValue(visaInfoList[i][j].Identification);
                 }
                 //创建单元格
-                
+
                 //设置行高
                 //row.HeightInPoints = 50;
                 //设置值
@@ -438,7 +369,7 @@ namespace TravletAgence.Common.Excel.Japan
 
             }
 
-            HSSFFont font = (HSSFFont) wkbook.CreateFont();
+            HSSFFont font = (HSSFFont)wkbook.CreateFont();
             font.FontName = "宋体";
             font.FontHeightInPoints = 11;
 
@@ -462,8 +393,8 @@ namespace TravletAgence.Common.Excel.Japan
             int dp = 1;
             for (int i = 0; i != visaList.Count; ++i)
             {
-                sheet.AddMergedRegion(new CellRangeAddress(dp, dp + visaInfoList[i].Count-1, 6, 6));
-               
+                sheet.AddMergedRegion(new CellRangeAddress(dp, dp + visaInfoList[i].Count - 1, 6, 6));
+
                 //单独处理合并区域的单元格格式
                 ICellStyle mergeStyle = wkbook.CreateCellStyle();
                 mergeStyle.SetFont(font);
@@ -476,40 +407,11 @@ namespace TravletAgence.Common.Excel.Japan
                 sheet.GetRow(dp).Cells[6].CellStyle = mergeStyle;
                 dp += visaInfoList[i].Count;
             }
-            
+
 
             //5.执行写入磁盘
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "office 2003 excel|*.xls";
-            saveFileDialog1.Title = "Save";
-            //if (groupNo.Length > 0)
-            //{
-            //    //TODO:处理文件名太长
-            //}
-            saveFileDialog1.FileName = "每日送签客人情况表" + ".xls";
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return true;
-
-            if (saveFileDialog1.FileName != "")
-            {
-                try
-                {
-                    using (FileStream fs = (FileStream)saveFileDialog1.OpenFile())
-                    {
-                        wkbook.Write(fs);
-                    }
-                }
-                catch (Exception)
-                {
-
-                    MessageBoxEx.Show("指定文件名的文件正在使用中，无法写入，请关闭后重试!");
-                    return false;
-                }
-
-            }
-            Process.Start(saveFileDialog1.FileName);
-            return true;
+            string dstName = GlobalUtils.OpenSaveFileDlg("每日送签客人情况表.xls", "office 2003 excel|*.xls");
+            return SaveFile(dstName, wkbook);
         }
     }
 }

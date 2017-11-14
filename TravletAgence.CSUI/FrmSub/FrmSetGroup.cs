@@ -162,10 +162,8 @@ namespace TravletAgence.CSUI.FrmSub
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
             dgvGroupInfo.Columns["Birthday"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;//某一些列关闭自适应
 
-            //
-            cbCountry.DropDownStyle = ComboBoxStyle.DropDown;
             
-
+            
             //设置列表多选
             lvIn.MultiSelect = true;
             lvOut.MultiSelect = true;
@@ -195,7 +193,9 @@ namespace TravletAgence.CSUI.FrmSub
             //设置操作员
             txtTypeInPerson.Text = Common.GlobalUtils.LoginUser.UserName;
             txtTypeInPerson.Enabled = false;
+            //设置国家默认值
             cbCountry.Text = "日本";
+            cbCountry.DropDownStyle = ComboBoxStyle.DropDown;
             txtDepartureType.SelectedIndex = 0;
 
             if (_list != null && _visaModel == null && !_initFromVisaModel)

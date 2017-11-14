@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.panelMid = new DevComponents.DotNetBar.PanelEx();
             this.picPassportNo = new System.Windows.Forms.PictureBox();
@@ -80,6 +80,11 @@
             this.btnPre = new DevComponents.DotNetBar.ButtonX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.btnSaveChanges = new DevComponents.DotNetBar.ButtonX();
+            this.panelbottom = new DevComponents.DotNetBar.PanelEx();
+            this.btnSavePic = new DevComponents.DotNetBar.ButtonX();
+            this.btnSaveHeadPic = new DevComponents.DotNetBar.ButtonX();
+            this.btnSaveIR = new DevComponents.DotNetBar.ButtonX();
+            this.btnSaveAll = new DevComponents.DotNetBar.ButtonX();
             this.panelMain.SuspendLayout();
             this.panelMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPassportNo)).BeginInit();
@@ -92,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvWait4Check)).BeginInit();
             this.panelRightTop.SuspendLayout();
             this.panelRightBottom.SuspendLayout();
+            this.panelbottom.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
@@ -120,6 +126,7 @@
             this.panelMid.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelMid.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelMid.Controls.Add(this.picPassportNo);
+            this.panelMid.Controls.Add(this.panelbottom);
             this.panelMid.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelMid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMid.Location = new System.Drawing.Point(224, 0);
@@ -139,7 +146,7 @@
             this.picPassportNo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picPassportNo.Location = new System.Drawing.Point(0, 0);
             this.picPassportNo.Name = "picPassportNo";
-            this.picPassportNo.Size = new System.Drawing.Size(726, 599);
+            this.picPassportNo.Size = new System.Drawing.Size(726, 560);
             this.picPassportNo.TabIndex = 40;
             this.picPassportNo.TabStop = false;
             // 
@@ -658,42 +665,42 @@
             this.dgvWait4Check.AllowUserToAddRows = false;
             this.dgvWait4Check.AllowUserToDeleteRows = false;
             this.dgvWait4Check.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvWait4Check.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWait4Check.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvWait4Check.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvWait4Check.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PassportNo,
             this._Name,
             this.HasChecked,
             this.VisaInfo_id});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvWait4Check.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWait4Check.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvWait4Check.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvWait4Check.EnableHeadersVisualStyles = false;
             this.dgvWait4Check.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvWait4Check.Location = new System.Drawing.Point(0, 0);
             this.dgvWait4Check.Name = "dgvWait4Check";
             this.dgvWait4Check.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvWait4Check.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWait4Check.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvWait4Check.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvWait4Check.RowTemplate.Height = 30;
             this.dgvWait4Check.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -860,6 +867,73 @@
             this.btnSaveChanges.Text = "提交已校验";
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
+            // panelbottom
+            // 
+            this.panelbottom.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelbottom.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelbottom.Controls.Add(this.btnSaveAll);
+            this.panelbottom.Controls.Add(this.btnSaveIR);
+            this.panelbottom.Controls.Add(this.btnSaveHeadPic);
+            this.panelbottom.Controls.Add(this.btnSavePic);
+            this.panelbottom.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelbottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelbottom.Location = new System.Drawing.Point(0, 560);
+            this.panelbottom.Name = "panelbottom";
+            this.panelbottom.Size = new System.Drawing.Size(726, 39);
+            this.panelbottom.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelbottom.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelbottom.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelbottom.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelbottom.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelbottom.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelbottom.Style.GradientAngle = 90;
+            this.panelbottom.TabIndex = 41;
+            // 
+            // btnSavePic
+            // 
+            this.btnSavePic.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSavePic.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSavePic.Location = new System.Drawing.Point(15, 5);
+            this.btnSavePic.Name = "btnSavePic";
+            this.btnSavePic.Size = new System.Drawing.Size(104, 23);
+            this.btnSavePic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSavePic.TabIndex = 0;
+            this.btnSavePic.Text = "导出护照图像";
+            this.btnSavePic.Click += new System.EventHandler(this.btnSavePic_Click);
+            // 
+            // btnSaveHeadPic
+            // 
+            this.btnSaveHeadPic.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSaveHeadPic.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSaveHeadPic.Location = new System.Drawing.Point(138, 5);
+            this.btnSaveHeadPic.Name = "btnSaveHeadPic";
+            this.btnSaveHeadPic.Size = new System.Drawing.Size(104, 23);
+            this.btnSaveHeadPic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSaveHeadPic.TabIndex = 0;
+            this.btnSaveHeadPic.Text = "导出护照头像";
+            // 
+            // btnSaveIR
+            // 
+            this.btnSaveIR.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSaveIR.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSaveIR.Location = new System.Drawing.Point(264, 5);
+            this.btnSaveIR.Name = "btnSaveIR";
+            this.btnSaveIR.Size = new System.Drawing.Size(104, 23);
+            this.btnSaveIR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSaveIR.TabIndex = 0;
+            this.btnSaveIR.Text = "导出红外图像";
+            // 
+            // btnSaveAll
+            // 
+            this.btnSaveAll.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSaveAll.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSaveAll.Location = new System.Drawing.Point(386, 5);
+            this.btnSaveAll.Name = "btnSaveAll";
+            this.btnSaveAll.Size = new System.Drawing.Size(104, 23);
+            this.btnSaveAll.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSaveAll.TabIndex = 0;
+            this.btnSaveAll.Text = "导出全部图像";
+            // 
             // FrmVisaTypeIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -882,6 +956,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvWait4Check)).EndInit();
             this.panelRightTop.ResumeLayout(false);
             this.panelRightBottom.ResumeLayout(false);
+            this.panelbottom.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -937,5 +1012,10 @@
         private DevComponents.DotNetBar.PanelEx panelRightMid;
         private DevComponents.DotNetBar.LabelX lbRecordCount;
         private DevComponents.DotNetBar.PanelEx panelMid;
+        private DevComponents.DotNetBar.PanelEx panelbottom;
+        private DevComponents.DotNetBar.ButtonX btnSavePic;
+        private DevComponents.DotNetBar.ButtonX btnSaveHeadPic;
+        private DevComponents.DotNetBar.ButtonX btnSaveIR;
+        private DevComponents.DotNetBar.ButtonX btnSaveAll;
     }
 }
