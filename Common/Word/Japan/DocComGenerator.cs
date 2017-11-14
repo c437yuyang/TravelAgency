@@ -5,6 +5,9 @@ using DevComponents.DotNetBar;
 
 namespace TravletAgence.Common.Word.Japan
 {
+    /// <summary>
+    /// Deprecated,依赖于OFFICE2013，不再使用
+    /// </summary>
     public class DocComGenerator
     {
         public enum DocType

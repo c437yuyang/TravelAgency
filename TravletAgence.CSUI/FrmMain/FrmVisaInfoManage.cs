@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
@@ -791,11 +792,12 @@ namespace TravletAgence.CSUI.FrmMain
             list.Add(RngWord.GetRandomWord());
             for (int i = 0; i < visainfos.Count; i++)
             {
-                list.Add(visainfos[i].EnglishName.Replace(' ','/'));
+                //由于这里可能出现多个空格，采用正则表达式进行替换
+                string pattern = @"([a-zA-Z]+)(\s+)([a-zA-Z]+)";
+                string englishName = visainfos[i].EnglishName;
+                Match m = Regex.Match(englishName, pattern);
+                list.Add(Regex.Replace(englishName, pattern, "${1}" + @"\" + "${3}"));
             }
-            //var datearr = DateTimeFormator.DateTimeToStringOfThailand(DateTime.Now).Split('-');
-
-            //list.Add(datearr[0] + datearr[1]);
             GlobalUtils.DocDocxGenerator.Generate(list);
         }
 
