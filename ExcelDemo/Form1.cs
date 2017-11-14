@@ -87,8 +87,8 @@ namespace ExcelDemo
             //    new Person() {Name="张w",Age=22,Email="zd@qq.com" }
             //};
 
-            XWPFDocument wkbook = new XWPFDocument();
-            wkbook.Document 
+            //XWPFDocument wkbook = new XWPFDocument();
+            //wkbook.Document 
            
         }
     }

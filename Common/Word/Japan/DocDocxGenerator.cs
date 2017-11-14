@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using NPOI.SS.Formula.Functions;
 
 namespace TravletAgence.Common.Word.Japan
 {
-    public class DocGenerator
+    public class DocDocxGenerator
     {
         public enum DocType
         {
@@ -33,25 +34,52 @@ namespace TravletAgence.Common.Word.Japan
         /// </summary>
         public static string TemplaceDocFileName { get; set; }
 
-        public DocGenerator(DocType type)
+        public DocDocxGenerator()
         {
-            if (type == DocType.Type01JinQiaoList)
+
+        }
+
+        public DocDocxGenerator(DocDocxGenerator.DocType type)
+        {
+            if (type == DocDocxGenerator.DocType.Type01JinQiaoList)
             {
                 PlaceHolderNum = 31;
-                DefaultName = "金桥大名单";
-                TemplaceDocFileName = "template_成都金桥大名单_添加占位符1-31.doc";
+                DefaultName = "金桥大名单.docx";
+                TemplaceDocFileName = "template_成都金桥大名单_添加占位符1-31.docx";
             }
-            if (type == DocType.Type02WaiLingDanBaohan)
+            if (type == DocDocxGenerator.DocType.Type02WaiLingDanBaohan)
             {
                 PlaceHolderNum = 4;
-                DefaultName = "外领区人员特别担保函 （国旅四川）";
-                TemplaceDocFileName = "template_外领区人员特别担保函 （国旅四川）_添加占位符1-4.doc";
+                DefaultName = "外领区人员特别担保函 （国旅四川）.docx";
+                TemplaceDocFileName = "template_外领区人员特别担保函 （国旅四川）_添加占位符1-4.docx";
             }
-            if (type == DocType.Type03JiPiao)
+            if (type == DocDocxGenerator.DocType.Type03JiPiao)
             {
                 PlaceHolderNum = 17;
-                DefaultName = "机票（表7）";
-                TemplaceDocFileName = "template_机票（表7）.doc";
+                DefaultName = "机票（表7）.docx";
+                TemplaceDocFileName = "template_机票（表7）.docx";
+            }
+        }
+
+        public void SetDocType(DocDocxGenerator.DocType type)
+        {
+            if (type == DocDocxGenerator.DocType.Type01JinQiaoList)
+            {
+                PlaceHolderNum = 31;
+                DefaultName = "金桥大名单.docx";
+                TemplaceDocFileName = "template_成都金桥大名单_添加占位符1-31.docx";
+            }
+            if (type == DocDocxGenerator.DocType.Type02WaiLingDanBaohan)
+            {
+                PlaceHolderNum = 4;
+                DefaultName = "外领区人员特别担保函 （国旅四川）.docx";
+                TemplaceDocFileName = "template_外领区人员特别担保函 （国旅四川）_添加占位符1-4.docx";
+            }
+            if (type == DocDocxGenerator.DocType.Type03JiPiao)
+            {
+                PlaceHolderNum = 17;
+                DefaultName = "机票（表7）.docx";
+                TemplaceDocFileName = "template_机票（表7）.docx";
             }
         }
 
@@ -63,15 +91,8 @@ namespace TravletAgence.Common.Word.Japan
                 return;
             }
 
-            var doc = DocComHandler.OpenDocFile(GlobalUtils.AppPath + @"\Word\Templates\" + TemplaceDocFileName);
-            if (doc == null)
-            {
-                MessageBoxEx.Show("打开模板文件失败，请检查文件路径！");
-                return;
-            }
-
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Word2003 Doc|*.doc";
+            saveFileDialog1.Filter = "Word文档|*.docx";
             saveFileDialog1.Title = "保存到文件";
             saveFileDialog1.FileName = DefaultName;
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
@@ -80,7 +101,7 @@ namespace TravletAgence.Common.Word.Japan
             // If the file name is not an empty string open it for saving.
             if (saveFileDialog1.FileName != "")
             {
-                if (!DocComHandler.BatchReplaceStringByPlaceHolder(saveFileDialog1.FileName, doc, listWait4Replace, true, PlaceHolderNum))
+                if (!DocXHandler.BatchReplaceStringByPlaceHolder(GlobalUtils.AppPath + @"\Word\Templates\" + TemplaceDocFileName, saveFileDialog1.FileName, listWait4Replace, true, PlaceHolderNum))
                 {
                     MessageBoxEx.Show("生成报表失败，请联系技术人员!");
                     return;
@@ -102,15 +123,8 @@ namespace TravletAgence.Common.Word.Japan
                     continue;
                 }
 
-                var doc = DocComHandler.OpenDocFile(GlobalUtils.AppPath + @"\Word\Templates\" + TemplaceDocFileName);
-                if (doc == null)
-                {
-                    MessageBoxEx.Show("打开模板文件失败，请检查文件路径！");
-                    continue;
-                }
 
-
-                if (!DocComHandler.BatchReplaceStringByPlaceHolder(outFolder + @"\" + DefaultName + "_" + listWait4Replace[0] + ".doc", doc, listWait4Replace, true, PlaceHolderNum))
+                if (!DocXHandler.BatchReplaceStringByPlaceHolder(GlobalUtils.AppPath + @"\Word\Templates\" + TemplaceDocFileName, outFolder + @"\" + DefaultName + "_" + listWait4Replace[0] + ".docx", listWait4Replace, true, PlaceHolderNum))
                 {
                     MessageBoxEx.Show("生成报表失败，请联系技术人员!");
                     continue;

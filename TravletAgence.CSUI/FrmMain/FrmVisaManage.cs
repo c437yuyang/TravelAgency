@@ -544,7 +544,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void 日本团队综合名单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
                 MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
@@ -588,8 +588,8 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 list.Add(visainfoList[i].Name);
             }
-            DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type01JinQiaoList);
-            docGenerator.Generate(list);
+            GlobalUtils.DocDocxGenerator.SetDocType(DocDocxGenerator.DocType.Type01JinQiaoList);
+            GlobalUtils.DocDocxGenerator.Generate(list);
         }
 
         private void btnGetTodayExcel_Click(object sender, EventArgs e)
@@ -613,7 +613,7 @@ namespace TravletAgence.CSUI.FrmMain
                 visaInfoList.Add(list);
             }
 
-            FrmTodaySubmit frm = new FrmTodaySubmit(visaList,visaInfoList);
+            FrmTodaySubmit frm = new FrmTodaySubmit(visaList, visaInfoList);
             frm.ShowDialog();
 
             //ExcelGenerator.GetEverydayExcel(visaList, visaInfoList);

@@ -740,7 +740,8 @@ namespace TravletAgence.CSUI.FrmMain
         //TODO:增加进度条显示
         private void 外领担保函ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type02WaiLingDanBaohan);
+            //DocComGenerator docComGenerator = new DocComGenerator(DocComGenerator.DocType.Type02WaiLingDanBaohan);
+            GlobalUtils.DocDocxGenerator.SetDocType(DocDocxGenerator.DocType.Type02WaiLingDanBaohan);
             var visainfos = GetDgvSelList();
 
             if (this.dataGridView1.SelectedRows.Count > 1)
@@ -760,7 +761,7 @@ namespace TravletAgence.CSUI.FrmMain
                 FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
                 if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                     return;
-                docGenerator.GenerateBatch(stringinfos, fbd.SelectedPath);
+                GlobalUtils.DocDocxGenerator.GenerateBatch(stringinfos, fbd.SelectedPath);
             }
             else //一条单独的时候就直接获取就行
             {
@@ -770,7 +771,7 @@ namespace TravletAgence.CSUI.FrmMain
                 list.Add(visainfos[0].PassportNo);
                 list.Add(visainfos[0].IssuePlace);
                 list.Add(DateTimeFormator.DateTimeToStringOfChinese(DateTime.Today));
-                docGenerator.Generate(list);
+                GlobalUtils.DocDocxGenerator.Generate(list);
             }
         }
 
@@ -782,7 +783,9 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void 机票报表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type03JiPiao);
+            //DocComGenerator docComGenerator = new DocComGenerator(DocComGenerator.DocType.Type03JiPiao);
+            GlobalUtils.DocDocxGenerator.SetDocType(DocDocxGenerator.DocType.Type03JiPiao);
+
             var visainfos = GetDgvSelList();
             List<string> list = new List<string>();
             list.Add(RngWord.GetRandomWord());
@@ -793,7 +796,7 @@ namespace TravletAgence.CSUI.FrmMain
             //var datearr = DateTimeFormator.DateTimeToStringOfThailand(DateTime.Now).Split('-');
 
             //list.Add(datearr[0] + datearr[1]);
-            docGenerator.Generate(list);
+            GlobalUtils.DocDocxGenerator.Generate(list);
         }
 
         private void FrmVisaInfoManage_FormClosed(object sender, FormClosedEventArgs e)

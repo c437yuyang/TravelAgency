@@ -2,6 +2,7 @@
 using System.IO;
 using Excel;
 using TravletAgence.Common.FTP;
+using TravletAgence.Common.Word.Japan;
 using Application = System.Windows.Forms.Application;
 
 namespace TravletAgence.Common
@@ -9,10 +10,11 @@ namespace TravletAgence.Common
     public static class GlobalUtils
     {
         public static Model.AuthUser LoginUser;
-
+        public static readonly DocDocxGenerator DocDocxGenerator;
         static GlobalUtils()
         {
             InitFTP();
+            DocDocxGenerator = new DocDocxGenerator();
         }
 
         private static void InitFTP()

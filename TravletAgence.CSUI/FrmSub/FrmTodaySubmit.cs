@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using TravletAgence.Common;
 using TravletAgence.Common.Excel.Japan;
 using TravletAgence.Common.Word.Japan;
 using TravletAgence.CSUI.Properties;
@@ -132,9 +133,9 @@ namespace TravletAgence.CSUI.FrmSub
             {
                 list.Add(visainfoList[i].Name);
             }
+            GlobalUtils.DocDocxGenerator.SetDocType(DocDocxGenerator.DocType.Type01JinQiaoList);
+            GlobalUtils.DocDocxGenerator.Generate(list);
 
-            DocGenerator docGenerator = new DocGenerator(DocGenerator.DocType.Type01JinQiaoList);
-            docGenerator.Generate(list);
         }
 
         private void 人申请表ToolStripMenuItem_Click(object sender, EventArgs e)
