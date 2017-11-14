@@ -192,6 +192,7 @@ namespace TravletAgence.CSUI.FrmSub
             txtFetchType.Items.Add("重庆自取");
             txtFetchType.Items.Add("车托到五桂桥");
             txtFetchType.Items.Add("其他");
+            txtFetchType.SelectedIndex = 1;
 
             //设置操作员
             txtSalesPerson.Text = Common.GlobalUtils.LoginUser.UserName;
