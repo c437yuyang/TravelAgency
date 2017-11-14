@@ -13,7 +13,6 @@ namespace TravletAgence.Common
             int _hashcode;
             RuntimeTypeHandle _type;
 
-
             public Identity(int hashcode, RuntimeTypeHandle type)
             {
                 _hashcode = hashcode;

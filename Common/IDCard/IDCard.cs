@@ -160,11 +160,6 @@ namespace TravletAgence.Common.IDCard
                 sb.Append("\n");
 
             }
-            //MessageBoxEx.Show(info); //显示一下返回的信息
-            //Console.WriteLine(sb.ToString());
-
-            //DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
-            //dtFormat.ShortDatePattern = "yyyy-MM-dd";
             string[] infos = sb.ToString().Split('\n');
 
             try

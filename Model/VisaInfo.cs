@@ -46,7 +46,7 @@ namespace TravletAgence.Model
 		private string _marriaged;
 		private string _identification;
 		private string _financialcapacity;
-		private string _agencyopinion;
+		private string _agencyopinion = "没问题";
 		private string _hastypein="否";
 		private DateTime? _abnormalouttime;
 		private string _haschecked="否";
