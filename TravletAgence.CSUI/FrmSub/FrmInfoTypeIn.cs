@@ -26,15 +26,16 @@ namespace TravletAgence.CSUI.FrmSub
             this._model = model;
             _updateDel = updateDel;
             _curPage = page;
-            ModelToCtrls(this._model);
+            
         }
 
         private void FrmInfoTypeIn_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
             this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            this.pictureBox1.MouseWheel += pictureBox1_MouseWheel;
+            //this.pictureBox1.MouseWheel += pictureBox1_MouseWheel;
             this.txtGroupNo.Enabled = false;
+            ModelToCtrls(this._model);
             LoadImageFromModel(_model);
             SetLabelStates();
         }
@@ -69,7 +70,9 @@ namespace TravletAgence.CSUI.FrmSub
             txtDepartureRecord.Text = model.DepartureRecord;
 
             txtPhone.Text = model.Phone;
-
+            txtClient.Text = model.Client;
+            txtSalesPerson.Text = model.Salesperson;
+            
         }
 
         /// <summary>

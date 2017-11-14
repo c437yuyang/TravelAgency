@@ -158,6 +158,8 @@ namespace TravletAgence.CSUI.FrmSub
             dgvGroupInfo.Columns["SalesPerson"].ReadOnly = true;
             dgvGroupInfo.Columns["Client"].ReadOnly = true;
 
+            cbCountry.DropDownStyle = ComboBoxStyle.DropDown;
+
             //设置列表多选
             lvIn.MultiSelect = true;
             lvOut.MultiSelect = true;

@@ -163,6 +163,11 @@ namespace TravletAgence.CSUI.FrmSub
             dgvGroupInfo.AutoGenerateColumns = false;
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
             dgvGroupInfo.Columns["Birthday"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;//某一些列关闭自适应
+
+            //
+            cbCountry.DropDownStyle = ComboBoxStyle.DropDown;
+            
+
             //设置列表多选
             lvIn.MultiSelect = true;
             lvOut.MultiSelect = true;

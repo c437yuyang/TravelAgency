@@ -72,19 +72,23 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panelBottom = new DevComponents.DotNetBar.PanelEx();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lbTimeOutSubmit = new DevComponents.DotNetBar.LabelX();
-            this.lbPersonOutSubmit = new DevComponents.DotNetBar.LabelX();
-            this.lbTimeTypeIn = new DevComponents.DotNetBar.LabelX();
-            this.lbPersonTypeIn = new DevComponents.DotNetBar.LabelX();
-            this.lbTimeCheck = new DevComponents.DotNetBar.LabelX();
-            this.lbPersonCheck = new DevComponents.DotNetBar.LabelX();
-            this.lbTimeSetGroup = new DevComponents.DotNetBar.LabelX();
-            this.lbPersonSetGroup = new DevComponents.DotNetBar.LabelX();
-            this.lbPersonTypeInInfo = new DevComponents.DotNetBar.LabelX();
-            this.lbTimeTypeInInfo = new DevComponents.DotNetBar.LabelX();
             this.lbTimeInSubmit = new DevComponents.DotNetBar.LabelX();
             this.lbPersonInSubmit = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonTypeInInfo = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeTypeInInfo = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeSetGroup = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonSetGroup = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeCheck = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonCheck = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeTypeIn = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonTypeIn = new DevComponents.DotNetBar.LabelX();
+            this.lbTimeOutSubmit = new DevComponents.DotNetBar.LabelX();
+            this.lbPersonOutSubmit = new DevComponents.DotNetBar.LabelX();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txtClient = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX18 = new DevComponents.DotNetBar.LabelX();
+            this.txtSalesPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX19 = new DevComponents.DotNetBar.LabelX();
             this.panelTop.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.panelPicBox.SuspendLayout();
@@ -212,6 +216,10 @@
             // 
             this.panelInputs.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelInputs.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelInputs.Controls.Add(this.txtSalesPerson);
+            this.panelInputs.Controls.Add(this.labelX19);
+            this.panelInputs.Controls.Add(this.txtClient);
+            this.panelInputs.Controls.Add(this.labelX18);
             this.panelInputs.Controls.Add(this.txtPhone);
             this.panelInputs.Controls.Add(this.labelX17);
             this.panelInputs.Controls.Add(this.txtExpireDate);
@@ -817,104 +825,27 @@
             this.panelBottom.TabIndex = 4;
             this.panelBottom.Text = "panelEx1";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1151, 317);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // lbTimeOutSubmit
+            // lbTimeInSubmit
             // 
             // 
             // 
             // 
-            this.lbTimeOutSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTimeOutSubmit.Location = new System.Drawing.Point(805, 115);
-            this.lbTimeOutSubmit.Name = "lbTimeOutSubmit";
-            this.lbTimeOutSubmit.Size = new System.Drawing.Size(126, 23);
-            this.lbTimeOutSubmit.TabIndex = 10;
+            this.lbTimeInSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeInSubmit.Location = new System.Drawing.Point(678, 282);
+            this.lbTimeInSubmit.Name = "lbTimeInSubmit";
+            this.lbTimeInSubmit.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeInSubmit.TabIndex = 20;
             // 
-            // lbPersonOutSubmit
-            // 
-            // 
-            // 
-            // 
-            this.lbPersonOutSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbPersonOutSubmit.Location = new System.Drawing.Point(868, 73);
-            this.lbPersonOutSubmit.Name = "lbPersonOutSubmit";
-            this.lbPersonOutSubmit.Size = new System.Drawing.Size(63, 23);
-            this.lbPersonOutSubmit.TabIndex = 11;
-            // 
-            // lbTimeTypeIn
+            // lbPersonInSubmit
             // 
             // 
             // 
             // 
-            this.lbTimeTypeIn.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTimeTypeIn.Location = new System.Drawing.Point(56, 282);
-            this.lbTimeTypeIn.Name = "lbTimeTypeIn";
-            this.lbTimeTypeIn.Size = new System.Drawing.Size(126, 23);
-            this.lbTimeTypeIn.TabIndex = 12;
-            // 
-            // lbPersonTypeIn
-            // 
-            // 
-            // 
-            // 
-            this.lbPersonTypeIn.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbPersonTypeIn.Location = new System.Drawing.Point(119, 238);
-            this.lbPersonTypeIn.Name = "lbPersonTypeIn";
-            this.lbPersonTypeIn.Size = new System.Drawing.Size(63, 23);
-            this.lbPersonTypeIn.TabIndex = 13;
-            // 
-            // lbTimeCheck
-            // 
-            // 
-            // 
-            // 
-            this.lbTimeCheck.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTimeCheck.Location = new System.Drawing.Point(201, 115);
-            this.lbTimeCheck.Name = "lbTimeCheck";
-            this.lbTimeCheck.Size = new System.Drawing.Size(126, 23);
-            this.lbTimeCheck.TabIndex = 14;
-            // 
-            // lbPersonCheck
-            // 
-            // 
-            // 
-            // 
-            this.lbPersonCheck.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbPersonCheck.Location = new System.Drawing.Point(264, 73);
-            this.lbPersonCheck.Name = "lbPersonCheck";
-            this.lbPersonCheck.Size = new System.Drawing.Size(63, 23);
-            this.lbPersonCheck.TabIndex = 15;
-            // 
-            // lbTimeSetGroup
-            // 
-            // 
-            // 
-            // 
-            this.lbTimeSetGroup.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTimeSetGroup.Location = new System.Drawing.Point(348, 282);
-            this.lbTimeSetGroup.Name = "lbTimeSetGroup";
-            this.lbTimeSetGroup.Size = new System.Drawing.Size(126, 23);
-            this.lbTimeSetGroup.TabIndex = 16;
-            // 
-            // lbPersonSetGroup
-            // 
-            // 
-            // 
-            // 
-            this.lbPersonSetGroup.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbPersonSetGroup.Location = new System.Drawing.Point(411, 240);
-            this.lbPersonSetGroup.Name = "lbPersonSetGroup";
-            this.lbPersonSetGroup.Size = new System.Drawing.Size(63, 23);
-            this.lbPersonSetGroup.TabIndex = 17;
+            this.lbPersonInSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonInSubmit.Location = new System.Drawing.Point(741, 240);
+            this.lbPersonInSubmit.Name = "lbPersonInSubmit";
+            this.lbPersonInSubmit.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonInSubmit.TabIndex = 21;
             // 
             // lbPersonTypeInInfo
             // 
@@ -938,27 +869,154 @@
             this.lbTimeTypeInInfo.Size = new System.Drawing.Size(63, 23);
             this.lbTimeTypeInInfo.TabIndex = 19;
             // 
-            // lbTimeInSubmit
+            // lbTimeSetGroup
             // 
             // 
             // 
             // 
-            this.lbTimeInSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTimeInSubmit.Location = new System.Drawing.Point(678, 282);
-            this.lbTimeInSubmit.Name = "lbTimeInSubmit";
-            this.lbTimeInSubmit.Size = new System.Drawing.Size(126, 23);
-            this.lbTimeInSubmit.TabIndex = 20;
+            this.lbTimeSetGroup.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeSetGroup.Location = new System.Drawing.Point(348, 282);
+            this.lbTimeSetGroup.Name = "lbTimeSetGroup";
+            this.lbTimeSetGroup.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeSetGroup.TabIndex = 16;
             // 
-            // lbPersonInSubmit
-            // 
-            // 
+            // lbPersonSetGroup
             // 
             // 
-            this.lbPersonInSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbPersonInSubmit.Location = new System.Drawing.Point(741, 240);
-            this.lbPersonInSubmit.Name = "lbPersonInSubmit";
-            this.lbPersonInSubmit.Size = new System.Drawing.Size(63, 23);
-            this.lbPersonInSubmit.TabIndex = 21;
+            // 
+            // 
+            this.lbPersonSetGroup.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonSetGroup.Location = new System.Drawing.Point(411, 240);
+            this.lbPersonSetGroup.Name = "lbPersonSetGroup";
+            this.lbPersonSetGroup.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonSetGroup.TabIndex = 17;
+            // 
+            // lbTimeCheck
+            // 
+            // 
+            // 
+            // 
+            this.lbTimeCheck.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeCheck.Location = new System.Drawing.Point(201, 115);
+            this.lbTimeCheck.Name = "lbTimeCheck";
+            this.lbTimeCheck.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeCheck.TabIndex = 14;
+            // 
+            // lbPersonCheck
+            // 
+            // 
+            // 
+            // 
+            this.lbPersonCheck.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonCheck.Location = new System.Drawing.Point(264, 73);
+            this.lbPersonCheck.Name = "lbPersonCheck";
+            this.lbPersonCheck.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonCheck.TabIndex = 15;
+            // 
+            // lbTimeTypeIn
+            // 
+            // 
+            // 
+            // 
+            this.lbTimeTypeIn.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeTypeIn.Location = new System.Drawing.Point(56, 282);
+            this.lbTimeTypeIn.Name = "lbTimeTypeIn";
+            this.lbTimeTypeIn.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeTypeIn.TabIndex = 12;
+            // 
+            // lbPersonTypeIn
+            // 
+            // 
+            // 
+            // 
+            this.lbPersonTypeIn.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonTypeIn.Location = new System.Drawing.Point(119, 238);
+            this.lbPersonTypeIn.Name = "lbPersonTypeIn";
+            this.lbPersonTypeIn.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonTypeIn.TabIndex = 13;
+            // 
+            // lbTimeOutSubmit
+            // 
+            // 
+            // 
+            // 
+            this.lbTimeOutSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeOutSubmit.Location = new System.Drawing.Point(805, 115);
+            this.lbTimeOutSubmit.Name = "lbTimeOutSubmit";
+            this.lbTimeOutSubmit.Size = new System.Drawing.Size(126, 23);
+            this.lbTimeOutSubmit.TabIndex = 10;
+            // 
+            // lbPersonOutSubmit
+            // 
+            // 
+            // 
+            // 
+            this.lbPersonOutSubmit.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbPersonOutSubmit.Location = new System.Drawing.Point(868, 73);
+            this.lbPersonOutSubmit.Name = "lbPersonOutSubmit";
+            this.lbPersonOutSubmit.Size = new System.Drawing.Size(63, 23);
+            this.lbPersonOutSubmit.TabIndex = 11;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1151, 317);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // txtClient
+            // 
+            // 
+            // 
+            // 
+            this.txtClient.Border.Class = "TextBoxBorder";
+            this.txtClient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtClient.Location = new System.Drawing.Point(382, 184);
+            this.txtClient.Name = "txtClient";
+            this.txtClient.PreventEnterBeep = true;
+            this.txtClient.Size = new System.Drawing.Size(174, 21);
+            this.txtClient.TabIndex = 60;
+            // 
+            // labelX18
+            // 
+            // 
+            // 
+            // 
+            this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX18.Location = new System.Drawing.Point(301, 184);
+            this.labelX18.Name = "labelX18";
+            this.labelX18.Size = new System.Drawing.Size(75, 23);
+            this.labelX18.TabIndex = 59;
+            this.labelX18.Text = "客户:";
+            // 
+            // txtSalesPerson
+            // 
+            // 
+            // 
+            // 
+            this.txtSalesPerson.Border.Class = "TextBoxBorder";
+            this.txtSalesPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSalesPerson.Location = new System.Drawing.Point(382, 215);
+            this.txtSalesPerson.Name = "txtSalesPerson";
+            this.txtSalesPerson.PreventEnterBeep = true;
+            this.txtSalesPerson.Size = new System.Drawing.Size(174, 21);
+            this.txtSalesPerson.TabIndex = 62;
+            // 
+            // labelX19
+            // 
+            // 
+            // 
+            // 
+            this.labelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX19.Location = new System.Drawing.Point(301, 215);
+            this.labelX19.Name = "labelX19";
+            this.labelX19.Size = new System.Drawing.Size(75, 23);
+            this.labelX19.TabIndex = 61;
+            this.labelX19.Text = "销售:";
             // 
             // FrmInfoTypeIn
             // 
@@ -1043,6 +1101,10 @@
         private DevComponents.DotNetBar.LabelX lbPersonCheck;
         private DevComponents.DotNetBar.LabelX lbTimeTypeIn;
         private DevComponents.DotNetBar.LabelX lbPersonTypeIn;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtClient;
+        private DevComponents.DotNetBar.LabelX labelX18;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtSalesPerson;
+        private DevComponents.DotNetBar.LabelX labelX19;
 
     }
 }
