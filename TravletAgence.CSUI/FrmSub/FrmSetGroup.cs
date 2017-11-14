@@ -73,9 +73,6 @@ namespace TravletAgence.CSUI.FrmSub
                 lvOut.Items.Add(liv);
             }
 
-            //TODO:把这些visainfo的类型都设置为个签
-
-
             //初始化时间选择控件
             //还是不初始化的比较好   
 
@@ -150,7 +147,8 @@ namespace TravletAgence.CSUI.FrmSub
             txtDepartureType.Text = _visaModel.DepartureType;
             txtSubmitCondition.Text = _visaModel.SubmitCondition;
             txtFetchType.Text = _visaModel.FetchCondition;
-            txtTypeInPerson.Text = _visaModel.TypeInPerson;
+            //txtTypeInPerson.Text = _visaModel.TypeInPerson;
+            //txtTypeInPerson.Text = GlobalUtils.LoginUser.UserName; //在Frm load里面设置，因为都要设置操作员
             txtCheckPerson.Text = _visaModel.CheckPerson;
         }
 
@@ -195,8 +193,8 @@ namespace TravletAgence.CSUI.FrmSub
             txtFetchType.SelectedIndex = 1;
 
             //设置操作员
-            txtSalesPerson.Text = Common.GlobalUtils.LoginUser.UserName;
-            txtSalesPerson.Enabled = false;
+            txtTypeInPerson.Text = Common.GlobalUtils.LoginUser.UserName;
+            txtTypeInPerson.Enabled = false;
             cbCountry.Text = "日本";
             txtDepartureType.SelectedIndex = 0;
 
