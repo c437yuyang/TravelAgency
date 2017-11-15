@@ -51,16 +51,16 @@ namespace backgroundWorkerDemo
         private void button1_Click(object sender, EventArgs e)
         {
             
-            if (!backgroundWorker1.IsBusy)
-            {
-                progressBar1.Value = 0;
-                backgroundWorker1.WorkerReportsProgress = true;
-                backgroundWorker1.RunWorkerAsync("start working");
-            }
-            else
-            {
-                MessageBox.Show("backgroundworker is busy!");
-            }
+                if (!backgroundWorker1.IsBusy)
+                {
+                    progressBar1.Value = 0;
+                    backgroundWorker1.WorkerReportsProgress = true;
+                    backgroundWorker1.RunWorkerAsync("start working");
+                }
+                else
+                {
+                    MessageBox.Show("backgroundworker is busy!");
+                }
             
 
         }

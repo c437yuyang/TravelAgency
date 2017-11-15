@@ -75,6 +75,8 @@
             this.Japan = new DevComponents.Editors.ComboItem();
             this.Korea = new DevComponents.Editors.ComboItem();
             this.Thailand = new DevComponents.Editors.ComboItem();
+            this.Australia = new DevComponents.Editors.ComboItem();
+            this.Singapore = new DevComponents.Editors.ComboItem();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.txtDepartureTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -106,8 +108,6 @@
             this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.粘贴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Australia = new DevComponents.Editors.ComboItem();
-            this.Singapore = new DevComponents.Editors.ComboItem();
             this.panelMain.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelMid2.SuspendLayout();
@@ -808,6 +808,14 @@
             // 
             this.Thailand.Text = "泰国";
             // 
+            // Australia
+            // 
+            this.Australia.Text = "澳大利亚";
+            // 
+            // Singapore
+            // 
+            this.Singapore.Text = "新加坡";
+            // 
             // labelX4
             // 
             // 
@@ -1021,7 +1029,7 @@
             this.txtCheckPerson.Border.Class = "TextBoxBorder";
             this.txtCheckPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtCheckPerson.DisabledBackColor = System.Drawing.Color.White;
-            this.txtCheckPerson.Location = new System.Drawing.Point(357, 155);
+            this.txtCheckPerson.Location = new System.Drawing.Point(355, 157);
             this.txtCheckPerson.Name = "txtCheckPerson";
             this.txtCheckPerson.PreventEnterBeep = true;
             this.txtCheckPerson.Size = new System.Drawing.Size(100, 21);
@@ -1314,14 +1322,6 @@
             this.删除ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
-            // 
-            // Australia
-            // 
-            this.Australia.Text = "澳大利亚";
-            // 
-            // Singapore
-            // 
-            this.Singapore.Text = "新加坡";
             // 
             // FrmSetGroup
             // 

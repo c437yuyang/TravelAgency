@@ -12,7 +12,7 @@ namespace TravletAgence.CSUI.FrmSub
     {
         private string _qrinfo;
         private readonly MyQRCode _qrCode = new MyQRCode();
-        private readonly string _tmpFileName = GlobalUtils.AppPath +"\\tmp.png";
+        private readonly string _tmpFileName = GlobalUtils.AppPath + "\\tmp.png";
 
         public FrmQRCode()
         {
@@ -54,46 +54,49 @@ namespace TravletAgence.CSUI.FrmSub
 
         private void btnSavePic_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif|PNG Image|*.png";
-            saveFileDialog1.Title = "Save";
+            string defaultName = string.Empty;
             if(!_qrinfo.Contains("State:"))
-                saveFileDialog1.FileName = _qrinfo.Split('|')[0] + "_QRCode.jpg";
+                defaultName = _qrinfo.Split('|')[0] + "_QRCode.jpg";
 
-            if(saveFileDialog1.ShowDialog()==DialogResult.Cancel)
-                return;
+            string dstName = GlobalUtils.OpenSaveFileDlg(defaultName,
+                "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif|PNG Image|*.png");
 
             // If the file name is not an empty string open it for saving.
-            if (saveFileDialog1.FileName != "")
+            if (!string.IsNullOrEmpty(dstName))
             {
                 // Saves the Image via a FileStream created by the OpenFile method.
                 System.IO.FileStream fs =
-                   (System.IO.FileStream)saveFileDialog1.OpenFile();
+                    File.OpenWrite(dstName);
                 // Saves the Image in the appropriate ImageFormat based upon the
                 // File type selected in the dialog box.
                 // NOTE that the FilterIndex property is one-based.
-                switch (saveFileDialog1.FilterIndex)
+                string ext = dstName.Substring(dstName.LastIndexOf('.') + 1,
+                    dstName.Length - dstName.LastIndexOf('.') - 1);
+                if (ext == "jpg")
                 {
-                    case 1:
-                        this.picQRCode.Image.Save(fs,
+                    this.picQRCode.Image.Save(fs,
                            System.Drawing.Imaging.ImageFormat.Jpeg);
-                        break;
-
-                    case 2:
-                        this.picQRCode.Image.Save(fs,
-                           System.Drawing.Imaging.ImageFormat.Bmp);
-                        break;
-
-                    case 3:
-                        this.picQRCode.Image.Save(fs,
-                           System.Drawing.Imaging.ImageFormat.Gif);
-                        break;
-                    case 4:
-                        this.picQRCode.Image.Save(fs,
-                           System.Drawing.Imaging.ImageFormat.Png);
-                        break;
                 }
-
+                else if (ext == "bmp")
+                {
+                    this.picQRCode.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Bmp);
+                }
+                else if (ext == "gif")
+                {
+                    this.picQRCode.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Bmp);
+                }
+                else if (ext == "png")
+                {
+                    this.picQRCode.Image.Save(fs,
+                        System.Drawing.Imaging.ImageFormat.Png);
+                }
+                else
+                {
+                    return;
+                    
+                }
                 fs.Close();
             }
         }
@@ -108,7 +111,7 @@ namespace TravletAgence.CSUI.FrmSub
             if (r == DialogResult.OK)
             {
                 printDocument1.Print();
-            }      
+            }
         }
     }
 }

@@ -571,11 +571,9 @@ namespace TravletAgence.CSUI.FrmMain
             int count = this.dataGridView1.SelectedRows.Count;
 
             //选择保存路径
-            string path;
-            FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
-            if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            string path = GlobalUtils.OpenBrowseFolderDlg();
+            if (string.IsNullOrEmpty(path))
                 return;
-            path = fbd.SelectedPath;
             for (int i = 0; i != count; ++i)
             {
                 string passportNo = dataGridView1.SelectedRows[i].Cells["PassportNo"].Value.ToString();

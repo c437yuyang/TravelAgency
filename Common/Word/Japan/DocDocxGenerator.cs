@@ -91,23 +91,20 @@ namespace TravletAgence.Common.Word.Japan
                 return;
             }
 
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Word文档|*.docx";
-            saveFileDialog1.Title = "保存到文件";
-            saveFileDialog1.FileName = DefaultName;
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
+
+            string dstName = GlobalUtils.OpenSaveFileDlg(DefaultName, "Word文档|*.docx");
 
             // If the file name is not an empty string open it for saving.
-            if (saveFileDialog1.FileName != "")
+            if (!string.IsNullOrEmpty(dstName))
             {
-                if (!DocXHandler.BatchReplaceStringByPlaceHolder(GlobalUtils.AppPath + @"\Word\Templates\" + TemplaceDocFileName, saveFileDialog1.FileName, listWait4Replace, true, PlaceHolderNum))
+                if (!DocXHandler.BatchReplaceStringByPlaceHolder(GlobalUtils.AppPath + @"\Word\Templates\" + TemplaceDocFileName, dstName, listWait4Replace, true, PlaceHolderNum))
                 {
                     MessageBoxEx.Show("生成报表失败，请联系技术人员!");
                     return;
                 }
+                Process.Start(dstName);
             }
-            Process.Start(saveFileDialog1.FileName);
+            
         }
 
 

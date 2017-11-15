@@ -93,22 +93,17 @@ namespace TravletAgence.Common.Excel.Japan
                     }
                 }
 
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "Excel XLSX|*.xlsx";
-                saveFileDialog1.Title = "保存到文件";
-                saveFileDialog1.FileName = "8人申请表";
-                if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                    return;
+                string dstName = GlobalUtils.OpenSaveFileDlg("8人申请表.xlsx", "Excel XLSX|*.xlsx");
 
                 // If the file name is not an empty string open it for saving.
-                if (saveFileDialog1.FileName != "")
+                if (!string.IsNullOrEmpty(dstName))
                 {
-                    using (FileStream fs1 = File.OpenWrite(saveFileDialog1.FileName))
+                    using (FileStream fs1 = File.OpenWrite(dstName))
                     {
                         wkbook.Write(fs1);
                     }
                 }
-                Process.Start(saveFileDialog1.FileName);
+                Process.Start(dstName);
             }
         }
 

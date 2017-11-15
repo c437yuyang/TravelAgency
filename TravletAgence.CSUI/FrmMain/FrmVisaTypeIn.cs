@@ -126,20 +126,29 @@ namespace TravletAgence.CSUI.FrmMain
                 return;
             }
 
-            if (File.Exists(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg")) //先检查本地是否存在
+            //if (File.Exists(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg")) //先检查本地是否存在
+            //{
+            //    picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
+            //}
+            //else
+            //{
+            //    if (FtpHandler.FileExist(model.PassportNo + ".jpg"))
+            //        if (FtpHandler.Download(GlobalUtils.PassportPicPath, model.PassportNo + ".jpg"))
+            //        {
+            //            picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
+            //            return;
+            //        }
+            //    picPassportNo.Image = Resources.PassportPictureNotFound;
+            //}
+
+            if (!PassportPicHandler.CheckAndDownloadIfNotExist(model.PassportNo, PassportPicHandler.PicType.Type01Normal))
             {
-                picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
-            }
-            else
-            {
-                if (FtpHandler.FileExist(model.PassportNo + ".jpg"))
-                    if (FtpHandler.Download(GlobalUtils.PassportPicPath, model.PassportNo + ".jpg"))
-                    {
-                        picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
-                        return;
-                    }
                 picPassportNo.Image = Resources.PassportPictureNotFound;
+                return;
             }
+            picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
+
+
         }
 
         /// <summary>
@@ -418,28 +427,45 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void btnSavePic_Click(object sender, EventArgs e)
         {
-            //if (_model == null)
-            //{
-            //    return;
-            //}
+            if (_model == null)
+            {
+                return;
+            }
 
-            //if (File.Exists(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg")) //先检查本地是否存在
-            //{
-            //    picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
-            //}
-            //else
-            //{
-            //    if (FtpHandler.FileExist(model.PassportNo + ".jpg"))
-            //        if (FtpHandler.Download(GlobalUtils.PassportPicPath, model.PassportNo + ".jpg"))
-            //        {
-            //            picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
-            //            return;
-            //        }
-            //    picPassportNo.Image = Resources.PassportPictureNotFound;
-            //}
+            PassportPicHandler.DownloadPic(_model.PassportNo, PassportPicHandler.PicType.Type01Normal);
+
+
         }
 
-        
+        private void btnSaveHeadPic_Click(object sender, EventArgs e)
+        {
+            if (_model == null)
+            {
+                return;
+            }
+
+            PassportPicHandler.DownloadPic(_model.PassportNo, PassportPicHandler.PicType.Type02Head);
+        }
+
+        private void btnSaveIR_Click(object sender, EventArgs e)
+        {
+            if (_model == null)
+            {
+                return;
+            }
+            PassportPicHandler.DownloadPic(_model.PassportNo, PassportPicHandler.PicType.Type03IR);
+        }
+
+        private void btnSaveAll_Click(object sender, EventArgs e)
+        {
+            if (_model == null)
+            {
+                return;
+            }
+            PassportPicHandler.DownLoadAllType(_model.PassportNo);
+        }
+
+
 
     }
 }

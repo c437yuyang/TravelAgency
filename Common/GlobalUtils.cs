@@ -8,6 +8,9 @@ using Application = System.Windows.Forms.Application;
 
 namespace TravletAgence.Common
 {
+
+
+
     public static class GlobalUtils
     {
         public static Model.AuthUser LoginUser;
@@ -72,6 +75,14 @@ namespace TravletAgence.Common
             return null;
         }
 
+        public static string OpenBrowseFolderDlg()
+        {
+            //选择保存路径
+            FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
+            if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return null;
+            return fbd.SelectedPath;
+        }
 
     }
 }

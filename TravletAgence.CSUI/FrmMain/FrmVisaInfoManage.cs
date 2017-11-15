@@ -155,7 +155,7 @@ namespace TravletAgence.CSUI.FrmMain
 
         #region 自己的按钮
 
-        
+
 
         //private void ConfirmAddToDataBase(VisaInfo model, bool showConfirm = true)
         //{
@@ -192,7 +192,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             txtSchEntryTimeFrom.Text = DateTimeFormator.DateTimeToString(DateTime.Today);
             txtSchEntryTimeTo.Text = DateTimeFormator.DateTimeToString(DateTime.Today);
-            btnSearch_Click(null,null);
+            btnSearch_Click(null, null);
         }
 
         #endregion
@@ -432,7 +432,7 @@ namespace TravletAgence.CSUI.FrmMain
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex>=0)
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {
                     //若行已是选中状态就不再进行设置
                     //如果没选中当前活动行则选中这一行
@@ -479,7 +479,7 @@ namespace TravletAgence.CSUI.FrmMain
                         MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
                         return;
                     }
-                    FrmInfoTypeIn frm = new FrmInfoTypeIn(model,LoadDataToDataGridView,_curPage);
+                    FrmInfoTypeIn frm = new FrmInfoTypeIn(model, LoadDataToDataGridView, _curPage);
                     frm.ShowDialog();
                 }
 
@@ -529,12 +529,16 @@ namespace TravletAgence.CSUI.FrmMain
 
             int count = this.dataGridView1.SelectedRows.Count;
 
-            //选择保存路径
-            string path;
-            FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
-            if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            ////选择保存路径
+            //string path;
+            //FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
+            //if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            //    return;
+            //path = fbd.SelectedPath;
+            string path = GlobalUtils.OpenBrowseFolderDlg();
+            if (string.IsNullOrEmpty(path))
                 return;
-            path = fbd.SelectedPath;
+
             for (int i = 0; i != count; ++i)
             {
                 string passportNo = dataGridView1.SelectedRows[i].Cells["PassportNo"].Value.ToString();
@@ -759,10 +763,10 @@ namespace TravletAgence.CSUI.FrmMain
                     stringinfos.Add(list);
                 }
                 //多余1条的时候选择保存文件夹
-                FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
-                if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                string path = GlobalUtils.OpenBrowseFolderDlg();
+                if (string.IsNullOrEmpty(path))
                     return;
-                GlobalUtils.DocDocxGenerator.GenerateBatch(stringinfos, fbd.SelectedPath);
+                GlobalUtils.DocDocxGenerator.GenerateBatch(stringinfos, path);
             }
             else //一条单独的时候就直接获取就行
             {
@@ -796,7 +800,7 @@ namespace TravletAgence.CSUI.FrmMain
                 string pattern = @"([a-zA-Z]+)(\s+)([a-zA-Z]+)";
                 string englishName = visainfos[i].EnglishName;
                 Match m = Regex.Match(englishName, pattern);
-                list.Add(Regex.Replace(englishName, pattern, "${1}" + @"\" + "${3}"));
+                list.Add(Regex.Replace(englishName, pattern, "${1}" + @"/" + "${3}"));
             }
             GlobalUtils.DocDocxGenerator.Generate(list);
         }
