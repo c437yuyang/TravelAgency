@@ -809,6 +809,54 @@ namespace TravletAgence.CSUI.FrmMain
         {
         }
 
+        private void 护照图像ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
+                return;
+            }
+
+            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
+            PassportPicHandler.DownloadPic(passportNo, PassportPicHandler.PicType.Type01Normal);
+        }
+
+        private void 头像ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
+                return;
+            }
+
+            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
+            PassportPicHandler.DownloadPic(passportNo, PassportPicHandler.PicType.Type02Head);
+        }
+
+        private void 护照红外图像ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
+                return;
+            }
+
+            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
+            PassportPicHandler.DownloadPic(passportNo, PassportPicHandler.PicType.Type03IR);
+        }
+
+        private void 全部ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
+                return;
+            }
+            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
+            PassportPicHandler.DownLoadAllType(passportNo);
+
+        }
+
 
 
 

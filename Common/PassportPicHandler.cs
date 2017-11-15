@@ -43,14 +43,14 @@ namespace TravletAgence.Common
             return false;
         }
 
-        public static bool DownloadPic(string passportNo,PicType type)
+        public static bool DownloadPic(string passportNo, PicType type)
         {
             if (!CheckAndDownloadIfNotExist(passportNo, type))
             {
                 MessageBoxEx.Show("找不到指定图像!");
                 return false;
             }
-                
+
 
             string fileprefix = passportNo;
             if (type == PicType.Type02Head)
@@ -59,9 +59,10 @@ namespace TravletAgence.Common
                 fileprefix += "IR";
 
             string dstname = GlobalUtils.OpenSaveFileDlg(fileprefix + ".jpg");
-            if(string.IsNullOrEmpty(dstname))
+            if (string.IsNullOrEmpty(dstname))
                 return false;
-            File.Copy(GlobalUtils.PassportPicPath + "\\" + fileprefix + ".jpg",dstname);
+            if (!File.Exists(dstname))
+                File.Copy(GlobalUtils.PassportPicPath + "\\" + fileprefix + ".jpg", dstname);
             return true;
         }
 
@@ -73,17 +74,20 @@ namespace TravletAgence.Common
                 return 0;
             if (CheckAndDownloadIfNotExist(passportNo, PicType.Type01Normal))
             {
-                File.Copy(GlobalUtils.PassportPicPath + "\\" + passportNo + ".jpg", savePath + "\\" + passportNo + ".jpg");
+                if (!File.Exists(savePath + "\\" + passportNo + ".jpg"))
+                    File.Copy(GlobalUtils.PassportPicPath + "\\" + passportNo + ".jpg", savePath + "\\" + passportNo + ".jpg");
                 ++res;
             }
             if (CheckAndDownloadIfNotExist(passportNo, PicType.Type02Head))
             {
-                File.Copy(GlobalUtils.PassportPicPath + "\\" +passportNo + "Head.jpg", savePath + "\\" + passportNo + "Head.jpg");
+                if (!File.Exists(savePath + "\\" + passportNo + "Head.jpg"))
+                    File.Copy(GlobalUtils.PassportPicPath + "\\" + passportNo + "Head.jpg", savePath + "\\" + passportNo + "Head.jpg");
                 ++res;
             }
             if (CheckAndDownloadIfNotExist(passportNo, PicType.Type03IR))
             {
-                File.Copy(GlobalUtils.PassportPicPath + "\\" +passportNo + "IR.jpg", savePath + "\\" + passportNo + "IR.jpg");
+                if (!File.Exists(savePath + "\\" + passportNo + "IR.jpg"))
+                    File.Copy(GlobalUtils.PassportPicPath + "\\" + passportNo + "IR.jpg", savePath + "\\" + passportNo + "IR.jpg");
                 ++res;
             }
             if (res > 0)
