@@ -141,6 +141,7 @@ namespace TravletAgence.CSUI.FrmSub
             cbCountry.Text = _visaModel.Country;
             txtSalesPerson.Text = _visaModel.SalesPerson;
             txtClient.Text = _visaModel.Client;
+            chbIsUrgent.Checked = _visaModel.IsUrgent;
         }
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
@@ -524,6 +525,7 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.Country = cbCountry.Text;
                 _visaModel.Number = lvIn.Items.Count; //团号的人数
                 _visaModel.Types = Common.Enums.Types.Team; //设置为团签
+                _visaModel.IsUrgent = chbIsUrgent.Checked;
                 return true;
             }
             catch (Exception)
@@ -559,6 +561,7 @@ namespace TravletAgence.CSUI.FrmSub
                 model.Number = lvIn.Items.Count;
                 model.Client = txtClient.Text;
                 model.Types = Common.Enums.Types.Team; //设置为团签
+                model.IsUrgent = chbIsUrgent.Checked;
                 return true;
             }
             catch (Exception)

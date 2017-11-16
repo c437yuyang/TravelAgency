@@ -84,7 +84,10 @@
             this.EntryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalesPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Types = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsUrgent = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.Visa_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.cbIsUrgent = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.cmsDgv.SuspendLayout();
@@ -210,13 +213,14 @@
             this.EntryTime,
             this.SalesPerson,
             this.Types,
+            this.IsUrgent,
             this.Visa_id});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -328,6 +332,8 @@
             // 
             this.panelSerachBar.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelSerachBar.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelSerachBar.Controls.Add(this.cbIsUrgent);
+            this.panelSerachBar.Controls.Add(this.labelX2);
             this.panelSerachBar.Controls.Add(this.btnGetTodayExcel);
             this.panelSerachBar.Controls.Add(this.btnShowToday);
             this.panelSerachBar.Controls.Add(this.cbDisplayType);
@@ -388,7 +394,7 @@
             this.cbDisplayType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbDisplayType.FormattingEnabled = true;
             this.cbDisplayType.ItemHeight = 15;
-            this.cbDisplayType.Location = new System.Drawing.Point(374, 3);
+            this.cbDisplayType.Location = new System.Drawing.Point(388, 4);
             this.cbDisplayType.Name = "cbDisplayType";
             this.cbDisplayType.Size = new System.Drawing.Size(83, 21);
             this.cbDisplayType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -456,7 +462,7 @@
             this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX15.Location = new System.Drawing.Point(336, 5);
             this.labelX15.Name = "labelX15";
-            this.labelX15.Size = new System.Drawing.Size(63, 21);
+            this.labelX15.Size = new System.Drawing.Size(46, 21);
             this.labelX15.TabIndex = 24;
             this.labelX15.Text = "类型:";
             // 
@@ -725,6 +731,16 @@
             this.Types.Name = "Types";
             this.Types.ReadOnly = true;
             // 
+            // IsUrgent
+            // 
+            this.IsUrgent.Checked = true;
+            this.IsUrgent.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.IsUrgent.CheckValue = "N";
+            this.IsUrgent.DataPropertyName = "IsUrgent";
+            this.IsUrgent.HeaderText = "是否急件";
+            this.IsUrgent.Name = "IsUrgent";
+            this.IsUrgent.ReadOnly = true;
+            // 
             // Visa_id
             // 
             this.Visa_id.DataPropertyName = "Visa_id";
@@ -732,6 +748,30 @@
             this.Visa_id.Name = "Visa_id";
             this.Visa_id.ReadOnly = true;
             this.Visa_id.Visible = false;
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(331, 32);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(68, 21);
+            this.labelX2.TabIndex = 33;
+            this.labelX2.Text = "是否急件:";
+            // 
+            // cbIsUrgent
+            // 
+            this.cbIsUrgent.DisplayMember = "Text";
+            this.cbIsUrgent.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbIsUrgent.FormattingEnabled = true;
+            this.cbIsUrgent.ItemHeight = 15;
+            this.cbIsUrgent.Location = new System.Drawing.Point(388, 31);
+            this.cbIsUrgent.Name = "cbIsUrgent";
+            this.cbIsUrgent.Size = new System.Drawing.Size(83, 21);
+            this.cbIsUrgent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbIsUrgent.TabIndex = 34;
             // 
             // FrmVisaManage
             // 
@@ -810,6 +850,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EntryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn SalesPerson;
         private System.Windows.Forms.DataGridViewTextBoxColumn Types;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn IsUrgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Visa_id;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbIsUrgent;
     }
 }

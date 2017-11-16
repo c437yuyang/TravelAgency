@@ -150,6 +150,7 @@ namespace TravletAgence.CSUI.FrmSub
             //txtTypeInPerson.Text = _visaModel.TypeInPerson;
             //txtTypeInPerson.Text = GlobalUtils.LoginUser.UserName; //在Frm load里面设置，因为都要设置操作员
             txtCheckPerson.Text = _visaModel.CheckPerson;
+            chbIsUrgent.Checked = _visaModel.IsUrgent;
         }
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
@@ -574,7 +575,7 @@ namespace TravletAgence.CSUI.FrmSub
                 _visaModel.TypeInPerson = txtTypeInPerson.Text;
                 _visaModel.CheckPerson = txtCheckPerson.Text;
                 _visaModel.Types = Common.Enums.Types.Individual; //设置为个签
-
+                _visaModel.IsUrgent = chbIsUrgent.Checked;
                 return true;
             }
             catch (Exception)
@@ -595,7 +596,7 @@ namespace TravletAgence.CSUI.FrmSub
 
                 //单独处理remark
                 if (!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
-                    _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
+                    model.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
 
                 //1.保存团号信息修改到数据库,Visa表（sales_person,country,GroupNo,PredictTime）
                 model.GroupNo = txtGroupNo.Text;
@@ -604,24 +605,26 @@ namespace TravletAgence.CSUI.FrmSub
                 model.Number = lvIn.Items.Count;
 
                 if (!string.IsNullOrEmpty(txtDepartureTime.Text))
-                    _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
+                    model.PredictTime = DateTime.Parse(txtDepartureTime.Text);
                 if (!string.IsNullOrEmpty(txtSubmitTime.Text))
-                    _visaModel.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
+                    model.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
                 if (!string.IsNullOrEmpty(txtInTime.Text))
-                    _visaModel.InTime = DateTime.Parse(txtInTime.Text);
+                    model.InTime = DateTime.Parse(txtInTime.Text);
                 if (!string.IsNullOrEmpty(txtOutTime.Text))
-                    _visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
+                    model.OutTime = DateTime.Parse(txtOutTime.Text);
 
                 //_visaModel.SubmitTime = DateTime.Parse(txtSubmitTime.Text);
                 //_visaModel.InTime = DateTime.Parse(txtInTime.Text);
                 //_visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
-                _visaModel.Client = txtClient.Text;
-                _visaModel.DepartureType = txtDepartureType.Text;
-                _visaModel.SubmitCondition = txtSubmitCondition.Text;
-                _visaModel.FetchCondition = txtFetchType.Text;
-                _visaModel.TypeInPerson = txtTypeInPerson.Text;
-                _visaModel.CheckPerson = txtCheckPerson.Text;
-                _visaModel.Types = Common.Enums.Types.Individual; //设置为个签
+                model.Client = txtClient.Text;
+                model.DepartureType = txtDepartureType.Text;
+                model.SubmitCondition = txtSubmitCondition.Text;
+                model.FetchCondition = txtFetchType.Text;
+                model.TypeInPerson = txtTypeInPerson.Text;
+                model.CheckPerson = txtCheckPerson.Text;
+                model.Types = Common.Enums.Types.Individual; //设置为个签
+                model.IsUrgent = chbIsUrgent.Checked;
+
                 return true;
             }
             catch (Exception)

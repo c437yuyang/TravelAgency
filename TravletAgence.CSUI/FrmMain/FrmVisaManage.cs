@@ -62,6 +62,12 @@ namespace TravletAgence.CSUI.FrmMain
             cbDisplayType.Items.Add("团签");
             cbDisplayType.SelectedIndex = 0;
 
+            cbIsUrgent.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbIsUrgent.Items.Add("全部");
+            cbIsUrgent.Items.Add("是");
+            cbIsUrgent.Items.Add("否");
+            cbIsUrgent.SelectedIndex = 0;
+
             dataGridView1.AutoGenerateColumns = false; //不显示指定之外的列
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
 
@@ -190,8 +196,6 @@ namespace TravletAgence.CSUI.FrmMain
                 conditions.Add(" Types = '团签' ");
             }
 
-
-
             if (!string.IsNullOrEmpty(txtSchGroupNo.Text.Trim()))
             {
                 conditions.Add(" (GroupNo like '%" + txtSchGroupNo.Text + "%') ");
@@ -205,6 +209,18 @@ namespace TravletAgence.CSUI.FrmMain
             if (!string.IsNullOrEmpty(txtSchSalesPerson.Text.Trim()))
             {
                 conditions.Add(" (SalesPerson like '%" + txtSchSalesPerson.Text + "%') ");
+            }
+
+            if (cbIsUrgent.Text == "全部")
+            {
+            }
+            else if (cbIsUrgent.Text == "是")
+            {
+                conditions.Add(" isurgent = 1 ");
+            }
+            else if (cbIsUrgent.Text == "否")
+            {
+                conditions.Add(" isurgent = 0 or isurgent is null ");
             }
 
             string[] arr = conditions.ToArray();

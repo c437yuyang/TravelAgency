@@ -56,6 +56,7 @@ namespace TravletAgence.Model
 		private string _fetchcondition;
 		private string _typeinperson;
 		private string _checkperson;
+		private bool _isurgent;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -423,6 +424,14 @@ namespace TravletAgence.Model
 		{
 			set{ _checkperson=value;}
 			get{return _checkperson;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool IsUrgent
+		{
+			set{ _isurgent=value;}
+			get{return _isurgent;}
 		}
 		#endregion Model
 
