@@ -47,7 +47,6 @@ namespace TravletAgence.BLL
 			return dal.Delete(VisaInfo_id);
 		}
 
-
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
@@ -56,6 +55,8 @@ namespace TravletAgence.BLL
 			
 			return dal.GetModel(VisaInfo_id);
 		}
+
+		
 
 		/// <summary>
 		/// 获得数据列表

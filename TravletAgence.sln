@@ -279,7 +279,6 @@ Global
 		{B21EDFDC-CBC2-4F49-8A77-CFFBD35687AB}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{B21EDFDC-CBC2-4F49-8A77-CFFBD35687AB}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{B21EDFDC-CBC2-4F49-8A77-CFFBD35687AB}.Debug|x86.ActiveCfg = Debug|x86
-		{B21EDFDC-CBC2-4F49-8A77-CFFBD35687AB}.Debug|x86.Build.0 = Debug|x86
 		{B21EDFDC-CBC2-4F49-8A77-CFFBD35687AB}.Release|.NET.ActiveCfg = Release|x86
 		{B21EDFDC-CBC2-4F49-8A77-CFFBD35687AB}.Release|Any CPU.ActiveCfg = Release|x86
 		{B21EDFDC-CBC2-4F49-8A77-CFFBD35687AB}.Release|Mixed Platforms.ActiveCfg = Release|x86

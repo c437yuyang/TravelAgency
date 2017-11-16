@@ -37,9 +37,9 @@ namespace TravletAgence.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into VisaInfo_Tmp(");
-			strSql.Append("VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState,Residence,Occupation,DepartureRecord,Marriaged,Identification,FinancialCapacity,AgencyOpinion,HasTypeIn,AbnormalOutTime,HasChecked,CheckPerson)");
+			strSql.Append("VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState,Residence,Occupation,DepartureRecord,Marriaged,Identification,FinancialCapacity,AgencyOpinion,HasTypeIn,AbnormalOutTime,HasChecked,CheckPerson,ReturnTime)");
 			strSql.Append(" values (");
-			strSql.Append("@VisaInfo_id,@Visa_id,@GroupNo,@Name,@EnglishName,@Sex,@Birthday,@PassportNo,@LicenceTime,@ExpiryDate,@Birthplace,@IssuePlace,@Post,@Phone,@GuideNo,@Client,@Salesperson,@Types,@Sale_id,@DepartmentId,@Tips,@EntryTime,@EmbassyTime,@InTime,@OutTime,@RealOut,@RealOutTime,@Country,@Call,@outState,@Residence,@Occupation,@DepartureRecord,@Marriaged,@Identification,@FinancialCapacity,@AgencyOpinion,@HasTypeIn,@AbnormalOutTime,@HasChecked,@CheckPerson)");
+			strSql.Append("@VisaInfo_id,@Visa_id,@GroupNo,@Name,@EnglishName,@Sex,@Birthday,@PassportNo,@LicenceTime,@ExpiryDate,@Birthplace,@IssuePlace,@Post,@Phone,@GuideNo,@Client,@Salesperson,@Types,@Sale_id,@DepartmentId,@Tips,@EntryTime,@EmbassyTime,@InTime,@OutTime,@RealOut,@RealOutTime,@Country,@Call,@outState,@Residence,@Occupation,@DepartureRecord,@Marriaged,@Identification,@FinancialCapacity,@AgencyOpinion,@HasTypeIn,@AbnormalOutTime,@HasChecked,@CheckPerson,@ReturnTime)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@VisaInfo_id", SqlDbType.UniqueIdentifier,16),
 					new SqlParameter("@Visa_id", SqlDbType.VarChar,50),
@@ -81,7 +81,8 @@ namespace TravletAgence.DAL
 					new SqlParameter("@HasTypeIn", SqlDbType.VarChar,2),
 					new SqlParameter("@AbnormalOutTime", SqlDbType.DateTime),
 					new SqlParameter("@HasChecked", SqlDbType.VarChar,2),
-					new SqlParameter("@CheckPerson", SqlDbType.VarChar,50)};
+					new SqlParameter("@CheckPerson", SqlDbType.VarChar,50),
+					new SqlParameter("@ReturnTime", SqlDbType.DateTime)};
 			parameters[0].Value = Guid.NewGuid();
 			parameters[1].Value = model.Visa_id;
 			parameters[2].Value = model.GroupNo;
@@ -123,6 +124,7 @@ namespace TravletAgence.DAL
 			parameters[38].Value = model.AbnormalOutTime;
 			parameters[39].Value = model.HasChecked;
 			parameters[40].Value = model.CheckPerson;
+			parameters[41].Value = model.ReturnTime;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -134,7 +136,6 @@ namespace TravletAgence.DAL
 				return false;
 			}
 		}
-
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
@@ -181,7 +182,8 @@ namespace TravletAgence.DAL
 			strSql.Append("HasTypeIn=@HasTypeIn,");
 			strSql.Append("AbnormalOutTime=@AbnormalOutTime,");
 			strSql.Append("HasChecked=@HasChecked,");
-			strSql.Append("CheckPerson=@CheckPerson");
+			strSql.Append("CheckPerson=@CheckPerson,");
+			strSql.Append("ReturnTime=@ReturnTime");
 			strSql.Append(" where VisaInfo_id=@VisaInfo_id ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Visa_id", SqlDbType.VarChar,50),
@@ -224,6 +226,7 @@ namespace TravletAgence.DAL
 					new SqlParameter("@AbnormalOutTime", SqlDbType.DateTime),
 					new SqlParameter("@HasChecked", SqlDbType.VarChar,2),
 					new SqlParameter("@CheckPerson", SqlDbType.VarChar,50),
+					new SqlParameter("@ReturnTime", SqlDbType.DateTime),
 					new SqlParameter("@VisaInfo_id", SqlDbType.UniqueIdentifier,16)};
 			parameters[0].Value = model.Visa_id;
 			parameters[1].Value = model.GroupNo;
@@ -265,7 +268,8 @@ namespace TravletAgence.DAL
 			parameters[37].Value = model.AbnormalOutTime;
 			parameters[38].Value = model.HasChecked;
 			parameters[39].Value = model.CheckPerson;
-			parameters[40].Value = model.VisaInfo_id;
+			parameters[40].Value = model.ReturnTime;
+			parameters[41].Value = model.VisaInfo_id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -301,7 +305,7 @@ namespace TravletAgence.DAL
 				return false;
 			}
 		}
-
+		
 
 
 		/// <summary>
@@ -311,7 +315,7 @@ namespace TravletAgence.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState,Residence,Occupation,DepartureRecord,Marriaged,Identification,FinancialCapacity,AgencyOpinion,HasTypeIn,AbnormalOutTime,HasChecked,CheckPerson from VisaInfo_Tmp ");
+			strSql.Append("select  top 1 VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState,Residence,Occupation,DepartureRecord,Marriaged,Identification,FinancialCapacity,AgencyOpinion,HasTypeIn,AbnormalOutTime,HasChecked,CheckPerson,ReturnTime from VisaInfo_Tmp ");
 			strSql.Append(" where VisaInfo_id=@VisaInfo_id ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@VisaInfo_id", SqlDbType.UniqueIdentifier,16)			};
@@ -502,6 +506,10 @@ namespace TravletAgence.DAL
 				{
 					model.CheckPerson=row["CheckPerson"].ToString();
 				}
+				if(row["ReturnTime"]!=null && row["ReturnTime"].ToString()!="")
+				{
+					model.ReturnTime=DateTime.Parse(row["ReturnTime"].ToString());
+				}
 			}
 			return model;
 		}
@@ -512,7 +520,7 @@ namespace TravletAgence.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState,Residence,Occupation,DepartureRecord,Marriaged,Identification,FinancialCapacity,AgencyOpinion,HasTypeIn,AbnormalOutTime,HasChecked,CheckPerson ");
+			strSql.Append("select VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState,Residence,Occupation,DepartureRecord,Marriaged,Identification,FinancialCapacity,AgencyOpinion,HasTypeIn,AbnormalOutTime,HasChecked,CheckPerson,ReturnTime ");
 			strSql.Append(" FROM VisaInfo_Tmp ");
 			if(strWhere.Trim()!="")
 			{
@@ -532,7 +540,7 @@ namespace TravletAgence.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState,Residence,Occupation,DepartureRecord,Marriaged,Identification,FinancialCapacity,AgencyOpinion,HasTypeIn,AbnormalOutTime,HasChecked,CheckPerson ");
+			strSql.Append(" VisaInfo_id,Visa_id,GroupNo,Name,EnglishName,Sex,Birthday,PassportNo,LicenceTime,ExpiryDate,Birthplace,IssuePlace,Post,Phone,GuideNo,Client,Salesperson,Types,Sale_id,DepartmentId,Tips,EntryTime,EmbassyTime,InTime,OutTime,RealOut,RealOutTime,Country,Call,outState,Residence,Occupation,DepartureRecord,Marriaged,Identification,FinancialCapacity,AgencyOpinion,HasTypeIn,AbnormalOutTime,HasChecked,CheckPerson,ReturnTime ");
 			strSql.Append(" FROM VisaInfo_Tmp ");
 			if(strWhere.Trim()!="")
 			{
@@ -541,8 +549,6 @@ namespace TravletAgence.DAL
 			strSql.Append(" order by " + filedOrder);
 			return DbHelperSQL.Query(strSql.ToString());
 		}
-
-
 
 		/// <summary>
 		/// 获取记录总数

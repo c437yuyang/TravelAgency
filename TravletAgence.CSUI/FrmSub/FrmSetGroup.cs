@@ -289,15 +289,23 @@ namespace TravletAgence.CSUI.FrmSub
         /// <param name="e"></param>
         private void dgvGroupInfo_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && dgvGroupInfo.Columns[e.ColumnIndex].Name == "Remark")
-            {
-                string remark = dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
-                {
-                    dgvGroupInfo.Rows[i].Cells[e.ColumnIndex].Value = remark;
+            //if (e.ColumnIndex >= 0 && dgvGroupInfo.Columns[e.ColumnIndex].Name == "Remark")
+            //{
+            //    string remark = dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            //    for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
+            //    {
+            //        dgvGroupInfo.Rows[i].Cells[e.ColumnIndex].Value = remark;
+            //    }
+            //}
 
-                }
-            }
+            //if (e.ColumnIndex >= 0 && dgvGroupInfo.Columns[e.ColumnIndex].Name == "ReturnTime")
+            //{
+            //    string time = dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            //    for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
+            //    {
+            //        dgvGroupInfo.Rows[i].Cells[e.ColumnIndex].Value = time;
+            //    }
+            //}
         }
 
 
@@ -836,6 +844,27 @@ namespace TravletAgence.CSUI.FrmSub
         private void cbCountry_TextChanged(object sender, EventArgs e)
         {
             UpdateGroupNo();
+        }
+
+        private void dgvGroupInfo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && dgvGroupInfo.Columns[e.ColumnIndex].Name == "Remark")
+            {
+                string remark = dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
+                {
+                    dgvGroupInfo.Rows[i].Cells[e.ColumnIndex].Value = remark;
+                }
+            }
+
+            if (e.ColumnIndex >= 0 && dgvGroupInfo.Columns[e.ColumnIndex].Name == "ReturnTime")
+            {
+                string time = dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
+                {
+                    dgvGroupInfo.Rows[i].Cells[e.ColumnIndex].Value = time;
+                }
+            }
         }
 
 

@@ -378,7 +378,7 @@ namespace TravletAgence.Common.Excel.Japan
                     row.CreateCell(2).SetCellValue(visaInfoList[i][j].IssuePlace);
                     row.CreateCell(3).SetCellValue(visaInfoList[i][j].Residence);
                     row.CreateCell(4).SetCellValue(visaList[i].DepartureType);
-                    row.CreateCell(5).SetCellValue(""); //归国时间先不设置
+                    row.CreateCell(5).SetCellValue(DateTimeFormator.DateTimeToString(visaInfoList[i][j].ReturnTime)); //归国时间先不设置
                     row.CreateCell(6).SetCellValue(visaList[i].Remark);
                     row.CreateCell(7).SetCellValue(visaInfoList[i][j].Identification);
                 }

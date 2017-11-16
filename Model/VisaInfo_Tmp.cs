@@ -10,7 +10,7 @@ namespace TravletAgence.Model
 		public VisaInfo_Tmp()
 		{}
 		#region Model
-		private Guid _VisaInfo_id;
+		private Guid _visainfo_id;
 		private string _visa_id;
 		private string _groupno;
 		private string _name;
@@ -31,7 +31,7 @@ namespace TravletAgence.Model
 		private Guid _sale_id;
 		private Guid _departmentid;
 		private string _tips;
-		private DateTime? _entrytime= DateTime.Now;
+		private DateTime? _entrytime;
 		private DateTime? _embassytime;
 		private DateTime? _intime;
 		private DateTime? _outtime;
@@ -39,25 +39,26 @@ namespace TravletAgence.Model
 		private DateTime? _realouttime;
 		private string _country;
 		private string _call;
-		private string _outstate="01未记录";
+		private string _outstate;
 		private string _residence;
 		private string _occupation;
 		private string _departurerecord;
 		private string _marriaged;
 		private string _identification;
 		private string _financialcapacity;
-		private string _agencyopinion="没问题";
-		private string _hastypein="否";
+		private string _agencyopinion;
+		private string _hastypein;
 		private DateTime? _abnormalouttime;
-		private string _haschecked="否";
+		private string _haschecked;
 		private string _checkperson;
+		private DateTime? _returntime;
 		/// <summary>
 		/// 
 		/// </summary>
 		public Guid VisaInfo_id
 		{
-			set{ _VisaInfo_id=value;}
-			get{return _VisaInfo_id;}
+			set{ _visainfo_id=value;}
+			get{return _visainfo_id;}
 		}
 		/// <summary>
 		/// 
@@ -76,7 +77,7 @@ namespace TravletAgence.Model
 			get{return _groupno;}
 		}
 		/// <summary>
-		/// 姓名
+		/// 
 		/// </summary>
 		public string Name
 		{
@@ -84,7 +85,7 @@ namespace TravletAgence.Model
 			get{return _name;}
 		}
 		/// <summary>
-		/// 英语姓名
+		/// 
 		/// </summary>
 		public string EnglishName
 		{
@@ -92,7 +93,7 @@ namespace TravletAgence.Model
 			get{return _englishname;}
 		}
 		/// <summary>
-		/// 性别
+		/// 
 		/// </summary>
 		public string Sex
 		{
@@ -100,7 +101,7 @@ namespace TravletAgence.Model
 			get{return _sex;}
 		}
 		/// <summary>
-		/// 生日
+		/// 
 		/// </summary>
 		public DateTime? Birthday
 		{
@@ -108,7 +109,7 @@ namespace TravletAgence.Model
 			get{return _birthday;}
 		}
 		/// <summary>
-		/// 护照号
+		/// 
 		/// </summary>
 		public string PassportNo
 		{
@@ -116,7 +117,7 @@ namespace TravletAgence.Model
 			get{return _passportno;}
 		}
 		/// <summary>
-		/// 发证日期
+		/// 
 		/// </summary>
 		public DateTime? LicenceTime
 		{
@@ -124,7 +125,7 @@ namespace TravletAgence.Model
 			get{return _licencetime;}
 		}
 		/// <summary>
-		/// 有效期
+		/// 
 		/// </summary>
 		public DateTime? ExpiryDate
 		{
@@ -132,7 +133,7 @@ namespace TravletAgence.Model
 			get{return _expirydate;}
 		}
 		/// <summary>
-		/// 出生地
+		/// 
 		/// </summary>
 		public string Birthplace
 		{
@@ -140,7 +141,7 @@ namespace TravletAgence.Model
 			get{return _birthplace;}
 		}
 		/// <summary>
-		/// 签发地
+		/// 
 		/// </summary>
 		public string IssuePlace
 		{
@@ -148,7 +149,7 @@ namespace TravletAgence.Model
 			get{return _issueplace;}
 		}
 		/// <summary>
-		/// 职位
+		/// 
 		/// </summary>
 		public string Post
 		{
@@ -156,7 +157,7 @@ namespace TravletAgence.Model
 			get{return _post;}
 		}
 		/// <summary>
-		/// 电话
+		/// 
 		/// </summary>
 		public string Phone
 		{
@@ -164,7 +165,7 @@ namespace TravletAgence.Model
 			get{return _phone;}
 		}
 		/// <summary>
-		/// 领队编号
+		/// 
 		/// </summary>
 		public string GuideNo
 		{
@@ -172,7 +173,7 @@ namespace TravletAgence.Model
 			get{return _guideno;}
 		}
 		/// <summary>
-		/// 客户
+		/// 
 		/// </summary>
 		public string Client
 		{
@@ -180,7 +181,7 @@ namespace TravletAgence.Model
 			get{return _client;}
 		}
 		/// <summary>
-		/// 销售员
+		/// 
 		/// </summary>
 		public string Salesperson
 		{
@@ -188,7 +189,7 @@ namespace TravletAgence.Model
 			get{return _salesperson;}
 		}
 		/// <summary>
-		/// 签证类型
+		/// 
 		/// </summary>
 		public string Types
 		{
@@ -212,7 +213,7 @@ namespace TravletAgence.Model
 			get{return _departmentid;}
 		}
 		/// <summary>
-		/// 备注
+		/// 
 		/// </summary>
 		public string Tips
 		{
@@ -244,7 +245,7 @@ namespace TravletAgence.Model
 			get{return _intime;}
 		}
 		/// <summary>
-		/// 归国时间
+		/// 
 		/// </summary>
 		public DateTime? OutTime
 		{
@@ -378,6 +379,14 @@ namespace TravletAgence.Model
 		{
 			set{ _checkperson=value;}
 			get{return _checkperson;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public DateTime? ReturnTime
+		{
+			set{ _returntime=value;}
+			get{return _returntime;}
 		}
 		#endregion Model
 

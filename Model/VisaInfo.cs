@@ -46,11 +46,12 @@ namespace TravletAgence.Model
 		private string _marriaged;
 		private string _identification;
 		private string _financialcapacity;
-		private string _agencyopinion = "没问题";
+		private string _agencyopinion="没问题";
 		private string _hastypein="否";
 		private DateTime? _abnormalouttime;
 		private string _haschecked="否";
 		private string _checkperson;
+		private DateTime? _returntime;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -378,6 +379,14 @@ namespace TravletAgence.Model
 		{
 			set{ _checkperson=value;}
 			get{return _checkperson;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public DateTime? ReturnTime
+		{
+			set{ _returntime=value;}
+			get{return _returntime;}
 		}
 		#endregion Model
 
