@@ -343,10 +343,20 @@ namespace TravletAgence.CSUI.FrmSub
             {
                 if (e.RowIndex >= 0 && e.ColumnIndex >= 0) //除去表头
                 {
+
+                    //如果没选中当前活动行则选中这一行
+                    if (dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected == false)
+                    {
+                        dgvGroupInfo.ClearSelection();
+                        dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
+                    }
+
                     //只有在选中的单元格上
                     if (dgvGroupInfo.SelectedCells.Contains(dgvGroupInfo.Rows[e.RowIndex].Cells[e.ColumnIndex]))
                         //弹出操作菜单
                         cmsDgvRb.Show(MousePosition.X, MousePosition.Y);
+
+
                 }
             }
         }
