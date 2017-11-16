@@ -208,13 +208,19 @@ namespace TravletAgence.CSUI.FrmSub
         #region 状态更新函数
         private void UpdateGroupNo()
         {
+            string prefix = "QZC";
+            if (cbCountry.Text == "日本")
+                prefix += "JP";
+            if (cbCountry.Text == "韩国")
+                prefix += "KR";
+
             if (txtDepartureTime.Value.ToString() != "0001/1/1 0:00:00")
             {
-                _visaName = "QZC" + txtDepartureTime.Value.ToString("yyMMdd");
+                _visaName = prefix + txtDepartureTime.Value.ToString("yyMMdd");
 
             }
             else
-                _visaName = "QZC" + DateTime.Now.ToString("yyMMdd");
+                _visaName = prefix+ DateTime.Now.ToString("yyMMdd");
 
             for (int i = 0; i < lvIn.Items.Count; ++i)
             {
@@ -823,6 +829,11 @@ namespace TravletAgence.CSUI.FrmSub
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtDepartureTime_TextChanged(object sender, EventArgs e)
+        {
+            UpdateGroupNo();
+        }
+
+        private void cbCountry_TextChanged(object sender, EventArgs e)
         {
             UpdateGroupNo();
         }
