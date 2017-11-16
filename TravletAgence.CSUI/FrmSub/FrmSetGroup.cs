@@ -163,8 +163,8 @@ namespace TravletAgence.CSUI.FrmSub
             dgvGroupInfo.Columns["Birthday"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;//某一些列关闭自适应
 
             this.btnReset.Enabled = false;
-                        
-            
+
+
             //设置列表多选
             lvIn.MultiSelect = true;
             lvOut.MultiSelect = true;
@@ -456,7 +456,6 @@ namespace TravletAgence.CSUI.FrmSub
                 if (!CtrlsToVisaModel())
                     return;
 
-
                 if ((_visaModel.Visa_id = _bllVisa.Add(_visaModel)) == Guid.Empty) //执行更新,返回值是新插入的visamodel的guid
                 {
                     MessageBoxEx.Show("添加团号到数据库失败，请重试!");
@@ -482,7 +481,7 @@ namespace TravletAgence.CSUI.FrmSub
                     _updateDel(_curPage);
                     Close();
                 }
-                    
+
             }
             else
             {
@@ -714,6 +713,97 @@ namespace TravletAgence.CSUI.FrmSub
             ClearCells();
         }
 
+        private void 上移ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvGroupInfo.SelectedCells.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectEditMoreThanOne);
+                return;
+            }
+            int selIdx = dgvGroupInfo.SelectedCells[0].RowIndex;
+            int selColIdx = dgvGroupInfo.SelectedCells[0].ColumnIndex;
+            if (selIdx == 0)
+                return;
+
+            var lvItemTmp = lvIn.Items[selIdx];
+            lvIn.Items.Remove(lvItemTmp);
+            lvIn.Items.Insert(selIdx - 1,lvItemTmp);
+
+            UpdateDgvAndListViaListView();
+            UpdateGroupNo();
+
+            dgvGroupInfo.CurrentCell = dgvGroupInfo.Rows[selIdx - 1].Cells[selColIdx];
+
+        }
+
+        private void 下移ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvGroupInfo.SelectedCells.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectEditMoreThanOne);
+                return;
+            }
+            int selIdx = dgvGroupInfo.SelectedCells[0].RowIndex;
+            int selColIdx = dgvGroupInfo.SelectedCells[0].ColumnIndex;
+
+            if (selIdx == lvIn.Items.Count - 1)
+                return;
+
+            var lvItemTmp = lvIn.Items[selIdx];
+            lvIn.Items.Remove(lvItemTmp);
+            lvIn.Items.Insert(selIdx + 1, lvItemTmp);
+
+            UpdateDgvAndListViaListView();
+            UpdateGroupNo();
+
+            dgvGroupInfo.CurrentCell = dgvGroupInfo.Rows[selIdx + 1].Cells[selColIdx];
+
+        }
+
+        private void 移到顶部ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvGroupInfo.SelectedCells.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectEditMoreThanOne);
+                return;
+            }
+            int selIdx = dgvGroupInfo.SelectedCells[0].RowIndex;
+            int selColIdx = dgvGroupInfo.SelectedCells[0].ColumnIndex;
+
+            if (selIdx == 0)
+                return;
+
+            var lvItemTmp = lvIn.Items[selIdx];
+            lvIn.Items.Remove(lvItemTmp);
+            lvIn.Items.Insert(0, lvItemTmp);
+            UpdateDgvAndListViaListView();
+            UpdateGroupNo();
+           
+            dgvGroupInfo.CurrentCell = dgvGroupInfo.Rows[0].Cells[selColIdx];
+        }
+
+        private void 移到底部ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvGroupInfo.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectEditMoreThanOne);
+                return;
+            }
+            int selIdx = dgvGroupInfo.SelectedCells[0].RowIndex;
+            int selColIdx = dgvGroupInfo.SelectedCells[0].ColumnIndex;
+
+            if (selIdx == lvIn.Items.Count - 1)
+                return;
+
+            var lvItemTmp = lvIn.Items[selIdx];
+            lvIn.Items.Remove(lvItemTmp);
+            lvIn.Items.Add( lvItemTmp);
+            UpdateDgvAndListViaListView();
+            UpdateGroupNo();
+
+            dgvGroupInfo.CurrentCell = dgvGroupInfo.Rows[lvIn.Items.Count - 1].Cells[selColIdx];
+        }
+
         #endregion
 
 
@@ -726,6 +816,8 @@ namespace TravletAgence.CSUI.FrmSub
         {
             UpdateGroupNo();
         }
+
+
 
 
 
