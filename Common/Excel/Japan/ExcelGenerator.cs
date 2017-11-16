@@ -43,10 +43,16 @@ namespace TravletAgence.Common.Excel.Japan
             //1.创建工作簿对象
             IWorkbook wkbook = new HSSFWorkbook();
             //2.创建工作表对象
-            ISheet sheet = wkbook.CreateSheet("签证申请名单");
+            ISheet sheet = wkbook.CreateSheet("签证申请人名单");
 
             //2.1创建表头
-            IRow row = sheet.CreateRow(0);
+
+            IRow rowHeader = sheet.CreateRow(0);
+            rowHeader.CreateCell(0).SetCellValue("签证申请人名单");
+            rowHeader.HeightInPoints = 50;
+            
+
+            IRow row = sheet.CreateRow(1);
             row.CreateCell(0).SetCellValue("编号");
             row.CreateCell(1).SetCellValue("姓名(中文)");
             row.CreateCell(2).SetCellValue("姓名(英文)");
@@ -85,7 +91,7 @@ namespace TravletAgence.Common.Excel.Japan
             for (int i = 0; i != list.Count; ++i)
             {
                 //创建单元格
-                row = sheet.CreateRow(i + 1);
+                row = sheet.CreateRow(i + 2);
                 //设置行高
                 row.HeightInPoints = 50;
                 //设置值
@@ -107,6 +113,11 @@ namespace TravletAgence.Common.Excel.Japan
                 row.CreateCell(15).SetCellValue(list[i].Phone);
             }
 
+
+            //4.2合并单元格
+            sheet.AddMergedRegion(new CellRangeAddress(1, sheet.LastRowNum, 12, 12));
+            sheet.AddMergedRegion(new CellRangeAddress(0, 0, 0, 15));
+
             //4.1设置对齐风格和边框
             ICellStyle style = wkbook.CreateCellStyle();
             style.VerticalAlignment = VerticalAlignment.Center;
@@ -115,7 +126,7 @@ namespace TravletAgence.Common.Excel.Japan
             style.BorderBottom = BorderStyle.Thin;
             style.BorderLeft = BorderStyle.Thin;
             style.BorderRight = BorderStyle.Thin;
-            for (int i = 0; i <= sheet.LastRowNum; i++)
+            for (int i = 1; i <= sheet.LastRowNum; i++)
             {
                 row = sheet.GetRow(i);
                 for (int c = 0; c < row.LastCellNum; ++c)
@@ -123,8 +134,19 @@ namespace TravletAgence.Common.Excel.Japan
                     row.GetCell(c).CellStyle = style;
                 }
             }
-            //4.2合并单元格
-            sheet.AddMergedRegion(new CellRangeAddress(1, sheet.LastRowNum, 12, 12));
+
+            ICellStyle headerStyle = wkbook.CreateCellStyle();
+            headerStyle.VerticalAlignment = VerticalAlignment.Center;
+            headerStyle.Alignment = HorizontalAlignment.Center;
+            headerStyle.BorderTop = BorderStyle.Thin;
+            headerStyle.BorderBottom = BorderStyle.Thin;
+            headerStyle.BorderLeft = BorderStyle.Thin;
+            headerStyle.BorderRight = BorderStyle.Thin;
+            HSSFFont font = (HSSFFont)wkbook.CreateFont();
+            font.FontHeightInPoints = 15;
+            headerStyle.SetFont(font);
+            sheet.GetRow(0).GetCell(0).CellStyle = headerStyle;
+
 
             //5.执行写入磁盘
             string dstName = GlobalUtils.OpenSaveFileDlg(groupNo + ".xls", "office 2003 excel|*.xls");

@@ -128,7 +128,7 @@ namespace TravletAgence.CSUI.FrmSub
             UpdateGroupNo();
 
             //初始化dgv
-            UpdateDgvData();
+            UpdateDgvAndListViaListView();
 
             //初始化备注项
             for (int i = 0; i < dgvGroupInfo.Rows.Count; i++)
@@ -162,7 +162,8 @@ namespace TravletAgence.CSUI.FrmSub
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
             dgvGroupInfo.Columns["Birthday"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;//某一些列关闭自适应
 
-            
+            this.btnReset.Enabled = false;
+                        
             
             //设置列表多选
             lvIn.MultiSelect = true;
@@ -226,7 +227,7 @@ namespace TravletAgence.CSUI.FrmSub
             lbCount.Text = "团队人数:" + lvIn.Items.Count + "人";
         }
 
-        private void UpdateDgvData()
+        private void UpdateDgvAndListViaListView()
         {
             _dgvList.Clear();
             for (int i = 0; i < lvIn.Items.Count; ++i)
@@ -373,7 +374,7 @@ namespace TravletAgence.CSUI.FrmSub
                 lvIn.Items.Add(lvItem);
             }
             UpdateGroupNo();
-            UpdateDgvData();
+            UpdateDgvAndListViaListView();
         }
 
         private void btnAllOut_Click(object sender, EventArgs e)
@@ -385,7 +386,7 @@ namespace TravletAgence.CSUI.FrmSub
                 lvOut.Items.Add(lvItem);
             }
             UpdateGroupNo();
-            UpdateDgvData();
+            UpdateDgvAndListViaListView();
 
         }
 
@@ -398,7 +399,7 @@ namespace TravletAgence.CSUI.FrmSub
                 lvIn.Items.Insert(0, lvItem);
             }
             UpdateGroupNo();
-            UpdateDgvData();
+            UpdateDgvAndListViaListView();
         }
 
         private void btnOut_Click(object sender, EventArgs e)
@@ -410,7 +411,7 @@ namespace TravletAgence.CSUI.FrmSub
                 lvOut.Items.Insert(0, lvItem);
             }
             UpdateGroupNo();
-            UpdateDgvData();
+            UpdateDgvAndListViaListView();
         }
 
 
@@ -463,10 +464,25 @@ namespace TravletAgence.CSUI.FrmSub
                 }
 
                 //2.更新model,设置资料已录入，团号，国家等
-                //TODO:应该在这里设置为个签 
                 _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
                 //2.1更新VisaInfo数据库
                 UpdateInListVisaInfo(_dgvList);
+
+                //添加完成后，删除这几个人
+                for (int i = 0; i < lvIn.Items.Count; i++)
+                {
+                    _list.Remove((Model.VisaInfo)lvIn.Items[i].Tag);
+                }
+
+                lvIn.Items.Clear();
+                _visaModel = null;
+                UpdateDgvAndListViaListView();
+                if (_list.Count == 0)
+                {
+                    _updateDel(_curPage);
+                    Close();
+                }
+                    
             }
             else
             {
@@ -494,9 +510,13 @@ namespace TravletAgence.CSUI.FrmSub
                 UpdateInListVisaInfo(_dgvList);
                 //2.2更新移出的人的数据库
                 UpdateOutListVisaInfo();
+                _updateDel(_curPage);
+                Close();
             }
-            _updateDel(_curPage);
-            Close();
+
+
+            //
+            //Close();
         }
 
         private bool CtrlsToVisaModel()
@@ -510,11 +530,6 @@ namespace TravletAgence.CSUI.FrmSub
                 if (!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
                     _visaModel.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;
 
-                _visaModel.EntryTime = DateTime.Now;
-                _visaModel.GroupNo = txtGroupNo.Text;
-                _visaModel.SalesPerson = txtSalesPerson.Text;
-                _visaModel.Country = cbCountry.Text;
-                _visaModel.Number = lvIn.Items.Count; //团号的人数
                 if (!string.IsNullOrEmpty(txtDepartureTime.Text))
                     _visaModel.PredictTime = DateTime.Parse(txtDepartureTime.Text);
                 if (!string.IsNullOrEmpty(txtSubmitTime.Text))
@@ -524,6 +539,11 @@ namespace TravletAgence.CSUI.FrmSub
                 if (!string.IsNullOrEmpty(txtOutTime.Text))
                     _visaModel.OutTime = DateTime.Parse(txtOutTime.Text);
 
+                _visaModel.EntryTime = DateTime.Now;
+                _visaModel.GroupNo = txtGroupNo.Text;
+                _visaModel.SalesPerson = txtSalesPerson.Text;
+                _visaModel.Country = cbCountry.Text;
+                _visaModel.Number = lvIn.Items.Count; //团号的人数
                 _visaModel.Client = txtClient.Text;
                 _visaModel.DepartureType = txtDepartureType.Text;
                 _visaModel.SubmitCondition = txtSubmitCondition.Text;
