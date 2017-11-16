@@ -669,6 +669,97 @@ namespace TravletAgence.CSUI.FrmSub
             ClearCells();
         }
 
+        private void 上移ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvGroupInfo.SelectedCells.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectEditMoreThanOne);
+                return;
+            }
+            int selIdx = dgvGroupInfo.SelectedCells[0].RowIndex;
+            int selColIdx = dgvGroupInfo.SelectedCells[0].ColumnIndex;
+            if (selIdx == 0)
+                return;
+
+            var lvItemTmp = lvIn.Items[selIdx];
+            lvIn.Items.Remove(lvItemTmp);
+            lvIn.Items.Insert(selIdx - 1, lvItemTmp);
+
+            UpdateDgvAndListViaListView();
+            UpdateGroupNo();
+
+            dgvGroupInfo.CurrentCell = dgvGroupInfo.Rows[selIdx - 1].Cells[selColIdx];
+
+        }
+
+        private void 下移ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvGroupInfo.SelectedCells.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectEditMoreThanOne);
+                return;
+            }
+            int selIdx = dgvGroupInfo.SelectedCells[0].RowIndex;
+            int selColIdx = dgvGroupInfo.SelectedCells[0].ColumnIndex;
+
+            if (selIdx == lvIn.Items.Count - 1)
+                return;
+
+            var lvItemTmp = lvIn.Items[selIdx];
+            lvIn.Items.Remove(lvItemTmp);
+            lvIn.Items.Insert(selIdx + 1, lvItemTmp);
+
+            UpdateDgvAndListViaListView();
+            UpdateGroupNo();
+
+            dgvGroupInfo.CurrentCell = dgvGroupInfo.Rows[selIdx + 1].Cells[selColIdx];
+
+        }
+
+        private void 移到顶部ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvGroupInfo.SelectedCells.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectEditMoreThanOne);
+                return;
+            }
+            int selIdx = dgvGroupInfo.SelectedCells[0].RowIndex;
+            int selColIdx = dgvGroupInfo.SelectedCells[0].ColumnIndex;
+
+            if (selIdx == 0)
+                return;
+
+            var lvItemTmp = lvIn.Items[selIdx];
+            lvIn.Items.Remove(lvItemTmp);
+            lvIn.Items.Insert(0, lvItemTmp);
+            UpdateDgvAndListViaListView();
+            UpdateGroupNo();
+
+            dgvGroupInfo.CurrentCell = dgvGroupInfo.Rows[0].Cells[selColIdx];
+        }
+
+        private void 移到底部ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvGroupInfo.SelectedRows.Count > 1)
+            {
+                MessageBoxEx.Show(Resources.SelectEditMoreThanOne);
+                return;
+            }
+            int selIdx = dgvGroupInfo.SelectedCells[0].RowIndex;
+            int selColIdx = dgvGroupInfo.SelectedCells[0].ColumnIndex;
+
+            if (selIdx == lvIn.Items.Count - 1)
+                return;
+
+            var lvItemTmp = lvIn.Items[selIdx];
+            lvIn.Items.Remove(lvItemTmp);
+            lvIn.Items.Add(lvItemTmp);
+            UpdateDgvAndListViaListView();
+            UpdateGroupNo();
+
+            dgvGroupInfo.CurrentCell = dgvGroupInfo.Rows[lvIn.Items.Count - 1].Cells[selColIdx];
+        }
+
         #endregion
 
 
@@ -703,6 +794,8 @@ namespace TravletAgence.CSUI.FrmSub
         }
 
         #endregion
+
+
     }
 
 }
