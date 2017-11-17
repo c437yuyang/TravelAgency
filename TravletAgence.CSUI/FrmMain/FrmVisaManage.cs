@@ -314,6 +314,8 @@ namespace TravletAgence.CSUI.FrmMain
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count < 1)
+                return;
             if (this.dataGridView1.SelectedRows.Count > 1)
             {
                 MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
