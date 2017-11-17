@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravletAgence.Common;
+using TravletAgence.Common.Enums;
 using TravletAgence.Common.Excel;
 using TravletAgence.Common.Excel.Japan;
 using TravletAgence.Common.Word.Japan;
@@ -67,6 +68,14 @@ namespace TravletAgence.CSUI.FrmMain
             cbIsUrgent.Items.Add("是");
             cbIsUrgent.Items.Add("否");
             cbIsUrgent.SelectedIndex = 0;
+
+            cbCountry.Items.Add("全部");
+            cbCountry.Items.Add("日本");
+            cbCountry.Items.Add("韩国");
+            cbCountry.Items.Add("泰国");
+            cbCountry.Items.Add("澳大利亚");
+            cbCountry.SelectedIndex = 0;
+
 
             dataGridView1.AutoGenerateColumns = false; //不显示指定之外的列
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
@@ -221,6 +230,15 @@ namespace TravletAgence.CSUI.FrmMain
             else if (cbIsUrgent.Text == "否")
             {
                 conditions.Add(" isurgent = 0 or isurgent is null ");
+            }
+
+            if (cbCountry.Text == "全部")
+            {
+
+            }
+            else
+            {
+                conditions.Add(" Country = '" + cbCountry.Text + "' ");
             }
 
             string[] arr = conditions.ToArray();
@@ -635,6 +653,31 @@ namespace TravletAgence.CSUI.FrmMain
             frm.ShowDialog();
 
             //ExcelGenerator.GetEverydayExcel(visaList, visaInfoList);
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "IsUrgent")
+            {
+                Color c = Color.Empty;
+                //string state = e.Value.ToString();
+                bool isUrgent = false;
+                if(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value!=null)
+                    isUrgent = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "True";
+                if (isUrgent)
+                {
+                    c = Color.Red;
+                    //dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "加急";
+                }
+
+                else
+                {
+                    c = Color.AntiqueWhite;
+                }
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
+                    
+                
+            }
         }
 
 

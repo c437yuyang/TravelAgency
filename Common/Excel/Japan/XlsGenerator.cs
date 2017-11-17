@@ -102,8 +102,9 @@ namespace TravletAgence.Common.Excel.Japan
                     {
                         wkbook.Write(fs1);
                     }
+                    Process.Start(dstName);
                 }
-                Process.Start(dstName);
+                
             }
         }
 

@@ -70,6 +70,14 @@ namespace TravletAgence.CSUI.FrmMain
             //checkShowConfirm.Checked = true;
             //checkRegSucShowDlg.Checked = true;
 
+            cbCountry.Items.Add("全部");
+            cbCountry.Items.Add("日本");
+            cbCountry.Items.Add("韩国");
+            cbCountry.Items.Add("泰国");
+            cbCountry.Items.Add("澳大利亚");
+            cbCountry.SelectedIndex = 0;
+
+
             //设置可跨线程访问窗体
             //TODO:这里可能需要修改
             //Control.CheckForIllegalCrossThreadCalls = false;
@@ -357,6 +365,15 @@ namespace TravletAgence.CSUI.FrmMain
             {
                 conditions.Add(" (EntryTime between '" + txtSchEntryTimeFrom.Text + " 00:00:0.000' and " + " '" + txtSchEntryTimeTo.Text +
                                " 23:59:59.999') ");
+            }
+
+            if (cbCountry.Text == "全部")
+            {
+
+            }
+            else
+            {
+                conditions.Add(" Country = '" + cbCountry.Text + "' ");
             }
 
             string[] arr = conditions.ToArray();

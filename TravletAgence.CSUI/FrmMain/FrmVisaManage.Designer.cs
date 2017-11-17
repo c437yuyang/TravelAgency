@@ -55,6 +55,8 @@
             this.金桥大名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelBars = new DevComponents.DotNetBar.PanelEx();
             this.panelSerachBar = new DevComponents.DotNetBar.PanelEx();
+            this.cbIsUrgent = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.btnGetTodayExcel = new DevComponents.DotNetBar.ButtonX();
             this.btnShowToday = new DevComponents.DotNetBar.ButtonX();
             this.cbDisplayType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -76,6 +78,8 @@
             this.panelDgv = new DevComponents.DotNetBar.PanelEx();
             this.cmsAddToGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加到团号ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbCountry = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.GroupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,10 +88,8 @@
             this.EntryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalesPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Types = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsUrgent = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
+            this.IsUrgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Visa_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.cbIsUrgent = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.cmsDgv.SuspendLayout();
@@ -220,7 +222,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -242,6 +244,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1041, 478);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
@@ -332,6 +335,8 @@
             // 
             this.panelSerachBar.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelSerachBar.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelSerachBar.Controls.Add(this.cbCountry);
+            this.panelSerachBar.Controls.Add(this.labelX3);
             this.panelSerachBar.Controls.Add(this.cbIsUrgent);
             this.panelSerachBar.Controls.Add(this.labelX2);
             this.panelSerachBar.Controls.Add(this.btnGetTodayExcel);
@@ -364,11 +369,35 @@
             this.panelSerachBar.Style.GradientAngle = 90;
             this.panelSerachBar.TabIndex = 29;
             // 
+            // cbIsUrgent
+            // 
+            this.cbIsUrgent.DisplayMember = "Text";
+            this.cbIsUrgent.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbIsUrgent.FormattingEnabled = true;
+            this.cbIsUrgent.ItemHeight = 15;
+            this.cbIsUrgent.Location = new System.Drawing.Point(388, 31);
+            this.cbIsUrgent.Name = "cbIsUrgent";
+            this.cbIsUrgent.Size = new System.Drawing.Size(83, 21);
+            this.cbIsUrgent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbIsUrgent.TabIndex = 34;
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(331, 32);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(68, 21);
+            this.labelX2.TabIndex = 33;
+            this.labelX2.Text = "是否急件:";
+            // 
             // btnGetTodayExcel
             // 
             this.btnGetTodayExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnGetTodayExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnGetTodayExcel.Location = new System.Drawing.Point(728, 4);
+            this.btnGetTodayExcel.Location = new System.Drawing.Point(823, 4);
             this.btnGetTodayExcel.Name = "btnGetTodayExcel";
             this.btnGetTodayExcel.Size = new System.Drawing.Size(108, 53);
             this.btnGetTodayExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -380,7 +409,7 @@
             // 
             this.btnShowToday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnShowToday.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowToday.Location = new System.Drawing.Point(619, 34);
+            this.btnShowToday.Location = new System.Drawing.Point(714, 34);
             this.btnShowToday.Name = "btnShowToday";
             this.btnShowToday.Size = new System.Drawing.Size(92, 23);
             this.btnShowToday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -433,7 +462,7 @@
             this.progressLoading.BackgroundStyle.BackgroundImageAlpha = ((byte)(64));
             this.progressLoading.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.progressLoading.FocusCuesEnabled = false;
-            this.progressLoading.Location = new System.Drawing.Point(861, 5);
+            this.progressLoading.Location = new System.Drawing.Point(956, 5);
             this.progressLoading.Name = "progressLoading";
             this.progressLoading.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot;
             this.progressLoading.ProgressColor = System.Drawing.Color.YellowGreen;
@@ -446,7 +475,7 @@
             // 
             this.btnClearSchConditions.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnClearSchConditions.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClearSchConditions.Location = new System.Drawing.Point(521, 34);
+            this.btnClearSchConditions.Location = new System.Drawing.Point(616, 34);
             this.btnClearSchConditions.Name = "btnClearSchConditions";
             this.btnClearSchConditions.Size = new System.Drawing.Size(92, 23);
             this.btnClearSchConditions.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -608,7 +637,7 @@
             // 
             this.btnShowAll.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnShowAll.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowAll.Location = new System.Drawing.Point(619, 5);
+            this.btnShowAll.Location = new System.Drawing.Point(714, 5);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(91, 23);
             this.btnShowAll.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -620,7 +649,7 @@
             // 
             this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Location = new System.Drawing.Point(521, 6);
+            this.btnSearch.Location = new System.Drawing.Point(616, 6);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(92, 23);
             this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -672,6 +701,30 @@
             this.添加到团号ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.添加到团号ToolStripMenuItem.Text = "添加到此团号";
             this.添加到团号ToolStripMenuItem.Click += new System.EventHandler(this.添加到团号ToolStripMenuItem_Click);
+            // 
+            // cbCountry
+            // 
+            this.cbCountry.DisplayMember = "Text";
+            this.cbCountry.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbCountry.FormattingEnabled = true;
+            this.cbCountry.ItemHeight = 15;
+            this.cbCountry.Location = new System.Drawing.Point(514, 3);
+            this.cbCountry.Name = "cbCountry";
+            this.cbCountry.Size = new System.Drawing.Size(83, 21);
+            this.cbCountry.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbCountry.TabIndex = 36;
+            // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(477, 4);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(46, 21);
+            this.labelX3.TabIndex = 35;
+            this.labelX3.Text = "国家:";
             // 
             // GroupNo
             // 
@@ -733,13 +786,12 @@
             // 
             // IsUrgent
             // 
-            this.IsUrgent.Checked = true;
-            this.IsUrgent.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.IsUrgent.CheckValue = "N";
             this.IsUrgent.DataPropertyName = "IsUrgent";
             this.IsUrgent.HeaderText = "是否急件";
             this.IsUrgent.Name = "IsUrgent";
             this.IsUrgent.ReadOnly = true;
+            this.IsUrgent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsUrgent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Visa_id
             // 
@@ -748,30 +800,6 @@
             this.Visa_id.Name = "Visa_id";
             this.Visa_id.ReadOnly = true;
             this.Visa_id.Visible = false;
-            // 
-            // labelX2
-            // 
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(331, 32);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(68, 21);
-            this.labelX2.TabIndex = 33;
-            this.labelX2.Text = "是否急件:";
-            // 
-            // cbIsUrgent
-            // 
-            this.cbIsUrgent.DisplayMember = "Text";
-            this.cbIsUrgent.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbIsUrgent.FormattingEnabled = true;
-            this.cbIsUrgent.ItemHeight = 15;
-            this.cbIsUrgent.Location = new System.Drawing.Point(388, 31);
-            this.cbIsUrgent.Name = "cbIsUrgent";
-            this.cbIsUrgent.Size = new System.Drawing.Size(83, 21);
-            this.cbIsUrgent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbIsUrgent.TabIndex = 34;
             // 
             // FrmVisaManage
             // 
@@ -842,6 +870,10 @@
         private System.Windows.Forms.ToolStripMenuItem 个签意见书ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 金桥大名单ToolStripMenuItem;
         private DevComponents.DotNetBar.ButtonX btnGetTodayExcel;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbIsUrgent;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbCountry;
+        private DevComponents.DotNetBar.LabelX labelX3;
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
@@ -850,9 +882,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EntryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn SalesPerson;
         private System.Windows.Forms.DataGridViewTextBoxColumn Types;
-        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn IsUrgent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IsUrgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Visa_id;
-        private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbIsUrgent;
     }
 }
