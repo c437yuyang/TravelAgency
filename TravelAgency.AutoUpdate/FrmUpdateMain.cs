@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravelAgency.BLL;
@@ -12,6 +14,7 @@ namespace TravelAgency.AutoUpdate
     {
         BLL.ProgramVersion _bll = new ProgramVersion();
         Model.ProgramVersion _model = new Model.ProgramVersion();
+        private float _localVersion = -1.0f;
         public FrmUpdateMain()
         {
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -21,6 +24,11 @@ namespace TravelAgency.AutoUpdate
         private void FrmUpdateMain_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            new Thread(CheckAndDoUpdate) { IsBackground = true }.Start();
+        }
+
+        void CheckAndDoUpdate()
+        {
             _model = _bll.GetModel(_bll.GetMaxId() - 1);
             if (_model == null)
             {
@@ -31,12 +39,17 @@ namespace TravelAgency.AutoUpdate
             //执行检查更新操作
             if (NeedUpdate())
             {
-                MessageBoxEx.Show("发现新版本，即将开始更新");
+                Thread.Sleep(2000); //延时两秒，防止进程没有退出
+                //MessageBoxEx.Show("发现新版本，即将开始更新");
                 //获取更新文件列表
                 string[] list = _model.update_files.Split('|');
 
                 //显示更新描述
-                labelX1.Text = _model.udapte_details;
+                this.Invoke(new Action(() =>
+                {
+                    labelX1.Text = _model.udapte_details;
+                    lbVersion.Text = "V" + _localVersion + " -> V" + _model.version;
+                }));
 
                 //执行更新
                 if (!DoUpdate(list))
@@ -46,6 +59,7 @@ namespace TravelAgency.AutoUpdate
                     return;
                 }
                 XmlHandler.SetPropramVersion((float)_model.version);
+                ConfigurationManager.AppSettings["Version"] = _model.version.ToString();
                 MessageBoxEx.Show("更新完成.");
             }
             else
@@ -56,13 +70,12 @@ namespace TravelAgency.AutoUpdate
 
         private bool NeedUpdate()
         {
-            float localVersion = XmlHandler.GetPropramVersion();
-            return localVersion < (float)_model.version;
+            _localVersion = XmlHandler.GetPropramVersion();
+            return _localVersion < (float)_model.version;
         }
 
         private bool DoUpdate(string[] list)
         {
-            string appPath = GlobalUtils.AppPath;
             //切换到根目录下面
             FtpHandler.ChangeFtpUri(XmlHandler.GetPropramPath());
             int res = 0;
@@ -81,9 +94,11 @@ namespace TravelAgency.AutoUpdate
                     subItem = new ListViewItem.ListViewSubItem(listViewItem, "更新失败");
                 }
                 listViewItem.SubItems.Add(subItem);
-                lvUpdateList.Items.Add(listViewItem);
+                this.Invoke(new Action(() =>
+                {
+                    lvUpdateList.Items.Add(listViewItem);
+                }));
             }
-
             return res == list.Length;
         }
 

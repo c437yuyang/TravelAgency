@@ -34,6 +34,8 @@
             this.FileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnStart = new DevComponents.DotNetBar.ButtonX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.lbVersion = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,6 +43,8 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.lbVersion);
+            this.panelEx1.Controls.Add(this.labelX2);
             this.panelEx1.Controls.Add(this.btnStart);
             this.panelEx1.Controls.Add(this.lvUpdateList);
             this.panelEx1.Controls.Add(this.labelX1);
@@ -82,11 +86,10 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(273, 4);
+            this.labelX1.Location = new System.Drawing.Point(273, 26);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(220, 159);
+            this.labelX1.Size = new System.Drawing.Size(220, 137);
             this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "更新说明:";
             this.labelX1.TextLineAlignment = System.Drawing.StringAlignment.Near;
             // 
             // FileName
@@ -109,6 +112,30 @@
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "启动系统";
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(273, 7);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(75, 18);
+            this.labelX2.TabIndex = 3;
+            this.labelX2.Text = "更新说明:";
+            this.labelX2.TextLineAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // lbVersion
+            // 
+            // 
+            // 
+            // 
+            this.lbVersion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbVersion.Location = new System.Drawing.Point(337, 2);
+            this.lbVersion.Name = "lbVersion";
+            this.lbVersion.Size = new System.Drawing.Size(156, 23);
+            this.lbVersion.TabIndex = 4;
             // 
             // FrmUpdateMain
             // 
@@ -134,6 +161,8 @@
         private System.Windows.Forms.ColumnHeader FileName;
         private System.Windows.Forms.ColumnHeader Status;
         private DevComponents.DotNetBar.ButtonX btnStart;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.LabelX lbVersion;
 
     }
 }
