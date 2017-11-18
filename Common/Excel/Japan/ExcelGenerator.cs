@@ -115,7 +115,7 @@ namespace TravletAgence.Common.Excel.Japan
 
 
             //4.2合并单元格
-            sheet.AddMergedRegion(new CellRangeAddress(1, sheet.LastRowNum, 12, 12));
+            sheet.AddMergedRegion(new CellRangeAddress(2, sheet.LastRowNum, 12, 12));
             sheet.AddMergedRegion(new CellRangeAddress(0, 0, 0, 15));
 
             //4.1设置对齐风格和边框

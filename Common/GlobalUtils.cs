@@ -8,9 +8,6 @@ using Application = System.Windows.Forms.Application;
 
 namespace TravletAgence.Common
 {
-
-
-
     public static class GlobalUtils
     {
         public static Model.AuthUser LoginUser;

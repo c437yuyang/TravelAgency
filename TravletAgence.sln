@@ -1,16 +1,16 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.BLL", "BLL\TravletAgence.BLL.csproj", "{38D7AA58-C95B-449B-86C6-A8073A56E11F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.BLL", "BLL\TravelAgency.BLL.csproj", "{38D7AA58-C95B-449B-86C6-A8073A56E11F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.Model", "Model\TravletAgence.Model.csproj", "{53995DBB-9836-4647-AD22-865884FDEB9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.Model", "Model\TravelAgency.Model.csproj", "{53995DBB-9836-4647-AD22-865884FDEB9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.DAL", "DAL\TravletAgence.DAL.csproj", "{9FE00521-3A8B-42B1-814E-585E99407B2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.DAL", "DAL\TravelAgency.DAL.csproj", "{9FE00521-3A8B-42B1-814E-585E99407B2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.DBUtility", "DBUtility\TravletAgence.DBUtility.csproj", "{0988C62E-247F-471F-A183-DB509C7A3839}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.DBUtility", "DBUtility\TravelAgency.DBUtility.csproj", "{0988C62E-247F-471F-A183-DB509C7A3839}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.Common", "Common\TravletAgence.Common.csproj", "{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.Common", "Common\TravelAgency.Common.csproj", "{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.CSUI", "TravletAgence.CSUI\TravletAgence.CSUI.csproj", "{3FE063B6-57A1-4890-98CF-C23811BCBDD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.CSUI", "TravletAgence.CSUI\TravelAgency.CSUI.csproj", "{3FE063B6-57A1-4890-98CF-C23811BCBDD9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{3F9A535C-0513-451F-92D3-58D71E4A8A6A}"
 EndProject
@@ -32,7 +32,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimeFormatDemo", "DateT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinyinDemo", "PinyinDemo\PinyinDemo.csproj", "{410DDBC9-6C2E-4D0B-BEC3-349608EA7954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravletAgence.CSUI.Test", "TravletAgence.CSUI.Test\TravletAgence.CSUI.Test.csproj", "{7C31B487-AAD2-4418-A947-6810EB7677E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.CSUI.Test", "TravletAgence.CSUI.Test\TravelAgency.CSUI.Test.csproj", "{7C31B487-AAD2-4418-A947-6810EB7677E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backgroundWorkerDemo", "backgroundWorkerDemo\backgroundWorkerDemo.csproj", "{F9A0B3B1-C7F9-4617-819F-04AA3B3DDE71}"
 EndProject
@@ -45,6 +45,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTPDemo", "FTPDemo\FTPDemo.csproj", "{E499E847-718B-4191-B5C3-38F5E721D054}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocXDemo", "DocXDemo\DocXDemo.csproj", "{6790B4EE-D680-4D7A-92E3-B000877D9343}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.AutoUpdate", "TravletAgence.AutoUpdate\TravelAgency.AutoUpdate.csproj", "{F38D6E57-152D-4E66-B201-8CC81E6612A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -337,6 +339,18 @@ Global
 		{6790B4EE-D680-4D7A-92E3-B000877D9343}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6790B4EE-D680-4D7A-92E3-B000877D9343}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6790B4EE-D680-4D7A-92E3-B000877D9343}.Release|x86.ActiveCfg = Release|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Release|.NET.ActiveCfg = Release|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F38D6E57-152D-4E66-B201-8CC81E6612A6}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

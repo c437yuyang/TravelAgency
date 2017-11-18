@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\TravletAgence.Common.csproj">
+    <ProjectReference Include="..\Common\TravelAgency.Common.csproj">
       <Project>{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}</Project>
-      <Name>TravletAgence.Common</Name>
+      <Name>TravelAgency.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

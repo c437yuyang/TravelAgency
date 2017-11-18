@@ -95,13 +95,13 @@
   </ItemGroup>
   <ItemGroup>
     <!--sirinie -->
-    <ProjectReference Include="..\BLL\TravletAgence.BLL.csproj">
+    <ProjectReference Include="..\BLL\TravelAgency.BLL.csproj">
       <Project>{38d7aa58-c95b-449b-86c6-a8073a56e11f}</Project>
-      <Name>TravletAgence.BLL</Name>
+      <Name>TravelAgency.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\TravletAgence.Model.csproj">
+    <ProjectReference Include="..\Model\TravelAgency.Model.csproj">
       <Project>{53995dbb-9836-4647-ad22-865884fdeb9e}</Project>
-      <Name>TravletAgence.Model</Name>
+      <Name>TravelAgency.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

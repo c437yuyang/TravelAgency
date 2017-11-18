@@ -213,17 +213,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\TravletAgence.BLL.csproj">
+    <ProjectReference Include="..\BLL\TravelAgency.BLL.csproj">
       <Project>{38d7aa58-c95b-449b-86c6-a8073a56e11f}</Project>
-      <Name>TravletAgence.BLL</Name>
+      <Name>TravelAgency.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common\TravletAgence.Common.csproj">
+    <ProjectReference Include="..\Common\TravelAgency.Common.csproj">
       <Project>{e3d8759a-c5eb-402d-9f10-f5c6029a8d1a}</Project>
-      <Name>TravletAgence.Common</Name>
+      <Name>TravelAgency.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\TravletAgence.Model.csproj">
+    <ProjectReference Include="..\Model\TravelAgency.Model.csproj">
       <Project>{53995dbb-9836-4647-ad22-865884fdeb9e}</Project>
-      <Name>TravletAgence.Model</Name>
+      <Name>TravelAgency.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

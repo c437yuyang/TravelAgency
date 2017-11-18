@@ -42,7 +42,6 @@ namespace TravletAgence.Common.FTP
             FtpWebRequest reqFTP;
             try
             {
-                
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(_ftpUri + fileName));
                 reqFTP.Method = WebRequestMethods.Ftp.DownloadFile;
                 reqFTP.UseBinary = true;
@@ -252,11 +251,6 @@ namespace TravletAgence.Common.FTP
             }
         }
 
-
-
-
-
-
         /// <summary>
         /// 获取当前目录下所有的文件夹列表(仅文件夹)
         /// </summary> 
@@ -336,7 +330,7 @@ namespace TravletAgence.Common.FTP
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(_ftpUri + filename));
                 reqFTP.Method = WebRequestMethods.Ftp.GetFileSize;
 
-                ; reqFTP.UseBinary = true;
+                reqFTP.UseBinary = true;
                 reqFTP.Credentials = new NetworkCredential(_ftpUserId, _ftpPassword);
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
                 Stream ftpStream = response.GetResponseStream();
