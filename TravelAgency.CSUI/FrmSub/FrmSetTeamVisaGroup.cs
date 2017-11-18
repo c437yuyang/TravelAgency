@@ -9,7 +9,7 @@ using TravelAgency.Common.Excel;
 using TravelAgency.Common.Excel.Japan;
 using TravelAgency.CSUI.Properties;
 using TravelAgency.Model;
-using TravletAgence.CSUI.Properties;
+
 
 namespace TravelAgency.CSUI.FrmSub
 {

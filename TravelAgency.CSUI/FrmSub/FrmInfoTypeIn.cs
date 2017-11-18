@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravelAgency.Common;
 using TravelAgency.Common.Enums;
-using TravelAgency.Common.FTP;
 using TravelAgency.CSUI.Properties;
-using TravelAgency.Model;
-using TravletAgence.CSUI.Properties;
 
 namespace TravelAgency.CSUI.FrmSub
 {

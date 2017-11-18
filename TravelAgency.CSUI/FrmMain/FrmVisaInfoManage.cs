@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravelAgency.Common;
 using TravelAgency.Common.Enums;
 using TravelAgency.Common.Excel.Japan;
-using TravelAgency.Common.IDCard;
 using TravelAgency.Common.QRCode;
 using TravelAgency.Common.Word.Japan;
 using TravelAgency.CSUI.FrmSub;
 using TravelAgency.CSUI.Properties;
 using TravelAgency.Model;
-using Timer = System.Windows.Forms.Timer;
-using TravletAgence.CSUI.Properties;
 
 namespace TravelAgency.CSUI.FrmMain
 {

@@ -16,7 +16,7 @@ using TravelAgency.Common.FTP;
 using TravelAgency.Common.IDCard;
 using TravelAgency.CSUI.Properties;
 using TravelAgency.Model;
-using TravletAgence.CSUI.Properties;
+using TravelAgency.CSUI.Properties;
 
 namespace TravelAgency.CSUI.FrmMain
 {

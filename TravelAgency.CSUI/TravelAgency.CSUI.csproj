@@ -7,8 +7,8 @@
     <ProjectGuid>{3FE063B6-57A1-4890-98CF-C23811BCBDD9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TravletAgence.CSUI</RootNamespace>
-    <AssemblyName>TravletAgence.CSUI</AssemblyName>
+    <RootNamespace>TravelAgency.CSUI</RootNamespace>
+    <AssemblyName>TravelAgency.CSUI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

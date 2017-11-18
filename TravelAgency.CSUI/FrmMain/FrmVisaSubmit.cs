@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
 using TravelAgency.Common;
 using TravelAgency.Common.Enums;
 using TravelAgency.Common.QRCode;
 using TravelAgency.CSUI.FrmSub;
 using TravelAgency.CSUI.Properties;
 using VisaInfo = TravelAgency.Model.VisaInfo;
-using TravletAgence.CSUI.Properties;
 
 namespace TravelAgency.CSUI.FrmMain
 {

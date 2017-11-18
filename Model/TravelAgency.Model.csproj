@@ -11,8 +11,8 @@
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>TravletAgence.Model</AssemblyName>
-    <RootNamespace>TravletAgence.Model</RootNamespace>
+    <AssemblyName>TravelAgency.Model</AssemblyName>
+    <RootNamespace>TravelAgency.Model</RootNamespace>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
