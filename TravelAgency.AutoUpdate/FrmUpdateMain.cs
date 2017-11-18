@@ -48,9 +48,10 @@ namespace TravelAgency.AutoUpdate
                 XmlHandler.SetPropramVersion((float)_model.version);
                 MessageBoxEx.Show("更新完成.");
             }
-            
-            Process.Start(GlobalUtils.AppPath + "\\TravelAgency.CSUI.exe");
-            Application.Exit();
+            else
+            {
+                btnStart_Click(null, null);
+            }
         }
 
         private bool NeedUpdate()
@@ -69,19 +70,27 @@ namespace TravelAgency.AutoUpdate
             {
                 ListViewItem listViewItem = new ListViewItem();
                 listViewItem = new ListViewItem(list[i]);
+                ListViewItem.ListViewSubItem subItem;
                 if (FtpHandler.Download(GlobalUtils.AppPath, list[i]))
                 {
-                    ListViewItem.ListViewSubItem subItem = new ListViewItem.ListViewSubItem(listViewItem, "更新成功");
+                    subItem = new ListViewItem.ListViewSubItem(listViewItem, "更新成功");
                     ++res;
                 }
                 else
                 {
-                    ListViewItem.ListViewSubItem subItem = new ListViewItem.ListViewSubItem(listViewItem, "更新失败");
+                    subItem = new ListViewItem.ListViewSubItem(listViewItem, "更新失败");
                 }
+                listViewItem.SubItems.Add(subItem);
                 lvUpdateList.Items.Add(listViewItem);
             }
 
             return res == list.Length;
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            Process.Start(GlobalUtils.AppPath + "\\TravelAgency.CSUI.exe");
+            Application.Exit();
         }
 
     }

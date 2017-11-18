@@ -33,6 +33,7 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.FileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnStart = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,6 +41,7 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.btnStart);
             this.panelEx1.Controls.Add(this.lvUpdateList);
             this.panelEx1.Controls.Add(this.labelX1);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
@@ -82,7 +84,7 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Location = new System.Drawing.Point(273, 4);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(220, 194);
+            this.labelX1.Size = new System.Drawing.Size(220, 159);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "更新说明:";
             this.labelX1.TextLineAlignment = System.Drawing.StringAlignment.Near;
@@ -90,10 +92,23 @@
             // FileName
             // 
             this.FileName.Text = "文件名";
+            this.FileName.Width = 187;
             // 
             // Status
             // 
             this.Status.Text = "状态";
+            // 
+            // btnStart
+            // 
+            this.btnStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnStart.Location = new System.Drawing.Point(273, 170);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "启动系统";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // FrmUpdateMain
             // 
@@ -118,6 +133,7 @@
         private DevComponents.DotNetBar.Controls.ListViewEx lvUpdateList;
         private System.Windows.Forms.ColumnHeader FileName;
         private System.Windows.Forms.ColumnHeader Status;
+        private DevComponents.DotNetBar.ButtonX btnStart;
 
     }
 }
