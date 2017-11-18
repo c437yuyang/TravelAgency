@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravelAgency.Common;
@@ -128,8 +129,7 @@ namespace TravelAgency.CSUI.FrmSub
                 pictureBox1.Image = Resources.PassportPictureNotFound;
                 return;
             }
-            pictureBox1.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
-
+            pictureBox1.Image = GlobalUtils.LoadImageFromFileNoBlock(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
         }
 
         private void SetLabelStates()

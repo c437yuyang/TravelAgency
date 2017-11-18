@@ -1,5 +1,8 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
+using System.Drawing;
 using System.IO;
+using System.Web.SessionState;
 using System.Windows.Forms;
 using Excel;
 using TravelAgency.Common.FTP;
@@ -79,6 +82,38 @@ namespace TravelAgency.Common
             if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 return null;
             return fbd.SelectedPath;
+        }
+
+        //加载后防止文件继续占用
+        public static byte[] LoadFileToMemory(string filename)
+        {
+            FileStream fileStream = new FileStream(filename, FileMode.Open, FileAccess.Read);
+            int byteLength = (int)fileStream.Length;
+            byte[] fileBytes = new byte[byteLength];
+            fileStream.Read(fileBytes, 0, byteLength);
+            //文件流关闭,文件解除锁定
+            fileStream.Close();
+            return fileBytes;
+        }
+
+        /// <summary>
+        /// 从stream加载图像
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <returns></returns>
+        public static Image LoadImageFromStream(byte[] buffer)
+        {
+            return Image.FromStream(new MemoryStream(buffer));
+        }
+
+        /// <summary>
+        /// 从文件加载图像但是不占用文件
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        public static Image LoadImageFromFileNoBlock(string filename)
+        {
+            return LoadImageFromStream(LoadFileToMemory(filename));
         }
 
     }

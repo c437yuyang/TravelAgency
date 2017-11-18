@@ -121,9 +121,8 @@ namespace TravelAgency.CSUI.FrmMain
                 picPassportNo.Image = Resources.PassportPictureNotFound;
                 return;
             }
-            picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
 
-
+            picPassportNo.Image = GlobalUtils.LoadImageFromFileNoBlock(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
         }
 
         /// <summary>

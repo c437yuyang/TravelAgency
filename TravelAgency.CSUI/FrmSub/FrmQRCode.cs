@@ -36,13 +36,7 @@ namespace TravelAgency.CSUI.FrmSub
         {
             _qrCode.EncodeToPng(_qrinfo, _tmpFileName, QRCodeSaveSize.Size165X165);
 
-            FileStream fileStream = new FileStream(_tmpFileName, FileMode.Open, FileAccess.Read);
-            int byteLength = (int)fileStream.Length;
-            byte[] fileBytes = new byte[byteLength];
-            fileStream.Read(fileBytes, 0, byteLength);
-            //文件流关闭,文件解除锁定
-            fileStream.Close();
-            picQRCode.Image = Image.FromStream(new MemoryStream(fileBytes));
+            picQRCode.Image = GlobalUtils.LoadImageFromFileNoBlock(_tmpFileName);
             txtQRCodeInfo.Text = _qrinfo;
         }
 
