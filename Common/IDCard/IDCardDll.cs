@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace TravletAgence.Common.IDCard
+namespace TravelAgency.Common.IDCard
 {
     public static class IDCardDll
     {

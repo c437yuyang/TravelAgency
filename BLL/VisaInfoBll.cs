@@ -2,9 +2,9 @@
 using System.Data;
 using System.Collections.Generic;
 using Maticsoft.Common;
-using TravletAgence.Model;
+using TravelAgency.Model;
 
-namespace TravletAgence.BLL
+namespace TravelAgency.BLL
 {
     /// <summary>
     /// VisaInfo

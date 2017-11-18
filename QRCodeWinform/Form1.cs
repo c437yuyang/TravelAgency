@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Forms;
 using Gma.QrCodeNet.Encoding.Windows.Render;
-using TravletAgence.Common.QRCode;
+using TravelAgency.Common.QRCode;
 
 namespace QRCodeWinform
 {

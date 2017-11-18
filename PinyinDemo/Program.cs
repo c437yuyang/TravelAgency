@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using TravletAgence.Common.PinyinParse;
+using TravelAgency.Common.PinyinParse;
 
 namespace PinyinDemo
 {

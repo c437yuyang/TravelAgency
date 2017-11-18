@@ -3,10 +3,10 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
-using TravletAgence.Model;
+using TravelAgency.Model;
 
 
-namespace TravletAgence.Common.IDCard
+namespace TravelAgency.Common.IDCard
 {
     public class IDCard
     {
@@ -75,7 +75,7 @@ namespace TravletAgence.Common.IDCard
             return true;
         }
 
-        public TravletAgence.Model.VisaInfo_Tmp RecogoInfo(string picPath, bool showDlgWhenSuccess = true)
+        public TravelAgency.Model.VisaInfo_Tmp RecogoInfo(string picPath, bool showDlgWhenSuccess = true)
         {
             //直接返回
             if (!_kernelLoaded)
@@ -135,7 +135,7 @@ namespace TravletAgence.Common.IDCard
                 MessageBoxEx.Show("recognition successful\r\n");
 
             //返回的model
-            TravletAgence.Model.VisaInfo_Tmp visaInfo = new VisaInfo_Tmp();
+            TravelAgency.Model.VisaInfo_Tmp visaInfo = new VisaInfo_Tmp();
             sb.Clear();
             //string info = "";
             for (int i = 1; ; i++)
@@ -192,7 +192,7 @@ namespace TravletAgence.Common.IDCard
         }
 
 
-        public TravletAgence.Model.VisaInfo_Tmp AutoClassAndRecognize(string picPath, bool showDlgWhenSuccess = true)
+        public TravelAgency.Model.VisaInfo_Tmp AutoClassAndRecognize(string picPath, bool showDlgWhenSuccess = true)
         {
             if (!_kernelLoaded)
             {
@@ -260,7 +260,7 @@ namespace TravletAgence.Common.IDCard
                 char[] cArrFieldName = new char[MAX_CH_NUM];
                 if (showDlgWhenSuccess)
                     MessageBoxEx.Show("recognition Success\r\n");
-                TravletAgence.Model.VisaInfo_Tmp visaInfo = new TravletAgence.Model.VisaInfo_Tmp();
+                TravelAgency.Model.VisaInfo_Tmp visaInfo = new TravelAgency.Model.VisaInfo_Tmp();
                 sb.Clear();
                 for (int i = 1; ; i++)
                 {

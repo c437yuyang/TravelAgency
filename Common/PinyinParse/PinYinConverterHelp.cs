@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.International.Converters.PinYinConverter;
 
-namespace TravletAgence.Common.PinyinParse
+namespace TravelAgency.Common.PinyinParse
 {
     public class PinYinConverterHelp
     {

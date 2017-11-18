@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
-using TravletAgence.BLL;
+using TravelAgency.BLL;
 
 namespace TelerikDemo
 {
@@ -31,7 +31,7 @@ namespace TelerikDemo
 
         private void radButton2_Click(object sender, EventArgs e)
         {
-            TravletAgence.BLL.VisaInfo bll = new VisaInfo();
+            TravelAgency.BLL.VisaInfo bll = new VisaInfo();
 
             this.radGridView1.DataSource = bll.GetListByPageOrderByHasChecked(1, 30);
 

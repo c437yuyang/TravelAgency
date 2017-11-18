@@ -5,7 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using Maticsoft.DBUtility;//Please add references
 
-namespace TravletAgence.DAL
+namespace TravelAgency.DAL
 {
     /// <summary>
     /// 数据访问类:VisaInfo
@@ -129,7 +129,7 @@ namespace TravletAgence.DAL
         }
 
 
-        public TravletAgence.Model.VisaInfo GetModelByPassportNo(string passportNo)
+        public TravelAgency.Model.VisaInfo GetModelByPassportNo(string passportNo)
         {
 
             StringBuilder strSql = new StringBuilder();
@@ -139,7 +139,7 @@ namespace TravletAgence.DAL
 					new SqlParameter("@PassportNo", SqlDbType.VarChar,50)			};
             parameters[0].Value = passportNo;
 
-            TravletAgence.Model.VisaInfo model = new TravletAgence.Model.VisaInfo();
+            TravelAgency.Model.VisaInfo model = new TravelAgency.Model.VisaInfo();
             DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
             if (ds.Tables[0].Rows.Count > 0)
             {

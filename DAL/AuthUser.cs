@@ -3,7 +3,7 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using Maticsoft.DBUtility;//Please add references
-namespace TravletAgence.DAL
+namespace TravelAgency.DAL
 {
 	/// <summary>
 	/// 数据访问类:AuthUser
@@ -33,7 +33,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(TravletAgence.Model.AuthUser model)
+		public bool Add(TravelAgency.Model.AuthUser model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into AuthUser(");
@@ -71,7 +71,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(TravletAgence.Model.AuthUser model)
+		public bool Update(TravelAgency.Model.AuthUser model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update AuthUser set ");
@@ -158,7 +158,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public TravletAgence.Model.AuthUser GetModel(string WorkId)
+		public TravelAgency.Model.AuthUser GetModel(string WorkId)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -168,7 +168,7 @@ namespace TravletAgence.DAL
 					new SqlParameter("@WorkId", SqlDbType.VarChar,50)			};
 			parameters[0].Value = WorkId;
 
-			TravletAgence.Model.AuthUser model=new TravletAgence.Model.AuthUser();
+			TravelAgency.Model.AuthUser model=new TravelAgency.Model.AuthUser();
 			DataSet ds=DbHelperSQL.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -184,9 +184,9 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public TravletAgence.Model.AuthUser DataRowToModel(DataRow row)
+		public TravelAgency.Model.AuthUser DataRowToModel(DataRow row)
 		{
-			TravletAgence.Model.AuthUser model=new TravletAgence.Model.AuthUser();
+			TravelAgency.Model.AuthUser model=new TravelAgency.Model.AuthUser();
 			if (row != null)
 			{
 				if(row["WorkId"]!=null)

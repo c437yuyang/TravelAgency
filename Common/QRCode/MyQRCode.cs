@@ -11,7 +11,7 @@ using Gma.QrCodeNet.Encoding.Windows.Forms;
 using Gma.QrCodeNet.Encoding.Windows.Render;
 using Gma.QrCodeNet.Encoding.Windows.WPF;
 
-namespace TravletAgence.Common.QRCode
+namespace TravelAgency.Common.QRCode
 {
     public enum QRCodeSaveSize
     {

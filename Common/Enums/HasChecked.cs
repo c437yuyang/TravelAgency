@@ -1,4 +1,4 @@
-﻿namespace TravletAgence.Common.Enums
+﻿namespace TravelAgency.Common.Enums
 {
     public static class HasChecked
     {

@@ -6,10 +6,10 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using TravletAgence.Common.Word;
-using TravletAgence.Model;
+using TravelAgency.Common.Word;
+using TravelAgency.Model;
 
-namespace TravletAgence.Common.Excel.Japan
+namespace TravelAgency.Common.Excel.Japan
 {
     /// <summary>
     /// 这个类是用占位符替换生成的报表

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Maticsoft.DBUtility;
 
-namespace TravletAgence.DAL
+namespace TravelAgency.DAL
 {
     public partial class Visa
     {
@@ -18,7 +18,7 @@ namespace TravletAgence.DAL
         /// 修改成返回默认生成的guid
         /// 失败返回Guid.Empty
         /// </summary>
-        public Guid Add(TravletAgence.Model.Visa model)
+        public Guid Add(TravelAgency.Model.Visa model)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into Visa(");

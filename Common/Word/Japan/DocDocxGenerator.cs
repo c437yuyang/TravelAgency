@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using NPOI.SS.Formula.Functions;
 
-namespace TravletAgence.Common.Word.Japan
+namespace TravelAgency.Common.Word.Japan
 {
     public class DocDocxGenerator
     {

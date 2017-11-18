@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace TravletAgence.Common.PinyinParse
+namespace TravelAgency.Common.PinyinParse
 {
     /// <summary>
     /// 汉字拼音转换类

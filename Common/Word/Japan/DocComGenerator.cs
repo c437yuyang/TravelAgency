@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 
-namespace TravletAgence.Common.Word.Japan
+namespace TravelAgency.Common.Word.Japan
 {
     /// <summary>
     /// Deprecated,依赖于OFFICE2013，不再使用

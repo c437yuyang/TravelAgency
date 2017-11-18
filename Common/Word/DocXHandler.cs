@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xceed.Words.NET;
 
-namespace TravletAgence.Common.Word
+namespace TravelAgency.Common.Word
 {
     public class DocXHandler
     {

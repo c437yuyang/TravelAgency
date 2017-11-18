@@ -7,11 +7,11 @@ using DevComponents.DotNetBar;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
-using TravletAgence.Model;
+using TravelAgency.Model;
 using BorderStyle = NPOI.SS.UserModel.BorderStyle;
 using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 
-namespace TravletAgence.Common.Excel.Japan
+namespace TravelAgency.Common.Excel.Japan
 {
     /// <summary>
     /// 这个类是自己生成的Excel
@@ -38,7 +38,7 @@ namespace TravletAgence.Common.Excel.Japan
         }
 
 
-        public static bool GetIndividualVisaExcel(List<TravletAgence.Model.VisaInfo> list, string remark, string groupNo)
+        public static bool GetIndividualVisaExcel(List<TravelAgency.Model.VisaInfo> list, string remark, string groupNo)
         {
             //1.创建工作簿对象
             IWorkbook wkbook = new HSSFWorkbook();
@@ -153,7 +153,7 @@ namespace TravletAgence.Common.Excel.Japan
             return SaveFile(dstName,wkbook);
 
         }
-        public static bool GetTeamVisaExcelOfJapan(List<TravletAgence.Model.VisaInfo> list, string groupNo)
+        public static bool GetTeamVisaExcelOfJapan(List<TravelAgency.Model.VisaInfo> list, string groupNo)
         {
             //1.创建工作簿对象
             IWorkbook wkbook = new HSSFWorkbook();
@@ -244,7 +244,7 @@ namespace TravletAgence.Common.Excel.Japan
             return SaveFile(dstName, wkbook);
         }
 
-        public static bool GetTeamVisaExcelOfThailand(List<TravletAgence.Model.VisaInfo> list, string groupNo)
+        public static bool GetTeamVisaExcelOfThailand(List<TravelAgency.Model.VisaInfo> list, string groupNo)
         {
             //1.创建工作簿对象
             IWorkbook wkbook = new HSSFWorkbook();

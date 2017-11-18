@@ -3,9 +3,9 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
-using TravletAgence.Common.FTP;
+using TravelAgency.Common.FTP;
 
-namespace TravletAgence.Common
+namespace TravelAgency.Common
 {
     public class PassportPicHandler
     {

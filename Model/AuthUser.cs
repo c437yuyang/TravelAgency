@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TravletAgence.Model
+namespace TravelAgency.Model
 {
 	/// <summary>
 	/// AuthUser:实体类(属性说明自动提取数据库字段的描述信息)

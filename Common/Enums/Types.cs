@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravletAgence.Common.Enums
+namespace TravelAgency.Common.Enums
 {
     public static class Types
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace TravletAgence.Common.MD5Computer
+namespace TravelAgency.Common.MD5Computer
 {
     class MyMd5
     {

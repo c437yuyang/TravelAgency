@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace TravletAgence.Common
+namespace TravelAgency.Common
 {
     public static class ObjectCopy
     {

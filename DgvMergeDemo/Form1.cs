@@ -16,7 +16,7 @@ namespace DgvMergeDemo
         List<String> colsHeaderText_V = new List<String>();
         List<String> colsHeaderText_H = new List<String>();
 
-        List<TravletAgence.Model.VisaInfo> _list = new List<TravletAgence.Model.VisaInfo>(); 
+        List<TravelAgency.Model.VisaInfo> _list = new List<TravelAgency.Model.VisaInfo>(); 
 
         public Form1()
         {
@@ -183,7 +183,7 @@ namespace DgvMergeDemo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            TravletAgence.BLL.VisaInfo bll = new TravletAgence.BLL.VisaInfo();
+            TravelAgency.BLL.VisaInfo bll = new TravelAgency.BLL.VisaInfo();
             _list = bll.GetListByPageOrderByOutState(1,30,string.Empty);
 
             dataGridView1.DataSource = _list;

@@ -3,7 +3,7 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using Maticsoft.DBUtility;//Please add references
-namespace TravletAgence.DAL
+namespace TravelAgency.DAL
 {
 	/// <summary>
 	/// 数据访问类:Visa
@@ -34,7 +34,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(TravletAgence.Model.Visa model)
+		public bool Update(TravelAgency.Model.Visa model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update Visa set ");
@@ -238,7 +238,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public TravletAgence.Model.Visa GetModel(Guid Visa_id)
+		public TravelAgency.Model.Visa GetModel(Guid Visa_id)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -248,7 +248,7 @@ namespace TravletAgence.DAL
 					new SqlParameter("@Visa_id", SqlDbType.UniqueIdentifier,16)			};
 			parameters[0].Value = Visa_id;
 
-			TravletAgence.Model.Visa model=new TravletAgence.Model.Visa();
+			TravelAgency.Model.Visa model=new TravelAgency.Model.Visa();
 			DataSet ds=DbHelperSQL.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -264,9 +264,9 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public TravletAgence.Model.Visa DataRowToModel(DataRow row)
+		public TravelAgency.Model.Visa DataRowToModel(DataRow row)
 		{
-			TravletAgence.Model.Visa model=new TravletAgence.Model.Visa();
+			TravelAgency.Model.Visa model=new TravelAgency.Model.Visa();
 			if (row != null)
 			{
 				if(row["Visa_id"]!=null && row["Visa_id"].ToString()!="")

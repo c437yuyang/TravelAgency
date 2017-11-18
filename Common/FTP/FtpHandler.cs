@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using DevComponents.DotNetBar;
 
-namespace TravletAgence.Common.FTP
+namespace TravelAgency.Common.FTP
 {
     public class FtpHandler
     {

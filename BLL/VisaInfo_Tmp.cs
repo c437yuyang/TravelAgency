@@ -2,15 +2,15 @@
 using System.Data;
 using System.Collections.Generic;
 using Maticsoft.Common;
-using TravletAgence.Model;
-namespace TravletAgence.BLL
+using TravelAgency.Model;
+namespace TravelAgency.BLL
 {
 	/// <summary>
 	/// VisaInfo_Tmp
 	/// </summary>
 	public partial class VisaInfo_Tmp
 	{
-		private readonly TravletAgence.DAL.VisaInfo_Tmp dal=new TravletAgence.DAL.VisaInfo_Tmp();
+		private readonly TravelAgency.DAL.VisaInfo_Tmp dal=new TravelAgency.DAL.VisaInfo_Tmp();
 		public VisaInfo_Tmp()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(TravletAgence.Model.VisaInfo_Tmp model)
+		public bool Add(TravelAgency.Model.VisaInfo_Tmp model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(TravletAgence.Model.VisaInfo_Tmp model)
+		public bool Update(TravelAgency.Model.VisaInfo_Tmp model)
 		{
 			return dal.Update(model);
 		}
@@ -50,7 +50,7 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public TravletAgence.Model.VisaInfo_Tmp GetModel(Guid VisaInfo_id)
+		public TravelAgency.Model.VisaInfo_Tmp GetModel(Guid VisaInfo_id)
 		{
 			
 			return dal.GetModel(VisaInfo_id);
@@ -75,7 +75,7 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<TravletAgence.Model.VisaInfo_Tmp> GetModelList(string strWhere)
+		public List<TravelAgency.Model.VisaInfo_Tmp> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -83,13 +83,13 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<TravletAgence.Model.VisaInfo_Tmp> DataTableToList(DataTable dt)
+		public List<TravelAgency.Model.VisaInfo_Tmp> DataTableToList(DataTable dt)
 		{
-			List<TravletAgence.Model.VisaInfo_Tmp> modelList = new List<TravletAgence.Model.VisaInfo_Tmp>();
+			List<TravelAgency.Model.VisaInfo_Tmp> modelList = new List<TravelAgency.Model.VisaInfo_Tmp>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				TravletAgence.Model.VisaInfo_Tmp model;
+				TravelAgency.Model.VisaInfo_Tmp model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

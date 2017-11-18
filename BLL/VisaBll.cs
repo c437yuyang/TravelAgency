@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravletAgence.BLL
+namespace TravelAgency.BLL
 {
     public partial class Visa
     {
@@ -49,7 +49,7 @@ namespace TravletAgence.BLL
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public Guid Add(TravletAgence.Model.Visa model)
+        public Guid Add(TravelAgency.Model.Visa model)
         {
             return dal.Add(model);
         }

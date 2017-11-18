@@ -3,7 +3,7 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using Maticsoft.DBUtility;//Please add references
-namespace TravletAgence.DAL
+namespace TravelAgency.DAL
 {
 	/// <summary>
 	/// 数据访问类:VisaInfo
@@ -33,7 +33,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(TravletAgence.Model.VisaInfo model)
+		public bool Add(TravelAgency.Model.VisaInfo model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into VisaInfo(");
@@ -139,7 +139,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(TravletAgence.Model.VisaInfo model)
+		public bool Update(TravelAgency.Model.VisaInfo model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update VisaInfo set ");
@@ -309,7 +309,7 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public TravletAgence.Model.VisaInfo GetModel(Guid VisaInfo_id)
+		public TravelAgency.Model.VisaInfo GetModel(Guid VisaInfo_id)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -319,7 +319,7 @@ namespace TravletAgence.DAL
 					new SqlParameter("@VisaInfo_id", SqlDbType.UniqueIdentifier,16)			};
 			parameters[0].Value = VisaInfo_id;
 
-			TravletAgence.Model.VisaInfo model=new TravletAgence.Model.VisaInfo();
+			TravelAgency.Model.VisaInfo model=new TravelAgency.Model.VisaInfo();
 			DataSet ds=DbHelperSQL.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -335,9 +335,9 @@ namespace TravletAgence.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public TravletAgence.Model.VisaInfo DataRowToModel(DataRow row)
+		public TravelAgency.Model.VisaInfo DataRowToModel(DataRow row)
 		{
-			TravletAgence.Model.VisaInfo model=new TravletAgence.Model.VisaInfo();
+			TravelAgency.Model.VisaInfo model=new TravelAgency.Model.VisaInfo();
 			if (row != null)
 			{
 				if(row["VisaInfo_id"]!=null && row["VisaInfo_id"].ToString()!="")

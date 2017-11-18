@@ -1,0 +1,585 @@
+﻿@model IEnumerable<TravletAgence.Model.VisaInfo>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/tableStyle.css" rel="stylesheet" />
+    <link href="~/Content/jquery-easyui-1.3.1/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/jquery-easyui-1.3.1/themes/metro/easyui.css" rel="stylesheet" />
+    <script src="~/Content/jquery-easyui-1.3.1/jquery-1.8.0.min.js"></script>
+    <script src="~/Content/jquery-easyui-1.3.1/jquery.easyui.min.js"></script>
+    <script src="~/Content/jquery-easyui-1.3.1/locale/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/datapattern.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @*<link href="~/Content/CSS3_GITHUB_BUTTONS.css" rel="stylesheet" />*@
+    <link href="~/Content/buttons_bootcss.css" rel="stylesheet" />
+    <script type="text/javascript">
+
+        //通过机器读取信息部分开始
+        var websocket = null;
+        var connected = false;
+        var autoReadtimerId = null;
+        function connect() {
+            var msg = document.getElementById("webSocketMsg");
+            try {
+                var readyState = new Array("on connection", "Connection established",
+                                        "Closing connection", "Close connection");
+                var host = "ws://127.0.0.1:90";
+                websocket = new WebSocket(host);
+                websocket.onopen = function () {
+                    msg.innerHTML = "Socket state: " + readyState[websocket.readyState];
+                }
+                websocket.onmessage = function (event) {
+                    var str = event.data;
+                    var strsub = str.substr(1);
+                    if (strsub != "") {
+                        str = strsub.replace(/\*/g, "\r\n");
+                        msg.innerHTML = "Receive information:" + str;
+                        //TODO:这里完成解析收到的字符串str,并且给编辑框赋值
+
+                        if (str[str.length - 1] == "\n")
+                            str = str.substr(0, str.length - 1);
+                        var infos = str.split("\n");
+                        var name = infos[3].split(":")[1];
+                        var englishName = infos[4].split(":")[1];
+                        var sex = infos[5].split(":")[1];
+                        var birthday = infos[6].split(":")[1];
+                        var passportNo = infos[2].split(":")[1];
+                        var issuedate = infos[17].split(":")[1];
+                        var expirdate = infos[7].split(":")[1];
+                        var birthplace = infos[15].split(":")[1];
+                        var issuePlace = infos[16].split(":")[1];
+                        //alert(str);
+                        //解析完成后调用subAdd
+                        if (!name.empty)
+                            $('#txtName').val(name);
+                        if (!englishName.empty)
+                            $('#txtEnglishName').val(englishName);
+                        if (!sex.empty)
+                            $('#txtSex').val(sex);
+                        if (!birthday.empty)
+                            $('#txtBirthday').val(birthday);
+                        if (!passportNo.empty)
+                            $('#txtPassportNo').val(passportNo);
+                        if (!issuedate.empty)
+                            $('#txtLicenceTime').val(issuedate);
+                        if (!expirdate.empty)
+                            $('#txtExpiryDate').val(expirdate);
+                        if (!birthplace.empty)
+                            $('#txtBirthplace').val(birthplace);
+                        if (!issuePlace.empty)
+                            $('#txtIssuePlace').val(issuePlace);
+                        subAddForm();
+                    }
+                }
+                websocket.onclose = function () {
+                    msg.innerHTML = "Socket state: " + readyState[websocket.readyState];
+                }
+                
+                msg.innerHTML = "Socket state: " + readyState[websocket.readyState];
+                connected = true;
+            } catch (exception) {
+                msg.innerHTML = "Error";
+                connected = false;
+            }
+        }
+        function send(command) {
+            var msg = document.getElementById("webSocketMsg");
+            var text = command;
+            if (text == "") {
+                msg.innerHTML = "Please enter some text";
+                return { status: "error", msg: "please enter some text" };
+            }
+            try {
+                //var nDG = checkDg("DG");
+                var nDG = 2 + 4 + 8 + 16 + 4096; //取DG1234
+                //var nImage = checkSaveImageType("image");
+                var nImage = 1 + 2 + 8 + 16;
+                //var nViz = checkVIZ();
+                var nViz = 0;
+
+                //if (text.substr(1, 4) == "8102")
+                //    text = text + nDG;
+                //else if (text.substr(1, 4) == "8103")
+                //    text = text + nImage;
+                //else if (text.substr(1, 4) == "8104")
+                //    text = text + nViz;
+
+                websocket.send(text);
+                msg.innerHTML = "send data: " + text + "";
+                return { status: "ok", msg: "send data successful!" };
+            } catch (exception) {
+                msg.innerHTML = "Error sending data";
+                return { status: "error", msg: "Error sending data" };
+            }
+        }
+
+        function disconnect() {
+            //var DGArray = document.getElementsByName("DG")
+            //for (var i = 0; i < DGArray.length; i++) {
+            //    if (0 == i || 1 == i || 10 == i || 11 == i)
+            //        DGArray[i].checked = true;
+            //    else
+            //        DGArray[i].checked = false;
+            //}
+
+            //var saveImageArray = document.getElementsByName("image");
+            //saveImageArray[0].checked = true;
+            //saveImageArray[1].checked = false;
+            //saveImageArray[2].checked = true;
+            //saveImageArray[3].checked = false;
+            //saveImageArray[4].checked = false;
+
+            //var vizArray = document.getElementsByName("seeRead");
+            //vizArray[0].checked = false;
+            //vizArray[1].checked = true;
+
+            //恢复到默认配置
+            var nDG = 0x00000002 | 0x00000004 | 0x00000800 | 0x00001000;
+            var nSaveImageType = 3;
+            var bVIZ = 0;
+            var str = "1" + nDG + nSaveImageType + bVIZ;
+            websocket.send(str);
+
+            websocket.close();
+            msg.innerHTML = "Close connection";
+        }
+
+        function AutoPhotoAndRecog() {
+            if (websocket != null)
+                websocket.send("10000");
+        }
+
+        function checkDg(name) { //其实就是DG1从2开始为2的幂次依次加
+            var x = document.getElementsByName(name);
+            var num = 0;
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].checked == true)
+                    num |= (1 << x[i].value);
+            }
+            return num;
+        }
+
+        function checkSaveImageType(name) { //从上往下依次value对应123,右边是45,依次是1,2,4,8...
+            var x = document.getElementsByName(name);
+            var num = 0;
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].checked == true)
+                    num |= (1 << (x[i].value - 1));
+            }
+            return num;
+        }
+
+        function checkVIZ() { //0 no,1 yes
+            var x = document.getElementsByName("seeRead");
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].checked == true)
+                    return x[i].value;
+            }
+            return 0;
+        }
+
+        function padNumber(num, fill) {
+            var len = ('' + num).length;
+            return (Array(fill > len ? (fill - len + 1) || 0 : 0).join(0) + num);
+        }
+
+
+        function readData() {
+            if (connected == false || websocket == null)
+                connect();
+            var ret = send("1820113");
+            if (ret.status == "error")
+                $.messager.alert("错误提醒", ret.msg, "question");
+        }
+
+        function startAutoReadData() {
+            //if (autoReadtimerId != null) { //已经开始了点击停止
+            //    $('#startAutoReadData').text("Auto Read");
+            //    stopAutoReadData();
+            //} else {
+            //    if (connected == false || websocket == null)
+            //        connect();
+            //    autoReadtimerId = setInterval("AutoPhotoAndRecog()", 100);
+            //    $('#startAutoReadData').text("Stop Read");
+            //}
+
+            if (connected == false || websocket == null)
+                connect();
+            autoReadtimerId = setInterval("AutoPhotoAndRecog()", 1000);
+
+        }
+
+        function stopAutoReadData() {
+            if (connected && websocket && autoReadtimerId)
+                disconnect();
+            clearInterval(autoReadtimerId);
+            autoReadtimerId = null;
+            connected = false;
+            websocket = null;
+        }
+
+
+
+        //通过机器读取信息部分结束
+        $(function () {
+            initTable();
+            $("#addDialogDiv").css("display", "none");
+            $("#editDialogDiv").css("display", "none");
+        });
+
+        ////绑定搜索查询事件
+        //function bindSearchBtnClick() {
+        //    $("#btnSearch").click(function () {
+        //        var data = { schName: $("#txtSchName").val(), schRemark: $("#txtSchReamrk").val() };
+        //        initTable(data);
+        //    });
+        //}
+
+        //初始化表格
+        function initTable(queryParam) {
+            $('#tt').datagrid({
+                url: '/VisaInfo/GetAllVisaInfos', //rows:一页有多少条，page：请求当前页
+                title: 'VisaInfo List',
+                width: 1400,
+                height: 600,
+                fitColumns: true,
+                idField: 'ID',
+                loadMsg: 'Loading Visa Info...',
+                pagination: true,
+                singleSelect: false,
+                pageSize: 20,
+                pageNumber: 1,
+                pageList: [10, 20, 30],
+                queryParams: queryParam, //让表格在加载数据的时候，额外传输的数据。(就是request里面对应的数据)
+                columns: [
+                    [
+                        { field: 'ck', checkbox: true, align: 'left', width: 50 },
+                        { field: 'Name', title: '姓名', width: 80 },
+                        { field: 'EnglishName', title: '英语姓名', width: 120 },
+                        { field: 'Sex', title: '性别', width: 50 },
+                        { field: 'PassportNo', title: '护照号', width: 200 },
+                        {
+                            field: 'EntryTime',
+                            title: '录入时间',
+                            width: 120,
+                            align: 'right',
+                            formatter: function (value, row, index) {
+                                return (eval(value.replace(/\/Date\((\d+)\)\//gi, "new Date($1)"))).pattern("yyyy-M-d h:m:s");
+                            }
+                        },
+                        { field: 'Birthplace', title: '出生地', width: 200 },
+                        { field: 'IssuePlace', title: '签发地', width: 200 },
+                        {
+                            field: 'ModfiedOn',
+                            title: '操作',
+                            width: 120,
+                            formatter: function (value, row, index) {
+                                var str = "";
+                                str += "<a href='javascript:void(0)' class='editLink' passno='" + row.PassportNo + "'>修改</a> &nbsp;&nbsp;";
+                                str += "<a href='javascript:void(0)' class='deletLink' passno='" + row.PassportNo + "'>删除</a>";
+                                return str;
+                            }
+                        }
+                    ]
+                ],
+                toolbar: [
+                    {
+                        id: 'btnDownShelf',
+                        text: '添加',
+                        iconCls: 'icon-add',
+                        handler: function () {
+                            //alert("dd");
+                            //弹出一个添加的对话框
+                            addClickEvent();
+                        }
+                    }, {
+                        id: 'btnDelete',
+                        text: '删除',
+                        iconCls: 'icon-cancel',
+                        handler: function () {
+                            deleteEvent();
+                        }
+                    }, {
+                        id: 'btnEdit',
+                        text: '修改',
+                        iconCls: 'icon-edit',
+                        handler: function () {
+                            //校验你是否只选中一个 用户
+                            var selectedRows = $('#tt').datagrid("getSelections");
+                            if (selectedRows.length != 1) {
+                                //error,question,info,warning.
+                                $.messager.alert("错误提醒", "请选中1行要修改数据！", "question");
+                                return;
+                            }
+                            editEvent(selectedRows[0].PassportNo);
+                        }
+                    }
+                ],
+                onHeaderContextMenu: function (e, field) {
+
+                },
+                onLoadSuccess: function (data) {
+                    $(".editLink").click(function () { //
+                        editEvent($(this).attr("passno"));
+                        return false;
+                    });
+                    $(".deletLink").click(function () { //
+                        deleteEvent($(this).attr("passno"));
+                        return false;
+                    });
+                }
+            });
+        }
+        //-------------------------添加部分开始-----------------------------------------
+        //当用户点击添加时候，弹出一个添加的对话框
+        function addClickEvent() {
+            $("#addDialogDiv").css("display", "block");
+            $("#addDialogDiv").dialog({
+                title: "添加用户",
+                modal: true,
+                width: 600,
+                height: 500,
+                collapsible: true,
+                minimizable: true,
+                maximizable: true,
+                resizable: true,
+                buttons: [{
+                    id: 'btnOk',
+                    text: '添加',
+                    iconCls: 'icon-ok',
+                    handler: subAddForm
+                }, {
+                    id: 'btnCancel',
+                    text: '关闭',
+                    iconCls: 'icon-cancel',
+                    handler: function () {
+                        disconnect(); //断开websocket连接
+                        $("#addDialogDiv").dialog("close");
+                    }
+                }]
+            });
+        }
+
+
+        //把表单提交到后台。
+        function subAddForm() {
+            $("#addDialogDiv form").submit();
+        }
+
+        //添加成功过之后执行的代码
+        function afterAdd(data) {
+            if (data == "ok") {
+                //关闭对话框刷新表格
+                //$.messager.alert("添加成功");
+                $('#webSocketMsg').text($('#webSocketMsg').text() + "\n添加成功!");
+                //$("#addDialogDiv").dialog("close");
+                initTable();
+            } else {
+                $.messager.alert(data);
+            }
+        }
+        //-------------------------添加部分结束-----------------------------------------
+
+
+        //-------------------------修改部分开始-----------------------------------------
+
+        //修改
+        function editEvent(passno) {
+            //加上这两句更加人性化操作，即使没选中点击修改也会选中点击的那一条记录
+            $('#tt').datagrid("clearSelections");
+            $('#tt').datagrid("selectRecord", passno);
+            //给editFrame  的src属性做一个赋值
+            $("#editFrame").attr("src", "/VisaInfo/Edit/" + passno);
+            $("#editDialogDiv").css("display", "block");
+            $("#editDialogDiv").dialog({
+                title: "修改用户",
+                modal: true,
+                width: 400,
+                height: 400,
+                collapsible: true,
+                minimizable: true,
+                maximizable: true,
+                resizable: true,
+                buttons: [{
+                    id: 'btnOk',
+                    text: '修改',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        $("#editFrame")[0].contentWindow.submitForm();
+                    }
+                }, {
+                    id: 'btnCancel',
+                    text: '取消',
+                    iconCls: 'icon-cancel',
+                    handler: function () {
+                        $("#editDialogDiv").dialog("close");
+                    }
+                }]
+            });
+        }
+        //修改成功之后由子容器来调用的
+        function afterEditSuccess() {
+            $("#editDialogDiv").dialog("close");
+            initTable();
+        }
+        //-------------------------修改部分结束-----------------------------------------
+
+
+        //-------------------------删除部分开始-----------------------------------------
+        //TODO:现在删除一条数据是没有问题的
+        //删除按钮被点击的时候执行。
+        function deleteEvent(passno) {
+            if (passno) {
+                $('#tt').datagrid("clearSelections");
+                $('#tt').datagrid("selectRecord", passno);
+                deleteIDs(passno);
+                return false;
+            }
+            //第一步拿到  easyui里面的选中的项
+            var selectedRows = $('#tt').datagrid("getSelections");
+            if (selectedRows.length <= 0) {
+                //error,question,info,warning.
+                $.messager.alert("错误提醒", "请选中删除数据！", "question");
+                return false;
+            }
+            var ids = "";
+            // 把数据删除
+            for (var key in selectedRows) {
+                ids = ids + selectedRows[key].PassportNo + ",";
+            }
+            //ids:     1,2,       4,5,6,
+            ids = ids.substr(0, ids.length - 1);
+            deleteIDs(ids);
+            return false;
+        }
+
+        //此方法传入一个文本值，再post到后台进行删除，例如:"1,2,3" 或者 "1"
+        function deleteIDs(ids) {
+            var length = ids.split(',').length;
+            $.messager.confirm("删除确认", "确定要删除选中的" + length + "条数据吗?", function (isOk) {
+                if (!isOk) {
+                    return;
+                } else {
+                    $.post("/VisaInfo/Delete", { ids: ids }, function (data) {
+                        if (data == "ok") {
+                            //刷新表格
+                            initTable();
+                            $('#tt').datagrid("clearSelections");
+                        } else {
+                            $.messager.alert("提醒消息", "败了", "error");
+                        }
+                    });
+
+                }
+            });
+        }
+
+        //-------------------------删除部分结束-----------------------------------------
+
+
+    </script>
+
+</head>
+<body>
+    <div>
+
+        <div>
+            用户名：
+            <input type="text" id="txtSchName" name="txtSchName" />
+            备注：<input type="text" name="txtSchReamrk" id="txtSchReamrk" />
+            <input type="button" id="btnSearch" value="搜索" />
+        </div>
+
+        @*当前页面放表格数据的地方*@
+        <table id="tt" style="width: 700px;" title="标题，可以使用代码进行初始化，也可以使用这种属性的方式"
+            iconcls="icon-edit">
+        </table>
+
+        <!----------------弹出来的添加的 对话框- 开始------------>
+        <div id="addDialogDiv">
+            <div id="addDlgLeft" style="float: left; width: 50%">
+                @using (Ajax.BeginForm("Add", "VisaInfo", new AjaxOptions() { OnSuccess = "afterAdd" }))
+                {
+                    <table class="t2">
+                        <tr>
+                            <td>姓名：</td>
+                            <td>
+                                <input type="text" name="Name" id="txtName"/></td>
+                        </tr>
+                        <tr>
+                            <td>英文名：</td>
+                            <td>
+                                <input type="text" name="EnglishName" id="txtEnglishName"/></td>
+                        </tr>
+                        <tr>
+                            <td>性别：</td>
+                            <td>
+                                <input type="text" name="Sex" id="txtSex"/></td>
+                        </tr>
+                        <tr>
+                            <td>生日：</td>
+                            <td>
+                                <input type="text" name="Birthday" id="txtBirthday"/></td>
+                        </tr>
+                        <tr>
+                            <td>护照号：</td>
+                            <td>
+                                <input type="text" name="PassportNo" id="txtPassportNo"/></td>
+                        </tr>
+                        <tr>
+                            <td>发证日期：</td>
+                            <td>
+                                <input type="text" name="LicenceTime" id="txtLicenceTime"/></td>
+                        </tr>
+                        <tr>
+                            <td>有效期:</td>
+                            <td>
+                                <input type="text" name="ExpiryDate" id="txtExpiryDate"/></td>
+                        </tr>
+
+                        
+                        <tr>
+                            <td>出生地:</td>
+                            <td>
+                                <input type="text" name="Birthplace" id="txtBirthplace"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>签发地:</td>
+                            <td>
+                                <input type="text" name="IssuePlace" id="txtIssuePlace"/></td>
+                        </tr>
+
+                    </table>
+                }
+                <div style="margin-top: 20px">
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="button button-glow button-border button-rounded button-primary" id="readData" onclick="readData();">Read Data</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="button button-glow button-border button-rounded button-primary" id="startAutoReadData" onclick="startAutoReadData();">Auto Read</a>
+                </div>
+                
+            </div>
+            <div id="addDlgRight" style="float: left">
+                <textarea id="webSocketMsg" cols="30" rows="27"></textarea>
+            </div>
+
+
+        </div>
+        <!----------------弹出来的添加的 对话框- 结束------------>
+
+        <!----------------弹出来的修改的 对话框- 开始------------>
+        <div id="editDialogDiv">
+            <iframe id="editFrame" src="javascript:void(0)" frameborder="0" width="100%" height="100%" scrolling="no"></iframe>
+        </div>
+        <!----------------弹出来的修改的 对话框- 结束------------>
+
+    </div>
+</body>
+</html>

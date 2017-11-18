@@ -2,7 +2,7 @@
 using System.CodeDom;
 using System.Reflection;
 
-namespace TravletAgence.Model
+namespace TravelAgency.Model
 {
     public partial class VisaInfo_Tmp
     {

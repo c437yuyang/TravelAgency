@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace TravletAgence.Common
+namespace TravelAgency.Common
 {
     public class RngWord
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TravletAgence.BLL;
+using TravelAgency.BLL;
 
 namespace InputDectectionDemo
 {
@@ -24,7 +24,7 @@ namespace InputDectectionDemo
         }
 
         private string _preTxt = String.Empty;
-        TravletAgence.BLL.VisaInfo bll = new VisaInfo();
+        TravelAgency.BLL.VisaInfo bll = new VisaInfo();
 
         public Form1()
         {
@@ -66,7 +66,7 @@ namespace InputDectectionDemo
 
             int i = bll.GetRecordCount(string.Empty);
 
-            TravletAgence.Model.VisaInfo model = bll.GetModelByPassportNo(personInfo.passportNo);
+            TravelAgency.Model.VisaInfo model = bll.GetModelByPassportNo(personInfo.passportNo);
 
             Console.WriteLine(model.EntryTime.ToString());
 

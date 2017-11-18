@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace TravletAgence.Common
+namespace TravelAgency.Common
 {
     public static class DateTimeFormator
     {

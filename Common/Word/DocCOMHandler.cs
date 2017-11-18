@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using word = Microsoft.Office.Interop.Word;
 
-namespace TravletAgence.Common.Word
+namespace TravelAgency.Common.Word
 {
     public static class DocComHandler
     {

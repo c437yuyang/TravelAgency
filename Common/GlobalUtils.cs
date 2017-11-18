@@ -2,11 +2,11 @@
 using System.IO;
 using System.Windows.Forms;
 using Excel;
-using TravletAgence.Common.FTP;
-using TravletAgence.Common.Word.Japan;
+using TravelAgency.Common.FTP;
+using TravelAgency.Common.Word.Japan;
 using Application = System.Windows.Forms.Application;
 
-namespace TravletAgence.Common
+namespace TravelAgency.Common
 {
     public static class GlobalUtils
     {

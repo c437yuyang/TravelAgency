@@ -2,15 +2,15 @@
 using System.Data;
 using System.Collections.Generic;
 using Maticsoft.Common;
-using TravletAgence.Model;
-namespace TravletAgence.BLL
+using TravelAgency.Model;
+namespace TravelAgency.BLL
 {
 	/// <summary>
 	/// Visa
 	/// </summary>
 	public partial class Visa
 	{
-		private readonly TravletAgence.DAL.Visa dal=new TravletAgence.DAL.Visa();
+		private readonly TravelAgency.DAL.Visa dal=new TravelAgency.DAL.Visa();
 		public Visa()
 		{}
 		#region  BasicMethod
@@ -26,7 +26,7 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(TravletAgence.Model.Visa model)
+		public bool Update(TravelAgency.Model.Visa model)
 		{
 			return dal.Update(model);
 		}
@@ -44,7 +44,7 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public TravletAgence.Model.Visa GetModel(Guid Visa_id)
+		public TravelAgency.Model.Visa GetModel(Guid Visa_id)
 		{
 			
 			return dal.GetModel(Visa_id);
@@ -69,7 +69,7 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<TravletAgence.Model.Visa> GetModelList(string strWhere)
+		public List<TravelAgency.Model.Visa> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -77,13 +77,13 @@ namespace TravletAgence.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<TravletAgence.Model.Visa> DataTableToList(DataTable dt)
+		public List<TravelAgency.Model.Visa> DataTableToList(DataTable dt)
 		{
-			List<TravletAgence.Model.Visa> modelList = new List<TravletAgence.Model.Visa>();
+			List<TravelAgency.Model.Visa> modelList = new List<TravelAgency.Model.Visa>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				TravletAgence.Model.Visa model;
+				TravelAgency.Model.Visa model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);
