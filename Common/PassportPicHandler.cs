@@ -154,7 +154,7 @@ namespace TravelAgency.Common
         /// </summary>
         /// <param name="passportNo"></param>
         /// <returns></returns>
-        public static int DownloadSelectedTypesBatch(string[] passportNoList, string dstPath, bool showConfirm = true, PicType type = PicType.Type01Normal|PicType.Type02Head|PicType.Type03IR)
+        public static int DownloadSelectedTypesBatch(string[] passportNoList, string dstPath, PicType type = PicType.Type01Normal|PicType.Type02Head|PicType.Type03IR)
         {
             int res = 0;
             for (int i = 0; i < passportNoList.Length; i++)

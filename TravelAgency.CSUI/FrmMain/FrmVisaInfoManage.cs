@@ -837,12 +837,13 @@ namespace TravelAgency.CSUI.FrmMain
                     return;
 
                 PassportPicHandler.DownloadPic(passportNo, type, dstName);
+                return;
             }
 
             List<string> passList = new List<string>();
             for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
             {
-                passList.Add(dataGridView1.SelectedRows[i].Cells["PassportNo"].ToString());
+                passList.Add(dataGridView1.SelectedRows[i].Cells["PassportNo"].Value.ToString());
             }
 
             string path = GlobalUtils.OpenBrowseFolderDlg();
@@ -861,7 +862,7 @@ namespace TravelAgency.CSUI.FrmMain
 
         private void 护照图像ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             DownloadSelectedPics(PassportPicHandler.PicType.Type01Normal);
 
         }
@@ -885,8 +886,45 @@ namespace TravelAgency.CSUI.FrmMain
             //    string passportNo = dataGridView1.SelectedRows[i].Cells["PassportNo"].Value.ToString();
             //    PassportPicHandler.DownloadSelectedTypes(passportNo, false);
             //}
+            string path = String.Empty;
+            if (this.dataGridView1.SelectedRows.Count == 1)
+            {
+                string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
+                path = GlobalUtils.OpenBrowseFolderDlg();
+                if (string.IsNullOrEmpty(path))
+                    return;
 
+                int res1 = PassportPicHandler.DownloadSelectedTypes(passportNo, path,
+                    PassportPicHandler.PicType.Type01Normal|PassportPicHandler.PicType.Type02Head); //传默认值就是全部类型，考虑到他们不需要红外图像，就去掉吧
+                if (res1 > 0)
+                {
+                    if (MessageBoxEx.Show("保存成功，是否打开所在文件夹?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        Process.Start(path);
+                }
+                else
+                    MessageBoxEx.Show("保存失败");
+                return;
+            }
 
+            List<string> passList = new List<string>();
+            for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+            {
+                passList.Add(dataGridView1.SelectedRows[i].Cells["PassportNo"].Value.ToString());
+            }
+
+            path = GlobalUtils.OpenBrowseFolderDlg();
+            if (string.IsNullOrEmpty(path))
+                return;
+
+            int res = PassportPicHandler.DownloadSelectedTypesBatch(passList.ToArray(), path, 
+                PassportPicHandler.PicType.Type01Normal | PassportPicHandler.PicType.Type02Head);
+            if (res > 0)
+            {
+                if (MessageBoxEx.Show("保存成功，是否打开所在文件夹?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    Process.Start(path);
+            }
+            else
+                MessageBoxEx.Show("保存失败");
         }
 
 

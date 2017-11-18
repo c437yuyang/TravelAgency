@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -424,7 +425,7 @@ namespace TravelAgency.CSUI.FrmMain
                 return;
             }
 
-            string fileName = PassportPicHandler.GetFileName(_model.PassportNo,PassportPicHandler.PicType.Type02Head);
+            string fileName = PassportPicHandler.GetFileName(_model.PassportNo, PassportPicHandler.PicType.Type02Head);
             string dstName =
                 GlobalUtils.OpenSaveFileDlg(fileName);
             if (string.IsNullOrEmpty(dstName))
@@ -439,7 +440,7 @@ namespace TravelAgency.CSUI.FrmMain
             {
                 return;
             }
-            string fileName = PassportPicHandler.GetFileName(_model.PassportNo,PassportPicHandler.PicType.Type03IR);
+            string fileName = PassportPicHandler.GetFileName(_model.PassportNo, PassportPicHandler.PicType.Type03IR);
             string dstName =
                 GlobalUtils.OpenSaveFileDlg(fileName);
             if (string.IsNullOrEmpty(dstName))
@@ -458,7 +459,15 @@ namespace TravelAgency.CSUI.FrmMain
             string path = GlobalUtils.OpenBrowseFolderDlg();
             if (string.IsNullOrEmpty(path))
                 return;
-            PassportPicHandler.DownloadSelectedTypes(_model.PassportNo, path);
+            int res = PassportPicHandler.DownloadSelectedTypes(_model.PassportNo, path);
+            if (res > 0)
+            {
+                if (MessageBoxEx.Show("保存成功，是否打开所在文件夹?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    Process.Start(path);
+            }
+            else
+                MessageBoxEx.Show("保存失败");
+
         }
 
 
