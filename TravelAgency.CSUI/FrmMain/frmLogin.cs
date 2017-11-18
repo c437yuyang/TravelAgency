@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravelAgency.BLL;
+using TravelAgency.Common;
 
 namespace TravelAgency.CSUI.FrmMain
 {
-    public partial class frmLogin : Form
+    public partial class FrmLogin : Form
     {
-        private BLL.AuthUser _bll = new AuthUser();
-        public frmLogin()
+        private BLL.AuthUser _bllUser = new AuthUser();
+        BLL.ProgramVersion _bll = new ProgramVersion();
+        Model.ProgramVersion _model = new Model.ProgramVersion();
+
+        public FrmLogin()
         {
             InitializeComponent();
         }
@@ -22,7 +27,7 @@ namespace TravelAgency.CSUI.FrmMain
                 MessageBoxEx.Show("请输入登录口令!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            var list = _bll.GetModelList(string.Format(" Account ='{0}' and Password = '{1}' ", txtUserName.Text, txtPswd.Text));
+            var list = _bllUser.GetModelList(string.Format(" Account ='{0}' and Password = '{1}' ", txtUserName.Text, txtPswd.Text));
             if (list.Count < 1)
             {
                 MessageBoxEx.Show("未找到指定用户!");
@@ -54,6 +59,36 @@ namespace TravelAgency.CSUI.FrmMain
             //this.Text = this.Text + " --【" + mShop.Name + "】";
 
             //Dong.Model.GlobalsInfo.shopAddr = mShop.Addr;
+
+            _model = _bll.GetModel(_bll.GetMaxId() - 1); //取出来是错的，加了1
+            if (_model == null)
+            {
+                MessageBoxEx.Show("检查更新失败，程序将退出");
+                Application.Exit();
+                return;
+            }
+            //执行检查更新操作
+            if (NeedUpdate())
+            {
+                //获取更新文件列表
+                string[] list = _model.update_files.Split('|');
+
+                //显示更新描述
+                labelX1.Text = _model.udapte_details;
+
+                //执行更新
+                MessageBoxEx.Show("发现新版本，即将开始升级");
+                Process.Start(GlobalUtils.AppPath + "\\" + "TravelAgency.AutoUpdate.exe");
+                Application.Exit();
+                return;
+            }
+
+        }
+
+        private bool NeedUpdate()
+        {
+            float localVersion = XmlHandler.GetPropramVersion();
+            return localVersion < (float)_model.version;
         }
 
         private void btnExit_Click(object sender, EventArgs e)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,15 +27,20 @@ namespace FTPDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(ftpHandler.FileExist("E18158985.jpg"));
+            
+            ftpHandler.SetParams("127.0.0.1:50001", "I:/pictures" + "/" + Path.GetDirectoryName("aaa/bbb.txt"), string.Empty, string.Empty);
+            Console.WriteLine(ftpHandler.FileExist(Path.GetFileName("aaa/bbb.txt")));
+            
+
+            Console.WriteLine();
             
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            ftpHandler.Download("I:\\pictures1","E18158985.jpg");
+
+            ftpHandler.Download("I:/pictures1","aaa/bbb/ccc.txt");
 
         }
 

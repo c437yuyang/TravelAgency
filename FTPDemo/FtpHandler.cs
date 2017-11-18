@@ -36,7 +36,7 @@ namespace FTPDemo
         }
 
         /// <summary>
-        /// 下载
+        /// 下载,支持子目录级别的下载
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="fileName"></param>
@@ -45,6 +45,9 @@ namespace FTPDemo
             FtpWebRequest reqFTP;
             try
             {
+                string path = Path.GetDirectoryName(filePath + '\\' + fileName);
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
                 FileStream outputStream = new FileStream(filePath + "\\" + fileName, FileMode.Create); //会直接覆盖源文件
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(_ftpUri + fileName));
                 reqFTP.Method = WebRequestMethods.Ftp.DownloadFile;

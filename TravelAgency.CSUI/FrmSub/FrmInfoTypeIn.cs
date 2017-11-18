@@ -123,23 +123,6 @@ namespace TravelAgency.CSUI.FrmSub
                 return;
             }
 
-            //if (File.Exists(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg")) //先检查本地是否存在
-            //{
-            //    pictureBox1.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
-            //}
-            //else
-            //{
-            //    if (FtpHandler.FileExist(model.PassportNo + ".jpg"))
-            //        if (FtpHandler.Download(GlobalUtils.PassportPicPath, model.PassportNo + ".jpg"))
-            //        {
-            //            pictureBox1.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
-            //            return;
-            //        }
-            //    pictureBox1.Image = Resources.PassportPictureNotFound;
-
-            //}
-
-
             if (!PassportPicHandler.CheckAndDownloadIfNotExist(model.PassportNo, PassportPicHandler.PicType.Type01Normal))
             {
                 pictureBox1.Image = Resources.PassportPictureNotFound;

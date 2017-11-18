@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravelAgency.Common;
 using TravelAgency.Common.Enums;
-using TravelAgency.Common.Excel;
 using TravelAgency.Common.Excel.Japan;
 using TravelAgency.CSUI.Properties;
 using TravelAgency.Model;
-using TravelAgency.CSUI.Properties;
 
 namespace TravelAgency.CSUI.FrmSub
 {

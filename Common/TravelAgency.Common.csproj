@@ -161,6 +161,7 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Xceed.Words.NET">
       <HintPath>..\packages\Xceed.Words.NET\bin\Release\Xceed.Words.NET.dll</HintPath>
     </Reference>

@@ -1,22 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravelAgency.Common;
-using TravelAgency.Common.Enums;
-using TravelAgency.Common.FTP;
 using TravelAgency.Common.IDCard;
 using TravelAgency.CSUI.Properties;
 using TravelAgency.Model;
-using TravelAgency.CSUI.Properties;
 
 namespace TravelAgency.CSUI.FrmMain
 {
@@ -29,8 +20,6 @@ namespace TravelAgency.CSUI.FrmMain
         private int _recordCount = 0;
         private readonly IDCard _idCard = new IDCard();
         private bool _autoReadThreadRun = false;
-
-
         public FrmVisaTypeIn()
         {
             InitializeComponent();
@@ -126,21 +115,6 @@ namespace TravelAgency.CSUI.FrmMain
                 picPassportNo.Image = Resources.PassportPictureNotFound;
                 return;
             }
-
-            //if (File.Exists(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg")) //先检查本地是否存在
-            //{
-            //    picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
-            //}
-            //else
-            //{
-            //    if (FtpHandler.FileExist(model.PassportNo + ".jpg"))
-            //        if (FtpHandler.Download(GlobalUtils.PassportPicPath, model.PassportNo + ".jpg"))
-            //        {
-            //            picPassportNo.Image = Image.FromFile(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
-            //            return;
-            //        }
-            //    picPassportNo.Image = Resources.PassportPictureNotFound;
-            //}
 
             if (!PassportPicHandler.CheckAndDownloadIfNotExist(model.PassportNo, PassportPicHandler.PicType.Type01Normal))
             {

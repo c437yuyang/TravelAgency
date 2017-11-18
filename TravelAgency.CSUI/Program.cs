@@ -14,7 +14,7 @@ namespace TravelAgency.CSUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain.frmLogin());
+            Application.Run(new FrmMain.FrmLogin());
         }
     }
 }

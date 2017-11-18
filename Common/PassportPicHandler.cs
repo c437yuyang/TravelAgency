@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Configuration;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace TravelAgency.Common
 
         public static bool CheckAndDownloadIfNotExist(string passportNo, PicType type)
         {
+            FtpHandler.ChangeFtpUri(ConfigurationManager.AppSettings["PassportPicPath"]);
             string fileprefix = passportNo;
             if (type == PicType.Type02Head)
                 fileprefix += "Head";

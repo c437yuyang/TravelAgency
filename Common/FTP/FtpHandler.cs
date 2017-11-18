@@ -33,7 +33,18 @@ namespace TravelAgency.Common.FTP
         }
 
         /// <summary>
-        /// 下载
+        /// 更改ftp下载的目录
+        /// </summary>
+        /// <param name="FtpRemotePath"></param>
+        public static void ChangeFtpUri(string FtpRemotePath)
+        {
+            _ftpRemotePath = FtpRemotePath;
+            _ftpUri = "ftp://" + _ftpServerIp + "/" + _ftpRemotePath + "/";
+        }
+
+        /// <summary>
+        /// 下载，支持子目录级别的下载,调用示例:Download("I:Downloads","aaa/bbb/ccc/ddd.txt")
+        /// 则会下载 远程目录根目录/aaa/bbb/ccc/ddd.txt 到 I:Downloads/aaa/bbb/ccc/ddd.txt
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="fileName"></param>
@@ -54,6 +65,11 @@ namespace TravelAgency.Common.FTP
                 int readCount;
                 byte[] buffer = new byte[bufferSize];
                 readCount = ftpStream.Read(buffer, 0, bufferSize);
+
+                string path = Path.GetDirectoryName(filePath + '\\' + fileName);
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
                 FileStream outputStream = new FileStream(filePath + "\\" + fileName, FileMode.Create); //会直接覆盖源文件
                 while (readCount > 0)
                 {
