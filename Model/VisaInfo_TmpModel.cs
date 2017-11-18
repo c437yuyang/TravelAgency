@@ -49,6 +49,7 @@ namespace TravelAgency.Model
             model.AbnormalOutTime = this.AbnormalOutTime;
             model.HasChecked = this.HasChecked;
             model.CheckPerson = this.CheckPerson;
+            model.ReturnTime = this.ReturnTime;
         }
     }
 }

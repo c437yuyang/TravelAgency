@@ -405,8 +405,14 @@ namespace TravelAgency.CSUI.FrmMain
             {
                 return;
             }
+            string fileName = PassportPicHandler.GetFileName(_model.PassportNo,
+                PassportPicHandler.PicType.Type01Normal);
+            string dstName =
+                GlobalUtils.OpenSaveFileDlg(fileName);
+            if (string.IsNullOrEmpty(dstName))
+                return;
 
-            PassportPicHandler.DownloadPic(_model.PassportNo, PassportPicHandler.PicType.Type01Normal);
+            PassportPicHandler.DownloadPic(_model.PassportNo, PassportPicHandler.PicType.Type01Normal, dstName);
 
 
         }
@@ -418,7 +424,13 @@ namespace TravelAgency.CSUI.FrmMain
                 return;
             }
 
-            PassportPicHandler.DownloadPic(_model.PassportNo, PassportPicHandler.PicType.Type02Head);
+            string fileName = PassportPicHandler.GetFileName(_model.PassportNo,PassportPicHandler.PicType.Type02Head);
+            string dstName =
+                GlobalUtils.OpenSaveFileDlg(fileName);
+            if (string.IsNullOrEmpty(dstName))
+                return;
+
+            PassportPicHandler.DownloadPic(_model.PassportNo, PassportPicHandler.PicType.Type02Head, dstName);
         }
 
         private void btnSaveIR_Click(object sender, EventArgs e)
@@ -427,7 +439,13 @@ namespace TravelAgency.CSUI.FrmMain
             {
                 return;
             }
-            PassportPicHandler.DownloadPic(_model.PassportNo, PassportPicHandler.PicType.Type03IR);
+            string fileName = PassportPicHandler.GetFileName(_model.PassportNo,PassportPicHandler.PicType.Type03IR);
+            string dstName =
+                GlobalUtils.OpenSaveFileDlg(fileName);
+            if (string.IsNullOrEmpty(dstName))
+                return;
+
+            PassportPicHandler.DownloadPic(_model.PassportNo, PassportPicHandler.PicType.Type03IR, dstName);
         }
 
         private void btnSaveAll_Click(object sender, EventArgs e)
@@ -436,7 +454,11 @@ namespace TravelAgency.CSUI.FrmMain
             {
                 return;
             }
-            PassportPicHandler.DownLoadAllType(_model.PassportNo);
+
+            string path = GlobalUtils.OpenBrowseFolderDlg();
+            if (string.IsNullOrEmpty(path))
+                return;
+            PassportPicHandler.DownloadSelectedTypes(_model.PassportNo, path);
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -823,51 +824,68 @@ namespace TravelAgency.CSUI.FrmMain
         {
         }
 
-        private void 护照图像ToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void DownloadSelectedPics(PassportPicHandler.PicType type)
         {
-            if (this.dataGridView1.SelectedRows.Count > 1)
+            if (this.dataGridView1.SelectedRows.Count == 1)
             {
-                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
-                return;
+                string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
+                string fileName = PassportPicHandler.GetFileName(passportNo, type);
+                string dstName =
+                    GlobalUtils.OpenSaveFileDlg(fileName);
+                if (string.IsNullOrEmpty(dstName))
+                    return;
+
+                PassportPicHandler.DownloadPic(passportNo, type, dstName);
             }
 
-            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
-            PassportPicHandler.DownloadPic(passportNo, PassportPicHandler.PicType.Type01Normal);
+            List<string> passList = new List<string>();
+            for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+            {
+                passList.Add(dataGridView1.SelectedRows[i].Cells["PassportNo"].ToString());
+            }
+
+            string path = GlobalUtils.OpenBrowseFolderDlg();
+            if (string.IsNullOrEmpty(path))
+                return;
+
+            int res = PassportPicHandler.DownloadPicBatch(passList.ToArray(), type, path);
+            if (res > 0)
+            {
+                if (MessageBoxEx.Show("保存成功，是否打开所在文件夹?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    Process.Start(path);
+            }
+            else
+                MessageBoxEx.Show("保存失败");
+        }
+
+        private void 护照图像ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            DownloadSelectedPics(PassportPicHandler.PicType.Type01Normal);
+
         }
 
         private void 头像ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.dataGridView1.SelectedRows.Count > 1)
-            {
-                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
-                return;
-            }
+            DownloadSelectedPics(PassportPicHandler.PicType.Type02Head);
 
-            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
-            PassportPicHandler.DownloadPic(passportNo, PassportPicHandler.PicType.Type02Head);
         }
 
         private void 护照红外图像ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.dataGridView1.SelectedRows.Count > 1)
-            {
-                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
-                return;
-            }
-
-            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
-            PassportPicHandler.DownloadPic(passportNo, PassportPicHandler.PicType.Type03IR);
+            DownloadSelectedPics(PassportPicHandler.PicType.Type03IR);
         }
 
         private void 全部ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.dataGridView1.SelectedRows.Count > 1)
-            {
-                MessageBoxEx.Show(Resources.SelectShowMoreThanOne);
-                return;
-            }
-            string passportNo = dataGridView1.SelectedRows[0].Cells["PassportNo"].Value.ToString();
-            PassportPicHandler.DownLoadAllType(passportNo);
+
+            //for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+            //{
+            //    string passportNo = dataGridView1.SelectedRows[i].Cells["PassportNo"].Value.ToString();
+            //    PassportPicHandler.DownloadSelectedTypes(passportNo, false);
+            //}
+
 
         }
 
