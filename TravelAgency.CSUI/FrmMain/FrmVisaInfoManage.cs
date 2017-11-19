@@ -20,6 +20,7 @@ namespace TravelAgency.CSUI.FrmMain
     public partial class FrmVisaInfoManage : Form
     {
         private readonly TravelAgency.BLL.VisaInfo _bll = new TravelAgency.BLL.VisaInfo();
+        private readonly TravelAgency.BLL.Visa _bllVisa = new TravelAgency.BLL.Visa();
         private int _curPage = 1;
         private int _pageCount = 0;
         private int _pageSize = 30;
@@ -689,6 +690,29 @@ namespace TravelAgency.CSUI.FrmMain
             return list;
         }
 
+        private List<Model.Visa> GetVisaListViaVisaInfoList(List<Model.VisaInfo> visaInfoList)
+        {
+            List<Model.Visa> list = new List<Visa>();
+            for (int i = 0; i < visaInfoList.Count; i++)
+            {
+                Guid guid;
+                if (Guid.TryParse(visaInfoList[i].Visa_id, out guid))
+                {
+                    var visaModel = _bllVisa.GetModel(guid);
+                    //if(visaModel!=null)
+                    list.Add(visaModel); //就算是null也直接添加进去 ，没有影响
+                }
+                else
+                {
+                    list.Add(null);
+                }
+               
+            }
+            return list;
+        }
+
+
+
         private void 添加到团号ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var list = GetDgvSelNotSetGroupList();
@@ -798,7 +822,7 @@ namespace TravelAgency.CSUI.FrmMain
         private void 人申请表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var visainfos = GetDgvSelList();
-            XlsGenerator.GetPre8List(visainfos);
+            XlsGenerator.GetPre8List(visainfos, GetVisaListViaVisaInfoList(visainfos));
         }
 
         private void 机票报表ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -880,12 +904,6 @@ namespace TravelAgency.CSUI.FrmMain
 
         private void 全部ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            //for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
-            //{
-            //    string passportNo = dataGridView1.SelectedRows[i].Cells["PassportNo"].Value.ToString();
-            //    PassportPicHandler.DownloadSelectedTypes(passportNo, false);
-            //}
             string path = String.Empty;
             if (this.dataGridView1.SelectedRows.Count == 1)
             {
@@ -895,7 +913,7 @@ namespace TravelAgency.CSUI.FrmMain
                     return;
 
                 int res1 = PassportPicHandler.DownloadSelectedTypes(passportNo, path,
-                    PassportPicHandler.PicType.Type01Normal|PassportPicHandler.PicType.Type02Head); //传默认值就是全部类型，考虑到他们不需要红外图像，就去掉吧
+                    PassportPicHandler.PicType.Type01Normal | PassportPicHandler.PicType.Type02Head); //传默认值就是全部类型，考虑到他们不需要红外图像，就去掉吧
                 if (res1 > 0)
                 {
                     if (MessageBoxEx.Show("保存成功，是否打开所在文件夹?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -916,7 +934,7 @@ namespace TravelAgency.CSUI.FrmMain
             if (string.IsNullOrEmpty(path))
                 return;
 
-            int res = PassportPicHandler.DownloadSelectedTypesBatch(passList.ToArray(), path, 
+            int res = PassportPicHandler.DownloadSelectedTypesBatch(passList.ToArray(), path,
                 PassportPicHandler.PicType.Type01Normal | PassportPicHandler.PicType.Type02Head);
             if (res > 0)
             {

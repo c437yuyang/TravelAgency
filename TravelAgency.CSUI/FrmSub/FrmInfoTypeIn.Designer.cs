@@ -37,6 +37,10 @@
             this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.panelInputs = new DevComponents.DotNetBar.PanelEx();
+            this.txtSalesPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX19 = new DevComponents.DotNetBar.LabelX();
+            this.txtClient = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX18 = new DevComponents.DotNetBar.LabelX();
             this.txtPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
             this.txtExpireDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -85,10 +89,6 @@
             this.lbTimeOutSubmit = new DevComponents.DotNetBar.LabelX();
             this.lbPersonOutSubmit = new DevComponents.DotNetBar.LabelX();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txtClient = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX18 = new DevComponents.DotNetBar.LabelX();
-            this.txtSalesPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX19 = new DevComponents.DotNetBar.LabelX();
             this.panelTop.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.panelPicBox.SuspendLayout();
@@ -267,6 +267,56 @@
             this.panelInputs.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelInputs.Style.GradientAngle = 90;
             this.panelInputs.TabIndex = 25;
+            // 
+            // txtSalesPerson
+            // 
+            // 
+            // 
+            // 
+            this.txtSalesPerson.Border.Class = "TextBoxBorder";
+            this.txtSalesPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSalesPerson.Location = new System.Drawing.Point(382, 215);
+            this.txtSalesPerson.Name = "txtSalesPerson";
+            this.txtSalesPerson.PreventEnterBeep = true;
+            this.txtSalesPerson.Size = new System.Drawing.Size(174, 21);
+            this.txtSalesPerson.TabIndex = 62;
+            // 
+            // labelX19
+            // 
+            // 
+            // 
+            // 
+            this.labelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX19.Location = new System.Drawing.Point(301, 215);
+            this.labelX19.Name = "labelX19";
+            this.labelX19.Size = new System.Drawing.Size(75, 23);
+            this.labelX19.TabIndex = 61;
+            this.labelX19.Text = "销售:";
+            // 
+            // txtClient
+            // 
+            // 
+            // 
+            // 
+            this.txtClient.Border.Class = "TextBoxBorder";
+            this.txtClient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtClient.Location = new System.Drawing.Point(382, 184);
+            this.txtClient.Name = "txtClient";
+            this.txtClient.PreventEnterBeep = true;
+            this.txtClient.Size = new System.Drawing.Size(174, 21);
+            this.txtClient.TabIndex = 60;
+            // 
+            // labelX18
+            // 
+            // 
+            // 
+            // 
+            this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX18.Location = new System.Drawing.Point(301, 184);
+            this.labelX18.Name = "labelX18";
+            this.labelX18.Size = new System.Drawing.Size(75, 23);
+            this.labelX18.TabIndex = 59;
+            this.labelX18.Text = "客户:";
             // 
             // txtPhone
             // 
@@ -812,7 +862,7 @@
             this.panelBottom.Controls.Add(this.pictureBox2);
             this.panelBottom.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 417);
+            this.panelBottom.Location = new System.Drawing.Point(0, 416);
             this.panelBottom.Name = "panelBottom";
             this.panelBottom.Size = new System.Drawing.Size(1151, 317);
             this.panelBottom.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -968,61 +1018,11 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // txtClient
-            // 
-            // 
-            // 
-            // 
-            this.txtClient.Border.Class = "TextBoxBorder";
-            this.txtClient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtClient.Location = new System.Drawing.Point(382, 184);
-            this.txtClient.Name = "txtClient";
-            this.txtClient.PreventEnterBeep = true;
-            this.txtClient.Size = new System.Drawing.Size(174, 21);
-            this.txtClient.TabIndex = 60;
-            // 
-            // labelX18
-            // 
-            // 
-            // 
-            // 
-            this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX18.Location = new System.Drawing.Point(301, 184);
-            this.labelX18.Name = "labelX18";
-            this.labelX18.Size = new System.Drawing.Size(75, 23);
-            this.labelX18.TabIndex = 59;
-            this.labelX18.Text = "客户:";
-            // 
-            // txtSalesPerson
-            // 
-            // 
-            // 
-            // 
-            this.txtSalesPerson.Border.Class = "TextBoxBorder";
-            this.txtSalesPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSalesPerson.Location = new System.Drawing.Point(382, 215);
-            this.txtSalesPerson.Name = "txtSalesPerson";
-            this.txtSalesPerson.PreventEnterBeep = true;
-            this.txtSalesPerson.Size = new System.Drawing.Size(174, 21);
-            this.txtSalesPerson.TabIndex = 62;
-            // 
-            // labelX19
-            // 
-            // 
-            // 
-            // 
-            this.labelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX19.Location = new System.Drawing.Point(301, 215);
-            this.labelX19.Name = "labelX19";
-            this.labelX19.Size = new System.Drawing.Size(75, 23);
-            this.labelX19.TabIndex = 61;
-            this.labelX19.Text = "销售:";
-            // 
             // FrmInfoTypeIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1151, 734);
+            this.ClientSize = new System.Drawing.Size(1151, 733);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelBottom);
             this.Name = "FrmInfoTypeIn";

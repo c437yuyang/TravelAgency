@@ -60,7 +60,7 @@ namespace TravelAgency.CSUI.FrmMain
 
             //Dong.Model.GlobalsInfo.shopAddr = mShop.Addr;
 
-            _model = _bll.GetModel(_bll.GetMaxId() - 1); //取出来是错的，加了1
+            _model = _bll.GetModel(_bll.GetMaxId() - 1); //取出来是错的，加了1，这里如果数据库里没有数据，返回的是1，所以还不好判断，就假设数据库一致都有数据吧
             if (_model == null)
             {
                 MessageBoxEx.Show("检查更新失败，程序将退出");

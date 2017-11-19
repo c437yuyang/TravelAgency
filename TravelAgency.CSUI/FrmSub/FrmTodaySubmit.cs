@@ -21,6 +21,7 @@ namespace TravelAgency.CSUI.FrmSub
         private readonly List<List<VisaInfo>> _listVisaInfo;
         private readonly List<Visa> _listVisa;
         private readonly List<VisaInfo> _listDgv = new List<VisaInfo>();
+        private readonly BLL.Visa _bllVisa = new BLL.Visa();
         public FrmTodaySubmit(List<Visa> listVisa, List<List<VisaInfo>> listVisaInfo)
         {
             this.StartPosition = FormStartPosition.CenterParent;
@@ -90,6 +91,28 @@ namespace TravelAgency.CSUI.FrmSub
             }
             return list;
         }
+
+        private List<Model.Visa> GetVisaListViaVisaInfoList(List<Model.VisaInfo> visaInfoList)
+        {
+            List<Model.Visa> list = new List<Visa>();
+            for (int i = 0; i < visaInfoList.Count; i++)
+            {
+                Guid guid;
+                if (Guid.TryParse(visaInfoList[i].Visa_id, out guid))
+                {
+                    var visaModel = _bllVisa.GetModel(guid);
+                    //if(visaModel!=null)
+                    list.Add(visaModel); //就算是null也直接添加进去 ，没有影响
+                }
+                else
+                {
+                    list.Add(null);
+                }
+
+            }
+            return list;
+        }
+
         #region dgv右键响应
 
         private void 个签意见书ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -141,7 +164,7 @@ namespace TravelAgency.CSUI.FrmSub
         private void 人申请表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var visainfos = GetDgvSelList();
-            XlsGenerator.GetPre8List(visainfos);
+            XlsGenerator.GetPre8List(visainfos, GetVisaListViaVisaInfoList(visainfos));
         }
         #endregion
 

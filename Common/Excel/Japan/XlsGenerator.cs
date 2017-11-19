@@ -16,16 +16,21 @@ namespace TravelAgency.Common.Excel.Japan
     /// </summary>
     public class XlsGenerator
     {
-
         public static bool IsOutSigned(VisaInfo model)
         {
             return model.IssuePlace != "云南" && model.IssuePlace != "四川" &&
                    model.IssuePlace != "贵州" && model.IssuePlace != "重庆";
         }
 
-        public static void GetPre8List(List<Model.VisaInfo> list)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="visaInfoList"></param>
+        /// <param name="visaModel"></param>
+        /// <param name="visaList"></param>
+        public static void GetPre8List(List<Model.VisaInfo> visaInfoList, List<Model.Visa> visaList)
         {
-            if (list.Count > 8)
+            if (visaInfoList.Count > 8)
             {
                 MessageBoxEx.Show("请选择8个人以下导出!");
                 return;
@@ -58,8 +63,16 @@ namespace TravelAgency.Common.Excel.Japan
                     for (int c = 0; c < row.LastCellNum; ++c)
                     {
                         if (row.GetCell(c).ToString() == "{" + (4 + j * 3) + "}")
-                            if (j < list.Count)
-                                row.GetCell(c).SetCellValue(list[j].Name);
+                            if (j < visaInfoList.Count)
+                            {
+                                //外领送签条件不为空
+                                if (IsOutSigned(visaInfoList[j]) && visaList[j] != null && !string.IsNullOrEmpty(visaList[j].SubmitCondition))
+                                {
+                                    row.GetCell(c).SetCellValue(visaInfoList[j].Name + "(" + visaList[j].SubmitCondition + ")");
+                                    continue;
+                                }
+                                row.GetCell(c).SetCellValue(visaInfoList[j].Name);
+                            }
                             else
                                 row.GetCell(c).SetCellValue(string.Empty);
                     }
@@ -69,13 +82,8 @@ namespace TravelAgency.Common.Excel.Japan
                     {
                         if (row.GetCell(c).ToString() == "{" + (5 + j * 3) + "}")
                         {
-                            if (j < list.Count && IsOutSigned(list[j])) //是外签的话设置发行地
-                            {
-                                if (!string.IsNullOrEmpty(list[j].Identification)) //身份认证不为空
-                                    row.GetCell(c).SetCellValue(list[j].IssuePlace + "(" + list[j].Identification + ")");
-                                else
-                                    row.GetCell(c).SetCellValue(list[j].IssuePlace);
-                            }
+                            if (j < visaInfoList.Count) //是外签的话设置发行地
+                                row.GetCell(c).SetCellValue(visaInfoList[j].IssuePlace);
                             else
                                 row.GetCell(c).SetCellValue(string.Empty);
                         }
@@ -86,8 +94,18 @@ namespace TravelAgency.Common.Excel.Japan
                     for (int c = 0; c < row.LastCellNum; ++c)
                     {
                         if (row.GetCell(c).ToString() == "{" + (6 + j * 3) + "}")
-                            if (j < list.Count)
-                                row.GetCell(c).SetCellValue(list[j].Residence);
+                            if (j < visaInfoList.Count)
+                            {
+                                if (visaInfoList[j].Residence.Contains(" "))
+                                {
+                                    row.GetCell(c).SetCellValue(visaInfoList[j].Residence.Split(' ')[0]);
+                                }
+                                else
+                                {
+                                    row.GetCell(c).SetCellValue(visaInfoList[j].Residence);
+                                }
+                            }
+
                             else
                                 row.GetCell(c).SetCellValue(string.Empty);
                     }
@@ -98,13 +116,20 @@ namespace TravelAgency.Common.Excel.Japan
                 // If the file name is not an empty string open it for saving.
                 if (!string.IsNullOrEmpty(dstName))
                 {
-                    using (FileStream fs1 = File.OpenWrite(dstName))
+                    try
                     {
-                        wkbook.Write(fs1);
+                        using (FileStream fs1 = File.OpenWrite(dstName))
+                        {
+                            wkbook.Write(fs1);
+                        }
+                        Process.Start(dstName);
                     }
-                    Process.Start(dstName);
+                    catch (Exception)
+                    {
+                        MessageBoxEx.Show("指定文件名的文件正在使用中，无法写入，请关闭后重试!");
+                    }
                 }
-                
+
             }
         }
 
