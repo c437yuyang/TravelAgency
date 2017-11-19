@@ -8,8 +8,13 @@ namespace TravelAgency.CSUI.Test
     public class TestDateTimeFormator
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestGetNextWorkDay()
         {
+            DateTime dateTime = DateTime.Parse("2017/9/30");
+            DateTime nextWorkDate = DateTimeFormator.GetNextWorkDate(dateTime);
+
         }
+
+
     }
 }

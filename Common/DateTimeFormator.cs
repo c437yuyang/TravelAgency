@@ -64,5 +64,18 @@ namespace TravelAgency.Common
 
         }
 
+        public static  DateTime GetNextWorkDate(DateTime time)
+        {
+            if (time.DayOfWeek == DayOfWeek.Saturday)
+            {
+              return  time.AddDays((double) 2);
+            }
+            if (time.DayOfWeek == DayOfWeek.Sunday)
+            {
+               return time.AddDays((double) 1);
+            }
+            return time;
+        }
+
     }
 }
