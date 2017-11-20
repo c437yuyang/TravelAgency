@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Diagnostics;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
@@ -24,6 +25,7 @@ namespace TravelAgency.AutoUpdate
         private void FrmUpdateMain_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            
             new Thread(CheckAndDoUpdate) { IsBackground = true }.Start();
         }
 
@@ -55,7 +57,7 @@ namespace TravelAgency.AutoUpdate
                 if (!DoUpdate(list))
                 {
                     MessageBoxEx.Show("更新失败，请联系技术人员!");
-                    Application.Exit();
+                    //Application.Exit();
                     return;
                 }
                 XmlHandler.SetPropramVersion((float)_model.version);
@@ -79,19 +81,23 @@ namespace TravelAgency.AutoUpdate
             //切换到根目录下面
             FtpHandler.ChangeFtpUri(XmlHandler.GetPropramPath());
             int res = 0;
+            bool updateSuccess = true;
             for (int i = 0; i < list.Length; i++)
             {
                 ListViewItem listViewItem = new ListViewItem();
                 listViewItem = new ListViewItem(list[i]);
                 ListViewItem.ListViewSubItem subItem;
+                Font font = listViewItem.Font;
                 if (FtpHandler.Download(GlobalUtils.AppPath, list[i]))
                 {
-                    subItem = new ListViewItem.ListViewSubItem(listViewItem, "更新成功");
+                    
+                    subItem = new ListViewItem.ListViewSubItem(listViewItem, "更新成功", Color.DarkGreen, Color.White, font);
                     ++res;
                 }
                 else
                 {
-                    subItem = new ListViewItem.ListViewSubItem(listViewItem, "更新失败");
+                    subItem = new ListViewItem.ListViewSubItem(listViewItem, "更新失败", Color.DarkRed, Color.White, font);
+                    updateSuccess = false;
                 }
                 listViewItem.SubItems.Add(subItem);
                 this.Invoke(new Action(() =>
@@ -99,6 +105,10 @@ namespace TravelAgency.AutoUpdate
                     lvUpdateList.Items.Add(listViewItem);
                 }));
             }
+            if(!updateSuccess)
+                this.btnStart.TextColor = Color.DarkRed;
+            else
+                this.btnStart.TextColor = Color.DarkGreen;
             return res == list.Length;
         }
 

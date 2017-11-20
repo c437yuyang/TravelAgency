@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUpdateMain));
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.lbVersion = new DevComponents.DotNetBar.LabelX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.btnStart = new DevComponents.DotNetBar.ButtonX();
             this.lvUpdateList = new DevComponents.DotNetBar.Controls.ListViewEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.FileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnStart = new DevComponents.DotNetBar.ButtonX();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.lbVersion = new DevComponents.DotNetBar.LabelX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +63,43 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
             // 
+            // lbVersion
+            // 
+            // 
+            // 
+            // 
+            this.lbVersion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbVersion.Location = new System.Drawing.Point(337, 2);
+            this.lbVersion.Name = "lbVersion";
+            this.lbVersion.Size = new System.Drawing.Size(156, 23);
+            this.lbVersion.TabIndex = 4;
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(273, 7);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(75, 18);
+            this.labelX2.TabIndex = 3;
+            this.labelX2.Text = "更新说明:";
+            this.labelX2.TextLineAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // btnStart
+            // 
+            this.btnStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnStart.Font = new System.Drawing.Font("方正舒体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStart.Location = new System.Drawing.Point(286, 158);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(184, 40);
+            this.btnStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "启动系统";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
             // lvUpdateList
             // 
             // 
@@ -80,6 +118,15 @@
             this.lvUpdateList.UseCompatibleStateImageBehavior = false;
             this.lvUpdateList.View = System.Windows.Forms.View.Details;
             // 
+            // FileName
+            // 
+            this.FileName.Text = "文件名";
+            this.FileName.Width = 187;
+            // 
+            // Status
+            // 
+            this.Status.Text = "状态";
+            // 
             // labelX1
             // 
             // 
@@ -92,57 +139,13 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.TextLineAlignment = System.Drawing.StringAlignment.Near;
             // 
-            // FileName
-            // 
-            this.FileName.Text = "文件名";
-            this.FileName.Width = 187;
-            // 
-            // Status
-            // 
-            this.Status.Text = "状态";
-            // 
-            // btnStart
-            // 
-            this.btnStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnStart.Location = new System.Drawing.Point(273, 170);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
-            this.btnStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnStart.TabIndex = 2;
-            this.btnStart.Text = "启动系统";
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // labelX2
-            // 
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(273, 7);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(75, 18);
-            this.labelX2.TabIndex = 3;
-            this.labelX2.Text = "更新说明:";
-            this.labelX2.TextLineAlignment = System.Drawing.StringAlignment.Near;
-            // 
-            // lbVersion
-            // 
-            // 
-            // 
-            // 
-            this.lbVersion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbVersion.Location = new System.Drawing.Point(337, 2);
-            this.lbVersion.Name = "lbVersion";
-            this.lbVersion.Size = new System.Drawing.Size(156, 23);
-            this.lbVersion.TabIndex = 4;
-            // 
             // FrmUpdateMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(496, 210);
             this.Controls.Add(this.panelEx1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmUpdateMain";

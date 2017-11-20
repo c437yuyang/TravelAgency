@@ -46,7 +46,7 @@ namespace TravelAgency.Common.Excel.Japan
                 IRow row = sheet.GetRow(10);
                 for (int c = 0; c < row.LastCellNum; ++c)
                 {
-                    string dtString = DateTimeFormator.DateTimeToString(DateTimeFormator.GetNextWorkDate(DateTime.Now));
+                    string dtString = DateTimeFormator.DateTimeToString(DateTimeFormator.GetNextWorkDate(DateTime.Now.AddDays(1)));
                     string[] datearr = dtString.Split('/');
                     //1.获取每个单元格
                     if (row.GetCell(c).ToString() == "{1}")
