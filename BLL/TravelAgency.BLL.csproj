@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionRecords.cs" />
+    <Compile Include="ActionRecordsModel.cs" />
     <Compile Include="AuthUser.cs" />
     <Compile Include="ProgramVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

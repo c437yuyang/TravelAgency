@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTimeFormator.cs" />
+    <Compile Include="Enums\ActType.cs" />
     <Compile Include="Excel\Japan\XlsGenerator.cs" />
     <Compile Include="FTP\FtpHandler.cs" />
     <Compile Include="PassportPicHandler.cs" />

@@ -55,13 +55,7 @@ namespace TravelAgency.BLL
 			
 			return dal.Delete(id);
 		}
-		/// <summary>
-		/// 删除一条数据
-		/// </summary>
-		public bool DeleteList(string idlist )
-		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(idlist,0) );
-		}
+
 
 		/// <summary>
 		/// 得到一个对象实体
@@ -72,29 +66,7 @@ namespace TravelAgency.BLL
 			return dal.GetModel(id);
 		}
 
-		/// <summary>
-		/// 得到一个对象实体，从缓存中
-		/// </summary>
-		public TravelAgency.Model.ActionRecords GetModelByCache(int id)
-		{
-			
-			string CacheKey = "ActionRecordsModel-" + id;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
-			if (objModel == null)
-			{
-				try
-				{
-					objModel = dal.GetModel(id);
-					if (objModel != null)
-					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-					}
-				}
-				catch{}
-			}
-			return (TravelAgency.Model.ActionRecords)objModel;
-		}
+	
 
 		/// <summary>
 		/// 获得数据列表

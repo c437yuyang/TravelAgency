@@ -27,6 +27,8 @@ namespace TravelAgency.CSUI.FrmSub
 
         private readonly BLL.VisaInfo _bllVisaInfo = new BLL.VisaInfo();
         private readonly BLL.Visa _bllVisa = new BLL.Visa();
+        private readonly TravelAgency.BLL.ActionRecords _bllLoger = new TravelAgency.BLL.ActionRecords();
+
         private string _visaName = "QZC" + DateTime.Now.ToString("yyMMdd") + "|";
         private readonly Action<int> _updateDel; //副界面传来更新数据库的委托
         private readonly int _curPage; //主界面更新数据库需要一个当前页
@@ -476,6 +478,20 @@ namespace TravelAgency.CSUI.FrmSub
                 _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
                 //2.1更新VisaInfo数据库
                 UpdateInListVisaInfo(_dgvList);
+
+                //3.1更新这些人的录入情况到ActionResult里面
+                for (int i = 0; i < _dgvList.Count; i++)
+                {
+                    Model.ActionRecords log = new ActionRecords();
+                    log.ActType = Common.Enums.ActType._01TypeIn;
+                    log.WorkId = Common.GlobalUtils.LoginUser.WorkId;
+                    log.UserName = Common.GlobalUtils.LoginUser.UserName;
+                    log.VisaInfo_id = _dgvList[i].VisaInfo_id;
+                    log.Visa_id = _visaModel.Visa_id;
+                    log.Type = Common.Enums.Types.Individual;
+                    log.EntryTime = DateTime.Now;
+                    _bllLoger.Add(log);
+                }
 
                 //添加完成后，删除这几个人
                 for (int i = 0; i < lvIn.Items.Count; i++)

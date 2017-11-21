@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using TravelAgency.Common;
@@ -512,12 +513,23 @@ namespace TravelAgency.CSUI.FrmSub
                 //2.1更新VisaInfo数据库
                 UpdateInListVisaInfo(_dgvList);
 
-                //添加完成后，删除这几个人
-                for (int i = 0; i < lvIn.Items.Count; i++)
+                //3.1更新这些人的录入情况到ActionResult里面
+                for (int i = 0; i < _dgvList.Count; i++)
                 {
-                    _list.Remove((Model.VisaInfo)lvIn.Items[i].Tag);
+                    Model.ActionRecords log = new ActionRecords();
+                    log.ActType = Common.Enums.ActType._01TypeIn;
+                    log.WorkId = Common.GlobalUtils.LoginUser.WorkId;
+                    log.UserName = Common.GlobalUtils.LoginUser.UserName;
+                    log.VisaInfo_id = _dgvList[i].VisaInfo_id;
+                    log.Visa_id = _visaModel.Visa_id;
+                    log.Type = Common.Enums.Types.Individual;
+                    log.EntryTime = DateTime.Now;
+                    _bllLoger.Add(log);
                 }
 
+                //添加完成后，删除这几个人
+                for (int i = 0; i < lvIn.Items.Count; i++)
+                    _list.Remove((Model.VisaInfo)lvIn.Items[i].Tag);
                 lvIn.Items.Clear();
                 _visaModel = null;
                 UpdateDgvAndListViaListView();
@@ -613,7 +625,6 @@ namespace TravelAgency.CSUI.FrmSub
         {
             try
             {
-
                 //单独处理remark
                 if (!string.IsNullOrEmpty((string)dgvGroupInfo.Rows[0].Cells["Remark"].Value))
                     model.Remark = (string)dgvGroupInfo.Rows[0].Cells["Remark"].Value;

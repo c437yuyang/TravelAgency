@@ -8,7 +8,6 @@
             {
                 return "是";
             }
-
         }
 
         public static string No
