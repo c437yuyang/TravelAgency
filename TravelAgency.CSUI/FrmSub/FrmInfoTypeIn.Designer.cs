@@ -89,6 +89,12 @@
             this.lbTimeOutSubmit = new DevComponents.DotNetBar.LabelX();
             this.lbPersonOutSubmit = new DevComponents.DotNetBar.LabelX();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.cbTypes = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX20 = new DevComponents.DotNetBar.LabelX();
+            this.labelX21 = new DevComponents.DotNetBar.LabelX();
+            this.txtReturnTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.labelX22 = new DevComponents.DotNetBar.LabelX();
+            this.cbCountry = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.panelTop.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.panelPicBox.SuspendLayout();
@@ -100,6 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
             this.panelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReturnTime)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -216,7 +223,13 @@
             // 
             this.panelInputs.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelInputs.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelInputs.Controls.Add(this.cbCountry);
+            this.panelInputs.Controls.Add(this.labelX22);
+            this.panelInputs.Controls.Add(this.txtReturnTime);
+            this.panelInputs.Controls.Add(this.cbTypes);
             this.panelInputs.Controls.Add(this.txtSalesPerson);
+            this.panelInputs.Controls.Add(this.labelX21);
+            this.panelInputs.Controls.Add(this.labelX20);
             this.panelInputs.Controls.Add(this.labelX19);
             this.panelInputs.Controls.Add(this.txtClient);
             this.panelInputs.Controls.Add(this.labelX18);
@@ -1018,6 +1031,111 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // cbTypes
+            // 
+            this.cbTypes.DisplayMember = "Text";
+            this.cbTypes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbTypes.FormattingEnabled = true;
+            this.cbTypes.ItemHeight = 15;
+            this.cbTypes.Location = new System.Drawing.Point(382, 250);
+            this.cbTypes.Name = "cbTypes";
+            this.cbTypes.Size = new System.Drawing.Size(78, 21);
+            this.cbTypes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbTypes.TabIndex = 63;
+            // 
+            // labelX20
+            // 
+            // 
+            // 
+            // 
+            this.labelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX20.Location = new System.Drawing.Point(301, 250);
+            this.labelX20.Name = "labelX20";
+            this.labelX20.Size = new System.Drawing.Size(75, 23);
+            this.labelX20.TabIndex = 61;
+            this.labelX20.Text = "类型:";
+            // 
+            // labelX21
+            // 
+            // 
+            // 
+            // 
+            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX21.Location = new System.Drawing.Point(301, 279);
+            this.labelX21.Name = "labelX21";
+            this.labelX21.Size = new System.Drawing.Size(75, 23);
+            this.labelX21.TabIndex = 61;
+            this.labelX21.Text = "归国时间:";
+            // 
+            // txtReturnTime
+            // 
+            // 
+            // 
+            // 
+            this.txtReturnTime.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtReturnTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtReturnTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.txtReturnTime.ButtonDropDown.Visible = true;
+            this.txtReturnTime.IsPopupCalendarOpen = false;
+            this.txtReturnTime.Location = new System.Drawing.Point(382, 281);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.txtReturnTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtReturnTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.txtReturnTime.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.txtReturnTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.txtReturnTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtReturnTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.txtReturnTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtReturnTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.txtReturnTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.txtReturnTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtReturnTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.txtReturnTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.txtReturnTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.txtReturnTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.txtReturnTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.txtReturnTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtReturnTime.MonthCalendar.TodayButtonVisible = true;
+            this.txtReturnTime.Name = "txtReturnTime";
+            this.txtReturnTime.Size = new System.Drawing.Size(174, 21);
+            this.txtReturnTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtReturnTime.TabIndex = 64;
+            // 
+            // labelX22
+            // 
+            // 
+            // 
+            // 
+            this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX22.Location = new System.Drawing.Point(301, 308);
+            this.labelX22.Name = "labelX22";
+            this.labelX22.Size = new System.Drawing.Size(96, 23);
+            this.labelX22.TabIndex = 65;
+            this.labelX22.Text = "国家:";
+            // 
+            // cbCountry
+            // 
+            this.cbCountry.DisplayMember = "Text";
+            this.cbCountry.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbCountry.FormattingEnabled = true;
+            this.cbCountry.ItemHeight = 15;
+            this.cbCountry.Location = new System.Drawing.Point(382, 308);
+            this.cbCountry.Name = "cbCountry";
+            this.cbCountry.Size = new System.Drawing.Size(78, 21);
+            this.cbCountry.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbCountry.TabIndex = 66;
+            // 
             // FrmInfoTypeIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1039,6 +1157,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
             this.panelBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReturnTime)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1105,6 +1224,12 @@
         private DevComponents.DotNetBar.LabelX labelX18;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSalesPerson;
         private DevComponents.DotNetBar.LabelX labelX19;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbTypes;
+        private DevComponents.DotNetBar.LabelX labelX20;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput txtReturnTime;
+        private DevComponents.DotNetBar.LabelX labelX21;
+        private DevComponents.DotNetBar.LabelX labelX22;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbCountry;
 
     }
 }

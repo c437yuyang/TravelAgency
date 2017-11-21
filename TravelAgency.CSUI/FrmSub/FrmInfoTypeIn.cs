@@ -33,9 +33,13 @@ namespace TravelAgency.CSUI.FrmSub
             this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             //this.pictureBox1.MouseWheel += pictureBox1_MouseWheel;
             this.txtGroupNo.Enabled = false;
+            cbTypes.Enabled = false;
+
             ModelToCtrls(this._model);
             LoadImageFromModel(_model);
             SetLabelStates();
+
+
         }
 
         private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
@@ -70,7 +74,10 @@ namespace TravelAgency.CSUI.FrmSub
             txtPhone.Text = model.Phone;
             txtClient.Text = model.Client;
             txtSalesPerson.Text = model.Salesperson;
-            
+
+            cbTypes.Text = model.Types;
+            txtReturnTime.Text = DateTimeFormator.DateTimeToString(model.ReturnTime);
+            cbCountry.Text = model.Country;
         }
 
         /// <summary>
@@ -107,6 +114,10 @@ namespace TravelAgency.CSUI.FrmSub
                 _model.Birthplace = txtBirthPlace.Text;
                 _model.GroupNo = txtGroupNo.Text;
                 _model.DepartureRecord = txtDepartureRecord.Text; //这里应该做校验,以及给用户做成comboBox那种
+
+                _model.Country = cbCountry.Text;
+                _model.ReturnTime = DateTime.Parse(txtReturnTime.Text);
+
             }
             catch (Exception)
             {
@@ -132,6 +143,10 @@ namespace TravelAgency.CSUI.FrmSub
             pictureBox1.Image = GlobalUtils.LoadImageFromFileNoBlock(GlobalUtils.PassportPicPath + "\\" + model.PassportNo + ".jpg");
         }
 
+
+        /// <summary>
+        /// 设置时间轴的标签信息
+        /// </summary>
         private void SetLabelStates()
         {
             if (!string.IsNullOrEmpty(_model.EntryTime.ToString()))
