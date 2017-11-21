@@ -3,9 +3,11 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using TravelAgency.BLL;
 using TravelAgency.Common;
 using TravelAgency.Common.Enums;
 using TravelAgency.CSUI.Properties;
+using ActionRecords = TravelAgency.Model.ActionRecords;
 
 namespace TravelAgency.CSUI.FrmSub
 {
@@ -14,6 +16,7 @@ namespace TravelAgency.CSUI.FrmSub
 
         private readonly Model.VisaInfo _model; //readonly本身是修饰的这个引用，只要后面(构造函数之外)不再重新new来指向另外的对象即可
         private readonly BLL.VisaInfo bll = new BLL.VisaInfo();
+        private readonly BLL.ActionRecords _bllActionRecords = new BLL.ActionRecords();
         private readonly Action<int> _updateDel; //副界面传来更新数据库的委托
         private readonly int _curPage; //主界面更新数据库需要一个当前页
 
@@ -24,7 +27,7 @@ namespace TravelAgency.CSUI.FrmSub
             this._model = model;
             _updateDel = updateDel;
             _curPage = page;
-            
+
         }
 
         private void FrmInfoTypeIn_Load(object sender, EventArgs e)
@@ -45,7 +48,7 @@ namespace TravelAgency.CSUI.FrmSub
         private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
         {
 
-        
+
         }
 
         #region 状态更新函数
@@ -164,11 +167,6 @@ namespace TravelAgency.CSUI.FrmSub
         #endregion
 
 
-
-
-
-
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBoxEx.Show("是否同时更新为已录入状态?", "确认", MessageBoxButtons.YesNoCancel);
@@ -182,6 +180,18 @@ namespace TravelAgency.CSUI.FrmSub
                 MessageBoxEx.Show("更新失败，请重试!");
                 return;
             }
+
+            //添加记录
+            TravelAgency.Model.ActionRecords log = new ActionRecords();
+            log.ActType = Common.Enums.ActType._04校验;
+            log.WorkId = Common.GlobalUtils.LoginUser.WorkId;
+            log.UserName = Common.GlobalUtils.LoginUser.UserName;
+            log.VisaInfo_id = _model.VisaInfo_id;
+            //log.Visa_id = _model.Visa_id;
+            log.Type = _model.Types;
+            log.EntryTime = DateTime.Now;
+            _bllActionRecords.Add(log);
+
             _updateDel(_curPage);
             Close();
         }

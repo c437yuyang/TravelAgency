@@ -491,7 +491,7 @@ namespace TravelAgency.CSUI.FrmSub
                     log.UserName = Common.GlobalUtils.LoginUser.UserName;
                     log.VisaInfo_id = _dgvList[i].VisaInfo_id;
                     log.Visa_id = _visaModel.Visa_id;
-                    log.Type = Common.Enums.Types.Individual;
+                    log.Type = Common.Enums.Types.Team;
                     log.EntryTime = DateTime.Now;
                     _bllLoger.Add(log);
                 }
@@ -552,7 +552,7 @@ namespace TravelAgency.CSUI.FrmSub
                     log.UserName = Common.GlobalUtils.LoginUser.UserName;
                     log.VisaInfo_id = _dgvList[i].VisaInfo_id;
                     log.Visa_id = _visaModel.Visa_id;
-                    log.Type = Common.Enums.Types.Individual;
+                    log.Type = Common.Enums.Types.Team;
                     log.EntryTime = DateTime.Now;
                     _bllLoger.Add(log);
                 }
