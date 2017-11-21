@@ -15,6 +15,7 @@ namespace TravelAgency.Common
     {
         public static Model.AuthUser LoginUser;
         public static readonly DocDocxGenerator DocDocxGenerator;
+        
         static GlobalUtils()
         {
             InitFtp();

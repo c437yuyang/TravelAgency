@@ -19,8 +19,9 @@ namespace TravelAgency.CSUI.FrmMain
 {
     public partial class FrmVisaInfoManage : Form
     {
-        private readonly TravelAgency.BLL.VisaInfo _bll = new TravelAgency.BLL.VisaInfo();
+        private readonly TravelAgency.BLL.VisaInfo _bllVisaInfo = new TravelAgency.BLL.VisaInfo();
         private readonly TravelAgency.BLL.Visa _bllVisa = new TravelAgency.BLL.Visa();
+        
         private int _curPage = 1;
         private int _pageCount = 0;
         private int _pageSize = 30;
@@ -48,7 +49,7 @@ namespace TravelAgency.CSUI.FrmMain
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _recordCount = _bll.GetRecordCount(_where);
+            _recordCount = _bllVisaInfo.GetRecordCount(_where);
             _pageCount = (int)Math.Ceiling(_recordCount / (double)_pageSize);
 
             //初始化一些控件
@@ -236,7 +237,7 @@ namespace TravelAgency.CSUI.FrmMain
             int curSelectedRow = -1;
             if (dataGridView1.SelectedRows.Count > 0)
                 curSelectedRow = dataGridView1.SelectedRows[0].Index;
-            dataGridView1.DataSource = _bll.GetListByPageOrderByGroupNo(page, _pageSize, _where);
+            dataGridView1.DataSource = _bllVisaInfo.GetListByPageOrderByGroupNo(page, _pageSize, _where);
             if (curSelectedRow != -1 && dataGridView1.Rows.Count > curSelectedRow)
                 dataGridView1.CurrentCell = dataGridView1.Rows[curSelectedRow].Cells[0];
             dataGridView1.Update();
@@ -244,7 +245,7 @@ namespace TravelAgency.CSUI.FrmMain
 
         private void UpdateState()
         {
-            _recordCount = _bll.GetRecordCount(_where);
+            _recordCount = _bllVisaInfo.GetRecordCount(_where);
             _pageCount = (int)Math.Ceiling((double)_recordCount / (double)_pageSize);
             if (_curPage == 1)
                 btnPagePre.Enabled = false;
@@ -489,7 +490,7 @@ namespace TravelAgency.CSUI.FrmMain
                 }
                 else
                 {
-                    VisaInfo model = _bll.GetModel(Guid.Parse(dataGridView1.CurrentRow.Cells["VisaInfo_id"].Value.ToString()));
+                    VisaInfo model = _bllVisaInfo.GetModel(Guid.Parse(dataGridView1.CurrentRow.Cells["VisaInfo_id"].Value.ToString()));
                     if (model == null)
                     {
                         MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
@@ -580,7 +581,7 @@ namespace TravelAgency.CSUI.FrmMain
             }
 
             string visainfoid = dataGridView1.SelectedRows[0].Cells["VisaInfo_id"].Value.ToString();
-            Model.VisaInfo model = _bll.GetModel(new Guid(visainfoid));
+            Model.VisaInfo model = _bllVisaInfo.GetModel(new Guid(visainfoid));
             if (model == null)
             {
                 MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
@@ -618,7 +619,7 @@ namespace TravelAgency.CSUI.FrmMain
                 sb.Append(",");
             }
 
-            int n = _bll.DeleteList(sb.ToString());
+            int n = _bllVisaInfo.DeleteList(sb.ToString());
             MessageBoxEx.Show(n + "条记录删除成功," + (count - n) + "条记录删除失败.");
             LoadDataToDataGridView(_curPage);
             UpdateState();
@@ -631,7 +632,6 @@ namespace TravelAgency.CSUI.FrmMain
         /// <param name="e"></param>
         private void cmsItemSetGroup_Click(object sender, EventArgs e)
         {
-
             int count = this.dataGridView1.SelectedRows.Count;
             var list = GetDgvSelNotSetGroupList();
             if (list == null)
@@ -651,7 +651,7 @@ namespace TravelAgency.CSUI.FrmMain
             List<Model.VisaInfo> list = new List<VisaInfo>();
             for (int i = 0; i != count; ++i)
             {
-                Model.VisaInfo model = _bll.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
+                Model.VisaInfo model = _bllVisaInfo.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
                 if (model == null)
                 {
                     MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
@@ -678,7 +678,7 @@ namespace TravelAgency.CSUI.FrmMain
             List<Model.VisaInfo> list = new List<VisaInfo>();
             for (int i = 0; i != count; ++i)
             {
-                Model.VisaInfo model = _bll.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
+                Model.VisaInfo model = _bllVisaInfo.GetModel(new Guid(dataGridView1.SelectedRows[i].Cells["Visainfo_id"].Value.ToString()));
                 if (model == null)
                 {
                     MessageBoxEx.Show(Resources.FindModelFailedPleaseCheckInfoCorrect);
