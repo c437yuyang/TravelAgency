@@ -478,12 +478,15 @@ namespace TravelAgency.CSUI.FrmSub
                 _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
                 //2.1更新VisaInfo数据库
                 UpdateInListVisaInfo(_dgvList);
-
+                bool hasTypedIn = _bllLoger.HasVisaBeenTypedIn(_visaModel);
                 //3.1更新这些人的录入情况到ActionResult里面
                 for (int i = 0; i < _dgvList.Count; i++)
                 {
                     Model.ActionRecords log = new ActionRecords();
-                    log.ActType = Common.Enums.ActType._01TypeIn;
+                    if (!hasTypedIn) //第一次打开进行设置团号，就是录入
+                        log.ActType = Common.Enums.ActType._01TypeIn;
+                    else //第二次是做资料
+                        log.ActType = Common.Enums.ActType._02TypeInData;
                     log.WorkId = Common.GlobalUtils.LoginUser.WorkId;
                     log.UserName = Common.GlobalUtils.LoginUser.UserName;
                     log.VisaInfo_id = _dgvList[i].VisaInfo_id;
@@ -535,6 +538,25 @@ namespace TravelAgency.CSUI.FrmSub
                 _dgvList = (List<Model.VisaInfo>)dgvGroupInfo.DataSource;
                 //2.1更新还留在团内的人的VisaInfo数据库
                 UpdateInListVisaInfo(_dgvList);
+
+                //添加记录
+                bool hasTypedIn = _bllLoger.HasVisaBeenTypedIn(_visaModel);
+                for (int i = 0; i < _dgvList.Count; i++)
+                {
+                    Model.ActionRecords log = new ActionRecords();
+                    if (!hasTypedIn)
+                        log.ActType = Common.Enums.ActType._01TypeIn;
+                    else //第二次是做资料
+                        log.ActType = Common.Enums.ActType._02TypeInData;
+                    log.WorkId = Common.GlobalUtils.LoginUser.WorkId;
+                    log.UserName = Common.GlobalUtils.LoginUser.UserName;
+                    log.VisaInfo_id = _dgvList[i].VisaInfo_id;
+                    log.Visa_id = _visaModel.Visa_id;
+                    log.Type = Common.Enums.Types.Individual;
+                    log.EntryTime = DateTime.Now;
+                    _bllLoger.Add(log);
+                }
+
                 //2.2更新移出的人的数据库
                 UpdateOutListVisaInfo();
                 //关闭窗口
