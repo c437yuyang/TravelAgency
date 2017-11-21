@@ -17,7 +17,7 @@ namespace TravelAgency.Model
 		private Guid _visainfo_id;
 		private Guid _visa_id;
 		private string _type;
-		private DateTime? _entrytime;
+		private DateTime? _entrytime = DateTime.Now;
 		/// <summary>
 		/// 
 		/// </summary>

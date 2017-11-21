@@ -154,6 +154,7 @@
     <Compile Include="VisaInfoDal.cs" />
     <Compile Include="VisaInfo_Tmp.cs" />
     <Compile Include="VisaInfo_TmpDal.cs" />
+    <Compile Include="ActionRecordsDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
