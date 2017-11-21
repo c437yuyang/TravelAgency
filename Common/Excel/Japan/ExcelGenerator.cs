@@ -51,7 +51,6 @@ namespace TravelAgency.Common.Excel.Japan
             rowHeader.CreateCell(0).SetCellValue("签证申请人名单");
             rowHeader.HeightInPoints = 50;
             
-
             IRow row = sheet.CreateRow(1);
             row.CreateCell(0).SetCellValue("编号");
             row.CreateCell(1).SetCellValue("姓名(中文)");
@@ -126,7 +125,7 @@ namespace TravelAgency.Common.Excel.Japan
             style.BorderBottom = BorderStyle.Thin;
             style.BorderLeft = BorderStyle.Thin;
             style.BorderRight = BorderStyle.Thin;
-            for (int i = 1; i <= sheet.LastRowNum; i++)
+            for (int i = 0; i <= sheet.LastRowNum; i++)
             {
                 row = sheet.GetRow(i);
                 for (int c = 0; c < row.LastCellNum; ++c)
@@ -135,17 +134,17 @@ namespace TravelAgency.Common.Excel.Japan
                 }
             }
 
-            ICellStyle headerStyle = wkbook.CreateCellStyle();
-            headerStyle.VerticalAlignment = VerticalAlignment.Center;
-            headerStyle.Alignment = HorizontalAlignment.Center;
-            headerStyle.BorderTop = BorderStyle.Thin;
-            headerStyle.BorderBottom = BorderStyle.Thin;
-            headerStyle.BorderLeft = BorderStyle.Thin;
-            headerStyle.BorderRight = BorderStyle.Thin;
-            HSSFFont font = (HSSFFont)wkbook.CreateFont();
-            font.FontHeightInPoints = 15;
-            headerStyle.SetFont(font);
-            sheet.GetRow(0).GetCell(0).CellStyle = headerStyle;
+            //ICellStyle headerStyle = wkbook.CreateCellStyle();
+            //headerStyle.VerticalAlignment = VerticalAlignment.Center;
+            //headerStyle.Alignment = HorizontalAlignment.Center;
+            //headerStyle.BorderTop = BorderStyle.Thin;
+            //headerStyle.BorderBottom = BorderStyle.Thin;
+            //headerStyle.BorderLeft = BorderStyle.Thin;
+            //headerStyle.BorderRight = BorderStyle.Thin;
+            //HSSFFont font = (HSSFFont)wkbook.CreateFont();
+            //font.FontHeightInPoints = 15;
+            //headerStyle.SetFont(font);
+            //sheet.GetRow(0).GetCell(0).CellStyle = headerStyle;
 
 
             //5.执行写入磁盘
@@ -435,5 +434,56 @@ namespace TravelAgency.Common.Excel.Japan
             string dstName = GlobalUtils.OpenSaveFileDlg("每日送签客人情况表.xls", "office 2003 excel|*.xls");
             return SaveFile(dstName, wkbook);
         }
+
+        public static bool GetPrintTable(List<Model.VisaInfo> visaInfoList)
+        {
+            //1.创建工作簿对象
+            IWorkbook wkbook = new HSSFWorkbook();
+            //2.创建工作表对象
+            ISheet sheet = wkbook.CreateSheet("签证申请人名单");
+
+            //2.1创建表头
+            IRow row = sheet.CreateRow(0);
+            row.CreateCell(0).SetCellValue("编号");
+            row.CreateCell(1).SetCellValue("二维码信息");
+
+            //2.2设置列宽度
+            sheet.SetColumnWidth(0, 5 * 256);//编号
+            sheet.SetColumnWidth(1, 25 * 256);//姓名(中文)
+            //3.插入行和单元格
+            for (int i = 0; i != visaInfoList.Count; ++i)
+            {
+                //创建单元格
+                row = sheet.CreateRow(i + 1);
+                //设置行高
+                //row.HeightInPoints = 50;
+                //设置值
+                row.CreateCell(0).SetCellValue(i + 1);
+                row.CreateCell(1).SetCellValue(visaInfoList[i].PassportNo + "|" + visaInfoList[i].EnglishName);
+            }
+
+            //4.1设置对齐风格和边框
+            ICellStyle style = wkbook.CreateCellStyle();
+            //style.VerticalAlignment = VerticalAlignment.Center;
+            //style.Alignment = HorizontalAlignment.Center;
+            style.BorderTop = BorderStyle.Thin;
+            style.BorderBottom = BorderStyle.Thin;
+            style.BorderLeft = BorderStyle.Thin;
+            style.BorderRight = BorderStyle.Thin;
+            for (int i = 0; i <= sheet.LastRowNum; i++)
+            {
+                row = sheet.GetRow(i);
+                for (int c = 0; c < row.LastCellNum; ++c)
+                {
+                    row.GetCell(c).CellStyle = style;
+                }
+            }
+
+            //5.执行写入磁盘
+            string dstName = GlobalUtils.OpenSaveFileDlg( "打印报表.xls", "office 2003 excel|*.xls");
+            return SaveFile(dstName, wkbook);
+        }
+
+
     }
 }

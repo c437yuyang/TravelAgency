@@ -110,6 +110,7 @@
             this.护照红外图像ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.全部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgWorkerLoadData = new System.ComponentModel.BackgroundWorker();
+            this.打印报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMain.SuspendLayout();
             this.panelDgv.SuspendLayout();
@@ -157,7 +158,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -839,7 +840,7 @@
             this.生成报表ToolStripMenuItem,
             this.导出图像ToolStripMenuItem});
             this.cmsDgvRb.Name = "cmsDgvRb";
-            this.cmsDgvRb.Size = new System.Drawing.Size(161, 246);
+            this.cmsDgvRb.Size = new System.Drawing.Size(161, 268);
             // 
             // cmsItemDelete
             // 
@@ -907,7 +908,8 @@
             this.生成报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.外领担保函ToolStripMenuItem,
             this.人申请表ToolStripMenuItem,
-            this.机票报表ToolStripMenuItem});
+            this.机票报表ToolStripMenuItem,
+            this.打印报表ToolStripMenuItem});
             this.生成报表ToolStripMenuItem.Name = "生成报表ToolStripMenuItem";
             this.生成报表ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.生成报表ToolStripMenuItem.Text = "生成报表";
@@ -947,21 +949,21 @@
             // 护照图像ToolStripMenuItem
             // 
             this.护照图像ToolStripMenuItem.Name = "护照图像ToolStripMenuItem";
-            this.护照图像ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.护照图像ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.护照图像ToolStripMenuItem.Text = "护照图像";
             this.护照图像ToolStripMenuItem.Click += new System.EventHandler(this.护照图像ToolStripMenuItem_Click);
             // 
             // 头像ToolStripMenuItem
             // 
             this.头像ToolStripMenuItem.Name = "头像ToolStripMenuItem";
-            this.头像ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.头像ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.头像ToolStripMenuItem.Text = "头像";
             this.头像ToolStripMenuItem.Click += new System.EventHandler(this.头像ToolStripMenuItem_Click);
             // 
             // 护照红外图像ToolStripMenuItem
             // 
             this.护照红外图像ToolStripMenuItem.Name = "护照红外图像ToolStripMenuItem";
-            this.护照红外图像ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.护照红外图像ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.护照红外图像ToolStripMenuItem.Text = "护照红外图像";
             this.护照红外图像ToolStripMenuItem.Visible = false;
             this.护照红外图像ToolStripMenuItem.Click += new System.EventHandler(this.护照红外图像ToolStripMenuItem_Click);
@@ -969,7 +971,7 @@
             // 全部ToolStripMenuItem
             // 
             this.全部ToolStripMenuItem.Name = "全部ToolStripMenuItem";
-            this.全部ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.全部ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.全部ToolStripMenuItem.Text = "全部";
             this.全部ToolStripMenuItem.Click += new System.EventHandler(this.全部ToolStripMenuItem_Click);
             // 
@@ -978,6 +980,13 @@
             this.bgWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadData_DoWork);
             this.bgWorkerLoadData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerLoadData_ProgressChanged);
             this.bgWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadData_RunWorkerCompleted);
+            // 
+            // 打印报表ToolStripMenuItem
+            // 
+            this.打印报表ToolStripMenuItem.Name = "打印报表ToolStripMenuItem";
+            this.打印报表ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.打印报表ToolStripMenuItem.Text = "打印报表";
+            this.打印报表ToolStripMenuItem.Click += new System.EventHandler(this.打印报表ToolStripMenuItem_Click);
             // 
             // FrmVisaInfoManage
             // 
@@ -1082,6 +1091,7 @@
         private System.Windows.Forms.ToolStripMenuItem 全部ToolStripMenuItem;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbCountry;
         private DevComponents.DotNetBar.LabelX labelX3;
+        private System.Windows.Forms.ToolStripMenuItem 打印报表ToolStripMenuItem;
     }
 }
 

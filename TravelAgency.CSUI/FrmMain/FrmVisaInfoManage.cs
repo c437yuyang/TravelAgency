@@ -844,6 +844,14 @@ namespace TravelAgency.CSUI.FrmMain
             GlobalUtils.DocDocxGenerator.Generate(list);
         }
 
+        private void 打印报表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var visainfos = GetDgvSelList();
+            if(visainfos.Count==0)
+                return;
+            ExcelGenerator.GetPrintTable(visainfos);
+        }
+
         private void FrmVisaInfoManage_FormClosed(object sender, FormClosedEventArgs e)
         {
         }
@@ -944,6 +952,8 @@ namespace TravelAgency.CSUI.FrmMain
             else
                 MessageBoxEx.Show("保存失败");
         }
+
+
 
 
 
