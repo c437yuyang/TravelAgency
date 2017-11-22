@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new DevComponents.DotNetBar.PanelEx();
             this.panelBottom = new DevComponents.DotNetBar.PanelEx();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
@@ -72,6 +72,7 @@
             this.btnAllIn = new DevComponents.DotNetBar.ButtonX();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelGroupInfo = new DevComponents.DotNetBar.PanelEx();
+            this.chbIsUrgent = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbCountry = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.Japan = new DevComponents.Editors.ComboItem();
             this.Korea = new DevComponents.Editors.ComboItem();
@@ -84,12 +85,10 @@
             this.txtOutTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtInTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtSubmitTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.txtCheckPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtTypeInPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtSalesPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
@@ -105,6 +104,8 @@
             this.lbCount = new DevComponents.DotNetBar.LabelX();
             this.txtGroupNo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.txtCheckPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.cmsDgvRb = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.粘贴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,7 +115,8 @@
             this.下移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.移到顶部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.移到底部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chbIsUrgent = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.txtPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelMain.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelMid2.SuspendLayout();
@@ -244,9 +246,9 @@
             this.panelMid2.Controls.Add(this.dgvGroupInfo);
             this.panelMid2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelMid2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMid2.Location = new System.Drawing.Point(0, 227);
+            this.panelMid2.Location = new System.Drawing.Point(0, 241);
             this.panelMid2.Name = "panelMid2";
-            this.panelMid2.Size = new System.Drawing.Size(1340, 498);
+            this.panelMid2.Size = new System.Drawing.Size(1340, 484);
             this.panelMid2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelMid2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelMid2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -261,14 +263,14 @@
             this.dgvGroupInfo.AllowUserToAddRows = false;
             this.dgvGroupInfo.AllowUserToDeleteRows = false;
             this.dgvGroupInfo.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroupInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGroupInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvGroupInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGroupInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -287,31 +289,31 @@
             this.Phone,
             this.dgvPassportNo,
             this.ReturnTime});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvGroupInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGroupInfo.EnableHeadersVisualStyles = false;
             this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvGroupInfo.Location = new System.Drawing.Point(0, 0);
             this.dgvGroupInfo.Name = "dgvGroupInfo";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroupInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGroupInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvGroupInfo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvGroupInfo.RowTemplate.Height = 30;
             this.dgvGroupInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvGroupInfo.Size = new System.Drawing.Size(1340, 498);
+            this.dgvGroupInfo.Size = new System.Drawing.Size(1340, 484);
             this.dgvGroupInfo.TabIndex = 18;
             this.dgvGroupInfo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGroupInfo_CellEndEdit);
             this.dgvGroupInfo.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGroupInfo_CellMouseUp);
@@ -596,7 +598,7 @@
             this.panelMid.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMid.Location = new System.Drawing.Point(0, 35);
             this.panelMid.Name = "panelMid";
-            this.panelMid.Size = new System.Drawing.Size(1340, 192);
+            this.panelMid.Size = new System.Drawing.Size(1340, 206);
             this.panelMid.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelMid.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelMid.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -617,7 +619,7 @@
             this.panelInAndOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelInAndOut.Location = new System.Drawing.Point(275, 0);
             this.panelInAndOut.Name = "panelInAndOut";
-            this.panelInAndOut.Size = new System.Drawing.Size(580, 192);
+            this.panelInAndOut.Size = new System.Drawing.Size(580, 206);
             this.panelInAndOut.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelInAndOut.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelInAndOut.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -642,7 +644,7 @@
             this.lvOut.FullRowSelect = true;
             this.lvOut.Location = new System.Drawing.Point(0, 0);
             this.lvOut.Name = "lvOut";
-            this.lvOut.Size = new System.Drawing.Size(238, 192);
+            this.lvOut.Size = new System.Drawing.Size(238, 206);
             this.lvOut.TabIndex = 35;
             this.lvOut.UseCompatibleStateImageBehavior = false;
             this.lvOut.View = System.Windows.Forms.View.Details;
@@ -673,7 +675,7 @@
             this.lvIn.FullRowSelect = true;
             this.lvIn.Location = new System.Drawing.Point(342, 0);
             this.lvIn.Name = "lvIn";
-            this.lvIn.Size = new System.Drawing.Size(238, 192);
+            this.lvIn.Size = new System.Drawing.Size(238, 206);
             this.lvIn.TabIndex = 58;
             this.lvIn.UseCompatibleStateImageBehavior = false;
             this.lvIn.View = System.Windows.Forms.View.Details;
@@ -701,7 +703,7 @@
             this.panelInOutBtns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelInOutBtns.Location = new System.Drawing.Point(0, 0);
             this.panelInOutBtns.Name = "panelInOutBtns";
-            this.panelInOutBtns.Size = new System.Drawing.Size(580, 192);
+            this.panelInOutBtns.Size = new System.Drawing.Size(580, 206);
             this.panelInOutBtns.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelInOutBtns.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelInOutBtns.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -716,7 +718,7 @@
             this.btnAllOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAllOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAllOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAllOut.Location = new System.Drawing.Point(253, 152);
+            this.btnAllOut.Location = new System.Drawing.Point(253, 159);
             this.btnAllOut.Name = "btnAllOut";
             this.btnAllOut.Size = new System.Drawing.Size(75, 23);
             this.btnAllOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -729,7 +731,7 @@
             this.btnOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOut.Location = new System.Drawing.Point(253, 109);
+            this.btnOut.Location = new System.Drawing.Point(253, 116);
             this.btnOut.Name = "btnOut";
             this.btnOut.Size = new System.Drawing.Size(75, 23);
             this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -742,7 +744,7 @@
             this.btnIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnIn.Location = new System.Drawing.Point(253, 65);
+            this.btnIn.Location = new System.Drawing.Point(253, 72);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -755,7 +757,7 @@
             this.btnAllIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAllIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAllIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAllIn.Location = new System.Drawing.Point(253, 16);
+            this.btnAllIn.Location = new System.Drawing.Point(253, 23);
             this.btnAllIn.Name = "btnAllIn";
             this.btnAllIn.Size = new System.Drawing.Size(75, 23);
             this.btnAllIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -766,10 +768,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            //this.pictureBox1.Image = global::TravelAgency.CSUI.Properties.Resources.Japan;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(275, 192);
+            this.pictureBox1.Size = new System.Drawing.Size(275, 206);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 59;
             this.pictureBox1.TabStop = false;
@@ -778,6 +779,8 @@
             // 
             this.panelGroupInfo.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelGroupInfo.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelGroupInfo.Controls.Add(this.labelX14);
+            this.panelGroupInfo.Controls.Add(this.txtPerson);
             this.panelGroupInfo.Controls.Add(this.chbIsUrgent);
             this.panelGroupInfo.Controls.Add(this.cbCountry);
             this.panelGroupInfo.Controls.Add(this.labelX4);
@@ -805,7 +808,7 @@
             this.panelGroupInfo.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelGroupInfo.Location = new System.Drawing.Point(855, 0);
             this.panelGroupInfo.Name = "panelGroupInfo";
-            this.panelGroupInfo.Size = new System.Drawing.Size(485, 192);
+            this.panelGroupInfo.Size = new System.Drawing.Size(485, 206);
             this.panelGroupInfo.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelGroupInfo.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelGroupInfo.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -814,6 +817,19 @@
             this.panelGroupInfo.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelGroupInfo.Style.GradientAngle = 90;
             this.panelGroupInfo.TabIndex = 47;
+            // 
+            // chbIsUrgent
+            // 
+            // 
+            // 
+            // 
+            this.chbIsUrgent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.chbIsUrgent.Location = new System.Drawing.Point(261, 6);
+            this.chbIsUrgent.Name = "chbIsUrgent";
+            this.chbIsUrgent.Size = new System.Drawing.Size(100, 23);
+            this.chbIsUrgent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.chbIsUrgent.TabIndex = 73;
+            this.chbIsUrgent.Text = "是否急件";
             // 
             // cbCountry
             // 
@@ -1060,21 +1076,6 @@
             this.txtSubmitTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtSubmitTime.TabIndex = 8;
             // 
-            // txtCheckPerson
-            // 
-            // 
-            // 
-            // 
-            this.txtCheckPerson.Border.Class = "TextBoxBorder";
-            this.txtCheckPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCheckPerson.DisabledBackColor = System.Drawing.Color.White;
-            this.txtCheckPerson.Location = new System.Drawing.Point(980, 9);
-            this.txtCheckPerson.Name = "txtCheckPerson";
-            this.txtCheckPerson.PreventEnterBeep = true;
-            this.txtCheckPerson.Size = new System.Drawing.Size(100, 21);
-            this.txtCheckPerson.TabIndex = 16;
-            this.txtCheckPerson.Visible = false;
-            // 
             // txtTypeInPerson
             // 
             // 
@@ -1126,19 +1127,6 @@
             this.labelX9.Size = new System.Drawing.Size(91, 23);
             this.labelX9.TabIndex = 61;
             this.labelX9.Text = "客人出境时间:";
-            // 
-            // labelX13
-            // 
-            // 
-            // 
-            // 
-            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX13.Location = new System.Drawing.Point(886, 8);
-            this.labelX13.Name = "labelX13";
-            this.labelX13.Size = new System.Drawing.Size(66, 23);
-            this.labelX13.TabIndex = 62;
-            this.labelX13.Text = "审查人员:";
-            this.labelX13.Visible = false;
             // 
             // labelX12
             // 
@@ -1334,6 +1322,34 @@
             this.labelX2.TabIndex = 0;
             this.labelX2.Text = "团号:";
             // 
+            // txtCheckPerson
+            // 
+            // 
+            // 
+            // 
+            this.txtCheckPerson.Border.Class = "TextBoxBorder";
+            this.txtCheckPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCheckPerson.DisabledBackColor = System.Drawing.Color.White;
+            this.txtCheckPerson.Location = new System.Drawing.Point(980, 9);
+            this.txtCheckPerson.Name = "txtCheckPerson";
+            this.txtCheckPerson.PreventEnterBeep = true;
+            this.txtCheckPerson.Size = new System.Drawing.Size(100, 21);
+            this.txtCheckPerson.TabIndex = 16;
+            this.txtCheckPerson.Visible = false;
+            // 
+            // labelX13
+            // 
+            // 
+            // 
+            // 
+            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX13.Location = new System.Drawing.Point(886, 8);
+            this.labelX13.Name = "labelX13";
+            this.labelX13.Size = new System.Drawing.Size(66, 23);
+            this.labelX13.TabIndex = 62;
+            this.labelX13.Text = "审查人员:";
+            this.labelX13.Visible = false;
+            // 
             // cmsDgvRb
             // 
             this.cmsDgvRb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1404,18 +1420,30 @@
             this.移到底部ToolStripMenuItem.Text = "移到底部";
             this.移到底部ToolStripMenuItem.Click += new System.EventHandler(this.移到底部ToolStripMenuItem_Click);
             // 
-            // chbIsUrgent
+            // labelX14
             // 
             // 
             // 
             // 
-            this.chbIsUrgent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chbIsUrgent.Location = new System.Drawing.Point(261, 6);
-            this.chbIsUrgent.Name = "chbIsUrgent";
-            this.chbIsUrgent.Size = new System.Drawing.Size(100, 23);
-            this.chbIsUrgent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chbIsUrgent.TabIndex = 73;
-            this.chbIsUrgent.Text = "是否急件";
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Location = new System.Drawing.Point(7, 183);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.Size = new System.Drawing.Size(91, 23);
+            this.labelX14.TabIndex = 75;
+            this.labelX14.Text = "送签社担当:";
+            // 
+            // txtPerson
+            // 
+            // 
+            // 
+            // 
+            this.txtPerson.Border.Class = "TextBoxBorder";
+            this.txtPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPerson.Location = new System.Drawing.Point(104, 182);
+            this.txtPerson.Name = "txtPerson";
+            this.txtPerson.PreventEnterBeep = true;
+            this.txtPerson.Size = new System.Drawing.Size(100, 21);
+            this.txtPerson.TabIndex = 74;
             // 
             // FrmSetGroup
             // 
@@ -1532,5 +1560,7 @@
         private System.Windows.Forms.ToolStripMenuItem 移到顶部ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 移到底部ToolStripMenuItem;
         private DevComponents.DotNetBar.Controls.CheckBoxX chbIsUrgent;
+        private DevComponents.DotNetBar.LabelX labelX14;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPerson;
     }
 }

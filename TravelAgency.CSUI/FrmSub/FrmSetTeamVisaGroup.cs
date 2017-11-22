@@ -146,6 +146,7 @@ namespace TravelAgency.CSUI.FrmSub
             txtSalesPerson.Text = _visaModel.SalesPerson;
             txtClient.Text = _visaModel.Client;
             chbIsUrgent.Checked = _visaModel.IsUrgent;
+            txtPerson.Text = _visaModel.Person;
         }
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
@@ -586,6 +587,7 @@ namespace TravelAgency.CSUI.FrmSub
                 _visaModel.Number = lvIn.Items.Count; //团号的人数
                 _visaModel.Types = Common.Enums.Types.Team; //设置为团签
                 _visaModel.IsUrgent = chbIsUrgent.Checked;
+                _visaModel.Person = txtPerson.Text;
                 return true;
             }
             catch (Exception)
@@ -622,6 +624,7 @@ namespace TravelAgency.CSUI.FrmSub
                 model.Client = txtClient.Text;
                 model.Types = Common.Enums.Types.Team; //设置为团签
                 model.IsUrgent = chbIsUrgent.Checked;
+                model.Person = txtPerson.Text;
                 return true;
             }
             catch (Exception)

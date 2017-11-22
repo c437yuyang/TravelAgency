@@ -157,6 +157,7 @@ namespace TravelAgency.CSUI.FrmSub
             //txtTypeInPerson.Text = GlobalUtils.LoginUser.UserName; //在Frm load里面设置，因为都要设置操作员
             txtCheckPerson.Text = _visaModel.CheckPerson;
             chbIsUrgent.Checked = _visaModel.IsUrgent;
+            txtPerson.Text = _visaModel.Person;
         }
 
         private void FrmSetGroup_Load(object sender, EventArgs e)
@@ -629,6 +630,7 @@ namespace TravelAgency.CSUI.FrmSub
                 _visaModel.CheckPerson = txtCheckPerson.Text;
                 _visaModel.Types = Common.Enums.Types.Individual; //设置为个签
                 _visaModel.IsUrgent = chbIsUrgent.Checked;
+                _visaModel.Person = txtPerson.Text;
                 return true;
             }
             catch (Exception)
@@ -676,7 +678,7 @@ namespace TravelAgency.CSUI.FrmSub
                 model.CheckPerson = txtCheckPerson.Text;
                 model.Types = Common.Enums.Types.Individual; //设置为个签
                 model.IsUrgent = chbIsUrgent.Checked;
-
+                model.Person = txtPerson.Text;
                 return true;
             }
             catch (Exception)

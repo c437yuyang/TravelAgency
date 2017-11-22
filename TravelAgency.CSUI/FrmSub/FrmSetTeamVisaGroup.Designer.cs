@@ -97,6 +97,8 @@
             this.下移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.移到顶部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.移到底部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.txtPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelMain.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelMid2.SuspendLayout();
@@ -269,12 +271,12 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvGroupInfo.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvGroupInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGroupInfo.EnableHeadersVisualStyles = false;
-            this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgvGroupInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvGroupInfo.Location = new System.Drawing.Point(0, 0);
             this.dgvGroupInfo.Name = "dgvGroupInfo";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -686,6 +688,8 @@
             // 
             this.panelGroupInfo.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelGroupInfo.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelGroupInfo.Controls.Add(this.labelX14);
+            this.panelGroupInfo.Controls.Add(this.txtPerson);
             this.panelGroupInfo.Controls.Add(this.chbIsUrgent);
             this.panelGroupInfo.Controls.Add(this.labelX5);
             this.panelGroupInfo.Controls.Add(this.labelX6);
@@ -1033,6 +1037,31 @@
             this.移到底部ToolStripMenuItem.Text = "移到底部";
             this.移到底部ToolStripMenuItem.Click += new System.EventHandler(this.移到底部ToolStripMenuItem_Click);
             // 
+            // labelX14
+            // 
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Location = new System.Drawing.Point(49, 119);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.Size = new System.Drawing.Size(91, 23);
+            this.labelX14.TabIndex = 78;
+            this.labelX14.Text = "送签社担当:";
+            // 
+            // txtPerson
+            // 
+            // 
+            // 
+            // 
+            this.txtPerson.Border.Class = "TextBoxBorder";
+            this.txtPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPerson.Location = new System.Drawing.Point(146, 118);
+            this.txtPerson.Name = "txtPerson";
+            this.txtPerson.PreventEnterBeep = true;
+            this.txtPerson.Size = new System.Drawing.Size(108, 21);
+            this.txtPerson.TabIndex = 77;
+            // 
             // FrmSetTeamVisaGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1128,5 +1157,7 @@
         private System.Windows.Forms.ToolStripMenuItem 移到顶部ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 移到底部ToolStripMenuItem;
         private DevComponents.DotNetBar.Controls.CheckBoxX chbIsUrgent;
+        private DevComponents.DotNetBar.LabelX labelX14;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPerson;
     }
 }
