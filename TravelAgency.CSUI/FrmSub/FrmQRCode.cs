@@ -29,12 +29,13 @@ namespace TravelAgency.CSUI.FrmSub
         private void FrmQRCode_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
+            picQRCode.SizeMode = PictureBoxSizeMode.Zoom;
             SetQRCodeToPicBox();
         }
 
         private void SetQRCodeToPicBox()
         {
-            _qrCode.EncodeToPng(_qrinfo, _tmpFileName, QRCodeSaveSize.Size165X165);
+            _qrCode.EncodeToPng(_qrinfo, _tmpFileName, QRCodeSaveSize.Size660X660);
 
             picQRCode.Image = GlobalUtils.LoadImageFromFileNoBlock(_tmpFileName);
             txtQRCodeInfo.Text = _qrinfo;
@@ -99,13 +100,19 @@ namespace TravelAgency.CSUI.FrmSub
         {
             //TODO:打印了后，改变数据库里的签证状态，所以这里最好还是用model
             PrintDialog printDialog1 = new PrintDialog();
-            PrintDocument printDocument1 = new PrintDocument();
+            //PrintDocument printDocument1 = new PrintDocument();
+            //printDocument1.
             printDialog1.Document = printDocument1;
             DialogResult r = printDialog1.ShowDialog();
             if (r == DialogResult.OK)
             {
                 printDocument1.Print();
             }
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(Image.FromFile(_tmpFileName), 0.0f, 0.0f,200.0f,200.0f);
         }
     }
 }

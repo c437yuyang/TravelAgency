@@ -35,6 +35,7 @@
             this.txtQRCodeInfo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.picQRCode = new System.Windows.Forms.PictureBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).BeginInit();
             this.SuspendLayout();
@@ -134,6 +135,10 @@
             this.picQRCode.TabIndex = 0;
             this.picQRCode.TabStop = false;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // FrmQRCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -160,6 +165,7 @@
         private DevComponents.DotNetBar.ButtonX btnUpdateQRCode;
         private DevComponents.DotNetBar.ButtonX btnSavePic;
         private DevComponents.DotNetBar.ButtonX btnPrint;
+        private System.Drawing.Printing.PrintDocument printDocument1;
 
     }
 }
