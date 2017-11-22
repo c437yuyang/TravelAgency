@@ -620,6 +620,18 @@ namespace TravelAgency.CSUI.FrmMain
             GlobalUtils.DocDocxGenerator.Generate(list);
         }
 
+        private void 日本送签时间表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(dataGridView1.SelectedRows.Count < 1)
+                return;
+            List<Model.Visa> list = new List<Visa>();
+            for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+            {
+                list.Add((dataGridView1.DataSource as List<Model.Visa>)[dataGridView1.SelectedRows[i].Index]);
+            }
+            ExcelGenerator.GetAllCountExcel(list);
+        }
+
         private void btnGetTodayExcel_Click(object sender, EventArgs e)
         {
 
@@ -671,6 +683,8 @@ namespace TravelAgency.CSUI.FrmMain
                 
             }
         }
+
+
 
 
 

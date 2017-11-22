@@ -484,6 +484,91 @@ namespace TravelAgency.Common.Excel.Japan
             return SaveFile(dstName, wkbook);
         }
 
+        /// <summary>
+        /// 导出日本签证时间表
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="remark"></param>
+        /// <param name="groupNo"></param>
+        /// <returns></returns>
+        public static bool GetAllCountExcel(List<TravelAgency.Model.Visa> list)
+        {
+            //1.创建工作簿对象
+            IWorkbook wkbook = new HSSFWorkbook();
+            //2.创建工作表对象
+            ISheet sheet = wkbook.CreateSheet("日本签证时间表");
+
+            //2.1创建表头
+
+            IRow row = sheet.CreateRow(0);
+            row.CreateCell(0).SetCellValue("团号");
+            row.CreateCell(1).SetCellValue("送签日期");
+            row.CreateCell(2).SetCellValue("出签日期");
+            row.CreateCell(3).SetCellValue("送签社担当");
+            row.CreateCell(4).SetCellValue("人数");
+            row.CreateCell(5).SetCellValue("资料寄出时间");
+            row.CreateCell(6).SetCellValue("销售人员");
+            row.CreateCell(7).SetCellValue("客户");
+            row.CreateCell(8).SetCellValue("其他备注");
+           
+
+            //2.2设置列宽度
+            sheet.SetColumnWidth(0, 60 * 256);  //团号");
+            sheet.SetColumnWidth(1, 15 * 256); //送签日期");
+            sheet.SetColumnWidth(2, 15 * 256); //出签日期");
+            sheet.SetColumnWidth(3, 15 * 256);  //送签社担当")
+            sheet.SetColumnWidth(4, 8 * 256); //人数");
+            sheet.SetColumnWidth(5, 12 * 256); //资料寄出时间
+            sheet.SetColumnWidth(6, 17 * 256); //销售人员");
+            sheet.SetColumnWidth(7, 10 * 256); //客户");
+            sheet.SetColumnWidth(8, 10 * 256); //其他备注");
+            //3.插入行和单元格
+            for (int i = 0; i != list.Count; ++i)
+            {
+                //创建单元格
+                row = sheet.CreateRow(i + 1);
+                ////设置行高
+                //row.HeightInPoints = 50;
+                //设置值
+                row.CreateCell(0).SetCellValue(list[i].GroupNo);
+                row.CreateCell(1).SetCellValue(DateTimeFormator.DateTimeToString1(list[i].InTime));
+                row.CreateCell(2).SetCellValue(DateTimeFormator.DateTimeToString1(list[i].OutTime));
+                row.CreateCell(3).SetCellValue(list[i].Person);
+                row.CreateCell(4).SetCellValue(list[i].Number.ToString());
+                row.CreateCell(5).SetCellValue("");//资料寄出时间先不设置
+                row.CreateCell(6).SetCellValue(list[i].SalesPerson);
+                row.CreateCell(7).SetCellValue(list[i].Client);
+                row.CreateCell(8).SetCellValue(""); //其他备注先不设置
+            }
+
+
+            ////4.2合并单元格
+            //sheet.AddMergedRegion(new CellRangeAddress(2, sheet.LastRowNum, 12, 12));
+            //sheet.AddMergedRegion(new CellRangeAddress(0, 0, 0, 15));
+
+            //4.1设置对齐风格和边框
+            ICellStyle style = wkbook.CreateCellStyle();
+            style.VerticalAlignment = VerticalAlignment.Center;
+            style.Alignment = HorizontalAlignment.Left;
+            style.BorderTop = BorderStyle.Thin;
+            style.BorderBottom = BorderStyle.Thin;
+            style.BorderLeft = BorderStyle.Thin;
+            style.BorderRight = BorderStyle.Thin;
+            for (int i = 0; i <= sheet.LastRowNum; i++)
+            {
+                row = sheet.GetRow(i);
+                for (int c = 0; c < row.LastCellNum; ++c)
+                {
+                    row.GetCell(c).CellStyle = style;
+                }
+            }
+
+            //5.执行写入磁盘
+            string dstName = GlobalUtils.OpenSaveFileDlg( "日本签证时间表.xls", "office 2003 excel|*.xls");
+            return SaveFile(dstName, wkbook);
+        }
+
+
 
     }
 }
