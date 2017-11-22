@@ -35,9 +35,10 @@ namespace TravelAgency.CSUI.FrmSub
 
         private void SetQRCodeToPicBox()
         {
-            _qrCode.EncodeToPng(_qrinfo, _tmpFileName, QRCodeSaveSize.Size660X660);
-
-            picQRCode.Image = GlobalUtils.LoadImageFromFileNoBlock(_tmpFileName);
+            _qrCode.EncodeToPng(_qrinfo, _tmpFileName, QRCodeSaveSize.Size165X165);
+            Image image = GlobalUtils.LoadImageFromFileNoBlock(_tmpFileName);
+            PicHandler.DrawStringOnPicture(image);
+            picQRCode.Image = image;
             txtQRCodeInfo.Text = _qrinfo;
         }
 
@@ -103,6 +104,7 @@ namespace TravelAgency.CSUI.FrmSub
             //PrintDocument printDocument1 = new PrintDocument();
             //printDocument1.
             printDialog1.Document = printDocument1;
+            this.printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom",50,50); //设置页面大小
             DialogResult r = printDialog1.ShowDialog();
             if (r == DialogResult.OK)
             {

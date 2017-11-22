@@ -172,6 +172,7 @@
     <Compile Include="Excel\Japan\XlsGenerator.cs" />
     <Compile Include="FTP\FtpHandler.cs" />
     <Compile Include="PassportPicHandler.cs" />
+    <Compile Include="PicHandler.cs" />
     <Compile Include="RngWord.cs" />
     <Compile Include="Word\DocCOMHandler.cs" />
     <Compile Include="Enums\HasChecked.cs" />
