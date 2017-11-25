@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Web.SessionState;
@@ -116,6 +117,27 @@ namespace TravelAgency.Common
         {
             return LoadImageFromStream(LoadFileToMemory(filename));
         }
+
+
+        /// <summary>
+        /// 检查数据库连接
+        /// </summary>
+        public static bool CheckDatabaseConnect()
+        {
+            try
+            {
+                string conStr = ConfigurationManager.ConnectionStrings["mssql"].ConnectionString;
+                SqlConnection con = new SqlConnection(conStr);
+                con.Open();
+                con.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
 
     }
 }
