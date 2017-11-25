@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using TravelAgency.BLL;
 using TravelAgency.Common;
 using TravelAgency.Common.Excel.Japan;
 using TravelAgency.Common.Word.Japan;
 using TravelAgency.CSUI.FrmSub;
 using TravelAgency.CSUI.Properties;
-using TravelAgency.Model;
+using Visa = TravelAgency.Model.Visa;
+using VisaInfo = TravelAgency.Model.VisaInfo;
 
 namespace TravelAgency.CSUI.FrmMain
 {
@@ -16,6 +18,7 @@ namespace TravelAgency.CSUI.FrmMain
     {
         private readonly TravelAgency.BLL.Visa _bllVisa = new TravelAgency.BLL.Visa();
         private readonly TravelAgency.BLL.VisaInfo _bllVisaInfo = new TravelAgency.BLL.VisaInfo();
+        private readonly TravelAgency.BLL.ActionRecords _bllActionRecords = new ActionRecords();
         private int _curPage = 1;
         private int _pageCount = 0;
         private int _pageSize = 30;
@@ -638,7 +641,10 @@ namespace TravelAgency.CSUI.FrmMain
             List<Visa> visaList =
                 _bllVisa.GetModelList(" (EntryTime between '" + DateTimeFormator.DateTimeToString(DateTime.Now) + " 00:00:0.000' and " + " '" +
                                      DateTimeFormator.DateTimeToString(DateTime.Now) +
-                                      " 23:59:59.999') and Types='个签'");
+                                      " 23:59:59.999') and Types='个签'"); 
+            
+            _bllActionRecords.CheckStatesAndRemove(visaList,Common.Enums.ActType._02TypeInData); //去除还没有做资料的
+
             if (visaList.Count <= 0)
             {
                 MessageBoxEx.Show("今日没有报表需要生成!");

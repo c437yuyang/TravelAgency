@@ -19,5 +19,17 @@ namespace TravelAgency.BLL
             List<Model.ActionRecords> list = GetModelList(" visa_id = '" + visaModel.Visa_id + "' ");
             return list.Count > 0;
         }
+
+
+        public void CheckStatesAndRemove(List<Model.Visa> list, string type)
+        {
+            for (int i = list.Count-1 ;i >=0; --i)
+            {
+                if (GetModelList(" visa_id='" + list[i].Visa_id + "' and ActType='" + type + "' ").Count <= 0)
+                {
+                    list.Remove(list[i]);
+                }
+            }
+        }
     }
 }
