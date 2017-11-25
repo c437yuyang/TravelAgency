@@ -567,8 +567,5 @@ namespace TravelAgency.Common.Excel.Japan
             string dstName = GlobalUtils.OpenSaveFileDlg( "日本签证时间表.xls", "office 2003 excel|*.xls");
             return SaveFile(dstName, wkbook);
         }
-
-
-
     }
 }

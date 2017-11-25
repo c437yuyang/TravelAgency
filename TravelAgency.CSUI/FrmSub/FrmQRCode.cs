@@ -14,6 +14,9 @@ namespace TravelAgency.CSUI.FrmSub
         private readonly MyQRCode _qrCode = new MyQRCode();
         private readonly string _tmpFileName = GlobalUtils.AppPath + "\\tmp.png";
 
+        public int _pageWidth;
+        public int _pageHeight;
+
         public FrmQRCode()
         {
             InitializeComponent();
@@ -104,7 +107,15 @@ namespace TravelAgency.CSUI.FrmSub
             //PrintDocument printDocument1 = new PrintDocument();
             //printDocument1.
             printDialog1.Document = printDocument1;
-            this.printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom",50,50); //设置页面大小
+
+            
+            FrmPageSizeSet frmPageSizeSet = new FrmPageSizeSet(this);
+            DialogResult result = frmPageSizeSet.ShowDialog();
+            if (result == DialogResult.Cancel)
+                return;
+            int widthInInk = (int)(_pageWidth*100*0.0393701);
+            int heightInInk = (int)(_pageHeight * 100 * 0.0393701);
+            this.printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom", widthInInk, heightInInk); //设置页面大小
             DialogResult r = printDialog1.ShowDialog();
             if (r == DialogResult.OK)
             {
