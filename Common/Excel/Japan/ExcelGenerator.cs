@@ -67,7 +67,7 @@ namespace TravelAgency.Common.Excel.Japan
             row.CreateCell(12).SetCellValue("备注");
             row.CreateCell(13).SetCellValue("旅行社意见");
             row.CreateCell(14).SetCellValue("护照号");
-            row.CreateCell(15).SetCellValue("手机号");
+            //row.CreateCell(15).SetCellValue("手机号");
 
             //2.2设置列宽度
             sheet.SetColumnWidth(0, 5 * 256);//编号
@@ -85,14 +85,14 @@ namespace TravelAgency.Common.Excel.Japan
             sheet.SetColumnWidth(12, 10 * 256);//备注
             sheet.SetColumnWidth(13, 10 * 256);//旅行社意见
             sheet.SetColumnWidth(14, 15 * 256);//护照号
-            sheet.SetColumnWidth(15, 15 * 256);//手机号
+            //sheet.SetColumnWidth(15, 15 * 256);//手机号
             //3.插入行和单元格
             for (int i = 0; i != list.Count; ++i)
             {
                 //创建单元格
                 row = sheet.CreateRow(i + 2);
                 //设置行高
-                row.HeightInPoints = 50;
+                row.HeightInPoints = 100;
                 //设置值
                 row.CreateCell(0).SetCellValue(i + 1);
                 row.CreateCell(1).SetCellValue(list[i].Name);
@@ -109,22 +109,27 @@ namespace TravelAgency.Common.Excel.Japan
                 row.CreateCell(12).SetCellValue(remark);
                 row.CreateCell(13).SetCellValue(list[i].AgencyOpinion);
                 row.CreateCell(14).SetCellValue(list[i].PassportNo);
-                row.CreateCell(15).SetCellValue(list[i].Phone);
+                //row.CreateCell(15).SetCellValue(list[i].Phone);
             }
 
 
             //4.2合并单元格
-            sheet.AddMergedRegion(new CellRangeAddress(2, sheet.LastRowNum, 12, 12));
-            sheet.AddMergedRegion(new CellRangeAddress(0, 0, 0, 15));
+            sheet.AddMergedRegion(new CellRangeAddress(2, sheet.LastRowNum, 12, 12));//备注列合并
+            sheet.AddMergedRegion(new CellRangeAddress(0, 0, 0, 15)); //表头合并
 
             //4.1设置对齐风格和边框
             ICellStyle style = wkbook.CreateCellStyle();
             style.VerticalAlignment = VerticalAlignment.Center;
             style.Alignment = HorizontalAlignment.Center;
+            style.WrapText = true; //文本自动换行
             style.BorderTop = BorderStyle.Thin;
             style.BorderBottom = BorderStyle.Thin;
             style.BorderLeft = BorderStyle.Thin;
             style.BorderRight = BorderStyle.Thin;
+            HSSFFont font = (HSSFFont)wkbook.CreateFont();
+            font.FontHeightInPoints = 12;
+            style.SetFont(font);
+
             for (int i = 0; i <= sheet.LastRowNum; i++)
             {
                 row = sheet.GetRow(i);
@@ -134,17 +139,17 @@ namespace TravelAgency.Common.Excel.Japan
                 }
             }
 
-            //ICellStyle headerStyle = wkbook.CreateCellStyle();
-            //headerStyle.VerticalAlignment = VerticalAlignment.Center;
-            //headerStyle.Alignment = HorizontalAlignment.Center;
-            //headerStyle.BorderTop = BorderStyle.Thin;
-            //headerStyle.BorderBottom = BorderStyle.Thin;
-            //headerStyle.BorderLeft = BorderStyle.Thin;
-            //headerStyle.BorderRight = BorderStyle.Thin;
-            //HSSFFont font = (HSSFFont)wkbook.CreateFont();
-            //font.FontHeightInPoints = 15;
-            //headerStyle.SetFont(font);
-            //sheet.GetRow(0).GetCell(0).CellStyle = headerStyle;
+            ICellStyle headerStyle = wkbook.CreateCellStyle();
+            headerStyle.VerticalAlignment = VerticalAlignment.Center;
+            headerStyle.Alignment = HorizontalAlignment.Center;
+            headerStyle.BorderTop = BorderStyle.Thin;
+            headerStyle.BorderBottom = BorderStyle.Thin;
+            headerStyle.BorderLeft = BorderStyle.Thin;
+            headerStyle.BorderRight = BorderStyle.Thin;
+            HSSFFont font1 = (HSSFFont)wkbook.CreateFont();
+            font1.FontHeightInPoints = 15;
+            headerStyle.SetFont(font1);
+            sheet.GetRow(0).GetCell(0).CellStyle = headerStyle;
 
 
             //5.执行写入磁盘
