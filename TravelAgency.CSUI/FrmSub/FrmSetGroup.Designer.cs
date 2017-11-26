@@ -146,7 +146,7 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1340, 725);
+            this.panelMain.Size = new System.Drawing.Size(1285, 514);
             this.panelMain.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelMain.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelMain.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -167,9 +167,9 @@
             this.panelBottom.Controls.Add(this.btnConfirm);
             this.panelBottom.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 692);
+            this.panelBottom.Location = new System.Drawing.Point(0, 481);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(1340, 33);
+            this.panelBottom.Size = new System.Drawing.Size(1285, 33);
             this.panelBottom.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelBottom.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelBottom.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -248,7 +248,7 @@
             this.panelMid2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMid2.Location = new System.Drawing.Point(0, 241);
             this.panelMid2.Name = "panelMid2";
-            this.panelMid2.Size = new System.Drawing.Size(1340, 484);
+            this.panelMid2.Size = new System.Drawing.Size(1285, 273);
             this.panelMid2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelMid2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelMid2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -313,7 +313,7 @@
             this.dgvGroupInfo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvGroupInfo.RowTemplate.Height = 30;
             this.dgvGroupInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvGroupInfo.Size = new System.Drawing.Size(1340, 484);
+            this.dgvGroupInfo.Size = new System.Drawing.Size(1285, 273);
             this.dgvGroupInfo.TabIndex = 18;
             this.dgvGroupInfo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGroupInfo_CellEndEdit);
             this.dgvGroupInfo.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGroupInfo_CellMouseUp);
@@ -334,7 +334,7 @@
             this.panelMid.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMid.Location = new System.Drawing.Point(0, 35);
             this.panelMid.Name = "panelMid";
-            this.panelMid.Size = new System.Drawing.Size(1340, 206);
+            this.panelMid.Size = new System.Drawing.Size(1285, 206);
             this.panelMid.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelMid.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelMid.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -355,7 +355,7 @@
             this.panelInAndOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelInAndOut.Location = new System.Drawing.Point(275, 0);
             this.panelInAndOut.Name = "panelInAndOut";
-            this.panelInAndOut.Size = new System.Drawing.Size(580, 206);
+            this.panelInAndOut.Size = new System.Drawing.Size(557, 206);
             this.panelInAndOut.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelInAndOut.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelInAndOut.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -409,7 +409,7 @@
             this.lvIn.DisabledBackColor = System.Drawing.Color.Empty;
             this.lvIn.Dock = System.Windows.Forms.DockStyle.Right;
             this.lvIn.FullRowSelect = true;
-            this.lvIn.Location = new System.Drawing.Point(342, 0);
+            this.lvIn.Location = new System.Drawing.Point(319, 0);
             this.lvIn.Name = "lvIn";
             this.lvIn.Size = new System.Drawing.Size(238, 206);
             this.lvIn.TabIndex = 58;
@@ -439,7 +439,7 @@
             this.panelInOutBtns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelInOutBtns.Location = new System.Drawing.Point(0, 0);
             this.panelInOutBtns.Name = "panelInOutBtns";
-            this.panelInOutBtns.Size = new System.Drawing.Size(580, 206);
+            this.panelInOutBtns.Size = new System.Drawing.Size(557, 206);
             this.panelInOutBtns.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelInOutBtns.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelInOutBtns.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -454,7 +454,7 @@
             this.btnAllOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAllOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAllOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAllOut.Location = new System.Drawing.Point(253, 159);
+            this.btnAllOut.Location = new System.Drawing.Point(241, 159);
             this.btnAllOut.Name = "btnAllOut";
             this.btnAllOut.Size = new System.Drawing.Size(75, 23);
             this.btnAllOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -467,7 +467,7 @@
             this.btnOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOut.Location = new System.Drawing.Point(253, 116);
+            this.btnOut.Location = new System.Drawing.Point(241, 116);
             this.btnOut.Name = "btnOut";
             this.btnOut.Size = new System.Drawing.Size(75, 23);
             this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -480,7 +480,7 @@
             this.btnIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnIn.Location = new System.Drawing.Point(253, 72);
+            this.btnIn.Location = new System.Drawing.Point(241, 72);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -493,7 +493,7 @@
             this.btnAllIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAllIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAllIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAllIn.Location = new System.Drawing.Point(253, 23);
+            this.btnAllIn.Location = new System.Drawing.Point(241, 23);
             this.btnAllIn.Name = "btnAllIn";
             this.btnAllIn.Size = new System.Drawing.Size(75, 23);
             this.btnAllIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -542,9 +542,9 @@
             this.panelGroupInfo.Controls.Add(this.txtDepartureType);
             this.panelGroupInfo.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelGroupInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelGroupInfo.Location = new System.Drawing.Point(855, 0);
+            this.panelGroupInfo.Location = new System.Drawing.Point(832, 0);
             this.panelGroupInfo.Name = "panelGroupInfo";
-            this.panelGroupInfo.Size = new System.Drawing.Size(485, 206);
+            this.panelGroupInfo.Size = new System.Drawing.Size(453, 206);
             this.panelGroupInfo.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelGroupInfo.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelGroupInfo.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -585,7 +585,7 @@
             // 
             // 
             this.chbIsUrgent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chbIsUrgent.Location = new System.Drawing.Point(261, 6);
+            this.chbIsUrgent.Location = new System.Drawing.Point(233, 6);
             this.chbIsUrgent.Name = "chbIsUrgent";
             this.chbIsUrgent.Size = new System.Drawing.Size(100, 23);
             this.chbIsUrgent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -845,7 +845,7 @@
             this.txtTypeInPerson.Border.Class = "TextBoxBorder";
             this.txtTypeInPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtTypeInPerson.DisabledBackColor = System.Drawing.Color.White;
-            this.txtTypeInPerson.Location = new System.Drawing.Point(356, 99);
+            this.txtTypeInPerson.Location = new System.Drawing.Point(328, 99);
             this.txtTypeInPerson.Name = "txtTypeInPerson";
             this.txtTypeInPerson.PreventEnterBeep = true;
             this.txtTypeInPerson.Size = new System.Drawing.Size(100, 21);
@@ -859,7 +859,7 @@
             this.txtSalesPerson.Border.Class = "TextBoxBorder";
             this.txtSalesPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtSalesPerson.DisabledBackColor = System.Drawing.Color.White;
-            this.txtSalesPerson.Location = new System.Drawing.Point(356, 126);
+            this.txtSalesPerson.Location = new System.Drawing.Point(328, 126);
             this.txtSalesPerson.Name = "txtSalesPerson";
             this.txtSalesPerson.PreventEnterBeep = true;
             this.txtSalesPerson.Size = new System.Drawing.Size(100, 21);
@@ -871,7 +871,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(260, 99);
+            this.labelX1.Location = new System.Drawing.Point(232, 99);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(48, 23);
             this.labelX1.TabIndex = 63;
@@ -895,7 +895,7 @@
             // 
             // 
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX12.Location = new System.Drawing.Point(261, 128);
+            this.labelX12.Location = new System.Drawing.Point(233, 128);
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(91, 23);
             this.labelX12.TabIndex = 60;
@@ -907,7 +907,7 @@
             // 
             // 
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(260, 66);
+            this.labelX11.Location = new System.Drawing.Point(232, 66);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(91, 23);
             this.labelX11.TabIndex = 59;
@@ -919,7 +919,7 @@
             // 
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(260, 37);
+            this.labelX10.Location = new System.Drawing.Point(232, 37);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(91, 23);
             this.labelX10.TabIndex = 58;
@@ -955,7 +955,7 @@
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(261, 157);
+            this.labelX6.Location = new System.Drawing.Point(233, 157);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(91, 23);
             this.labelX6.TabIndex = 55;
@@ -980,7 +980,7 @@
             // 
             this.txtClient.Border.Class = "TextBoxBorder";
             this.txtClient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtClient.Location = new System.Drawing.Point(357, 157);
+            this.txtClient.Location = new System.Drawing.Point(329, 157);
             this.txtClient.Name = "txtClient";
             this.txtClient.PreventEnterBeep = true;
             this.txtClient.Size = new System.Drawing.Size(100, 21);
@@ -992,7 +992,7 @@
             this.txtFetchType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.txtFetchType.FormattingEnabled = true;
             this.txtFetchType.ItemHeight = 15;
-            this.txtFetchType.Location = new System.Drawing.Point(357, 68);
+            this.txtFetchType.Location = new System.Drawing.Point(329, 68);
             this.txtFetchType.Name = "txtFetchType";
             this.txtFetchType.Size = new System.Drawing.Size(121, 21);
             this.txtFetchType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1004,7 +1004,7 @@
             this.txtSubmitCondition.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.txtSubmitCondition.FormattingEnabled = true;
             this.txtSubmitCondition.ItemHeight = 15;
-            this.txtSubmitCondition.Location = new System.Drawing.Point(356, 37);
+            this.txtSubmitCondition.Location = new System.Drawing.Point(328, 37);
             this.txtSubmitCondition.Name = "txtSubmitCondition";
             this.txtSubmitCondition.Size = new System.Drawing.Size(121, 21);
             this.txtSubmitCondition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1035,7 +1035,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1340, 35);
+            this.panelTop.Size = new System.Drawing.Size(1285, 35);
             this.panelTop.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelTop.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelTop.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1451,7 +1451,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1340, 725);
+            this.ClientSize = new System.Drawing.Size(1285, 514);
             this.Controls.Add(this.panelMain);
             this.MaximizeBox = false;
             this.Name = "FrmSetGroup";

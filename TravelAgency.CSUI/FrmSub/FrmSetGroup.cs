@@ -165,7 +165,7 @@ namespace TravelAgency.CSUI.FrmSub
             //设置最小尺寸
             this.MinimumSize = this.Size;
             //不允许调整大小
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
             dgvGroupInfo.AutoGenerateColumns = false;
             dgvGroupInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; //列宽自适应
             dgvGroupInfo.Columns["Birthday"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;//某一些列关闭自适应
