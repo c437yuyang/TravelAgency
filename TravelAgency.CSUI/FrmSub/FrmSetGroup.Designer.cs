@@ -41,22 +41,6 @@
             this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
             this.panelMid2 = new DevComponents.DotNetBar.PanelEx();
             this.dgvGroupInfo = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sex = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.dgvGroup_IssuePlace = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Residence = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthDay = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
-            this.Occupation = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.DepartureRecord = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Marriaged = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Identification = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.FinancialCapacity = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Remark = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.AgencyOpinion = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnTime = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.panelMid = new DevComponents.DotNetBar.PanelEx();
             this.panelInAndOut = new DevComponents.DotNetBar.PanelEx();
             this.lvOut = new DevComponents.DotNetBar.Controls.ListViewEx();
@@ -72,6 +56,8 @@
             this.btnAllIn = new DevComponents.DotNetBar.ButtonX();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelGroupInfo = new DevComponents.DotNetBar.PanelEx();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.txtPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.chbIsUrgent = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbCountry = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.Japan = new DevComponents.Editors.ComboItem();
@@ -115,8 +101,22 @@
             this.下移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.移到顶部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.移到底部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelX14 = new DevComponents.DotNetBar.LabelX();
-            this.txtPerson = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnglishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sex = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.dgvGroup_IssuePlace = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.Residence = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDay = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.Occupation = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.DepartureRecord = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.Marriaged = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.Identification = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.FinancialCapacity = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.Remark = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.AgencyOpinion = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPassportNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnTime = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.panelMain.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelMid2.SuspendLayout();
@@ -322,270 +322,6 @@
             this.dgvGroupInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvGroupInfo_KeyDown);
             this.dgvGroupInfo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvGroupInfo_KeyPress);
             this.dgvGroupInfo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvGroupInfo_KeyUp);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn1.HeaderText = "本国姓名";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // EnglishName
-            // 
-            this.EnglishName.DataPropertyName = "EnglishName";
-            this.EnglishName.HeaderText = "英语姓名";
-            this.EnglishName.Name = "EnglishName";
-            // 
-            // Sex
-            // 
-            this.Sex.DataPropertyName = "Sex";
-            this.Sex.DropDownHeight = 106;
-            this.Sex.DropDownWidth = 121;
-            this.Sex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Sex.HeaderText = "性别";
-            this.Sex.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Sex.IntegralHeight = false;
-            this.Sex.ItemHeight = 16;
-            this.Sex.Items.AddRange(new object[] {
-            "男",
-            "女"});
-            this.Sex.Name = "Sex";
-            this.Sex.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Sex.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            // 
-            // dgvGroup_IssuePlace
-            // 
-            this.dgvGroup_IssuePlace.DataPropertyName = "IssuePlace";
-            this.dgvGroup_IssuePlace.DropDownHeight = 106;
-            this.dgvGroup_IssuePlace.DropDownWidth = 121;
-            this.dgvGroup_IssuePlace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dgvGroup_IssuePlace.HeaderText = "护照发行地";
-            this.dgvGroup_IssuePlace.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgvGroup_IssuePlace.IntegralHeight = false;
-            this.dgvGroup_IssuePlace.ItemHeight = 16;
-            this.dgvGroup_IssuePlace.Name = "dgvGroup_IssuePlace";
-            this.dgvGroup_IssuePlace.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGroup_IssuePlace.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dgvGroup_IssuePlace.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Residence
-            // 
-            this.Residence.DataPropertyName = "Residence";
-            this.Residence.HeaderText = "居住地";
-            this.Residence.Name = "Residence";
-            // 
-            // BirthDay
-            // 
-            // 
-            // 
-            // 
-            this.BirthDay.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
-            this.BirthDay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.BirthDay.DataPropertyName = "Birthday";
-            this.BirthDay.HeaderText = "生日";
-            this.BirthDay.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.BirthDay.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.BirthDay.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            // 
-            // 
-            // 
-            this.BirthDay.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.BirthDay.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
-            this.BirthDay.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.BirthDay.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.BirthDay.Name = "BirthDay";
-            this.BirthDay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Occupation
-            // 
-            this.Occupation.DataPropertyName = "Occupation";
-            this.Occupation.DropDownHeight = 106;
-            this.Occupation.DropDownWidth = 121;
-            this.Occupation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Occupation.HeaderText = "职业";
-            this.Occupation.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Occupation.IntegralHeight = false;
-            this.Occupation.ItemHeight = 16;
-            this.Occupation.Items.AddRange(new object[] {
-            "教师",
-            "学生",
-            "会计师",
-            "家庭主妇",
-            "副经理"});
-            this.Occupation.Name = "Occupation";
-            this.Occupation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Occupation.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Occupation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // DepartureRecord
-            // 
-            this.DepartureRecord.DataPropertyName = "DepartureRecord";
-            this.DepartureRecord.DropDownHeight = 106;
-            this.DepartureRecord.DropDownWidth = 121;
-            this.DepartureRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DepartureRecord.HeaderText = "出境记录";
-            this.DepartureRecord.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.DepartureRecord.IntegralHeight = false;
-            this.DepartureRecord.ItemHeight = 16;
-            this.DepartureRecord.Items.AddRange(new object[] {
-            "无",
-            "有"});
-            this.DepartureRecord.Name = "DepartureRecord";
-            this.DepartureRecord.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DepartureRecord.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.DepartureRecord.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Marriaged
-            // 
-            this.Marriaged.DataPropertyName = "Marriaged";
-            this.Marriaged.DropDownHeight = 106;
-            this.Marriaged.DropDownWidth = 121;
-            this.Marriaged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Marriaged.HeaderText = "婚姻";
-            this.Marriaged.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Marriaged.IntegralHeight = false;
-            this.Marriaged.ItemHeight = 16;
-            this.Marriaged.Items.AddRange(new object[] {
-            "未婚",
-            "已婚"});
-            this.Marriaged.Name = "Marriaged";
-            this.Marriaged.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Marriaged.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Marriaged.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Identification
-            // 
-            this.Identification.DataPropertyName = "Identification";
-            this.Identification.DropDownHeight = 106;
-            this.Identification.DropDownWidth = 121;
-            this.Identification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Identification.HeaderText = "身份确认";
-            this.Identification.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Identification.IntegralHeight = false;
-            this.Identification.ItemHeight = 16;
-            this.Identification.Items.AddRange(new object[] {
-            "身份证",
-            "户口本",
-            "结婚证",
-            "张在职证明",
-            "退休证",
-            "在校证明",
-            "营业执照",
-            "组织机构代码"});
-            this.Identification.Name = "Identification";
-            this.Identification.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Identification.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Identification.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // FinancialCapacity
-            // 
-            this.FinancialCapacity.DataPropertyName = "FinancialCapacity";
-            this.FinancialCapacity.DropDownHeight = 106;
-            this.FinancialCapacity.DropDownWidth = 121;
-            this.FinancialCapacity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FinancialCapacity.HeaderText = "经济能力确认";
-            this.FinancialCapacity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.FinancialCapacity.IntegralHeight = false;
-            this.FinancialCapacity.ItemHeight = 16;
-            this.FinancialCapacity.Items.AddRange(new object[] {
-            "房产证复印件",
-            "车产证复印件",
-            "存款冻结单",
-            "股票交割单",
-            "银行流水"});
-            this.FinancialCapacity.Name = "FinancialCapacity";
-            this.FinancialCapacity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.FinancialCapacity.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.FinancialCapacity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Remark
-            // 
-            this.Remark.DropDownHeight = 106;
-            this.Remark.DropDownWidth = 121;
-            this.Remark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Remark.HeaderText = "备注";
-            this.Remark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Remark.IntegralHeight = false;
-            this.Remark.ItemHeight = 16;
-            this.Remark.Items.AddRange(new object[] {
-            "夫妻",
-            "一家人",
-            "父子",
-            "母子",
-            "父女",
-            "母女",
-            "亲属"});
-            this.Remark.Name = "Remark";
-            this.Remark.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Remark.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            // 
-            // AgencyOpinion
-            // 
-            this.AgencyOpinion.DataPropertyName = "AgencyOpinion";
-            this.AgencyOpinion.DropDownHeight = 106;
-            this.AgencyOpinion.DropDownWidth = 121;
-            this.AgencyOpinion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AgencyOpinion.HeaderText = "旅行社意见";
-            this.AgencyOpinion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.AgencyOpinion.IntegralHeight = false;
-            this.AgencyOpinion.ItemHeight = 16;
-            this.AgencyOpinion.Items.AddRange(new object[] {
-            "没问题",
-            "有问题"});
-            this.AgencyOpinion.Name = "AgencyOpinion";
-            this.AgencyOpinion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.AgencyOpinion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.AgencyOpinion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "Phone";
-            this.Phone.HeaderText = "手机号";
-            this.Phone.Name = "Phone";
-            // 
-            // dgvPassportNo
-            // 
-            this.dgvPassportNo.DataPropertyName = "PassportNo";
-            this.dgvPassportNo.HeaderText = "护照号";
-            this.dgvPassportNo.Name = "dgvPassportNo";
-            // 
-            // ReturnTime
-            // 
-            // 
-            // 
-            // 
-            this.ReturnTime.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
-            this.ReturnTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ReturnTime.DataPropertyName = "ReturnTime";
-            this.ReturnTime.HeaderText = "归国时间";
-            this.ReturnTime.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.ReturnTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ReturnTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            // 
-            // 
-            // 
-            this.ReturnTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ReturnTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 11, 1, 0, 0, 0, 0);
-            this.ReturnTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.ReturnTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ReturnTime.Name = "ReturnTime";
             // 
             // panelMid
             // 
@@ -817,6 +553,31 @@
             this.panelGroupInfo.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelGroupInfo.Style.GradientAngle = 90;
             this.panelGroupInfo.TabIndex = 47;
+            // 
+            // labelX14
+            // 
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Location = new System.Drawing.Point(7, 183);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.Size = new System.Drawing.Size(91, 23);
+            this.labelX14.TabIndex = 75;
+            this.labelX14.Text = "送签社担当:";
+            // 
+            // txtPerson
+            // 
+            // 
+            // 
+            // 
+            this.txtPerson.Border.Class = "TextBoxBorder";
+            this.txtPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPerson.Location = new System.Drawing.Point(104, 182);
+            this.txtPerson.Name = "txtPerson";
+            this.txtPerson.PreventEnterBeep = true;
+            this.txtPerson.Size = new System.Drawing.Size(100, 21);
+            this.txtPerson.TabIndex = 74;
             // 
             // chbIsUrgent
             // 
@@ -1420,30 +1181,271 @@
             this.移到底部ToolStripMenuItem.Text = "移到底部";
             this.移到底部ToolStripMenuItem.Click += new System.EventHandler(this.移到底部ToolStripMenuItem_Click);
             // 
-            // labelX14
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn1.HeaderText = "本国姓名";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // EnglishName
+            // 
+            this.EnglishName.DataPropertyName = "EnglishName";
+            this.EnglishName.HeaderText = "英语姓名";
+            this.EnglishName.Name = "EnglishName";
+            // 
+            // Sex
+            // 
+            this.Sex.DataPropertyName = "Sex";
+            this.Sex.DropDownHeight = 106;
+            this.Sex.DropDownWidth = 121;
+            this.Sex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Sex.HeaderText = "性别";
+            this.Sex.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Sex.IntegralHeight = false;
+            this.Sex.ItemHeight = 16;
+            this.Sex.Items.AddRange(new object[] {
+            "男",
+            "女"});
+            this.Sex.Name = "Sex";
+            this.Sex.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Sex.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            // 
+            // dgvGroup_IssuePlace
+            // 
+            this.dgvGroup_IssuePlace.DataPropertyName = "IssuePlace";
+            this.dgvGroup_IssuePlace.DropDownHeight = 106;
+            this.dgvGroup_IssuePlace.DropDownWidth = 121;
+            this.dgvGroup_IssuePlace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dgvGroup_IssuePlace.HeaderText = "护照发行地";
+            this.dgvGroup_IssuePlace.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgvGroup_IssuePlace.IntegralHeight = false;
+            this.dgvGroup_IssuePlace.ItemHeight = 16;
+            this.dgvGroup_IssuePlace.Name = "dgvGroup_IssuePlace";
+            this.dgvGroup_IssuePlace.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGroup_IssuePlace.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvGroup_IssuePlace.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Residence
+            // 
+            this.Residence.DataPropertyName = "Residence";
+            this.Residence.HeaderText = "居住地";
+            this.Residence.Name = "Residence";
+            // 
+            // BirthDay
             // 
             // 
             // 
             // 
-            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX14.Location = new System.Drawing.Point(7, 183);
-            this.labelX14.Name = "labelX14";
-            this.labelX14.Size = new System.Drawing.Size(91, 23);
-            this.labelX14.TabIndex = 75;
-            this.labelX14.Text = "送签社担当:";
-            // 
-            // txtPerson
+            this.BirthDay.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.BirthDay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.BirthDay.DataPropertyName = "Birthday";
+            this.BirthDay.HeaderText = "生日";
+            this.BirthDay.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
             // 
             // 
             // 
             // 
-            this.txtPerson.Border.Class = "TextBoxBorder";
-            this.txtPerson.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPerson.Location = new System.Drawing.Point(104, 182);
-            this.txtPerson.Name = "txtPerson";
-            this.txtPerson.PreventEnterBeep = true;
-            this.txtPerson.Size = new System.Drawing.Size(100, 21);
-            this.txtPerson.TabIndex = 74;
+            // 
+            // 
+            this.BirthDay.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.BirthDay.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            // 
+            // 
+            // 
+            this.BirthDay.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.BirthDay.MonthCalendar.DisplayMonth = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.BirthDay.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.BirthDay.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.BirthDay.Name = "BirthDay";
+            this.BirthDay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Occupation
+            // 
+            this.Occupation.DataPropertyName = "Occupation";
+            this.Occupation.DropDownHeight = 106;
+            this.Occupation.DropDownWidth = 121;
+            this.Occupation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Occupation.HeaderText = "职业";
+            this.Occupation.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Occupation.IntegralHeight = false;
+            this.Occupation.ItemHeight = 16;
+            this.Occupation.Items.AddRange(new object[] {
+            "教师",
+            "学生",
+            "会计师",
+            "家庭主妇",
+            "副经理"});
+            this.Occupation.Name = "Occupation";
+            this.Occupation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Occupation.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Occupation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // DepartureRecord
+            // 
+            this.DepartureRecord.DataPropertyName = "DepartureRecord";
+            this.DepartureRecord.DropDownHeight = 106;
+            this.DepartureRecord.DropDownWidth = 121;
+            this.DepartureRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DepartureRecord.HeaderText = "出境记录";
+            this.DepartureRecord.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.DepartureRecord.IntegralHeight = false;
+            this.DepartureRecord.ItemHeight = 16;
+            this.DepartureRecord.Items.AddRange(new object[] {
+            "无",
+            "有"});
+            this.DepartureRecord.Name = "DepartureRecord";
+            this.DepartureRecord.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DepartureRecord.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.DepartureRecord.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Marriaged
+            // 
+            this.Marriaged.DataPropertyName = "Marriaged";
+            this.Marriaged.DropDownHeight = 106;
+            this.Marriaged.DropDownWidth = 121;
+            this.Marriaged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Marriaged.HeaderText = "婚姻";
+            this.Marriaged.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Marriaged.IntegralHeight = false;
+            this.Marriaged.ItemHeight = 16;
+            this.Marriaged.Items.AddRange(new object[] {
+            "未婚",
+            "已婚",
+            "离婚",
+            "丧偶"});
+            this.Marriaged.Name = "Marriaged";
+            this.Marriaged.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Marriaged.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Marriaged.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Identification
+            // 
+            this.Identification.DataPropertyName = "Identification";
+            this.Identification.DropDownHeight = 106;
+            this.Identification.DropDownWidth = 121;
+            this.Identification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Identification.HeaderText = "身份确认";
+            this.Identification.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Identification.IntegralHeight = false;
+            this.Identification.ItemHeight = 16;
+            this.Identification.Items.AddRange(new object[] {
+            "身份证",
+            "户口本",
+            "结婚证",
+            "张在职证明",
+            "退休证",
+            "在校证明",
+            "营业执照",
+            "组织机构代码"});
+            this.Identification.Name = "Identification";
+            this.Identification.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Identification.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Identification.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // FinancialCapacity
+            // 
+            this.FinancialCapacity.DataPropertyName = "FinancialCapacity";
+            this.FinancialCapacity.DropDownHeight = 106;
+            this.FinancialCapacity.DropDownWidth = 121;
+            this.FinancialCapacity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FinancialCapacity.HeaderText = "经济能力确认";
+            this.FinancialCapacity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.FinancialCapacity.IntegralHeight = false;
+            this.FinancialCapacity.ItemHeight = 16;
+            this.FinancialCapacity.Items.AddRange(new object[] {
+            "房产证复印件",
+            "车产证复印件",
+            "存款冻结单",
+            "股票交割单",
+            "银行流水"});
+            this.FinancialCapacity.Name = "FinancialCapacity";
+            this.FinancialCapacity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.FinancialCapacity.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.FinancialCapacity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Remark
+            // 
+            this.Remark.DropDownHeight = 106;
+            this.Remark.DropDownWidth = 121;
+            this.Remark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Remark.HeaderText = "备注";
+            this.Remark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Remark.IntegralHeight = false;
+            this.Remark.ItemHeight = 16;
+            this.Remark.Items.AddRange(new object[] {
+            "夫妻",
+            "一家人",
+            "父子",
+            "母子",
+            "父女",
+            "母女",
+            "亲属"});
+            this.Remark.Name = "Remark";
+            this.Remark.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Remark.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            // 
+            // AgencyOpinion
+            // 
+            this.AgencyOpinion.DataPropertyName = "AgencyOpinion";
+            this.AgencyOpinion.DropDownHeight = 106;
+            this.AgencyOpinion.DropDownWidth = 121;
+            this.AgencyOpinion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AgencyOpinion.HeaderText = "旅行社意见";
+            this.AgencyOpinion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.AgencyOpinion.IntegralHeight = false;
+            this.AgencyOpinion.ItemHeight = 16;
+            this.AgencyOpinion.Items.AddRange(new object[] {
+            "没问题",
+            "有问题"});
+            this.AgencyOpinion.Name = "AgencyOpinion";
+            this.AgencyOpinion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AgencyOpinion.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.AgencyOpinion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "Phone";
+            this.Phone.HeaderText = "手机号";
+            this.Phone.Name = "Phone";
+            // 
+            // dgvPassportNo
+            // 
+            this.dgvPassportNo.DataPropertyName = "PassportNo";
+            this.dgvPassportNo.HeaderText = "护照号";
+            this.dgvPassportNo.Name = "dgvPassportNo";
+            // 
+            // ReturnTime
+            // 
+            // 
+            // 
+            // 
+            this.ReturnTime.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.ReturnTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ReturnTime.DataPropertyName = "ReturnTime";
+            this.ReturnTime.HeaderText = "归国时间";
+            this.ReturnTime.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.ReturnTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ReturnTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            // 
+            // 
+            // 
+            this.ReturnTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ReturnTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 11, 1, 0, 0, 0, 0);
+            this.ReturnTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.ReturnTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ReturnTime.Name = "ReturnTime";
             // 
             // FrmSetGroup
             // 
@@ -1538,6 +1540,14 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private DevComponents.Editors.ComboItem Australia;
         private DevComponents.Editors.ComboItem Singapore;
+        private System.Windows.Forms.ToolStripMenuItem 移动ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 上移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 下移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 移到顶部ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 移到底部ToolStripMenuItem;
+        private DevComponents.DotNetBar.Controls.CheckBoxX chbIsUrgent;
+        private DevComponents.DotNetBar.LabelX labelX14;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPerson;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnglishName;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Sex;
@@ -1554,13 +1564,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvPassportNo;
         private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn ReturnTime;
-        private System.Windows.Forms.ToolStripMenuItem 移动ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 上移ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 下移ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 移到顶部ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 移到底部ToolStripMenuItem;
-        private DevComponents.DotNetBar.Controls.CheckBoxX chbIsUrgent;
-        private DevComponents.DotNetBar.LabelX labelX14;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtPerson;
     }
 }
