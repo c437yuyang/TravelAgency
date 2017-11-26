@@ -96,14 +96,16 @@ namespace TravelAgency.Common.Excel.Japan
                         if (row.GetCell(c).ToString() == "{" + (6 + j * 3) + "}")
                             if (j < visaInfoList.Count)
                             {
+                                string residence = visaInfoList[j].Residence;
                                 if (visaInfoList[j].Residence.Contains(" "))
                                 {
-                                    row.GetCell(c).SetCellValue(visaInfoList[j].Residence.Split(' ')[0]);
+                                    residence = visaInfoList[j].Residence.Split(' ')[0];
+                                    if (residence.EndsWith("省") || residence.EndsWith("市"))
+                                    {
+                                        residence = residence.Substring(0, residence.Length - 1);
+                                    }
                                 }
-                                else
-                                {
-                                    row.GetCell(c).SetCellValue(visaInfoList[j].Residence);
-                                }
+                                row.GetCell(c).SetCellValue(residence);
                             }
 
                             else

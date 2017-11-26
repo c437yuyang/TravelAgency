@@ -340,7 +340,12 @@ namespace TravelAgency.Common.Excel.Japan
         }
 
 
-
+        /// <summary>
+        /// 每日个签送钱客人情况表
+        /// </summary>
+        /// <param name="visaList"></param>
+        /// <param name="visaInfoList"></param>
+        /// <returns></returns>
         public static bool GetEverydayExcel(List<Model.Visa> visaList, List<List<VisaInfo>> visaInfoList)
         {
             //1.创建工作簿对象
@@ -380,7 +385,17 @@ namespace TravelAgency.Common.Excel.Japan
                     row.CreateCell(0).SetCellValue(rowNum);
                     row.CreateCell(1).SetCellValue(visaInfoList[i][j].Name);
                     row.CreateCell(2).SetCellValue(visaInfoList[i][j].IssuePlace);
-                    row.CreateCell(3).SetCellValue(visaInfoList[i][j].Residence);
+                    string residence = visaInfoList[i][j].Residence;
+                    if (visaInfoList[i][j].Residence.Contains(" "))
+                    {
+                        residence = visaInfoList[i][j].Residence.Split(' ')[0];
+                        if (residence.EndsWith("省") || residence.EndsWith("市"))
+                        {
+                            residence = residence.Substring(0, residence.Length - 1);
+                        }
+                    }
+
+                    row.CreateCell(3).SetCellValue(residence);
                     row.CreateCell(4).SetCellValue(visaList[i].DepartureType);
                     row.CreateCell(5).SetCellValue(DateTimeFormator.DateTimeToString(visaInfoList[i][j].ReturnTime)); //归国时间先不设置
                     row.CreateCell(6).SetCellValue(visaList[i].Remark);
